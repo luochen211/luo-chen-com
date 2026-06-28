@@ -308,43 +308,6 @@ h1 {
   font-size: 0.95rem;
 }
 
-.stats {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.stats-rail {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.stats-rail li {
-  padding: 1.55rem;
-}
-
-.stats-rail li + li {
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.stats strong {
-  display: block;
-  color: #fffaf4;
-  font-size: clamp(2rem, 4vw, 4.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-}
-
-.stats span {
-  display: block;
-  margin-top: 0.5rem;
-  color: rgba(220, 230, 246, 0.56);
-  font-size: 0.88rem;
-}
-
 .page-section {
   margin-top: 5.6rem;
 }
@@ -902,15 +865,9 @@ h1 {
     transform: none;
   }
 
-  .stats-rail,
   .course-stats,
   .judge-grid {
     grid-template-columns: 1fr;
-  }
-
-  .stats-rail li + li {
-    border-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .capability-matrix {

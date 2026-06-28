@@ -897,15 +897,6 @@ function HomePage({ t }) {
         </div>
       </section>
 
-      <ul className="stats stats-rail reveal">
-        {t.hero.stats.map((stat) => (
-          <li key={stat.label}>
-            <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
-          </li>
-        ))}
-      </ul>
-
       <SummarySection t={t} />
       <section className="capability-matrix page-section">
         {capabilities.map((capability, index) => {
