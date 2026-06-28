@@ -48,7 +48,7 @@ const content = {
     },
     now: {
       label: 'Now',
-      title: 'What I am focused on (February 2026)',
+      title: 'What I am focused on (June 2026)',
       learningTitle: 'Learning',
       learning: [
         'Improving English every day: listening, speaking practice, and technical writing.',
@@ -354,7 +354,7 @@ const content = {
     },
     now: {
       label: 'Now',
-      title: '我最近在做什么（2026年2月）',
+      title: '我最近在做什么（2026年6月）',
       learningTitle: '学习中',
       learning: [
         '持续学习英语：听力、口语表达和技术写作同步推进。',
