@@ -51,8 +51,8 @@ const content = {
       title: 'What I am focused on (June 2026)',
       learningTitle: 'Learning',
       learning: [
-        'Improving English every day: listening, speaking practice, and technical writing.',
-        'Training for remote collaboration in international teams with asynchronous communication habits.',
+        'Using the summer break to go deeper into Agent Harness, AI Coding CLI internals, tool-call safety, and evaluation gates.',
+        'Improving English every day: listening, speaking practice, and technical writing for remote collaboration.',
       ],
       careerTitle: 'Career Goal',
       career: [
@@ -63,17 +63,19 @@ const content = {
       ],
       buildingTitle: 'Current Projects',
       building: [
+        'Continuing open-source practice around Agent CLI, test harnesses, command safety, and batch workflows.',
+        'Turning Agent Harness and AI coding practice into articles, recorded videos, and community output.',
         'Continuing feature delivery and operations for the Image Retouching Order Mini Program.',
         'Updating this personal site as a living record of work and growth.',
       ],
       routineTitle: 'Weekly Routine',
       routine: [
         'Strength training every week to keep energy, posture, and execution stable.',
-        'Practicing yoga regularly for mobility, breathing, recovery, and long-term focus.',
+        'Practicing Ashtanga Yoga during the summer break for discipline, mobility, breath, and long-term focus.',
       ],
       mindsetTitle: 'Current Mindset',
       mindset:
-        'Stay consistent, train the body, communicate clearly, and keep improving in small but meaningful steps.',
+        'Summer is for compounding: train the body, deepen the harness direction, publish consistently, and keep building visible proof.',
     },
     summary: {
       label: 'Professional Summary',
@@ -357,8 +359,8 @@ const content = {
       title: '我最近在做什么（2026年6月）',
       learningTitle: '学习中',
       learning: [
-        '持续学习英语：听力、口语表达和技术写作同步推进。',
-        '针对海外远程协作场景，训练异步沟通与英文文档表达能力。',
+        '暑假期间集中深入 Agent Harness、AI Coding CLI 内部机制、工具调用安全和评估门禁。',
+        '持续学习英语：听力、口语表达和技术写作同步推进，为海外远程协作做准备。',
       ],
       careerTitle: '职业目标',
       career: [
@@ -369,16 +371,18 @@ const content = {
       ],
       buildingTitle: '正在推进的项目',
       building: [
+        '持续围绕 Agent CLI、测试 harness、命令安全和批处理 workflow 做开源实践。',
+        '把 Agent Harness 和 AI 编程实践沉淀成文章、录制视频和社群内容。',
         '继续推进“得到影像在线修图订单小程序”的功能交付与线上运营支持。',
         '把个人网站作为长期更新的成长记录。',
       ],
       routineTitle: '长期习惯',
       routine: [
         '每周坚持撸铁，保持体能、姿态和稳定执行力。',
-        '持续练习瑜伽，用来提升柔韧性、呼吸、恢复能力和长期专注。',
+        '暑假期间持续练习阿斯汤加瑜伽，用来训练纪律、柔韧性、呼吸和长期专注。',
       ],
       mindsetTitle: '当前状态',
-      mindset: '保持稳定节奏，训练身体，真诚沟通，持续做出看得见的进步。',
+      mindset: '暑假是复利期：训练身体，深入 harness 方向，稳定输出内容，持续积累看得见的证据。',
     },
     summary: {
       label: '职业综述',
