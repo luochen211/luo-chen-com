@@ -48,7 +48,7 @@ const content = {
     },
     now: {
       label: 'Now',
-      title: 'What I am focused on (June 2026)',
+      title: 'Now: June 2026',
       learningTitle: 'Learning',
       learning: [
         'Using the summer break to go deeper into Agent Harness, AI Coding CLI internals, tool-call safety, and evaluation gates.',
@@ -928,49 +928,59 @@ function HomePage({ t }) {
 }
 
 function NowPage({ t }) {
+  const nowSections = [
+    {
+      key: 'learning',
+      title: t.now.learningTitle,
+      items: t.now.learning,
+      variant: 'focus',
+    },
+    {
+      key: 'career',
+      title: t.now.careerTitle,
+      items: t.now.career,
+      variant: 'career',
+    },
+    {
+      key: 'building',
+      title: t.now.buildingTitle,
+      items: t.now.building,
+      variant: 'building',
+    },
+    {
+      key: 'routine',
+      title: t.now.routineTitle,
+      items: t.now.routine,
+      variant: 'routine',
+    },
+  ]
+
   return (
-    <section className="page-section">
+    <section className="page-section now-page">
       <div className="section-head reveal">
         <p>{t.now.label}</p>
         <h2>{t.now.title}</h2>
       </div>
-      <div className="now-grid">
-        <article className="card reveal">
-          <h3>{t.now.learningTitle}</h3>
-          <ul className="list-tight">
-            {t.now.learning.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="card reveal">
-          <h3>{t.now.careerTitle}</h3>
-          <ul className="list-tight">
-            {t.now.career.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="card reveal">
-          <h3>{t.now.buildingTitle}</h3>
-          <ul className="list-tight">
-            {t.now.building.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="card reveal">
-          <h3>{t.now.routineTitle}</h3>
-          <ul className="list-tight">
-            {t.now.routine.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-      </div>
-      <div className="card now-mindset reveal">
-        <h3>{t.now.mindsetTitle}</h3>
+
+      <div className="now-mindset reveal">
+        <span>{t.now.mindsetTitle}</span>
         <p>{t.now.mindset}</p>
+      </div>
+
+      <div className="now-stack">
+        {nowSections.map((section, index) => (
+          <article className={`now-entry reveal ${section.variant}`} key={section.key}>
+            <div className="now-entry-head">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{section.title}</h3>
+            </div>
+            <ul>
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
   )

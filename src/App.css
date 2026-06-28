@@ -467,7 +467,6 @@ h1 {
 }
 
 .stack-grid,
-.now-grid,
 .contact-grid {
   margin-top: 2rem;
   display: grid;
@@ -488,14 +487,103 @@ h1 {
   min-height: 11rem;
 }
 
+.now-page {
+  max-width: 1180px;
+}
+
 .now-mindset {
-  margin-top: 1px;
+  margin-top: 2.4rem;
+  max-width: 880px;
+  padding: 1.35rem 0 1.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.now-mindset span {
+  color: rgba(255, 151, 113, 0.82);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .now-mindset p {
-  margin: 0.8rem 0 0;
+  margin: 0.75rem 0 0;
+  color: rgba(240, 244, 252, 0.84);
+  font-size: clamp(1.12rem, 2.2vw, 1.7rem);
+  line-height: 1.58;
+}
+
+.now-stack {
+  display: grid;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.now-entry {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
+  gap: 3rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.now-entry-head {
+  position: sticky;
+  top: 7rem;
+  align-self: start;
+}
+
+.now-entry-head span {
+  display: block;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.now-entry-head h3 {
+  margin: 0.65rem 0 0;
+  color: #fffaf4;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.now-entry ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.now-entry li {
+  position: relative;
+  padding-left: 1.15rem;
   color: rgba(220, 230, 246, 0.72);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
   line-height: 1.7;
+}
+
+.now-entry li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.82em;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  background: rgba(255, 151, 113, 0.75);
+}
+
+.now-entry.focus {
+  border-top-color: rgba(255, 151, 113, 0.28);
+}
+
+.now-entry.routine {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 }
 
 .work-archive .timeline {
@@ -882,6 +970,20 @@ h1 {
 
   .timeline-item {
     grid-template-columns: 1fr;
+  }
+
+  .now-stack {
+    gap: 2.2rem;
+    margin-top: 3rem;
+  }
+
+  .now-entry {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .now-entry-head {
+    position: static;
   }
 
   .project-head {
