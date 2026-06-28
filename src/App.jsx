@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   BrowserRouter,
   Link,
@@ -10,9 +12,11 @@ import {
 } from 'react-router-dom'
 import './App.css'
 
+gsap.registerPlugin(ScrollTrigger)
+
 const content = {
   en: {
-    seoTitle: 'AI Coding Engineer & Full-Stack Builder',
+    seoTitle: 'Agent Harness Engineer & Full-Stack Builder',
     nav: {
       home: 'Home',
       now: 'Now',
@@ -20,17 +24,17 @@ const content = {
       summary: 'Summary',
       stack: 'Stack',
       work: 'Work',
-      course: 'Course',
+      output: 'Output',
       contact: 'Contact',
     },
     toggle: '中文',
     hero: {
-      eyebrow: 'AI-NATIVE CODING ENGINEER',
-      title: 'AI Coding Engineer & Full-Stack Builder',
-      meta: 'AI Agent Engineering | Full-Stack Delivery |',
+      eyebrow: 'AGENT HARNESS ENGINEER',
+      title: 'I build harnesses for reliable agents.',
+      meta: 'Agent Harness | AI Coding CLI | Full-Stack Delivery |',
       intro:
-        'I build AI-native engineering workflows and production business systems, from agent tooling and quality gates to full-stack delivery.',
-      manifestoLabel: 'Personal Manifesto',
+        'I am moving toward Agent Harness engineering: CLI tooling, tool-call safety, evaluation gates, batch workflows, and the full-stack systems that prove them in production.',
+      manifestoLabel: 'Operating Principle',
       manifesto:
         'Stay curious, stay disciplined, and build things that genuinely help people. I believe steady progress, honest collaboration, and long-term reliability matter more than short-term noise.',
       primaryAction: 'View Work',
@@ -73,16 +77,16 @@ const content = {
     },
     summary: {
       label: 'Professional Summary',
-      title: 'Converting Complex Requirements Into Reliable Systems',
+      title: 'From Agent Harness To Production Delivery',
       paragraphs: [
-        'I am a computer-science-trained engineer focused on AI Agent engineering, AI Coding CLI tooling, and production full-stack delivery.',
-        'My recent work spans merged upstream PRs in Agent CLI / career automation projects, plus commercial systems covering orders, payment callbacks, role permissions, operations dashboards, and production deployment.',
+        'I am not only doing full-stack work. My long-term direction is Agent Harness engineering: the infrastructure around AI coding agents that makes them safe, testable, recoverable, and useful in real workflows.',
+        'My recent work spans merged upstream PRs in Agent CLI / career automation projects, plus commercial systems covering orders, payment callbacks, role permissions, operations dashboards, and production deployment. Full-stack delivery is the ground where I test and sharpen harness thinking.',
       ],
       narrativeTitle: 'My Engineering Narrative',
       narrative: [
-        'I work from problem framing to production operations, not just feature implementation.',
-        'I prioritize high Sharpe-ratio output: measurable impact, lower system entropy, and stable iteration speed.',
-        'I treat AI agents as engineering collaborators, but keep strong human control over architecture and quality gates.',
+        'I care about the layer between model capability and real execution: harnesses, gates, traces, recovery paths, and operating constraints.',
+        'I use full-stack delivery as a proving ground for agent workflows, not as the ceiling of my career direction.',
+        'I treat AI agents as engineering collaborators, but keep strong human control over architecture, tool policy, validation, and production quality.',
       ],
       principlesTitle: 'Engineering Principles',
       principles: [
@@ -98,26 +102,26 @@ const content = {
       ],
     },
     course: {
-      label: 'AI Monetization Course',
-      title: 'I Am Running an AI Coding Commercialization Program',
+      label: 'Content Output',
+      title: 'Articles, videos, and community around Agent Harness practice.',
       intro:
-        'I am currently running a practical AI coding commercialization course focused on real delivery, client communication, and order conversion.',
+        'I keep turning Agent Harness, AI Coding CLI, and real delivery experience into public writing, recorded videos, and a paid community for people who want to practice with structure.',
       stats: [
-        { value: '30+', label: 'Members in Learning Group' },
-        { value: '4-Digit', label: 'Orders Landed by Students' },
-        { value: 'Live', label: 'Ongoing Mentorship' },
+        { value: 'Articles', label: 'Engineering Notes And Essays' },
+        { value: 'Videos', label: 'Recorded Walkthroughs' },
+        { value: 'Community', label: 'Paid Learning Group' },
       ],
-      supportTitle: 'What I Provide',
+      supportTitle: 'What I Publish',
       support: [
-        'From skill packaging to offer design for AI coding services.',
-        'Hands-on support for client requirement breakdown and quote strategy.',
-        'Practical guidance on delivery workflow, acceptance, and repeat-order conversion.',
+        'Articles about Agent Harness, AI Coding CLI workflow, tool safety, and production delivery.',
+        'Recorded videos that demonstrate real development process, debugging, and project decomposition.',
+        'Reusable notes, checklists, and examples from open-source contribution and commercial projects.',
       ],
-      outcomeTitle: 'Current Outcomes',
+      outcomeTitle: 'How People Can Join',
       outcomes: [
-        'The community already has dozens of active members learning and practicing together.',
-        'I have helped part of the group secure four-digit freelance orders.',
-        'The focus is to keep building repeatable, execution-first business results.',
+        'Join the paid community to follow my ongoing output and practice with a group.',
+        'Use the writing and videos as a learning path for AI coding, agent workflow, and delivery habits.',
+        'Bring real questions from projects, open source, or job preparation into structured discussion.',
       ],
     },
     stack: {
@@ -158,9 +162,9 @@ const content = {
       ],
       focusTitle: 'Current Technical Focus',
       focus: [
-        'Prompt-to-production workflow with AI coding agents',
-        'Modular architecture for 10k+ LOC codebases',
-        'Operational metrics design for product and model systems',
+        'Agent Harness design for AI coding CLI workflows',
+        'Tool-call safety, evaluation gates, and test harnesses',
+        'Full-stack production systems as real-world validation grounds',
       ],
     },
     projects: {
@@ -315,10 +319,10 @@ const content = {
         },
       ],
     },
-    footer: 'AI Coding Engineer & Full-Stack Builder',
+    footer: 'Agent Harness Engineer & Full-Stack Builder',
   },
   zh: {
-    seoTitle: 'AI 编程工程师与全栈实践者',
+    seoTitle: 'Agent Harness 工程师与全栈实践者',
     nav: {
       home: '首页',
       now: 'Now',
@@ -326,17 +330,17 @@ const content = {
       summary: '综述',
       stack: '技术栈',
       work: '作品',
-      course: '课程',
+      output: '产出',
       contact: '联系',
     },
     toggle: 'EN',
     hero: {
-      eyebrow: 'AI 编程工程师',
-      title: 'AI 编程工程师与全栈实践者',
-      meta: 'AI Agent 工程化 | 全栈交付 |',
+      eyebrow: 'AGENT HARNESS 工程师',
+      title: '可靠 Agent 需要 Harness',
+      meta: 'Agent Harness | AI Coding CLI | 全栈交付 |',
       intro:
-        '专注 AI Agent / AI Coding CLI 工程化与生产级业务系统交付，覆盖工具链、质量门禁、全栈开发和上线运维。',
-      manifestoLabel: '个人宣言',
+        '我不只是做全栈，也在往 Agent Harness 方向深入：CLI 工具链、工具调用安全、评估门禁、批处理 workflow，以及能在生产系统里验证它们的全栈交付。',
+      manifestoLabel: '行动原则',
       manifesto:
         '保持好奇，保持自律，持续做对他人真正有价值的产品。我相信长期主义、务实协作和稳定交付，胜过短期的喧哗。',
       primaryAction: '查看作品',
@@ -378,16 +382,16 @@ const content = {
     },
     summary: {
       label: '职业综述',
-      title: '将复杂需求转化为稳定可用的系统',
+      title: '从 Agent Harness 到生产交付',
       paragraphs: [
-        '具备计算机科班背景，重点关注 AI Agent 工程化、AI Coding CLI 工具链和生产级全栈系统交付。',
-        '近期深度参与 Step Realtime CLI、career-ops 等 Agent 生态项目，上游已合并多项 PR；同时持续交付订单、支付、权限、运营后台和生产部署类商业系统。',
+        '我不是只在做全栈。我的长期方向是 Agent Harness 工程：围绕 AI 编程 Agent 构建安全、可测试、可恢复、可追踪、能进入真实工作流的工程基础设施。',
+        '近期深度参与 Step Realtime CLI、career-ops 等 Agent 生态项目，上游已合并多项 PR；同时持续交付订单、支付、权限、运营后台和生产部署类商业系统。全栈交付是我验证 harness 思维的现实场地。',
       ],
       narrativeTitle: '我的技术论述',
       narrative: [
-        '我不只关注“功能完成”，更关注从需求抽象到线上稳定运行的完整链路。',
-        '我追求高夏普比率技术产出：更高业务价值、更低系统熵增、更可持续迭代速度。',
-        '我把 AI 智能体当作协作放大器，但架构边界与质量标准始终由工程判断主导。',
+        '我关注模型能力和真实执行之间的中间层：harness、质量门禁、执行轨迹、恢复路径和工具约束。',
+        '我把全栈交付当作 Agent workflow 的验证场，而不是职业方向的上限。',
+        '我把 AI 智能体当作协作放大器，但架构边界、工具策略、验证标准和生产质量始终由工程判断主导。',
       ],
       principlesTitle: '工程方法论',
       principles: [
@@ -403,26 +407,26 @@ const content = {
       ],
     },
     course: {
-      label: 'AI 编程商业化课程',
-      title: '我正在做一门 AI 编程商业化实战课程',
+      label: '内容产出',
+      title: '围绕 Agent Harness 的文章、视频和社群',
       intro:
-        '目前我在持续推进一门 AI 编程商业化课程，核心是围绕真实交付、客户沟通和商单转化，带大家把技能变成稳定收入。',
+        '我会持续把 Agent Harness、AI Coding CLI 和真实项目交付经验，沉淀成文章、录制视频，以及可以加入的付费社群。',
       stats: [
-        { value: '30+', label: '学习群成员' },
-        { value: '四位数', label: '已落地商单' },
-        { value: '进行中', label: '实战陪跑' },
+        { value: '文章', label: '工程笔记与长文' },
+        { value: '视频', label: '实操录屏与讲解' },
+        { value: '社群', label: '付费学习小组' },
       ],
-      supportTitle: '我提供的支持',
+      supportTitle: '我会持续输出',
       support: [
-        '从 AI 编程能力包装到服务报价方案设计。',
-        '陪跑拆解客户需求，明确范围、报价与交付节奏。',
-        '结合真实项目训练交付流程、验收与复购转化。',
+        '围绕 Agent Harness、AI Coding CLI、工具调用安全、质量门禁和生产交付写文章。',
+        '录制真实开发过程、调试过程、需求拆解和开源贡献复盘视频。',
+        '把开源贡献和商业项目里的方法，整理成清单、案例、教程和可复用范式。',
       ],
-      outcomeTitle: '阶段成果',
+      outcomeTitle: '你可以如何参与',
       outcomes: [
-        '社群里已经有几十位同学在持续学习和实战。',
-        '我已帮助其中一部分同学拿到四位数商单。',
-        '接下来会继续沉淀可复制的商业化打法与案例。',
+        '加入付费社群，跟随我的持续产出和实践节奏一起推进。',
+        '通过文章和视频系统学习 AI 编程、Agent workflow 和真实交付习惯。',
+        '把项目、开源、求职或商业化里的真实问题带进来，做结构化讨论和练习。',
       ],
     },
     stack: {
@@ -453,9 +457,9 @@ const content = {
       ],
       focusTitle: '当前技术重点',
       focus: [
-        '从 Prompt 到生产交付的 AI 编程工作流',
-        '万行级代码库的模块化重构与工程可维护性',
-        '面向产品与模型系统的可观测指标设计',
+        'AI Coding CLI 工作流中的 Agent Harness 设计',
+        '工具调用安全、评估门禁与测试 harness',
+        '用生产级全栈系统验证 Agent workflow 的真实可用性',
       ],
     },
     projects: {
@@ -600,7 +604,7 @@ const content = {
         },
       ],
     },
-    footer: 'AI 编程工程师与全栈实践者',
+    footer: 'Agent Harness 工程师与全栈实践者',
   },
 }
 
@@ -812,20 +816,46 @@ function ResultList({ title, items = [] }) {
 }
 
 function HomePage({ t }) {
+  const capabilities = [
+    {
+      title: t.summary.narrativeTitle,
+      items: t.summary.narrative,
+      tone: 'large',
+    },
+    {
+      title: t.summary.principlesTitle,
+      items: t.summary.principles,
+      tone: 'medium',
+    },
+    {
+      title: t.stack.focusTitle,
+      items: t.stack.focus,
+      tone: 'compact',
+    },
+    {
+      title: t.summary.workflowTitle,
+      items: t.summary.workflow,
+      tone: 'medium',
+      ordered: true,
+    },
+    {
+      title: t.course.label,
+      items: [t.course.intro],
+      tone: 'medium',
+    },
+    {
+      title: t.hero.manifestoLabel,
+      items: [t.hero.manifesto],
+      tone: 'medium',
+    },
+  ]
+
   return (
-    <>
-      <section className="hero-content">
+    <div className="home-flow">
+      <section className="hero-content hero-scene">
         <div className="hero-copy">
-          <p className="eyebrow">{t.hero.eyebrow}</p>
+          <p className="eyebrow hero-kicker">{t.hero.eyebrow}</p>
           <h1>{t.hero.title}</h1>
-          <p className="meta-line">
-            {t.hero.meta}
-            <a href="https://github.com/luochen211" target="_blank" rel="noreferrer">
-              github.com/luochen211
-            </a>
-            |
-            <a href="mailto:cuidong111@gmail.com">cuidong111@gmail.com</a>
-          </p>
           <p className="intro">{t.hero.intro}</p>
           <div className="actions">
             <Link className="btn primary" to="/work">
@@ -835,22 +865,17 @@ function HomePage({ t }) {
               {t.hero.secondaryAction}
             </Link>
           </div>
-          <ul className="stats">
-            {t.hero.stats.map((stat) => (
-              <li key={stat.label}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="manifesto-card">
-            <p>{t.hero.manifestoLabel}</p>
-            <blockquote>{t.hero.manifesto}</blockquote>
-          </div>
+          <p className="meta-line hero-meta">
+            {t.hero.meta}
+            <a href="https://github.com/luochen211" target="_blank" rel="noreferrer">
+              github.com/luochen211
+            </a>
+            <a href="mailto:cuidong111@gmail.com">cuidong111@gmail.com</a>
+          </p>
         </div>
 
-        <div className="hero-avatar">
-          <div className="avatar-frame">
+        <div className="hero-visual">
+          <div className="avatar-frame hero-portrait">
             <img
               src="/头像111.jpg"
               alt={t.hero.avatarAlt}
@@ -865,12 +890,45 @@ function HomePage({ t }) {
             />
             <span className="avatar-fallback-text">CD</span>
           </div>
+          <div className="hero-panel">
+            <p>{t.hero.manifestoLabel}</p>
+            <blockquote>{t.hero.manifesto}</blockquote>
+          </div>
         </div>
       </section>
+
+      <ul className="stats stats-rail reveal">
+        {t.hero.stats.map((stat) => (
+          <li key={stat.label}>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </li>
+        ))}
+      </ul>
+
       <SummarySection t={t} />
+      <section className="capability-matrix page-section">
+        {capabilities.map((capability, index) => {
+          const ListTag = capability.ordered ? 'ol' : 'ul'
+          return (
+            <article
+              className={`capability-tile reveal ${capability.tone}`}
+              key={capability.title}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{capability.title}</h3>
+              <ListTag>
+                {capability.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ListTag>
+            </article>
+          )
+        })}
+      </section>
       <CourseSection t={t} />
       <StackSection t={t} />
-    </>
+    </div>
   )
 }
 
@@ -925,7 +983,7 @@ function NowPage({ t }) {
 
 function SummarySection({ t }) {
   return (
-    <section className="page-section">
+    <section className="page-section editorial-section">
       <div className="section-head reveal">
         <p>{t.summary.label}</p>
         <h2>{t.summary.title}</h2>
@@ -935,56 +993,30 @@ function SummarySection({ t }) {
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>
-      <div className="summary-grid">
-        <article className="card reveal">
-          <h3>{t.summary.narrativeTitle}</h3>
-          <ul className="list-tight">
-            {t.summary.narrative.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="card reveal">
-          <h3>{t.summary.principlesTitle}</h3>
-          <ul className="list-tight">
-            {t.summary.principles.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="card reveal">
-          <h3>{t.summary.workflowTitle}</h3>
-          <ol className="workflow-list">
-            {t.summary.workflow.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
-        </article>
-      </div>
     </section>
   )
 }
 
 function CourseSection({ t, standalone = false }) {
   return (
-    <section className="page-section">
+    <section className="page-section course-section">
       <div className="section-head reveal">
         <p>{t.course.label}</p>
         <h2>{t.course.title}</h2>
       </div>
-      <div className="card reveal">
-        <p className="course-intro">{t.course.intro}</p>
-      </div>
-      <ul className="course-stats reveal">
-        {t.course.stats.map((stat) => (
-          <li key={stat.label}>
-            <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="summary-grid">
-        <article className="card reveal">
+      <div className="course-archive reveal">
+        <div className="course-lead">
+          <p className="course-intro">{t.course.intro}</p>
+          <ul className="course-stats">
+            {t.course.stats.map((stat) => (
+              <li key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <article>
           <h3>{t.course.supportTitle}</h3>
           <ul className="list-tight">
             {t.course.support.map((item) => (
@@ -992,7 +1024,7 @@ function CourseSection({ t, standalone = false }) {
             ))}
           </ul>
         </article>
-        <article className="card reveal">
+        <article>
           <h3>{t.course.outcomeTitle}</h3>
           <ul className="list-tight">
             {t.course.outcomes.map((item) => (
@@ -1002,7 +1034,7 @@ function CourseSection({ t, standalone = false }) {
         </article>
       </div>
       {standalone ? (
-        <div className="card course-fit reveal">
+        <div className="course-fit reveal">
           <h3>{t.now.careerTitle}</h3>
           <ul className="list-tight">
             {t.now.career.slice(0, 2).map((item) => (
@@ -1017,14 +1049,14 @@ function CourseSection({ t, standalone = false }) {
 
 function StackSection({ t }) {
   return (
-    <section className="page-section">
+    <section className="page-section stack-section">
       <div className="section-head reveal">
         <p>{t.stack.label}</p>
         <h2>{t.stack.title}</h2>
       </div>
       <div className="stack-grid">
         {t.stack.groups.map((group) => (
-          <article className="card reveal" key={group.title}>
+          <article className="stack-column reveal" key={group.title}>
             <h3>{group.title}</h3>
             <ul className="stack-list">
               {group.items.map((item) => (
@@ -1034,28 +1066,21 @@ function StackSection({ t }) {
           </article>
         ))}
       </div>
-      <div className="card focus-card reveal">
-        <h3>{t.stack.focusTitle}</h3>
-        <ul className="list-tight">
-          {t.stack.focus.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
     </section>
   )
 }
 
 function ProjectsPage({ t }) {
   return (
-    <section className="page-section">
+    <section className="page-section work-archive">
       <div className="section-head reveal">
         <p>{t.projects.label}</p>
         <h2>{t.projects.title}</h2>
       </div>
       <div className="timeline">
-        {t.projects.list.map((project) => (
+        {t.projects.list.map((project, index) => (
           <article className="timeline-item reveal" key={project.name}>
+            <span className="project-index">{String(index + 1).padStart(2, '0')}</span>
             <div className="project-head">
               <h3>
                 {project.link ? (
@@ -1099,7 +1124,7 @@ function ProjectsPage({ t }) {
   )
 }
 
-function CoursePage({ t }) {
+function OutputPage({ t }) {
   return <CourseSection t={t} standalone />
 }
 
@@ -1178,6 +1203,68 @@ function SiteApp() {
     return () => observer.disconnect()
   }, [location.pathname, locale])
 
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        '.hero-copy > *',
+        { opacity: 0, y: 34 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.08,
+        },
+      )
+
+      gsap.fromTo(
+        '.hero-visual',
+        { opacity: 0, y: 42, rotate: -1.5 },
+        { opacity: 1, y: 0, rotate: 0, duration: 1.1, ease: 'power3.out', delay: 0.12 },
+      )
+
+      gsap.utils.toArray('.timeline-item').forEach((item) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0.78, y: 26 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 86%',
+              end: 'top 42%',
+              scrub: true,
+            },
+          },
+        )
+      })
+
+      gsap.utils.toArray('.capability-tile').forEach((tile) => {
+        gsap.fromTo(
+          tile,
+          { scale: 0.96, opacity: 0.42 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: tile,
+              start: 'top 92%',
+              end: 'top 58%',
+              scrub: true,
+            },
+          },
+        )
+      })
+    })
+
+    return () => context.revert()
+  }, [location.pathname, locale])
+
   return (
     <div className="page">
       <div className="bg-orb orb-a" aria-hidden="true" />
@@ -1204,10 +1291,10 @@ function SiteApp() {
                 {t.nav.work}
               </NavLink>
               <NavLink
-                to="/course"
+                to="/output"
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
-                {t.nav.course}
+                {t.nav.output}
               </NavLink>
               <NavLink
                 to="/contact"
@@ -1234,7 +1321,8 @@ function SiteApp() {
           <Route path="/roundtable" element={<RoundtablePage />} />
           <Route path="/work" element={<ProjectsPage t={t} />} />
           <Route path="/projects" element={<Navigate replace to="/work" />} />
-          <Route path="/course" element={<CoursePage t={t} />} />
+          <Route path="/output" element={<OutputPage t={t} />} />
+          <Route path="/course" element={<Navigate replace to="/output" />} />
           <Route path="/contact" element={<ContactPage t={t} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
