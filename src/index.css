@@ -1,0 +1,50 @@
+:root {
+  --bg: #07111f;
+  --bg-deep: #030813;
+  --surface: rgba(11, 19, 35, 0.72);
+  --surface-strong: rgba(14, 24, 43, 0.92);
+  --ink: #f3f7ff;
+  --ink-soft: #b6c4dc;
+  --muted: #73839f;
+  --card-bg: rgba(10, 18, 34, 0.72);
+  --brand-warm: #ff7a59;
+  --brand-cool: #38bdf8;
+  --brand-link: #ff8f6b;
+  --line: rgba(179, 201, 232, 0.14);
+  --font-sans:
+    'Space Grotesk', 'Avenir Next', 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', system-ui, sans-serif;
+  --font-serif:
+    'Noto Serif SC', 'Songti SC', 'STSong', 'Source Han Serif SC', 'Times New Roman',
+    serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(255, 122, 89, 0.1), transparent 24%),
+    linear-gradient(180deg, #091424 0%, var(--bg-deep) 100%);
+  color: var(--ink);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
