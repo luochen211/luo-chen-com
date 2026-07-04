@@ -25,7 +25,6 @@ const content = {
       stack: 'Stack',
       work: 'Work',
       output: 'Output',
-      ppt: 'PPT',
       contact: 'Contact',
     },
     toggle: '中文',
@@ -342,7 +341,6 @@ const content = {
       stack: '技术栈',
       work: '作品',
       output: '产出',
-      ppt: 'PPT',
       contact: '联系',
     },
     toggle: 'EN',
@@ -1330,13 +1328,6 @@ function SiteApp() {
               >
                 {t.nav.output}
               </NavLink>
-              <a
-                href={t.course.archive.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t.nav.ppt}
-              </a>
               <NavLink
                 to="/contact"
                 className={({ isActive }) => (isActive ? 'active' : '')}
