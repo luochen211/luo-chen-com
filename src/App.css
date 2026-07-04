@@ -466,6 +466,36 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.course-link {
+  display: block;
+  color: inherit;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.course-link:hover {
+  transform: translateY(-2px);
+  background:
+    linear-gradient(135deg, rgba(255, 151, 113, 0.12), rgba(56, 189, 248, 0.08)),
+    rgba(6, 9, 15, 0.92);
+}
+
+.course-link span {
+  color: rgba(255, 151, 113, 0.82);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.course-link p {
+  max-width: 48rem;
+  margin: 0.55rem 0 0;
+  color: rgba(220, 230, 246, 0.68);
+  line-height: 1.7;
+}
+
 .stack-grid,
 .contact-grid {
   margin-top: 2rem;

@@ -25,6 +25,7 @@ const content = {
       stack: 'Stack',
       work: 'Work',
       output: 'Output',
+      ppt: 'PPT',
       contact: 'Contact',
     },
     toggle: '中文',
@@ -110,12 +111,20 @@ const content = {
         'I keep turning Agent Harness, AI Coding CLI, and real delivery experience into public writing, recorded videos, and a paid community for people who want to practice with structure.',
       stats: [
         { value: 'Articles', label: 'Engineering Notes And Essays' },
-        { value: 'Videos', label: 'Recorded Walkthroughs' },
+        { value: 'PPT', label: 'Talks And Offline Sharing' },
         { value: 'Community', label: 'Paid Learning Group' },
       ],
+      archive: {
+        title: 'PPT Archive',
+        description:
+          'A public archive for my livestream decks, offline sharing materials, and AI product talks.',
+        action: 'Open PPT Archive',
+        href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
+      },
       supportTitle: 'What I Publish',
       support: [
         'Articles about Agent Harness, AI Coding CLI workflow, tool safety, and production delivery.',
+        'PPT decks from livestreams, offline talks, and AI product sharing sessions.',
         'Recorded videos that demonstrate real development process, debugging, and project decomposition.',
         'Reusable notes, checklists, and examples from open-source contribution and commercial projects.',
       ],
@@ -333,6 +342,7 @@ const content = {
       stack: '技术栈',
       work: '作品',
       output: '产出',
+      ppt: 'PPT',
       contact: '联系',
     },
     toggle: 'EN',
@@ -417,12 +427,19 @@ const content = {
         '我会持续把 Agent Harness、AI Coding CLI 和真实项目交付经验，沉淀成文章、录制视频，以及可以加入的付费社群。',
       stats: [
         { value: '文章', label: '工程笔记与长文' },
-        { value: '视频', label: '实操录屏与讲解' },
+        { value: 'PPT', label: '直播与线下分享' },
         { value: '社群', label: '付费学习小组' },
       ],
+      archive: {
+        title: 'PPT 归档',
+        description: '这里会放我做过的直播、线下分享和 AI 产品相关演讲 PPT。',
+        action: '打开 PPT 归档',
+        href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
+      },
       supportTitle: '我会持续输出',
       support: [
         '围绕 Agent Harness、AI Coding CLI、工具调用安全、质量门禁和生产交付写文章。',
+        '整理直播、线下分享和 AI 产品相关演讲的 PPT。',
         '录制真实开发过程、调试过程、需求拆解和开源贡献复盘视频。',
         '把开源贡献和商业项目里的方法，整理成清单、案例、教程和可复用范式。',
       ],
@@ -1039,14 +1056,26 @@ function CourseSection({ t, standalone = false }) {
         </article>
       </div>
       {standalone ? (
-        <div className="course-fit reveal">
-          <h3>{t.now.careerTitle}</h3>
-          <ul className="list-tight">
-            {t.now.career.slice(0, 2).map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
+        <>
+          <a
+            className="course-fit course-link reveal"
+            href={t.course.archive.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>{t.course.archive.action}</span>
+            <h3>{t.course.archive.title}</h3>
+            <p>{t.course.archive.description}</p>
+          </a>
+          <div className="course-fit reveal">
+            <h3>{t.now.careerTitle}</h3>
+            <ul className="list-tight">
+              {t.now.career.slice(0, 2).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </>
       ) : null}
     </section>
   )
@@ -1301,6 +1330,13 @@ function SiteApp() {
               >
                 {t.nav.output}
               </NavLink>
+              <a
+                href={t.course.archive.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.nav.ppt}
+              </a>
               <NavLink
                 to="/contact"
                 className={({ isActive }) => (isActive ? 'active' : '')}
