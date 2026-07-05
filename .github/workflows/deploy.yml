@@ -42,4 +42,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 564049c624e2d4ee91f3145898386024
+          wranglerVersion: 4.107.0
           command: pages deploy dist --project-name=luo-chen-com --branch=main
