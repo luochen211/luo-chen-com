@@ -9,6 +9,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useParams,
 } from 'react-router-dom'
 import './App.css'
 
@@ -121,12 +122,50 @@ const content = {
         href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
       },
       articlesTitle: 'Latest Articles',
+      topicsTitle: 'Special Topics',
+      topics: [
+        {
+          title: 'Where Do We Go From Here',
+          status: 'Ongoing',
+          summary:
+            'A long-running topic about the direction of individuals, work, relationships, and creation in the AI age.',
+          href: '/topics/where-do-we-go',
+        },
+      ],
       articles: [
         {
-          title: 'A Failed Offline Talk: I Made The Deck Beautiful But Gave People No Handle',
+          title: 'Where Do We Go From Here: Preface',
+          date: '2026-07-05',
+          summary:
+            'The opening note for an ongoing topic: when old coordinates stop working, the first task is not to panic, but to rebuild judgment and direction.',
+          href: '/articles/2026-07-05-where-do-we-go-preface',
+        },
+        {
+          title: '年轻程序员最该远离的，是低价值外包',
+          date: '2026-07-05',
+          summary:
+            '低价值外包的问题不是辛苦，而是它把时间切碎，把简历做杂，把未来的议价权换成眼前的小钱。',
+          href: '/articles/2026-07-05-stop-low-value-outsourcing',
+        },
+        {
+          title: '英语不是加分项，是远程工作的入场券',
+          date: '2026-07-05',
+          summary:
+            '如果目标是远程高薪工作，英语就不是兴趣爱好，而是进入全球劳动力市场的基础设施。',
+          href: '/articles/2026-07-05-english-is-remote-work-ticket',
+        },
+        {
+          title: '别让线下场合替你做判断',
+          date: '2026-07-05',
+          summary:
+            'A reflection on why unfamiliar offline settings can turn new people into temporary anchors, and why temporary coordinates are not real relationships.',
+          href: '/articles/2026-07-05-less-contact-zhongdeng',
+        },
+        {
+          title: 'I Thought I Was Sharing, But I Was Talking To Myself',
           date: '2026-07-04',
           summary:
-            'A reflection on why a polished deck still failed: the talk started from my experience endpoint instead of giving the audience a concrete case, an action, and a way to start.',
+            'A reflection on why an offline talk failed: I made the deck look complete, but I did not actually communicate with the audience or give them a usable entry point.',
           href: '/articles/2026-07-04-offline-ppt-reflection',
         },
       ],
@@ -446,12 +485,50 @@ const content = {
         href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
       },
       articlesTitle: '最新文章',
+      topicsTitle: '专题',
+      topics: [
+        {
+          title: '我们将何去何从',
+          status: '持续更新',
+          summary:
+            '一个长期专题：在 AI 时代、职业变化、关系重组和个人秩序重建中，重新追问个体应该往哪里走。',
+          href: '/topics/where-do-we-go',
+        },
+      ],
       articles: [
         {
-          title: '一次失败的线下分享：我把 PPT 做漂亮了，却没有让人带走东西',
+          title: '专题序言：我们将何去何从',
+          date: '2026-07-05',
+          summary:
+            '当旧坐标失效时，真正重要的不是立刻找到答案，而是重新建立判断、方向和行动秩序。',
+          href: '/articles/2026-07-05-where-do-we-go-preface',
+        },
+        {
+          title: '年轻程序员最该远离的，是低价值外包',
+          date: '2026-07-05',
+          summary:
+            '低价值外包的问题不是辛苦，而是它把时间切碎，把简历做杂，把未来的议价权换成眼前的小钱。',
+          href: '/articles/2026-07-05-stop-low-value-outsourcing',
+        },
+        {
+          title: '英语不是加分项，是远程工作的入场券',
+          date: '2026-07-05',
+          summary:
+            '如果目标是远程高薪工作，英语就不是兴趣爱好，而是进入全球劳动力市场的基础设施。',
+          href: '/articles/2026-07-05-english-is-remote-work-ticket',
+        },
+        {
+          title: '别让线下场合替你做判断',
+          date: '2026-07-05',
+          summary:
+            '陌生线下场合里，人很容易把新认识的人当成锚点，用一段临时关系换一点安稳。但临时坐标不是关系，真正要守住的是自己的判断权。',
+          href: '/articles/2026-07-05-less-contact-zhongdeng',
+        },
+        {
+          title: '我以为我在分享，其实我在自说自话',
           date: '2026-07-04',
           summary:
-            '2026 年 7 月 4 日这场线下分享给我的最大教训是：分享的重点不在于把自己的经验讲完整，而在于让听众拿到一个案例、一个动作，或者一个明天就能尝试的方法。',
+            '这场线下分享真正失败的地方，不是 PPT 不够漂亮，而是我没有和听众发生交流。我站在自己的经验终点讲话，却没有给他们入口、案例和明天就能尝试的动作。',
           href: '/articles/2026-07-04-offline-ppt-reflection',
         },
       ],
@@ -1077,6 +1154,18 @@ function CourseSection({ t, standalone = false }) {
       </div>
       {standalone ? (
         <>
+          <div className="topic-list reveal">
+            <div className="article-list-head">
+              <p>{t.course.topicsTitle}</p>
+            </div>
+            {t.course.topics.map((topic) => (
+              <a className="topic-card" href={topic.href} key={topic.href}>
+                <span>{topic.status}</span>
+                <h3>{topic.title}</h3>
+                <p>{topic.summary}</p>
+              </a>
+            ))}
+          </div>
           <div className="article-list reveal">
             <div className="article-list-head">
               <p>{t.course.articlesTitle}</p>
@@ -1109,6 +1198,123 @@ function CourseSection({ t, standalone = false }) {
           </div>
         </>
       ) : null}
+    </section>
+  )
+}
+
+function TopicPage() {
+  const topicArticles = [
+    {
+      title: '专题序言：我们将何去何从',
+      date: '2026-07-05',
+      summary:
+        '当旧坐标失效时，真正重要的不是立刻找到答案，而是重新建立判断、方向和行动秩序。',
+      href: '/articles/2026-07-05-where-do-we-go-preface',
+    },
+    {
+      title: '年轻程序员最该远离的，是低价值外包',
+      date: '2026-07-05',
+      summary:
+        '低价值外包会制造一种很勤奋的幻觉：每天都在做事，但没有积累出更贵的位置。',
+      href: '/articles/2026-07-05-stop-low-value-outsourcing',
+    },
+    {
+      title: '英语不是加分项，是远程工作的入场券',
+      date: '2026-07-05',
+      summary:
+        '英语真正改变的不是表达能力，而是你能进入哪一个劳动力市场，能和谁一起工作。',
+      href: '/articles/2026-07-05-english-is-remote-work-ticket',
+    },
+    {
+      title: '开源贡献比外包更像职业资产',
+      date: '2026-07-05',
+      summary:
+        '外包证明你能完成任务，开源贡献证明你能进入更高质量的协作网络。',
+      href: '/articles/2026-07-05-open-source-is-career-asset',
+    },
+    {
+      title: '程序员不要只会埋头写代码',
+      date: '2026-07-05',
+      summary:
+        '技术能力接近时，机会往往来自社交、表达、谈判和跨岗位协作。',
+      href: '/articles/2026-07-05-programmers-need-social-surface',
+    },
+    {
+      title: '简历需要爆点，不需要杂货铺',
+      date: '2026-07-05',
+      summary:
+        '一堆低质量项目只会稀释判断，一个高含金量项目才能让别人记住你。',
+      href: '/articles/2026-07-05-resume-needs-breakthrough-projects',
+    },
+    {
+      title: '知识付费的价值，是把一次劳动变成系统',
+      date: '2026-07-05',
+      summary:
+        '课程不是把经验卖掉，而是把交付流程产品化，让时间开始有杠杆。',
+      href: '/articles/2026-07-05-knowledge-product-is-leverage',
+    },
+    {
+      title: '大厂实习是一种战略尝试',
+      date: '2026-07-05',
+      summary:
+        '很多高价值机会不能靠自我评估提前放弃，它们需要被当成投资去冲刺。',
+      href: '/articles/2026-07-05-internship-is-strategic-attempt',
+    },
+    {
+      title: '松弛感不是偷懒，是长期收益的前提',
+      date: '2026-07-05',
+      summary:
+        '长期职业发展不是把每天填满，而是让身体、判断和创造力都能持续工作。',
+      href: '/articles/2026-07-05-relaxed-state-is-long-term-edge',
+    },
+  ]
+
+  const questions = [
+    '当 AI 正在改变工作、表达和生产方式时，一个普通个体应该如何重新定义自己的位置？',
+    '当职业路径不再稳定，什么样的能力、作品和关系才真正值得长期积累？',
+    '当外部世界持续加速，一个人如何保住判断权、生活秩序和内在方向？',
+  ]
+
+  return (
+    <section className="page-section topic-page">
+      <div className="topic-hero reveal">
+        <p className="eyebrow">ONGOING TOPIC</p>
+        <h1>我们将何去何从</h1>
+        <p>
+          这是一个持续更新的专题。它不急着给出宏大答案，而是把时代变化、职业选择、AI
+          冲击、关系秩序和个人成长拆成一篇篇可以反复讨论的文章。
+        </p>
+      </div>
+
+      <div className="topic-frame reveal">
+        <article>
+          <h2>这个专题关心什么</h2>
+          <ul className="list-tight">
+            {questions.map((question) => (
+              <li key={question}>{question}</li>
+            ))}
+          </ul>
+        </article>
+        <article>
+          <h2>写作方式</h2>
+          <p>
+            每篇文章只处理一个真实问题：不要把焦虑写成口号，也不要把判断藏进漂亮话。先把处境说清楚，再给出能执行的方向。
+          </p>
+        </article>
+      </div>
+
+      <div className="article-list reveal">
+        <div className="article-list-head">
+          <p>专题文章</p>
+        </div>
+        {topicArticles.map((article) => (
+          <a className="article-card" href={article.href} key={article.href}>
+            <span>{article.date}</span>
+            <h3>{article.title}</h3>
+            <p>{article.summary}</p>
+          </a>
+        ))}
+      </div>
     </section>
   )
 }
@@ -1209,6 +1415,19 @@ function parseInlineMarkdown(text) {
   })
 }
 
+function parseArticleMeta(markdown) {
+  const frontmatter = markdown.match(/^---\n([\s\S]*?)\n---/)
+  if (!frontmatter) return {}
+
+  return frontmatter[1].split('\n').reduce((meta, line) => {
+    const match = line.match(/^(\w+):\s*"?(.*?)"?$/)
+    if (match) {
+      meta[match[1]] = match[2]
+    }
+    return meta
+  }, {})
+}
+
 function parseArticleMarkdown(markdown) {
   const withoutFrontmatter = markdown.replace(/^---[\s\S]*?---\s*/, '')
   const lines = withoutFrontmatter.split('\n')
@@ -1270,11 +1489,12 @@ function parseArticleMarkdown(markdown) {
 }
 
 function ArticlePage() {
+  const { slug } = useParams()
   const [markdown, setMarkdown] = useState('')
 
   useEffect(() => {
     let alive = true
-    fetch('/articles/2026-07-04-offline-ppt-reflection.md')
+    fetch(`/articles/${slug}.md`)
       .then((response) => response.text())
       .then((text) => {
         if (alive) setMarkdown(text)
@@ -1285,8 +1505,9 @@ function ArticlePage() {
     return () => {
       alive = false
     }
-  }, [])
+  }, [slug])
 
+  const meta = markdown ? parseArticleMeta(markdown) : {}
   const blocks = markdown ? parseArticleMarkdown(markdown) : []
   const title = blocks.find((block) => block.type === 'h1')?.text
 
@@ -1301,7 +1522,7 @@ function ArticlePage() {
           if (block.type === 'h1') {
             return (
               <header className="article-hero" key={`${block.type}-${index}`}>
-                <p>Reflection · 2026-07-04</p>
+                <p>Article · {meta.date || ''}</p>
                 <h1>{block.text}</h1>
               </header>
             )
@@ -1529,7 +1750,8 @@ function SiteApp() {
           <Route path="/projects" element={<Navigate replace to="/output" />} />
           <Route path="/output" element={<OutputPage t={t} />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
-          <Route path="/articles/2026-07-04-offline-ppt-reflection" element={<ArticlePage />} />
+          <Route path="/topics/where-do-we-go" element={<TopicPage />} />
+          <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route path="/contact" element={<ContactPage t={t} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
