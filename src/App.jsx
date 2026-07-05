@@ -64,7 +64,7 @@ const content = {
       buildingTitle: 'Current Projects',
       building: [
         'Continuing open-source practice around Agent CLI, test harnesses, command safety, and batch workflows.',
-        'Turning Agent Harness and AI coding practice into articles, recorded videos, and community output.',
+        'Turning Agent Harness and AI coding practice into articles, tools, products, recorded videos, and community output.',
         'Continuing feature delivery and operations for the Image Retouching Order Mini Program.',
         'Updating this personal site as a living record of work and growth.',
       ],
@@ -104,13 +104,13 @@ const content = {
       ],
     },
     course: {
-      label: 'Content Output',
-      title: 'Articles, videos, and community around Agent Harness practice.',
+      label: 'Output System',
+      title: 'Writing, products, tools, and community around Agent Harness practice.',
       intro:
-        'I keep turning Agent Harness, AI Coding CLI, and real delivery experience into public writing, recorded videos, and a paid community for people who want to practice with structure.',
+        'I keep turning Agent Harness, AI Coding CLI, and real delivery experience into public writing, productized tools, recorded videos, courses, and a paid community for people who want to practice with structure.',
       stats: [
-        { value: 'Articles', label: 'Engineering Notes And Essays' },
-        { value: 'PPT', label: 'Talks And Offline Sharing' },
+        { value: 'Writing', label: 'Engineering Notes And Essays' },
+        { value: 'Products', label: 'Tools, Courses, And Agents' },
         { value: 'Community', label: 'Paid Learning Group' },
       ],
       archive: {
@@ -120,18 +120,29 @@ const content = {
         action: 'Open PPT Archive',
         href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
       },
-      supportTitle: 'What I Publish',
+      articlesTitle: 'Latest Articles',
+      articles: [
+        {
+          title: 'A Failed Offline Talk: I Made The Deck Beautiful But Gave People No Handle',
+          date: '2026-07-04',
+          summary:
+            'A reflection on why a polished deck still failed: the talk started from my experience endpoint instead of giving the audience a concrete case, an action, and a way to start.',
+          href: '/articles/2026-07-04-offline-ppt-reflection',
+        },
+      ],
+      supportTitle: 'What I Build And Publish',
       support: [
         'Articles about Agent Harness, AI Coding CLI workflow, tool safety, and production delivery.',
+        'Small products and tools that package real workflow patterns into something people can use.',
         'PPT decks from livestreams, offline talks, and AI product sharing sessions.',
         'Recorded videos that demonstrate real development process, debugging, and project decomposition.',
-        'Reusable notes, checklists, and examples from open-source contribution and commercial projects.',
+        'Courses, templates, checklists, and examples from open-source contribution and commercial projects.',
       ],
       outcomeTitle: 'How People Can Join',
       outcomes: [
-        'Join the paid community to follow my ongoing output and practice with a group.',
+        'Join the paid community to follow my ongoing output, products, and practice rhythm.',
         'Use the writing and videos as a learning path for AI coding, agent workflow, and delivery habits.',
-        'Bring real questions from projects, open source, or job preparation into structured discussion.',
+        'Bring real questions from projects, products, open source, or job preparation into structured discussion.',
       ],
     },
     stack: {
@@ -380,7 +391,7 @@ const content = {
       buildingTitle: '正在推进的项目',
       building: [
         '持续围绕 Agent CLI、测试 harness、命令安全和批处理 workflow 做开源实践。',
-        '把 Agent Harness 和 AI 编程实践沉淀成文章、录制视频和社群内容。',
+        '把 Agent Harness 和 AI 编程实践沉淀成文章、工具产品、录制视频和社群内容。',
         '继续推进“得到影像在线修图订单小程序”的功能交付与线上运营支持。',
         '把个人网站作为长期更新的成长记录。',
       ],
@@ -419,13 +430,13 @@ const content = {
       ],
     },
     course: {
-      label: '内容产出',
-      title: '围绕 Agent Harness 的文章、视频和社群',
+      label: '产出系统',
+      title: '围绕 Agent Harness 的文章、产品、工具和社群',
       intro:
-        '我会持续把 Agent Harness、AI Coding CLI 和真实项目交付经验，沉淀成文章、录制视频，以及可以加入的付费社群。',
+        '我会持续把 Agent Harness、AI Coding CLI 和真实项目交付经验，沉淀成文章、工具产品、录制视频、课程和可以加入的付费社群。',
       stats: [
-        { value: '文章', label: '工程笔记与长文' },
-        { value: 'PPT', label: '直播与线下分享' },
+        { value: '内容', label: '文章、视频与演讲' },
+        { value: '产品', label: '工具、课程与 Agent' },
         { value: '社群', label: '付费学习小组' },
       ],
       archive: {
@@ -434,18 +445,29 @@ const content = {
         action: '打开 PPT 归档',
         href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
       },
-      supportTitle: '我会持续输出',
+      articlesTitle: '最新文章',
+      articles: [
+        {
+          title: '一次失败的线下分享：我把 PPT 做漂亮了，却没有让人带走东西',
+          date: '2026-07-04',
+          summary:
+            '2026 年 7 月 4 日这场线下分享给我的最大教训是：分享的重点不在于把自己的经验讲完整，而在于让听众拿到一个案例、一个动作，或者一个明天就能尝试的方法。',
+          href: '/articles/2026-07-04-offline-ppt-reflection',
+        },
+      ],
+      supportTitle: '我会持续做出来',
       support: [
         '围绕 Agent Harness、AI Coding CLI、工具调用安全、质量门禁和生产交付写文章。',
+        '把真实工作流里的方法，做成可使用的工具、小产品、课程和 Agent 原型。',
         '整理直播、线下分享和 AI 产品相关演讲的 PPT。',
         '录制真实开发过程、调试过程、需求拆解和开源贡献复盘视频。',
         '把开源贡献和商业项目里的方法，整理成清单、案例、教程和可复用范式。',
       ],
       outcomeTitle: '你可以如何参与',
       outcomes: [
-        '加入付费社群，跟随我的持续产出和实践节奏一起推进。',
+        '加入付费社群，跟随我的持续产出、产品迭代和实践节奏一起推进。',
         '通过文章和视频系统学习 AI 编程、Agent workflow 和真实交付习惯。',
-        '把项目、开源、求职或商业化里的真实问题带进来，做结构化讨论和练习。',
+        '把项目、产品、开源、求职或商业化里的真实问题带进来，做结构化讨论和练习。',
       ],
     },
     stack: {
@@ -1055,6 +1077,18 @@ function CourseSection({ t, standalone = false }) {
       </div>
       {standalone ? (
         <>
+          <div className="article-list reveal">
+            <div className="article-list-head">
+              <p>{t.course.articlesTitle}</p>
+            </div>
+            {t.course.articles.map((article) => (
+              <a className="article-card" href={article.href} key={article.href}>
+                <span>{article.date}</span>
+                <h3>{article.title}</h3>
+                <p>{article.summary}</p>
+              </a>
+            ))}
+          </div>
           <a
             className="course-fit course-link reveal"
             href={t.course.archive.href}
@@ -1158,6 +1192,147 @@ function ProjectsPage({ t }) {
 
 function OutputPage({ t }) {
   return <CourseSection t={t} standalone />
+}
+
+function parseInlineMarkdown(text) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
+    }
+    return part
+  })
+}
+
+function parseArticleMarkdown(markdown) {
+  const withoutFrontmatter = markdown.replace(/^---[\s\S]*?---\s*/, '')
+  const lines = withoutFrontmatter.split('\n')
+  const blocks = []
+  let list = null
+
+  const flushList = () => {
+    if (list) {
+      blocks.push(list)
+      list = null
+    }
+  }
+
+  lines.forEach((rawLine) => {
+    const line = rawLine.trim()
+    if (!line) {
+      flushList()
+      return
+    }
+
+    if (line.startsWith('# ')) {
+      flushList()
+      blocks.push({ type: 'h1', text: line.slice(2) })
+      return
+    }
+
+    if (line.startsWith('## ')) {
+      flushList()
+      blocks.push({ type: 'h2', text: line.slice(3) })
+      return
+    }
+
+    if (line.startsWith('> ')) {
+      flushList()
+      blocks.push({ type: 'quote', text: line.slice(2) })
+      return
+    }
+
+    const unordered = line.match(/^- (.+)$/)
+    if (unordered) {
+      if (!list || list.type !== 'ul') list = { type: 'ul', items: [] }
+      list.items.push(unordered[1])
+      return
+    }
+
+    const ordered = line.match(/^\d+\. (.+)$/)
+    if (ordered) {
+      if (!list || list.type !== 'ol') list = { type: 'ol', items: [] }
+      list.items.push(ordered[1])
+      return
+    }
+
+    flushList()
+    blocks.push({ type: 'p', text: line })
+  })
+
+  flushList()
+  return blocks
+}
+
+function ArticlePage() {
+  const [markdown, setMarkdown] = useState('')
+
+  useEffect(() => {
+    let alive = true
+    fetch('/articles/2026-07-04-offline-ppt-reflection.md')
+      .then((response) => response.text())
+      .then((text) => {
+        if (alive) setMarkdown(text)
+      })
+      .catch(() => {
+        if (alive) setMarkdown('')
+      })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  const blocks = markdown ? parseArticleMarkdown(markdown) : []
+  const title = blocks.find((block) => block.type === 'h1')?.text
+
+  useEffect(() => {
+    if (title) document.title = `${title} · luo-chen.com`
+  }, [title])
+
+  return (
+    <article className="article-page reveal">
+      {blocks.length ? (
+        blocks.map((block, index) => {
+          if (block.type === 'h1') {
+            return (
+              <header className="article-hero" key={`${block.type}-${index}`}>
+                <p>Reflection · 2026-07-04</p>
+                <h1>{block.text}</h1>
+              </header>
+            )
+          }
+          if (block.type === 'h2') return <h2 key={`${block.text}-${index}`}>{block.text}</h2>
+          if (block.type === 'quote') {
+            return <blockquote key={`${block.text}-${index}`}>{parseInlineMarkdown(block.text)}</blockquote>
+          }
+          if (block.type === 'ul') {
+            return (
+              <ul key={`${block.type}-${index}`}>
+                {block.items.map((item) => (
+                  <li key={item}>{parseInlineMarkdown(item)}</li>
+                ))}
+              </ul>
+            )
+          }
+          if (block.type === 'ol') {
+            return (
+              <ol key={`${block.type}-${index}`}>
+                {block.items.map((item) => (
+                  <li key={item}>{parseInlineMarkdown(item)}</li>
+                ))}
+              </ol>
+            )
+          }
+          return <p key={`${block.text}-${index}`}>{parseInlineMarkdown(block.text)}</p>
+        })
+      ) : (
+        <div className="article-hero">
+          <p>Loading</p>
+          <h1>文章加载中</h1>
+        </div>
+      )}
+    </article>
+  )
 }
 
 function ContactPage({ t }) {
@@ -1355,6 +1530,7 @@ function SiteApp() {
           <Route path="/projects" element={<Navigate replace to="/work" />} />
           <Route path="/output" element={<OutputPage t={t} />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
+          <Route path="/articles/2026-07-04-offline-ppt-reflection" element={<ArticlePage />} />
           <Route path="/contact" element={<ContactPage t={t} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
