@@ -134,31 +134,31 @@ const content = {
       ],
       articles: [
         {
-          title: 'Where Do We Go From Here: Preface',
+          title: 'Where Do We Go From Here: After The Old Map Fails',
           date: '2026-07-05',
           summary:
-            'The opening note for an ongoing topic: when old coordinates stop working, the first task is not to panic, but to rebuild judgment and direction.',
+            'The opening note for an ongoing topic: when old coordinates stop working, each person has to rebuild how they are priced, trusted, and able to go long.',
           href: '/articles/2026-07-05-where-do-we-go-preface',
         },
         {
-          title: '年轻程序员最该远离的，是低价值外包',
+          title: '别让低价值现金流，吞掉你的未来位置',
           date: '2026-07-05',
           summary:
-            '低价值外包的问题不是辛苦，而是它把时间切碎，把简历做杂，把未来的议价权换成眼前的小钱。',
+            '最危险的不是穷，而是被低价值现金流训练成低价值的人。它会切碎时间、压低标准，让人越来越难进入更大的机会池。',
           href: '/articles/2026-07-05-stop-low-value-outsourcing',
         },
         {
-          title: '英语不是加分项，是远程工作的入场券',
+          title: '英语不是加分项，是进入更大市场的通行证',
           date: '2026-07-05',
           summary:
-            '如果目标是远程高薪工作，英语就不是兴趣爱好，而是进入全球劳动力市场的基础设施。',
+            '如果目标是进入更大的机会市场，英语就不是兴趣爱好，而是全球协作的基础设施。',
           href: '/articles/2026-07-05-english-is-remote-work-ticket',
         },
         {
-          title: '别让线下场合替你做判断',
+          title: '成年人最该守住的，是热闹里的判断权',
           date: '2026-07-05',
           summary:
-            'A reflection on why unfamiliar offline settings can turn new people into temporary anchors, and why temporary coordinates are not real relationships.',
+            'A reflection on why unfamiliar settings can turn new people into temporary anchors, and why adults need to keep judgment in noisy rooms.',
           href: '/articles/2026-07-05-less-contact-zhongdeng',
         },
         {
@@ -497,31 +497,31 @@ const content = {
       ],
       articles: [
         {
-          title: '专题序言：我们将何去何从',
+          title: '我们将何去何从：旧坐标失效之后',
           date: '2026-07-05',
           summary:
-            '当旧坐标失效时，真正重要的不是立刻找到答案，而是重新建立判断、方向和行动秩序。',
+            '旧坐标失效后，每个人都要重新回答：我靠什么被定价，靠什么被信任，靠什么走远。',
           href: '/articles/2026-07-05-where-do-we-go-preface',
         },
         {
-          title: '年轻程序员最该远离的，是低价值外包',
+          title: '别让低价值现金流，吞掉你的未来位置',
           date: '2026-07-05',
           summary:
-            '低价值外包的问题不是辛苦，而是它把时间切碎，把简历做杂，把未来的议价权换成眼前的小钱。',
+            '最危险的不是穷，而是被低价值现金流训练成低价值的人。它会切碎时间、压低标准，让人越来越难进入更大的机会池。',
           href: '/articles/2026-07-05-stop-low-value-outsourcing',
         },
         {
-          title: '英语不是加分项，是远程工作的入场券',
+          title: '英语不是加分项，是进入更大市场的通行证',
           date: '2026-07-05',
           summary:
-            '如果目标是远程高薪工作，英语就不是兴趣爱好，而是进入全球劳动力市场的基础设施。',
+            '如果目标是进入更大的机会市场，英语就不是兴趣爱好，而是全球协作的基础设施。',
           href: '/articles/2026-07-05-english-is-remote-work-ticket',
         },
         {
-          title: '别让线下场合替你做判断',
+          title: '成年人最该守住的，是热闹里的判断权',
           date: '2026-07-05',
           summary:
-            '陌生线下场合里，人很容易把新认识的人当成锚点，用一段临时关系换一点安稳。但临时坐标不是关系，真正要守住的是自己的判断权。',
+            '陌生场合会制造临时安全感，但不是所有连接都值得深入。真正重要的是在热闹里保住自己的准则。',
           href: '/articles/2026-07-05-less-contact-zhongdeng',
         },
         {
@@ -1203,69 +1203,101 @@ function CourseSection({ t, standalone = false }) {
 }
 
 function TopicPage() {
-  const topicArticles = [
+  const topicSections = [
     {
-      title: '专题序言：我们将何去何从',
-      date: '2026-07-05',
-      summary:
-        '当旧坐标失效时，真正重要的不是立刻找到答案，而是重新建立判断、方向和行动秩序。',
-      href: '/articles/2026-07-05-where-do-we-go-preface',
+      title: '序章：旧坐标正在失效',
+      articles: [
+        {
+          title: '我们将何去何从：旧坐标失效之后',
+          date: '2026-07-05',
+          summary:
+            '旧坐标失效后，每个人都要重新回答：我靠什么被定价，靠什么被信任，靠什么走远。',
+          href: '/articles/2026-07-05-where-do-we-go-preface',
+        },
+      ],
     },
     {
-      title: '年轻程序员最该远离的，是低价值外包',
-      date: '2026-07-05',
-      summary:
-        '低价值外包会制造一种很勤奋的幻觉：每天都在做事，但没有积累出更贵的位置。',
-      href: '/articles/2026-07-05-stop-low-value-outsourcing',
+      title: '位置选择：不要把自己困在低价位置',
+      articles: [
+        {
+          title: '别让低价值现金流，吞掉你的未来位置',
+          date: '2026-07-05',
+          summary:
+            '最危险的不是穷，而是被低价值现金流训练成低价值的人。它会切碎时间、压低标准，让人越来越难进入更大的机会池。',
+          href: '/articles/2026-07-05-stop-low-value-outsourcing',
+        },
+        {
+          title: '别用现在的自己，拒绝高势能机会',
+          date: '2026-07-05',
+          summary:
+            '真正改变位置的机会，往往不是你现在配得上的，而是你需要提前冲刺的。',
+          href: '/articles/2026-07-05-internship-is-strategic-attempt',
+        },
+      ],
     },
     {
-      title: '英语不是加分项，是远程工作的入场券',
-      date: '2026-07-05',
-      summary:
-        '英语真正改变的不是表达能力，而是你能进入哪一个劳动力市场，能和谁一起工作。',
-      href: '/articles/2026-07-05-english-is-remote-work-ticket',
+      title: '公开资产：进入更大的市场并让能力被看见',
+      articles: [
+        {
+          title: '英语不是加分项，是进入更大市场的通行证',
+          date: '2026-07-05',
+          summary:
+            '英语真正改变的不是表达能力，而是你能进入哪个协作网络、哪个价格体系，以及和谁一起工作。',
+          href: '/articles/2026-07-05-english-is-remote-work-ticket',
+        },
+        {
+          title: '公开作品比私下交付更像职业资产',
+          date: '2026-07-05',
+          summary:
+            '私下交付证明你能完成任务，公开作品证明你能被看见、被验证，并进入更高质量的协作网络。',
+          href: '/articles/2026-07-05-open-source-is-career-asset',
+        },
+        {
+          title: '你的履历不需要很满，只需要有强信号',
+          date: '2026-07-05',
+          summary:
+            '别人记住你的方式，不是你做过很多事，而是你在某个方向上有强信号。',
+          href: '/articles/2026-07-05-resume-needs-breakthrough-projects',
+        },
+      ],
     },
     {
-      title: '开源贡献比外包更像职业资产',
-      date: '2026-07-05',
-      summary:
-        '外包证明你能完成任务，开源贡献证明你能进入更高质量的协作网络。',
-      href: '/articles/2026-07-05-open-source-is-career-asset',
+      title: '关系网络：进入连接，也保住判断权',
+      articles: [
+        {
+          title: '只会做事的人，很容易输给会被信任的人',
+          date: '2026-07-05',
+          summary:
+            '一个人越往上走，越不是只靠专业能力竞争，而是靠信任、表达和协作半径竞争。',
+          href: '/articles/2026-07-05-programmers-need-social-surface',
+        },
+        {
+          title: '成年人最该守住的，是热闹里的判断权',
+          date: '2026-07-05',
+          summary:
+            '陌生场合会制造临时安全感，但不是所有连接都值得深入。真正重要的是在热闹里保住自己的准则。',
+          href: '/articles/2026-07-05-less-contact-zhongdeng',
+        },
+      ],
     },
     {
-      title: '程序员不要只会埋头写代码',
-      date: '2026-07-05',
-      summary:
-        '技术能力接近时，机会往往来自社交、表达、谈判和跨岗位协作。',
-      href: '/articles/2026-07-05-programmers-need-social-surface',
-    },
-    {
-      title: '简历需要爆点，不需要杂货铺',
-      date: '2026-07-05',
-      summary:
-        '一堆低质量项目只会稀释判断，一个高含金量项目才能让别人记住你。',
-      href: '/articles/2026-07-05-resume-needs-breakthrough-projects',
-    },
-    {
-      title: '知识付费的价值，是把一次劳动变成系统',
-      date: '2026-07-05',
-      summary:
-        '课程不是把经验卖掉，而是把交付流程产品化，让时间开始有杠杆。',
-      href: '/articles/2026-07-05-knowledge-product-is-leverage',
-    },
-    {
-      title: '大厂实习是一种战略尝试',
-      date: '2026-07-05',
-      summary:
-        '很多高价值机会不能靠自我评估提前放弃，它们需要被当成投资去冲刺。',
-      href: '/articles/2026-07-05-internship-is-strategic-attempt',
-    },
-    {
-      title: '松弛感不是偷懒，是长期收益的前提',
-      date: '2026-07-05',
-      summary:
-        '长期职业发展不是把每天填满，而是让身体、判断和创造力都能持续工作。',
-      href: '/articles/2026-07-05-relaxed-state-is-long-term-edge',
+      title: '杠杆与秩序：收入结构、身体和长期状态',
+      articles: [
+        {
+          title: '不要只卖时间，要把经验做成系统',
+          date: '2026-07-05',
+          summary:
+            '一个人真正的跃迁，是把经验从一次性交付变成可复用系统，让收入结构开始有杠杆。',
+          href: '/articles/2026-07-05-knowledge-product-is-leverage',
+        },
+        {
+          title: '长期紧绷的人，最容易失去未来',
+          date: '2026-07-05',
+          summary:
+            '长期紧绷的人，看似努力，其实是在用短期安全感毁掉长期判断力。',
+          href: '/articles/2026-07-05-relaxed-state-is-long-term-edge',
+        },
+      ],
     },
   ]
 
@@ -1281,8 +1313,7 @@ function TopicPage() {
         <p className="eyebrow">ONGOING TOPIC</p>
         <h1>我们将何去何从</h1>
         <p>
-          这是一个持续更新的专题。它不急着给出宏大答案，而是把时代变化、职业选择、AI
-          冲击、关系秩序和个人成长拆成一篇篇可以反复讨论的文章。
+          这是一个持续更新的专题，讨论 AI 时代下个体如何重新选择：不只选职业，也选市场、作品、关系、收入结构和身体秩序。
         </p>
       </div>
 
@@ -1303,18 +1334,20 @@ function TopicPage() {
         </article>
       </div>
 
-      <div className="article-list reveal">
-        <div className="article-list-head">
-          <p>专题文章</p>
+      {topicSections.map((section) => (
+        <div className="article-list reveal" key={section.title}>
+          <div className="article-list-head">
+            <p>{section.title}</p>
+          </div>
+          {section.articles.map((article) => (
+            <a className="article-card" href={article.href} key={article.href}>
+              <span>{article.date}</span>
+              <h3>{article.title}</h3>
+              <p>{article.summary}</p>
+            </a>
+          ))}
         </div>
-        {topicArticles.map((article) => (
-          <a className="article-card" href={article.href} key={article.href}>
-            <span>{article.date}</span>
-            <h3>{article.title}</h3>
-            <p>{article.summary}</p>
-          </a>
-        ))}
-      </div>
+      ))}
     </section>
   )
 }
