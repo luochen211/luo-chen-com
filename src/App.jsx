@@ -37,7 +37,7 @@ const content = {
       manifestoLabel: 'Operating Principle',
       manifesto:
         'Stay curious, stay disciplined, and build things that genuinely help people. I believe steady progress, honest collaboration, and long-term reliability matter more than short-term noise.',
-      primaryAction: 'View Work',
+      primaryAction: 'View Output',
       secondaryAction: 'Contact Me',
       avatarAlt: 'Profile portrait',
       stats: [
@@ -189,8 +189,8 @@ const content = {
       ],
     },
     projects: {
-      label: 'Work Highlights',
-      title: 'Selected Work',
+      label: 'Products And Work',
+      title: 'Product Cases And Delivery Work',
       detailTitle: 'Technical Details',
       list: [
         {
@@ -364,7 +364,7 @@ const content = {
       manifestoLabel: '行动原则',
       manifesto:
         '保持好奇，保持自律，持续做对他人真正有价值的产品。我相信长期主义、务实协作和稳定交付，胜过短期的喧哗。',
-      primaryAction: '查看作品',
+      primaryAction: '查看产出',
       secondaryAction: '联系我',
       avatarAlt: '个人头像',
       stats: [
@@ -504,8 +504,8 @@ const content = {
       ],
     },
     projects: {
-      label: '精选作品',
-      title: '项目与案例',
+      label: '产品与案例',
+      title: '产品、项目与交付案例',
       detailTitle: '技术细节',
       list: [
         {
@@ -899,7 +899,7 @@ function HomePage({ t }) {
           <h1>{t.hero.title}</h1>
           <p className="intro">{t.hero.intro}</p>
           <div className="actions">
-            <Link className="btn primary" to="/work">
+            <Link className="btn primary" to="/output">
               {t.hero.primaryAction}
             </Link>
             <Link className="btn ghost" to="/contact">
@@ -1191,7 +1191,12 @@ function ProjectsPage({ t }) {
 }
 
 function OutputPage({ t }) {
-  return <CourseSection t={t} standalone />
+  return (
+    <>
+      <CourseSection t={t} standalone />
+      <ProjectsPage t={t} />
+    </>
+  )
 }
 
 function parseInlineMarkdown(text) {
@@ -1492,12 +1497,6 @@ function SiteApp() {
                 {t.nav.now}
               </NavLink>
               <NavLink
-                to="/work"
-                className={({ isActive }) => (isActive ? 'active' : '')}
-              >
-                {t.nav.work}
-              </NavLink>
-              <NavLink
                 to="/output"
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
@@ -1526,8 +1525,8 @@ function SiteApp() {
           <Route path="/" element={<HomePage t={t} />} />
           <Route path="/now" element={<NowPage t={t} />} />
           <Route path="/roundtable" element={<RoundtablePage />} />
-          <Route path="/work" element={<ProjectsPage t={t} />} />
-          <Route path="/projects" element={<Navigate replace to="/work" />} />
+          <Route path="/work" element={<Navigate replace to="/output" />} />
+          <Route path="/projects" element={<Navigate replace to="/output" />} />
           <Route path="/output" element={<OutputPage t={t} />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
           <Route path="/articles/2026-07-04-offline-ppt-reflection" element={<ArticlePage />} />
