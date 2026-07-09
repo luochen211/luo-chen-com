@@ -1273,8 +1273,373 @@ h1 {
     transform 700ms ease;
 }
 
+.signal-home {
+  gap: 0;
+}
+
+.home-hero {
+  min-height: clamp(720px, calc(100svh - 7rem), 940px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  align-items: end;
+  gap: 3rem;
+  padding: clamp(2rem, 4vw, 4.5rem) 0 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-hero-copy {
+  align-self: center;
+}
+
+.home-hero h1 {
+  margin: 0.55rem 0 0.8rem;
+  max-width: none;
+  font-size: clamp(6.5rem, 18vw, 17rem);
+  line-height: 0.82;
+  letter-spacing: 0;
+  color: #fffaf4;
+}
+
+.home-hero-line {
+  margin: 0;
+  color: rgba(255, 151, 113, 0.88);
+  font-size: clamp(1.08rem, 2.1vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+
+.home-hero-visual {
+  position: relative;
+  min-height: min(62svh, 42rem);
+  display: grid;
+  align-items: end;
+}
+
+.home-portrait {
+  position: relative;
+  width: min(470px, 82vw);
+  aspect-ratio: 0.82;
+  margin: 0 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
+    rgba(5, 7, 12, 0.78);
+}
+
+.home-portrait::before,
+.home-portrait::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  width: 3.8rem;
+  height: 3.8rem;
+  pointer-events: none;
+}
+
+.home-portrait::before {
+  top: 0.9rem;
+  left: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  border-left: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.home-portrait::after {
+  right: 0.9rem;
+  bottom: 0.9rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.home-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.42) contrast(1.12) saturate(0.72);
+}
+
+.home-spec {
+  position: absolute;
+  left: 0;
+  bottom: 2rem;
+  width: min(25rem, 88vw);
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(5, 7, 12, 0.84);
+  backdrop-filter: blur(18px);
+}
+
+.home-spec p,
+.signal-board-head,
+.home-capability-item span,
+.home-column-list span,
+.home-article-list span,
+.build-terminal p {
+  margin: 0;
+  color: rgba(255, 151, 113, 0.86);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-spec dl {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.8rem 0 0;
+}
+
+.home-spec div {
+  display: grid;
+  grid-template-columns: 5.6rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.home-spec dt,
+.home-spec dd {
+  margin: 0;
+  color: rgba(220, 230, 246, 0.74);
+  font-size: 0.82rem;
+}
+
+.home-spec dt {
+  color: rgba(220, 230, 246, 0.44);
+}
+
+.home-signal-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  gap: 1px;
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.signal-about,
+.signal-board,
+.home-capability > .article-list-head,
+.home-capability-item,
+.home-writing-grid > *,
+.home-build {
+  background: rgba(6, 9, 15, 0.9);
+}
+
+.signal-about {
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.signal-about h2,
+.home-build h2 {
+  max-width: 920px;
+  margin: 0.7rem 0 0;
+  color: #fffaf4;
+  font-size: clamp(2.4rem, 5.5vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.signal-copy {
+  display: grid;
+  gap: 1rem;
+  max-width: 760px;
+  margin-top: 2rem;
+}
+
+.signal-copy p,
+.home-build p,
+.home-column-list small,
+.home-article-list small {
+  margin: 0;
+  color: rgba(220, 230, 246, 0.68);
+  line-height: 1.7;
+}
+
+.signal-board {
+  padding: 1.1rem;
+}
+
+.signal-board-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: rgba(220, 230, 246, 0.5);
+}
+
+.signal-board-head strong {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.signal-board ul {
+  display: grid;
+  gap: 1px;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.signal-board a,
+.signal-board li > div {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  min-height: 4.2rem;
+  padding: 0.9rem;
+  background: rgba(5, 7, 12, 0.88);
+}
+
+.signal-board span,
+.signal-board em {
+  color: rgba(220, 230, 246, 0.48);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signal-board strong {
+  color: #fffaf4;
+  font-size: clamp(1rem, 1.4vw, 1.22rem);
+}
+
+.home-capability {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr);
+  gap: 1px;
+  margin-top: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.home-capability-item {
+  min-height: 17rem;
+  padding: 1.3rem;
+}
+
+.home-capability-item h3 {
+  margin: 0.9rem 0 0;
+  color: #fffaf4;
+  font-size: clamp(1.32rem, 2.4vw, 2.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.home-capability-item ul,
+.home-capability-item ol {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding-left: 1.05rem;
+  color: rgba(220, 230, 246, 0.66);
+  line-height: 1.65;
+}
+
+.home-writing {
+  margin-top: 5.4rem;
+}
+
+.home-writing-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.48fr) minmax(0, 1fr);
+  gap: 1px;
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-column-list,
+.home-article-list {
+  display: grid;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.home-column-list a,
+.home-article-list a {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1.15rem;
+  background: rgba(6, 9, 15, 0.9);
+  transition:
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.home-column-list a:hover,
+.home-article-list a:hover {
+  background: rgba(18, 28, 44, 0.94);
+  transform: translateY(-2px);
+}
+
+.home-column-list strong,
+.home-article-list strong {
+  color: #fffaf4;
+  font-size: clamp(1.15rem, 2vw, 1.82rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.home-build {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
+  gap: 3rem;
+  align-items: start;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-build p:not(.eyebrow) {
+  max-width: 52rem;
+  margin-top: 1.1rem;
+}
+
+.build-terminal {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 20rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent),
+    #030509;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+.build-terminal span {
+  color: rgba(220, 230, 246, 0.62);
+  font-size: 0.88rem;
+}
+
+.build-terminal strong {
+  align-self: end;
+  color: #fffaf4;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 980px) {
   .hero-content,
+  .home-hero,
+  .home-signal-grid,
+  .home-capability,
+  .home-writing-grid,
+  .home-build,
   .editorial-section,
   .course-archive,
   .article-list,
@@ -1286,8 +1651,28 @@ h1 {
   }
 
   .column-grid,
-  .article-network-grid {
+  .article-network-grid,
+  .home-capability-grid {
     grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    align-items: start;
+    min-height: auto;
+  }
+
+  .home-hero-visual {
+    min-height: auto;
+  }
+
+  .home-portrait {
+    margin: 0;
+  }
+
+  .home-spec {
+    position: relative;
+    bottom: auto;
+    margin-top: -2rem;
   }
 
   .hero-visual {
@@ -1333,6 +1718,12 @@ h1 {
     font-size: clamp(2.75rem, 13.2vw, 4.25rem);
     line-height: 0.94;
     letter-spacing: -0.06em;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(5rem, 28vw, 8.5rem);
+    line-height: 0.88;
+    letter-spacing: 0;
   }
 
   .hero-content {
@@ -1399,6 +1790,12 @@ h1 {
 
   .turn-item {
     grid-template-columns: 1fr;
+  }
+
+  .signal-board a,
+  .signal-board li > div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 }
 

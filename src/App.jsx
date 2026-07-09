@@ -1219,57 +1219,62 @@ function ResultList({ title, items = [] }) {
 }
 
 function HomePage({ t }) {
+  const latestArticles = [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4)
   const capabilities = [
     {
       title: t.summary.narrativeTitle,
       items: t.summary.narrative,
-      tone: 'large',
+      code: 'SPEC.001',
     },
     {
       title: t.summary.principlesTitle,
       items: t.summary.principles,
-      tone: 'medium',
+      code: 'RULES',
     },
     {
       title: t.stack.focusTitle,
       items: t.stack.focus,
-      tone: 'compact',
+      code: 'FOCUS',
     },
     {
       title: t.summary.workflowTitle,
       items: t.summary.workflow,
-      tone: 'medium',
+      code: 'FLOW',
       ordered: true,
     },
-    {
-      title: t.course.label,
-      items: [t.course.intro],
-      tone: 'medium',
-    },
-    {
-      title: t.hero.manifestoLabel,
-      items: [t.hero.manifesto],
-      tone: 'medium',
-    },
+  ]
+  const signalRows = [
+    { label: 'GitHub', value: 'luochen211', status: 'LIVE', href: 'https://github.com/luochen211' },
+    { label: 'Output', value: '文章 / 课程 / 视频', status: 'LIVE', href: '/output' },
+    { label: 'Direction', value: 'Agent Harness', status: 'ACTIVE' },
+    { label: 'Collab', value: 'Remote / Contractor', status: 'OPEN', href: '/contact' },
+  ]
+  const buildLog = [
+    'checking agent harness direction',
+    'indexing writing columns',
+    'shipping production systems',
+    'recording build-in-public notes',
+    'linking ideas to products',
   ]
 
   return (
-    <div className="home-flow">
-      <section className="hero-content hero-scene">
-        <div className="hero-copy">
-          <p className="eyebrow hero-kicker">{t.hero.eyebrow}</p>
-          <h1>{t.hero.title}</h1>
+    <div className="home-flow signal-home">
+      <section className="home-hero">
+        <div className="home-hero-copy">
+          <p className="eyebrow hero-kicker">LUOCHEN / AGENT HARNESS / BUILD IN PUBLIC</p>
+          <h1>落尘</h1>
+          <p className="home-hero-line">Agent Harness Engineer × Full-Stack Builder</p>
           <p className="intro">{t.hero.intro}</p>
-          <div className="actions">
+          <div className="home-hero-actions">
             <Link className="btn primary" to="/output">
-              {t.hero.primaryAction}
+              查看内容
             </Link>
             <Link className="btn ghost" to="/contact">
-              {t.hero.secondaryAction}
+              联系我
             </Link>
           </div>
           <p className="meta-line hero-meta">
-            {t.hero.meta}
+            luo-chen.com
             <a href="https://github.com/luochen211" target="_blank" rel="noreferrer">
               github.com/luochen211
             </a>
@@ -1277,8 +1282,8 @@ function HomePage({ t }) {
           </p>
         </div>
 
-        <div className="hero-visual">
-          <div className="avatar-frame hero-portrait">
+        <div className="home-hero-visual">
+          <figure className="home-portrait">
             <img
               src="/头像111.jpg"
               alt={t.hero.avatarAlt}
@@ -1292,36 +1297,138 @@ function HomePage({ t }) {
               }}
             />
             <span className="avatar-fallback-text">CD</span>
-          </div>
-          <div className="hero-panel">
-            <p>{t.hero.manifestoLabel}</p>
-            <blockquote>{t.hero.manifesto}</blockquote>
+          </figure>
+          <div className="home-spec">
+            <p>SPEC. LUOCHEN</p>
+            <dl>
+              <div>
+                <dt>FOCUS</dt>
+                <dd>Agent Harness</dd>
+              </div>
+              <div>
+                <dt>FORMAT</dt>
+                <dd>Writing / Product / Code</dd>
+              </div>
+              <div>
+                <dt>VALUE</dt>
+                <dd>Reliable long-term build</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      <SummarySection t={t} />
-      <section className="capability-matrix page-section">
-        {capabilities.map((capability, index) => {
-          const ListTag = capability.ordered ? 'ol' : 'ul'
-          return (
-            <article
-              className={`capability-tile reveal ${capability.tone}`}
-              key={capability.title}
-            >
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{capability.title}</h3>
-              <ListTag>
-                {capability.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ListTag>
-            </article>
-          )
-        })}
+      <section className="home-signal-grid page-section">
+        <div className="signal-about reveal">
+          <p className="eyebrow">ABOUT / SIGNAL</p>
+          <h2>我把 AI 工程、公开写作和真实交付连在一起。</h2>
+          <div className="signal-copy">
+            {t.summary.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+        <div className="signal-board reveal">
+          <div className="signal-board-head">
+            <span>全平台信号台</span>
+            <strong>LIVE / OPEN</strong>
+          </div>
+          <ul>
+            {signalRows.map((row) => {
+              const content = (
+                <>
+                  <span>{row.label}</span>
+                  <strong>{row.value}</strong>
+                  <em>{row.status}</em>
+                </>
+              )
+              return (
+                <li key={row.label}>
+                  {row.href ? (
+                    row.href.startsWith('/') ? (
+                      <Link to={row.href}>{content}</Link>
+                    ) : (
+                      <a href={row.href} target="_blank" rel="noreferrer">
+                        {content}
+                      </a>
+                    )
+                  ) : (
+                    <div>{content}</div>
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </section>
-      <CourseSection t={t} />
-      <StackSection t={t} />
+
+      <section className="home-capability page-section">
+        <div className="article-list-head">
+          <p>能力档案</p>
+        </div>
+        <div className="home-capability-grid">
+          {capabilities.map((capability) => {
+            const ListTag = capability.ordered ? 'ol' : 'ul'
+            return (
+              <article className="home-capability-item reveal" key={capability.title}>
+                <span>{capability.code}</span>
+                <h3>{capability.title}</h3>
+                <ListTag>
+                  {capability.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ListTag>
+              </article>
+            )
+          })}
+        </div>
+      </section>
+
+      <section className="home-writing page-section">
+        <div className="section-head reveal">
+          <p>WRITE / OUTPUT</p>
+          <h2>文章、专题和正在形成的内容系统。</h2>
+        </div>
+        <div className="home-writing-grid reveal">
+          <div className="home-column-list">
+            {writingColumns.map((column) => (
+              <Link to={column.href} key={column.slug}>
+                <span>{column.eyebrow}</span>
+                <strong>{column.title}</strong>
+                <small>{column.summary}</small>
+              </Link>
+            ))}
+          </div>
+          <div className="home-article-list">
+            {latestArticles.map((article, index) => (
+              <Link to={article.href} key={article.slug}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{article.title}</strong>
+                <small>{article.summary}</small>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-build page-section reveal">
+        <div>
+          <p className="eyebrow">BUILD / TERMINAL</p>
+          <h2>公开建造中。</h2>
+          <p>
+            这里记录我如何把 Agent Harness、AI Coding CLI、商业交付和内容输出变成可复用的系统。
+          </p>
+        </div>
+        <div className="build-terminal">
+          <p>$ luochen build --in-public</p>
+          {buildLog.map((line, index) => (
+            <span key={line}>
+              {`10:12:0${index + 1}`} &nbsp; {line}
+            </span>
+          ))}
+          <strong>v0.1.0 · compiling long-term assets...</strong>
+        </div>
+      </section>
     </div>
   )
 }
