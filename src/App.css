@@ -1308,6 +1308,15 @@ h1 {
   line-height: 1.25;
 }
 
+.home-hero-belief {
+  max-width: 46rem;
+  margin: 0.85rem 0 0;
+  color: rgba(255, 250, 244, 0.9);
+  font-size: clamp(1.08rem, 1.7vw, 1.42rem);
+  font-weight: 800;
+  line-height: 1.45;
+}
+
 .home-hero-actions {
   display: flex;
   flex-wrap: wrap;

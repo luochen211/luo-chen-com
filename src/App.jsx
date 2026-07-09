@@ -1264,6 +1264,7 @@ function HomePage({ t }) {
           <p className="eyebrow hero-kicker">LUOCHEN / AGENT HARNESS / BUILD IN PUBLIC</p>
           <h1>落尘</h1>
           <p className="home-hero-line">Agent Harness Engineer × Full-Stack Builder</p>
+          <p className="home-hero-belief">个人网站不是展示页，是一份可验证的公开简历。</p>
           <p className="intro">{t.hero.intro}</p>
           <div className="home-hero-actions">
             <Link className="btn primary" to="/output">
@@ -1416,7 +1417,7 @@ function HomePage({ t }) {
           <p className="eyebrow">BUILD / TERMINAL</p>
           <h2>公开建造中。</h2>
           <p>
-            这里记录我如何把 Agent Harness、AI Coding CLI、商业交付和内容输出变成可复用的系统。
+            这个网站本身就是一个真实项目：用来练工程判断、沉淀公开作品，也让别人直接看到我如何把 AI 协作、商业交付和内容输出变成可验证资产。
           </p>
         </div>
         <div className="build-terminal">
