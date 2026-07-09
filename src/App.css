@@ -477,16 +477,34 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.writing-map {
+  margin-top: 1px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.column-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .article-list-head,
 .article-card,
-.topic-card {
+.topic-card,
+.column-card {
   background: rgba(6, 9, 15, 0.88);
   padding: 1.4rem;
 }
 
 .article-list-head p,
 .article-card span,
-.topic-card span {
+.topic-card span,
+.column-card span {
   margin: 0;
   color: rgba(220, 230, 246, 0.48);
   font-size: 0.76rem;
@@ -495,8 +513,16 @@ h1 {
   text-transform: uppercase;
 }
 
+.article-list-head small {
+  display: block;
+  margin-top: 0.7rem;
+  color: rgba(220, 230, 246, 0.56);
+  line-height: 1.6;
+}
+
 .article-card,
-.topic-card {
+.topic-card,
+.column-card {
   display: block;
   color: inherit;
   text-decoration: none;
@@ -506,14 +532,16 @@ h1 {
 }
 
 .article-card:hover,
-.topic-card:hover {
+.topic-card:hover,
+.column-card:hover {
   background: rgba(18, 28, 44, 0.94);
   transform: translateY(-2px);
 }
 
 .article-card h3,
-.topic-card h3 {
-  margin: 0.8rem 0 0;
+.topic-card h3,
+.column-card h3 {
+  margin: 0;
   color: #fffaf4;
   font-size: clamp(1.4rem, 3vw, 2.5rem);
   line-height: 1.08;
@@ -521,7 +549,8 @@ h1 {
 }
 
 .article-card p,
-.topic-card p {
+.topic-card p,
+.column-card p {
   max-width: 62rem;
   margin: 1rem 0 0;
   color: rgba(220, 230, 246, 0.68);
@@ -608,6 +637,15 @@ h1 {
   text-transform: uppercase;
 }
 
+.article-hero p a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-hero p a:hover {
+  color: #fff0dc;
+}
+
 .article-page h1 {
   max-width: 980px;
   margin: 0;
@@ -648,6 +686,22 @@ h1 {
   color: #fffaf4;
 }
 
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.4rem;
+}
+
+.article-tags span {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.28rem 0.66rem;
+  color: rgba(240, 244, 252, 0.62);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 0.78rem;
+}
+
 .article-page blockquote {
   margin: 1.6rem 0;
   padding: 1.2rem 1.4rem;
@@ -655,6 +709,107 @@ h1 {
   background: rgba(255, 255, 255, 0.06);
   border-left: 3px solid rgba(255, 151, 113, 0.82);
   font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  line-height: 1.7;
+}
+
+.article-network {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.article-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.article-pager a,
+.article-pager > span {
+  min-height: 7.5rem;
+  padding: 1rem;
+  background: rgba(6, 9, 15, 0.88);
+}
+
+.article-pager a {
+  display: grid;
+  align-content: start;
+  color: inherit;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.article-pager a:hover {
+  background: rgba(18, 28, 44, 0.94);
+  transform: translateY(-2px);
+}
+
+.article-pager span,
+.network-list span {
+  color: rgba(220, 230, 246, 0.48);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-pager strong {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.22;
+}
+
+.article-network-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.article-network h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1.1;
+}
+
+.network-list {
+  display: grid;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.network-list a {
+  display: block;
+  padding: 1rem;
+  color: inherit;
+  background: rgba(6, 9, 15, 0.88);
+}
+
+.network-list a.active {
+  background:
+    linear-gradient(135deg, rgba(255, 151, 113, 0.12), rgba(56, 189, 248, 0.06)),
+    rgba(6, 9, 15, 0.92);
+}
+
+.network-list a:hover {
+  background: rgba(18, 28, 44, 0.94);
+}
+
+.network-list strong {
+  display: block;
+  margin-top: 0.42rem;
+  line-height: 1.35;
+}
+
+.column-empty {
+  max-width: 48rem;
+  margin: 0.7rem 0 0;
+  color: rgba(220, 230, 246, 0.68);
   line-height: 1.7;
 }
 
@@ -1124,8 +1279,14 @@ h1 {
   .course-archive,
   .article-list,
   .topic-list,
+  .writing-map,
   .topic-frame,
   .roundtable-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .column-grid,
+  .article-network-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1186,7 +1347,8 @@ h1 {
   }
 
   .course-stats,
-  .judge-grid {
+  .judge-grid,
+  .article-pager {
     grid-template-columns: 1fr;
   }
 

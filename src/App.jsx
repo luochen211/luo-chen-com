@@ -771,6 +771,291 @@ const exampleTopics = [
   '如果我要做个人品牌，短期赚钱和长期可信度之间怎么取舍？',
 ]
 
+const writingColumns = [
+  {
+    slug: 'where-do-we-go',
+    title: '我们将何去何从',
+    eyebrow: 'ONGOING TOPIC',
+    status: '持续更新',
+    summary:
+      'AI 时代下个体如何重新选择：不只选职业，也选市场、作品、关系、收入结构和身体秩序。',
+    href: '/topics/where-do-we-go',
+    series: [
+      {
+        slug: 'preface',
+        title: '序章：旧坐标正在失效',
+        summary: '先把问题说清楚：过去那套坐标为什么不再稳定。',
+        articles: [
+          {
+            slug: '2026-07-05-where-do-we-go-preface',
+            title: '我们将何去何从：旧坐标失效之后',
+            date: '2026-07-05',
+            summary:
+              '旧坐标失效后，每个人都要重新回答：我靠什么被定价，靠什么被信任，靠什么走远。',
+            tags: ['AI时代', '个人战略', '职业发展'],
+            related: [
+              '2026-07-05-stop-low-value-outsourcing',
+              '2026-07-05-english-is-remote-work-ticket',
+              '2026-07-05-knowledge-product-is-leverage',
+            ],
+          },
+        ],
+      },
+      {
+        slug: 'position',
+        title: '重新定价自己',
+        summary: '停止低价值忙碌，把时间投向能抬高位置的机会。',
+        articles: [
+          {
+            slug: '2026-07-05-stop-low-value-outsourcing',
+            title: '别让低价值现金流，吞掉你的未来位置',
+            date: '2026-07-05',
+            summary:
+              '最危险的不是穷，而是被低价值现金流训练成低价值的人。它会切碎时间、压低标准，让人越来越难进入更大的机会池。',
+            tags: ['低价值交付', '职业选择', '职业发展'],
+            related: [
+              '2026-07-05-internship-is-strategic-attempt',
+              '2026-07-05-resume-needs-breakthrough-projects',
+              '2026-07-05-relaxed-state-is-long-term-edge',
+            ],
+          },
+          {
+            slug: '2026-07-05-internship-is-strategic-attempt',
+            title: '别用现在的自己，拒绝高势能机会',
+            date: '2026-07-05',
+            summary: '真正改变位置的机会，往往不是你现在配得上的，而是你需要提前冲刺的。',
+            tags: ['高势能机会', 'AI', '职业发展'],
+            related: [
+              '2026-07-05-stop-low-value-outsourcing',
+              '2026-07-05-resume-needs-breakthrough-projects',
+              '2026-07-05-open-source-is-career-asset',
+            ],
+          },
+        ],
+      },
+      {
+        slug: 'public-assets',
+        title: '进入更大市场',
+        summary: '用英语、公开作品和强信号进入更大的协作网络。',
+        articles: [
+          {
+            slug: '2026-07-05-english-is-remote-work-ticket',
+            title: '英语不是加分项，是进入更大市场的通行证',
+            date: '2026-07-05',
+            summary:
+              '英语真正改变的不是表达能力，而是你能进入哪个协作网络、哪个价格体系，以及和谁一起工作。',
+            tags: ['英语', '远程工作', '全球协作'],
+            related: [
+              '2026-07-05-open-source-is-career-asset',
+              '2026-07-05-programmers-need-social-surface',
+              '2026-07-05-resume-needs-breakthrough-projects',
+            ],
+          },
+          {
+            slug: '2026-07-05-open-source-is-career-asset',
+            title: '公开作品比私下交付更像职业资产',
+            date: '2026-07-05',
+            summary:
+              '私下交付证明你能完成任务，公开作品证明你能被看见、被验证，并进入更高质量的协作网络。',
+            tags: ['公开作品', '职业资产', '协作网络'],
+            related: [
+              '2026-07-05-english-is-remote-work-ticket',
+              '2026-07-05-resume-needs-breakthrough-projects',
+              '2026-07-05-programmers-need-social-surface',
+            ],
+          },
+          {
+            slug: '2026-07-05-resume-needs-breakthrough-projects',
+            title: '你的履历不需要很满，只需要有强信号',
+            date: '2026-07-05',
+            summary: '别人记住你的方式，不是你做过很多事，而是你在某个方向上有强信号。',
+            tags: ['履历', '作品资产', '职业发展'],
+            related: [
+              '2026-07-05-open-source-is-career-asset',
+              '2026-07-05-stop-low-value-outsourcing',
+              '2026-07-05-internship-is-strategic-attempt',
+            ],
+          },
+        ],
+      },
+      {
+        slug: 'trust-network',
+        title: '建立信任半径',
+        summary: '进入连接、训练表达，也在热闹里保住判断权。',
+        articles: [
+          {
+            slug: '2026-07-05-programmers-need-social-surface',
+            title: '只会做事的人，很容易输给会被信任的人',
+            date: '2026-07-05',
+            summary:
+              '一个人越往上走，越不是只靠专业能力竞争，而是靠信任、表达和协作半径竞争。',
+            tags: ['社交能力', '知识工作者', '职业发展'],
+            related: [
+              '2026-07-05-less-contact-zhongdeng',
+              '2026-07-05-english-is-remote-work-ticket',
+              '2026-07-05-open-source-is-career-asset',
+            ],
+          },
+          {
+            slug: '2026-07-05-less-contact-zhongdeng',
+            title: '成年人最该守住的，是热闹里的判断权',
+            date: '2026-07-05',
+            summary:
+              '陌生场合会制造临时安全感，但不是所有连接都值得深入。真正重要的是在热闹里保住自己的准则。',
+            tags: ['关系', '自我判断', '内在准则'],
+            related: [
+              '2026-07-05-programmers-need-social-surface',
+              '2026-07-05-relaxed-state-is-long-term-edge',
+              '2026-07-04-offline-ppt-reflection',
+            ],
+          },
+        ],
+      },
+      {
+        slug: 'leverage-order',
+        title: '把经验变成杠杆',
+        summary: '从一次性交付走向可复用系统，同时保住长期状态。',
+        articles: [
+          {
+            slug: '2026-07-05-knowledge-product-is-leverage',
+            title: '不要只卖时间，要把经验做成系统',
+            date: '2026-07-05',
+            summary:
+              '一个人真正的跃迁，是把经验从一次性交付变成可复用系统，让收入结构开始有杠杆。',
+            tags: ['知识付费', '杠杆', '产品化'],
+            related: [
+              '2026-07-05-stop-low-value-outsourcing',
+              '2026-07-05-open-source-is-career-asset',
+              '2026-07-05-relaxed-state-is-long-term-edge',
+            ],
+          },
+          {
+            slug: '2026-07-05-relaxed-state-is-long-term-edge',
+            title: '长期紧绷的人，最容易失去未来',
+            date: '2026-07-05',
+            summary: '长期紧绷的人，看似努力，其实是在用短期安全感毁掉长期判断力。',
+            tags: ['松弛感', '长期主义', '健康'],
+            related: [
+              '2026-07-05-knowledge-product-is-leverage',
+              '2026-07-05-less-contact-zhongdeng',
+              '2026-07-05-stop-low-value-outsourcing',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'agent-harness',
+    title: 'Agent Harness 实践',
+    eyebrow: 'ENGINEERING NOTES',
+    status: '预留栏目',
+    summary: '工具调用安全、评估门禁、AI Coding CLI、多 Agent 工作流和开源贡献复盘。',
+    href: '/columns/agent-harness',
+    series: [],
+  },
+  {
+    slug: 'expression-review',
+    title: '表达与复盘',
+    eyebrow: 'PUBLIC OUTPUT',
+    status: '持续更新',
+    summary: '公开分享、PPT、内容表达和沟通失败复盘。',
+    href: '/columns/expression-review',
+    series: [
+      {
+        slug: 'offline-sharing',
+        title: '公开表达复盘',
+        summary: '把分享里的失败拆开，重新训练入口、案例、动作和反馈。',
+        articles: [
+          {
+            slug: '2026-07-04-offline-ppt-reflection',
+            title: '我以为我在分享，其实我在自说自话',
+            date: '2026-07-04',
+            summary:
+              '这场线下分享真正失败的地方，不是 PPT 不够漂亮，而是我没有和听众发生交流。',
+            tags: ['PPT', '线下分享', '内容表达'],
+            related: [
+              '2026-07-05-programmers-need-social-surface',
+              '2026-07-05-open-source-is-career-asset',
+              '2026-07-05-less-contact-zhongdeng',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'after-watching',
+    title: '看完之后',
+    eyebrow: 'AFTER WATCHING',
+    status: '持续更新',
+    summary: '不做评分，不复述剧情，只讲一部作品留在人身上的那道痕。',
+    href: '/columns/after-watching',
+    series: [
+      {
+        slug: 'screen-and-book-notes',
+        title: '影视与书的回声',
+        summary: '借影视剧和书，讲人为什么会这样活。',
+        articles: [
+          {
+            slug: '2026-07-09-after-watching-dragon-year-archive',
+            title: '看完《龙年档案》之后：我尊重罗成，但我不会成为罗成',
+            date: '2026-07-09',
+            summary:
+              '有些人值得敬佩，但不适合被模仿。看完《龙年档案》之后，我更清楚地承认：我尊重罗成，也承认自己不是罗成。',
+            tags: ['看完之后', '龙年档案', '罗成', '普通人'],
+            related: ['2026-07-05-less-contact-zhongdeng', '2026-07-04-offline-ppt-reflection'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'project-reviews',
+    title: '项目复盘',
+    eyebrow: 'CASE NOTES',
+    status: '预留栏目',
+    summary: '真实项目、商业交付、开源贡献和产品迭代里的方法复盘。',
+    href: '/columns/project-reviews',
+    series: [],
+  },
+]
+
+const articleIndex = writingColumns.flatMap((column) =>
+  column.series.flatMap((series) =>
+    series.articles.map((article, index) => ({
+      ...article,
+      href: `/articles/${article.slug}`,
+      column: {
+        slug: column.slug,
+        title: column.title,
+        href: column.href,
+      },
+      series: {
+        slug: series.slug,
+        title: series.title,
+        href: `${column.href}#${series.slug}`,
+      },
+      order: index,
+    })),
+  ),
+)
+
+function findArticle(slug) {
+  return articleIndex.find((article) => article.slug === slug)
+}
+
+function getSeriesArticles(article) {
+  if (!article) return []
+  return articleIndex.filter(
+    (item) => item.column.slug === article.column.slug && item.series.slug === article.series.slug,
+  )
+}
+
+function getLinkedArticles(slugs = []) {
+  return slugs.map((slug) => findArticle(slug)).filter(Boolean)
+}
+
 function RoundtablePage() {
   const [topic, setTopic] = useState(exampleTopics[0])
   const [selected, setSelected] = useState(['munger', 'kahneman', 'dalio'])
@@ -1117,6 +1402,8 @@ function SummarySection({ t }) {
 }
 
 function CourseSection({ t, standalone = false }) {
+  const latestArticles = [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6)
+
   return (
     <section className="page-section course-section">
       <div className="section-head reveal">
@@ -1154,28 +1441,28 @@ function CourseSection({ t, standalone = false }) {
       </div>
       {standalone ? (
         <>
-          <div className="topic-list reveal">
+          <div className="writing-map reveal">
             <div className="article-list-head">
-              <p>{t.course.topicsTitle}</p>
+              <p>文章栏目</p>
             </div>
-            {t.course.topics.map((topic) => (
-              <a className="topic-card" href={topic.href} key={topic.href}>
-                <span>{topic.status}</span>
-                <h3>{topic.title}</h3>
-                <p>{topic.summary}</p>
-              </a>
-            ))}
+            <div className="column-grid">
+              {writingColumns.map((column) => (
+                <Link className="column-card" to={column.href} key={column.slug}>
+                  <h3>{column.title}</h3>
+                  <p>{column.summary}</p>
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="article-list reveal">
             <div className="article-list-head">
               <p>{t.course.articlesTitle}</p>
             </div>
-            {t.course.articles.map((article) => (
-              <a className="article-card" href={article.href} key={article.href}>
-                <span>{article.date}</span>
+            {latestArticles.map((article) => (
+              <Link className="article-card" to={article.href} key={article.slug}>
                 <h3>{article.title}</h3>
                 <p>{article.summary}</p>
-              </a>
+              </Link>
             ))}
           </div>
           <a
@@ -1203,103 +1490,7 @@ function CourseSection({ t, standalone = false }) {
 }
 
 function TopicPage() {
-  const topicSections = [
-    {
-      title: '序章：旧坐标正在失效',
-      articles: [
-        {
-          title: '我们将何去何从：旧坐标失效之后',
-          date: '2026-07-05',
-          summary:
-            '旧坐标失效后，每个人都要重新回答：我靠什么被定价，靠什么被信任，靠什么走远。',
-          href: '/articles/2026-07-05-where-do-we-go-preface',
-        },
-      ],
-    },
-    {
-      title: '位置选择：不要把自己困在低价位置',
-      articles: [
-        {
-          title: '别让低价值现金流，吞掉你的未来位置',
-          date: '2026-07-05',
-          summary:
-            '最危险的不是穷，而是被低价值现金流训练成低价值的人。它会切碎时间、压低标准，让人越来越难进入更大的机会池。',
-          href: '/articles/2026-07-05-stop-low-value-outsourcing',
-        },
-        {
-          title: '别用现在的自己，拒绝高势能机会',
-          date: '2026-07-05',
-          summary:
-            '真正改变位置的机会，往往不是你现在配得上的，而是你需要提前冲刺的。',
-          href: '/articles/2026-07-05-internship-is-strategic-attempt',
-        },
-      ],
-    },
-    {
-      title: '公开资产：进入更大的市场并让能力被看见',
-      articles: [
-        {
-          title: '英语不是加分项，是进入更大市场的通行证',
-          date: '2026-07-05',
-          summary:
-            '英语真正改变的不是表达能力，而是你能进入哪个协作网络、哪个价格体系，以及和谁一起工作。',
-          href: '/articles/2026-07-05-english-is-remote-work-ticket',
-        },
-        {
-          title: '公开作品比私下交付更像职业资产',
-          date: '2026-07-05',
-          summary:
-            '私下交付证明你能完成任务，公开作品证明你能被看见、被验证，并进入更高质量的协作网络。',
-          href: '/articles/2026-07-05-open-source-is-career-asset',
-        },
-        {
-          title: '你的履历不需要很满，只需要有强信号',
-          date: '2026-07-05',
-          summary:
-            '别人记住你的方式，不是你做过很多事，而是你在某个方向上有强信号。',
-          href: '/articles/2026-07-05-resume-needs-breakthrough-projects',
-        },
-      ],
-    },
-    {
-      title: '关系网络：进入连接，也保住判断权',
-      articles: [
-        {
-          title: '只会做事的人，很容易输给会被信任的人',
-          date: '2026-07-05',
-          summary:
-            '一个人越往上走，越不是只靠专业能力竞争，而是靠信任、表达和协作半径竞争。',
-          href: '/articles/2026-07-05-programmers-need-social-surface',
-        },
-        {
-          title: '成年人最该守住的，是热闹里的判断权',
-          date: '2026-07-05',
-          summary:
-            '陌生场合会制造临时安全感，但不是所有连接都值得深入。真正重要的是在热闹里保住自己的准则。',
-          href: '/articles/2026-07-05-less-contact-zhongdeng',
-        },
-      ],
-    },
-    {
-      title: '杠杆与秩序：收入结构、身体和长期状态',
-      articles: [
-        {
-          title: '不要只卖时间，要把经验做成系统',
-          date: '2026-07-05',
-          summary:
-            '一个人真正的跃迁，是把经验从一次性交付变成可复用系统，让收入结构开始有杠杆。',
-          href: '/articles/2026-07-05-knowledge-product-is-leverage',
-        },
-        {
-          title: '长期紧绷的人，最容易失去未来',
-          date: '2026-07-05',
-          summary:
-            '长期紧绷的人，看似努力，其实是在用短期安全感毁掉长期判断力。',
-          href: '/articles/2026-07-05-relaxed-state-is-long-term-edge',
-        },
-      ],
-    },
-  ]
+  const topic = writingColumns.find((column) => column.slug === 'where-do-we-go')
 
   const questions = [
     '当 AI 正在改变工作、表达和生产方式时，一个普通个体应该如何重新定义自己的位置？',
@@ -1334,20 +1525,61 @@ function TopicPage() {
         </article>
       </div>
 
-      {topicSections.map((section) => (
-        <div className="article-list reveal" key={section.title}>
+      {topic.series.map((section) => (
+        <div className="article-list reveal" id={section.slug} key={section.slug}>
           <div className="article-list-head">
             <p>{section.title}</p>
+            <small>{section.summary}</small>
           </div>
           {section.articles.map((article) => (
-            <a className="article-card" href={article.href} key={article.href}>
-              <span>{article.date}</span>
+            <Link className="article-card" to={`/articles/${article.slug}`} key={article.slug}>
               <h3>{article.title}</h3>
               <p>{article.summary}</p>
-            </a>
+            </Link>
           ))}
         </div>
       ))}
+    </section>
+  )
+}
+
+function ColumnPage() {
+  const { columnSlug } = useParams()
+  const column = writingColumns.find((item) => item.slug === columnSlug)
+
+  if (!column) return <Navigate replace to="/output" />
+
+  return (
+    <section className="page-section topic-page">
+      <div className="topic-hero reveal">
+        <p className="eyebrow">{column.eyebrow}</p>
+        <h1>{column.title}</h1>
+        <p>{column.summary}</p>
+      </div>
+
+      {column.series.length ? (
+        column.series.map((section) => (
+          <div className="article-list reveal" id={section.slug} key={section.slug}>
+            <div className="article-list-head">
+              <p>{section.title}</p>
+              <small>{section.summary}</small>
+            </div>
+            {section.articles.map((article) => (
+              <Link className="article-card" to={`/articles/${article.slug}`} key={article.slug}>
+                <h3>{article.title}</h3>
+                <p>{article.summary}</p>
+              </Link>
+            ))}
+          </div>
+        ))
+      ) : (
+        <div className="course-fit reveal">
+          <h3>这个栏目已经预留</h3>
+          <p className="column-empty">
+            后续文章会按系列挂在这里，形成可以继续展开的索引，而不是混进最新文章列表。
+          </p>
+        </div>
+      )}
     </section>
   )
 }
@@ -1524,6 +1756,15 @@ function parseArticleMarkdown(markdown) {
 function ArticlePage() {
   const { slug } = useParams()
   const [markdown, setMarkdown] = useState('')
+  const article = findArticle(slug)
+  const seriesArticles = getSeriesArticles(article)
+  const currentIndex = seriesArticles.findIndex((item) => item.slug === slug)
+  const prevArticle = currentIndex > 0 ? seriesArticles[currentIndex - 1] : null
+  const nextArticle =
+    currentIndex >= 0 && currentIndex < seriesArticles.length - 1
+      ? seriesArticles[currentIndex + 1]
+      : null
+  const relatedArticles = getLinkedArticles(article?.related)
 
   useEffect(() => {
     let alive = true
@@ -1555,8 +1796,27 @@ function ArticlePage() {
           if (block.type === 'h1') {
             return (
               <header className="article-hero" key={`${block.type}-${index}`}>
-                <p>Article · {meta.date || ''}</p>
+                <p>
+                  {article ? (
+                    <>
+                      <Link to={article.column.href}>{article.column.title}</Link>
+                      <span> · </span>
+                      <a href={article.series.href}>{article.series.title}</a>
+                      <span> · </span>
+                    </>
+                  ) : (
+                    'Article · '
+                  )}
+                  {meta.date || article?.date || ''}
+                </p>
                 <h1>{block.text}</h1>
+                {article?.tags?.length ? (
+                  <div className="article-tags">
+                    {article.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                ) : null}
               </header>
             )
           }
@@ -1590,6 +1850,62 @@ function ArticlePage() {
           <h1>文章加载中</h1>
         </div>
       )}
+      {article ? (
+        <footer className="article-network">
+          {prevArticle || nextArticle ? (
+            <nav className="article-pager" aria-label="同系列上一篇和下一篇">
+              {prevArticle ? (
+                <Link to={prevArticle.href}>
+                  <span>上一篇</span>
+                  <strong>{prevArticle.title}</strong>
+                </Link>
+              ) : (
+                <span />
+              )}
+              {nextArticle ? (
+                <Link to={nextArticle.href}>
+                  <span>下一篇</span>
+                  <strong>{nextArticle.title}</strong>
+                </Link>
+              ) : (
+                <span />
+              )}
+            </nav>
+          ) : null}
+
+          <div className="article-network-grid">
+            <section>
+              <h2>同系列文章</h2>
+              <div className="network-list">
+                {seriesArticles.map((item) => (
+                  <Link
+                    className={item.slug === slug ? 'active' : ''}
+                    to={item.href}
+                    key={item.slug}
+                  >
+                    <span>{item.date}</span>
+                    <strong>{item.title}</strong>
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            {relatedArticles.length ? (
+              <section>
+                <h2>继续读</h2>
+                <div className="network-list">
+                  {relatedArticles.map((item) => (
+                    <Link to={item.href} key={item.slug}>
+                      <span>{item.column.title}</span>
+                      <strong>{item.title}</strong>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+          </div>
+        </footer>
+      ) : null}
     </article>
   )
 }
@@ -1783,6 +2099,7 @@ function SiteApp() {
           <Route path="/projects" element={<Navigate replace to="/output" />} />
           <Route path="/output" element={<OutputPage t={t} />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
+          <Route path="/columns/:columnSlug" element={<ColumnPage />} />
           <Route path="/topics/where-do-we-go" element={<TopicPage />} />
           <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route path="/contact" element={<ContactPage t={t} />} />
