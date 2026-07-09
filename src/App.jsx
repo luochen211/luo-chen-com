@@ -1249,6 +1249,28 @@ function HomePage({ t }) {
     { label: 'Direction', value: 'Agent Harness', status: 'ACTIVE' },
     { label: 'Collab', value: 'Remote / Contractor', status: 'OPEN', href: '/contact' },
   ]
+  const proofAssets = [
+    {
+      label: 'Code',
+      title: '开源 PR 与 Agent CLI 实战',
+      text: '用真实仓库里的评估门禁、测试和命令安全改动证明工程判断。',
+    },
+    {
+      label: 'Writing',
+      title: '持续更新的文章栏目',
+      text: '把职业选择、AI 工程、影视阅读和项目复盘沉淀成可检索的公开内容。',
+    },
+    {
+      label: 'Product',
+      title: '商业系统交付经验',
+      text: '订单、支付回调、权限、运营后台和部署链路，不只停在 demo。',
+    },
+    {
+      label: 'Delivery',
+      title: '从模糊需求到上线验证',
+      text: '把需求拆成边界、合同、质量检查和可回滚的发布路径。',
+    },
+  ]
   const buildLog = [
     'checking agent harness direction',
     'indexing writing columns',
@@ -1264,7 +1286,7 @@ function HomePage({ t }) {
           <p className="eyebrow hero-kicker">LUOCHEN / AGENT HARNESS / BUILD IN PUBLIC</p>
           <h1>落尘</h1>
           <p className="home-hero-line">Agent Harness Engineer × Full-Stack Builder</p>
-          <p className="home-hero-belief">个人网站不是展示页，是一份可验证的公开简历。</p>
+          <p className="home-hero-belief">个人网站不是作品集，是我正在运行的公开简历。</p>
           <p className="intro">{t.hero.intro}</p>
           <div className="home-hero-actions">
             <Link className="btn primary" to="/output">
@@ -1300,18 +1322,18 @@ function HomePage({ t }) {
             <span className="avatar-fallback-text">CD</span>
           </figure>
           <div className="home-spec">
-            <p>SPEC. LUOCHEN</p>
+            <p>能力正在被验证</p>
             <dl>
               <div>
-                <dt>FOCUS</dt>
+                <dt>方向</dt>
                 <dd>Agent Harness</dd>
               </div>
               <div>
-                <dt>FORMAT</dt>
+                <dt>输出</dt>
                 <dd>Writing / Product / Code</dd>
               </div>
               <div>
-                <dt>VALUE</dt>
+                <dt>证明</dt>
                 <dd>Reliable long-term build</dd>
               </div>
             </dl>
@@ -1321,7 +1343,7 @@ function HomePage({ t }) {
 
       <section className="home-signal-grid page-section">
         <div className="signal-about reveal">
-          <p className="eyebrow">ABOUT / SIGNAL</p>
+          <p className="eyebrow">正在被验证的能力</p>
           <h2>我把 AI 工程、公开写作和真实交付连在一起。</h2>
           <div className="signal-copy">
             {t.summary.paragraphs.map((paragraph) => (
@@ -1331,7 +1353,7 @@ function HomePage({ t }) {
         </div>
         <div className="signal-board reveal">
           <div className="signal-board-head">
-            <span>全平台信号台</span>
+            <span>公开信号</span>
             <strong>LIVE / OPEN</strong>
           </div>
           <ul>
@@ -1363,6 +1385,22 @@ function HomePage({ t }) {
         </div>
       </section>
 
+      <section className="home-proof page-section reveal">
+        <div className="home-proof-head">
+          <p className="eyebrow">可验证资产</p>
+          <h2>别人不需要相信我说什么，只需要检查我留下了什么。</h2>
+        </div>
+        <div className="home-proof-grid">
+          {proofAssets.map((asset) => (
+            <article key={asset.label}>
+              <span>{asset.label}</span>
+              <h3>{asset.title}</h3>
+              <p>{asset.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="home-capability page-section">
         <div className="article-list-head">
           <p>能力档案</p>
@@ -1387,7 +1425,7 @@ function HomePage({ t }) {
 
       <section className="home-writing page-section">
         <div className="section-head reveal">
-          <p>WRITE / OUTPUT</p>
+          <p>内容资产</p>
           <h2>文章、专题和正在形成的内容系统。</h2>
         </div>
         <div className="home-writing-grid reveal">
@@ -1414,7 +1452,7 @@ function HomePage({ t }) {
 
       <section className="home-build page-section reveal">
         <div>
-          <p className="eyebrow">BUILD / TERMINAL</p>
+          <p className="eyebrow">构建记录</p>
           <h2>公开建造中。</h2>
           <p>
             这个网站本身就是一个真实项目：用来练工程判断、沉淀公开作品，也让别人直接看到我如何把 AI 协作、商业交付和内容输出变成可验证资产。
@@ -2098,7 +2136,7 @@ function SiteApp() {
 
     const context = gsap.context(() => {
       gsap.fromTo(
-        '.hero-copy > *',
+        '.hero-copy > *, .home-hero-copy > *',
         { opacity: 0, y: 34 },
         {
           opacity: 1,
@@ -2110,7 +2148,7 @@ function SiteApp() {
       )
 
       gsap.fromTo(
-        '.hero-visual',
+        '.hero-visual, .home-hero-visual',
         { opacity: 0, y: 42, rotate: -1.5 },
         { opacity: 1, y: 0, rotate: 0, duration: 1.1, ease: 'power3.out', delay: 0.12 },
       )
@@ -2133,7 +2171,7 @@ function SiteApp() {
         )
       })
 
-      gsap.utils.toArray('.capability-tile').forEach((tile) => {
+      gsap.utils.toArray('.capability-tile, .home-capability-item, .home-proof article').forEach((tile) => {
         gsap.fromTo(
           tile,
           { scale: 0.96, opacity: 0.42 },
@@ -2164,7 +2202,7 @@ function SiteApp() {
       <header className="topbar container">
         <nav className="nav">
           <Link className="brand" to="/">
-            luo-chen.com
+            落尘 / LUOCHEN
           </Link>
           <div className="nav-right">
             <div className="nav-links">

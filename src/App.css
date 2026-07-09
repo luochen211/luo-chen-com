@@ -1521,6 +1521,76 @@ h1 {
   font-size: clamp(1rem, 1.4vw, 1.22rem);
 }
 
+.home-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: 1px;
+  margin-top: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-proof-head,
+.home-proof-grid article {
+  background: rgba(6, 9, 15, 0.9);
+}
+
+.home-proof-head {
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.home-proof-head h2 {
+  max-width: 760px;
+  margin: 0.75rem 0 0;
+  color: #fffaf4;
+  font-size: clamp(2.1rem, 4.6vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.home-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.home-proof-grid article {
+  min-height: 15rem;
+  padding: 1.25rem;
+  transition:
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.home-proof-grid article:hover {
+  background: rgba(18, 28, 44, 0.94);
+  transform: translateY(-3px);
+}
+
+.home-proof-grid span {
+  color: rgba(255, 151, 113, 0.86);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-proof-grid h3 {
+  margin: 0.9rem 0 0;
+  color: #fffaf4;
+  font-size: clamp(1.25rem, 2.1vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.home-proof-grid p {
+  margin: 0.9rem 0 0;
+  color: rgba(220, 230, 246, 0.66);
+  line-height: 1.68;
+}
+
 .home-capability {
   display: grid;
   grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr);
@@ -1646,6 +1716,7 @@ h1 {
   .hero-content,
   .home-hero,
   .home-signal-grid,
+  .home-proof,
   .home-capability,
   .home-writing-grid,
   .home-build,
@@ -1661,7 +1732,8 @@ h1 {
 
   .column-grid,
   .article-network-grid,
-  .home-capability-grid {
+  .home-capability-grid,
+  .home-proof-grid {
     grid-template-columns: 1fr;
   }
 
