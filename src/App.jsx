@@ -12,6 +12,11 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import SiteNav from './components/SiteNav'
+import FocusedContactPage from './pages/ContactPage'
+import FocusedHomePage from './pages/HomePage'
+import FocusedNowPage from './pages/NowPage'
+import FocusedWorkPage from './pages/WorkPage'
+import FocusedWritingPage from './pages/WritingPage'
 import { getInitialLocale, localizeColumns, readerCopy, siteContent } from './data/siteContent'
 import {
   articleIndex,
@@ -1110,7 +1115,7 @@ function SiteApp() {
 
     const context = gsap.context(() => {
       gsap.fromTo(
-        '.hero-copy > *, .home-hero-copy > *',
+        '.hero-copy > *, .home-hero-copy > *, .focused-hero-copy > *',
         { opacity: 0, y: 34 },
         {
           opacity: 1,
@@ -1122,7 +1127,7 @@ function SiteApp() {
       )
 
       gsap.fromTo(
-        '.hero-visual, .home-hero-visual',
+        '.hero-visual, .home-hero-visual, .focused-portrait',
         { opacity: 0, y: 42, rotate: -1.5 },
         { opacity: 1, y: 0, rotate: 0, duration: 1.1, ease: 'power3.out', delay: 0.12 },
       )
@@ -1162,6 +1167,41 @@ function SiteApp() {
           },
         )
       })
+
+      gsap.utils.toArray('.focused-proof-item, .selected-work-card').forEach((item) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0.18, y: 34 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 90%',
+              end: 'top 48%',
+              scrub: true,
+            },
+          },
+        )
+      })
+
+      gsap.utils.toArray('.selected-work .chapter-heading').forEach((heading) => {
+        gsap.fromTo(
+          heading,
+          { opacity: 1 },
+          {
+            opacity: 1,
+            scrollTrigger: {
+              trigger: '.selected-work',
+              start: 'top 16%',
+              end: 'bottom 70%',
+              pin: heading,
+              pinSpacing: false,
+            },
+          },
+        )
+      })
     })
 
     return () => context.revert()
@@ -1183,11 +1223,11 @@ function SiteApp() {
 
       <main className="container route-main">
         <Routes>
-          <Route path="/" element={<HomePage t={t} locale={locale} />} />
-          <Route path="/now" element={<NowPage t={t} />} />
+          <Route path="/" element={<FocusedHomePage t={t} locale={locale} />} />
+          <Route path="/now" element={<FocusedNowPage t={t} />} />
           <Route path="/lab/roundtable" element={<RoundtablePage t={t} />} />
-          <Route path="/work" element={<WorkPage t={t} />} />
-          <Route path="/writing" element={<WritingPage t={t} locale={locale} />} />
+          <Route path="/work" element={<FocusedWorkPage t={t} />} />
+          <Route path="/writing" element={<FocusedWritingPage t={t} locale={locale} />} />
           <Route path="/output" element={<Navigate replace to="/writing" />} />
           <Route path="/projects" element={<Navigate replace to="/work" />} />
           <Route path="/course" element={<Navigate replace to="/writing" />} />
@@ -1195,7 +1235,7 @@ function SiteApp() {
           <Route path="/columns/:columnSlug" element={<ColumnPage t={t} locale={locale} />} />
           <Route path="/topics/where-do-we-go" element={<TopicPage t={t} locale={locale} />} />
           <Route path="/articles/:slug" element={<ArticlePage locale={locale} />} />
-          <Route path="/contact" element={<ContactPage t={t} />} />
+          <Route path="/contact" element={<FocusedContactPage t={t} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </main>
