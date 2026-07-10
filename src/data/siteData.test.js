@@ -7,6 +7,7 @@ describe('public writing columns', () => {
       'where-do-we-go',
       'expression-review',
       'after-watching',
+      'project-reviews',
     ])
   })
 

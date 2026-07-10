@@ -31,7 +31,7 @@ describe('redesigned page purposes', () => {
   it('does not list unpublished columns on Writing', () => {
     render(<MemoryRouter><WritingPage t={siteContent.zh} locale="zh" /></MemoryRouter>)
     expect(screen.queryByText('Agent Harness 实践')).not.toBeInTheDocument()
-    expect(screen.queryByText('项目复盘')).not.toBeInTheDocument()
+    expect(screen.getAllByText('项目复盘').length).toBeGreaterThan(0)
   })
 
   it.each(pages)('renders exactly one route-level H1 on %s', (_, Page, props = {}) => {
@@ -80,8 +80,10 @@ describe('redesigned page purposes', () => {
     const articles = [...container.querySelectorAll('.latest-writing-list a')]
     expect(articles).toHaveLength(8)
     articles.forEach((article) => expect(article.textContent).not.toMatch(/[\u3400-\u9fff]/))
-    expect(articles[0].querySelector('.article-column')).toHaveTextContent('After Watching')
-    expect(articles[1].querySelector('.article-column')).toHaveTextContent('Where Do We Go From Here?')
+    expect(articles[0].querySelector('.article-column')).toHaveTextContent('Where Do We Go From Here?')
+    expect(articles[1].querySelector('.article-column')).toHaveTextContent('Project Retrospectives')
+    expect(screen.getByRole('heading', { name: 'Before Trusting a 3% Equity Promise, Find the Missing Fifty' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /The Programmer’s Product Illusion/ })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'English Is Infrastructure for a Larger Market' })).toBeInTheDocument()
   })
 })

@@ -701,9 +701,14 @@ const collectionLocale = {
     'project-reviews': {
       title: 'Project Retrospectives',
       eyebrow: 'Case Notes',
-      status: 'Reserved',
+      status: 'Ongoing',
       summary: 'Methods learned from real projects, commercial delivery, open source, and product iteration.',
-      series: {},
+      series: {
+        'product-lessons': {
+          title: 'Lessons From Failed Products',
+          summary: 'Use products that missed the mark to rethink demand, solutions, and durable advantage.',
+        },
+      },
     },
   },
 }
@@ -757,6 +762,14 @@ const articleDisplayLocale = {
     '2026-07-09-after-watching-dragon-year-archive': {
       title: 'After Watching The Years of the Dragon',
       summary: 'Some people deserve respect without becoming a template. I admire Luo Cheng while accepting that I would not choose his path.',
+    },
+    '2026-07-10-where-is-the-missing-fifty': {
+      title: 'Before Trusting a 3% Equity Promise, Find the Missing Fifty',
+      summary: 'When promises about funding and equity dwarf the investment being made today, first identify the hidden price you are being asked to pay.',
+    },
+    '2026-07-10-programmers-product-illusion': {
+      title: 'The Programmer’s Product Illusion: Mistaking “I Can Build It” for “People Need It”',
+      summary: 'Being able to code makes products easier to build—and makes it easier to skip the hard work of understanding real demand.',
     },
   },
 }

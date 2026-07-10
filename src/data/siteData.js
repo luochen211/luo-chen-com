@@ -301,6 +301,19 @@ export const writingColumns = [
               '2026-07-04-offline-ppt-reflection',
             ],
           },
+          {
+            slug: '2026-07-10-where-is-the-missing-fifty',
+            title: '有人承诺给我3%股份，我先找那消失的50元',
+            date: '2026-07-10',
+            summary:
+              '融资500万、3%股份、前期工资3000元。当一场合作的承诺远大于当下投入，先别急着上车，先找清楚自己看不见的代价。',
+            tags: ['合作判断', '风险意识', '学生成长', '等价交换'],
+            related: [
+              '2026-07-05-less-contact-zhongdeng',
+              '2026-07-05-programmers-need-social-surface',
+              '2026-07-05-stop-low-value-outsourcing',
+            ],
+          },
         ],
       },
       {
@@ -406,10 +419,31 @@ export const writingColumns = [
     slug: 'project-reviews',
     title: '项目复盘',
     eyebrow: 'CASE NOTES',
-    status: '预留栏目',
+    status: '持续更新',
     summary: '真实项目、商业交付、开源贡献和产品迭代里的方法复盘。',
     href: '/columns/project-reviews',
-    series: [],
+    series: [
+      {
+        slug: 'product-lessons',
+        title: '产品失败课',
+        summary: '从做错的产品里，重新理解需求、解法与竞争力。',
+        articles: [
+          {
+            slug: '2026-07-10-programmers-product-illusion',
+            title: '程序员最大的产品幻觉：把“我能做”当成“别人需要”',
+            date: '2026-07-10',
+            summary:
+              '我的第 17 个产品，最后只值 AGENTS.md 里的一句话。会写代码让人更容易做出产品，也更容易跳过对需求的理解。',
+            tags: ['产品复盘', '程序员', 'AI Agent', '独立开发'],
+            related: [
+              '2026-07-05-knowledge-product-is-leverage',
+              '2026-07-05-open-source-is-career-asset',
+              '2026-07-04-offline-ppt-reflection',
+            ],
+          },
+        ],
+      },
+    ],
   },
 ]
 
