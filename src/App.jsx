@@ -909,6 +909,19 @@ const writingColumns = [
               '2026-07-04-offline-ppt-reflection',
             ],
           },
+          {
+            slug: '2026-07-10-where-is-the-missing-fifty',
+            title: '有人承诺给我3%股份，我先找那消失的50元',
+            date: '2026-07-10',
+            summary:
+              '融资500万、3%股份、前期工资3000元。当一场合作的承诺远大于当下投入，先别急着上车，先找清楚自己看不见的代价。',
+            tags: ['合作判断', '风险意识', '学生成长', '等价交换'],
+            related: [
+              '2026-07-05-less-contact-zhongdeng',
+              '2026-07-05-programmers-need-social-surface',
+              '2026-07-05-stop-low-value-outsourcing',
+            ],
+          },
         ],
       },
       {
