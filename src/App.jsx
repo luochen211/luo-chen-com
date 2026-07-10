@@ -11,7 +11,9 @@ import {
   useParams,
 } from 'react-router-dom'
 import './App.css'
+import CollectionView from './components/CollectionView'
 import SiteNav from './components/SiteNav'
+import FocusedArticlePage from './pages/ArticlePage'
 import FocusedContactPage from './pages/ContactPage'
 import FocusedHomePage from './pages/HomePage'
 import FocusedNowPage from './pages/NowPage'
@@ -1232,9 +1234,9 @@ function SiteApp() {
           <Route path="/projects" element={<Navigate replace to="/work" />} />
           <Route path="/course" element={<Navigate replace to="/writing" />} />
           <Route path="/roundtable" element={<Navigate replace to="/lab/roundtable" />} />
-          <Route path="/columns/:columnSlug" element={<ColumnPage t={t} locale={locale} />} />
-          <Route path="/topics/where-do-we-go" element={<TopicPage t={t} locale={locale} />} />
-          <Route path="/articles/:slug" element={<ArticlePage locale={locale} />} />
+          <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />
+          <Route path="/topics/where-do-we-go" element={<CollectionView locale={locale} slug="where-do-we-go" topicCopy={t.topic} />} />
+          <Route path="/articles/:slug" element={<FocusedArticlePage locale={locale} />} />
           <Route path="/contact" element={<FocusedContactPage t={t} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

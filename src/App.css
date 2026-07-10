@@ -734,9 +734,47 @@ h1 {
 }
 
 .article-page {
-  max-width: 920px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 3rem 0 7rem;
+}
+
+.article-progress {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #ff9771;
+  transition: width 120ms linear;
+}
+
+.collection-meta {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0 0;
+}
+
+.collection-meta div { display: flex; gap: 0.55rem; align-items: baseline; }
+.collection-meta dt { font-size: 1.2rem; font-weight: 700; }
+.collection-meta dd { margin: 0; color: rgba(220, 230, 246, 0.7); }
+
+.collection-start {
+  display: block;
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: inherit;
+  text-decoration: none;
+}
+
+.collection-start span { display: block; color: #ff9771; margin-bottom: 0.45rem; }
+.collection-start strong { font-size: 1.35rem; }
+.collection-start p { color: rgba(220, 230, 246, 0.7); }
+.article-pager.single { grid-template-columns: minmax(0, 1fr); }
+
+@media (max-width: 640px) {
+  .article-hero h1 { font-size: clamp(2rem, 9.5vw, 3.15rem); line-height: 1.04; }
 }
 
 .article-hero {
