@@ -58,7 +58,7 @@ export default function ArticlePage({ locale }) {
     </article>
   )
 
-  return <article className="article-page reveal">
+  return <article className="article-page">
     <div className="article-progress" style={{ width: `${progress}%` }} />
     {blocks.map((block, blockIndex) => {
       if (block.type === 'h1') return <header className="article-hero" key={blockIndex}>

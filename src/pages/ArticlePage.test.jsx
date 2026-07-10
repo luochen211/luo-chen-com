@@ -36,8 +36,9 @@ describe('ArticlePage', () => {
       ok: true,
       text: async () => `---\ndate: "2026-07-05"\n---\n# 测试文章\n${'字'.repeat(800)}`,
     })
-    renderArticle()
+    const { container } = renderArticle()
 
     expect(await screen.findByText(`3 ${siteContent.zh.article.readingTime}`)).toBeInTheDocument()
+    expect(container.querySelector('.article-page')).not.toHaveClass('reveal')
   })
 })
