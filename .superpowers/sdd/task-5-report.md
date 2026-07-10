@@ -35,3 +35,13 @@ Implemented the shared collection view and extracted article reader/helpers.
 ## Concerns
 
 - Reading progress relies on document-level scroll height, which is appropriate for the current single-column page shell.
+
+## CSS Cascade Follow-up
+
+- Root cause: the mobile `.article-hero h1` override had the same specificity as the base `.article-page h1` rule but appeared earlier, so source order caused the base 3rem minimum to win on mobile.
+- RED: `npm test -- src/App.css.test.js` failed because the last 640px media query appeared before the base title rule (`22054` was not greater than `22576`).
+- GREEN: moved the mobile override after the base rule; the focused regression test passes.
+- Browser verification at a 390×844 viewport used the longest indexed real title, `看完《龙年档案》之后：我尊重罗成，但我不会成为罗成`.
+- Computed font size: `37.05px`; computed line height: `38.532px`; rendered height: `115.546875px`; rendered line count: `3`.
+- No truncation: computed overflow was `visible` and text overflow was `clip`; the complete title remained in the DOM and rendered in the captured element.
+- Screenshot: `.superpowers/sdd/task-5-title-390.png`.
