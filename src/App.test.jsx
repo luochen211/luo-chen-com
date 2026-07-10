@@ -24,6 +24,7 @@ class IntersectionObserverMock {
 beforeEach(() => {
   window.IntersectionObserver = IntersectionObserverMock
   window.matchMedia = vi.fn(() => ({ matches: true }))
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
   window.localStorage.clear()
   window.history.replaceState({}, '', '/')
 })
@@ -87,9 +88,34 @@ describe('localized route rendering', () => {
     expect(screen.queryByText('我们将何去何从')).not.toBeInTheDocument()
     expect(screen.queryByText('序章：旧坐标正在失效')).not.toBeInTheDocument()
 
-    window.history.pushState({}, '', '/articles/not-in-index')
-    window.dispatchEvent(new PopStateEvent('popstate'))
-    expect(await screen.findByText(/^Article ·/)).toBeInTheDocument()
+  })
+
+  it('redirects an unknown article slug to writing without fetching it', async () => {
+    const fetchMock = vi.spyOn(window, 'fetch')
+    window.history.replaceState({}, '', '/articles/not-in-index')
+    render(<App />)
+
+    await waitFor(() => expect(window.location.pathname).toBe('/writing'))
+    expect(fetchMock).not.toHaveBeenCalled()
+  })
+
+  it('redirects an unpublished empty column to writing', async () => {
+    window.history.replaceState({}, '', '/columns/agent-harness')
+    render(<App />)
+
+    await waitFor(() => expect(window.location.pathname).toBe('/writing'))
+  })
+
+  it('scrolls to the top and focuses main after client navigation', async () => {
+    const scrollTo = vi.mocked(window.scrollTo)
+    render(<App />)
+    scrollTo.mockClear()
+
+    await userEvent.click(screen.getAllByRole('link', { name: '写作' })[0])
+
+    await waitFor(() => expect(document.querySelector('main')).toHaveFocus())
+    expect(scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'auto' })
+    expect(document.querySelector('main')).toHaveAttribute('tabindex', '-1')
   })
 
   it('syncs only an untouched default roundtable topic across locale changes', async () => {

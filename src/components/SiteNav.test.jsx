@@ -43,6 +43,35 @@ describe('SiteNav', () => {
     expect(document.body).not.toHaveClass('menu-open')
   })
 
+  it('traps forward and backward tab focus inside the modal drawer', async () => {
+    const user = userEvent.setup()
+    render(<MemoryRouter><main><button>Background action</button></main><SiteNav locale="zh" t={t} onToggleLocale={vi.fn()} /></MemoryRouter>)
+    await user.click(screen.getByRole('button', { name: '打开菜单' }))
+
+    const drawer = document.querySelector('.mobile-menu-panel')
+    const focusable = [...drawer.querySelectorAll('a, button')]
+    focusable.at(-1).focus()
+    await user.tab()
+    expect(focusable[0]).toHaveFocus()
+
+    focusable[0].focus()
+    await user.tab({ shift: true })
+    expect(focusable.at(-1)).toHaveFocus()
+  })
+
+  it('makes background content inert while the modal drawer is open', async () => {
+    const user = userEvent.setup()
+    render(<MemoryRouter><main data-testid="page-content"><button>Background action</button></main><SiteNav locale="zh" t={t} onToggleLocale={vi.fn()} /></MemoryRouter>)
+    await user.click(screen.getByRole('button', { name: '打开菜单' }))
+
+    expect(document.querySelector('.mobile-menu-panel')).toHaveAttribute('role', 'dialog')
+    expect(document.querySelector('.mobile-menu-panel')).toHaveAttribute('aria-modal', 'true')
+    expect(screen.getByTestId('page-content')).toHaveAttribute('inert')
+
+    await user.keyboard('{Escape}')
+    expect(screen.getByTestId('page-content')).not.toHaveAttribute('inert')
+  })
+
   it('uses primary routes and closes the drawer when a route is selected', async () => {
     const user = userEvent.setup()
     render(<MemoryRouter><SiteNav locale="zh" t={t} onToggleLocale={vi.fn()} /></MemoryRouter>)

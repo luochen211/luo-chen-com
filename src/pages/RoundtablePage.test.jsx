@@ -27,6 +27,19 @@ describe('RoundtablePage', () => {
     expect(screen.getByRole('button', { name: /纳西姆·塔勒布/ })).toBeInTheDocument()
   })
 
+  it('does not allow deselecting the final selected expert', async () => {
+    render(<RoundtablePage t={siteContent.zh} />)
+    const selected = screen.getAllByRole('button', { pressed: true })
+    await userEvent.click(selected[0])
+    await userEvent.click(selected[1])
+
+    const lastSelected = screen.getByRole('button', { pressed: true })
+    await userEvent.click(lastSelected)
+
+    expect(lastSelected).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getAllByRole('button', { pressed: true })).toHaveLength(1)
+  })
+
   it('posts the topic and selected expert records, then renders the localized result sections', async () => {
     const fetchMock = vi.spyOn(window, 'fetch').mockResolvedValue({
       ok: true,

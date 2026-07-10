@@ -29,6 +29,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText(siteContent.zh.article.loading)).toBeInTheDocument()
     expect(await screen.findByRole('heading', { name: siteContent.zh.article.unavailable })).toBeInTheDocument()
     expect(screen.queryByText(siteContent.zh.article.loading)).not.toBeInTheDocument()
+    expect(document.title).toBe(`${siteContent.zh.article.unavailable} · luo-chen.com`)
   })
 
   it('renders localized reading time after Markdown loads', async () => {

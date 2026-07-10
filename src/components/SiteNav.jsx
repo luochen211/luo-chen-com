@@ -29,6 +29,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
   const location = useLocation()
   const triggerRef = useRef(null)
   const firstDrawerLinkRef = useRef(null)
+  const panelRef = useRef(null)
   const wasOpenRef = useRef(false)
   const previousPathRef = useRef(location.pathname)
   const menuId = 'site-menu'
@@ -44,23 +45,51 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
   useEffect(() => {
     if (open) {
       document.body.classList.add('menu-open')
+      document.querySelectorAll('.route-main, .footer, .desktop-nav, body > div > main').forEach((element) => {
+        element.inert = true
+        element.setAttribute('inert', '')
+      })
       firstDrawerLinkRef.current?.focus()
     } else {
       document.body.classList.remove('menu-open')
+      document.querySelectorAll('[inert]').forEach((element) => {
+        element.inert = false
+        element.removeAttribute('inert')
+      })
       if (wasOpenRef.current) triggerRef.current?.focus()
     }
     wasOpenRef.current = open
 
-    return () => document.body.classList.remove('menu-open')
+    return () => {
+      document.body.classList.remove('menu-open')
+      document.querySelectorAll('[inert]').forEach((element) => {
+        element.inert = false
+        element.removeAttribute('inert')
+      })
+    }
   }, [open])
 
   useEffect(() => {
-    function closeOnEscape(event) {
-      if (event.key === 'Escape') setOpen(false)
+    function handleDrawerKeydown(event) {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        return
+      }
+      if (!open || event.key !== 'Tab') return
+      const focusable = [...panelRef.current.querySelectorAll('a[href], button:not([disabled])')]
+      const first = focusable[0]
+      const last = focusable.at(-1)
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
     }
-    window.addEventListener('keydown', closeOnEscape)
-    return () => window.removeEventListener('keydown', closeOnEscape)
-  }, [])
+    window.addEventListener('keydown', handleDrawerKeydown)
+    return () => window.removeEventListener('keydown', handleDrawerKeydown)
+  }, [open])
 
   return (
     <>
@@ -100,7 +129,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
             tabIndex="-1"
             type="button"
           />
-          <div className="mobile-menu-panel">
+          <div className="mobile-menu-panel" ref={panelRef} role="dialog" aria-modal="true" aria-label={t.common.mobileNav}>
             <div className="mobile-menu-links">
               <PrimaryLinks
                 t={t}

@@ -50,7 +50,10 @@ export default function ArticlePage({ locale }) {
   const meta = status === 'ready' ? parseArticleMeta(markdown) : {}
   const title = blocks.find((block) => block.type === 'h1')?.text
   const minutes = status === 'ready' ? estimateReadingMinutes(markdown, locale) : 0
-  useEffect(() => { if (title) document.title = `${title} · luo-chen.com` }, [title])
+  useEffect(() => {
+    if (title) document.title = `${title} · luo-chen.com`
+    else if (status === 'error') document.title = `${copy.unavailable} · luo-chen.com`
+  }, [copy.unavailable, status, title])
 
   if (status !== 'ready') return (
     <article className="article-page"><div className="article-progress" style={{ width: 0 }} />

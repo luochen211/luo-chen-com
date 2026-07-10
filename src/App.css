@@ -2214,3 +2214,6 @@ h1 {
     padding-inline: 0;
   }
 }
+.route-main:focus {
+  outline: none;
+}
