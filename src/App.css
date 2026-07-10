@@ -22,6 +22,7 @@
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
 .media-frame { overflow: hidden; margin: 0; }
 .media-frame img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(1) contrast(1.08); transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .7s ease; }
+.focused-portrait img { aspect-ratio: auto; object-fit: contain; }
 .media-frame:hover img { transform: scale(1.05); filter: grayscale(.25) contrast(1.03); }
 .focused-portrait figcaption { margin-top: .8rem; color: var(--muted); font-size: .78rem; }
 .chapter { padding: clamp(7rem, 14vw, 13rem) 0; }

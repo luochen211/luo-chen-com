@@ -14,3 +14,12 @@ describe('article title cascade', () => {
     expect(mobileRule).toBeGreaterThan(mobileQuery)
   })
 })
+
+describe('homepage portrait', () => {
+  it('preserves the complete source image instead of cropping it', () => {
+    const portraitRule = css.match(/\.focused-portrait img\s*\{([^}]*)\}/)?.[1] || ''
+
+    expect(portraitRule).toMatch(/aspect-ratio:\s*auto/)
+    expect(portraitRule).toMatch(/object-fit:\s*contain/)
+  })
+})
