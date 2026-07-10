@@ -3,6 +3,14 @@ import { getInitialLocale, siteContent } from './siteContent'
 
 const keys = (value) => Object.keys(value).sort()
 
+function contentShape(value) {
+  if (Array.isArray(value)) return value.map(contentShape)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(keys(value).map((key) => [key, contentShape(value[key])]))
+  }
+  return typeof value
+}
+
 describe('site locale content', () => {
   it('defaults first-time visitors to Chinese', () => {
     expect(getInitialLocale({ getItem: () => null })).toBe('zh')
@@ -13,9 +21,6 @@ describe('site locale content', () => {
   })
 
   it('keeps Chinese and English page sections structurally complete', () => {
-    expect(keys(siteContent.en)).toEqual(keys(siteContent.zh))
-    for (const section of keys(siteContent.zh)) {
-      expect(keys(siteContent.en[section])).toEqual(keys(siteContent.zh[section]))
-    }
+    expect(contentShape(siteContent.en)).toEqual(contentShape(siteContent.zh))
   })
 })

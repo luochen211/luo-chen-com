@@ -12,7 +12,7 @@ import {
   useParams,
 } from 'react-router-dom'
 import './App.css'
-import { getInitialLocale, readerCopy, siteContent } from './data/siteContent'
+import { getInitialLocale, localizeColumns, readerCopy, siteContent } from './data/siteContent'
 import {
   articleIndex,
   expertOptions,
@@ -40,12 +40,17 @@ function getLinkedArticles(slugs = []) {
 
 function RoundtablePage({ t }) {
   const [topic, setTopic] = useState(t.lab.examples[0])
+  const [isTopicEdited, setIsTopicEdited] = useState(false)
   const [selected, setSelected] = useState(['munger', 'kahneman', 'dalio'])
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const selectedExperts = expertOptions.filter((expert) => selected.includes(expert.id))
+
+  useEffect(() => {
+    if (!isTopicEdited) setTopic(t.lab.examples[0])
+  }, [isTopicEdited, t.lab.examples])
 
   function toggleExpert(id) {
     setSelected((current) => {
@@ -101,13 +106,23 @@ function RoundtablePage({ t }) {
           <textarea
             id="topic"
             value={topic}
-            onChange={(event) => setTopic(event.target.value)}
+            onChange={(event) => {
+              setTopic(event.target.value)
+              setIsTopicEdited(true)
+            }}
             rows="7"
             placeholder={t.lab.placeholder}
           />
           <div className="example-row">
             {t.lab.examples.map((example) => (
-              <button key={example} type="button" onClick={() => setTopic(example)}>
+              <button
+                key={example}
+                type="button"
+                onClick={() => {
+                  setTopic(example)
+                  setIsTopicEdited(true)
+                }}
+              >
                 {example}
               </button>
             ))}
@@ -198,8 +213,9 @@ function ResultList({ title, items = [] }) {
   )
 }
 
-function HomePage({ t }) {
+function HomePage({ t, locale }) {
   const latestArticles = [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4)
+  const columns = localizeColumns(getPublicColumns(), locale)
   const capabilities = [
     {
       title: t.summary.narrativeTitle,
@@ -376,7 +392,7 @@ function HomePage({ t }) {
         </div>
         <div className="home-writing-grid reveal">
           <div className="home-column-list">
-            {getPublicColumns().map((column) => (
+            {columns.map((column) => (
               <Link to={column.href} key={column.slug}>
                 <span>{column.eyebrow}</span>
                 <strong>{column.title}</strong>
@@ -491,8 +507,9 @@ function SummarySection({ t }) {
   )
 }
 
-function CourseSection({ t, standalone = false }) {
+function CourseSection({ t, locale, standalone = false }) {
   const latestArticles = [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6)
+  const columns = localizeColumns(getPublicColumns(), locale)
 
   return (
     <section className="page-section course-section">
@@ -536,7 +553,7 @@ function CourseSection({ t, standalone = false }) {
               <p>{t.writing.collections}</p>
             </div>
             <div className="column-grid">
-              {getPublicColumns().map((column) => (
+              {columns.map((column) => (
                 <Link className="column-card" to={column.href} key={column.slug}>
                   <h3>{column.title}</h3>
                   <p>{column.summary}</p>
@@ -579,8 +596,8 @@ function CourseSection({ t, standalone = false }) {
   )
 }
 
-function TopicPage({ t }) {
-  const topic = findColumn('where-do-we-go')
+function TopicPage({ t, locale }) {
+  const [topic] = localizeColumns([findColumn('where-do-we-go')], locale)
 
   return (
     <section className="page-section topic-page">
@@ -623,9 +640,10 @@ function TopicPage({ t }) {
   )
 }
 
-function ColumnPage({ t }) {
+function ColumnPage({ t, locale }) {
   const { columnSlug } = useParams()
-  const column = findColumn(columnSlug)
+  const rawColumn = findColumn(columnSlug)
+  const [column] = rawColumn ? localizeColumns([rawColumn], locale) : []
 
   if (!column) return <Navigate replace to="/output" />
 
@@ -739,10 +757,10 @@ function ProjectsPage({ t }) {
   )
 }
 
-function OutputPage({ t }) {
+function OutputPage({ t, locale }) {
   return (
     <>
-      <CourseSection t={t} standalone />
+      <CourseSection t={t} locale={locale} standalone />
       <ProjectsPage t={t} />
     </>
   )
@@ -1031,6 +1049,22 @@ function ContactPage({ t }) {
   )
 }
 
+function getRouteTitle(pathname, t) {
+  if (pathname.startsWith('/articles/')) return null
+  if (pathname === '/now') return t.now.title
+  if (['/output', '/writing', '/work', '/projects', '/course'].includes(pathname)) {
+    return t.course.title
+  }
+  if (pathname === '/contact') return t.contact.title
+  if (pathname === '/roundtable' || pathname === '/lab/roundtable') return t.lab.title
+  if (pathname === '/topics/where-do-we-go') return t.topic.title
+  if (pathname.startsWith('/columns/')) {
+    const slug = pathname.slice('/columns/'.length)
+    return t.collections[slug]?.title || t.seoTitle.text
+  }
+  return t.seoTitle.text
+}
+
 function SiteApp() {
   const [locale, setLocale] = useState(() => {
     if (typeof window === 'undefined') return 'zh'
@@ -1042,8 +1076,9 @@ function SiteApp() {
   useEffect(() => {
     window.localStorage.setItem('site-locale', locale)
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en'
-    document.title = t.seoTitle.text
-  }, [locale, t.seoTitle.text])
+    const routeTitle = getRouteTitle(location.pathname, t)
+    if (routeTitle) document.title = routeTitle
+  }, [locale, location.pathname, t])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -1170,17 +1205,17 @@ function SiteApp() {
 
       <main className="container route-main">
         <Routes>
-          <Route path="/" element={<HomePage t={t} />} />
+          <Route path="/" element={<HomePage t={t} locale={locale} />} />
           <Route path="/now" element={<NowPage t={t} />} />
           <Route path="/roundtable" element={<RoundtablePage t={t} />} />
           <Route path="/lab/roundtable" element={<RoundtablePage t={t} />} />
           <Route path="/work" element={<Navigate replace to="/output" />} />
           <Route path="/projects" element={<Navigate replace to="/output" />} />
-          <Route path="/output" element={<OutputPage t={t} />} />
-          <Route path="/writing" element={<OutputPage t={t} />} />
+          <Route path="/output" element={<OutputPage t={t} locale={locale} />} />
+          <Route path="/writing" element={<OutputPage t={t} locale={locale} />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
-          <Route path="/columns/:columnSlug" element={<ColumnPage t={t} />} />
-          <Route path="/topics/where-do-we-go" element={<TopicPage t={t} />} />
+          <Route path="/columns/:columnSlug" element={<ColumnPage t={t} locale={locale} />} />
+          <Route path="/topics/where-do-we-go" element={<TopicPage t={t} locale={locale} />} />
           <Route path="/articles/:slug" element={<ArticlePage locale={locale} />} />
           <Route path="/contact" element={<ContactPage t={t} />} />
           <Route path="*" element={<Navigate replace to="/" />} />

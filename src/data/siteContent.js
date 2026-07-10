@@ -1,4 +1,4 @@
-import { exampleTopics, expertOptions, projects } from './siteData'
+import { exampleTopics, expertOptions, projects, writingColumns } from './siteData'
 
 const localizedContent = {
   en: {
@@ -641,6 +641,73 @@ const roundtableLocale = {
   },
 }
 
+const collectionLocale = {
+  zh: Object.fromEntries(
+    writingColumns.map((column) => [
+      column.slug,
+      {
+        title: column.title,
+        eyebrow: column.eyebrow,
+        status: column.status,
+        summary: column.summary,
+        series: Object.fromEntries(
+          column.series.map((series) => [
+            series.slug,
+            { title: series.title, summary: series.summary },
+          ]),
+        ),
+      },
+    ]),
+  ),
+  en: {
+    'where-do-we-go': {
+      title: 'Where Do We Go From Here?',
+      eyebrow: 'Ongoing Topic',
+      status: 'Ongoing',
+      summary: 'How individuals can choose markets, work, relationships, income, and personal order again in the AI era.',
+      series: {
+        preface: { title: 'Preface: The Old Coordinates Are Failing', summary: 'Begin by naming why the old coordinates no longer hold.' },
+        position: { title: 'Reprice Yourself', summary: 'Leave low-value busyness and invest time in opportunities that raise your position.' },
+        'public-assets': { title: 'Enter a Larger Market', summary: 'Use English, public work, and strong signals to enter a larger collaboration network.' },
+        'trust-network': { title: 'Build a Radius of Trust', summary: 'Form connections and train expression without surrendering judgment in noisy rooms.' },
+        'leverage-order': { title: 'Turn Experience Into Leverage', summary: 'Move from one-off delivery to reusable systems while preserving long-term capacity.' },
+      },
+    },
+    'agent-harness': {
+      title: 'Agent Harness Practice',
+      eyebrow: 'Engineering Notes',
+      status: 'Reserved',
+      summary: 'Tool-call safety, evaluation gates, AI coding CLIs, multi-agent workflows, and open-source contribution reviews.',
+      series: {},
+    },
+    'expression-review': {
+      title: 'Expression and Retrospectives',
+      eyebrow: 'Public Output',
+      status: 'Ongoing',
+      summary: 'Public talks, decks, content craft, and reviews of communication failures.',
+      series: {
+        'offline-sharing': { title: 'Public Expression Retrospectives', summary: 'Break down failed talks and retrain the entry point, examples, actions, and feedback.' },
+      },
+    },
+    'after-watching': {
+      title: 'After Watching',
+      eyebrow: 'After Watching',
+      status: 'Ongoing',
+      summary: 'No ratings or plot recaps—only the mark a work leaves on a person.',
+      series: {
+        'screen-and-book-notes': { title: 'Echoes From Screen and Page', summary: 'Use films, series, and books to explore why people live as they do.' },
+      },
+    },
+    'project-reviews': {
+      title: 'Project Retrospectives',
+      eyebrow: 'Case Notes',
+      status: 'Reserved',
+      summary: 'Methods learned from real projects, commercial delivery, open source, and product iteration.',
+      series: {},
+    },
+  },
+}
+
 export const siteContent = Object.fromEntries(
   Object.entries(localizedContent).map(([locale, value]) => [
     locale,
@@ -653,6 +720,7 @@ export const siteContent = Object.fromEntries(
       nav: { ...value.nav, ...requiredSections[locale].nav },
       now: { ...value.now, learningItems: value.now.learning, routineItems: value.now.routine, ...requiredSections[locale].now },
       lab: { ...requiredSections[locale].lab, ...roundtableLocale[locale] },
+      collections: collectionLocale[locale],
       contact: { ...value.contact, ...requiredSections[locale].contact },
     },
   ]),
@@ -664,4 +732,16 @@ export function getInitialLocale(storage) {
 
 export function readerCopy(locale) {
   return siteContent[locale === 'en' ? 'en' : 'zh'].article
+}
+
+export function localizeColumns(columns, locale) {
+  const copy = siteContent[locale === 'en' ? 'en' : 'zh'].collections
+  return columns.map((column) => ({
+    ...column,
+    ...copy[column.slug],
+    series: column.series.map((series) => ({
+      ...series,
+      ...copy[column.slug]?.series[series.slug],
+    })),
+  }))
 }
