@@ -1,4 +1,4 @@
-import { mkdir } from 'node:fs/promises'
+import { mkdir, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { chromium } from 'playwright'
 
@@ -19,6 +19,7 @@ const viewports = [
   ['mobile', { width: 390, height: 844 }],
 ]
 
+await rm(outputDir, { recursive: true, force: true })
 await mkdir(outputDir, { recursive: true })
 
 const browser = await chromium.launch({ headless: true })
@@ -55,8 +56,6 @@ try {
 
         if (metrics.scrollWidth > metrics.clientWidth) throw new Error(`overflow: ${route}`)
         if (metrics.h1Count !== 1) throw new Error(`invalid h1 count: ${route}`)
-        if (consoleErrors.length) throw new Error(`console errors: ${route}: ${consoleErrors.join(' | ')}`)
-        if (pageErrors.length) throw new Error(`page errors: ${route}: ${pageErrors.join(' | ')}`)
         if (label === 'mobile' && metrics.closedNavHeight > 64) {
           throw new Error(`mobile nav too tall: ${route}: ${metrics.closedNavHeight}px`)
         }
@@ -72,10 +71,6 @@ try {
 
         const screenshot = path.join(outputDir, `${label}-${name}.png`)
         await page.screenshot({ path: screenshot, fullPage: true })
-        console.log(
-          `PASS ${label.padEnd(7)} ${route.padEnd(52)} ` +
-          `width=${metrics.scrollWidth}/${metrics.clientWidth} h1=${metrics.h1Count} nav=${metrics.closedNavHeight}px`,
-        )
 
         if (label === 'mobile' && name === 'home') {
           await page.locator('.menu-toggle').click()
@@ -100,6 +95,14 @@ try {
           await page.waitForTimeout(100)
           await page.screenshot({ path: path.join(outputDir, 'mobile-home-zh.png'), fullPage: true })
         }
+
+        if (consoleErrors.length) throw new Error(`console errors: ${route}: ${consoleErrors.join(' | ')}`)
+        if (pageErrors.length) throw new Error(`page errors: ${route}: ${pageErrors.join(' | ')}`)
+
+        console.log(
+          `PASS ${label.padEnd(7)} ${route.padEnd(52)} ` +
+          `width=${metrics.scrollWidth}/${metrics.clientWidth} h1=${metrics.h1Count} nav=${metrics.closedNavHeight}px`,
+        )
       } catch (error) {
         failures += 1
         console.error(`FAIL ${label} ${route}: ${error.message}`)
