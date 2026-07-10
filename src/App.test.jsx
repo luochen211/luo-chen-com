@@ -34,6 +34,18 @@ afterEach(() => {
 })
 
 describe('localized route rendering', () => {
+  it.each([
+    ['/output', '/writing'],
+    ['/projects', '/work'],
+    ['/course', '/writing'],
+    ['/roundtable', '/lab/roundtable'],
+  ])('redirects legacy route %s to %s', async (legacyRoute, primaryRoute) => {
+    window.history.replaceState({}, '', legacyRoute)
+    render(<App />)
+
+    await waitFor(() => expect(window.location.pathname).toBe(primaryRoute))
+  })
+
   it('renders collection and series chrome in English after switching locale', async () => {
     window.localStorage.setItem('site-locale', 'zh')
     window.history.replaceState({}, '', '/columns/expression-review')

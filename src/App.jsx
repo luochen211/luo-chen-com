@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   BrowserRouter,
   Link,
-  NavLink,
   Navigate,
   Route,
   Routes,
@@ -12,6 +11,7 @@ import {
   useParams,
 } from 'react-router-dom'
 import './App.css'
+import SiteNav from './components/SiteNav'
 import { getInitialLocale, localizeColumns, readerCopy, siteContent } from './data/siteContent'
 import {
   articleIndex,
@@ -251,7 +251,7 @@ function HomePage({ t, locale }) {
           <p className="home-hero-belief">{t.homeUi.belief}</p>
           <p className="intro">{t.hero.intro}</p>
           <div className="home-hero-actions">
-            <Link className="btn primary" to="/output">
+            <Link className="btn primary" to="/writing">
               {t.homeUi.view}
             </Link>
             <Link className="btn ghost" to="/contact">
@@ -645,7 +645,7 @@ function ColumnPage({ t, locale }) {
   const rawColumn = findColumn(columnSlug)
   const [column] = rawColumn ? localizeColumns([rawColumn], locale) : []
 
-  if (!column) return <Navigate replace to="/output" />
+  if (!column) return <Navigate replace to="/writing" />
 
   return (
     <section className="page-section topic-page">
@@ -757,12 +757,13 @@ function ProjectsPage({ t }) {
   )
 }
 
-function OutputPage({ t, locale }) {
+function WorkPage({ t }) {
+  return <ProjectsPage t={t} />
+}
+
+function WritingPage({ t, locale }) {
   return (
-    <>
-      <CourseSection t={t} locale={locale} standalone />
-      <ProjectsPage t={t} />
-    </>
+    <CourseSection t={t} locale={locale} standalone />
   )
 }
 
@@ -1059,9 +1060,8 @@ function ContactPage({ t }) {
 function getRouteTitle(pathname, t) {
   if (pathname.startsWith('/articles/')) return null
   if (pathname === '/now') return t.now.title
-  if (['/output', '/writing', '/work', '/projects', '/course'].includes(pathname)) {
-    return t.course.title
-  }
+  if (pathname === '/work' || pathname === '/projects') return t.projects.title
+  if (['/output', '/writing', '/course'].includes(pathname)) return t.course.title
   if (pathname === '/contact') return t.contact.title
   if (pathname === '/roundtable' || pathname === '/lab/roundtable') return t.lab.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
@@ -1174,53 +1174,24 @@ function SiteApp() {
       <div className="bg-grid" aria-hidden="true" />
 
       <header className="topbar container">
-        <nav className="nav">
-          <Link className="brand" to="/">
-            {t.common.brand}
-          </Link>
-          <div className="nav-right">
-            <div className="nav-links">
-              <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
-                {t.nav.home}
-              </NavLink>
-              <NavLink to="/now" className={({ isActive }) => (isActive ? 'active' : '')}>
-                {t.nav.now}
-              </NavLink>
-              <NavLink
-                to="/output"
-                className={({ isActive }) => (isActive ? 'active' : '')}
-              >
-                {t.nav.output}
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) => (isActive ? 'active' : '')}
-              >
-                {t.nav.contact}
-              </NavLink>
-            </div>
-            <button
-              className="lang-toggle"
-              type="button"
-              onClick={() => setLocale((current) => (current === 'en' ? 'zh' : 'en'))}
-            >
-              {t.toggle.text}
-            </button>
-          </div>
-        </nav>
+        <SiteNav
+          locale={locale}
+          t={t}
+          onToggleLocale={() => setLocale((current) => (current === 'en' ? 'zh' : 'en'))}
+        />
       </header>
 
       <main className="container route-main">
         <Routes>
           <Route path="/" element={<HomePage t={t} locale={locale} />} />
           <Route path="/now" element={<NowPage t={t} />} />
-          <Route path="/roundtable" element={<RoundtablePage t={t} />} />
           <Route path="/lab/roundtable" element={<RoundtablePage t={t} />} />
-          <Route path="/work" element={<Navigate replace to="/output" />} />
-          <Route path="/projects" element={<Navigate replace to="/output" />} />
-          <Route path="/output" element={<OutputPage t={t} locale={locale} />} />
-          <Route path="/writing" element={<OutputPage t={t} locale={locale} />} />
-          <Route path="/course" element={<Navigate replace to="/output" />} />
+          <Route path="/work" element={<WorkPage t={t} />} />
+          <Route path="/writing" element={<WritingPage t={t} locale={locale} />} />
+          <Route path="/output" element={<Navigate replace to="/writing" />} />
+          <Route path="/projects" element={<Navigate replace to="/work" />} />
+          <Route path="/course" element={<Navigate replace to="/writing" />} />
+          <Route path="/roundtable" element={<Navigate replace to="/lab/roundtable" />} />
           <Route path="/columns/:columnSlug" element={<ColumnPage t={t} locale={locale} />} />
           <Route path="/topics/where-do-we-go" element={<TopicPage t={t} locale={locale} />} />
           <Route path="/articles/:slug" element={<ArticlePage locale={locale} />} />
