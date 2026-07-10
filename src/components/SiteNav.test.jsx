@@ -4,6 +4,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { afterEach, describe, expect, it, vi } from 'vitest'
+import { siteContent } from '../data/siteContent'
 import SiteNav from './SiteNav'
 
 const t = {
@@ -64,5 +65,29 @@ describe('SiteNav', () => {
 
     await user.click(screen.getByRole('button', { name: 'EN' }))
     expect(onToggleLocale).toHaveBeenCalledOnce()
+  })
+
+  it('closes from the mobile backdrop without closing from inside the panel', async () => {
+    const user = userEvent.setup()
+    render(<MemoryRouter><SiteNav locale="zh" t={t} onToggleLocale={vi.fn()} /></MemoryRouter>)
+    const trigger = screen.getByRole('button', { name: '打开菜单' })
+    await user.click(trigger)
+
+    await user.click(document.querySelector('.mobile-menu-panel'))
+    expect(trigger).toHaveAttribute('aria-expanded', 'true')
+
+    await user.click(document.querySelector('.mobile-menu-backdrop'))
+    expect(trigger).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('uses localized Chinese navigation landmark labels', () => {
+    render(
+      <MemoryRouter>
+        <SiteNav locale="zh" t={siteContent.zh} onToggleLocale={vi.fn()} />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getByRole('navigation', { name: '主导航' })).toBeInTheDocument()
+    expect(screen.getByRole('navigation', { name: '移动端导航' })).toBeInTheDocument()
   })
 })

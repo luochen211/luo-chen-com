@@ -1852,17 +1852,39 @@ h1 {
     position: fixed;
     z-index: 30;
     inset: 68px 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: block;
     min-height: calc(100dvh - 68px);
-    padding: 1.5rem max(1rem, calc((100vw - 1320px) / 2));
-    overflow-y: auto;
-    background: rgba(5, 7, 12, 0.98);
   }
 
   .mobile-menu[hidden] {
     display: none;
+  }
+
+  .mobile-menu-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.58);
+    cursor: default;
+  }
+
+  .mobile-menu-panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: min(88vw, 28rem);
+    min-height: calc(100dvh - 68px);
+    margin-left: auto;
+    padding: 1.5rem 1rem;
+    overflow-y: auto;
+    background: rgba(5, 7, 12, 0.99);
+    box-shadow: -24px 0 64px rgba(0, 0, 0, 0.32);
   }
 
   .mobile-menu-links {

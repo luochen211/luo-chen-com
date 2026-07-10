@@ -30,10 +30,13 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
   const triggerRef = useRef(null)
   const firstDrawerLinkRef = useRef(null)
   const wasOpenRef = useRef(false)
+  const previousPathRef = useRef(location.pathname)
   const menuId = 'site-menu'
   const localeLabel = locale === 'en' ? '中文' : 'EN'
 
   useEffect(() => {
+    if (previousPathRef.current === location.pathname) return undefined
+    previousPathRef.current = location.pathname
     const closeTimer = window.setTimeout(() => setOpen(false), 0)
     return () => window.clearTimeout(closeTimer)
   }, [location.pathname])
@@ -61,7 +64,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
 
   return (
     <>
-      <nav className="desktop-nav" aria-label={t.common.primaryNav || 'Primary navigation'}>
+      <nav className="desktop-nav" aria-label={t.common.primaryNav}>
         <Link className="brand" to="/">{t.common.brand || 'LUOCHEN'}</Link>
         <div className="desktop-nav-links">
           <PrimaryLinks t={t} />
@@ -74,7 +77,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
         </div>
       </nav>
 
-      <nav className="mobile-nav-shell" aria-label={t.common.mobileNav || 'Mobile navigation'}>
+      <nav className="mobile-nav-shell" aria-label={t.common.mobileNav}>
         <Link className="brand" to="/" aria-label={t.nav.home}>{t.common.brand || 'LUOCHEN'}</Link>
         <button
           className="menu-toggle"
@@ -90,18 +93,27 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
         </button>
 
         <div className="mobile-menu" id={menuId} hidden={!open}>
-          <div className="mobile-menu-links">
-            <PrimaryLinks
-              t={t}
-              firstLinkRef={firstDrawerLinkRef}
-              onNavigate={() => setOpen(false)}
-            />
-          </div>
-          <div className="mobile-menu-secondary">
-            <NavLink to="/lab/roundtable" onClick={() => setOpen(false)}>{t.nav.lab}</NavLink>
-            <button className="lang-toggle" type="button" onClick={onToggleLocale}>
-              {localeLabel}
-            </button>
+          <button
+            aria-label={t.common.close}
+            className="mobile-menu-backdrop"
+            onClick={() => setOpen(false)}
+            tabIndex="-1"
+            type="button"
+          />
+          <div className="mobile-menu-panel">
+            <div className="mobile-menu-links">
+              <PrimaryLinks
+                t={t}
+                firstLinkRef={firstDrawerLinkRef}
+                onNavigate={() => setOpen(false)}
+              />
+            </div>
+            <div className="mobile-menu-secondary">
+              <NavLink to="/lab/roundtable" onClick={() => setOpen(false)}>{t.nav.lab}</NavLink>
+              <button className="lang-toggle" type="button" onClick={onToggleLocale}>
+                {localeLabel}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
