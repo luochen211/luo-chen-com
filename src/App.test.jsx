@@ -62,6 +62,24 @@ describe('localized route rendering', () => {
     await waitFor(() => expect(document.title).toBe('Agent Harness Engineer & Full-Stack Builder'))
   })
 
+  it('renders ArticlePage collection and series navigation chrome in English', async () => {
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      text: async () => '---\ndate: "2026-07-05"\n---\n# Authored Article Title\nAuthored body',
+    })
+    window.localStorage.setItem('site-locale', 'en')
+    window.history.replaceState({}, '', '/articles/2026-07-05-where-do-we-go-preface')
+    render(<App />)
+
+    expect(await screen.findByRole('link', { name: 'Where Do We Go From Here?' })).toBeInTheDocument()
+    expect(screen.getByText('Preface: The Old Coordinates Are Failing')).toBeInTheDocument()
+    expect(screen.queryByText('我们将何去何从')).not.toBeInTheDocument()
+    expect(screen.queryByText('序章：旧坐标正在失效')).not.toBeInTheDocument()
+
+    window.history.pushState({}, '', '/articles/not-in-index')
+    window.dispatchEvent(new PopStateEvent('popstate'))
+    expect(await screen.findByText(/^Article ·/)).toBeInTheDocument()
+  })
+
   it('syncs only an untouched default roundtable topic across locale changes', async () => {
     window.localStorage.setItem('site-locale', 'zh')
     window.history.replaceState({}, '', '/lab/roundtable')

@@ -862,6 +862,11 @@ function ArticlePage({ locale }) {
       : null
   const relatedArticles = getLinkedArticles(article?.related)
   const copy = readerCopy(locale)
+  const activeContent = siteContent[locale === 'en' ? 'en' : 'zh']
+  const [localizedArticleColumn] = article
+    ? localizeColumns([{ ...article.column, series: [article.series] }], locale)
+    : []
+  const localizedArticleSeries = localizedArticleColumn?.series[0]
 
   useEffect(() => {
     let alive = true
@@ -896,13 +901,13 @@ function ArticlePage({ locale }) {
                 <p>
                   {article ? (
                     <>
-                      <Link to={article.column.href}>{article.column.title}</Link>
+                      <Link to={article.column.href}>{localizedArticleColumn.title}</Link>
                       <span> · </span>
-                      <a href={article.series.href}>{article.series.title}</a>
+                      <a href={article.series.href}>{localizedArticleSeries.title}</a>
                       <span> · </span>
                     </>
                   ) : (
-                    'Article · '
+                    `${copy.unknownLabel} · `
                   )}
                   {meta.date || article?.date || ''}
                 </p>
@@ -993,7 +998,9 @@ function ArticlePage({ locale }) {
                 <div className="network-list">
                   {relatedArticles.map((item) => (
                     <Link to={item.href} key={item.slug}>
-                      <span>{item.column.title}</span>
+                      <span>
+                        {activeContent.collections[item.column.slug]?.title || item.column.title}
+                      </span>
                       <strong>{item.title}</strong>
                     </Link>
                   ))}
