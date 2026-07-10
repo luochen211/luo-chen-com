@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
-import { localizeColumns } from '../data/siteContent'
+import { localizeArticles, localizeColumns } from '../data/siteContent'
 import { articleIndex, getPublicColumns } from '../data/siteData'
 
 export default function WritingPage({ t, locale = 'zh' }) {
   const columns = localizeColumns(getPublicColumns(), locale)
-  const latest = [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8)
+  const latest = localizeArticles(
+    [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8),
+    locale,
+  )
   return (
     <section className="focused-page archive-page writing-page">
       <header className="route-hero">
@@ -28,7 +31,11 @@ export default function WritingPage({ t, locale = 'zh' }) {
         <div className="latest-writing-list">
           {latest.map((article) => (
             <Link to={article.href} key={article.slug}>
-              <time>{article.date}</time><h3>{article.title}</h3><p>{article.summary}</p>
+              <div className="article-list-meta">
+                <time>{article.date}</time>
+                <span className="article-column">{article.column.title}</span>
+              </div>
+              <h3>{article.title}</h3><p>{article.summary}</p>
             </Link>
           ))}
         </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { localizeArticles } from '../data/siteContent'
 import { articleIndex, projects } from '../data/siteData'
 
 function Hero({ t }) {
@@ -63,8 +64,11 @@ function SelectedWork({ t }) {
   )
 }
 
-function SelectedWriting({ t }) {
-  const latest = [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4)
+function SelectedWriting({ t, locale }) {
+  const latest = localizeArticles(
+    [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4),
+    locale,
+  )
   return (
     <section className="chapter selected-writing">
       <div className="chapter-heading">
@@ -74,7 +78,10 @@ function SelectedWriting({ t }) {
       <div className="writing-accordion">
         {latest.map((article) => (
           <Link to={article.href} key={article.slug}>
-            <time>{article.date}</time>
+            <div className="article-list-meta">
+              <time>{article.date}</time>
+              <span className="article-column">{article.column.title}</span>
+            </div>
             <h3>{article.title}</h3>
             <p>{article.summary}</p>
           </Link>
@@ -93,14 +100,14 @@ function CollaborationCta({ t }) {
   )
 }
 
-export default function HomePage({ t }) {
+export default function HomePage({ t, locale = 'zh' }) {
   const proof = (t.home.proof || t.homeUi.proofAssets).slice(0, 3)
   return (
     <div className="focused-page home-redesign">
       <Hero t={t} />
       <ProofGrid t={t} items={proof} />
       <SelectedWork t={t} />
-      <SelectedWriting t={t} />
+      <SelectedWriting t={t} locale={locale} />
       <CollaborationCta t={t} />
     </div>
   )

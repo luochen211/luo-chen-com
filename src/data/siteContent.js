@@ -708,6 +708,59 @@ const collectionLocale = {
   },
 }
 
+const articleDisplayLocale = {
+  en: {
+    '2026-07-05-where-do-we-go-preface': {
+      title: 'Where Do We Go From Here: After the Old Coordinates Fail',
+      summary: 'When the old coordinates fail, each person must answer again: how will I be valued, trusted, and able to go the distance?',
+    },
+    '2026-07-05-stop-low-value-outsourcing': {
+      title: 'Do Not Let Low-Value Cash Flow Consume Your Future Position',
+      summary: 'The deeper risk is being trained into low-value work until fragmented time and lower standards close off larger opportunities.',
+    },
+    '2026-07-05-internship-is-strategic-attempt': {
+      title: 'Do Not Let Your Current Position Reject High-Leverage Opportunities',
+      summary: 'The opportunities that change your position often require you to stretch beyond what your current résumé appears to justify.',
+    },
+    '2026-07-05-english-is-remote-work-ticket': {
+      title: 'English Is Infrastructure for a Larger Market',
+      summary: 'English changes the collaboration networks, pricing systems, and people you can work with—not merely how well you express yourself.',
+    },
+    '2026-07-05-open-source-is-career-asset': {
+      title: 'Public Work Compounds Into a Career Asset',
+      summary: 'Private delivery proves that you can finish. Public work lets others verify you and invite you into stronger collaboration networks.',
+    },
+    '2026-07-05-resume-needs-breakthrough-projects': {
+      title: 'Your Résumé Needs Strong Signals, Not More Filler',
+      summary: 'People remember a clear, credible signal in one direction—not the sheer number of things you have done.',
+    },
+    '2026-07-05-programmers-need-social-surface': {
+      title: 'Quiet Competence Can Lose to Earned Trust',
+      summary: 'As responsibility grows, professional skill competes alongside trust, expression, and the radius of people able to collaborate with you.',
+    },
+    '2026-07-05-less-contact-zhongdeng': {
+      title: 'Protect Your Judgment in Noisy Rooms',
+      summary: 'Unfamiliar settings create temporary anchors, but not every connection deserves depth. The essential skill is keeping your own criteria.',
+    },
+    '2026-07-05-knowledge-product-is-leverage': {
+      title: 'Turn Experience Into Systems Instead of Selling Only Time',
+      summary: 'Real leverage begins when one-off delivery becomes a reusable system and the structure of income can finally compound.',
+    },
+    '2026-07-05-relaxed-state-is-long-term-edge': {
+      title: 'Permanent Tension Sacrifices the Future',
+      summary: 'Constant strain can look like effort while short-term security steadily erodes long-term judgment and capacity.',
+    },
+    '2026-07-04-offline-ppt-reflection': {
+      title: 'I Thought I Was Sharing, but I Was Talking to Myself',
+      summary: 'The talk failed not because the deck lacked polish, but because I never created a real exchange with the audience.',
+    },
+    '2026-07-09-after-watching-dragon-year-archive': {
+      title: 'After Watching The Years of the Dragon',
+      summary: 'Some people deserve respect without becoming a template. I admire Luo Cheng while accepting that I would not choose his path.',
+    },
+  },
+}
+
 export const siteContent = Object.fromEntries(
   Object.entries(localizedContent).map(([locale, value]) => [
     locale,
@@ -743,5 +796,22 @@ export function localizeColumns(columns, locale) {
       ...series,
       ...copy[column.slug]?.series[series.slug],
     })),
+  }))
+}
+
+export function localizeArticles(articles, locale) {
+  if (locale !== 'en') return articles
+  const copy = articleDisplayLocale.en
+  return articles.map((article) => ({
+    ...article,
+    ...copy[article.slug],
+    column: {
+      ...article.column,
+      ...collectionLocale.en[article.column.slug],
+    },
+    series: {
+      ...article.series,
+      ...collectionLocale.en[article.column.slug]?.series[article.series.slug],
+    },
   }))
 }

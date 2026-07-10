@@ -28,8 +28,8 @@
 .chapter-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: clamp(3rem, 7vw, 6rem); }
 .chapter-heading h2, .collaboration-cta h2 { max-width: 60rem; margin: 0; font-size: clamp(2.4rem, 5.5vw, 5.6rem); line-height: 1; letter-spacing: -.055em; text-wrap: balance; }
 .chapter-heading a { color: var(--brand-link); white-space: nowrap; }
-.focused-proof-grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-flow: dense; gap: 1px; background: var(--line); }
-.focused-proof-item { grid-column: span 3; min-height: 20rem; padding: clamp(2rem, 4vw, 4rem); background: var(--surface-strong); }
+.focused-proof-grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-flow: dense; gap: clamp(1rem, 2.5vw, 2rem); }
+.focused-proof-item { grid-column: span 3; min-height: 20rem; padding: clamp(2rem, 4vw, 4rem); border: 1px solid var(--line); background: var(--surface-strong); }
 .focused-proof-item:last-child { grid-column: span 6; }
 .focused-proof-item p, .archive-project time, .archive-project header > p { color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
 .focused-proof-item h3 { max-width: 28rem; margin: 3rem 0 1rem; font-size: clamp(1.6rem, 3vw, 3.1rem); line-height: 1.05; }
@@ -46,6 +46,8 @@
 .writing-accordion a, .latest-writing-list a { display: grid; grid-template-columns: 8rem minmax(16rem, .8fr) minmax(18rem, 1fr); gap: clamp(1rem, 4vw, 5rem); align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--line); color: inherit; transition: padding .35s ease, background .35s ease; }
 .writing-accordion a:hover, .latest-writing-list a:hover { padding-inline: 1.25rem; background: var(--surface); }
 .writing-accordion time, .latest-writing-list time { color: var(--muted); font-size: .78rem; }
+.article-list-meta { display: grid; gap: .5rem; }
+.article-column { color: var(--ink-soft); font-size: .72rem; line-height: 1.35; }
 .writing-accordion h3, .latest-writing-list h3 { margin: 0; font-size: clamp(1.25rem, 2vw, 2rem); }
 .writing-accordion p, .latest-writing-list p { margin: 0; color: var(--ink-soft); line-height: 1.6; }
 .collaboration-cta { display: flex; justify-content: space-between; align-items: end; gap: 3rem; margin: clamp(5rem, 12vw, 12rem) 0 4rem; padding: clamp(3rem, 8vw, 8rem); background: #f3f7ff; color: #07111f; }
@@ -65,7 +67,7 @@
 .column-index-card:first-child { grid-column: span 12; }
 .column-index-card h3 { margin: 3rem 0 1rem; font-size: clamp(1.8rem, 3.8vw, 4rem); letter-spacing: -.05em; }
 .column-index-card span { color: var(--ink-soft); line-height: 1.65; }
-.writing-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+.writing-paths { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); }
 .writing-paths > * { min-height: 26rem; padding: clamp(2rem, 5vw, 5rem); background: #f3f7ff; color: #07111f; }
 .writing-paths > *:last-child { background: var(--brand-warm); }
 .writing-paths h2 { margin: 3rem 0 1rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: 1; }
@@ -77,8 +79,8 @@
 .contact-hero { align-items: flex-start; }
 .contact-primary { margin: 2rem 0 1rem; }
 .contact-hero > span { color: var(--muted); }
-.collaboration-types { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-flow: dense; gap: 1px; margin: clamp(5rem, 11vw, 10rem) 0; background: var(--line); }
-.collaboration-types article { min-height: 18rem; padding: clamp(2rem, 4vw, 4rem); background: var(--surface-strong); }
+.collaboration-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 2rem); margin: clamp(5rem, 11vw, 10rem) 0; }
+.collaboration-types article { min-height: 18rem; padding: clamp(2rem, 4vw, 4rem); border: 1px solid var(--line); background: var(--surface-strong); }
 .collaboration-types h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 3.2rem); line-height: 1.08; }
 .contact-directory { border-top: 1px solid var(--line); margin-bottom: 7rem; }
 .contact-directory > * { display: flex; justify-content: space-between; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); color: inherit; }
@@ -2121,5 +2123,23 @@ h1 {
   .lang-toggle {
     transition: none;
     transform: none;
+  }
+
+  .focused-page *,
+  .focused-page *::before,
+  .focused-page *::after {
+    scroll-behavior: auto;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .media-frame:hover img {
+    transform: none;
+    filter: grayscale(1) contrast(1.08);
+  }
+
+  .writing-accordion a:hover,
+  .latest-writing-list a:hover {
+    padding-inline: 0;
   }
 }
