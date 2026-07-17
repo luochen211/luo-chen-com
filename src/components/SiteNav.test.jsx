@@ -8,7 +8,7 @@ import { siteContent } from '../data/siteContent'
 import SiteNav from './SiteNav'
 
 const t = {
-  nav: { home: '首页', work: '作品', writing: '写作', now: 'Now', contact: '联系', lab: '实验室' },
+  nav: { home: '首页', work: '作品', writing: '写作', now: 'Now', contact: '联系' },
   common: { menu: '打开菜单', close: '关闭菜单' },
 }
 
@@ -81,7 +81,7 @@ describe('SiteNav', () => {
     const drawerWork = screen.getAllByRole('link', { name: '作品' })[1]
     expect(drawerWork).toHaveAttribute('href', '/work')
     expect(screen.getAllByRole('link', { name: '写作' })[1]).toHaveAttribute('href', '/writing')
-    expect(screen.getAllByRole('link', { name: '实验室' })[1]).toHaveAttribute('href', '/lab/roundtable')
+    expect(screen.queryByRole('link', { name: '实验室' })).not.toBeInTheDocument()
 
     await user.click(drawerWork)
     expect(trigger).toHaveAttribute('aria-expanded', 'false')

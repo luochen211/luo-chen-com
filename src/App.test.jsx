@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -39,7 +39,8 @@ describe('localized route rendering', () => {
     ['/output', '/writing'],
     ['/projects', '/work'],
     ['/course', '/writing'],
-    ['/roundtable', '/lab/roundtable'],
+    ['/roundtable', '/'],
+    ['/lab/roundtable', '/'],
   ])('redirects legacy route %s to %s', async (legacyRoute, primaryRoute) => {
     window.history.replaceState({}, '', legacyRoute)
     render(<App />)
@@ -118,19 +119,4 @@ describe('localized route rendering', () => {
     expect(document.querySelector('main')).toHaveAttribute('tabindex', '-1')
   })
 
-  it('syncs only an untouched default roundtable topic across locale changes', async () => {
-    window.localStorage.setItem('site-locale', 'zh')
-    window.history.replaceState({}, '', '/lab/roundtable')
-    render(<App />)
-    const topic = screen.getByRole('textbox', { name: '议题' })
-
-    await userEvent.click(screen.getByRole('button', { name: 'EN' }))
-    expect(topic).toHaveValue(
-      'Should I move my AI coding course from a low-cost community to a premium advisory offer?',
-    )
-
-    fireEvent.change(topic, { target: { value: 'My own question' } })
-    await userEvent.click(screen.getByRole('button', { name: '中文' }))
-    expect(topic).toHaveValue('My own question')
-  })
 })

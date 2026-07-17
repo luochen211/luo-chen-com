@@ -1,4 +1,4 @@
-import { exampleTopics, expertOptions, projects, writingColumns } from './siteData'
+import { projects, writingColumns } from './siteData'
 
 const localizedContent = {
   en: {
@@ -6,7 +6,6 @@ const localizedContent = {
     nav: {
       home: 'Home',
       now: 'Now',
-      roundtable: 'Roundtable',
       summary: 'Summary',
       stack: 'Stack',
       work: 'Work',
@@ -253,7 +252,6 @@ const localizedContent = {
     nav: {
       home: '首页',
       now: 'Now',
-      roundtable: '专家圆桌',
       summary: '综述',
       stack: '技术栈',
       work: '作品',
@@ -595,7 +593,7 @@ const localizedContent = {
 
 const requiredSections = {
   zh: {
-    nav: { home: '首页', work: '作品', writing: '写作', now: 'Now', contact: '联系', lab: '实验室' },
+    nav: { home: '首页', work: '作品', writing: '写作', now: 'Now', contact: '联系' },
     common: { menu: '打开菜单', close: '关闭菜单', primaryNav: '主导航', mobileNav: '移动端导航', readMore: '继续阅读', brand: '落尘 / LUOCHEN', columnReserved: '这个栏目已经预留', columnReservedDetail: '后续文章会按系列挂在这里，形成可以继续展开的索引，而不是混进最新文章列表。' },
     article: { readingTime: '分钟阅读', previous: '上一篇', next: '下一篇', related: '继续读', unavailable: '文章暂时无法读取', loading: '加载中', pagerLabel: '同系列上一篇和下一篇', series: '同系列文章', unknownLabel: '文章' },
     home: { title: '可靠 Agent 需要 Harness', proofTitle: '用真实结果证明工程判断', workTitle: '精选项目', writingTitle: '最近写作', contactTitle: '把复杂问题变成可靠交付' },
@@ -604,11 +602,10 @@ const requiredSections = {
     work: { eyebrow: '作品与交付', title: '从 Agent Harness 到生产系统', intro: '开源贡献、商业系统和端到端工程交付。', details: '技术细节' },
     writing: { eyebrow: '写作与产出', title: '把实践沉淀成可以继续使用的资产', collections: '文章栏目', latest: '最新文章', products: '产品与学习材料', talks: '公开分享与 PPT' },
     now: { eyebrow: '现在', title: '我最近在做什么', updated: '最后更新', direction: '当前方向', projects: '正在推进', learning: '学习中', open: '开放合作', routine: '长期习惯' },
-    lab: { eyebrow: '产品实验室', title: '专家圆桌聊天室', intro: '把一个问题交给多种思想模型同时审视：先交锋，再收束，最后形成可执行判断。', stepOne: '输入真实问题', stepTwo: '选择推荐专家', stepThree: '生成并比较判断', expand: '查看全部专家', submit: '开始圆桌', loading: '圆桌讨论中...', loadingDetail: '几位专家正在从各自的方法论出发拆解同一个问题。', error: '圆桌生成失败，请稍后再试。', empty: '先输入一个值得讨论的问题。', topic: '议题', placeholder: '输入你正在纠结的商业、产品、职业或投资判断...', choose: '选择专家', expertUnit: '位', discussion: '讨论', summary: '主持人总结', insights: '真正有洞察', conflicts: '核心冲突', blindSpots: '仍然盲区', actions: '下一步行动' },
     contact: { eyebrow: '联系', title: '一起解决值得解决的问题', intro: '开放远程工程、Agent 工具链和全栈产品交付合作。', response: '通常会在 48 小时内回复。', email: '发送合作邮件' },
   },
   en: {
-    nav: { home: 'Home', work: 'Work', writing: 'Writing', now: 'Now', contact: 'Contact', lab: 'Lab' },
+    nav: { home: 'Home', work: 'Work', writing: 'Writing', now: 'Now', contact: 'Contact' },
     common: { menu: 'Open menu', close: 'Close menu', primaryNav: 'Primary navigation', mobileNav: 'Mobile navigation', readMore: 'Read more', brand: 'LUOCHEN', columnReserved: 'This collection is reserved', columnReservedDetail: 'Future articles will be organized here by series, forming an expandable index instead of disappearing into the latest-articles feed.' },
     article: { readingTime: 'min read', previous: 'Previous', next: 'Next', related: 'Keep reading', unavailable: 'This article is currently unavailable', loading: 'Loading', pagerLabel: 'Previous and next articles in this series', series: 'More in this series', unknownLabel: 'Article' },
     home: { title: 'Reliable agents need a harness.', proofTitle: 'Engineering judgment, proven by real outcomes.', workTitle: 'Selected Work', writingTitle: 'Recent Writing', contactTitle: 'Turn complex problems into reliable delivery.' },
@@ -617,27 +614,7 @@ const requiredSections = {
     work: { eyebrow: 'Work and Delivery', title: 'From Agent Harness to production systems.', intro: 'Open-source contributions, commercial systems, and end-to-end engineering delivery.', details: 'Technical details' },
     writing: { eyebrow: 'Writing and Output', title: 'Turn practice into assets people can keep using.', collections: 'Writing Collections', latest: 'Latest Articles', products: 'Products and Learning', talks: 'Public Talks and Decks' },
     now: { eyebrow: 'Now', title: 'What I am doing now', updated: 'Last updated', direction: 'Current Direction', projects: 'In Progress', learning: 'Learning', open: 'Open to Work', routine: 'Long-term Routine' },
-    lab: { eyebrow: 'Product Lab', title: 'Expert Roundtable', intro: 'Put one question before multiple schools of thought: let them challenge it, converge, and form an actionable judgment.', stepOne: 'Enter a real question', stepTwo: 'Choose recommended experts', stepThree: 'Generate and compare judgments', expand: 'View all experts', submit: 'Start roundtable', loading: 'Roundtable in progress...', loadingDetail: 'The experts are examining the same question through their distinct methods.', error: 'The roundtable could not be generated. Please try again.', empty: 'Enter a question worth discussing first.', topic: 'Topic', placeholder: 'Enter the business, product, career, or investment decision on your mind...', choose: 'Choose experts', expertUnit: 'selected', discussion: 'Discussion', summary: 'Moderator summary', insights: 'Real insights', conflicts: 'Core conflicts', blindSpots: 'Remaining blind spots', actions: 'Next actions' },
     contact: { eyebrow: 'Contact', title: 'Let’s solve something worth solving.', intro: 'Open to remote engineering, Agent tooling, and full-stack product delivery.', response: 'I usually reply within 48 hours.', email: 'Send a collaboration email' },
-  },
-}
-
-const roundtableLocale = {
-  zh: { examples: exampleTopics, experts: expertOptions },
-  en: {
-    examples: [
-      'Should I move my AI coding course from a low-cost community to a premium advisory offer?',
-      'Should an indie developer build a tool first, or begin with content and services?',
-      'How should I balance short-term revenue and long-term credibility while building a personal brand?',
-    ],
-    experts: [
-      { id: 'munger', name: 'Charlie Munger', title: 'Contrarian business judgment', stance: 'Invert the problem through opportunity cost, incentives, and long-term compounding.' },
-      { id: 'kahneman', name: 'Daniel Kahneman', title: 'Cognitive-bias calibration', stance: 'Check fast-thinking errors, base rates, loss aversion, and overconfidence.' },
-      { id: 'dalio', name: 'Ray Dalio', title: 'Principles and system loops', stance: 'Trace causal chains, cycles, feedback mechanisms, and explicit principles.' },
-      { id: 'christensen', name: 'Clayton Christensen', title: 'Innovation and jobs to be done', stance: 'Ask what job the user hires a solution to perform and why the old answer fails.' },
-      { id: 'drucker', name: 'Peter Drucker', title: 'Management and effectiveness', stance: 'Focus on objectives, contribution, responsibility, and outcomes worth measuring.' },
-      { id: 'taleb', name: 'Nassim Taleb', title: 'Risk and antifragility', stance: 'Find tail risk, fragility, barbell options, and assumptions that cannot survive reality.' },
-    ],
   },
 }
 
@@ -785,7 +762,6 @@ export const siteContent = Object.fromEntries(
       footer: { text: value.footer },
       nav: { ...value.nav, ...requiredSections[locale].nav },
       now: { ...value.now, learningItems: value.now.learning, routineItems: value.now.routine, ...requiredSections[locale].now },
-      lab: { ...requiredSections[locale].lab, ...roundtableLocale[locale] },
       collections: collectionLocale[locale],
       contact: { ...value.contact, ...requiredSections[locale].contact },
     },

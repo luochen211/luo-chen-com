@@ -118,51 +118,6 @@ export const projects = [
   },
 ]
 
-export const expertOptions = [
-  {
-    id: 'munger',
-    name: '查理·芒格',
-    title: '反常识商业判断',
-    stance: '用逆向思维、机会成本、激励机制和长期复利来拆问题。',
-  },
-  {
-    id: 'kahneman',
-    name: '丹尼尔·卡尼曼',
-    title: '认知偏差校准',
-    stance: '识别快思考误判、基准率忽略、损失厌恶和过度自信。',
-  },
-  {
-    id: 'dalio',
-    name: '雷·达里奥',
-    title: '原则与系统循环',
-    stance: '把议题放进因果链、债务周期、反馈机制和原则清单里看。',
-  },
-  {
-    id: 'christensen',
-    name: '克莱顿·克里斯坦森',
-    title: '创新与任务理论',
-    stance: '追问用户真正雇佣这个方案完成什么任务，以及旧方案为何失效。',
-  },
-  {
-    id: 'drucker',
-    name: '彼得·德鲁克',
-    title: '管理与有效性',
-    stance: '关注目标、贡献、组织责任和真正需要被衡量的结果。',
-  },
-  {
-    id: 'taleb',
-    name: '纳西姆·塔勒布',
-    title: '风险与反脆弱',
-    stance: '寻找尾部风险、脆弱性、杠铃策略和经不起现实打击的假设。',
-  },
-]
-
-export const exampleTopics = [
-  '我是否应该把 AI 编程课从低价社群升级成高客单顾问产品？',
-  '一个独立开发者应该先做工具产品，还是先做内容和服务？',
-  '如果我要做个人品牌，短期赚钱和长期可信度之间怎么取舍？',
-]
-
 export const writingColumns = [
   {
     slug: 'where-do-we-go',

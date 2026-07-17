@@ -16,7 +16,6 @@ import ArticlePage from './pages/ArticlePage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
 import NowPage from './pages/NowPage'
-import RoundtablePage from './pages/RoundtablePage'
 import WorkPage from './pages/WorkPage'
 import WritingPage from './pages/WritingPage'
 import { getInitialLocale, siteContent } from './data/siteContent'
@@ -30,7 +29,6 @@ function getRouteTitle(pathname, t) {
   if (pathname === '/work' || pathname === '/projects') return t.projects.title
   if (['/output', '/writing', '/course'].includes(pathname)) return t.course.title
   if (pathname === '/contact') return t.contact.title
-  if (pathname === '/roundtable' || pathname === '/lab/roundtable') return t.lab.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
   if (pathname.startsWith('/columns/')) {
     const slug = pathname.slice('/columns/'.length)
@@ -118,13 +116,13 @@ function SiteApp() {
         <Routes>
           <Route path="/" element={<HomePage t={t} locale={locale} />} />
           <Route path="/now" element={<NowPage t={t} />} />
-          <Route path="/lab/roundtable" element={<RoundtablePage t={t} />} />
           <Route path="/work" element={<WorkPage t={t} locale={locale} />} />
           <Route path="/writing" element={<WritingPage t={t} locale={locale} />} />
           <Route path="/output" element={<Navigate replace to="/writing" />} />
           <Route path="/projects" element={<Navigate replace to="/work" />} />
           <Route path="/course" element={<Navigate replace to="/writing" />} />
-          <Route path="/roundtable" element={<Navigate replace to="/lab/roundtable" />} />
+          <Route path="/lab/roundtable" element={<Navigate replace to="/" />} />
+          <Route path="/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />
           <Route path="/topics/where-do-we-go" element={<CollectionView locale={locale} slug="where-do-we-go" topicCopy={t.topic} />} />
           <Route path="/articles/:slug" element={<IndexedArticleRoute locale={locale} />} />

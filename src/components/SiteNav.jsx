@@ -99,7 +99,6 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
           <PrimaryLinks t={t} />
         </div>
         <div className="desktop-nav-secondary">
-          <NavLink to="/lab/roundtable">{t.nav.lab}</NavLink>
           <button className="lang-toggle" type="button" onClick={onToggleLocale}>
             {localeLabel}
           </button>
@@ -138,7 +137,6 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
               />
             </div>
             <div className="mobile-menu-secondary">
-              <NavLink to="/lab/roundtable" onClick={() => setOpen(false)}>{t.nav.lab}</NavLink>
               <button className="lang-toggle" type="button" onClick={onToggleLocale}>
                 {localeLabel}
               </button>

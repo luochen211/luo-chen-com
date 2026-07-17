@@ -45,9 +45,6 @@ export default function WritingPage({ t, locale = 'zh' }) {
         <a href={t.course.archive.href} target="_blank" rel="noreferrer">
           <p>{t.writing.talks}</p><h2>{t.course.archive.title}</h2><span>{t.course.archive.description}</span>
         </a>
-        <Link to="/lab/roundtable">
-          <p>{t.writing.products}</p><h2>{t.lab.title}</h2><span>{t.lab.intro}</span>
-        </Link>
       </section>
     </section>
   )
