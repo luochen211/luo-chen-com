@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { localizeArticles } from '../data/siteContent'
-import { articleIndex, projects } from '../data/siteData'
+import { articleIndex } from '../data/siteData'
+import { getProjectShowcase } from '../data/projectShowcase'
 
 function Hero({ t }) {
   return (
@@ -42,8 +43,8 @@ function ProofGrid({ t, items }) {
   )
 }
 
-function SelectedWork({ t }) {
-  const work = t.projects.list || projects
+function SelectedWork({ t, locale }) {
+  const work = getProjectShowcase(locale).filter((project) => project.featured)
   return (
     <section className="chapter selected-work">
       <div className="chapter-heading sticky-chapter-title">
@@ -53,10 +54,10 @@ function SelectedWork({ t }) {
       <div className="selected-work-list">
         {work.slice(0, 3).map((project) => (
           <article className="selected-work-card" key={project.name}>
-            <p>{project.period}</p>
+            <p>{project.status} · {project.year}</p>
             <h3>{project.name}</h3>
             <span>{project.role}</span>
-            <ul>{project.points.slice(0, 2).map((point) => <li key={point}>{point}</li>)}</ul>
+            <ul><li>{project.summary}</li><li>{project.outcome}</li></ul>
           </article>
         ))}
       </div>
@@ -106,7 +107,7 @@ export default function HomePage({ t, locale = 'zh' }) {
     <div className="focused-page home-redesign">
       <Hero t={t} />
       <ProofGrid t={t} items={proof} />
-      <SelectedWork t={t} />
+      <SelectedWork t={t} locale={locale} />
       <SelectedWriting t={t} locale={locale} />
       <CollaborationCta t={t} />
     </div>

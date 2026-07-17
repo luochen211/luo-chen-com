@@ -9,7 +9,7 @@ import NowPage from './NowPage'
 import WorkPage from './WorkPage'
 import WritingPage from './WritingPage'
 import { siteContent } from '../data/siteContent'
-import { projects } from '../data/siteData'
+import { getProjectShowcase } from '../data/projectShowcase'
 
 const pages = [
   ['Home', HomePage, { locale: 'zh' }],
@@ -52,7 +52,7 @@ describe('redesigned page purposes', () => {
 
   it('owns the complete project archive on Work', () => {
     const { container } = render(<WorkPage t={siteContent.zh} />)
-    expect(container.querySelectorAll('.archive-project')).toHaveLength(projects.length)
+    expect(container.querySelectorAll('.archive-project')).toHaveLength(getProjectShowcase('zh').length)
   })
 
   it('keeps Now current and omits general career positioning', () => {
