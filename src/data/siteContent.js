@@ -103,7 +103,7 @@ const localizedContent = {
         description:
           'A public archive for my livestream decks, offline sharing materials, and AI product talks.',
         action: 'Open PPT Archive',
-        href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
+        href: '/slides/',
       },
       articlesTitle: 'Latest Articles',
       topicsTitle: 'Special Topics',
@@ -347,7 +347,7 @@ const localizedContent = {
         title: 'PPT 归档',
         description: '这里会放我做过的直播、线下分享和 AI 产品相关演讲 PPT。',
         action: '打开 PPT 归档',
-        href: 'https://ai-product-talk-guizang-b-production.up.railway.app/',
+        href: '/slides/',
       },
       articlesTitle: '最新文章',
       topicsTitle: '专题',

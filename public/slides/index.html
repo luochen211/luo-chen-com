@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>落尘的 PPT 仓库</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f4ee;
+    --paper-2:#ede8dd;
+    --ink:#11110f;
+    --muted:#6f6b63;
+    --faint:#cfc6b8;
+    --line:rgba(17,17,15,.14);
+    --blue:#002fa7;
+    --green:#6f8f72;
+    --ochre:#b88a3b;
+    --white:#fffdf8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:"Geist","Noto Sans SC",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+    background:
+      radial-gradient(circle at 12% 10%,rgba(0,47,167,.18),transparent 28vw),
+      radial-gradient(circle at 86% 18%,rgba(184,138,59,.18),transparent 26vw),
+      radial-gradient(circle at 60% 94%,rgba(111,143,114,.18),transparent 34vw),
+      linear-gradient(180deg,var(--paper),var(--paper-2));
+  }
+  body:after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.28;
+    background-image:
+      linear-gradient(rgba(17,17,15,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(17,17,15,.045) 1px,transparent 1px);
+    background-size:44px 44px;
+    mask-image:linear-gradient(180deg,#000,transparent 82%);
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .shell{width:min(1760px,calc(100vw - 64px));margin:0 auto}
+  .nav{
+    position:fixed;left:50%;top:22px;z-index:20;transform:translateX(-50%);
+    width:min(1120px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:10px 10px 10px 18px;background:rgba(247,244,238,.78);border:1px solid rgba(17,17,15,.12);
+    backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 20px 60px rgba(24,20,14,.08);border-radius:999px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+  .brand-mark{width:46px;height:12px;display:grid;grid-template-columns:repeat(3,12px);gap:5px}
+  .brand-mark:before,.brand-mark:after,.brand-mark i{content:"";display:block;width:12px;height:12px}
+  .brand-mark:before{background:var(--blue)}
+  .brand-mark i{background:var(--green)}
+  .brand-mark:after{background:var(--ochre)}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a,.nav-action{
+    height:38px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;
+    font-size:14px;font-weight:500;color:rgba(17,17,15,.72);transition:background .25s ease,color .25s ease,transform .25s ease;
+  }
+  .nav-links a:hover{background:rgba(17,17,15,.07);color:var(--ink)}
+  .nav-action{background:var(--ink);color:var(--white)!important;min-width:128px}
+  .nav-action:hover{transform:translateY(-1px);background:var(--blue);color:#fff!important}
+  .hero{min-height:100svh;padding:120px 0 96px;display:grid;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(420px,.72fr);gap:min(6vw,96px);align-items:center}
+  .hero-copy{max-width:1040px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 28px}
+  h1{margin:0;font-size:clamp(58px,7.6vw,112px);font-weight:200;letter-spacing:-.065em;line-height:.92;max-width:1180px;text-wrap:balance}
+  .only-mobile{display:none}
+  .hero-lead{margin:36px 0 0;max-width:720px;font-size:clamp(18px,1.45vw,27px);line-height:1.58;color:rgba(17,17,15,.76)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 22px;border-radius:999px;
+    border:1px solid rgba(17,17,15,.18);font-size:15px;font-weight:600;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease;
+  }
+  .btn.primary{background:var(--ink);color:var(--white);border-color:var(--ink)}
+  .btn.secondary{background:rgba(255,253,248,.52);color:var(--ink)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary:hover{background:var(--blue);border-color:var(--blue)}
+  .btn.secondary:hover{background:var(--white)}
+  .hero-media{position:relative;min-height:540px}
+  .deck-stack{position:absolute;inset:auto 0 0 0;height:min(62vh,650px)}
+  .shot{
+    position:absolute;overflow:hidden;border:1px solid rgba(17,17,15,.12);background:var(--white);box-shadow:0 44px 120px rgba(35,28,18,.16);
+    transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .8s ease;
+  }
+  .shot img{width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.08)}
+  .shot.main{right:0;bottom:62px;width:min(660px,42vw);aspect-ratio:16/10}
+  .shot.side{left:0;bottom:0;width:min(430px,28vw);aspect-ratio:16/10;transform:translateY(18px) rotate(-3deg);filter:grayscale(.15)}
+  .shot.top{right:9%;top:0;width:min(360px,24vw);aspect-ratio:16/10;transform:rotate(4deg);filter:grayscale(.55)}
+  .deck-stack:hover .shot.main{transform:translateY(-10px) scale(1.015)}
+  .deck-stack:hover .shot.side{transform:translate(-10px,8px) rotate(-5deg) scale(1.02)}
+  .deck-stack:hover .shot.top{transform:translate(12px,-10px) rotate(6deg)}
+  section{padding:120px 0}
+  .section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,520px);gap:48px;align-items:end;margin-bottom:42px}
+  .section-head h2{margin:0;font-size:clamp(42px,6.2vw,112px);font-weight:220;letter-spacing:-.06em;line-height:.92;max-width:900px}
+  .section-head p{margin:0;font-size:clamp(17px,1.15vw,22px);line-height:1.62;color:rgba(17,17,15,.68)}
+  .library-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:18px}
+  .deck-card,.note-card,.metric-card{
+    min-height:320px;border:1px solid rgba(17,17,15,.13);background:rgba(255,253,248,.58);backdrop-filter:blur(18px);
+    overflow:hidden;position:relative;border-radius:6px;
+  }
+  .deck-card{grid-column:span 7;min-height:560px;display:grid;grid-template-rows:1fr auto;color:var(--white);background:var(--ink)}
+  .deck-card .cover{position:absolute;inset:0;overflow:hidden}
+  .deck-card .cover img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) contrast(1.18) brightness(.55);transform:scale(1.02);transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .9s ease}
+  .deck-card:hover .cover img{transform:scale(1.08);filter:grayscale(0) contrast(1.12) brightness(.62)}
+  .deck-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.72))}
+  .deck-content{position:relative;z-index:1;align-self:end;padding:34px;display:grid;gap:24px}
+  .deck-title{font-size:clamp(42px,5.4vw,92px);font-weight:240;letter-spacing:-.06em;line-height:.92}
+  .deck-copy{max-width:560px;color:rgba(255,255,255,.78);font-size:18px;line-height:1.58}
+  .deck-meta{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);padding:8px 11px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+  .note-card{grid-column:span 5;padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+  .note-card h3,.metric-card h3{margin:0;font-size:clamp(28px,3.1vw,56px);font-weight:270;letter-spacing:-.045em;line-height:1}
+  .note-card p,.metric-card p{margin:0;color:rgba(17,17,15,.66);font-size:17px;line-height:1.58}
+  .note-lines{display:grid;gap:12px;margin-top:34px}
+  .note-line{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:14px 0;border-top:1px solid var(--line)}
+  .note-line b{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+  .note-line span{color:rgba(17,17,15,.72);line-height:1.5}
+  .metric-card{grid-column:span 4;min-height:230px;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+  .metric-card strong{font-size:clamp(48px,6vw,104px);font-weight:200;letter-spacing:-.07em;line-height:.85}
+  .metric-card.blue{background:var(--blue);color:#fff}
+  .metric-card.blue p{color:rgba(255,255,255,.74)}
+  .rail{padding-top:70px}
+  .rail-wrap{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:64px;align-items:start}
+  .rail-title{position:sticky;top:130px}
+  .rail-title h2{margin:0;font-size:clamp(44px,5vw,92px);font-weight:220;line-height:.94;letter-spacing:-.06em}
+  .rail-title p{margin:24px 0 0;color:rgba(17,17,15,.66);font-size:18px;line-height:1.62}
+  .accordion{display:grid;grid-template-columns:1fr 1fr 1fr;min-height:520px;border:1px solid var(--line);overflow:hidden;border-radius:6px;background:rgba(255,253,248,.58)}
+  .panel{position:relative;overflow:hidden;padding:26px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;transition:flex .65s cubic-bezier(.2,.8,.2,1),background .4s ease;color:var(--ink)}
+  .panel:last-child{border-right:0}
+  .panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .5s ease,transform .8s ease;filter:grayscale(.25) contrast(1.08) brightness(.76)}
+  .panel:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(247,244,238,.92),rgba(17,17,15,.2));z-index:1;transition:background .4s ease}
+  .panel > *:not(img){position:relative;z-index:2}
+  .accordion:hover{grid-template-columns:.75fr 1.5fr .75fr}
+  .panel:hover{color:#fff}
+  .panel:hover img{opacity:1;transform:scale(1)}
+  .panel:hover:before{background:linear-gradient(180deg,rgba(0,47,167,.22),rgba(0,0,0,.72))}
+  .panel h3{margin:0;font-size:clamp(28px,3.2vw,58px);font-weight:250;line-height:.98;letter-spacing:-.05em}
+  .panel p{margin:30px 0 0;max-width:32ch;font-size:16px;line-height:1.58;color:currentColor;opacity:.78}
+  .panel .arrow{font-size:34px;font-weight:200;align-self:flex-end}
+  .closing{padding-bottom:80px}
+  .closing-box{
+    min-height:440px;background:var(--ink);color:var(--white);border-radius:6px;padding:44px;
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:44px;align-items:end;overflow:hidden;position:relative;
+  }
+  .closing-box:before{content:"";position:absolute;inset:auto -12% -35% 45%;height:80%;background:radial-gradient(circle,rgba(0,47,167,.58),transparent 62%);filter:blur(8px)}
+  .closing h2{position:relative;margin:0;font-size:clamp(48px,7vw,126px);font-weight:210;letter-spacing:-.065em;line-height:.9;max-width:980px}
+  .closing-actions{position:relative;display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  .closing .btn.secondary{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+  .footer{padding:30px 0 42px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:14px}
+  .reveal{opacity:0;transform:translateY(22px)}
+  .word{opacity:.18;transition:opacity .2s linear}
+  @media(max-width:980px){
+    .shell{width:min(100vw - 36px,760px)}
+    .nav{top:14px}
+    .nav-links{display:none}
+    .hero{padding-top:118px}
+    .hero-grid,.section-head,.rail-wrap,.closing-box{grid-template-columns:1fr}
+    .eyebrow{font-size:11px;line-height:1.45;letter-spacing:.15em;max-width:34ch}
+    h1{font-size:clamp(42px,12.5vw,66px);letter-spacing:-.052em;line-height:.95}
+    .only-mobile{display:block}
+    .hero-lead{font-size:17px;max-width:31ch;word-break:break-all}
+    .hero-media{display:none}
+    .shot.main{width:86vw}.shot.side{width:58vw}.shot.top{width:48vw}
+    section{padding:84px 0}
+    .deck-card,.note-card,.metric-card{grid-column:span 12}
+    .accordion{grid-template-columns:1fr;min-height:auto}
+    .accordion:hover{grid-template-columns:1fr}
+    .panel{min-height:280px;border-right:0;border-bottom:1px solid var(--line)}
+    .footer{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+  <nav class="nav" aria-label="主导航">
+    <a class="brand" href="/slides/">
+      <span class="brand-mark" aria-hidden="true"><i></i></span>
+      <span>关于落尘的 PPT</span>
+    </a>
+    <div class="nav-links">
+      <a href="#library">作品</a>
+      <a href="#system">结构</a>
+      <a href="#next">新增</a>
+      <a class="nav-action" href="/slides/decks/mini-program-ui/">看最新一份</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero shell">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">Talks, courses, product notes, and field records</p>
+          <h1 class="reveal">关于落尘的<br class="only-mobile">PPT</h1>
+          <p class="hero-lead reveal">这里集中存放落尘做过的公开分享、课程讲稿和项目复盘。每一份都保留成独立网页：能投屏，能转发，也能回看。</p>
+          <div class="hero-actions reveal">
+            <a class="btn primary" href="/slides/decks/mini-program-ui/">查看小程序审美课</a>
+            <a class="btn secondary" href="#library">浏览全部 PPT</a>
+          </div>
+        </div>
+        <div class="hero-media reveal" aria-hidden="true">
+          <div class="deck-stack">
+            <figure class="shot top"><img src="/slides/decks/mini-program-ui/images/04-bad-ui-diagnostic.png" alt=""></figure>
+            <figure class="shot main"><img src="/slides/decks/mini-program-ui/images/01-swiss-mini-program-hero.png" alt=""></figure>
+            <figure class="shot side"><img src="/slides/decks/mini-program-ui/images/08-color-system.png" alt=""></figure>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="library" class="shell">
+      <div class="section-head reveal">
+        <h2>已上线的 PPT</h2>
+        <p>这个页面是落尘 PPT 的总入口。真正的演示内容保持在各自 deck 目录里；以后新增一份，就在这里多一张作品卡。</p>
+      </div>
+
+      <div class="library-grid">
+        <a class="deck-card reveal" href="/slides/decks/mini-program-ui/">
+          <div class="cover"><img src="/slides/decks/mini-program-ui/images/01-swiss-mini-program-hero.png" alt="如何做出好看的小程序预览"></div>
+          <div class="deck-content">
+            <div>
+              <div class="deck-title">如何做出<br>好看的小程序</div>
+              <p class="deck-copy">从信任、停留、转化讲起，把小程序 UI 审美拆成统一、清楚、舒服、顺手、记住五个可执行标准。</p>
+            </div>
+            <div class="deck-meta">
+              <span class="chip">17 slides</span>
+              <span class="chip">Guizang Swiss</span>
+              <span class="chip">UI course</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="deck-card reveal" href="/slides/decks/ai-product-talk/">
+          <div class="cover"><img src="/slides/decks/ai-product-talk/preview-slide-08-image2.png" alt="我是如何半年动 100w+ 行代码的预览"></div>
+          <div class="deck-content">
+            <div>
+              <div class="deck-title">我是如何半年<br>动 100w+ 行代码的</div>
+              <p class="deck-copy">从半年 100w+ 行代码的真实项目里，复盘我怎么用 Agent 做项目，以及背后的产品判断。</p>
+            </div>
+            <div class="deck-meta">
+              <span class="chip">10 slides</span>
+              <span class="chip">Swiss style</span>
+              <span class="chip">20 min talk</span>
+            </div>
+          </div>
+        </a>
+
+        <article class="note-card reveal">
+          <div>
+            <h3>一个入口，多个独立 deck。</h3>
+            <div class="note-lines">
+              <div class="note-line"><b>URL</b><span>每份 PPT 都有稳定链接，适合发给群、客户或课程学员。</span></div>
+              <div class="note-line"><b>Assets</b><span>图片、动效、脚本跟随 deck 目录走，不互相污染。</span></div>
+              <div class="note-line"><b>Deploy</b><span>新增后随 luo-chen.com 一起发布，根页会成为长期索引。</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card blue reveal">
+          <strong>02</strong>
+          <p>当前已上线的落尘网页 PPT。新增作品会直接进入这个入口，而不是另开散乱链接。</p>
+        </article>
+        <article class="metric-card reveal">
+          <strong>17</strong>
+          <p>最新小程序审美课页数。适合一次 30 分钟分享或课堂实操。</p>
+        </article>
+        <article class="metric-card reveal">
+          <strong>∞</strong>
+          <p>后续扩展容量：课程、复盘、案例、发布稿都可以放到同一入口。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="system" class="rail shell">
+      <div class="rail-wrap">
+        <div class="rail-title reveal">
+          <h2>落尘的 PPT，以后都从这里进入。</h2>
+          <p class="scrub-text">根页面做成总入口，deck 目录做成单独作品。别人只记一个链接，你只维护一套部署。</p>
+        </div>
+        <div class="accordion reveal">
+          <a class="panel" href="/slides/">
+            <img src="/slides/decks/ai-product-talk/images/04-simple-leverage-image2.png" alt="">
+            <div>
+              <h3>首页负责<br>发现</h3>
+              <p>展示落尘最新、最重要、最适合分享出去的 PPT，不让访问者迷路。</p>
+            </div>
+            <span class="arrow">/</span>
+          </a>
+          <a class="panel" href="/slides/decks/ai-product-talk/">
+            <img src="/slides/decks/ai-product-talk/images/10-parallel-workflow-image2.png" alt="">
+            <div>
+              <h3>Deck 负责<br>演示</h3>
+              <p>每份 PPT 独立运行，横向翻页、图片资源、动效和页面参数都留在自己的目录里。</p>
+            </div>
+            <span class="arrow">/</span>
+          </a>
+          <a class="panel" href="#next">
+            <img src="/slides/decks/ai-product-talk/images/05-three-layers-image2.png" alt="">
+            <div>
+              <h3>新增负责<br>复用</h3>
+              <p>复制一个 deck 文件夹，改内容，加一张卡片，再部署。这个入口会自然变成落尘的 PPT 档案。</p>
+            </div>
+            <span class="arrow">/</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="closing shell">
+      <div class="closing-box reveal">
+        <h2>下一份关于落尘的 PPT，直接放进这里。</h2>
+        <div class="closing-actions">
+          <a class="btn primary" href="/slides/decks/mini-program-ui/">打开最新作品</a>
+          <a class="btn secondary" href="#library">回到作品列表</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <div>About Luochens PPT archive</div>
+    <div>Updated 2026.07.09</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    const revealEls = document.querySelectorAll(".reveal");
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      revealEls.forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: .9,
+          delay: i < 5 ? i * .08 : 0,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 86%",
+            once: true
+          }
+        });
+      });
+
+      gsap.utils.toArray(".shot").forEach((shot) => {
+        gsap.fromTo(shot, { scale: .92, opacity: .72 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      const text = document.querySelector(".scrub-text");
+      if (text) {
+        const words = text.textContent.trim().split(/\s*/).filter(Boolean);
+        text.innerHTML = words.map((word) => `<span class="word">${word}</span>`).join("");
+        gsap.to(text.querySelectorAll(".word"), {
+          opacity: 1,
+          stagger: .025,
+          ease: "none",
+          scrollTrigger: {
+            trigger: text,
+            start: "top 78%",
+            end: "bottom 45%",
+            scrub: true
+          }
+        });
+      }
+    } else {
+      revealEls.forEach((el) => {
+        el.style.opacity = "1";
+        el.style.transform = "none";
+      });
+      document.querySelectorAll(".word").forEach((el) => el.style.opacity = "1");
+    }
+  </script>
+</body>
+</html>

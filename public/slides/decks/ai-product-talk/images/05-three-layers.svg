@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">AI 产品三层方法论</title>
+  <desc id="desc">模型层、通用 Agent 工具、行业应用三层结构图。</desc>
+  <defs>
+    <style>
+      .paper{fill:#FAFAF8}
+      .ink{fill:#0A0A0A}
+      .blue{fill:#002FA7}
+      .muted{fill:#737373}
+      .line{fill:none;stroke:#0A0A0A;stroke-width:2}
+      .thin{fill:none;stroke:#D4D4D2;stroke-width:1}
+      .blue-line{fill:none;stroke:#002FA7;stroke-width:4}
+      .label{font-family:Inter, "Noto Sans SC", "PingFang SC", Arial, sans-serif;font-size:38px;font-weight:500;letter-spacing:0}
+      .body{font-family:Inter, "Noto Sans SC", "PingFang SC", Arial, sans-serif;font-size:28px;font-weight:400;letter-spacing:0}
+      .small{font-family:"JetBrains Mono", "Noto Sans SC", monospace;font-size:20px;font-weight:400;letter-spacing:.08em}
+      .num{font-family:Inter, Arial, sans-serif;font-size:76px;font-weight:200;letter-spacing:0}
+    </style>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" class="thin"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1000" class="paper"/>
+  <rect width="1600" height="1000" fill="url(#grid)" opacity=".68"/>
+  <line x1="120" y1="146" x2="1480" y2="146" class="line"/>
+  <text x="120" y="106" class="small muted">THREE-LAYER OPERATING MODEL</text>
+
+  <g transform="translate(120 220)">
+    <rect x="0" y="0" width="1360" height="580" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="3"/>
+
+    <g transform="translate(0 0)">
+      <rect x="0" y="0" width="1360" height="176" fill="#002FA7"/>
+      <text x="36" y="70" fill="#FFFFFF" class="num">03</text>
+      <text x="190" y="70" fill="#FFFFFF" class="label">行业应用</text>
+      <text x="190" y="120" fill="#FFFFFF" class="body" opacity=".84">把工作流、业务语义、验收标准封装成产品</text>
+      <rect x="780" y="38" width="148" height="76" fill="#FFFFFF"/>
+      <text x="810" y="85" class="small blue">销售</text>
+      <rect x="952" y="38" width="148" height="76" fill="#FFFFFF"/>
+      <text x="982" y="85" class="small blue">教育</text>
+      <rect x="1124" y="38" width="148" height="76" fill="#FFFFFF"/>
+      <text x="1154" y="85" class="small blue">运营</text>
+    </g>
+
+    <g transform="translate(0 176)">
+      <rect x="0" y="0" width="1360" height="202" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2"/>
+      <text x="36" y="88" class="num ink">02</text>
+      <text x="190" y="88" class="label ink">通用 Agent 工具</text>
+      <text x="190" y="138" class="body muted">记忆、工具调用、计划拆解、权限、日志、评测</text>
+      <g transform="translate(780 46)">
+        <rect x="0" y="0" width="492" height="88" fill="#FAFAF8" stroke="#002FA7" stroke-width="3"/>
+        <line x1="82" y1="0" x2="82" y2="88" class="blue-line"/>
+        <line x1="164" y1="0" x2="164" y2="88" class="blue-line"/>
+        <line x1="246" y1="0" x2="246" y2="88" class="blue-line"/>
+        <line x1="328" y1="0" x2="328" y2="88" class="blue-line"/>
+        <line x1="410" y1="0" x2="410" y2="88" class="blue-line"/>
+        <text x="20" y="55" class="small blue">M</text>
+        <text x="102" y="55" class="small blue">T</text>
+        <text x="184" y="55" class="small blue">P</text>
+        <text x="266" y="55" class="small blue">A</text>
+        <text x="348" y="55" class="small blue">L</text>
+        <text x="430" y="55" class="small blue">E</text>
+      </g>
+    </g>
+
+    <g transform="translate(0 378)">
+      <rect x="0" y="0" width="1360" height="202" fill="#EFEFED" stroke="#0A0A0A" stroke-width="2"/>
+      <text x="36" y="88" class="num ink">01</text>
+      <text x="190" y="88" class="label ink">模型层</text>
+      <text x="190" y="138" class="body muted">大模型、多模态、推理能力、上下文窗口、成本曲线</text>
+      <g transform="translate(780 52)">
+        <rect x="0" y="0" width="492" height="76" fill="#0A0A0A"/>
+        <rect x="18" y="18" width="90" height="40" fill="#FAFAF8"/>
+        <rect x="128" y="18" width="90" height="40" fill="#FAFAF8"/>
+        <rect x="238" y="18" width="90" height="40" fill="#FAFAF8"/>
+        <rect x="348" y="18" width="126" height="40" fill="#002FA7"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(120 852)">
+    <line x1="0" y1="0" x2="1360" y2="0" class="line"/>
+    <text x="0" y="54" class="small muted">METHOD</text>
+    <text x="190" y="54" class="body ink">不要从“我要做一个 AI 应用”开始；从行业任务的验收面反推中间工具和底层模型。</text>
+  </g>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">多任务并发工作流</title>
+  <desc id="desc">多个 agent 任务并行推进，人只在验收节点介入的泳道图。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L16,6 L0,12 Z" fill="#002FA7"/>
+    </marker>
+    <style>
+      .paper{fill:#FAFAF8}
+      .ink{fill:#0A0A0A}
+      .blue{fill:#002FA7}
+      .muted{fill:#737373}
+      .line{fill:none;stroke:#0A0A0A;stroke-width:2}
+      .thin{fill:none;stroke:#D4D4D2;stroke-width:1}
+      .blue-line{fill:none;stroke:#002FA7;stroke-width:4}
+      .dash{fill:none;stroke:#737373;stroke-width:2;stroke-dasharray:10 12}
+      .label{font-family:Inter, "Noto Sans SC", "PingFang SC", Arial, sans-serif;font-size:32px;font-weight:500;letter-spacing:0}
+      .body{font-family:Inter, "Noto Sans SC", "PingFang SC", Arial, sans-serif;font-size:25px;font-weight:400;letter-spacing:0}
+      .small{font-family:"JetBrains Mono", "Noto Sans SC", monospace;font-size:19px;font-weight:400;letter-spacing:.08em}
+      .num{font-family:Inter, Arial, sans-serif;font-size:64px;font-weight:200;letter-spacing:0}
+    </style>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" class="thin"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1000" class="paper"/>
+  <rect width="1600" height="1000" fill="url(#grid)" opacity=".7"/>
+  <line x1="120" y1="146" x2="1480" y2="146" class="line"/>
+  <text x="120" y="106" class="small muted">PARALLEL AGENT WORKFLOW / HUMAN-IN-THE-LOOP ACCEPTANCE</text>
+
+  <g transform="translate(120 218)">
+    <rect x="0" y="0" width="1360" height="610" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="3"/>
+    <line x1="0" y1="122" x2="1360" y2="122" class="line"/>
+    <line x1="0" y1="244" x2="1360" y2="244" class="line"/>
+    <line x1="0" y1="366" x2="1360" y2="366" class="line"/>
+    <line x1="0" y1="488" x2="1360" y2="488" class="line"/>
+
+    <line x1="300" y1="0" x2="300" y2="610" class="thin"/>
+    <line x1="690" y1="0" x2="690" y2="610" class="dash"/>
+    <line x1="1040" y1="0" x2="1040" y2="610" class="dash"/>
+
+    <g>
+      <rect x="0" y="0" width="300" height="122" class="ink"/>
+      <text x="30" y="56" fill="#FFFFFF" class="small">TASK A</text>
+      <text x="30" y="92" fill="#FFFFFF" class="body">用户访谈摘要</text>
+      <path d="M340 61 H628" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="720" y="28" width="250" height="66" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2"/>
+      <text x="750" y="70" class="small ink">整理证据</text>
+      <path d="M990 61 H1168" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="1198" y="28" width="122" height="66" class="blue"/>
+      <text x="1226" y="70" fill="#FFFFFF" class="small">验收</text>
+    </g>
+
+    <g transform="translate(0 122)">
+      <rect x="0" y="0" width="300" height="122" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2"/>
+      <text x="30" y="56" class="small muted">TASK B</text>
+      <text x="30" y="92" class="body ink">竞品拆解</text>
+      <path d="M340 61 H520" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="548" y="28" width="250" height="66" fill="#FAFAF8" stroke="#002FA7" stroke-width="3"/>
+      <text x="578" y="70" class="small blue">特征矩阵</text>
+      <path d="M820 61 H1168" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="1198" y="28" width="122" height="66" class="blue"/>
+      <text x="1226" y="70" fill="#FFFFFF" class="small">验收</text>
+    </g>
+
+    <g transform="translate(0 244)">
+      <rect x="0" y="0" width="300" height="122" class="ink"/>
+      <text x="30" y="56" fill="#FFFFFF" class="small">TASK C</text>
+      <text x="30" y="92" fill="#FFFFFF" class="body">原型生成</text>
+      <path d="M340 61 H628" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="720" y="28" width="250" height="66" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2"/>
+      <text x="750" y="70" class="small ink">HTML demo</text>
+      <path d="M990 61 H1168" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="1198" y="28" width="122" height="66" class="blue"/>
+      <text x="1226" y="70" fill="#FFFFFF" class="small">验收</text>
+    </g>
+
+    <g transform="translate(0 366)">
+      <rect x="0" y="0" width="300" height="122" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2"/>
+      <text x="30" y="56" class="small muted">TASK D</text>
+      <text x="30" y="92" class="body ink">销售页面</text>
+      <path d="M340 61 H520" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="548" y="28" width="250" height="66" fill="#FAFAF8" stroke="#002FA7" stroke-width="3"/>
+      <text x="578" y="70" class="small blue">文案版本</text>
+      <path d="M820 61 H1168" class="blue-line" marker-end="url(#arrow)"/>
+      <rect x="1198" y="28" width="122" height="66" class="blue"/>
+      <text x="1226" y="70" fill="#FFFFFF" class="small">验收</text>
+    </g>
+
+    <g transform="translate(0 488)">
+      <rect x="0" y="0" width="300" height="122" fill="#002FA7"/>
+      <text x="30" y="56" fill="#FFFFFF" class="small">HUMAN ROLE</text>
+      <text x="30" y="92" fill="#FFFFFF" class="body">只做判断</text>
+      <rect x="650" y="0" width="80" height="122" class="blue"/>
+      <text x="672" y="70" fill="#FFFFFF" class="small">审</text>
+      <rect x="1000" y="0" width="80" height="122" class="blue"/>
+      <text x="1022" y="70" fill="#FFFFFF" class="small">审</text>
+      <rect x="1198" y="0" width="122" height="122" class="ink"/>
+      <text x="1228" y="70" fill="#FFFFFF" class="small">发版</text>
+    </g>
+  </g>
+
+  <g transform="translate(120 872)">
+    <text x="0" y="0" class="num blue">4x</text>
+    <text x="132" y="-4" class="label ink">并发不是同时聊天，而是同时推进可验收任务。</text>
+    <line x1="0" y1="44" x2="1360" y2="44" class="line"/>
+    <text x="0" y="94" class="small muted">DESIGN RULE</text>
+    <text x="190" y="94" class="body ink">把人从“过程执行者”移到“验收节点”，agent 才能真正放大吞吐。</text>
+  </g>
+</svg>
