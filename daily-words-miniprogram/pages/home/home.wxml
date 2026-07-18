@@ -12,5 +12,10 @@
     <view class="goal-tip">再学 <text class="strong">{{goal-learned}}</text> 个单词完成今日目标！</view>
     <button class="primary" bindtap="startStudy">开始学习　→</button>
   </view>
-  <view class="tabbar"><button class="active">◆<text>首页</text></button><button bindtap="startStudy">▣<text>复习</text></button><button>▤<text>词库</text></button><button bindtap="openReport">●<text>我的</text></button></view>
+  <view class="tabbar">
+    <button class="active"><image src="/assets/tabbar/house-active.png" mode="aspectFit"/><text>首页</text></button>
+    <button bindtap="startStudy"><image src="/assets/tabbar/book-open-check.png" mode="aspectFit"/><text>复习</text></button>
+    <button><image src="/assets/tabbar/library-big.png" mode="aspectFit"/><text>词库</text></button>
+    <button bindtap="openReport"><image src="/assets/tabbar/user-round.png" mode="aspectFit"/><text>我的</text></button>
+  </view>
 </view>
