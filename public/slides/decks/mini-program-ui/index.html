@@ -70,7 +70,7 @@
     --dur-slow-2:.7s;    /* 700ms */
 
     /* 底部分页组件安全区: 主内容最低处不要进入这条区域 */
-    --nav-safe-bottom:8vh;
+    --nav-safe-bottom:10vh;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{
@@ -92,7 +92,9 @@
   .slide{
     width:100vw;height:100vh;flex:0 0 100vw;
     position:relative;
-    padding:5.5vh 5vw 7vh 5vw;
+    /* Keep the fixed pager in a dedicated strip instead of letting it sit on
+       top of slide copy, rules, or card labels. */
+    padding:5.5vh 5vw var(--nav-safe-bottom) 5vw;
     display:flex;flex-direction:column;
     overflow:hidden;
     background:var(--paper);color:var(--ink);
