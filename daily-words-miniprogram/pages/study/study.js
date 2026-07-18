@@ -39,7 +39,7 @@ Page({
   },
   unknown() {
     this.record('unknown')
-    wx.navigateTo({ url: '/pages/quiz/quiz' })
+    this.showWord((this.data.index + 1) % words.length)
   },
   toggleFavorite() {
     const wordId = this.data.word.id
