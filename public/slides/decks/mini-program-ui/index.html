@@ -520,6 +520,13 @@
   .source-strip figure{margin:0;display:flex;flex-direction:column;min-width:0;min-height:0;background:#fff;border:1px solid var(--border-subtle);overflow:hidden}
   .source-strip img{width:100%;min-height:0;flex:1;object-fit:contain}
   .source-strip figcaption{padding:1vh 1vw;border-top:1px solid var(--border-subtle);font:500 max(12px,.8vw)/1.3 var(--mono);letter-spacing:.08em;color:var(--text-secondary)}
+  .workflow-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border-subtle);margin-top:auto;margin-bottom:var(--nav-safe-bottom)}
+  .workflow-step{background:var(--paper);padding:3vh 1.8vw;min-height:33vh;display:flex;flex-direction:column;gap:1.5vh}
+  .workflow-step .step-no{font:500 max(13px,.82vw)/1 var(--mono);letter-spacing:.12em;color:var(--accent)}
+  .workflow-step h3{font-size:max(28px,2.4vw);font-weight:300;letter-spacing:-.03em;margin-top:auto}
+  .workflow-step p{font-size:max(15px,1vw);line-height:1.55;color:var(--text-secondary);max-width:22ch}
+  .prompt-example{margin-top:2.4vh;padding:2.2vh 1.6vw;background:var(--ink);color:var(--paper);font:400 max(14px,.9vw)/1.65 var(--mono);border-left:5px solid var(--accent);max-width:38vw}
+  .prompt-example b{color:#8da2ff;font-weight:500}
   .frame-img > img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
   .frame-img.fit-contain > img{object-fit:contain;object-position:center center}
   .frame-img.pos-top > img{object-position:top center}
@@ -1361,7 +1368,7 @@
       </div>
       <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">04 / 17 · WARNING</div><div class="r">BAD FIRST IMPRESSION</div></div>
       <div data-anim="title-block" style="position:absolute;left:5vw;top:12vh;background:var(--paper);padding:3vh 3vw;max-width:42vw">
-        <div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.9vw,8.6vh);line-height:1;letter-spacing:-.035em;color:var(--text-primary)">一眼 AI<br/>一眼临时</div>
+        <div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.9vw,8.6vh);line-height:1;letter-spacing:-.035em;color:var(--text-primary)">问题不在丑<br/>而在像<span style="color:var(--accent)">临时做的</span></div>
       </div>
     </div>
     <div data-anim="kpi" class="image-hero-body">
@@ -1500,7 +1507,7 @@
     <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--paper)">
       <img src="images/image6.png" data-image-slot="s22-hero-21x9" alt="原始配色与按钮系统对比图" loading="eager" style="position:absolute;inset:5vh 4vw 2vh 43vw;width:53vw;height:51vh;object-fit:contain;object-position:center center">
       <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">08 / 17 · COLOR</div><div class="r">COLOR SYSTEM</div></div>
-      <div data-anim="title-block" style="position:absolute;left:5vw;top:12vh;background:var(--paper);padding:3vh 3vw;max-width:38vw"><div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9vh);line-height:1;letter-spacing:-.035em">配色先<br/>克制</div></div>
+      <div data-anim="title-block" style="position:absolute;left:5vw;top:12vh;background:var(--paper);padding:3vh 3vw;max-width:38vw"><div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9vh);line-height:1;letter-spacing:-.035em"><span style="color:var(--accent)">01</span> 配色先<br/>克制</div></div>
     </div>
     <div data-anim="kpi" class="image-hero-body">
       <div style="max-width:45ch;font-size:max(18px,1.3vw);line-height:1.55;font-weight:400">先定一个主色，让中性色承接大部分信息。颜色越少，关键动作越明显。</div>
@@ -1544,7 +1551,7 @@
   </div>
   <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
     <div class="t-meta" style="color:var(--text-helper);letter-spacing:.2em">LAYOUT</div>
-    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch">排版先分层</h2>
+    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch"><span style="color:var(--accent)">02</span> 排版先分层</h2>
     <p class="lead" style="max-width:50ch;color:var(--text-secondary);font-size:max(18px,1.28vw)">小程序页面空间很窄，层级比花样更重要。</p>
   </div>
     <div data-anim="up" class="source-evidence">
@@ -1571,7 +1578,7 @@
   </div>
   <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
     <div class="t-meta" style="color:var(--text-helper);letter-spacing:.2em">VISUAL</div>
-    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch">素材要统一</h2>
+    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch"><span style="color:var(--accent)">03</span> 素材要统一</h2>
     <p class="lead" style="max-width:50ch;color:var(--text-secondary);font-size:max(18px,1.28vw)">同一种世界观，别混着来。</p>
   </div>
     <div data-anim="up" class="brief-grid" style="grid-template-columns:repeat(3,1fr)">
@@ -1595,7 +1602,7 @@
   </div>
   <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
     <div class="t-meta" style="color:var(--text-helper);letter-spacing:.2em">INTERACTION</div>
-    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch">好看也要好用</h2>
+    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch"><span style="color:var(--accent)">04</span> 好看也要好用</h2>
     <p class="lead" style="max-width:50ch;color:var(--text-secondary);font-size:max(18px,1.28vw)">用户每犹豫一次，都会增加一次流失。</p>
   </div>
     <div data-anim="up" class="loop-diagram">
@@ -1627,11 +1634,11 @@
     <div class="r">START SIMPLE</div>
   </div>
     <div data-anim="line" class="manifesto-top">
-      <div><span class="t-meta" style="color:rgba(255,255,255,.75)">METHOD</span><h2 style="font-weight:200;font-size:min(7.2vw,12.6vh);line-height:.98;color:#fff">开始其实<br/>很简单</h2></div>
-      <p style="font-size:max(20px,1.4vw);line-height:1.55;color:rgba(255,255,255,.86);max-width:34ch">别从空白画布开始。先找成熟参考，把页面拆成可复用规则。</p>
+      <div><span class="t-meta" style="color:rgba(255,255,255,.75)">METHOD</span><h2 style="font-weight:200;font-size:min(7.2vw,12.6vh);line-height:.98;color:#fff">没有灵感<br/>就先<span style="font-style:italic">复刻</span></h2></div>
+      <p style="font-size:max(20px,1.4vw);line-height:1.55;color:rgba(255,255,255,.86);max-width:34ch">别从空白画布开始。审美不是凭空创造，而是先看懂成熟页面为什么成立。</p>
     </div>
     <div data-anim="banner" class="ink-banner-full">
-      <div style="font-size:min(5vw,8.8vh);font-weight:200;letter-spacing:-.035em">找参考 → 拆结构 → 做一屏 → 反复改</div>
+      <div style="font-size:min(5vw,8.8vh);font-weight:200;letter-spacing:-.035em">参考不是答案，是你的<span style="color:#8da2ff">起跑线</span></div>
     </div>
   </div>
 </section>
@@ -1649,12 +1656,11 @@
     <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch">四步把审美落成页面</h2>
     
   </div>
-    <div data-anim="up" class="timeline-h" style="margin-top:8vh">
-      <span class="tl-h-axis"></span>
-      <div class="th-node tl-h-node" style="left:10%"><span class="num">01</span><span class="dot"></span><span class="lbl">找同类参考</span></div>
-      <div class="th-node tl-h-node" style="left:36%"><span class="num">02</span><span class="dot"></span><span class="lbl">拆信息顺序</span></div>
-      <div class="th-node tl-h-node" style="left:64%"><span class="num">03</span><span class="dot"></span><span class="lbl">复刻首屏</span></div>
-      <div class="th-node tl-h-node" style="left:90%"><span class="num">04</span><span class="dot"></span><span class="lbl">按标准改</span></div>
+    <div data-anim="up" class="workflow-grid">
+      <article class="workflow-step"><span class="step-no">01 / REFERENCE</span><h3>找同类</h3><p>只看同场景、同任务、同信息密度的成熟产品。</p></article>
+      <article class="workflow-step"><span class="step-no">02 / STRUCTURE</span><h3>拆顺序</h3><p>标出用户先看什么、再看什么、最后点哪里。</p></article>
+      <article class="workflow-step"><span class="step-no">03 / FIRST SCREEN</span><h3>做一屏</h3><p>先把首屏做到可信，再向下扩展完整页面。</p></article>
+      <article class="workflow-step"><span class="step-no">04 / ITERATE</span><h3>反复改</h3><p>按统一、清楚、舒服、顺手逐项检查。</p></article>
     </div>
   </div>
 </section>
@@ -1715,7 +1721,7 @@
       <div class="duo-half col">
         <span class="t-cat">DO</span>
         <h2>给页面<br/>给约束</h2>
-        <p class="body">行业、功能、主色、信息层级、目标参考都说清楚。</p>
+        <div class="prompt-example"><b>做一个宠物服务小程序首页：</b><br>暖白背景，蓝色只用于主按钮；<br>首屏依次展示定位、核心服务、预约入口；<br>卡片圆角统一为 16px，图标使用同一套线性风格；<br>参考 Apple Store 的信息克制感。</div>
       </div>
     </div>
   </div>
@@ -1746,8 +1752,8 @@
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">17 / 17</div><div class="r">END</div></div>
         <div data-anim="manifesto" style="position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em;margin-bottom:1.6vh">MANIFESTO</div>
-          <h2 style="font-size:min(7.4vw,13vh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">这件事<br/>其实不<span style="font-style:italic;font-weight:300">重要</span></h2>
-          <p style="font-size:max(18px,1.1vw);line-height:1.6;color:rgba(255,255,255,.82);max-width:34ch;margin-top:2vh">但它不能拖后腿。</p>
+          <h2 style="font-size:min(7vw,12.4vh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">审美不是<br/>产品的<span style="font-style:italic;font-weight:300">核心</span></h2>
+          <p style="font-size:max(18px,1.1vw);line-height:1.6;color:rgba(255,255,255,.82);max-width:34ch;margin-top:2vh">但糟糕的 UI，会让用户看不到你的核心。</p>
         </div>
         <div data-anim="signature" style="border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;position:relative;z-index:1;display:flex;align-items:center;gap:1vw" class="t-meta"><img src="images/image3.jpg" alt="作者头像" style="width:3.2vw;height:3.2vw;border-radius:50%;object-fit:cover">UI IS PRODUCT TRUST</div>
       </div>
