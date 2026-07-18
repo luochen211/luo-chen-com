@@ -527,6 +527,19 @@
   .workflow-step p{font-size:max(15px,1vw);line-height:1.55;color:var(--text-secondary);max-width:22ch}
   .prompt-example{margin-top:2.4vh;padding:2.2vh 1.6vw;background:var(--ink);color:var(--paper);font:400 max(14px,.9vw)/1.65 var(--mono);border-left:5px solid var(--accent);max-width:38vw}
   .prompt-example b{color:#8da2ff;font-weight:500}
+  .material-layout{display:grid;grid-template-columns:30% 1fr;gap:3.5vw;min-height:0;flex:1;margin-bottom:var(--nav-safe-bottom)}
+  .material-copy{display:flex;flex-direction:column;justify-content:space-between;padding-top:2vh;min-width:0}
+  .material-rules{display:flex;flex-direction:column}
+  .material-rule{display:grid;grid-template-columns:2.2em 1fr;gap:1vw;padding:1.6vh 0;border-top:1px solid var(--border-subtle)}
+  .material-rule:last-child{border-bottom:2px solid var(--accent)}
+  .material-rule b{font:500 max(14px,.9vw)/1 var(--mono);color:var(--accent)}
+  .material-rule span{font-size:max(16px,1.05vw);line-height:1.4;color:var(--text-secondary)}
+  .material-evidence{display:grid;grid-template-rows:repeat(2,minmax(0,1fr));gap:1.6vh;min-height:0}
+  .material-figure{margin:0;display:grid;grid-template-columns:1fr 13vw;min-height:0;background:var(--ink);overflow:hidden}
+  .material-figure img{width:100%;height:100%;object-fit:contain;min-height:0}
+  .material-figure figcaption{background:var(--accent);color:#fff;padding:2.2vh 1.3vw;display:flex;flex-direction:column;justify-content:space-between}
+  .material-figure figcaption strong{font-size:max(20px,1.45vw);font-weight:400;line-height:1.15}
+  .material-figure figcaption span{font:500 max(12px,.75vw)/1.3 var(--mono);letter-spacing:.12em;opacity:.78}
   .frame-img > img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
   .frame-img.fit-contain > img{object-fit:contain;object-position:center center}
   .frame-img.pos-top > img{object-position:top center}
@@ -1570,24 +1583,24 @@
 
 <section class="slide grey" data-layout="S16" data-animate="field-notes" data-image-slot="s16-brief-21x9">
   <div class="canvas-card">
-    
-  
-  <div class="chrome-min">
-    <div class="l">10 / 17 · VISUAL</div>
-    <div class="r">MINI PROGRAM UI</div>
-  </div>
-  <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
-    <div class="t-meta" style="color:var(--text-helper);letter-spacing:.2em">VISUAL</div>
-    <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh);max-width:12ch"><span style="color:var(--accent)">03</span> 素材要统一</h2>
-    <p class="lead" style="max-width:50ch;color:var(--text-secondary);font-size:max(18px,1.28vw)">同一种世界观，别混着来。</p>
-  </div>
-    <div data-anim="up" class="brief-grid" style="grid-template-columns:repeat(3,1fr)">
-      <article class="brief-card"><img class="frame-img h-16 fit-contain" src="images/image8.png" data-image-slot="s16-brief-original" alt="商品素材统一示例"><div class="swiss-img-caption">商品图 · 背景统一</div></article>
-      <article class="brief-card"><img class="frame-img h-16 fit-contain" src="images/image7.png" data-image-slot="s16-brief-original" alt="商品卡片示例"><div class="swiss-img-caption">卡片 · 裁切统一</div></article>
-      <article class="brief-card is-accent"><div style="font-size:max(20px,1.7vw);font-weight:400;line-height:1.25">图标线宽一致<br/>图片比例一致<br/>插画只做辅助</div><span class="t-meta" style="color:var(--accent-on);opacity:.78">CHECKLIST</span></article>
-      <article class="brief-card"><span class="t-meta">ICON</span><p>不要一半线性，一半彩色贴纸。</p></article>
-      <article class="brief-card"><span class="t-meta">IMAGE</span><p>同类图片保持相似裁切和背景。</p></article>
-      <article class="brief-card"><span class="t-meta">ILLUSTRATION</span><p>插画不能抢走核心功能信息。</p></article>
+    <div class="chrome-min"><div class="l">10 / 17 · VISUAL</div><div class="r">MATERIAL SYSTEM</div></div>
+    <div class="material-layout">
+      <div data-anim="line" class="material-copy">
+        <div>
+          <div class="t-meta" style="color:var(--text-helper);letter-spacing:.2em">03 / MATERIAL</div>
+          <h2 class="h-xl-zh" style="font-size:min(5vw,8.8vh);margin-top:2vh"><span style="color:var(--accent)">素材统一</span><br/>页面才像<br/>一个产品</h2>
+          <p class="lead" style="margin-top:2vh;color:var(--text-secondary);font-size:max(18px,1.18vw)">不是每张图都好看，而是所有图看起来属于同一个系统。</p>
+        </div>
+        <div class="material-rules">
+          <div class="material-rule"><b>01</b><span>同类图片使用相同背景与裁切比例</span></div>
+          <div class="material-rule"><b>02</b><span>同一套图标保持线宽、尺寸和颜色一致</span></div>
+          <div class="material-rule"><b>03</b><span>插画只辅助理解，不争夺核心信息</span></div>
+        </div>
+      </div>
+      <div data-anim="up" class="material-evidence">
+        <figure class="material-figure"><img src="images/image8.png" alt="商品图片与图标统一示例"><figcaption><strong>图片系统</strong><span>BACKGROUND<br/>CROP<br/>RATIO</span></figcaption></figure>
+        <figure class="material-figure"><img src="images/image7.png" alt="商品卡片统一示例"><figcaption><strong>卡片系统</strong><span>IMAGE<br/>TYPE<br/>ACTION</span></figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
