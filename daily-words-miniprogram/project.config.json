@@ -14,5 +14,6 @@
   "compileType": "miniprogram",
   "appid": "touristappid",
   "projectname": "daily-words",
-  "miniprogramRoot": "./"
+  "miniprogramRoot": "./",
+  "cloudfunctionRoot": "cloudfunctions/"
 }

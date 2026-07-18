@@ -2,7 +2,7 @@
   <custom-nav />
   <view class="home-heading"><text>每日单词</text><view class="capsule">•••　◉</view></view>
   <view class="streak-card">
-    <view class="streak-copy"><text>连续学习 <text class="strong">12</text> 天</text><text class="small">坚持下去，你会更棒！</text></view>
+    <view class="streak-copy"><text>连续学习 <text class="strong">{{streak}}</text> 天</text><text class="small">坚持下去，你会更棒！</text></view>
     <view class="plant" aria-label="成长中的小苗"><text class="leaf leaf-1"/><text class="leaf leaf-2"/><text class="leaf leaf-3"/><text class="leaf leaf-4"/><text class="stem"/><text class="strong"/></view>
     <view class="days"><view class="day {{item.today?'today':''}}" wx:for="{{days}}" wx:key="date"><text class="em">{{item.done?'✓':''}}</text><text>{{item.date}}</text></view></view>
   </view>

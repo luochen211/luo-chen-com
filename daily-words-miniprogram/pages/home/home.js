@@ -1,16 +1,35 @@
+const { calculateStreak, dateKey, recentDateKeys } = require('../../utils/progress')
+
+const app = getApp()
+
 Page({
   data: {
-    days: [
-      { date: '05.12', done: true }, { date: '05.13', done: true },
-      { date: '05.14', done: true }, { date: '05.15', done: true },
-      { date: '05.16', done: true }, { date: '今天', done: true, today: true },
-      { date: '05.18', done: false }
-    ],
-    learned: 18, goal: 20, percent: 90
+    days: [], learned: 0, goal: 20, percent: 0, streak: 0
   },
   onReady() {
     this.ringReady = true
     this.drawProgressRing()
+  },
+  async onShow() {
+    await app.globalData.ready
+    this.refresh()
+  },
+  refresh() {
+    const progress = app.getProgress()
+    const today = dateKey()
+    const learned = progress.dailyCounts[today] || 0
+    const days = recentDateKeys().map((key) => ({
+      date: key === today ? '今天' : key.slice(5).replace('-', '.'),
+      done: (progress.dailyCounts[key] || 0) > 0,
+      today: key === today
+    }))
+    this.setData({
+      days,
+      learned,
+      goal: progress.dailyGoal,
+      percent: Math.min(100, Math.round(learned / progress.dailyGoal * 100)),
+      streak: calculateStreak(progress.dailyCounts)
+    }, () => this.drawProgressRing())
   },
   drawProgressRing() {
     if (!this.ringReady) return
@@ -58,7 +77,8 @@ Page({
     wx.showModal({ title: '修改每日目标', editable: true, placeholderText: '请输入 5-100 的数字', success: ({ confirm, content }) => {
       const goal = Number(content)
       if (confirm && goal >= 5 && goal <= 100) {
-        this.setData({ goal, percent: Math.min(100, Math.round(this.data.learned / goal * 100)) }, () => this.drawProgressRing())
+        app.saveProgress({ dailyGoal: goal })
+        this.refresh()
       } else if (confirm) {
         wx.showToast({ title: '请输入 5–100 的数字', icon: 'none' })
       }

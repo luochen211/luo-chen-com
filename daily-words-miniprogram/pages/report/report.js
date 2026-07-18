@@ -1,16 +1,35 @@
+const { calculateStreak, recentDateKeys } = require('../../utils/progress')
+const app = getApp()
+
 Page({
   data: {
-    bars: [
-      { day: '周一', value: 32, height: 72 }, { day: '周二', value: 45, height: 104 },
-      { day: '周三', value: 56, height: 132 }, { day: '周四', value: 62, height: 150 },
-      { day: '周五', value: 48, height: 112 }, { day: '周六', value: 36, height: 82 },
-      { day: '周日', value: 58, height: 140 }
-    ],
-    stats: [
-      { icon: '/assets/icons/book.png', label: '已掌握', value: '128' }, { icon: '/assets/icons/calendar.png', label: '待复习', value: '24' },
-      { icon: '/assets/icons/target.png', label: '正确率', value: '92%' }, { icon: '/assets/icons/flame.png', label: '连续学习', value: '12 天' }
-    ]
+    bars: [], stats: [], dateRange: ''
+  },
+  async onShow() {
+    await app.globalData.ready
+    const progress = app.getProgress()
+    const keys = recentDateKeys()
+    const values = keys.map((key) => progress.dailyCounts[key] || 0)
+    const max = Math.max(...values, 1)
+    const weekQuiz = progress.quizRecords.filter((record) => keys.includes(record.date))
+    const correct = weekQuiz.filter((record) => record.correct).length
+    const accuracy = weekQuiz.length ? Math.round(correct / weekQuiz.length * 100) : 0
+    const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+    this.setData({
+      dateRange: `${keys[0].slice(5).replace('-', '.')} - ${keys[6].slice(5).replace('-', '.')}`,
+      bars: keys.map((key, index) => ({
+        day: weekDays[new Date(`${key}T12:00:00`).getDay()],
+        value: values[index],
+        height: Math.max(8, Math.round(values[index] / max * 150))
+      })),
+      stats: [
+        { icon: '/assets/icons/book.png', label: '已掌握', value: String(progress.learnedWords.length) },
+        { icon: '/assets/icons/calendar.png', label: '待复习', value: String(new Set(progress.learningRecords.filter((record) => record.result === 'unknown').map((record) => record.wordId)).size) },
+        { icon: '/assets/icons/target.png', label: '正确率', value: `${accuracy}%` },
+        { icon: '/assets/icons/flame.png', label: '连续学习', value: `${calculateStreak(progress.dailyCounts)} 天` }
+      ]
+    })
   },
   share() { wx.showShareMenu({ withShareTicket: true }); wx.showToast({ title: '请点击右上角分享', icon: 'none' }) },
-  onShareAppMessage() { return { title: '我本周背了 128 个单词！', path: '/pages/report/report' } }
+  onShareAppMessage() { return { title: `我已经掌握了 ${app.getProgress().learnedWords.length} 个单词！`, path: '/pages/report/report' } }
 })
