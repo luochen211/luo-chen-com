@@ -73,7 +73,7 @@ Page({
   startStudy() { wx.navigateTo({ url: '/pages/study/study' }) },
   openQuiz() { wx.navigateTo({ url: '/pages/quiz/quiz' }) },
   openReport() { wx.navigateTo({ url: '/pages/report/report' }) },
-  openLibrary() { wx.showToast({ title: '词库正在整理中', icon: 'none' }) },
+  openLibrary() { wx.navigateTo({ url: '/pages/library/library' }) },
   editGoal() {
     wx.showModal({ title: '修改每日目标', editable: true, placeholderText: '请输入 5-100 的数字', success: ({ confirm, content }) => {
       const goal = Number(content)

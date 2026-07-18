@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/study/study",
+    "pages/library/library",
     "pages/quiz/quiz",
     "pages/report/report"
   ],

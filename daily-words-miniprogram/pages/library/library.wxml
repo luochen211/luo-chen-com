@@ -1,0 +1,63 @@
+<view class="page library-page">
+  <custom-nav title="词库" back="{{true}}" />
+
+  <view class="library-summary">
+    <view>
+      <text class="eyebrow">我的单词</text>
+      <text class="summary-title">{{counts.learned}}<text>/{{counts.all}}</text></text>
+      <text class="summary-copy">已掌握 · {{counts.learning}} 个学习中</text>
+    </view>
+    <view class="summary-mark" aria-label="词库掌握进度">
+      <text>{{progressPercent}}</text><text>%</text>
+    </view>
+  </view>
+
+  <view class="search-box">
+    <text class="search-icon">⌕</text>
+    <input value="{{query}}" bindinput="handleSearch" placeholder="搜索单词或中文释义" confirm-type="search" />
+    <button wx:if="{{query}}" bindtap="clearSearch" aria-label="清除搜索">×</button>
+  </view>
+
+  <scroll-view class="filters" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="filters-inner">
+      <button wx:for="{{filters}}" wx:key="id" data-filter="{{item.id}}" bindtap="selectFilter" class="filter {{filter === item.id ? 'active' : ''}}">
+        <text>{{item.label}}</text><text class="count">{{item.count}}</text>
+      </button>
+    </view>
+  </scroll-view>
+
+  <view class="word-list" wx:if="{{visibleWords.length}}">
+    <view class="word-item {{expandedId === item.id ? 'expanded' : ''}}" wx:for="{{visibleWords}}" wx:key="id">
+      <view class="word-main" data-id="{{item.id}}" bindtap="toggleWord">
+        <view class="letter">{{item.initial}}</view>
+        <view class="word-copy">
+          <view class="word-line"><text class="word">{{item.word}}</text><text wx:if="{{item.learned}}" class="status learned">已掌握</text><text wx:elif="{{item.learning}}" class="status learning">学习中</text></view>
+          <text class="meaning">{{item.meaning}}</text>
+        </view>
+        <text class="chevron">⌄</text>
+      </view>
+      <view class="word-detail" wx:if="{{expandedId === item.id}}">
+        <view class="phonetic-line">
+          <text>{{item.phonetic}}</text>
+          <button data-id="{{item.id}}" catchtap="pronounce" aria-label="播放 {{item.word}} 发音"><image src="/assets/icons/volume.png" /></button>
+          <button class="favorite {{item.favorite ? 'active' : ''}}" data-id="{{item.id}}" catchtap="toggleFavorite" aria-label="{{item.favorite ? '取消收藏' : '收藏'}} {{item.word}}"><image src="{{item.favorite ? '/assets/icons/star-active.png' : '/assets/icons/star.png'}}" /></button>
+        </view>
+        <text class="example">{{item.example}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <view class="empty-plant"><text class="stem"/><text class="leaf left"/><text class="leaf right"/></view>
+    <text class="empty-title">{{emptyTitle}}</text>
+    <text>{{emptyHint}}</text>
+    <button wx:if="{{!query}}" bindtap="startStudy">开始学习</button>
+  </view>
+
+  <view class="tabbar">
+    <button bindtap="openHome"><image src="/assets/tabbar/house.png" mode="aspectFit"/><text>首页</text></button>
+    <button bindtap="openQuiz"><image src="/assets/tabbar/book-open-check.svg" mode="aspectFit"/><text>复习</text></button>
+    <button class="active"><image src="/assets/tabbar/library-big-active.png" mode="aspectFit"/><text>词库</text></button>
+    <button bindtap="openReport"><image src="/assets/tabbar/user-round.svg" mode="aspectFit"/><text>我的</text></button>
+  </view>
+</view>
