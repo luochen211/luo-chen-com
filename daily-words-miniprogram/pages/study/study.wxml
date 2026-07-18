@@ -1,14 +1,14 @@
 <view class="page study-page">
   <custom-nav title="每日单词" back="{{true}}" />
-  <view class="count">{{index + 1}}/20</view>
-  <view class="word-card card">
-    <button class="favorite {{favorite?'on':''}}" bindtap="toggleFavorite">★</button>
-    <view class="word-main"><text>{{word.word}}</text><view>{{word.phonetic}} <button bindtap="pronounce">🔊</button></view></view>
+  <view class="count">{{index + 1}}/{{total}}</view>
+  <view class="word-card card" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <button class="favorite" bindtap="toggleFavorite"><image src="{{favorite?'/assets/icons/star-active.png':'/assets/icons/star.png'}}"/></button>
+    <view class="word-main"><text>{{word.word}}</text><view>{{word.phonetic}} <button bindtap="pronounce" aria-label="播放发音"><image src="/assets/icons/volume.png"/></button></view></view>
     <view class="divider" />
     <text class="label">释义</text><text class="meaning">{{word.meaning}}</text>
     <text class="label">例句</text><view class="example">{{word.prefix}}<text class="strong">{{word.word}}</text>{{word.suffix}}</view>
     <view class="pager">• • • •</view>
   </view>
-  <view class="study-actions"><button bindtap="next"><text class="strong">☻</text>认识</button><button class="unknown" bindtap="unknown"><text class="strong">☹</text>不认识</button></view>
-  <view class="swipe">←　左右滑动切换单词　→</view>
+  <view class="study-actions"><button bindtap="next"><image src="/assets/icons/check.png"/>认识</button><button class="unknown" bindtap="unknown"><image src="/assets/icons/x.png"/>不认识</button></view>
+  <view class="swipe">左右滑动切换单词</view>
 </view>

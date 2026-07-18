@@ -7,8 +7,8 @@ Page({
       { day: '周日', value: 58, height: 140 }
     ],
     stats: [
-      { icon: '📗', label: '已掌握', value: '128' }, { icon: '🗓️', label: '待复习', value: '24' },
-      { icon: '🎯', label: '正确率', value: '92%' }, { icon: '🔥', label: '连续学习', value: '12 天' }
+      { icon: '/assets/icons/book.png', label: '已掌握', value: '128' }, { icon: '/assets/icons/calendar.png', label: '待复习', value: '24' },
+      { icon: '/assets/icons/target.png', label: '正确率', value: '92%' }, { icon: '/assets/icons/flame.png', label: '连续学习', value: '12 天' }
     ]
   },
   share() { wx.showShareMenu({ withShareTicket: true }); wx.showToast({ title: '请点击右上角分享', icon: 'none' }) },
