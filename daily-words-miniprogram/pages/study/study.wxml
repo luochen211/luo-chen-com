@@ -3,7 +3,7 @@
   <view class="count">{{index + 1}}/{{total}}</view>
   <view class="word-card card" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <button class="favorite" bindtap="toggleFavorite"><image src="{{favorite?'/assets/icons/star-active.png':'/assets/icons/star.png'}}"/></button>
-    <view class="word-main"><text>{{word.word}}</text><view>{{word.phonetic}} <button class="{{playing ? 'playing' : ''}}" bindtap="pronounce" aria-label="{{playing ? '停止发音' : '播放发音'}}"><image src="/assets/icons/volume.png"/></button></view></view>
+    <view class="word-main"><text>{{word.word}}</text><view>{{word.phonetic}} <button class="{{playing ? 'playing' : ''}}" bindtap="pronounce" aria-label="{{playing ? '停止发音' : '播放发音'}}"><image src="{{playing ? '/assets/icons/volume-active.png' : '/assets/icons/volume.png'}}"/></button></view></view>
     <view class="divider" />
     <text class="label">释义</text><text class="meaning">{{word.meaning}}</text>
     <text class="label">例句</text><view class="example">{{word.prefix}}<text class="strong">{{word.word}}</text>{{word.suffix}}</view>
