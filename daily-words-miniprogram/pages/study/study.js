@@ -3,14 +3,26 @@ const { dateKey } = require('../../utils/progress')
 const app = getApp()
 
 Page({
-  data: { index: 0, word: words[0], total: words.length, favorite: false, touchStartX: 0 },
+  data: { index: 0, word: words[0], total: words.length, favorite: false, playing: false, touchStartX: 0 },
   async onLoad() {
+    this.audio = wx.createInnerAudioContext()
+    this.audio.onPlay(() => this.setData({ playing: true }))
+    this.audio.onEnded(() => this.setData({ playing: false }))
+    this.audio.onStop(() => this.setData({ playing: false }))
+    this.audio.onError(() => {
+      this.setData({ playing: false })
+      wx.showToast({ title: '发音播放失败，请重试', icon: 'none' })
+    })
     await app.globalData.ready
     this.showWord(0)
   },
+  onUnload() {
+    if (this.audio) this.audio.destroy()
+  },
   showWord(index) {
+    if (this.audio) this.audio.stop()
     const word = words[index]
-    this.setData({ index, word, favorite: app.getProgress().favoriteWords.includes(word.id) })
+    this.setData({ index, word, playing: false, favorite: app.getProgress().favoriteWords.includes(word.id) })
   },
   record(result) {
     const word = this.data.word
@@ -40,7 +52,15 @@ Page({
     })
     wx.vibrateShort({ type: 'light' })
   },
-  pronounce() { wx.showToast({ title: this.data.word.word, icon: 'none' }) },
+  pronounce() {
+    if (!this.audio || !this.data.word.audio) return
+    if (this.data.playing) {
+      this.audio.stop()
+      return
+    }
+    this.audio.src = this.data.word.audio
+    this.audio.play()
+  },
   touchStart(e) { this.setData({ touchStartX: e.changedTouches[0].clientX }) },
   touchEnd(e) {
     const distance = e.changedTouches[0].clientX - this.data.touchStartX

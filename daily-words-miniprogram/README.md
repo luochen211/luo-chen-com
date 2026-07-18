@@ -18,6 +18,10 @@
 
 如果云端暂时不可用，页面仍会立即写入 `wx.setStorageSync`；下次启动或下次修改数据时会再次同步。同步冲突时保留 `updatedAt` 更新的整份状态。
 
+## 发音音频
+
+学习页使用随小程序打包的真人单词发音，断网时也可以播放。音频来自 [Free Dictionary API](https://dictionaryapi.dev/)，原始录音按各文件附带的 Creative Commons BY-SA 3.0/4.0 许可使用。
+
 ## 持久化数据
 
 - 每日学习目标与按日学习数量
