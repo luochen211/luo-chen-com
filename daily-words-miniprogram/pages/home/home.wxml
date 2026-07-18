@@ -8,11 +8,12 @@
   </view>
   <view class="goal-card card">
     <view class="goal-head"><text class="strong">今日学习目标</text><button bindtap="editGoal"><image src="/assets/icons/edit.png"/>修改</button></view>
-    <view class="progress-ring" style="--progress: {{percent * 3.6}}deg"><view><text>已学习</text><text class="strong">{{learned}}<text class="small">/{{goal}}</text></text><text>个单词</text></view></view>
-    <view class="goal-tip" wx:if="{{learned < goal}}">再学 <text class="strong">{{goal-learned}}</text> 个单词完成今日目标！</view>
-    <view class="goal-tip" wx:elif="{{learned === goal}}"><text class="strong">今日目标已完成！</text> 坚持得很棒</view>
-    <view class="goal-tip" wx:else><text class="strong">今日目标已完成！</text> 已超额学习 {{learned-goal}} 个单词</view>
-    <button class="primary" bindtap="startStudy"><text>{{learned >= goal ? '继续学习' : '开始学习'}}</text><image src="/assets/icons/arrow-right.png"/></button>
+    <view class="progress-ring">
+      <canvas type="2d" class="progress-ring-canvas" aria-label="今日学习进度 {{percent}}%"/>
+      <view><text>已学习</text><text class="strong">{{learned}}<text class="small">/{{goal}}</text></text><text>个单词</text></view>
+    </view>
+    <view class="goal-tip">再学 <text class="strong">{{goal-learned}}</text> 个单词完成今日目标！</view>
+    <button class="primary" bindtap="startStudy"><text>开始学习</text><image src="/assets/icons/arrow-right.png"/></button>
   </view>
   <view class="tabbar">
     <button class="active"><image src="/assets/tabbar/house-active.svg" mode="aspectFit"/><text>首页</text></button>
