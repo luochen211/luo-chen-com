@@ -1,0 +1,10 @@
+<view class="page report-page">
+  <custom-nav title="本周学习报告" back="{{true}}" action="分享" bind:action="share" />
+  <view class="report-hero">
+    <view><text class="strong">太棒了！</text><text>你本周的学习表现</text><text>超越了 <text class="em">92%</text> 的学习者</text></view>
+    <view class="trophy"><text class="em">★</text></view>
+  </view>
+  <view class="chart card"><view class="chart-title">学习概况 <text>(5.12 - 5.18)</text></view><view class="bars"><view wx:for="{{bars}}" wx:key="day"><text class="strong">{{item.value}}</text><text style="height:{{item.height}}rpx"/><text>{{item.day}}</text></view></view></view>
+  <view class="stats card"><view wx:for="{{stats}}" wx:key="label"><text class="em">{{item.icon}}</text><text>{{item.label}}<text class="strong">{{item.value}}</text></text></view></view>
+  <view class="report-note">❇　积累每一个单词，遇见更好的自己。　❇</view>
+</view>

@@ -1,0 +1,16 @@
+<view class="page home-page">
+  <custom-nav />
+  <view class="home-heading"><text>每日单词</text><view class="capsule">•••　◉</view></view>
+  <view class="streak-card">
+    <view class="streak-copy"><text>连续学习 <text class="strong">12</text> 天</text><text class="small">坚持下去，你会更棒！</text></view>
+    <view class="plant" aria-label="成长中的小苗"><text class="leaf leaf-1"/><text class="leaf leaf-2"/><text class="leaf leaf-3"/><text class="leaf leaf-4"/><text class="stem"/><text class="strong"/></view>
+    <view class="days"><view class="day {{item.today?'today':''}}" wx:for="{{days}}" wx:key="date"><text class="em">{{item.done?'✓':''}}</text><text>{{item.date}}</text></view></view>
+  </view>
+  <view class="goal-card card">
+    <view class="goal-head"><text class="strong">今日学习目标</text><button bindtap="editGoal">✎ 修改</button></view>
+    <view class="progress-ring" style="--progress: {{percent * 3.6}}deg"><view><text>已学习</text><text class="strong">{{learned}}<text class="small">/{{goal}}</text></text><text>个单词</text></view></view>
+    <view class="goal-tip">再学 <text class="strong">{{goal-learned}}</text> 个单词完成今日目标！</view>
+    <button class="primary" bindtap="startStudy">开始学习　→</button>
+  </view>
+  <view class="tabbar"><button class="active">◆<text>首页</text></button><button bindtap="startStudy">▣<text>复习</text></button><button>▤<text>词库</text></button><button bindtap="openReport">●<text>我的</text></button></view>
+</view>

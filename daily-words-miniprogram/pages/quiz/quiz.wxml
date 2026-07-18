@@ -1,0 +1,7 @@
+<view class="page quiz-page">
+  <custom-nav title="单词挑战" back="{{true}}" />
+  <view class="quiz-progress"><view><text style="width:{{current*10}}%"/></view><text class="strong">{{current}}<text class="small">/10</text></text></view>
+  <view class="question">“resilient” 的意思是？</view>
+  <view class="options"><button wx:for="{{options}}" wx:key="letter" data-index="{{index}}" bindtap="select" class="{{selected===index?'selected':''}}"><text class="em">{{item.letter}}</text><text>{{item.text}}</text><text class="strong" wx:if="{{selected===index}}">✓</text></button></view>
+  <button class="primary next" bindtap="next">下一题</button>
+</view>

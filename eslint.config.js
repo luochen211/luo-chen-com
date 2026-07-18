@@ -32,4 +32,15 @@ export default defineConfig([
       globals: globals.node,
     },
   },
+  {
+    files: ['daily-words-miniprogram/**/*.js'],
+    languageOptions: {
+      globals: {
+        App: 'readonly',
+        Component: 'readonly',
+        Page: 'readonly',
+        wx: 'readonly',
+      },
+    },
+  },
 ])

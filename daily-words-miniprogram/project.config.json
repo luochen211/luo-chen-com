@@ -1,0 +1,18 @@
+{
+  "description": "每日单词微信小程序",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "useCompilerPlugins": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": false,
+    "minifyWXML": true
+  },
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "daily-words",
+  "miniprogramRoot": "./"
+}
