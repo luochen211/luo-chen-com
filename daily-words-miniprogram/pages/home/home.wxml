@@ -15,11 +15,12 @@
     <view class="goal-tip" wx:if="{{learned < goal}}">再学 <text class="strong">{{goal-learned}}</text> 个单词完成今日目标！</view>
     <view class="goal-tip" wx:elif="{{learned === goal}}"><text class="strong">今日目标已完成！</text> 坚持得很棒</view>
     <view class="goal-tip" wx:else><text class="strong">今日目标已完成！</text> 已超额学习 {{learned-goal}} 个单词</view>
-    <button class="primary" bindtap="startStudy"><text>{{learned >= goal ? '继续学习' : '开始学习'}}</text><image src="/assets/icons/arrow-right.png"/></button>
+    <button wx:if="{{learned >= goal}}" class="primary" bindtap="openQuiz"><text>开始挑战</text><image src="/assets/icons/arrow-right.png"/></button>
+    <button wx:else class="primary" bindtap="startStudy"><text>开始学习</text><image src="/assets/icons/arrow-right.png"/></button>
   </view>
   <view class="tabbar">
     <button class="active"><image src="/assets/tabbar/house-active.svg" mode="aspectFit"/><text>首页</text></button>
-    <button bindtap="startStudy"><image src="/assets/tabbar/book-open-check.svg" mode="aspectFit"/><text>复习</text></button>
+    <button bindtap="openQuiz"><image src="/assets/tabbar/book-open-check.svg" mode="aspectFit"/><text>复习</text></button>
     <button bindtap="openLibrary"><image src="/assets/tabbar/library-big.svg" mode="aspectFit"/><text>词库</text></button>
     <button bindtap="openReport"><image src="/assets/tabbar/user-round.svg" mode="aspectFit"/><text>我的</text></button>
   </view>

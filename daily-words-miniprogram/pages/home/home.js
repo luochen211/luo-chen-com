@@ -71,6 +71,7 @@ Page({
       })
   },
   startStudy() { wx.navigateTo({ url: '/pages/study/study' }) },
+  openQuiz() { wx.navigateTo({ url: '/pages/quiz/quiz' }) },
   openReport() { wx.navigateTo({ url: '/pages/report/report' }) },
   openLibrary() { wx.showToast({ title: '词库正在整理中', icon: 'none' }) },
   editGoal() {
