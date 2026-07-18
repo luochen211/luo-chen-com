@@ -1,5 +1,5 @@
 <view class="custom-nav">
-  <button wx:if="{{back}}" class="custom-nav__back" bindtap="goBack" aria-label="退出当前页面"><image src="/assets/icons/back.png"/><text>退出</text></button>
+  <button wx:if="{{back}}" class="custom-nav__back" bindtap="goBack" aria-label="退出当前页面"><image src="/assets/icons/back.png"/></button>
   <text class="custom-nav__title">{{title}}</text>
   <button wx:if="{{action}}" class="custom-nav__action" bindtap="tapAction" aria-label="{{action}}"><image src="/assets/icons/share.png"/></button>
 </view>
