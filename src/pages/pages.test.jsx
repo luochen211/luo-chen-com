@@ -52,6 +52,14 @@ describe('redesigned page purposes', () => {
     ])
   })
 
+  it('routes every homepage archive action through Output', () => {
+    render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    expect(screen.getAllByRole('link', { name: /查看内容|产出/ })).toHaveLength(3)
+    screen.getAllByRole('link', { name: /查看内容|产出/ }).forEach((link) => {
+      expect(link).toHaveAttribute('href', '/output')
+    })
+  })
+
   it('owns the complete project archive on Work', () => {
     const { container } = render(<WorkPage t={siteContent.zh} />)
     expect(container.querySelectorAll('.archive-project')).toHaveLength(getProjectShowcase('zh').length)

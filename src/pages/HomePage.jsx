@@ -12,7 +12,7 @@ function Hero({ t }) {
         <p className="hero-declaration">{t.homeUi.belief}</p>
         <p className="hero-intro">{t.hero.intro}</p>
         <div className="hero-actions">
-          <Link className="btn primary" to="/work">{t.homeUi.view}</Link>
+          <Link className="btn primary" to="/output">{t.homeUi.view}</Link>
           <Link className="btn ghost" to="/contact">{t.homeUi.contact}</Link>
         </div>
       </div>
@@ -49,7 +49,7 @@ function SelectedWork({ t, locale }) {
     <section className="chapter selected-work">
       <div className="chapter-heading sticky-chapter-title">
         <h2>{t.home.workTitle}</h2>
-        <Link to="/work">{t.nav.work} ↗</Link>
+        <Link to="/output">{t.nav.output} ↗</Link>
       </div>
       <div className="selected-work-list">
         {work.slice(0, 3).map((project) => (
