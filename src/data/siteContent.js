@@ -593,7 +593,7 @@ const localizedContent = {
 
 const requiredSections = {
   zh: {
-    nav: { home: '首页', work: '作品', writing: '写作', now: 'Now', contact: '联系' },
+    nav: { home: '首页', output: '产出', now: 'Now', contact: '联系' },
     common: { menu: '打开菜单', close: '关闭菜单', primaryNav: '主导航', mobileNav: '移动端导航', readMore: '继续阅读', brand: '落尘 / LUOCHEN', columnReserved: '这个栏目已经预留', columnReservedDetail: '后续文章会按系列挂在这里，形成可以继续展开的索引，而不是混进最新文章列表。' },
     article: { readingTime: '分钟阅读', previous: '上一篇', next: '下一篇', related: '继续读', unavailable: '文章暂时无法读取', loading: '加载中', pagerLabel: '同系列上一篇和下一篇', series: '同系列文章', unknownLabel: '文章' },
     home: { title: '可靠 Agent 需要 Harness', proofTitle: '用真实结果证明工程判断', workTitle: '精选项目', writingTitle: '最近写作', contactTitle: '把复杂问题变成可靠交付' },
@@ -601,11 +601,12 @@ const requiredSections = {
     topic: { eyebrow: '持续专题', title: '我们将何去何从', intro: '这是一个持续更新的专题，讨论 AI 时代下个体如何重新选择：不只选职业，也选市场、作品、关系、收入结构和身体秩序。', focus: '这个专题关心什么', method: '写作方式', methodText: '每篇文章只处理一个真实问题：不要把焦虑写成口号，也不要把判断藏进漂亮话。先把处境说清楚，再给出能执行的方向。', questions: ['当 AI 正在改变工作、表达和生产方式时，一个普通个体应该如何重新定义自己的位置？', '当职业路径不再稳定，什么样的能力、作品和关系才真正值得长期积累？', '当外部世界持续加速，一个人如何保住判断权、生活秩序和内在方向？'] },
     work: { eyebrow: '作品与交付', title: '从 Agent Harness 到生产系统', intro: '开源贡献、商业系统和端到端工程交付。', details: '技术细节' },
     writing: { eyebrow: '写作与产出', title: '把实践沉淀成可以继续使用的资产', collections: '文章栏目', latest: '最新文章', products: '产品与学习材料', talks: '公开分享与 PPT' },
+    output: { eyebrow: '产出 / OUTPUT', title: '我把想法变成可以被验证的产出', intro: '产品、代码、写作与公开分享。每一项都来自真实实践，也继续参与下一次建造。', filterLabel: '筛选产出类型', projectsLabel: '项目', projectsTitle: '做出来，也交付出去', writingLabel: '写作', writingTitle: '把经验留成可以复用的文字', talksLabel: '公开分享', viewLive: '在线体验', endLabel: '继续建造', endTitle: '下一项产出，正在发生。', contactAction: '一起做点值得留下的东西' },
     now: { eyebrow: '现在', title: '我最近在做什么', updated: '最后更新', direction: '当前方向', projects: '正在推进', learning: '学习中', open: '开放合作', routine: '长期习惯' },
     contact: { eyebrow: '联系', title: '一起解决值得解决的问题', intro: '开放远程工程、Agent 工具链和全栈产品交付合作。', response: '通常会在 48 小时内回复。', email: '发送合作邮件' },
   },
   en: {
-    nav: { home: 'Home', work: 'Work', writing: 'Writing', now: 'Now', contact: 'Contact' },
+    nav: { home: 'Home', output: 'Output', now: 'Now', contact: 'Contact' },
     common: { menu: 'Open menu', close: 'Close menu', primaryNav: 'Primary navigation', mobileNav: 'Mobile navigation', readMore: 'Read more', brand: 'LUOCHEN', columnReserved: 'This collection is reserved', columnReservedDetail: 'Future articles will be organized here by series, forming an expandable index instead of disappearing into the latest-articles feed.' },
     article: { readingTime: 'min read', previous: 'Previous', next: 'Next', related: 'Keep reading', unavailable: 'This article is currently unavailable', loading: 'Loading', pagerLabel: 'Previous and next articles in this series', series: 'More in this series', unknownLabel: 'Article' },
     home: { title: 'Reliable agents need a harness.', proofTitle: 'Engineering judgment, proven by real outcomes.', workTitle: 'Selected Work', writingTitle: 'Recent Writing', contactTitle: 'Turn complex problems into reliable delivery.' },
@@ -613,6 +614,7 @@ const requiredSections = {
     topic: { eyebrow: 'Ongoing Topic', title: 'Where Do We Go From Here?', intro: 'An evolving collection about how individuals choose again in the AI era—not only careers, but markets, work, relationships, income structures, and physical order.', focus: 'What this topic explores', method: 'Writing method', methodText: 'Each article handles one real question. It names the situation plainly before offering a direction that can be acted on.', questions: ['As AI changes work, expression, and production, how should an ordinary person redefine their position?', 'When career paths stop being stable, which capabilities, work, and relationships deserve long-term investment?', 'As the outside world accelerates, how can a person preserve judgment, daily order, and inner direction?'] },
     work: { eyebrow: 'Work and Delivery', title: 'From Agent Harness to production systems.', intro: 'Open-source contributions, commercial systems, and end-to-end engineering delivery.', details: 'Technical details' },
     writing: { eyebrow: 'Writing and Output', title: 'Turn practice into assets people can keep using.', collections: 'Writing Collections', latest: 'Latest Articles', products: 'Products and Learning', talks: 'Public Talks and Decks' },
+    output: { eyebrow: 'OUTPUT / PUBLIC PROOF', title: 'I turn ideas into output people can verify.', intro: 'Products, code, writing, and public talks—drawn from real practice and carried into the next build.', filterLabel: 'Filter output by type', projectsLabel: 'Projects', projectsTitle: 'Built, shipped, and put to work.', writingLabel: 'Writing', writingTitle: 'Experience, made reusable.', talksLabel: 'Public Talks', viewLive: 'Live product', endLabel: 'Keep building', endTitle: 'The next output is already in motion.', contactAction: 'Let’s make something worth keeping' },
     now: { eyebrow: 'Now', title: 'What I am doing now', updated: 'Last updated', direction: 'Current Direction', projects: 'In Progress', learning: 'Learning', open: 'Open to Work', routine: 'Long-term Routine' },
     contact: { eyebrow: 'Contact', title: 'Let’s solve something worth solving.', intro: 'Open to remote engineering, Agent tooling, and full-stack product delivery.', response: 'I usually reply within 48 hours.', email: 'Send a collaboration email' },
   },

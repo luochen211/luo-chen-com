@@ -16,8 +16,7 @@ import ArticlePage from './pages/ArticlePage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
 import NowPage from './pages/NowPage'
-import WorkPage from './pages/WorkPage'
-import WritingPage from './pages/WritingPage'
+import OutputPage from './pages/OutputPage'
 import { getInitialLocale, siteContent } from './data/siteContent'
 import { findArticle } from './lib/articles'
 
@@ -26,8 +25,7 @@ gsap.registerPlugin(ScrollTrigger)
 function getRouteTitle(pathname, t) {
   if (pathname.startsWith('/articles/')) return null
   if (pathname === '/now') return t.now.title
-  if (pathname === '/work' || pathname === '/projects') return t.projects.title
-  if (['/output', '/writing', '/course'].includes(pathname)) return t.course.title
+  if (['/output', '/work', '/projects', '/writing', '/course'].includes(pathname)) return t.output.title
   if (pathname === '/contact') return t.contact.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
   if (pathname.startsWith('/columns/')) {
@@ -39,7 +37,7 @@ function getRouteTitle(pathname, t) {
 
 function IndexedArticleRoute({ locale }) {
   const { slug } = useParams()
-  return findArticle(slug) ? <ArticlePage locale={locale} /> : <Navigate replace to="/writing" />
+  return findArticle(slug) ? <ArticlePage locale={locale} /> : <Navigate replace to="/output" />
 }
 
 function SiteApp() {
@@ -116,11 +114,11 @@ function SiteApp() {
         <Routes>
           <Route path="/" element={<HomePage t={t} locale={locale} />} />
           <Route path="/now" element={<NowPage t={t} />} />
-          <Route path="/work" element={<WorkPage t={t} locale={locale} />} />
-          <Route path="/writing" element={<WritingPage t={t} locale={locale} />} />
-          <Route path="/output" element={<Navigate replace to="/writing" />} />
-          <Route path="/projects" element={<Navigate replace to="/work" />} />
-          <Route path="/course" element={<Navigate replace to="/writing" />} />
+          <Route path="/output" element={<OutputPage t={t} locale={locale} />} />
+          <Route path="/work" element={<Navigate replace to="/output" />} />
+          <Route path="/writing" element={<Navigate replace to="/output" />} />
+          <Route path="/projects" element={<Navigate replace to="/output" />} />
+          <Route path="/course" element={<Navigate replace to="/output" />} />
           <Route path="/lab/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />

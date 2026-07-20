@@ -8,6 +8,7 @@ import ContactPage from './ContactPage'
 import NowPage from './NowPage'
 import WorkPage from './WorkPage'
 import WritingPage from './WritingPage'
+import OutputPage from './OutputPage'
 import { siteContent } from '../data/siteContent'
 import { getProjectShowcase } from '../data/projectShowcase'
 
@@ -15,6 +16,7 @@ const pages = [
   ['Home', HomePage, { locale: 'zh' }],
   ['Work', WorkPage],
   ['Writing', WritingPage, { locale: 'zh' }],
+  ['Output', OutputPage, { locale: 'zh' }],
   ['Now', NowPage],
   ['Contact', ContactPage],
 ]
@@ -53,6 +55,13 @@ describe('redesigned page purposes', () => {
   it('owns the complete project archive on Work', () => {
     const { container } = render(<WorkPage t={siteContent.zh} />)
     expect(container.querySelectorAll('.archive-project')).toHaveLength(getProjectShowcase('zh').length)
+  })
+
+  it('combines projects, writing, and talks on Output', () => {
+    const { container } = render(<MemoryRouter><OutputPage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    expect(container.querySelectorAll('.output-project')).toHaveLength(getProjectShowcase('zh').length)
+    expect(screen.getByRole('heading', { name: siteContent.zh.output.writingTitle })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: siteContent.zh.course.archive.title })).toBeInTheDocument()
   })
 
   it('keeps Now current and omits general career positioning', () => {

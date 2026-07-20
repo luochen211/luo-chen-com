@@ -3,8 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 
 const primaryLinks = [
   { key: 'home', to: '/', end: true },
-  { key: 'work', to: '/work' },
-  { key: 'writing', to: '/writing' },
+  { key: 'output', to: '/output' },
   { key: 'now', to: '/now' },
   { key: 'contact', to: '/contact' },
 ]

@@ -74,7 +74,7 @@ function SelectedWriting({ t, locale }) {
     <section className="chapter selected-writing">
       <div className="chapter-heading">
         <h2>{t.home.writingTitle}</h2>
-        <Link to="/writing">{t.nav.writing} ↗</Link>
+        <Link to="/output">{t.nav.output} ↗</Link>
       </div>
       <div className="writing-accordion">
         {latest.map((article) => (

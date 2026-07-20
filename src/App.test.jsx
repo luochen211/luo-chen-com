@@ -36,9 +36,10 @@ afterEach(() => {
 
 describe('localized route rendering', () => {
   it.each([
-    ['/output', '/writing'],
-    ['/projects', '/work'],
-    ['/course', '/writing'],
+    ['/work', '/output'],
+    ['/writing', '/output'],
+    ['/projects', '/output'],
+    ['/course', '/output'],
     ['/roundtable', '/'],
     ['/lab/roundtable', '/'],
   ])('redirects legacy route %s to %s', async (legacyRoute, primaryRoute) => {
@@ -91,20 +92,20 @@ describe('localized route rendering', () => {
 
   })
 
-  it('redirects an unknown article slug to writing without fetching it', async () => {
+  it('redirects an unknown article slug to output without fetching it', async () => {
     const fetchMock = vi.spyOn(window, 'fetch')
     window.history.replaceState({}, '', '/articles/not-in-index')
     render(<App />)
 
-    await waitFor(() => expect(window.location.pathname).toBe('/writing'))
+    await waitFor(() => expect(window.location.pathname).toBe('/output'))
     expect(fetchMock).not.toHaveBeenCalled()
   })
 
-  it('redirects an unpublished empty column to writing', async () => {
+  it('redirects an unpublished empty column to output', async () => {
     window.history.replaceState({}, '', '/columns/agent-harness')
     render(<App />)
 
-    await waitFor(() => expect(window.location.pathname).toBe('/writing'))
+    await waitFor(() => expect(window.location.pathname).toBe('/output'))
   })
 
   it('scrolls to the top and focuses main after client navigation', async () => {
@@ -112,7 +113,7 @@ describe('localized route rendering', () => {
     render(<App />)
     scrollTo.mockClear()
 
-    await userEvent.click(screen.getAllByRole('link', { name: '写作' })[0])
+    await userEvent.click(screen.getAllByRole('link', { name: '产出' })[0])
 
     await waitFor(() => expect(document.querySelector('main')).toHaveFocus())
     expect(scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'auto' })

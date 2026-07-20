@@ -6,7 +6,7 @@ import { findColumn } from '../data/siteData'
 export default function CollectionView({ locale, slug: fixedSlug, topicCopy }) {
   const { columnSlug } = useParams()
   const rawColumn = findColumn(fixedSlug || columnSlug)
-  if (!rawColumn) return <Navigate replace to="/writing" />
+  if (!rawColumn) return <Navigate replace to="/output" />
 
   const [column] = localizeColumns([rawColumn], locale)
   const articles = localizeArticles(
