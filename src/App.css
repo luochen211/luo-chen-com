@@ -145,7 +145,10 @@
 .output-deck .purpose-label { color: rgba(7,17,31,.5); }
 .output-deck h2 { max-width: 58rem; margin: 0; font-size: clamp(3.2rem, 8vw, 8rem); line-height: .9; letter-spacing: -.07em; }
 .output-deck p:not(.purpose-label) { max-width: 40rem; margin: 2rem 0; color: rgba(7,17,31,.68); font-size: 1.1rem; line-height: 1.7; }
-.output-deck-link { display: inline-block; padding-bottom: .3rem; border-bottom: 1px solid currentColor; color: #07111f; font-weight: 800; }
+.output-deck-actions { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
+.output-deck-link { display: inline-block; padding-bottom: .3rem; border-bottom: 1px solid currentColor; color: #07111f; font-weight: 800; transition: color .2s ease, transform .2s ease; }
+.output-deck-link-community { color: #c94f31; }
+.output-deck-link:hover { color: #c94f31; transform: translateY(-2px); }
 .output-end { display: flex; flex-direction: column; justify-content: center; padding: clamp(6rem, 14vw, 13rem) 0; }
 .output-end > p { color: var(--brand-warm); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
 .output-end h2 { max-width: 70rem; margin: 1rem 0 3rem; font-size: clamp(3.4rem, 8vw, 8rem); line-height: .9; letter-spacing: -.07em; }

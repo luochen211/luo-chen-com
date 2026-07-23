@@ -105,7 +105,10 @@ export default function OutputPage({ t, locale = 'zh' }) {
             <p className="purpose-label">{t.output.talksLabel}</p>
             <h2>{t.course.archive.title}</h2>
             <p>{t.course.archive.description}</p>
-            <a className="output-deck-link" href={t.course.archive.href} target="_blank" rel="noreferrer">{t.course.archive.action} ↗</a>
+            <div className="output-deck-actions">
+              <a className="output-deck-link" href={t.course.archive.href} target="_blank" rel="noreferrer">{t.course.archive.action} ↗</a>
+              <a className="output-deck-link output-deck-link-community" href={t.course.archive.communityHref} target="_blank" rel="noreferrer">{t.course.archive.communityAction} ↗</a>
+            </div>
           </div>
         </section>
       )}

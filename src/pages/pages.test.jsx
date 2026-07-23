@@ -70,6 +70,10 @@ describe('redesigned page purposes', () => {
     expect(container.querySelectorAll('.output-project')).toHaveLength(getProjectShowcase('zh').length)
     expect(screen.getByRole('heading', { name: siteContent.zh.output.writingTitle })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.course.archive.title })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /了解 AI接单实验室/ })).toHaveAttribute(
+      'href',
+      'https://my.feishu.cn/docx/XKuRdcy3MoxS9ixBaa1cPzTYnVp',
+    )
   })
 
   it('keeps Now current and omits general career positioning', () => {
