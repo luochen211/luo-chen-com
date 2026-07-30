@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第 03 课 · 状态、信息与失败出口 · Agent Harness 基础课</title>
+<title>第 03 课 · 状态、记忆与知识 · Agent Harness 基础课</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -1232,13 +1232,13 @@
       <div class="r">01 / 09 · 25 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">STATE · CONTEXT · MEMORY · RAG · RECOVERY</div>
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">STATE · CONTEXT · TRAJECTORY · MEMORY · RAG</div>
       <div style="align-self:center">
-        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 03 课 · 状态、信息与失败出口</div>
+        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 03 课 · 状态、记忆与知识</div>
         <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">运行中的事实、视图和记忆<br/>应该分别放在哪里？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">区分轨迹、用户长期记忆、业务状态与共享知识，理解信息怎样进入当前上下文，并看清失败后的恢复阶梯。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">区分系统状态与模型所见，再厘清轨迹、用户长期记忆、共享知识与实时业务状态的所有权和时间尺度。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
@@ -1292,36 +1292,9 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S17" data-animate="system-diagram">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Production Boundary · Three Layers</div><div class="r">04 / 09</div></div>
-    <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;flex:1;align-items:center">
-      <div data-anim="left">
-        <div class="t-meta">WHO OWNS WHAT</div>
-        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;margin-top:1.4vh">Harness 连接模型与业务世界</h2>
-        <div style="display:flex;flex-direction:column;margin-top:5vh">
-          <div style="padding:1.8vh 0;border-top:1px solid var(--border-subtle)"><strong class="t-h-prod">Model</strong><p class="t-body-sm">概率性的理解、规划与决策。</p></div>
-          <div style="padding:1.8vh 0;border-top:1px solid var(--border-subtle)"><strong class="t-h-prod">Harness</strong><p class="t-body-sm">上下文、工具接口、约束、验证、纠正。</p></div>
-          <div style="padding:1.8vh 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)"><strong class="t-h-prod">Business Systems</strong><p class="t-body-sm">商品、库存、订单、支付等真实系统。</p></div>
-        </div>
-      </div>
-      <div data-anim="up" style="position:relative;height:60vh;display:grid;place-items:center">
-        <svg viewBox="0 0 700 650" style="width:100%;height:100%" aria-label="生产系统三层边界几何图">
-          <circle cx="350" cy="325" r="260" fill="var(--grey-1)" stroke="var(--grey-2)" stroke-width="2"/>
-          <circle cx="350" cy="325" r="175" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"/>
-          <circle cx="350" cy="325" r="85" fill="var(--ink)" stroke="var(--ink)" stroke-width="2"/>
-        </svg>
-        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff"><div><div class="t-meta" style="color:rgba(255,255,255,.7)">CORE</div><div class="h-md">MODEL</div></div></div>
-        <div class="t-meta" style="position:absolute;right:4%;top:25%;color:#fff">HARNESS</div>
-        <div class="t-meta" style="position:absolute;right:0;bottom:12%;color:var(--ink)">BUSINESS SYSTEMS</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Information Layers · Storage and Retrieval</div><div class="r">05 / 09</div></div>
+    <div class="chrome-min"><div class="l">Information Layers · Storage and Retrieval</div><div class="r">04 / 09</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">TRAJECTORY · LONG-TERM MEMORY · BUSINESS STATE · KNOWLEDGE</div>
@@ -1332,6 +1305,31 @@
       <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / USER MEMORY</span><h3 class="h-md" style="margin-top:2vh">跨会话稳定信息</h3><p class="body-sm" style="margin-top:auto">从多次交互中提炼，会被改写、合并和淘汰。</p></article>
       <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / BUSINESS STATE</span><h3 class="h-md" style="margin-top:2vh">任务逻辑阶段</h3><p class="body-sm" style="margin-top:auto">如需要澄清、处理中、等待付款或请求完成。</p></article>
       <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / RAG</span><h3 class="h-md" style="margin-top:2vh;color:var(--accent-on)">共享知识管道</h3><p class="body-sm" style="margin-top:auto;color:var(--accent-on)">检索相关片段，将外部知识注入当前上下文。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Trajectory vs User Memory · Two Time Scales</div><div class="r">05 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">RUN HISTORY IS NOT LONG-TERM MEMORY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">流水账和用户档案，不是一回事</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">T</span> TRAJECTORY</div>
+        <div class="col-ttl">本次运行的完整历史</div>
+        <p class="col-desc">用户消息、模型回复和工具结果按时间追加，只增不改。</p>
+        <ul class="col-list"><li>服务当前任务决策</li><li>保留原始执行证据</li><li>会随本次会话持续增长</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">M</span> USER MEMORY</div>
+        <div class="col-ttl">跨会话提炼的稳定信息</div>
+        <p class="col-desc">从多次对话中选择、抽象和结构化，会被改写、合并与淘汰。</p>
+        <ul class="col-list"><li>服务未来个性化任务</li><li>与特定用户绑定</li><li>不是原始聊天记录的复制</li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1365,9 +1363,34 @@
   </div>
 </section>
 
+<section class="slide dark" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">User Memory vs Knowledge Base · Ownership</div><div class="r">07 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">PERSONAL MODEL ≠ SHARED KNOWLEDGE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">“关于这个人”和“关于这个世界”分开存</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col" style="color:var(--paper)">
+        <div class="col-tag"><span class="num">M</span> USER MEMORY</div>
+        <div class="col-ttl">用户专属预测模型</div>
+        <p class="col-desc">保存偏好、限制、关系和账户等跨会话稳定信息。</p>
+        <ul class="col-list"><li>与用户 ID 绑定</li><li>需要更新、合并与冲突处理</li><li>通过记忆工具显式读取和修改</li></ul>
+      </div>
+      <div class="vrule" style="background:rgba(255,255,255,.22)"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">K</span> KNOWLEDGE BASE / RAG</div>
+        <div class="col-ttl">多人共享的外部知识</div>
+        <p class="col-desc">保存政策、说明和领域资料，由检索器找到相关片段。</p>
+        <ul class="col-list"><li>不属于某个用户</li><li>重点治理来源与时效性</li><li>检索结果进入当前 Context</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">RAG vs Real-time Tool</div><div class="r">07 / 09</div></div>
+    <div class="chrome-min"><div class="l">RAG vs Real-time Tool</div><div class="r">08 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">KNOWLEDGE IS NOT LIVE STATE</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.6vw,9.8vh);line-height:1;letter-spacing:-.03em">“查资料”和“查现在”必须分开</h2>
@@ -1390,24 +1413,6 @@
   </div>
 </section>
 
-<section class="slide dark" data-layout="S16" data-animate="field-notes">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">08 / 09</div></div>
-    <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">THE NORMAL PATH IS NOT ENOUGH</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">确认无法恢复前，不暴露中间态</h2>
-    </div>
-    <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">静默重试</h3><p class="desc">临时超时先在框架内部有限重试。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">接续生成</h3><p class="desc">模型输出中断时，从已有轨迹继续。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">回退稳定态</h3><p class="desc">异常后回滚到上一可验证状态。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">熔断停止</h3><p class="desc">连续错误达到阈值，停止重复尝试。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">人工干预</h3><p class="desc">持续失败或高风险操作交还人类。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">明确停止条件</h3><p class="desc">完成、超预算或不可恢复时结束循环。</p></article>
-    </div>
-  </div>
-</section>
-
 <section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
   <div class="canvas-card">
     <div class="split-half">
@@ -1416,7 +1421,7 @@
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">09 / 09</div><div class="r">LESSON 03 · CLOSE</div></div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
-          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">信息放错位置，Harness 就会把旧事实、猜测或噪声当成当前世界。</h2>
+          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">先判断信息属于哪一个时间尺度和所有者，再决定怎样把它带进当前 Context。</h2>
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
@@ -1437,7 +1442,7 @@
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">恢复</h3><p class="body-sm">重试、回退、熔断和人工干预构成纠正阶梯。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">所有权</h3><p class="body-sm">用户记忆服务个人；RAG 知识库服务共享事实。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 03</span><span>NEXT · LESSON 04</span></div>

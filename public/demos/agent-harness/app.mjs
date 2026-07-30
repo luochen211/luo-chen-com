@@ -8,10 +8,12 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const lessons = [
   {
     id: "start",
+    course: "第 01 课",
+    deck: "lesson-01",
     title: "为什么需要 Agent",
-    slides: "01—05",
-    startSlide: 1,
-    time: "12 min",
+    slides: "02—05",
+    startSlide: 2,
+    time: "25 min",
     objective: "先建立判断标准：什么时候一段回答已经够用，什么时候必须让系统持续观察、行动和验证。",
     concepts: [
       ["回答", "模型基于当前信息生成内容，输出文本后任务就结束。"],
@@ -20,8 +22,8 @@ const lessons = [
     ],
     boundary: "“推荐三款耳机”只是语言输出；只有查到有效价格与库存、过滤硬约束并给出证据，才接近完成任务。",
     slideMap: [
-      ["01—03", "暴露“名词很多但没有系统地图”的学习痛点。"],
-      ["04", "固定整个课程唯一案例和六项完成条件。"],
+      ["02—03", "暴露“名词很多但没有系统地图”的学习痛点。"],
+      ["04", "固定购物助手案例的六项完成条件。"],
       ["05", "正式区分 Chat Response 与 Agent Task。"]
     ],
     experiment: "边界判断：回答还是完成",
@@ -34,10 +36,12 @@ const lessons = [
   },
   {
     id: "agent",
+    course: "第 01 课",
+    deck: "lesson-01",
     title: "Agent 的内部结构",
-    slides: "06—12",
+    slides: "06—09",
     startSlide: 6,
-    time: "23 min",
+    time: "25 min",
     objective: "把“Agent = LLM + Context + Tools”和 ReAct 循环分开：前者回答由什么组成，后者回答它怎样运行。",
     concepts: [
       ["LLM", "理解意图、比较候选并决定下一步，是概率性的决策核心。"],
@@ -47,9 +51,9 @@ const lessons = [
     ],
     boundary: "Context 由系统提示词、工具定义、用户消息、模型回复和工具执行结果组成；前两项是静态前缀，后三项形成动态轨迹。",
     slideMap: [
-      ["06—09", "定义三部分，并解释观察空间与动作空间。"],
-      ["10", "用 ReAct 说明三部分怎样被循环驱动。"],
-      ["11—12", "区分 State 与 Context，观察工具结果如何写回轨迹。"]
+      ["06", "用 Agent = LLM + Context + Tools 定义内部组成。"],
+      ["07—08", "解释观察空间、动作空间和 Context 的五类来源。"],
+      ["09", "用 ReAct 说明三部分怎样被循环驱动。"]
     ],
     experiment: "逐步观察一次 Agent 运行",
     instruction: "运行完整购物需求，然后每次只展开一个步骤。观察上一轮 Tool Result 如何成为下一轮 Context。",
@@ -61,23 +65,25 @@ const lessons = [
   },
   {
     id: "harness",
+    course: "第 02 课",
+    deck: "lesson-02",
     title: "Harness 如何保证可靠",
-    slides: "13—21",
-    startSlide: 13,
-    time: "35 min",
+    slides: "02—09",
+    startSlide: 2,
+    time: "30 min",
     objective: "理解模型负责判断，Harness 负责把判断放进可约束、可验证、可恢复的工程系统。",
     concepts: [
       ["Context", "为模型提供系统指令、工具定义与不断增长的动态轨迹。"],
       ["Tool Interface", "为模型设计可理解、单一职责、参数防呆且返回可判定的接口。"],
-      ["Constraints", "在行动前、参数中和行动后阻止越权与违反硬约束。"],
-      ["Validation", "不用模型声明证明模型正确，而是回到业务事实验证结果。"],
-      ["Correction", "失败后静默重试、接续生成、回退稳定态、熔断或交还人类。"]
+      ["Constrain", "在行动前、参数中和行动后阻止越权与违反硬约束。"],
+      ["Verify", "不用模型声明证明模型正确，而是回到业务事实验证结果。"],
+      ["Correct", "失败后静默重试、接续生成、回退稳定态、熔断或交还人类。"]
     ],
     boundary: "Harness 不是第二个更聪明的模型，而是模型外部的确定性控制层。",
     slideMap: [
-      ["13—15", "建立 Model + Harness 和五项工程职责全景。"],
-      ["16—19", "依次展开 Context、Tool、约束与验证。"],
-      ["20—21", "建立失败恢复阶梯与 Model / Harness / 业务系统边界。"]
+      ["02—03", "建立 Model + Harness，并展开 Harness 的五项工程职责。"],
+      ["04—08", "依次展开 Context、Tool、Constrain、Verify 与 Correct。"],
+      ["09", "用退款控制流观察五部分怎样按顺序接力。"]
     ],
     experiment: "工具超时对照实验",
     instruction: "触发同一次商品搜索。比较“只有模型”与“加入 Harness”在工具超时时分别会发生什么。",
@@ -89,10 +95,12 @@ const lessons = [
   },
   {
     id: "information",
+    course: "第 03 课",
+    deck: "lesson-03",
     title: "信息到底放在哪里",
-    slides: "22—25",
-    startSlide: 22,
-    time: "15 min",
+    slides: "02—08",
+    startSlide: 2,
+    time: "25 min",
     objective: "正确区分轨迹、用户长期记忆、业务状态与共享知识，避免把所有信息都塞进 Prompt 或向量库。",
     concepts: [
       ["Trajectory", "用户消息、模型回复和工具执行结果按时间追加，只增不改。"],
@@ -103,9 +111,9 @@ const lessons = [
     ],
     boundary: "RAG 适合“查资料”，实时 Tool 适合“查现在”；把库存放进向量库不会让它变成实时事实。",
     slideMap: [
-      ["22—23", "建立轨迹、长期记忆、业务状态与知识管道的分层。"],
-      ["24", "用“放哪里、怎么存、存什么”设计用户记忆。"],
-      ["25", "理解 RAG 如何把外部知识注入 Context。"]
+      ["02—04", "区分 State、Context，并建立四类信息资产总览。"],
+      ["05—07", "区分 Trajectory、User Memory 与共享知识的时间尺度和所有权。"],
+      ["08", "区分 RAG 的共享知识与实时 Tool 的当前事实。"]
     ],
     experiment: "信息归属分类",
     instruction: "给每条信息选择唯一的主要归属，然后检查结果。错误项会解释为什么不能放在那里。",
@@ -117,10 +125,12 @@ const lessons = [
   },
   {
     id: "capability",
+    course: "第 04 课",
+    deck: "lesson-04",
     title: "能力发现与多 Agent",
-    slides: "26—33",
-    startSlide: 26,
-    time: "25 min",
+    slides: "02—08",
+    startSlide: 2,
+    time: "20 min",
     objective: "区分 Agent、Skill 与 Tool，并理解能力的渐进式披露和多 Agent 的信息增益判据。",
     concepts: [
       ["Agent", "维护目标和 State，决定下一步做什么。"],
@@ -130,11 +140,11 @@ const lessons = [
     ],
     boundary: "多 Agent 是否值得，关键看协作是否引入单 Agent 生成时原本拿不到的新信息。",
     slideMap: [
-      ["26—29", "区分三层能力、渐进式发现和多 Agent 信息增益判据。"],
-      ["30—31", "用书中的退款案例展开 Harness 五项功能。"],
-      ["32—33", "观察可验证轨迹与纠正恢复阶梯。"]
+      ["02—03", "区分三层能力，并解释能力为什么要渐进式披露。"],
+      ["04—05", "用部署 Skill 观察能力怎样按需展开并由通用 Tool 执行。"],
+      ["06—08", "判断何时拆 Agent、Reviewer 如何获得新证据，以及怎样交接任务包。"]
     ],
-    experiment: "观察路由如何选择能力",
+    experiment: "观察能力怎样按需加载",
     instruction: "选择不同用户请求并运行，观察系统如何按需加载 Skill、调用 Tool，并把结果写回轨迹。",
     mode: "routing",
     question: "什么时候才值得把售后拆成另一个 Agent？",
@@ -144,10 +154,12 @@ const lessons = [
   },
   {
     id: "evaluation",
+    course: "第 05 课",
+    deck: "lesson-05",
     title: "怎样证明系统可用",
-    slides: "34—37",
-    startSlide: 34,
-    time: "10 min",
+    slides: "02—06",
+    startSlide: 2,
+    time: "20 min",
     objective: "同时评估执行轨迹与最终结果，并覆盖过程、结果、鲁棒性和安全合规。",
     concepts: [
       ["Process", "行动合法率、工具调用正确率、路径效率和成本延迟。"],
@@ -157,12 +169,12 @@ const lessons = [
     ],
     boundary: "只看轨迹会漏掉“说了但没做到”；只看最终结果又看不见中间步骤为什么走偏。",
     slideMap: [
-      ["34", "同时评估过程、结果、鲁棒性与安全。"],
-      ["35", "检查评测集的明确性、真实性、难度、可验证性、分布与质量。"],
-      ["36—37", "汇总系统地图并收束为看见、行动、证明三条原则。"]
+      ["02—03", "先区分执行轨迹与最终状态，再展开过程、结果、鲁棒性与安全。"],
+      ["04", "用 Pass@k、Pass^k 和 Best@k 区分能力上限与稳定性。"],
+      ["05—06", "检查评测集设计，并把指标放回完整系统地图。"]
     ],
     experiment: "检查六项评测集设计",
-    instruction: "逐项检查 PPT 第 35 页的评测集设计。重点不是总分，而是分数究竟代表什么能力。",
+    instruction: "逐项检查第 05 课第 05 页的评测集设计。重点不是总分，而是分数究竟代表什么能力。",
     mode: "evaluation",
     question: "为什么不能只用一个完整需求测试 Agent？",
     answers: ["因为一个测试运行得太快", "因为产品面对的是任务分布，不是单条演示路径", "因为必须测试一百条才有意义"],
@@ -236,7 +248,7 @@ function renderCurriculum() {
   $("#lessonList").innerHTML = lessons.map((lesson, index) => `
     <button type="button" class="lesson-button ${index === currentLesson ? "active" : ""}" data-lesson="${index}">
       <span class="lesson-nb">${index + 1}</span>
-      <span><strong>${lesson.title}</strong><small>PPT ${lesson.slides}</small></span>
+      <span><strong>${lesson.title}</strong><small>${lesson.course} · PPT ${lesson.slides}</small></span>
       <span class="lesson-time">${lesson.time}</span>
     </button>
   `).join("");
@@ -254,9 +266,13 @@ function switchLesson(index) {
   $("#lessonNumber").textContent = `演示 ${currentLesson + 1} / ${lessons.length}`;
   $("#lessonTitle").textContent = lesson.title;
   $("#lessonObjective").textContent = lesson.objective;
-  $("#lessonPptLink").textContent = `对应 PPT ${lesson.slides} ↗`;
-  $("#lessonPptLink").href = `/slides/decks/agent-harness/?slide=${lesson.startSlide}`;
-  $("#headerPptLink").href = `/slides/decks/agent-harness/?slide=${lesson.startSlide}`;
+  const pptBase = location.pathname.includes("/demos/agent-harness")
+    ? `/slides/decks/agent-harness/lessons/${lesson.deck}/`
+    : `../ppt/lessons/${lesson.deck}/`;
+  const pptHref = `${pptBase}?slide=${lesson.startSlide}`;
+  $("#lessonPptLink").textContent = `${lesson.course} · PPT ${lesson.slides} ↗`;
+  $("#lessonPptLink").href = pptHref;
+  $("#headerPptLink").href = pptHref;
   $("#conceptList").innerHTML = lesson.concepts.map((concept, index) => `
     <div class="concept-item"><span>${index + 1}</span><div><strong>${concept[0]}</strong><p>${concept[1]}</p></div></div>
   `).join("");
@@ -439,7 +455,7 @@ function renderRouting(workspace) {
   workspace.innerHTML = `
     <div class="lab-toolbar">
       <select id="routePrompt">${routingScenarios.map((item) => `<option value="${item.prompt}">${item.title}：${item.prompt}</option>`).join("")}</select>
-      <button id="runRoute" class="run-button" type="button">运行路由</button>
+      <button id="runRoute" class="run-button" type="button">运行能力选择</button>
     </div>
     <div id="routeMap" class="route-map pending">
       <div class="route-node"><span>WHO / AGENT</span><strong id="routeAgent">购物 Agent</strong><p>维护目标、State 与下一步决策。</p></div>
@@ -455,7 +471,7 @@ function renderRouting(workspace) {
 
 async function runRoute() {
   $("#runRoute").disabled = true;
-  setStatus("路由判断中", "running");
+  setStatus("能力选择中", "running");
   harness.reset();
   const result = await harness.run($("#routePrompt").value);
   $("#routeMap").classList.remove("pending");
@@ -485,17 +501,17 @@ async function runRoute() {
   $("#traceList").innerHTML = "";
   result.trace.forEach(appendTraceStep);
   $("#runRoute").disabled = false;
-  setStatus("路由完成", "success");
+  setStatus("能力选择完成", "success");
 }
 
 function renderEvaluation(workspace) {
   workspace.innerHTML = `
     <div class="lab-toolbar">
-      <div style="flex:1;font-size:11px;color:#667085">测试集来自 PPT 第 35 页：一条正常路径 + 五种边界变化</div>
-      <button id="runEvaluation" class="run-button" type="button">运行 6 条测试</button>
+      <div style="flex:1;font-size:11px;color:#667085">评测集设计检查：明确性、真实性、难度、可验证性、分布与质量</div>
+      <button id="runEvaluation" class="run-button" type="button">检查 6 个维度</button>
     </div>
     <table class="test-table" style="margin-top:10px">
-      <thead><tr><th>任务变化</th><th>期望行为</th><th>结果</th></tr></thead>
+      <thead><tr><th>设计维度</th><th>检查标准</th><th>结果</th></tr></thead>
       <tbody>${evalCases.map((item, index) => `<tr><td>0${index + 1} · ${item[0]}</td><td>${item[1]}</td><td class="test-status" data-test="${index}">待运行</td></tr>`).join("")}</tbody>
     </table>
     <div class="eval-summary">

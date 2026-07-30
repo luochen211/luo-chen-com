@@ -1229,7 +1229,7 @@
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
     <div class="chrome-min">
       <div class="l">Agent Harness · Lesson 05 / 05</div>
-      <div class="r">01 / 05 · 20 MIN</div>
+      <div class="r">01 / 07 · 20 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">PROCESS · OUTCOME · ROBUSTNESS · SAFETY</div>
@@ -1245,9 +1245,34 @@
   </div>
 </section>
 
+<section class="slide dark" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Evaluation Object · Trace and Outcome</div><div class="r">02 / 07</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">WHAT THE AGENT DID ≠ WHAT THE WORLD BECAME</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">先确定评测对象，再选择指标</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col" style="color:var(--paper)">
+        <div class="col-tag"><span class="num">T</span> TRAJECTORY</div>
+        <div class="col-ttl">过程中说了什么、做了什么</div>
+        <p class="col-desc">检查工具、参数、调用顺序、重复动作和回退过程。</p>
+        <ul class="col-list"><li>能定位能力短板</li><li>能发现越权和低效路径</li><li>不能单独证明业务成功</li></ul>
+      </div>
+      <div class="vrule" style="background:rgba(255,255,255,.22)"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">O</span> OUTCOME</div>
+        <div class="col-ttl">最终环境变成了什么状态</div>
+        <p class="col-desc">Agent 说“退款成功”不算；数据库显示 refunded 才是结果。</p>
+        <ul class="col-list"><li>验证任务是否真正完成</li><li>防止“说了但没做到”</li><li>无法单独解释为什么失败</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Evaluation Metrics · Process and Outcome</div><div class="r">02 / 05</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Metrics · Process and Outcome</div><div class="r">03 / 07</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">TRACE + OUTCOME · QUALITY + SAFETY</div>
@@ -1262,9 +1287,35 @@
   </div>
 </section>
 
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Pass@k vs Pass^k · Capability and Reliability</div><div class="r">04 / 07</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">SAME SINGLE-RUN SUCCESS RATE · OPPOSITE CONCLUSIONS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">“能做到”和“稳定做到”不是一个指标</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">@</span> PASS@K</div>
+        <div class="col-ttl">k 次至少成功一次</div>
+        <p class="col-desc">回答 Agent 有没有能力做到，适合探索能力上限。</p>
+        <ul class="col-list"><li>单次成功率 60%</li><li>Pass@5 ≈ 99%</li><li>一次成功就算通过</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">^</span> PASS^K</div>
+        <div class="col-ttl">k 次必须全部成功</div>
+        <p class="col-desc">回答 Agent 是否稳定可靠，适合生产回归测试。</p>
+        <ul class="col-list"><li>单次成功率 60%</li><li>Pass^5 ≈ 7.8%</li><li>一次失败就暴露不稳定</li></ul>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:auto">开放任务若有连续质量分数，再用 Best@k 衡量多次尝试中的质量上限。</div>
+  </div>
+</section>
+
 <section class="slide grey" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Evaluation Dataset · Six Design Checks</div><div class="r">03 / 05</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Dataset · Six Design Checks</div><div class="r">05 / 07</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THE DATASET DETERMINES WHAT THE SCORE MEANS</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测集要通过六项检查</h2>
@@ -1282,7 +1333,7 @@
 
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Final Map · One System</div><div class="r">04 / 05</div></div>
+    <div class="chrome-min"><div class="l">Final Map · One System</div><div class="r">06 / 07</div></div>
     <div style="display:flex;flex-direction:column;gap:1.2vh">
       <div class="t-meta">EVERY CONCEPT HAS ONE PLACE</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">把所有概念放回同一张地图</h2>
@@ -1297,9 +1348,9 @@
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1vw">
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONTEXT</span><p class="body-sm">静态前缀 + 动态轨迹</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">TOOLS</span><p class="body-sm">查询与执行业务动作</p></div>
-        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAINTS</span><p class="body-sm">阻止越界参数和动作</p></div>
-        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VALIDATION</span><p class="body-sm">用外部事实证明结果</p></div>
-        <div class="card-accent" style="padding:2vh 1.2vw"><span class="t-meta">CORRECTION</span><p class="body-sm" style="color:#fff">重试、降级与安全退出</p></div>
+        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAIN</span><p class="body-sm">阻止越界参数和动作</p></div>
+        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VERIFY</span><p class="body-sm">用外部事实证明结果</p></div>
+        <div class="card-accent" style="padding:2vh 1.2vw"><span class="t-meta">CORRECT</span><p class="body-sm" style="color:#fff">重试、回退与安全退出</p></div>
       </div>
     </div>
   </div>
@@ -1310,14 +1361,14 @@
     <div class="split-half">
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
-        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">05 / 05</div><div class="r">LESSON 05 · CLOSE</div></div>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">07 / 07</div><div class="r">LESSON 05 · CLOSE</div></div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
-          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">不要只评答案像不像人；要评整条任务轨迹是否正确完成。</h2>
+          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">不要只评答案像不像人；要同时检查执行轨迹与最终环境状态。</h2>
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
-          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 06 · 对照轨迹与最终业务状态</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 06 · 对照轨迹、最终状态与重复运行稳定性</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
         </div>
       </div>

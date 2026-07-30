@@ -3,7 +3,7 @@
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
     <div class="chrome-min">
       <div class="l">Agent Harness · Lesson 04 / 05</div>
-      <div class="r">01 / 08 · 20 MIN</div>
+      <div class="r">01 / 09 · 20 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">AGENT · SKILL · TOOL · DISCOVERY · COLLABORATION</div>
@@ -12,7 +12,7 @@
         <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">Agent、Skill、Tool 与多 Agent<br/>究竟怎样分工？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">从 Agent、Skill、Tool 的能力表达进入按需发现，再用“是否引入新信息”判断多 Agent 是否值得。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">从 Agent、Skill、Tool 的能力表达进入按需发现，再用部署 Skill 和外部验证 Reviewer 看清单 Agent 与多 Agent 的边界。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
 <section class="slide dark" data-layout="S05" data-animate="stack-build">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Capability Layers · Who / How / Action</div><div class="r">02 / 08</div></div>
+    <div class="chrome-min"><div class="l">Capability Layers · Who / How / Action</div><div class="r">02 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THREE LEVELS, NOT THREE SYNONYMS</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">Agent 决策，Skill 组织，Tool 执行</h2>
@@ -36,7 +36,7 @@
 
 <section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Capability Loading · Progressive Disclosure</div><div class="r">03 / 08</div></div>
+    <div class="chrome-min"><div class="l">Capability Loading · Progressive Disclosure</div><div class="r">03 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">DO NOT PUT EVERY TOOL IN CONTEXT</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">能力按需发现，逐层展开</h2>
@@ -56,9 +56,52 @@
   </div>
 </section>
 
+<section class="slide dark" data-layout="S17" data-animate="system-diagram">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Skill + Generic Executor · Deployment Example</div><div class="r">04 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div class="t-meta">A SKILL DESCRIBES THE METHOD · A TOOL EXECUTES THE ACTION</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">“部署应用”由谁知道，谁执行？</h2>
+    </div>
+    <div data-anim="up" style="flex:1;display:grid;grid-template-columns:2.3fr .35fr 3fr .35fr 3.6fr;gap:1vw;align-items:center;margin-top:4vh">
+      <div class="card-ink" style="height:44vh;border:1px solid rgba(255,255,255,.2);padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="t-meta">AGENT</span><i data-lucide="bot" style="width:3vw;height:3vw"></i><div><h3 class="h-md">决定加载能力</h3><p class="body-sm">识别任务需要部署流程，而不是临场猜步骤。</p></div>
+      </div>
+      <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
+      <div class="card-accent" style="height:52vh;padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="t-meta">SKILL</span><i data-lucide="list-tree" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">部署应用</h3><p class="body-sm" style="color:#fff">用自然语言保存操作顺序、规则和领域知识。</p></div>
+      </div>
+      <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
+      <div style="height:60vh;display:grid;grid-template-rows:repeat(3,1fr);gap:1vh">
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">BASH · STEP 01</span><h3 class="t-h-prod">npm run build</h3></div><i data-lucide="package"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">BASH · STEP 02</span><h3 class="t-h-prod">docker build</h3></div><i data-lucide="box"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">BASH · STEP 03</span><h3 class="t-h-prod">kubectl apply</h3></div><i data-lucide="terminal-square"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Progressive Disclosure · One Skill Run</div><div class="r">05 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">INDEX FIRST · DETAILS ON DEMAND</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">一次任务只展开需要的能力</h2>
+    </div>
+    <div class="sub-grid-3-2" data-anim="up">
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="list"></i><h3 class="ttl">保留索引</h3><p class="desc">Context 先看见 Skill 名称和简短描述。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="target"></i><h3 class="ttl">匹配任务</h3><p class="desc">Agent 判断当前请求属于部署应用。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="book-open"></i><h3 class="ttl">加载 Skill</h3><p class="desc">只读取部署流程的完整说明。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="terminal"></i><h3 class="ttl">选择执行器</h3><p class="desc">使用通用 Bash Tool，而非新增三个专用工具。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="play"></i><h3 class="ttl">逐步执行</h3><p class="desc">每一步结果写入轨迹，再决定下一步。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="check-check"></i><h3 class="ttl">验证完成</h3><p class="desc">执行结果而不是 Skill 文本证明任务成功。</p></article>
+    </div>
+  </div>
+</section>
+
 <section class="slide grey" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Single vs Multi Agent · Split Criteria</div><div class="r">04 / 08</div></div>
+    <div class="chrome-min"><div class="l">Single vs Multi Agent · Split Criteria</div><div class="r">06 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THE KEY QUESTION IS INFORMATION GAIN</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">多 Agent 不是默认升级</h2>
@@ -81,72 +124,53 @@
   </div>
 </section>
 
-<section class="slide dark" data-layout="S17" data-animate="system-diagram">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Book Example · Refund Agent</div><div class="r">05 / 08</div></div>
-    <div style="display:flex;flex-direction:column;gap:1.2vh">
-      <div class="t-meta">ONE EXAMPLE · FIVE HARNESS FUNCTIONS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">退掉 3 天前的订单</h2>
-    </div>
-    <div data-anim="up" style="flex:1;display:grid;grid-template-columns:2.3fr .35fr 3fr .35fr 3.6fr;gap:1vw;align-items:center;margin-top:4vh">
-      <div class="card-ink" style="height:44vh;border:1px solid rgba(255,255,255,.2);padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
-        <span class="t-meta">REQUEST</span><i data-lucide="message-circle" style="width:3vw;height:3vw"></i><div><h3 class="h-md">用户</h3><p class="body-sm">“帮我退掉 3 天前买的订单。”</p></div>
-      </div>
-      <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
-      <div class="card-accent" style="height:52vh;padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
-        <span class="t-meta">MODEL</span><i data-lucide="git-branch" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">退款 Agent</h3><p class="body-sm" style="color:#fff">读取 7 天退款政策，决定查询订单并发起退款。</p></div>
-      </div>
-      <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
-      <div style="height:60vh;display:grid;grid-template-rows:repeat(4,1fr);gap:1vh">
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 01</span><h3 class="t-h-prod">query_order</h3></div><i data-lucide="search"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 02</span><h3 class="t-h-prod">process_refund</h3></div><i data-lucide="badge-dollar-sign"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">CONSTRAIN</span><h3 class="t-h-prod">金额不得超出订单</h3></div><i data-lucide="shield"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">VERIFY / CORRECT</span><h3 class="t-h-prod">查状态 / 超时重试</h3></div><i data-lucide="shield-check"></i></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="slide light" data-layout="S04" data-animate="grid-reveal">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Refund Example · Harness Checklist</div><div class="r">06 / 08</div></div>
-    <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">THE MODEL IS ONLY ONE PART</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">五个功能分别解决什么</h2>
-    </div>
-    <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="eye"></i><h3 class="ttl">Context</h3><p class="desc">提供 7 天退款政策与用户请求。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="wrench"></i><h3 class="ttl">Tools</h3><p class="desc">查询订单并调用退款 API。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="lock-keyhole"></i><h3 class="ttl">Constrain</h3><p class="desc">退款金额不得超过订单金额。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="badge-check"></i><h3 class="ttl">Verify</h3><p class="desc">查询数据库，确认退款状态。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="refresh-cw"></i><h3 class="ttl">Correct</h3><p class="desc">API 超时先自动重试。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">+</span><i data-lucide="user-check"></i><h3 class="ttl">Human in the loop</h3><p class="desc">高风险或持续失败时交还人类。</p></article>
-    </div>
-  </div>
-</section>
-
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Refund Run · Concrete Trace</div><div class="r">07 / 08</div></div>
+    <div class="chrome-min"><div class="l">Multi Agent · New Information Trace</div><div class="r">07 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">FROM REQUEST TO PROVEN RESULT</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">一次退款怎样形成可验证轨迹</h2>
+      <div class="t-meta">REVIEW IS USEFUL ONLY WHEN IT GAINS EXTERNAL FEEDBACK</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">Reviewer 的价值来自新的观察</h2>
     </div>
     <div class="pipeline-section" data-anim="up" style="margin-top:6vh">
       <div class="pipeline-label">ACTUAL TRACE</div>
       <div class="pipeline" data-cols="6">
-        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">读取政策</h3><p class="step-desc">7 天内可退款</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">查询订单</h3><p class="step-desc">确认订单与金额</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">检查约束</h3><p class="step-desc">3 天内且金额合法</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">发起退款</h3><p class="step-desc">调用 process_refund</p></div>
-        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">处理超时</h3><p class="step-desc">按纠正规则重试</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">验证状态</h3><p class="step-desc">数据库显示成功</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">Builder</h3><p class="step-desc">生成实现与测试候选</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">移交产物</h3><p class="step-desc">传文件路径与验收标准</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">运行测试</h3><p class="step-desc">获得通过或失败结果</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">渲染界面</h3><p class="step-desc">获得真实视觉截图</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">Reviewer</h3><p class="step-desc">结合新证据进行审查</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">结构化返回</h3><p class="step-desc">结论、问题与产物路径</p></div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;margin-top:auto">
-      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">TRAJECTORY</span><div class="h-md">MESSAGE + CALLS + RESULTS</div></div>
-      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">CONSTRAINT</span><div class="h-md">AMOUNT ≤ ORDER</div></div>
-      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">OUTCOME</span><div class="h-md" style="color:#fff">DATABASE = REFUNDED</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">NOT ENOUGH</span><div class="h-md">REREAD SAME TEXT</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">NEW INFORMATION</span><div class="h-md">TEST + SCREENSHOT</div></div>
+      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">HANDOFF</span><div class="h-md" style="color:#fff">STRUCTURED SUMMARY</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Agent Handoff · Minimal Sufficient Package</div><div class="r">08 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">SHARE CONCLUSIONS + EVIDENCE POINTERS, NOT THE ENTIRE TRAJECTORY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">Agent 之间交接的是任务包，不是整段聊天</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col" style="color:var(--paper)">
+        <div class="col-tag"><span class="num">01</span> HANDOFF PACKAGE</div>
+        <div class="col-ttl">最小充分上下文</div>
+        <p class="col-desc">让接手者知道要完成什么、已经确认什么，以及去哪里读取证据。</p>
+        <ul class="col-list"><li>任务目标与验收标准</li><li>已确认事实与关键约束</li><li>产物、测试和截图的引用</li></ul>
+      </div>
+      <div class="vrule" style="background:rgba(255,255,255,.22)"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">02</span> DO NOT COPY</div>
+        <div class="col-ttl">无差别复制完整轨迹</div>
+        <p class="col-desc">原始历史会挤占 Context，还会让接手者重新判断已经完成的工作。</p>
+        <ul class="col-list"><li>噪声与重复信息过多</li><li>责任边界和完成状态模糊</li><li>需要时再按引用回读原始证据</li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -156,14 +180,14 @@
     <div class="split-half">
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
-        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">08 / 08</div><div class="r">LESSON 04 · CLOSE</div></div>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">09 / 09</div><div class="r">LESSON 04 · CLOSE</div></div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
           <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">先按需发现能力；只有协作带来单 Agent 原本拿不到的新信息，才值得拆分。</h2>
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
-          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 05 · 按需加载能力并观察工具反馈</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 05 · 加载 Skill、执行 Tool、引入外部验证</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
         </div>
       </div>
@@ -180,7 +204,7 @@
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">发现</h3><p class="body-sm">Skill 与 Tool 通过索引和渐进式披露按需进入上下文。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">协作</h3><p class="body-sm">Reviewer 必须获得测试或截图等新增证据，才产生实质价值。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 04</span><span>NEXT · LESSON 05</span></div>

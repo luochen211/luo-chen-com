@@ -1275,7 +1275,7 @@
         <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">怎样证明</span><span class="desc">评测与证据</span></div></div>
       </div>
     </div>
-    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">每一部分都回到同一个购物任务，不切换案例</div>
+    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">购物助手解释开放式信息任务；退款 Agent 解释有状态业务操作</div>
   </div>
 </section>
 
@@ -1283,7 +1283,7 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">Project Brief · Shopping Assistant</div><div class="r">04 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">THE ONE RUNNING CASE</div>
+      <div class="t-meta">CASE A · OPEN-ENDED INFORMATION TASK</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1.02;letter-spacing:-.03em">500 元通勤耳机助手</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
@@ -1569,7 +1569,7 @@
 
 <section class="slide dark" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Constraints · Fault-safe Defaults</div><div class="r">18 / 37</div></div>
+    <div class="chrome-min"><div class="l">Constrain · Fault-safe Defaults</div><div class="r">18 / 37</div></div>
     <div style="display:grid;grid-template-columns:4fr 8fr;gap:3vw;flex:1">
       <div class="ink-block" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--accent)">
         <div class="t-meta" style="color:rgba(255,255,255,.75)">HARNESS FUNCTION 03</div>
@@ -1612,7 +1612,7 @@
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">20 / 37</div></div>
+    <div class="chrome-min"><div class="l">Correct · Recovery Ladder</div><div class="r">20 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">HARNESS FUNCTION 05</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">先局部修复，最后安全终止</h2>
@@ -1630,28 +1630,26 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S17" data-animate="system-diagram">
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Production Boundary · Three Layers</div><div class="r">21 / 37</div></div>
-    <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;flex:1;align-items:center">
-      <div data-anim="left">
-        <div class="t-meta">WHO OWNS WHAT</div>
-        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;margin-top:1.4vh">Harness 连接模型与业务世界</h2>
-        <div style="display:flex;flex-direction:column;margin-top:5vh">
-          <div style="padding:1.8vh 0;border-top:1px solid var(--border-subtle)"><strong class="t-h-prod">Model</strong><p class="t-body-sm">概率性的理解、规划与决策。</p></div>
-          <div style="padding:1.8vh 0;border-top:1px solid var(--border-subtle)"><strong class="t-h-prod">Harness</strong><p class="t-body-sm">上下文、工具接口、约束、验证、纠正。</p></div>
-          <div style="padding:1.8vh 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)"><strong class="t-h-prod">Business Systems</strong><p class="t-body-sm">商品、库存、订单、支付等真实系统。</p></div>
-        </div>
+    <div class="chrome-min"><div class="l">Trajectory vs User Memory · Two Time Scales</div><div class="r">21 / 37</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">RUN HISTORY IS NOT LONG-TERM MEMORY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">流水账和用户档案，不是一回事</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">T</span> TRAJECTORY</div>
+        <div class="col-ttl">本次运行的完整历史</div>
+        <p class="col-desc">用户消息、模型回复和工具结果按时间追加，只增不改。</p>
+        <ul class="col-list"><li>服务当前任务决策</li><li>保留原始执行证据</li><li>会随本次会话持续增长</li></ul>
       </div>
-      <div data-anim="up" style="position:relative;height:60vh;display:grid;place-items:center">
-        <svg viewBox="0 0 700 650" style="width:100%;height:100%" aria-label="生产系统三层边界几何图">
-          <circle cx="350" cy="325" r="260" fill="var(--grey-1)" stroke="var(--grey-2)" stroke-width="2"/>
-          <circle cx="350" cy="325" r="175" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"/>
-          <circle cx="350" cy="325" r="85" fill="var(--ink)" stroke="var(--ink)" stroke-width="2"/>
-        </svg>
-        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff"><div><div class="t-meta" style="color:rgba(255,255,255,.7)">CORE</div><div class="h-md">MODEL</div></div></div>
-        <div class="t-meta" style="position:absolute;right:4%;top:25%;color:#fff">HARNESS</div>
-        <div class="t-meta" style="position:absolute;right:0;bottom:12%;color:var(--ink)">BUSINESS SYSTEMS</div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">M</span> USER MEMORY</div>
+        <div class="col-ttl">跨会话提炼的稳定信息</div>
+        <p class="col-desc">从多次对话中选择、抽象和结构化，会被改写、合并与淘汰。</p>
+        <ul class="col-list"><li>服务未来个性化任务</li><li>与特定用户绑定</li><li>不是原始聊天记录的复制</li></ul>
       </div>
     </div>
   </div>
@@ -1816,25 +1814,24 @@
 
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Book Example · Refund Agent</div><div class="r">30 / 37</div></div>
+    <div class="chrome-min"><div class="l">Skill + Generic Executor · Deployment Example</div><div class="r">30 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.2vh">
-      <div class="t-meta">ONE EXAMPLE · FIVE HARNESS FUNCTIONS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">退掉 3 天前的订单</h2>
+      <div class="t-meta">A SKILL DESCRIBES THE METHOD · A TOOL EXECUTES THE ACTION</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">“部署应用”由谁知道，谁执行？</h2>
     </div>
     <div data-anim="up" style="flex:1;display:grid;grid-template-columns:2.3fr .35fr 3fr .35fr 3.6fr;gap:1vw;align-items:center;margin-top:4vh">
       <div class="card-ink" style="height:44vh;border:1px solid rgba(255,255,255,.2);padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
-        <span class="t-meta">REQUEST</span><i data-lucide="message-circle" style="width:3vw;height:3vw"></i><div><h3 class="h-md">用户</h3><p class="body-sm">“帮我退掉 3 天前买的订单。”</p></div>
+        <span class="t-meta">AGENT</span><i data-lucide="bot" style="width:3vw;height:3vw"></i><div><h3 class="h-md">决定加载能力</h3><p class="body-sm">识别任务需要部署流程，而不是临场猜步骤。</p></div>
       </div>
       <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
       <div class="card-accent" style="height:52vh;padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
-        <span class="t-meta">MODEL</span><i data-lucide="git-branch" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">退款 Agent</h3><p class="body-sm" style="color:#fff">读取 7 天退款政策，决定查询订单并发起退款。</p></div>
+        <span class="t-meta">SKILL</span><i data-lucide="list-tree" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">部署应用</h3><p class="body-sm" style="color:#fff">用自然语言保存操作顺序、规则和领域知识。</p></div>
       </div>
       <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
-      <div style="height:60vh;display:grid;grid-template-rows:repeat(4,1fr);gap:1vh">
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 01</span><h3 class="t-h-prod">query_order</h3></div><i data-lucide="search"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 02</span><h3 class="t-h-prod">process_refund</h3></div><i data-lucide="badge-dollar-sign"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">CONSTRAIN</span><h3 class="t-h-prod">金额不得超出订单</h3></div><i data-lucide="shield"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">VERIFY / CORRECT</span><h3 class="t-h-prod">查状态 / 超时重试</h3></div><i data-lucide="shield-check"></i></div>
+      <div style="height:60vh;display:grid;grid-template-rows:repeat(3,1fr);gap:1vh">
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">BASH · STEP 01</span><h3 class="t-h-prod">npm run build</h3></div><i data-lucide="package"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">BASH · STEP 02</span><h3 class="t-h-prod">docker build</h3></div><i data-lucide="box"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">BASH · STEP 03</span><h3 class="t-h-prod">kubectl apply</h3></div><i data-lucide="terminal-square"></i></div>
       </div>
     </div>
   </div>
@@ -1842,62 +1839,69 @@
 
 <section class="slide light" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Refund Example · Harness Checklist</div><div class="r">31 / 37</div></div>
+    <div class="chrome-min"><div class="l">Progressive Disclosure · One Skill Run</div><div class="r">31 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">THE MODEL IS ONLY ONE PART</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">五个功能分别解决什么</h2>
+      <div class="t-meta">INDEX FIRST · DETAILS ON DEMAND</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">一次任务只展开需要的能力</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="eye"></i><h3 class="ttl">Context</h3><p class="desc">提供 7 天退款政策与用户请求。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="wrench"></i><h3 class="ttl">Tools</h3><p class="desc">查询订单并调用退款 API。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="lock-keyhole"></i><h3 class="ttl">Constrain</h3><p class="desc">退款金额不得超过订单金额。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="badge-check"></i><h3 class="ttl">Verify</h3><p class="desc">查询数据库，确认退款状态。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="refresh-cw"></i><h3 class="ttl">Correct</h3><p class="desc">API 超时先自动重试。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">+</span><i data-lucide="user-check"></i><h3 class="ttl">Human in the loop</h3><p class="desc">高风险或持续失败时交还人类。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="list"></i><h3 class="ttl">保留索引</h3><p class="desc">Context 先看见 Skill 名称和简短描述。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="target"></i><h3 class="ttl">匹配任务</h3><p class="desc">Agent 判断当前请求属于部署应用。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="book-open"></i><h3 class="ttl">加载 Skill</h3><p class="desc">只读取部署流程的完整说明。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="terminal"></i><h3 class="ttl">选择执行器</h3><p class="desc">使用通用 Bash Tool，而非新增三个专用工具。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="play"></i><h3 class="ttl">逐步执行</h3><p class="desc">每一步结果写入轨迹，再决定下一步。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="check-check"></i><h3 class="ttl">验证完成</h3><p class="desc">执行结果而不是 Skill 文本证明任务成功。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Refund Run · Concrete Trace</div><div class="r">32 / 37</div></div>
+    <div class="chrome-min"><div class="l">Multi Agent · New Information Trace</div><div class="r">32 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">FROM REQUEST TO PROVEN RESULT</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">一次退款怎样形成可验证轨迹</h2>
+      <div class="t-meta">REVIEW IS USEFUL ONLY WHEN IT GAINS EXTERNAL FEEDBACK</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">Reviewer 的价值来自新的观察</h2>
     </div>
     <div class="pipeline-section" data-anim="up" style="margin-top:6vh">
       <div class="pipeline-label">ACTUAL TRACE</div>
       <div class="pipeline" data-cols="6">
-        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">读取政策</h3><p class="step-desc">7 天内可退款</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">查询订单</h3><p class="step-desc">确认订单与金额</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">检查约束</h3><p class="step-desc">3 天内且金额合法</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">发起退款</h3><p class="step-desc">调用 process_refund</p></div>
-        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">处理超时</h3><p class="step-desc">按纠正规则重试</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">验证状态</h3><p class="step-desc">数据库显示成功</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">Builder</h3><p class="step-desc">生成实现与测试候选</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">移交产物</h3><p class="step-desc">传文件路径与验收标准</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">运行测试</h3><p class="step-desc">获得通过或失败结果</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">渲染界面</h3><p class="step-desc">获得真实视觉截图</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">Reviewer</h3><p class="step-desc">结合新证据进行审查</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">结构化返回</h3><p class="step-desc">结论、问题与产物路径</p></div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;margin-top:auto">
-      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">TRAJECTORY</span><div class="h-md">MESSAGE + CALLS + RESULTS</div></div>
-      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">CONSTRAINT</span><div class="h-md">AMOUNT ≤ ORDER</div></div>
-      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">OUTCOME</span><div class="h-md" style="color:#fff">DATABASE = REFUNDED</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">NOT ENOUGH</span><div class="h-md">REREAD SAME TEXT</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">NEW INFORMATION</span><div class="h-md">TEST + SCREENSHOT</div></div>
+      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">HANDOFF</span><div class="h-md" style="color:#fff">STRUCTURED SUMMARY</div></div>
     </div>
   </div>
 </section>
 
-<section class="slide dark" data-layout="S16" data-animate="field-notes">
+<section class="slide dark" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">33 / 37</div></div>
+    <div class="chrome-min"><div class="l">User Memory vs Knowledge Base · Ownership</div><div class="r">33 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">THE NORMAL PATH IS NOT ENOUGH</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">确认无法恢复前，不暴露中间态</h2>
+      <div class="t-meta">PERSONAL MODEL ≠ SHARED KNOWLEDGE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">“关于这个人”和“关于这个世界”分开存</h2>
     </div>
-    <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">静默重试</h3><p class="desc">临时超时先在框架内部有限重试。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">接续生成</h3><p class="desc">模型输出中断时，从已有轨迹继续。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">回退稳定态</h3><p class="desc">异常后回滚到上一可验证状态。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">熔断停止</h3><p class="desc">连续错误达到阈值，停止重复尝试。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">人工干预</h3><p class="desc">持续失败或高风险操作交还人类。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">明确停止条件</h3><p class="desc">完成、超预算或不可恢复时结束循环。</p></article>
+    <div class="duo-compare" data-anim="up">
+      <div class="col" style="color:var(--paper)">
+        <div class="col-tag"><span class="num">M</span> USER MEMORY</div>
+        <div class="col-ttl">用户专属预测模型</div>
+        <p class="col-desc">保存偏好、限制、关系和账户等跨会话稳定信息。</p>
+        <ul class="col-list"><li>与用户 ID 绑定</li><li>需要更新、合并与冲突处理</li><li>通过记忆工具显式读取和修改</li></ul>
+      </div>
+      <div class="vrule" style="background:rgba(255,255,255,.22)"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">K</span> KNOWLEDGE BASE / RAG</div>
+        <div class="col-ttl">多人共享的外部知识</div>
+        <p class="col-desc">保存政策、说明和领域资料，由检索器找到相关片段。</p>
+        <ul class="col-list"><li>不属于某个用户</li><li>重点治理来源与时效性</li><li>检索结果进入当前 Context</li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1954,9 +1958,9 @@
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1vw">
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONTEXT</span><p class="body-sm">静态前缀 + 动态轨迹</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">TOOLS</span><p class="body-sm">查询与执行业务动作</p></div>
-        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAINTS</span><p class="body-sm">阻止越界参数和动作</p></div>
-        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VALIDATION</span><p class="body-sm">用外部事实证明结果</p></div>
-        <div class="card-accent" style="padding:2vh 1.2vw"><span class="t-meta">CORRECTION</span><p class="body-sm" style="color:#fff">重试、降级与安全退出</p></div>
+        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAIN</span><p class="body-sm">阻止越界参数和动作</p></div>
+        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VERIFY</span><p class="body-sm">用外部事实证明结果</p></div>
+        <div class="card-accent" style="padding:2vh 1.2vw"><span class="t-meta">CORRECT</span><p class="body-sm" style="color:#fff">重试、回退与安全退出</p></div>
       </div>
     </div>
   </div>
