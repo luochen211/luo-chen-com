@@ -1,0 +1,223 @@
+<section class="slide accent" data-layout="SWISS-COVER-ASCII" data-animate="hero">
+  <div class="canvas-card">
+    <canvas class="ascii-bg" aria-hidden="true"></canvas>
+    <div class="chrome-min">
+      <div class="l">Agent Harness · Lesson 01 / 05</div>
+      <div class="r">01 / 10 · 25 MIN</div>
+    </div>
+    <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ANATOMY · OBSERVATION · ACTION · LOOP</div>
+      <div style="align-self:center">
+        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 01 课 · Agent 如何工作</div>
+        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">Agent 到底由什么组成，<br/>又怎样持续行动？</h1>
+      </div>
+      <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">先区分“回答”和“完成任务”，再把 LLM、Context、Tools 与运行循环放进同一张图。</div>
+        <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S03" data-animate="statement">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Opening · The real learning gap</div><div class="r">02 / 10</div></div>
+    <div style="flex:1;display:grid;grid-template-columns:3fr 9fr;align-items:center;gap:3vw">
+      <div data-anim="left" class="t-meta" style="align-self:start;padding-top:2vh">THE GAP</div>
+      <div data-anim="title">
+        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(6.5vw,11.4vh);line-height:1.02;letter-spacing:-.035em">知道很多名词，<br/>不等于<span style="color:var(--accent)">看懂系统</span>。</h2>
+        <p class="lead" style="max-width:42ch;margin-top:4vh;color:var(--text-secondary)">真正困难的不是记住 RAG、Memory、Skill、Tool，而是知道它们何时出现、彼此怎样连接、出错由谁负责。</p>
+      </div>
+    </div>
+    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">本课只建立一张可用于判断与设计的最小地图</div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Learning Path · Five Questions</div><div class="r">03 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">FIVE LESSONS · ONE SYSTEM</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.8vw,10.2vh);line-height:1;letter-spacing:-.03em">五节课，沿五个问题走完</h2>
+    </div>
+    <div class="timeline-h" data-anim="up">
+      <div class="tl-row">
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">Agent 是谁</span><span class="desc">内部组成</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">如何行动</span><span class="desc">运行循环</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">怎样可靠</span><span class="desc">Harness</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">如何分工</span><span class="desc">信息与能力</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">怎样证明</span><span class="desc">评测与证据</span></div></div>
+      </div>
+    </div>
+    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">五节课都回到同一个购物任务，不切换案例</div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Project Brief · Shopping Assistant</div><div class="r">04 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">THE ONE RUNNING CASE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1.02;letter-spacing:-.03em">500 元通勤耳机助手</h2>
+    </div>
+    <div class="sub-grid-3-2" data-anim="up">
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="wallet"></i><h3 class="ttl">预算</h3><p class="desc">最终支付价不超过 500 元。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="waves"></i><h3 class="ttl">降噪</h3><p class="desc">通勤环境需要主动降噪。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="laptop"></i><h3 class="ttl">双设备</h3><p class="desc">手机与电脑可同时连接。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="clock"></i><h3 class="ttl">佩戴</h3><p class="desc">每天连续使用约三小时。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="package-check"></i><h3 class="ttl">实时性</h3><p class="desc">价格、库存与到货时间有效。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="badge-check"></i><h3 class="ttl">完成</h3><p class="desc">给出满足硬约束且有证据的推荐。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Answering vs Completing</div><div class="r">05 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">THE FIRST DISTINCTION</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">一次回答，不等于完成任务</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag" style="color:rgba(255,255,255,.62)"><span class="num" style="color:var(--paper);border-color:rgba(255,255,255,.45)">A</span> CHAT RESPONSE</div>
+        <div class="col-ttl" style="color:var(--paper)">“推荐 A、B、C”</div>
+        <p class="col-desc" style="color:rgba(255,255,255,.78)">基于模型已有知识生成一段看似合理的答案。</p>
+        <ul class="col-list"><li>价格可能过期</li><li>库存未验证</li><li>硬约束可能遗漏</li></ul>
+      </div>
+      <div class="vrule" style="background:rgba(255,255,255,.22)"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">B</span> AGENT TASK</div>
+        <div class="col-ttl">“查、筛、证、答”</div>
+        <p class="col-desc" style="color:rgba(255,255,255,.78)">根据环境反馈持续调整行动，直到满足完成条件。</p>
+        <ul class="col-list"><li>查询实时信息</li><li>过滤不满足项</li><li>用证据确认结果</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S05" data-animate="stack-build">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Agent Anatomy · Internal Components</div><div class="r">06 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">THE CORE FORMULA</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.8vw,10.2vh);line-height:1;letter-spacing:-.035em">Agent = LLM + Context + Tools</h2>
+    </div>
+    <div class="stack-row" data-anim="up">
+      <article data-anim="card" class="stack-block b-ink"><span class="layer-nb">01 · DECIDE</span><i data-lucide="brain"></i><h3 class="layer-ttl">LLM</h3><p class="layer-desc">理解意图、比较选择、决定下一步。</p><span class="layer-tag">决策核心</span></article>
+      <article data-anim="card" class="stack-block b-grey"><span class="layer-nb">02 · OBSERVE</span><i data-lucide="scan-eye"></i><h3 class="layer-ttl">Context</h3><p class="layer-desc">模型在当前决策点能够看见的一切。</p><span class="layer-tag">观察空间</span></article>
+      <article data-anim="card" class="stack-block b-accent"><span class="layer-nb">03 · ACT</span><i data-lucide="wrench"></i><h3 class="layer-ttl">Tools</h3><p class="layer-desc">查询、计算、执行与外部系统交互。</p><span class="layer-tag">动作空间</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Capability Boundary · Observe / Act</div><div class="r">07 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">WHY CONTEXT AND TOOLS MATTER</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">能力边界由“看见”与“行动”共同决定</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">O</span> OBSERVATION SPACE</div>
+        <div class="col-ttl">看得见什么</div>
+        <p class="col-desc">用户约束、商品数据、历史轨迹、工具返回结果。</p>
+        <ul class="col-list"><li>看不到库存，就无法判断可买</li><li>看不到历史，就可能重复搜索</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">A</span> ACTION SPACE</div>
+        <div class="col-ttl">能够做什么</div>
+        <p class="col-desc">搜索、查价、查库存、比较、询问、提交操作。</p>
+        <ul class="col-list"><li>没有查询工具，只能猜测事实</li><li>没有执行工具，只能给出建议</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Context Anatomy · Six Sources</div><div class="r">08 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">WHAT THE MODEL ACTUALLY SEES</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 不是一段 Prompt</h2>
+    </div>
+    <div class="sub-grid-3-2" data-anim="up">
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="shield-check"></i><h3 class="ttl">系统指令</h3><p class="desc">身份、权限、行为边界。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="message-square"></i><h3 class="ttl">当前请求</h3><p class="desc">用户这一轮明确表达。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="history"></i><h3 class="ttl">任务轨迹</h3><p class="desc">之前说过、想过、做过什么。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="braces"></i><h3 class="ttl">工具定义</h3><p class="desc">可用动作与参数格式。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="database"></i><h3 class="ttl">外部信息</h3><p class="desc">Memory 与 RAG 结果。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="activity"></i><h3 class="ttl">环境状态</h3><p class="desc">时间、库存、权限与任务进度。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S14" data-animate="loop-form">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">ReAct · Operating Mechanism</div><div class="r">09 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">LOOP IS DYNAMICS, NOT ANATOMY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">三部分怎样持续协同</h2>
+    </div>
+    <div style="flex:1;display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center" data-anim="up">
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">01</span><div><h3 class="t-h-prod">观察 Observe</h3><p class="t-body-sm">读取当前 Context。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">02</span><div><h3 class="t-h-prod">推理 Reason</h3><p class="t-body-sm">模型选择下一步。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">03</span><div><h3 class="t-h-prod">行动 Act</h3><p class="t-body-sm">调用 Tool 改变或查询世界。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)"><span class="t-meta">04</span><div><h3 class="t-h-prod">写回 Update</h3><p class="t-body-sm">把结果追加到轨迹。</p></div></div>
+      </div>
+      <div style="position:relative;height:46vh;display:grid;place-items:center">
+        <svg viewBox="0 0 600 420" style="width:100%;height:100%" aria-label="ReAct 循环几何图">
+          <circle cx="300" cy="210" r="150" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2" stroke-dasharray="8 8"/>
+          <circle cx="300" cy="210" r="105" fill="none" stroke="var(--accent)" stroke-width="4"/>
+          <path d="M407 95 L438 108 L410 128" fill="none" stroke="var(--accent)" stroke-width="4"/>
+          <rect x="265" y="40" width="70" height="70" fill="var(--accent)"/>
+          <rect x="415" y="175" width="70" height="70" fill="var(--grey-3)"/>
+          <rect x="265" y="310" width="70" height="70" fill="var(--paper)"/>
+          <rect x="115" y="175" width="70" height="70" fill="var(--grey-3)"/>
+        </svg>
+        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="t-meta">REACT</div><div style="font-family:var(--sans);font-weight:200;font-size:min(5vw,9vh)">LOOP</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
+  <div class="canvas-card">
+    <div class="split-half">
+      <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
+        <canvas class="ascii-bg" aria-hidden="true"></canvas>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">10 / 10</div><div class="r">LESSON 01 · CLOSE</div></div>
+        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
+          <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
+          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">组成解释它拥有什么；循环解释这些部分如何运转。</h2>
+        </div>
+        <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
+          <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 01—02 · 回答边界与逐步轨迹</div>
+          <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
+        </div>
+      </div>
+      <div class="half" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between">
+        <div class="chrome-min"><div class="l">TAKEAWAYS</div><div class="r">03 CHECKS</div></div>
+        <div data-anim="rules" style="display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">01</div>
+            <div><h3 class="h-md">看见</h3><p class="body-sm">Context 决定当前判断能够依据哪些信息。</p></div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">02</div>
+            <div><h3 class="h-md">行动</h3><p class="body-sm">Tools 决定它能查询或改变哪些外部状态。</p></div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
+            <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
+            <div><h3 class="h-md" style="color:var(--accent)">循环</h3><p class="body-sm">每次工具结果都要写回，成为下一轮观察。</p></div>
+          </div>
+        </div>
+        <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 01</span><span>NEXT · LESSON 02</span></div>
+      </div>
+    </div>
+  </div>
+</section>

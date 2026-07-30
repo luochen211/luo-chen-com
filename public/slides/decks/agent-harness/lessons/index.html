@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Harness 基础课 · 五节课入口</title>
+<style>
+  :root{--paper:#f5f3ed;--ink:#111;--accent:#002fa7;--muted:#6d6a64;--line:rgba(17,17,17,.16)}
+  *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans SC",system-ui,sans-serif}
+  main{width:min(1500px,calc(100vw - 48px));margin:0 auto;padding:8vh 0}
+  header{display:grid;grid-template-columns:8fr 4fr;gap:4vw;align-items:end;padding-bottom:5vh;border-bottom:2px solid var(--ink)}
+  .meta{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:clamp(54px,8vw,138px);line-height:.9;letter-spacing:-.065em;font-weight:250;margin:2vh 0 0}
+  .intro{font-size:clamp(18px,1.4vw,24px);line-height:1.65;color:var(--muted);max-width:34ch}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);margin-top:4vh;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .lesson{grid-column:span 4;min-height:35vh;padding:2.2vw;display:flex;flex-direction:column;color:inherit;text-decoration:none;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.2s;background:rgba(255,255,255,.18)}
+  .lesson:nth-child(4),.lesson:nth-child(5){grid-column:span 6}.lesson:hover{background:var(--accent);color:white;transform:translateY(-4px)}
+  .lesson-top,.lesson-bottom{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  .lesson h2{font-size:clamp(30px,3.2vw,58px);line-height:1;letter-spacing:-.04em;font-weight:300;margin:auto 0 2vh}
+  .lesson p{font-size:17px;line-height:1.5;max-width:28ch;margin:0 0 auto;color:var(--muted)}.lesson:hover p{color:rgba(255,255,255,.78)}
+  .lesson-bottom{padding-top:3vh;margin-top:3vh;border-top:1px solid currentColor}
+  footer{display:flex;justify-content:space-between;gap:2vw;padding-top:4vh;color:var(--muted);font-size:14px}
+  footer a{color:inherit}
+  @media(max-width:900px){header{grid-template-columns:1fr}.lesson,.lesson:nth-child(4),.lesson:nth-child(5){grid-column:span 12}.lesson{padding:28px;min-height:330px}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><div class="meta">Agent Systems · Foundation Course</div><h1>Agent 与<br>Harness</h1></div>
+    <div class="intro">五节课，每节不超过 30 分钟。每次只解决一个核心问题，并连接一个讲师演示节点。</div>
+  </header>
+  <section class="grid"><a class="lesson" href="./lesson-01/">
+        <div class="lesson-top"><span>01</span><span>25 MIN</span></div>
+        <h2>Agent 如何工作</h2>
+        <p>Agent 到底由什么组成，又怎样持续行动？</p>
+        <div class="lesson-bottom"><span>10 页</span><span>打开课件 ↗</span></div>
+      </a>
+<a class="lesson" href="./lesson-02/">
+        <div class="lesson-top"><span>02</span><span>25 MIN</span></div>
+        <h2>Harness 的运行时</h2>
+        <p>Harness 怎样控制模型看见什么、能做什么？</p>
+        <div class="lesson-bottom"><span>8 页</span><span>打开课件 ↗</span></div>
+      </a>
+<a class="lesson" href="./lesson-03/">
+        <div class="lesson-top"><span>03</span><span>25 MIN</span></div>
+        <h2>可靠性与信息边界</h2>
+        <p>系统怎样阻止、验证并修复错误？</p>
+        <div class="lesson-bottom"><span>9 页</span><span>打开课件 ↗</span></div>
+      </a>
+<a class="lesson" href="./lesson-04/">
+        <div class="lesson-top"><span>04</span><span>25 MIN</span></div>
+        <h2>能力组织与路由</h2>
+        <p>Agent、Skill、Tool 和 Router究竟怎样分工？</p>
+        <div class="lesson-bottom"><span>9 页</span><span>打开课件 ↗</span></div>
+      </a>
+<a class="lesson" href="./lesson-05/">
+        <div class="lesson-top"><span>05</span><span>20 MIN</span></div>
+        <h2>评测与系统闭环</h2>
+        <p>怎样证明一个 Agent 系统真的更加可靠？</p>
+        <div class="lesson-bottom"><span>5 页</span><span>打开课件 ↗</span></div>
+      </a></section>
+  <footer>
+    <span>总时长 120 分钟 · 贯穿项目：500 元通勤耳机购物助手</span>
+    <span><a href="../">查看 37 页总课件</a> · <a href="https://luo-chen.com/demos/agent-harness/">打开讲师演示台</a></span>
+  </footer>
+</main>
+</body>
+</html>

@@ -14,6 +14,12 @@ export default defineConfig({
             '/slides/decks/ai-product-talk/',
             '/slides/decks/mini-program-ui/',
             '/slides/decks/agent-harness/',
+            '/slides/decks/agent-harness/lessons/',
+            '/slides/decks/agent-harness/lessons/lesson-01/',
+            '/slides/decks/agent-harness/lessons/lesson-02/',
+            '/slides/decks/agent-harness/lessons/lesson-03/',
+            '/slides/decks/agent-harness/lessons/lesson-04/',
+            '/slides/decks/agent-harness/lessons/lesson-05/',
             '/demos/agent-harness/',
           ])
           const [pathname, query] = req.url.split('?')

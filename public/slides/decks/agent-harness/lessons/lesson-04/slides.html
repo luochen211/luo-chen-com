@@ -1,0 +1,208 @@
+<section class="slide accent" data-layout="SWISS-COVER-ASCII" data-animate="hero">
+  <div class="canvas-card">
+    <canvas class="ascii-bg" aria-hidden="true"></canvas>
+    <div class="chrome-min">
+      <div class="l">Agent Harness · Lesson 04 / 05</div>
+      <div class="r">01 / 09 · 25 MIN</div>
+    </div>
+    <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">WHO · HOW · ACTION · ROUTING</div>
+      <div style="align-self:center">
+        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 04 课 · 能力组织与路由</div>
+        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">Agent、Skill、Tool 和 Router<br/>究竟怎样分工？</h1>
+      </div>
+      <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">从能力分层进入 Router 与多 Agent 判断，再把所有模块落进购物助手的 State、正常轨迹和失败出口。</div>
+        <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S05" data-animate="stack-build">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Capability Layers · Who / How / Action</div><div class="r">02 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">THREE LEVELS, NOT THREE SYNONYMS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">Agent 决策，Skill 组织，Tool 执行</h2>
+    </div>
+    <div class="stack-row" data-anim="up">
+      <article data-anim="card" class="stack-block b-ink" style="border:1px solid rgba(255,255,255,.2)"><span class="layer-nb">01 · WHO</span><i data-lucide="bot"></i><h3 class="layer-ttl">Agent</h3><p class="layer-desc">维护目标与状态，判断下一步应该做什么。</p><span class="layer-tag">决策主体</span></article>
+      <article data-anim="card" class="stack-block b-grey"><span class="layer-nb">02 · HOW</span><i data-lucide="list-tree"></i><h3 class="layer-ttl">Skill</h3><p class="layer-desc">封装完成一类任务的步骤、规则与知识。</p><span class="layer-tag">任务方法</span></article>
+      <article data-anim="card" class="stack-block b-accent"><span class="layer-nb">03 · ACT</span><i data-lucide="terminal-square"></i><h3 class="layer-ttl">Tool</h3><p class="layer-desc">执行一个可验证的查询、计算或业务动作。</p><span class="layer-tag">原子能力</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Router · Decision Order</div><div class="r">03 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">ROUTING IS A PRODUCT DECISION</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">先判断缺什么，再选择调用什么</h2>
+    </div>
+    <div class="pipeline-section" data-anim="up" style="margin-top:7vh">
+      <div class="pipeline-label">ROUTING PATH</div>
+      <div class="pipeline" data-cols="6">
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">识别任务</h3><p class="step-desc">咨询、比较、订单或售后</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">检查信息</h3><p class="step-desc">是否缺关键约束</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">直接回答</h3><p class="step-desc">已有可靠知识即可</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">04</span><h3 class="step-title">加载 Skill</h3><p class="step-desc">需要领域流程</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">05</span><h3 class="step-title">调用 Tool</h3><p class="step-desc">需要真实数据或动作</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">转交</h3><p class="step-desc">权限或专业边界不同</p></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:auto">路由不是把一句话分到标签，而是决定接下来允许加载哪些上下文、能力与权限。</div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Single vs Multi Agent · Split Criteria</div><div class="r">04 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">SPLIT ONLY WHEN THE BOUNDARY IS REAL</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">多 Agent 不是默认升级</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">1</span> SINGLE AGENT + SKILLS</div>
+        <div class="col-ttl">共享一套目标</div>
+        <p class="col-desc">上下文、权限和完成标准基本一致时，保持一个决策主体。</p>
+        <ul class="col-list"><li>链路短、成本低</li><li>状态一致</li><li>更容易评测</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">N</span> MULTI AGENT</div>
+        <div class="col-ttl">存在真实边界</div>
+        <p class="col-desc">专业能力、上下文隔离、权限或评测标准明显不同才拆分。</p>
+        <ul class="col-list"><li>需要明确交接协议</li><li>要防错误级联</li><li>必须单独评测路由</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S17" data-animate="system-diagram">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Project Architecture · Shopping Agent</div><div class="r">05 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div class="t-meta">PUT EVERY CONCEPT IN ONE SYSTEM</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">购物助手的完整最小架构</h2>
+    </div>
+    <div data-anim="up" style="flex:1;display:grid;grid-template-columns:2.3fr .35fr 3fr .35fr 3.6fr;gap:1vw;align-items:center;margin-top:4vh">
+      <div class="card-ink" style="height:44vh;border:1px solid rgba(255,255,255,.2);padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="t-meta">INPUT</span><i data-lucide="message-circle" style="width:3vw;height:3vw"></i><div><h3 class="h-md">用户</h3><p class="body-sm">提出需求、补充条件、确认风险操作。</p></div>
+      </div>
+      <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
+      <div class="card-accent" style="height:52vh;padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="t-meta">DECISION CORE</span><i data-lucide="git-branch" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">购物 Agent</h3><p class="body-sm" style="color:#fff">维护 State，组合 Context，加载商品比较 Skill，决定追问或调用 Tool。</p></div>
+      </div>
+      <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
+      <div style="height:60vh;display:grid;grid-template-rows:repeat(4,1fr);gap:1vh">
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 01</span><h3 class="t-h-prod">商品搜索</h3></div><i data-lucide="search"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 02</span><h3 class="t-h-prod">价格 / 库存</h3></div><i data-lucide="badge-dollar-sign"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">KNOWLEDGE</span><h3 class="t-h-prod">RAG / Memory</h3></div><i data-lucide="database"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">PROOF</span><h3 class="t-h-prod">约束与验证</h3></div><i data-lucide="shield-check"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Project State · Six Fields</div><div class="r">06 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">MAKE THE TASK PERSISTABLE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">架构最终要落到 State</h2>
+    </div>
+    <div class="sub-grid-3-2" data-anim="up">
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="target"></i><h3 class="ttl">goal</h3><p class="desc">选择一款符合条件的通勤耳机。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="lock-keyhole"></i><h3 class="ttl">hard_constraints</h3><p class="desc">≤500、ANC、双设备。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="sliders-horizontal"></i><h3 class="ttl">preferences</h3><p class="desc">长时佩戴、舒适度优先。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="list-filter"></i><h3 class="ttl">candidates</h3><p class="desc">当前候选与淘汰原因。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="route"></i><h3 class="ttl">progress</h3><p class="desc">已完成步骤与下一动作。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="badge-check"></i><h3 class="ttl">evidence</h3><p class="desc">价格、库存、规格来源与时间。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Project Run · Concrete Trace</div><div class="r">07 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">FROM REQUEST TO PROVEN RESULT</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">一次完整执行怎样改变 State</h2>
+    </div>
+    <div class="pipeline-section" data-anim="up" style="margin-top:6vh">
+      <div class="pipeline-label">ACTUAL TRACE</div>
+      <div class="pipeline" data-cols="6">
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">提取</h3><p class="step-desc">3 个硬约束 + 1 个偏好</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">搜索</h3><p class="step-desc">召回 18 款商品</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">规格过滤</h3><p class="step-desc">剩余 6 款</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">查价库存</h3><p class="step-desc">淘汰 3 款</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">比较</h3><p class="step-desc">舒适、续航、降噪</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">验证</h3><p class="step-desc">1 款主推 + 1 款备选</p></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;margin-top:auto">
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">CANDIDATES</span><div class="h-md">18 → 2</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">HARD CONSTRAINTS</span><div class="h-md">3 / 3</div></div>
+      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">EVIDENCE</span><div class="h-md" style="color:#fff">PRICE + STOCK + SPEC</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S16" data-animate="field-notes">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Failure Map · Six Recoveries</div><div class="r">08 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">THE NORMAL PATH IS NOT ENOUGH</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">每一种失败，都要有指定出口</h2>
+    </div>
+    <div class="sub-grid-3-2" data-anim="up">
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">约束冲突</h3><p class="desc">指出冲突，请用户决定优先级。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">Tool 超时</h3><p class="desc">有限重试，失败后显示无法确认。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">商品缺货</h3><p class="desc">淘汰候选，继续查询备选。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">Memory 冲突</h3><p class="desc">当前明确表达优先并修正旧记忆。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">重复调用</h3><p class="desc">命中循环检测，熔断并总结状态。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">证据不足</h3><p class="desc">不下结论；解释缺口或请求人工。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
+  <div class="canvas-card">
+    <div class="split-half">
+      <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
+        <canvas class="ascii-bg" aria-hidden="true"></canvas>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">09 / 09</div><div class="r">LESSON 04 · CLOSE</div></div>
+        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
+          <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
+          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">先划清决策、方法与动作，再决定是否需要多个 Agent。</h2>
+        </div>
+        <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
+          <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 05 · Router 选择直接答、追问、调用或转交</div>
+          <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
+        </div>
+      </div>
+      <div class="half" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between">
+        <div class="chrome-min"><div class="l">TAKEAWAYS</div><div class="r">03 CHECKS</div></div>
+        <div data-anim="rules" style="display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">01</div>
+            <div><h3 class="h-md">主体</h3><p class="body-sm">Agent 维护目标与状态，并决定下一步。</p></div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">02</div>
+            <div><h3 class="h-md">方法</h3><p class="body-sm">Skill 封装完成一类任务的步骤与规则。</p></div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
+            <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
+            <div><h3 class="h-md" style="color:var(--accent)">动作</h3><p class="body-sm">Tool 执行可验证的原子操作，Router 选择调用路径。</p></div>
+          </div>
+        </div>
+        <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 04</span><span>NEXT · LESSON 05</span></div>
+      </div>
+    </div>
+  </div>
+</section>
