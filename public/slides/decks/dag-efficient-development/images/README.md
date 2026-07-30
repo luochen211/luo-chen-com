@@ -2,7 +2,7 @@
 
 Generated with the built-in image generation tool for Guizang Swiss S22 slots.
 
-- `03-dag-ready.png`: chaotic backlog → ordered DAG → three Ready nodes.
+- `dag-unlock-map-v2.png`: chaotic backlog → ordered DAG → three Ready nodes.
 - `10-merge-conflict.png`: documentary development scene with overlapping branches and CI states.
 - `13-delivery-loop.png`: Issue → branch → PR → CI → merge → next Ready set.
 
