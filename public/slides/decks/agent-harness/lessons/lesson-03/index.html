@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第 03 课 · 可靠性与信息边界 · Agent Harness 基础课</title>
+<title>第 03 课 · 状态、信息与失败出口 · Agent Harness 基础课</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -1232,32 +1232,14 @@
       <div class="r">01 / 09 · 25 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">CONSTRAINT · VALIDATION · CORRECTION · INFORMATION</div>
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">STATE · CONTEXT · MEMORY · RAG · RECOVERY</div>
       <div style="align-self:center">
-        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 03 课 · 可靠性与信息边界</div>
-        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">系统怎样阻止、验证<br/>并修复错误？</h1>
+        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 03 课 · 状态、信息与失败出口</div>
+        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">运行中的事实、视图和记忆<br/>应该分别放在哪里？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">把约束、验证、恢复与信息归属连成一条可靠性链路，明确 RAG、Memory 与实时 Tool 的边界。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">区分系统持久事实与模型当前视图，明确 Memory、RAG、实时 Tool 的生命周期，并为每类失败指定出口。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="slide dark" data-layout="S13" data-animate="three-forces">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Constraints · Three Enforcement Points</div><div class="r">02 / 09</div></div>
-    <div style="display:grid;grid-template-columns:4fr 8fr;gap:3vw;flex:1">
-      <div class="ink-block" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--accent)">
-        <div class="t-meta" style="color:rgba(255,255,255,.75)">HARNESS FUNCTION 03</div>
-        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:.98;color:#fff">不要只在<br/>Prompt 里<br/>说“不许”</h2>
-        <div class="cross-mat" style="height:12vh;color:#fff"></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:1.5vh" data-anim="up">
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">01</div><div><h3 class="h-md">行动前</h3><p class="body-sm">用户未确认，不开放支付工具；身份未验证，不允许查订单。</p></div></article>
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">02</div><div><h3 class="h-md">参数中</h3><p class="body-sm">预算上限、退款金额、地址范围由代码校验，而不是相信模型。</p></div></article>
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent)">03</div><div><h3 class="h-md">行动后</h3><p class="body-sm">推荐结果必须重新检查全部硬约束，越界候选直接拦截。</p></div></article>
       </div>
     </div>
   </div>
@@ -1265,24 +1247,24 @@
 
 <section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Validation · Claim vs Evidence</div><div class="r">03 / 09</div></div>
+    <div class="chrome-min"><div class="l">State vs Context · Ownership</div><div class="r">02 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">HARNESS FUNCTION 04</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">模型声称完成，不等于任务真的完成</h2>
+      <div class="t-meta">A CRITICAL BOUNDARY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.6vw,9.8vh);line-height:1;letter-spacing:-.03em">系统拥有，不等于模型看见</h2>
     </div>
     <div class="duo-compare" data-anim="up">
       <div class="col">
-        <div class="col-tag"><span class="num">C</span> CLAIM</div>
-        <div class="col-ttl">语言结论</div>
-        <p class="col-desc">“这款耳机 499 元、有货、支持双设备。”</p>
-        <ul class="col-list"><li>可能来自旧知识</li><li>可能把计划当成事实</li><li>不能作为最终证据</li></ul>
+        <div class="col-tag"><span class="num">S</span> STATE</div>
+        <div class="col-ttl">完整事实</div>
+        <p class="col-desc">业务系统持久保存的任务、用户与环境状态。</p>
+        <ul class="col-list"><li>可能很大、很敏感、很杂乱</li><li>是系统的真实来源</li></ul>
       </div>
       <div class="vrule"></div>
       <div class="col accent">
-        <div class="col-tag"><span class="num">E</span> EVIDENCE</div>
-        <div class="col-ttl">外部证明</div>
-        <p class="col-desc">价格 Tool、库存 Tool、商品规格字段返回一致。</p>
-        <ul class="col-list"><li>来源明确</li><li>时间有效</li><li>可再次查询验证</li></ul>
+        <div class="col-tag"><span class="num">C</span> CONTEXT</div>
+        <div class="col-ttl">当前视图</div>
+        <p class="col-desc">Harness 为这一次模型调用选择并编排的信息。</p>
+        <ul class="col-list"><li>只保留与当前决策相关内容</li><li>是 State 的受控投影</li></ul>
       </div>
     </div>
   </div>
@@ -1290,27 +1272,29 @@
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">04 / 09</div></div>
+    <div class="chrome-min"><div class="l">One Decision · One New Trace</div><div class="r">03 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">HARNESS FUNCTION 05</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">先局部修复，最后安全终止</h2>
+      <div class="t-meta">HOW CONTEXT GROWS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">工具结果成为下一轮的观察</h2>
     </div>
-    <div class="timeline-h" data-anim="up">
-      <div class="tl-row">
-        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">修参数</span><span class="desc">纠正格式或缺失字段</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">重试</span><span class="desc">处理短暂超时</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">换路径</span><span class="desc">替代 Tool 或候选项</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">请求补充</span><span class="desc">让用户解除歧义</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">降级 / 转人</span><span class="desc">避免继续扩大风险</span></div></div>
+    <div class="pipeline-section" data-anim="up" style="margin-top:7vh">
+      <div class="pipeline-label">A SINGLE TURN</div>
+      <div class="pipeline" data-cols="6">
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">读取</h3><p class="step-desc">预算与硬约束</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">决定</h3><p class="step-desc">需要查实时库存</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">03</span><h3 class="step-title">调用</h3><p class="step-desc">check_inventory</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">返回</h3><p class="step-desc">B 商品缺货</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">05</span><h3 class="step-title">写回</h3><p class="step-desc">轨迹新增事实</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">再决策</h3><p class="step-desc">淘汰 B，继续比较</p></div>
       </div>
     </div>
-    <div class="callout" style="margin-top:auto">可靠性不是永不失败，而是失败可见、可控、可恢复，并且知道何时停止。</div>
+    <div class="callout" style="margin-top:auto">Agent 的轨迹不是日志附件，而是后续决策的一部分。缺失 Tool Result，模型就像蒙着眼继续行动。</div>
   </div>
 </section>
 
 <section class="slide light" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Production Boundary · Three Layers</div><div class="r">05 / 09</div></div>
+    <div class="chrome-min"><div class="l">Production Boundary · Three Layers</div><div class="r">04 / 09</div></div>
     <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;flex:1;align-items:center">
       <div data-anim="left">
         <div class="t-meta">WHO OWNS WHAT</div>
@@ -1337,7 +1321,7 @@
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Information Ownership · Four Assets</div><div class="r">06 / 09</div></div>
+    <div class="chrome-min"><div class="l">Information Ownership · Four Assets</div><div class="r">05 / 09</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">DO NOT MIX THE LAYERS</div>
@@ -1354,7 +1338,7 @@
 
 <section class="slide grey" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Memory · Governed Lifecycle</div><div class="r">07 / 09</div></div>
+    <div class="chrome-min"><div class="l">Memory · Governed Lifecycle</div><div class="r">06 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">MEMORY IS NOT CHAT HISTORY</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">记忆必须经历四个治理动作</h2>
@@ -1384,7 +1368,7 @@
 
 <section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">RAG vs Real-time Tool</div><div class="r">08 / 09</div></div>
+    <div class="chrome-min"><div class="l">RAG vs Real-time Tool</div><div class="r">07 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">KNOWLEDGE IS NOT LIVE STATE</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.6vw,9.8vh);line-height:1;letter-spacing:-.03em">“查资料”和“查现在”必须分开</h2>
@@ -1407,6 +1391,24 @@
   </div>
 </section>
 
+<section class="slide dark" data-layout="S16" data-animate="field-notes">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Failure Map · Six Recoveries</div><div class="r">08 / 09</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">THE NORMAL PATH IS NOT ENOUGH</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">每一种失败，都要有指定出口</h2>
+    </div>
+    <div class="sub-grid-3-2" data-anim="up">
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">约束冲突</h3><p class="desc">指出冲突，请用户决定优先级。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">Tool 超时</h3><p class="desc">有限重试，失败后显示无法确认。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">商品缺货</h3><p class="desc">淘汰候选，继续查询备选。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">Memory 冲突</h3><p class="desc">当前明确表达优先并修正旧记忆。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">重复调用</h3><p class="desc">命中循环检测，熔断并总结状态。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">证据不足</h3><p class="desc">不下结论；解释缺口或请求人工。</p></article>
+    </div>
+  </div>
+</section>
+
 <section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
   <div class="canvas-card">
     <div class="split-half">
@@ -1415,11 +1417,11 @@
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">09 / 09</div><div class="r">LESSON 03 · CLOSE</div></div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
-          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">可靠不是模型永不犯错，而是错误能够被限制、发现并收回。</h2>
+          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">信息放错位置，Harness 就会把旧事实、猜测或噪声当成当前世界。</h2>
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
-          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 03—04 · 工具故障与信息归属</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 04 · 改变信息来源，观察结论怎样变化</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
         </div>
       </div>
@@ -1428,15 +1430,15 @@
         <div data-anim="rules" style="display:flex;flex-direction:column">
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">01</div>
-            <div><h3 class="h-md">限制</h3><p class="body-sm">在行动前、参数中和执行后分别设置边界。</p></div>
+            <div><h3 class="h-md">事实与视图</h3><p class="body-sm">State 归系统持有，Context 只是当前决策所见。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">02</div>
-            <div><h3 class="h-md">证明</h3><p class="body-sm">完成状态必须来自外部事实，而非模型自我声明。</p></div>
+            <div><h3 class="h-md">长期与实时</h3><p class="body-sm">Memory 存偏好，RAG 查知识，Tool 查询此刻状态。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">归位</h3><p class="body-sm">长期偏好、静态知识与实时状态使用不同信息通道。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">失败出口</h3><p class="body-sm">超时、缺字段、无库存和证据冲突必须走不同恢复路径。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 03</span><span>NEXT · LESSON 04</span></div>

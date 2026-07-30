@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第 02 课 · Harness 的运行时 · Agent Harness 基础课</title>
+<title>第 02 课 · Harness 的五个部分 · Agent Harness 基础课</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -1229,72 +1229,25 @@
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
     <div class="chrome-min">
       <div class="l">Agent Harness · Lesson 02 / 05</div>
-      <div class="r">01 / 08 · 25 MIN</div>
+      <div class="r">01 / 10 · 30 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">STATE · CONTEXT · TRACE · TOOL ACI</div>
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">CONTEXT · TOOLS · CONSTRAIN · VERIFY · CORRECT</div>
       <div style="align-self:center">
-        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 02 课 · Harness 的运行时</div>
-        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">Harness 怎样控制模型<br/>看见什么、能做什么？</h1>
+        <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 02 课 · Harness 的五个部分</div>
+        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">Harness 包括哪五个部分，<br/>它们怎样接力运行？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">从 State 与 Context 的差异进入 Harness，理解上下文编译与面向模型的工具接口。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">完整拆解两项核心能力与三层工程保障，再沿一次工具调用看清五个部分如何形成控制流。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide light" data-layout="S08" data-animate="duo-mirror">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">State vs Context · Ownership</div><div class="r">02 / 08</div></div>
-    <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">A CRITICAL BOUNDARY</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.6vw,9.8vh);line-height:1;letter-spacing:-.03em">系统拥有，不等于模型看见</h2>
-    </div>
-    <div class="duo-compare" data-anim="up">
-      <div class="col">
-        <div class="col-tag"><span class="num">S</span> STATE</div>
-        <div class="col-ttl">完整事实</div>
-        <p class="col-desc">业务系统持久保存的任务、用户与环境状态。</p>
-        <ul class="col-list"><li>可能很大、很敏感、很杂乱</li><li>是系统的真实来源</li></ul>
-      </div>
-      <div class="vrule"></div>
-      <div class="col accent">
-        <div class="col-tag"><span class="num">C</span> CONTEXT</div>
-        <div class="col-ttl">当前视图</div>
-        <p class="col-desc">Harness 为这一次模型调用选择并编排的信息。</p>
-        <ul class="col-list"><li>只保留与当前决策相关内容</li><li>是 State 的受控投影</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="slide grey" data-layout="S11" data-animate="timeline-walk">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">One Decision · One New Trace</div><div class="r">03 / 08</div></div>
-    <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">HOW CONTEXT GROWS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">工具结果成为下一轮的观察</h2>
-    </div>
-    <div class="pipeline-section" data-anim="up" style="margin-top:7vh">
-      <div class="pipeline-label">A SINGLE TURN</div>
-      <div class="pipeline" data-cols="6">
-        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">读取</h3><p class="step-desc">预算与硬约束</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">决定</h3><p class="step-desc">需要查实时库存</p></div>
-        <div data-anim="step" class="step accent-top"><span class="step-nb">03</span><h3 class="step-title">调用</h3><p class="step-desc">check_inventory</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">返回</h3><p class="step-desc">B 商品缺货</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">05</span><h3 class="step-title">写回</h3><p class="step-desc">轨迹新增事实</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">再决策</h3><p class="step-desc">淘汰 B，继续比较</p></div>
-      </div>
-    </div>
-    <div class="callout" style="margin-top:auto">Agent 的轨迹不是日志附件，而是后续决策的一部分。缺失 Tool Result，模型就像蒙着眼继续行动。</div>
-  </div>
-</section>
-
 <section class="slide dark" data-layout="S03" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Model + Harness · Production View</div><div class="r">04 / 08</div></div>
+    <div class="chrome-min"><div class="l">Model + Harness · Production View</div><div class="r">02 / 10</div></div>
     <div style="flex:1;display:grid;grid-template-columns:4fr 8fr;align-items:center;gap:4vw">
       <div data-anim="left">
         <div class="t-meta">THE PRODUCTION FORMULA</div>
@@ -1310,13 +1263,13 @@
 
 <section class="slide light" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Harness Map · Six Responsibilities</div><div class="r">05 / 08</div></div>
+    <div class="chrome-min"><div class="l">Harness Anatomy · Two Core + Three Guards</div><div class="r">03 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">ONE PROBABILISTIC CORE · FIVE ENGINEERING DUTIES</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">谁判断，谁保障</h2>
+      <div class="t-meta">MODEL OUTSIDE · FIVE FUNCTIONS INSIDE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">两项核心能力，三层工程保障</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card ink"><span class="nb-corner">M</span><i data-lucide="brain"></i><h3 class="ttl">Model</h3><p class="desc">理解、推理、选择下一步。</p></article>
+      <article data-anim="card" class="sub-card ink"><span class="nb-corner">M</span><i data-lucide="brain"></i><h3 class="ttl">Model</h3><p class="desc">负责概率性判断，不属于 Harness。</p></article>
       <article data-anim="card" class="sub-card"><span class="nb-corner">H1</span><i data-lucide="panel-top"></i><h3 class="ttl">Context</h3><p class="desc">给模型正确的信息视图。</p></article>
       <article data-anim="card" class="sub-card"><span class="nb-corner">H2</span><i data-lucide="plug"></i><h3 class="ttl">Tools</h3><p class="desc">提供真实、可调用的行动。</p></article>
       <article data-anim="card" class="sub-card"><span class="nb-corner">H3</span><i data-lucide="shield"></i><h3 class="ttl">Constraints</h3><p class="desc">行动之前和之中防止越界。</p></article>
@@ -1328,7 +1281,7 @@
 
 <section class="slide grey" data-layout="S05" data-animate="stack-build">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Context Composer · From State to View</div><div class="r">06 / 08</div></div>
+    <div class="chrome-min"><div class="l">Context Composer · From State to View</div><div class="r">04 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">HARNESS FUNCTION 01</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 是被编译出来的视图</h2>
@@ -1343,7 +1296,7 @@
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Tools as ACI · Model-facing Interface</div><div class="r">07 / 08</div></div>
+    <div class="chrome-min"><div class="l">Tools as ACI · Model-facing Interface</div><div class="r">05 / 10</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">HARNESS FUNCTION 02</div>
@@ -1358,19 +1311,103 @@
   </div>
 </section>
 
+<section class="slide dark" data-layout="S13" data-animate="three-forces">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Constraints · Three Enforcement Points</div><div class="r">06 / 10</div></div>
+    <div style="display:grid;grid-template-columns:4fr 8fr;gap:3vw;flex:1">
+      <div class="ink-block" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--accent)">
+        <div class="t-meta" style="color:rgba(255,255,255,.75)">HARNESS FUNCTION 03</div>
+        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:.98;color:#fff">不要只在<br/>Prompt 里<br/>说“不许”</h2>
+        <div class="cross-mat" style="height:12vh;color:#fff"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.5vh" data-anim="up">
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">01</div><div><h3 class="h-md">行动前</h3><p class="body-sm">用户未确认，不开放支付工具；身份未验证，不允许查订单。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">02</div><div><h3 class="h-md">参数中</h3><p class="body-sm">预算上限、退款金额、地址范围由代码校验，而不是相信模型。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent)">03</div><div><h3 class="h-md">行动后</h3><p class="body-sm">推荐结果必须重新检查全部硬约束，越界候选直接拦截。</p></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Validation · Claim vs Evidence</div><div class="r">07 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">HARNESS FUNCTION 04</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">模型声称完成，不等于任务真的完成</h2>
+    </div>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">C</span> CLAIM</div>
+        <div class="col-ttl">语言结论</div>
+        <p class="col-desc">“这款耳机 499 元、有货、支持双设备。”</p>
+        <ul class="col-list"><li>可能来自旧知识</li><li>可能把计划当成事实</li><li>不能作为最终证据</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">E</span> EVIDENCE</div>
+        <div class="col-ttl">外部证明</div>
+        <p class="col-desc">价格 Tool、库存 Tool、商品规格字段返回一致。</p>
+        <ul class="col-list"><li>来源明确</li><li>时间有效</li><li>可再次查询验证</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">08 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">HARNESS FUNCTION 05</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">先局部修复，最后安全终止</h2>
+    </div>
+    <div class="timeline-h" data-anim="up">
+      <div class="tl-row">
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">修参数</span><span class="desc">纠正格式或缺失字段</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">重试</span><span class="desc">处理短暂超时</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">换路径</span><span class="desc">替代 Tool 或候选项</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">请求补充</span><span class="desc">让用户解除歧义</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">降级 / 转人</span><span class="desc">避免继续扩大风险</span></div></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:auto">可靠性不是永不失败，而是失败可见、可控、可恢复，并且知道何时停止。</div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">Harness Runtime · One Controlled Turn</div><div class="r">09 / 10</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">STATIC ANATOMY → DYNAMIC CONTROL FLOW</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">五个部分不是并排摆放，<br/>而是围绕每次模型决策接力</h2>
+    </div>
+    <div class="timeline-h" data-anim="up">
+      <div class="tl-row">
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01 · CONTEXT</span><span class="name">编译当前视图</span><span class="desc">目标、State、历史、工具定义</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02 · MODEL</span><span class="name">选择下一动作</span><span class="desc">模型在 Harness 外负责判断</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03 · CONSTRAIN</span><span class="name">执行前拦截</span><span class="desc">权限、参数、确认与预算</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04 · TOOLS</span><span class="name">查询或改变世界</span><span class="desc">返回结构化结果与状态变化</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05 · VERIFY</span><span class="name">对照完成条件</span><span class="desc">检查外部事实而非语言声明</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06 · CORRECT</span><span class="name">修复或安全退出</span><span class="desc">重试、换路径、追问、转人工</span></div></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:auto;color:var(--paper);border-color:rgba(255,255,255,.25)">Verify 通过 → 提交 State 并完成；Verify 失败 → Correct 生成下一步，再回到 Context。</div>
+  </div>
+</section>
+
 <section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
   <div class="canvas-card">
     <div class="split-half">
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
-        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">08 / 08</div><div class="r">LESSON 02 · CLOSE</div></div>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">10 / 10</div><div class="r">LESSON 02 · CLOSE</div></div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ONE SENTENCE</div>
-          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">Harness 不替模型判断；它负责准备一次可靠判断所需的运行环境。</h2>
+          <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-size:min(6vw,10.6vh);line-height:.98;letter-spacing:-.03em;font-weight:200;color:#fff">Harness 不替模型做判断；它让每次判断都有信息、有动作、有边界、有证据、有退路。</h2>
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
-          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 02 · 观察每轮 Context 如何变化</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 03 · 注入工具故障，观察 Harness 如何接管</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
         </div>
       </div>
@@ -1379,15 +1416,15 @@
         <div data-anim="rules" style="display:flex;flex-direction:column">
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">01</div>
-            <div><h3 class="h-md">保管</h3><p class="body-sm">State 保存完整事实，不能直接等同于提示词。</p></div>
+            <div><h3 class="h-md">两项核心</h3><p class="body-sm">Context 提供观察，Tools 提供行动。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">02</div>
-            <div><h3 class="h-md">编译</h3><p class="body-sm">Context 是从多种信息源生成的当前视图。</p></div>
+            <div><h3 class="h-md">三层保障</h3><p class="body-sm">Constrain 防错，Verify 验真，Correct 恢复。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">接口</h3><p class="body-sm">Tool 要按 Agent 的理解方式设计，而非照搬后台 API。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">一个循环</h3><p class="body-sm">验证通过才完成；失败进入纠正并回到下一轮决策。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 02</span><span>NEXT · LESSON 03</span></div>
