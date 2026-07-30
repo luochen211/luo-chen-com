@@ -1261,20 +1261,42 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Harness Anatomy · Two Core + Three Guards</div><div class="r">03 / 10</div></div>
+    <div class="chrome-min"><div class="l">Formula Expanded · Model Outside, Harness Inside</div><div class="r">03 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">MODEL OUTSIDE · FIVE FUNCTIONS INSIDE</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">两项核心能力，三层工程保障</h2>
+      <div class="t-meta">THE BRACKET IS THE HARNESS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">这就是上一页方括号的内部结构</h2>
     </div>
-    <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card ink"><span class="nb-corner">M</span><i data-lucide="brain"></i><h3 class="ttl">Model</h3><p class="desc">负责概率性判断，不属于 Harness。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">H1</span><i data-lucide="panel-top"></i><h3 class="ttl">Context</h3><p class="desc">给模型正确的信息视图。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">H2</span><i data-lucide="plug"></i><h3 class="ttl">Tools</h3><p class="desc">提供真实、可调用的行动。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">H3</span><i data-lucide="shield"></i><h3 class="ttl">Constrain</h3><p class="desc">设定能做什么、不能做什么。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">H4</span><i data-lucide="check-check"></i><h3 class="ttl">Verify</h3><p class="desc">自动判断操作结果是否正确。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">H5</span><i data-lucide="rotate-ccw"></i><h3 class="ttl">Correct</h3><p class="desc">发现问题后自动修正或回退。</p></article>
+    <div class="duo-compare" style="grid-template-columns:3.5fr 1px 8.5fr" data-anim="up">
+      <div class="col" style="background:var(--ink);color:var(--paper);padding:2.6vh 1.8vw">
+        <div class="col-tag" style="color:rgba(255,255,255,.68)"><span class="num">M</span> OUTSIDE HARNESS</div>
+        <div class="col-ttl" style="color:var(--paper)">Model</div>
+        <p class="col-desc" style="color:rgba(255,255,255,.72)">理解、推理并选择下一步，承担概率性判断。</p>
+        <div class="callout" style="margin-top:auto;color:var(--paper);border-color:rgba(255,255,255,.24)">它使用 Harness，<br/>但不属于 Harness。</div>
+      </div>
+      <div class="vrule"></div>
+      <div class="col" style="padding:0">
+        <div style="display:flex;justify-content:space-between;align-items:end;border-bottom:2px solid var(--accent);padding-bottom:1.4vh">
+          <div><div class="t-meta">INSIDE THE BRACKET</div><div class="col-ttl" style="margin-top:.6vh">Harness</div></div>
+          <div class="t-meta" style="color:var(--accent)">2 CORE + 3 GUARDS</div>
+        </div>
+        <div style="margin-top:2vh">
+          <div class="t-meta">两项核心能力 · 让 Agent 能做事</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-subtle);margin-top:1vh">
+            <div class="card-accent" style="padding:2vh 1.4vw"><span class="t-meta">H1 · OBSERVE</span><h3 class="h-md" style="color:#fff;margin-top:1vh">Context</h3><p class="body-sm" style="color:#fff;margin-top:2vh">提供感知信息。</p></div>
+            <div class="card-accent" style="padding:2vh 1.4vw"><span class="t-meta">H2 · ACT</span><h3 class="h-md" style="color:#fff;margin-top:1vh">Tools</h3><p class="body-sm" style="color:#fff;margin-top:2vh">提供行动手段。</p></div>
+          </div>
+        </div>
+        <div style="margin-top:2vh">
+          <div class="t-meta">三层保障机制 · 让 Agent 不做错事</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-subtle);margin-top:1vh">
+            <div class="card-fill" style="padding:1.7vh 1.1vw"><span class="t-meta">H3 · PREVENT</span><h3 class="t-h-prod" style="margin-top:1vh">Constrain</h3><p class="t-body-sm" style="margin-top:1.4vh">限定行为边界。</p></div>
+            <div class="card-fill" style="padding:1.7vh 1.1vw"><span class="t-meta">H4 · DETECT</span><h3 class="t-h-prod" style="margin-top:1vh">Verify</h3><p class="t-body-sm" style="margin-top:1.4vh">发现执行偏差。</p></div>
+            <div class="card-fill" style="padding:1.7vh 1.1vw"><span class="t-meta">H5 · RECOVER</span><h3 class="t-h-prod" style="margin-top:1vh">Correct</h3><p class="t-body-sm" style="margin-top:1.4vh">修正或回退。</p></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
