@@ -70,9 +70,9 @@
 <section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">05 / 17 · PREPARATION</div><div class="r">BEFORE ANY CODE</div></div>
-    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
-      <div class="t-meta">THE FIRST THIRD</div>
-      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh);max-width:13ch">需求确认至少占开发时间的三分之一</h2>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:3.6vh">
+      <div class="t-meta">BOUNDARY BEFORE CODE</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh);max-width:13ch">最先完成的不是代码，<br/>是任务边界</h2>
       <p class="lead" style="max-width:56ch;color:var(--text-secondary);font-size:max(18px,1.24vw)">需求模糊时，拆 Issue 只会把模糊放大；AI 会沿着错误理解高速制造分支和 PR。</p>
     </div>
     <div data-anim="up" class="timeline-h">
@@ -138,20 +138,20 @@
 
 <section class="slide light" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">08 / 17 · DEPENDENCY SYSTEM</div><div class="r">CONTRACT BEFORE IMPLEMENTATION</div></div>
-    <div data-anim="line" class="system-diagram">
-      <div class="system-copy">
+    <div class="chrome-min"><div class="l">08 / 17 · DEPENDENCIES</div><div class="r">CONTRACT FIRST</div></div>
+    <div data-anim="line" class="system-diagram" style="margin-bottom:0">
+      <div class="system-copy" style="gap:3.6vh">
         <span class="t-cat accent">THE REAL UPSTREAM</span>
         <h2>前后端不必等待彼此完成</h2>
         <p>“登录页面”不一定依赖“登录 API 完成”，它更可能只依赖 API Contract 明确。把依赖定义到正确层级，才会真正释放并行。</p>
         <div class="t-meta">OUTER → IMPLEMENTATION · MIDDLE → CONTRACT · CORE → ACCEPTANCE</div>
       </div>
-      <div data-anim="up" class="system-rings">
-        <div class="sys-ring outer"><span class="sys-label" style="align-self:start;margin-top:3vh">IMPLEMENTATION</span></div>
-        <div class="sys-ring middle"><span class="sys-label" style="align-self:start;margin-top:3vh;color:var(--accent)">CONTRACT</span></div>
-        <div class="sys-ring core"><span class="sys-label">验收<br/>标准</span></div>
+      <div data-anim="up" class="system-rings" style="min-height:60vh">
+        <div class="sys-ring outer" style="width:50vh;height:50vh"><span class="sys-label" style="align-self:start;margin-top:3vh">IMPLEMENTATION</span></div>
+        <div class="sys-ring middle" style="width:34vh;height:34vh"><span class="sys-label" style="align-self:start;margin-top:3vh;color:var(--accent)">CONTRACT</span></div>
+        <div class="sys-ring core" style="width:18vh;height:18vh"><span class="sys-label">验收<br/>标准</span></div>
         <span class="sys-note n1">Frontend + Mock</span>
-        <span class="sys-note n2">Backend + Schema</span>
+        <span class="sys-note n2" style="bottom:0;left:-2%;z-index:2;background:var(--paper);padding-right:.8vw">Backend + Schema</span>
         <span class="sys-note n3">Tests + Cases</span>
       </div>
     </div>
@@ -209,7 +209,7 @@
 <section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">12 / 17 · EXECUTION PROTOCOL</div><div class="r">ONE READY ISSUE AT A TIME</div></div>
-    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:3.6vh">
       <div class="t-meta">ISSUE → PR</div>
       <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh)">单个执行者，一次只做一个 Ready Issue</h2>
       <p class="lead" style="max-width:55ch;color:var(--text-secondary);font-size:max(18px,1.24vw)">并发不是一个 Agent 同时乱做十件事，而是多个执行者各自领取互不冲突的 Ready Issue。</p>
@@ -231,14 +231,14 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">13 / 17 · CONTEXT BOUNDARY</div><div class="r">ONE TERMINAL · ONE EPIC</div></div>
     <div data-anim="up" class="duo-compare">
-      <div class="duo-half col">
+      <div class="duo-half col" style="gap:3.6vh">
         <span class="t-cat on-dark">MIXED CONTEXT</span>
         <h2>一个窗口<br/>跨多个 Epic</h2>
         <p class="body">上下文、分支、检查和复盘来回切换，AI 的工作记忆会被污染。</p>
         <ul><li>范围漂移</li><li>误改其他模块</li><li>依赖关系混在一起</li></ul>
       </div>
       <span class="vrule"></span>
-      <div class="duo-half col">
+      <div class="duo-half col" style="gap:3.6vh">
         <span class="t-cat" style="color:var(--accent-bright)">BOUND CONTEXT</span>
         <h2 style="color:var(--accent-bright)">一个窗口<br/>只管一个 Epic</h2>
         <p class="body">另一个父 Issue 就新开终端，重新加载需求、子 Issue 和局部 DAG。</p>
@@ -258,11 +258,11 @@
       </div>
     </div>
     <div data-anim="kpi" class="image-hero-body">
-      <div style="max-width:46ch;font-size:max(18px,1.25vw);line-height:1.55;font-weight:400">开发不是在半成品分支之间跳跃，而是 Issue → PR → CI → Merge → 解锁下一批的持续流动。</div>
+      <div style="max-width:46ch;font-size:max(18px,1.25vw);line-height:1.55;font-weight:400">提交 PR 只是候选状态；只有 Merge 改变真实任务图。合并后立即重读依赖，系统才能输出新的 Ready Queue。</div>
       <div class="image-hero-stats">
-        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">LOOP</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">4 步</div><p class="body-sm" style="margin-top:auto">领取、提交、合并、重算</p></div>
-        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">TRACE</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">1 PR</div><p class="body-sm" style="margin-top:auto">一个 Issue 对应一个证据链</p></div>
-        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--accent)"></div><div class="t-meta">UNLOCK</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95;color:var(--accent)">N+1</div><p class="body-sm" style="margin-top:auto">每次合并释放下一批 Ready</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh;min-width:0"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">TRIGGER</div><div style="font-weight:200;font-size:min(3.2vw,5.8vh);line-height:.95;white-space:nowrap">MERGE</div><p class="body-sm" style="margin-top:auto">真实状态发生变化</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh;min-width:0"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">ACTION</div><div style="font-weight:200;font-size:min(3.2vw,5.8vh);line-height:.95;white-space:nowrap">RE-RUN</div><p class="body-sm" style="margin-top:auto">重新读取 Issue 与依赖</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh;min-width:0"><div style="height:1px;background:var(--accent)"></div><div class="t-meta">OUTPUT</div><div style="font-weight:200;font-size:min(3.2vw,5.8vh);line-height:.95;color:var(--accent);white-space:nowrap">READY</div><p class="body-sm" style="margin-top:auto">生成下一批可领取任务</p></div>
       </div>
     </div>
   </div>
@@ -280,8 +280,8 @@
       <div class="cell"><div class="cell-icon-row"><i data-lucide="refresh-cw-off"></i><span class="cell-num">02</span></div><h4>禁止循环</h4><p>A → B → C → A 必须失败</p></div>
       <div class="cell"><div class="cell-icon-row"><i data-lucide="scan-search"></i><span class="cell-num">03</span></div><h4>引用必须存在</h4><p>depends_on 指向真实 Issue</p></div>
       <div class="cell"><div class="cell-icon-row"><i data-lucide="shield-check"></i><span class="cell-num">04</span></div><h4>状态必须一致</h4><p>Closed 与 Blocked 不能矛盾</p></div>
-      <div class="cell"><div class="cell-icon-row"><i data-lucide="list-filter"></i><span class="cell-num">05</span></div><h4>自动输出 Ready</h4><p>只展示当前可领取节点</p></div>
-      <div class="cell"><div class="cell-icon-row"><i data-lucide="git-merge"></i><span class="cell-num">06</span></div><h4>合并后重算</h4><p>PR 状态变化触发新队列</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="braces"></i><span class="cell-num">05</span></div><h4>字段必须可解析</h4><p>depends_on 使用统一格式</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="locate-fixed"></i><span class="cell-num">06</span></div><h4>失败必须定位</h4><p>报告具体 Issue 与错误边</p></div>
     </div>
   </div>
 </section>
@@ -290,16 +290,16 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">16 / 17 · PROMPT KIT</div><div class="r">COPY · ADAPT · RUN</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">SIX COMMANDS</div>
-      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">把复杂方法压成六类指令</h2>
+      <div class="t-meta">REFERENCE · COPY AFTER TALK</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">六条指令，直接交给 Agent</h2>
     </div>
     <div data-anim="up" class="brief-grid">
-      <article class="brief-card"><span class="t-meta">01 / INVENTORY</span><h3>先盘点，不写代码</h3><p>读取 Open Issues / PR，输出分类、疑似依赖、重复与第一批 Ready。</p></article>
-      <article class="brief-card is-accent"><span class="t-meta">02 / VISUALIZE</span><h3>生成主 DAG 与局部 DAG</h3><p>展示 Epic 依赖、完成度，以及未完成 Epic 的子任务图。</p></article>
-      <article class="brief-card"><span class="t-meta">03 / QUEUE</span><h3>输出四种状态</h3><p>Ready / Blocked / Review / Done；Blocked 必须说明在等谁。</p></article>
-      <article class="brief-card"><span class="t-meta">04 / EXECUTE</span><h3>只执行 #XX</h3><p>复述目标、范围、验收；只改相关文件，运行检查后开 PR。</p></article>
-      <article class="brief-card"><span class="t-meta">05 / RECALCULATE</span><h3>合并后重新读取状态</h3><p>确认 PR、CI、Issue，然后列出新解锁的 Ready Queue。</p></article>
-      <article class="brief-card"><span class="t-meta">06 / POSTMORTEM</span><h3>冲突先回到 DAG</h3><p>判断是局部代码冲突，还是依赖顺序错误；必要时暂停下游。</p></article>
+      <article class="brief-card"><span class="t-meta">01 / INVENTORY</span><h3>先盘点，不写代码</h3><p>列出 Issue / PR，标出依赖、重复和首批 Ready。</p></article>
+      <article class="brief-card is-accent"><span class="t-meta">02 / VISUALIZE</span><h3>画主图与局部图</h3><p>分别生成 Epic 主 DAG 与当前 Epic 子图。</p></article>
+      <article class="brief-card"><span class="t-meta">03 / QUEUE</span><h3>只输出四种状态</h3><p>Ready / Blocked / Review / Done。</p></article>
+      <article class="brief-card"><span class="t-meta">04 / EXECUTE</span><h3>只执行 #XX</h3><p>复述目标、范围、验收，只修改相关文件。</p></article>
+      <article class="brief-card"><span class="t-meta">05 / RECALCULATE</span><h3>合并后重读状态</h3><p>读取 PR、CI、Issue，输出新 Ready Queue。</p></article>
+      <article class="brief-card"><span class="t-meta">06 / POSTMORTEM</span><h3>冲突先回到图</h3><p>定位错误依赖边，必要时暂停下游。</p></article>
     </div>
   </div>
 </section>
@@ -310,9 +310,9 @@
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">17 / 17</div><div class="r">CLOSING</div></div>
-        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
+        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:3.6vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">MANIFESTO</div>
-          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(7.2vw,12.5vh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">不要让 AI<br/>冲向错误的<span style="font-style:italic;font-weight:300">顺序</span></h2>
+          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(5.8vw,10.2vh);line-height:.96;letter-spacing:-.025em;font-weight:200;color:#fff">先排对<span style="font-style:italic;font-weight:300">顺序</span>，<br/>再让 AI 加速</h2>
           <p style="font-size:max(18px,1.06vw);line-height:1.6;color:rgba(255,255,255,.84);font-weight:400;max-width:36ch">DAG 不是额外的项目管理负担，而是把并发开发变成可计算、可审查、可持续解锁的系统。</p>
         </div>
         <div data-anim="signature" class="t-meta" style="color:rgba(255,255,255,.62);border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;position:relative;z-index:1">落尘 · AI DEVELOPMENT</div>
@@ -322,15 +322,15 @@
         <div data-anim="rules" style="display:flex;flex-direction:column;gap:0">
           <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.5vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9">01</div>
-            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);margin-bottom:1vh">需求先于 Issue</h3><p class="body-sm">先确认目标、范围、边界与验收，再拆任务。</p></div>
+            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);margin-bottom:1.6vh">需求先于 Issue</h3><p class="body-sm">先确认目标、范围、边界与验收，再拆任务。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.5vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9">02</div>
-            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);margin-bottom:1vh">Contract 先于实现</h3><p class="body-sm">把上游依赖定义在能释放并行的最小稳定层。</p></div>
+            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);margin-bottom:1.6vh">Contract 先于实现</h3><p class="body-sm">把上游依赖定义在能释放并行的最小稳定层。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.5vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);color:var(--accent);margin-bottom:1vh">Ready Queue 先于排期</h3><p class="body-sm">系统先告诉你现在能做什么，再决定由谁领取。</p></div>
+            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);color:var(--accent);margin-bottom:1.6vh">Ready Queue 先于排期</h3><p class="body-sm">系统先告诉你现在能做什么，再决定由谁领取。</p></div>
           </div>
         </div>
         <div data-anim="foot" class="t-meta" style="text-align:right">→ END · BUILD THE GRAPH</div>
