@@ -1305,7 +1305,7 @@
   <div class="canvas-card">
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
     <div class="chrome-min">
-      <div class="l">01 / 16 · DEVELOPMENT SYSTEM</div>
+      <div class="l">01 / 17 · DEVELOPMENT SYSTEM</div>
       <div class="r">SWISS · IKB</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
@@ -1324,7 +1324,7 @@
 
 <section class="slide light" data-layout="S03" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">02 / 16 · THE SHIFT</div><div class="r">FROM CODING TO SCHEDULING</div></div>
+    <div class="chrome-min"><div class="l">02 / 17 · THE SHIFT</div><div class="r">FROM CODING TO SCHEDULING</div></div>
     <h1 data-anim="line" class="h-statement" style="font-size:min(8.2vw,14.2vh)">AI 越快，<br/><span style="color:var(--accent)">调度越重要。</span></h1>
     <span data-anim="line" class="stmt-anchor">真正的瓶颈，从“会不会写”转向“先做什么、谁等谁、何时合并”。</span>
   </div>
@@ -1334,7 +1334,7 @@
   <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
     <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--paper)">
       <img src="images/dag-unlock-map-v2.png" data-image-slot="s22-hero-21x9" alt="混乱任务经过 DAG 整理后解锁 Ready Queue" loading="eager" style="position:absolute;left:31vw;right:2vw;top:8vh;bottom:2vh;width:67vw;height:50vh;object-fit:contain;object-position:right center">
-      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">03 / 16 · FROM CHAOS TO READY</div><div class="r">TASK LIST → DAG</div></div>
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">03 / 17 · FROM CHAOS TO READY</div><div class="r">TASK LIST → DAG</div></div>
       <div data-anim="title-block" style="position:absolute;left:5vw;top:14vh;width:24vw;background:var(--paper);padding:2vh 0">
         <div style="font-weight:200;font-size:min(4.6vw,8.1vh);line-height:1;letter-spacing:-.035em">不是排队<br/>而是<span style="color:var(--accent)">解锁</span></div>
       </div>
@@ -1350,9 +1350,29 @@
   </div>
 </section>
 
-<section class="slide grey" data-layout="S11" data-animate="timeline-walk">
+<section class="slide grey" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
+  <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
+    <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--paper)">
+      <img src="images/04-saas-todo-vs-dag.png" data-image-slot="s22-hero-21x9" alt="SaaS 开发中传统串行清单与实际 DAG 并行开发的对比" loading="eager" style="position:absolute;left:30vw;right:2vw;top:8vh;bottom:2vh;width:68vw;height:50vh;object-fit:contain;object-position:right center">
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">04 / 17 · SAAS EXAMPLE</div><div class="r">TODO LIST → DAG</div></div>
+      <div data-anim="title-block" style="position:absolute;left:5vw;top:14vh;width:23vw;background:var(--paper);padding:2vh 0">
+        <div style="font-weight:200;font-size:min(4.1vw,7.2vh);line-height:1;letter-spacing:-.035em">SaaS 开发<br/>不是<span style="color:var(--accent)">流水线</span></div>
+      </div>
+    </div>
+    <div data-anim="kpi" class="image-hero-body">
+      <div style="max-width:48ch;font-size:max(18px,1.22vw);line-height:1.55;font-weight:400">以 SaaS 为例：数据库、登录鉴权和 API 是上游；依赖满足后，工作台、计费、通知无需排队，可以并行开发，最后在 CI 汇合。</div>
+      <div class="image-hero-stats">
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">SERIAL</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">6 步</div><p class="body-sm" style="margin-top:auto">清单假设所有模块顺序执行</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--accent)"></div><div class="t-meta">PARALLEL</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95;color:var(--accent)">3 路</div><p class="body-sm" style="margin-top:auto">工作台、计费、通知同时推进</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">MERGE</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">1 次</div><p class="body-sm" style="margin-top:auto">CI 验证后统一进入上线</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">04 / 16 · PREPARATION</div><div class="r">BEFORE ANY CODE</div></div>
+    <div class="chrome-min"><div class="l">05 / 17 · PREPARATION</div><div class="r">BEFORE ANY CODE</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
       <div class="t-meta">THE FIRST THIRD</div>
       <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh);max-width:13ch">需求确认至少占开发时间的三分之一</h2>
@@ -1373,7 +1393,7 @@
 
 <section class="slide light" data-layout="S05" data-animate="stack-build">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">05 / 16 · TASK ARCHITECTURE</div><div class="r">MANAGE · EXECUTE · SCHEDULE</div></div>
+    <div class="chrome-min"><div class="l">06 / 17 · TASK ARCHITECTURE</div><div class="r">MANAGE · EXECUTE · SCHEDULE</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
       <div class="t-meta">THREE LAYERS</div>
       <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh)">管理看 Epic，执行看 Issue，调度看 Queue</h2>
@@ -1403,7 +1423,7 @@
 
 <section class="slide grey" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">06 / 16 · DAG ANATOMY</div><div class="r">SIX DEFINITIONS</div></div>
+    <div class="chrome-min"><div class="l">07 / 17 · DAG ANATOMY</div><div class="r">SIX DEFINITIONS</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">LIGHTWEIGHT MODEL</div>
       <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">你只需要看懂六件事</h2>
@@ -1421,7 +1441,7 @@
 
 <section class="slide light" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">07 / 16 · DEPENDENCY SYSTEM</div><div class="r">CONTRACT BEFORE IMPLEMENTATION</div></div>
+    <div class="chrome-min"><div class="l">08 / 17 · DEPENDENCY SYSTEM</div><div class="r">CONTRACT BEFORE IMPLEMENTATION</div></div>
     <div data-anim="line" class="system-diagram">
       <div class="system-copy">
         <span class="t-cat accent">THE REAL UPSTREAM</span>
@@ -1443,7 +1463,7 @@
 
 <section class="slide dark" data-layout="S09" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">08 / 16 · THE OUTPUT</div><div class="r">NOT A PRETTY GRAPH</div></div>
+    <div class="chrome-min"><div class="l">09 / 17 · THE OUTPUT</div><div class="r">NOT A PRETTY GRAPH</div></div>
     <div class="dot-mat lg" style="position:absolute;right:0;top:0;width:34vw;height:34vw;color:var(--accent)"></div>
     <h1 data-anim="line" class="h-statement" style="font-size:min(8vw,14vh);max-width:11ch">DAG 的输出<br/>不是图，<br/><span style="color:var(--accent-bright)">是 Ready Queue。</span></h1>
     <span data-anim="line" class="stmt-anchor">不要问“所有任务怎么排期”，先问“现在可以安全做哪些”。</span>
@@ -1454,7 +1474,7 @@
   <div class="canvas-card">
     <div data-anim="line">
       <div style="width:80px;height:2px;background:var(--accent);margin-bottom:4vh"></div>
-      <div class="chrome-min"><div class="l">09 / 16 · READY QUEUE</div><div class="r">FOUR STATES</div></div>
+      <div class="chrome-min"><div class="l">10 / 17 · READY QUEUE</div><div class="r">FOUR STATES</div></div>
       <div style="display:flex;flex-direction:column;gap:1.4vh">
         <div class="t-meta">STATUS IS A DECISION</div>
         <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">每个 Issue 只能处在一个明确状态</h2>
@@ -1473,7 +1493,7 @@
   <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
     <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--ink)">
       <img src="images/10-merge-conflict.png" data-image-slot="s22-hero-21x9" alt="多分支、多屏幕与 CI 状态缠绕的真实开发冲突现场" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%">
-      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:rgba(255,255,255,.9);padding:5.6vh 5vw 0"><div class="l">10 / 16 · FAILURE CASE</div><div class="r">PR #154</div></div>
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:rgba(255,255,255,.9);padding:5.6vh 5vw 0"><div class="l">11 / 17 · FAILURE CASE</div><div class="r">PR #154</div></div>
       <div data-anim="title-block" style="position:absolute;left:5vw;top:11vh;background:var(--paper);padding:3vh 3vw;max-width:39vw">
         <div style="font-weight:200;font-size:min(4.6vw,8.2vh);line-height:1;letter-spacing:-.035em">浪费时间的<br/>不是<span style="color:var(--accent)">写代码</span></div>
       </div>
@@ -1491,7 +1511,7 @@
 
 <section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">11 / 16 · EXECUTION PROTOCOL</div><div class="r">ONE READY ISSUE AT A TIME</div></div>
+    <div class="chrome-min"><div class="l">12 / 17 · EXECUTION PROTOCOL</div><div class="r">ONE READY ISSUE AT A TIME</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
       <div class="t-meta">ISSUE → PR</div>
       <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh)">单个执行者，一次只做一个 Ready Issue</h2>
@@ -1512,7 +1532,7 @@
 
 <section class="slide dark" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">12 / 16 · CONTEXT BOUNDARY</div><div class="r">ONE TERMINAL · ONE EPIC</div></div>
+    <div class="chrome-min"><div class="l">13 / 17 · CONTEXT BOUNDARY</div><div class="r">ONE TERMINAL · ONE EPIC</div></div>
     <div data-anim="up" class="duo-compare">
       <div class="duo-half col">
         <span class="t-cat on-dark">MIXED CONTEXT</span>
@@ -1535,7 +1555,7 @@
   <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
     <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--paper)">
       <img src="images/13-delivery-loop.png" data-image-slot="s22-hero-21x9" alt="Issue 经过分支、PR、CI 与合并后解锁下一批任务的闭环" loading="eager" style="position:absolute;left:34vw;right:3vw;top:7vh;bottom:2vh;width:63vw;height:51vh;object-fit:contain;object-position:right center">
-      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">13 / 16 · FEEDBACK LOOP</div><div class="r">MERGE → RECALCULATE</div></div>
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">14 / 17 · FEEDBACK LOOP</div><div class="r">MERGE → RECALCULATE</div></div>
       <div data-anim="title-block" style="position:absolute;left:5vw;top:14vh;width:27vw;background:var(--paper);padding:2vh 0">
         <div style="font-weight:200;font-size:min(4.2vw,7.4vh);line-height:1;letter-spacing:-.035em">每次合并<br/>都要<span style="color:var(--accent)">重算 DAG</span></div>
       </div>
@@ -1553,7 +1573,7 @@
 
 <section class="slide grey" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">14 / 16 · AUTOMATION</div><div class="r">LET CI GUARD THE GRAPH</div></div>
+    <div class="chrome-min"><div class="l">15 / 17 · AUTOMATION</div><div class="r">LET CI GUARD THE GRAPH</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">SYSTEM GUARDRAILS</div>
       <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">不要靠人肉记住所有依赖</h2>
@@ -1571,7 +1591,7 @@
 
 <section class="slide light" data-layout="S16" data-animate="field-notes">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">15 / 16 · PROMPT KIT</div><div class="r">COPY · ADAPT · RUN</div></div>
+    <div class="chrome-min"><div class="l">16 / 17 · PROMPT KIT</div><div class="r">COPY · ADAPT · RUN</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">SIX COMMANDS</div>
       <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">把复杂方法压成六类指令</h2>
@@ -1592,7 +1612,7 @@
     <div class="split-half">
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
-        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">16 / 16</div><div class="r">CLOSING</div></div>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">17 / 17</div><div class="r">CLOSING</div></div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">MANIFESTO</div>
           <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(7.2vw,12.5vh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">不要让 AI<br/>冲向错误的<span style="font-style:italic;font-weight:300">顺序</span></h2>

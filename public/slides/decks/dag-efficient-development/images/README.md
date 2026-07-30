@@ -3,6 +3,7 @@
 Generated with the built-in image generation tool for Guizang Swiss S22 slots.
 
 - `dag-unlock-map-v2.png`: chaotic backlog → ordered DAG → three Ready nodes.
+- `04-saas-todo-vs-dag.png`: linear SaaS task list compared with dependency-driven parallel development.
 - `10-merge-conflict.png`: documentary development scene with overlapping branches and CI states.
 - `13-delivery-loop.png`: Issue → branch → PR → CI → merge → next Ready set.
 

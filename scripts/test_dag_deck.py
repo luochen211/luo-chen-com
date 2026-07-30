@@ -17,14 +17,14 @@ with sync_playwright() as p:
     page.wait_for_load_state("networkidle")
     page.wait_for_timeout(1400)
 
-    assert page.locator("section.slide").count() == 16
-    assert page.locator("#nav .dot").count() == 16
+    assert page.locator("section.slide").count() == 17
+    assert page.locator("#nav .dot").count() == 17
 
-    for index in range(16):
+    for index in range(17):
         page.locator("#nav .dot").nth(index).click()
         page.wait_for_timeout(2200)
         page.screenshot(path=str(OUT / f"slide-{index + 1:02d}.png"))
-        if index == 12:
+        if index == 3:
             page.screenshot(
                 path=str(ROOT / "public/slides/decks/dag-efficient-development/preview.png")
             )
