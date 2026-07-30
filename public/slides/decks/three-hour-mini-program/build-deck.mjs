@@ -33,8 +33,6 @@ html = `${html.slice(0, start)}${slides}\n${html.slice(end)}`;
 mkdirSync(join(root, "assets"), { recursive: true });
 mkdirSync(join(root, "images"), { recursive: true });
 copyFileSync(join(sourceRoot, "assets", "motion.min.js"), join(root, "assets", "motion.min.js"));
-copyFileSync(join(sourceRoot, "images", "01-swiss-mini-program-hero.png"), join(root, "images", "01-swiss-mini-program-hero.png"));
-copyFileSync(join(sourceRoot, "images", "14-ai-workflow.png"), join(root, "images", "14-ai-workflow.png"));
 writeFileSync(outputPath, html);
 
 console.log(`Built ${outputPath}`);
