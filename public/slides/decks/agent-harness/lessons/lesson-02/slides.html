@@ -25,13 +25,13 @@
     <div style="flex:1;display:grid;grid-template-columns:4fr 8fr;align-items:center;gap:4vw">
       <div data-anim="left">
         <div class="t-meta">THE PRODUCTION FORMULA</div>
-        <p class="lead" style="margin-top:3vh;color:rgba(255,255,255,.75)">模型负责不确定性的判断；Harness 用确定性工程约束、验证并恢复它。</p>
+        <p class="lead" style="margin-top:3vh;color:rgba(255,255,255,.75)">最小公式解释 Agent 如何跑起来；生产公式补上让它长期可靠运行的工程外壳。</p>
       </div>
       <div data-anim="title">
-        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7vw,12.3vh);line-height:1;letter-spacing:-.04em;color:var(--paper)">Agent =<br/>Model + <span style="color:var(--accent)">Harness</span></h2>
+        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1.04;letter-spacing:-.04em;color:var(--paper)">Agent = LLM +<br/><span style="color:var(--accent)">[ Context + Tools +<br/>Constrain + Verify + Correct ]</span></h2>
       </div>
     </div>
-    <div class="t-meta" style="border-top:1px solid rgba(255,255,255,.2);padding-top:1.5vh">Harness 不是一个新模型，而是模型运行所依赖的工程外壳</div>
+    <div class="t-meta" style="border-top:1px solid rgba(255,255,255,.2);padding-top:1.5vh">等价表达：Agent = Model + Harness</div>
   </div>
 </section>
 
@@ -46,24 +46,24 @@
       <article data-anim="card" class="sub-card ink"><span class="nb-corner">M</span><i data-lucide="brain"></i><h3 class="ttl">Model</h3><p class="desc">负责概率性判断，不属于 Harness。</p></article>
       <article data-anim="card" class="sub-card"><span class="nb-corner">H1</span><i data-lucide="panel-top"></i><h3 class="ttl">Context</h3><p class="desc">给模型正确的信息视图。</p></article>
       <article data-anim="card" class="sub-card"><span class="nb-corner">H2</span><i data-lucide="plug"></i><h3 class="ttl">Tools</h3><p class="desc">提供真实、可调用的行动。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">H3</span><i data-lucide="shield"></i><h3 class="ttl">Constraints</h3><p class="desc">行动之前和之中防止越界。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">H4</span><i data-lucide="check-check"></i><h3 class="ttl">Validation</h3><p class="desc">用外部证据检查是否做对。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">H5</span><i data-lucide="rotate-ccw"></i><h3 class="ttl">Correction</h3><p class="desc">发现失败后修复或安全退出。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">H3</span><i data-lucide="shield"></i><h3 class="ttl">Constrain</h3><p class="desc">设定能做什么、不能做什么。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">H4</span><i data-lucide="check-check"></i><h3 class="ttl">Verify</h3><p class="desc">自动判断操作结果是否正确。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">H5</span><i data-lucide="rotate-ccw"></i><h3 class="ttl">Correct</h3><p class="desc">发现问题后自动修正或回退。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S05" data-animate="stack-build">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Context Composer · From State to View</div><div class="r">04 / 10</div></div>
+    <div class="chrome-min"><div class="l">Context · Information Sufficiency</div><div class="r">04 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">HARNESS FUNCTION 01</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 是被编译出来的视图</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">让每个决策点拥有足够信息</h2>
     </div>
     <div class="stack-row" data-anim="up">
-      <article data-anim="card" class="stack-block b-grey"><span class="layer-nb">01 · COLLECT</span><i data-lucide="inbox"></i><h3 class="layer-ttl">收集</h3><p class="layer-desc">从 State、Memory、RAG、工具结果取得候选信息。</p><span class="layer-tag">数据来源</span></article>
-      <article data-anim="card" class="stack-block b-ink"><span class="layer-nb">02 · SELECT</span><i data-lucide="filter"></i><h3 class="layer-ttl">选择</h3><p class="layer-desc">保留与当前决策相关、可信、未过期的部分。</p><span class="layer-tag">信息门控</span></article>
-      <article data-anim="card" class="stack-block b-accent"><span class="layer-nb">03 · COMPOSE</span><i data-lucide="layout-template"></i><h3 class="layer-ttl">编排</h3><p class="layer-desc">按系统指令、任务状态、工具结果组织成模型可读结构。</p><span class="layer-tag">当前视图</span></article>
+      <article data-anim="card" class="stack-block b-grey"><span class="layer-nb">01 · STATIC PREFIX</span><i data-lucide="panel-top"></i><h3 class="layer-ttl">固定身份与能力</h3><p class="layer-desc">系统提示词规定身份与规则；工具定义声明可执行动作。</p><span class="layer-tag">系统提示词 + 工具定义</span></article>
+      <article data-anim="card" class="stack-block b-ink"><span class="layer-nb">02 · TRAJECTORY</span><i data-lucide="history"></i><h3 class="layer-ttl">保留运行历史</h3><p class="layer-desc">用户消息、模型回复和工具结果按时间不断追加。</p><span class="layer-tag">动态轨迹</span></article>
+      <article data-anim="card" class="stack-block b-accent"><span class="layer-nb">03 · SUFFICIENCY</span><i data-lucide="database"></i><h3 class="layer-ttl">补齐决策信息</h3><p class="layer-desc">知识库、状态栏或旁路查询只在当前决策需要时进入上下文。</p><span class="layer-tag">足够，但不无限堆积</span></article>
     </div>
   </div>
 </section>
@@ -105,22 +105,22 @@
 
 <section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Validation · Claim vs Evidence</div><div class="r">07 / 10</div></div>
+    <div class="chrome-min"><div class="l">Verify · Structured Evidence</div><div class="r">07 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">HARNESS FUNCTION 04</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">模型声称完成，不等于任务真的完成</h2>
+      <div class="t-meta">HARNESS FUNCTION 04 · INPUT ISOLATION</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.5vw,9.6vh);line-height:1;letter-spacing:-.03em">验证器只相信结构化证据</h2>
     </div>
     <div class="duo-compare" data-anim="up">
       <div class="col">
-        <div class="col-tag"><span class="num">C</span> CLAIM</div>
-        <div class="col-ttl">语言结论</div>
+        <div class="col-tag"><span class="num">×</span> FREE TEXT</div>
+        <div class="col-ttl">不能自证成功</div>
         <p class="col-desc">“退款已经成功。”</p>
         <ul class="col-list"><li>可能来自旧知识</li><li>可能把计划当成事实</li><li>不能作为最终证据</li></ul>
       </div>
       <div class="vrule"></div>
       <div class="col accent">
-        <div class="col-tag"><span class="num">E</span> EVIDENCE</div>
-        <div class="col-ttl">外部证明</div>
+        <div class="col-tag"><span class="num">✓</span> STRUCTURED DATA</div>
+        <div class="col-ttl">检查外部状态</div>
         <p class="col-desc">订单数据库中的退款状态已经更新。</p>
         <ul class="col-list"><li>来源明确</li><li>时间有效</li><li>可再次查询验证</li></ul>
       </div>
@@ -150,22 +150,22 @@
 
 <section class="slide dark" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Harness Runtime · One Controlled Turn</div><div class="r">09 / 10</div></div>
+    <div class="chrome-min"><div class="l">Harness Runtime · Refund Example</div><div class="r">09 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">STATIC ANATOMY → DYNAMIC CONTROL FLOW</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">五个部分不是并排摆放，<br/>而是围绕每次模型决策接力</h2>
+      <div class="t-meta">USER REQUEST · REFUND AN ORDER FROM THREE DAYS AGO</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">五个功能怎样完成一次退款</h2>
     </div>
     <div class="timeline-h" data-anim="up">
       <div class="tl-row">
-        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01 · CONTEXT</span><span class="name">提供当前观察</span><span class="desc">系统指令、工具定义、动态轨迹</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02 · MODEL</span><span class="name">选择下一动作</span><span class="desc">模型在 Harness 外负责判断</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03 · CONSTRAIN</span><span class="name">执行前拦截</span><span class="desc">权限、参数、确认与预算</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04 · TOOLS</span><span class="name">查询或改变世界</span><span class="desc">返回结构化结果与状态变化</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05 · VERIFY</span><span class="name">对照完成条件</span><span class="desc">检查外部事实而非语言声明</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06 · CORRECT</span><span class="name">修复或安全退出</span><span class="desc">重试、回退、熔断、转人工</span></div></div>
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01 · CONTEXT</span><span class="name">读到退款政策</span><span class="desc">签收后 7 天内可退款</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02 · TOOLS</span><span class="name">查询订单</span><span class="desc">query_order 返回订单与金额</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03 · CONSTRAIN</span><span class="name">检查行为边界</span><span class="desc">退款金额不得超过订单金额</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04 · TOOLS</span><span class="name">执行退款</span><span class="desc">调用 process_refund</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05 · VERIFY</span><span class="name">查询数据库</span><span class="desc">退款状态确实已经更新</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06 · CORRECT</span><span class="name">处理 API 超时</span><span class="desc">静默重试，持续失败再熔断</span></div></div>
       </div>
     </div>
-    <div class="callout" style="margin-top:auto;color:var(--paper);border-color:rgba(255,255,255,.25)">Verify 通过 → 提交 State 并完成；Verify 失败 → Correct 生成下一步，再回到 Context。</div>
+    <div class="callout" style="margin-top:auto;color:var(--paper);border-color:rgba(255,255,255,.25)">数据库确认成功才向用户宣布完成；工具超时不是失败结论，而是 Correct 接管的起点。</div>
   </div>
 </section>
 
