@@ -136,23 +136,51 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S17" data-animate="system-diagram">
+<section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">08 / 17 · DEPENDENCIES</div><div class="r">CONTRACT FIRST</div></div>
-    <div data-anim="line" class="system-diagram" style="margin-bottom:0">
-      <div class="system-copy" style="gap:3.6vh">
+    <div class="contract-release">
+      <div data-anim="line" class="contract-copy">
         <span class="t-cat accent">THE REAL UPSTREAM</span>
-        <h2>前后端不必等待彼此完成</h2>
-        <p>“登录页面”不一定依赖“登录 API 完成”，它更可能只依赖 API Contract 明确。把依赖定义到正确层级，才会真正释放并行。</p>
-        <div class="t-meta">OUTER → IMPLEMENTATION · MIDDLE → CONTRACT · CORE → ACCEPTANCE</div>
+        <h2>不是等待后端，<br/>而是先冻结 Contract</h2>
+        <p>以登录功能为例：前端、后端和测试共同依赖的，并不是某一方“全部完成”，而是接口输入、输出和错误码已经明确。</p>
+        <div class="contract-rule">依赖写成“API 完成”会制造串行；写成“Contract 明确”才能一次解锁三条支线。</div>
       </div>
-      <div data-anim="up" class="system-rings" style="min-height:60vh">
-        <div class="sys-ring outer" style="width:50vh;height:50vh"><span class="sys-label" style="align-self:start;margin-top:3vh">IMPLEMENTATION</span></div>
-        <div class="sys-ring middle" style="width:34vh;height:34vh"><span class="sys-label" style="align-self:start;margin-top:3vh;color:var(--accent)">CONTRACT</span></div>
-        <div class="sys-ring core" style="width:18vh;height:18vh"><span class="sys-label">验收<br/>标准</span></div>
-        <span class="sys-note n1">Frontend + Mock</span>
-        <span class="sys-note n2" style="bottom:0;left:-2%;z-index:2;background:var(--paper);padding-right:.8vw">Backend + Schema</span>
-        <span class="sys-note n3">Tests + Cases</span>
+      <div data-anim="up" class="contract-flow">
+        <div class="flow-seed">
+          <div class="flow-node">
+            <span class="t-meta">01 / ACCEPTANCE</span>
+            <strong>验收标准</strong>
+            <p>登录成功、失败和异常分别是什么结果？</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node is-contract">
+            <span class="t-meta">02 / SHARED UPSTREAM</span>
+            <strong>API Contract</strong>
+            <p>请求字段、响应结构、错误码与示例固定。</p>
+          </div>
+        </div>
+        <div class="release-label">CONTRACT CONFIRMED · READY × 3</div>
+        <div class="parallel-release">
+          <div class="parallel-card">
+            <span class="t-meta">FRONTEND</span>
+            <strong>先用 Mock 开工</strong>
+            <p>页面、状态与交互不再等待真实接口。</p>
+            <span class="ready-tag">READY</span>
+          </div>
+          <div class="parallel-card">
+            <span class="t-meta">BACKEND</span>
+            <strong>按 Schema 实现</strong>
+            <p>实现逻辑，同时保持接口结构稳定。</p>
+            <span class="ready-tag">READY</span>
+          </div>
+          <div class="parallel-card">
+            <span class="t-meta">TESTS</span>
+            <strong>提前编写 Cases</strong>
+            <p>根据输入输出准备正常与异常用例。</p>
+            <span class="ready-tag">READY</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

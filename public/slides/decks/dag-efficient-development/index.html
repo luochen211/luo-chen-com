@@ -1236,18 +1236,29 @@
 .brief-card p{font-size:max(16px,.94vw);font-weight:400;line-height:1.45;color:var(--text-secondary)}
 .brief-card.is-accent p,.brief-card.is-accent .t-meta{color:var(--accent-on)}
 
-.system-diagram{display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center;flex:1;margin-bottom:var(--nav-safe-bottom)}
-.system-copy{display:flex;flex-direction:column;gap:2.4vh}
-.system-copy h2{font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.035em}
-.system-copy p{font-size:max(18px,1.08vw);font-weight:400;line-height:1.55;color:var(--text-secondary);max-width:34ch}
-.system-rings{position:relative;min-height:52vh;display:grid;place-items:center}
-.sys-ring{position:absolute;display:grid;place-items:center;border:1px solid var(--border-strong)}
-.sys-ring.outer{width:44vh;height:44vh;background:var(--grey-1)}
-.sys-ring.middle{width:30vh;height:30vh;background:var(--paper);border-color:var(--accent)}
-.sys-ring.core{width:16vh;height:16vh;background:var(--accent);color:var(--accent-on);border:0}
-.sys-label{font-family:var(--mono);font-size:max(14px,.84vw);font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:center}
-.sys-note{position:absolute;font-size:max(16px,.94vw);font-weight:500}
-.sys-note.n1{top:4%;right:2%}.sys-note.n2{bottom:7%;left:0}.sys-note.n3{top:18%;left:2%}
+.contract-release{display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center;flex:1;margin-bottom:var(--nav-safe-bottom)}
+.contract-copy{display:flex;flex-direction:column;gap:3.6vh}
+.contract-copy h2{font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.035em}
+.contract-copy p{font-size:max(18px,1.08vw);font-weight:400;line-height:1.55;color:var(--text-secondary);max-width:34ch}
+.contract-rule{border-top:1px solid var(--accent);padding-top:1.6vh;font-size:max(16px,.94vw);font-weight:500;line-height:1.5;color:var(--accent);max-width:34ch}
+.contract-flow{display:flex;flex-direction:column;justify-content:center;min-height:58vh}
+.flow-seed{display:grid;grid-template-columns:1fr 3.2vw 1fr;align-items:stretch}
+.flow-arrow{display:grid;place-items:center;color:var(--accent);font-size:max(28px,2vw);font-weight:300}
+.flow-node{border-top:2px solid var(--ink);background:var(--grey-1);padding:2.2vh 1.4vw;min-height:15vh;display:flex;flex-direction:column;gap:1vh}
+.flow-node.is-contract{background:var(--accent);color:var(--accent-on);border-top-color:var(--accent)}
+.flow-node .t-meta{color:inherit}
+.flow-node strong{font-size:max(22px,1.55vw);font-weight:400}
+.flow-node p{font-size:max(16px,.9vw);font-weight:400;line-height:1.45;color:var(--text-secondary)}
+.flow-node.is-contract p{color:var(--accent-on)}
+.release-label{align-self:center;margin:3.2vh 0 0;padding:.8vh 1vw;background:var(--paper);color:var(--accent);font-family:var(--mono);font-size:max(14px,.82vw);font-weight:600;letter-spacing:.1em;position:relative;z-index:2}
+.parallel-release{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-subtle);position:relative;margin-top:3.4vh}
+.parallel-release::before{content:"";position:absolute;left:16.666%;right:16.666%;top:-1.8vh;border-top:1px solid var(--accent)}
+.parallel-card{background:var(--paper);padding:2vh 1.1vw;min-height:17vh;display:flex;flex-direction:column;gap:1vh;position:relative}
+.parallel-card::before{content:"";position:absolute;left:50%;top:-1.8vh;height:1.8vh;border-left:1px solid var(--accent)}
+.parallel-card .t-meta{color:var(--accent)}
+.parallel-card strong{font-size:max(20px,1.34vw);font-weight:400}
+.parallel-card p{font-size:max(16px,.86vw);font-weight:400;line-height:1.45;color:var(--text-secondary)}
+.parallel-card .ready-tag{margin-top:auto;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.12em;color:var(--accent)}
 
 @media(max-width:900px){
   .cell-6,.brief-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
@@ -1440,23 +1451,51 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S17" data-animate="system-diagram">
+<section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">08 / 17 · DEPENDENCIES</div><div class="r">CONTRACT FIRST</div></div>
-    <div data-anim="line" class="system-diagram" style="margin-bottom:0">
-      <div class="system-copy" style="gap:3.6vh">
+    <div class="contract-release">
+      <div data-anim="line" class="contract-copy">
         <span class="t-cat accent">THE REAL UPSTREAM</span>
-        <h2>前后端不必等待彼此完成</h2>
-        <p>“登录页面”不一定依赖“登录 API 完成”，它更可能只依赖 API Contract 明确。把依赖定义到正确层级，才会真正释放并行。</p>
-        <div class="t-meta">OUTER → IMPLEMENTATION · MIDDLE → CONTRACT · CORE → ACCEPTANCE</div>
+        <h2>不是等待后端，<br/>而是先冻结 Contract</h2>
+        <p>以登录功能为例：前端、后端和测试共同依赖的，并不是某一方“全部完成”，而是接口输入、输出和错误码已经明确。</p>
+        <div class="contract-rule">依赖写成“API 完成”会制造串行；写成“Contract 明确”才能一次解锁三条支线。</div>
       </div>
-      <div data-anim="up" class="system-rings" style="min-height:60vh">
-        <div class="sys-ring outer" style="width:50vh;height:50vh"><span class="sys-label" style="align-self:start;margin-top:3vh">IMPLEMENTATION</span></div>
-        <div class="sys-ring middle" style="width:34vh;height:34vh"><span class="sys-label" style="align-self:start;margin-top:3vh;color:var(--accent)">CONTRACT</span></div>
-        <div class="sys-ring core" style="width:18vh;height:18vh"><span class="sys-label">验收<br/>标准</span></div>
-        <span class="sys-note n1">Frontend + Mock</span>
-        <span class="sys-note n2" style="bottom:0;left:-2%;z-index:2;background:var(--paper);padding-right:.8vw">Backend + Schema</span>
-        <span class="sys-note n3">Tests + Cases</span>
+      <div data-anim="up" class="contract-flow">
+        <div class="flow-seed">
+          <div class="flow-node">
+            <span class="t-meta">01 / ACCEPTANCE</span>
+            <strong>验收标准</strong>
+            <p>登录成功、失败和异常分别是什么结果？</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node is-contract">
+            <span class="t-meta">02 / SHARED UPSTREAM</span>
+            <strong>API Contract</strong>
+            <p>请求字段、响应结构、错误码与示例固定。</p>
+          </div>
+        </div>
+        <div class="release-label">CONTRACT CONFIRMED · READY × 3</div>
+        <div class="parallel-release">
+          <div class="parallel-card">
+            <span class="t-meta">FRONTEND</span>
+            <strong>先用 Mock 开工</strong>
+            <p>页面、状态与交互不再等待真实接口。</p>
+            <span class="ready-tag">READY</span>
+          </div>
+          <div class="parallel-card">
+            <span class="t-meta">BACKEND</span>
+            <strong>按 Schema 实现</strong>
+            <p>实现逻辑，同时保持接口结构稳定。</p>
+            <span class="ready-tag">READY</span>
+          </div>
+          <div class="parallel-card">
+            <span class="t-meta">TESTS</span>
+            <strong>提前编写 Cases</strong>
+            <p>根据输入输出准备正常与异常用例。</p>
+            <span class="ready-tag">READY</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
