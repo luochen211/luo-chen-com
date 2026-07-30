@@ -24,7 +24,7 @@ with sync_playwright() as p:
         page.locator("#nav .dot").nth(index).click()
         page.wait_for_timeout(2200)
         page.screenshot(path=str(OUT / f"slide-{index + 1:02d}.png"))
-        if index == 0:
+        if index == 12:
             page.screenshot(
                 path=str(ROOT / "public/slides/decks/dag-efficient-development/preview.png")
             )

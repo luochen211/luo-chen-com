@@ -27,30 +27,21 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S08" data-animate="duo-mirror">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">03 / 16 · BEFORE / AFTER</div><div class="r">TASK LIST → DEPENDENCY GRAPH</div></div>
-    <div data-anim="up" class="duo-compare">
-      <div class="duo-half col">
-        <span class="t-cat">TODO LIST</span>
-        <h2>把任务<br/>排成一条线</h2>
-        <p class="body">看起来清楚，却把本来可以并行的工作错误地串行化。</p>
-        <ul>
-          <li>下游提前开工，重复改上游文件</li>
-          <li>多个分支同时漂移，合并时集中爆炸</li>
-          <li>下一步靠感觉，不靠系统判断</li>
-        </ul>
+<section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
+  <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
+    <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--paper)">
+      <img src="images/03-dag-ready.png" data-image-slot="s22-hero-21x9" alt="混乱任务经过 DAG 整理后解锁 Ready Queue" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">03 / 16 · FROM CHAOS TO READY</div><div class="r">TASK LIST → DAG</div></div>
+      <div data-anim="title-block" style="position:absolute;left:5vw;top:11vh;background:var(--paper);padding:3vh 3vw;max-width:37vw">
+        <div style="font-weight:200;font-size:min(4.8vw,8.5vh);line-height:1;letter-spacing:-.035em">不是排队<br/>而是<span style="color:var(--accent)">解锁</span></div>
       </div>
-      <span class="vrule"></span>
-      <div class="duo-half col accent">
-        <span class="t-cat accent">DAG</span>
-        <h2>把依赖<br/>讲清楚</h2>
-        <p class="body">节点是 Issue，边是 depends_on / blocks，输出是 Ready Queue。</p>
-        <ul>
-          <li>无依赖的任务立即并行</li>
-          <li>上游 Contract 先稳定、先合并</li>
-          <li>每次合并后自动解锁下一批</li>
-        </ul>
+    </div>
+    <div data-anim="kpi" class="image-hero-body">
+      <div style="max-width:45ch;font-size:max(18px,1.28vw);line-height:1.55;font-weight:400">普通 Todo List 把工作排成一条线；DAG 把真实依赖表达出来，让系统直接回答“现在能做什么”。</div>
+      <div class="image-hero-stats">
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">BACKLOG</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">100+</div><p class="body-sm" style="margin-top:auto">大量 Issue 不再平铺</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">DAG ANSWERS</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">3 问</div><p class="body-sm" style="margin-top:auto">能做、要等、会解锁</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--accent)"></div><div class="t-meta">OUTPUT</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95;color:var(--accent)">READY</div><p class="body-sm" style="margin-top:auto">只领取依赖已满足的节点</p></div>
       </div>
     </div>
   </div>
@@ -175,19 +166,21 @@
   </div>
 </section>
 
-<section class="slide grey" data-layout="S13" data-animate="three-forces">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">10 / 16 · FAILURE CASE</div><div class="r">PR #154</div></div>
-    <div data-anim="up" class="three-forces">
-      <div class="hero-ink-col">
-        <span class="t-cat on-dark">CONFLICT POSTMORTEM</span>
-        <h2>真正浪费时间的<br/>不是写代码</h2>
-        <p>PR #154 的代价来自执行前没有明确：#41 依赖哪些上游、谁该先合并、谁必须等待。</p>
+<section class="slide grey" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
+  <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
+    <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--ink)">
+      <img src="images/10-merge-conflict.png" data-image-slot="s22-hero-21x9" alt="多分支、多屏幕与 CI 状态缠绕的真实开发冲突现场" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%">
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:rgba(255,255,255,.9);padding:5.6vh 5vw 0"><div class="l">10 / 16 · FAILURE CASE</div><div class="r">PR #154</div></div>
+      <div data-anim="title-block" style="position:absolute;left:5vw;top:11vh;background:var(--paper);padding:3vh 3vw;max-width:39vw">
+        <div style="font-weight:200;font-size:min(4.6vw,8.2vh);line-height:1;letter-spacing:-.035em">浪费时间的<br/>不是<span style="color:var(--accent)">写代码</span></div>
       </div>
-      <div class="force-list">
-        <article class="force-card card-fill"><span class="force-num">01</span><h3>上游尚未稳定</h3><p>多个下游分支同时修改同一批基础文件。</p></article>
-        <article class="force-card card-fill"><span class="force-num">02</span><h3>冲突被当成局部技术问题</h3><p>二进制冲突、分支落后、重开 PR 反复补丁式处理。</p></article>
-        <article class="force-card card-fill"><span class="force-num">03</span><h3>CI 与合并顺序缠在一起</h3><p>状态重跑、PR 被提前关闭，真正原因是依赖顺序错误。</p></article>
+    </div>
+    <div data-anim="kpi" class="image-hero-body">
+      <div style="max-width:46ch;font-size:max(18px,1.25vw);line-height:1.55;font-weight:400">上游未稳定时，下游同时开工。最后爆发的二进制冲突、分支落后和 CI 重跑，本质上都是执行顺序错误。</div>
+      <div class="image-hero-stats">
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">CASE</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">#154</div><p class="body-sm" style="margin-top:auto">冲突缠绕的 PR</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">UPSTREAM</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">#41</div><p class="body-sm" style="margin-top:auto">依赖边界没有提前明确</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--accent)"></div><div class="t-meta">ROOT CAUSES</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95;color:var(--accent)">3 类</div><p class="body-sm" style="margin-top:auto">上游、冲突、合并顺序</p></div>
       </div>
     </div>
   </div>
@@ -235,30 +228,21 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S14" data-animate="loop-form">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">13 / 16 · FEEDBACK LOOP</div><div class="r">MERGE → RECALCULATE</div></div>
-    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">DEVELOPMENT AS A FLOW</div>
-      <h2 class="h-xl-zh" style="font-size:min(5.3vw,9.4vh)">每次合并，都要重新计算 DAG</h2>
-    </div>
-    <div data-anim="up" class="loop-diagram">
-      <div class="loop-steps">
-        <div><span>01</span><strong>领取 Ready Issue</strong><p>只处理依赖已满足的任务。</p></div>
-        <div><span>02</span><strong>开 PR + 运行 CI</strong><p>留下可回看、可回滚的证据。</p></div>
-        <div><span>03</span><strong>合并并关闭 Issue</strong><p>确认代码、状态和验收一致。</p></div>
-        <div><span>04</span><strong>更新 Ready Queue</strong><p>找出刚被解锁的下一批任务。</p></div>
+<section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
+  <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
+    <div data-anim="img" style="position:relative;flex:0 0 60%;overflow:hidden;background:var(--paper)">
+      <img src="images/13-delivery-loop.png" data-image-slot="s22-hero-21x9" alt="Issue 经过分支、PR、CI 与合并后解锁下一批任务的闭环" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:var(--text-primary);padding:5.6vh 5vw 0"><div class="l">13 / 16 · FEEDBACK LOOP</div><div class="r">MERGE → RECALCULATE</div></div>
+      <div data-anim="title-block" style="position:absolute;left:5vw;top:11vh;background:var(--paper);padding:3vh 3vw;max-width:40vw">
+        <div style="font-weight:200;font-size:min(4.6vw,8.2vh);line-height:1;letter-spacing:-.035em">每次合并<br/>都要<span style="color:var(--accent)">重算 DAG</span></div>
       </div>
-      <div class="loop-svg">
-        <svg viewBox="0 0 420 420" aria-hidden="true">
-          <circle cx="210" cy="210" r="145" fill="none" stroke="var(--accent)" stroke-width="2"/>
-          <circle cx="210" cy="210" r="90" fill="none" stroke="var(--ink)" stroke-width="1"/>
-          <path d="M210 65 L250 105 L210 145 L170 105 Z" fill="var(--accent)"/>
-          <path d="M355 210 L315 250 L275 210 L315 170 Z" fill="var(--grey-2)"/>
-          <path d="M210 355 L170 315 L210 275 L250 315 Z" fill="var(--grey-2)"/>
-          <path d="M65 210 L105 170 L145 210 L105 250 Z" fill="var(--grey-2)"/>
-        </svg>
-        <div style="position:absolute;inset:0;display:grid;place-items:center;font-size:min(5.2vw,9.2vh);font-weight:200;letter-spacing:-.04em">READY</div>
+    </div>
+    <div data-anim="kpi" class="image-hero-body">
+      <div style="max-width:46ch;font-size:max(18px,1.25vw);line-height:1.55;font-weight:400">开发不是在半成品分支之间跳跃，而是 Issue → PR → CI → Merge → 解锁下一批的持续流动。</div>
+      <div class="image-hero-stats">
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">LOOP</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">4 步</div><p class="body-sm" style="margin-top:auto">领取、提交、合并、重算</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--ink)"></div><div class="t-meta">TRACE</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95">1 PR</div><p class="body-sm" style="margin-top:auto">一个 Issue 对应一个证据链</p></div>
+        <div style="display:flex;flex-direction:column;gap:.7vh"><div style="height:1px;background:var(--accent)"></div><div class="t-meta">UNLOCK</div><div style="font-weight:200;font-size:min(4.5vw,7.8vh);line-height:.95;color:var(--accent)">N+1</div><p class="body-sm" style="margin-top:auto">每次合并释放下一批 Ready</p></div>
       </div>
     </div>
   </div>
