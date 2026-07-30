@@ -1426,15 +1426,15 @@
     <div class="chrome-min"><div class="l">07 / 17 · DAG ANATOMY</div><div class="r">SIX DEFINITIONS</div></div>
     <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">LIGHTWEIGHT MODEL</div>
-      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">你只需要看懂六件事</h2>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">看懂 DAG，只需要六个结构词</h2>
     </div>
     <div data-anim="up" class="cell-6">
       <div class="cell"><div class="cell-icon-row"><i data-lucide="circle-dot"></i><span class="cell-num">01</span></div><h4>Node</h4><p>一个可执行的 GitHub Issue</p></div>
       <div class="cell"><div class="cell-icon-row"><i data-lucide="move-right"></i><span class="cell-num">02</span></div><h4>Edge</h4><p>depends_on 或 blocks 依赖方向</p></div>
-      <div class="cell"><div class="cell-icon-row"><i data-lucide="play"></i><span class="cell-num">03</span></div><h4>Ready</h4><p>所有前置依赖都已经完成</p></div>
-      <div class="cell"><div class="cell-icon-row"><i data-lucide="pause"></i><span class="cell-num">04</span></div><h4>Blocked</h4><p>必须等待上游或外部条件</p></div>
-      <div class="cell"><div class="cell-icon-row"><i data-lucide="git-pull-request"></i><span class="cell-num">05</span></div><h4>Review</h4><p>已有 PR，等待 CI 或合并</p></div>
-      <div class="cell"><div class="cell-icon-row"><i data-lucide="check-check"></i><span class="cell-num">06</span></div><h4>Done</h4><p>合并并关闭，触发下一轮解锁</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="arrow-up-to-line"></i><span class="cell-num">03</span></div><h4>Upstream</h4><p>必须优先完成的上游任务</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="arrow-down-to-line"></i><span class="cell-num">04</span></div><h4>Downstream</h4><p>等待上游解锁的后续任务</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="route"></i><span class="cell-num">05</span></div><h4>Path</h4><p>从基础能力到最终交付的依赖链</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="refresh-cw-off"></i><span class="cell-num">06</span></div><h4>Cycle</h4><p>互相等待的循环依赖，必须消除</p></div>
     </div>
   </div>
 </section>
