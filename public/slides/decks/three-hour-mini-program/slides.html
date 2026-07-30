@@ -1,7 +1,7 @@
 <section class="slide accent" data-layout="SWISS-COVER-ASCII" data-animate="hero">
   <div class="canvas-card">
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
-    <div class="chrome-min"><div class="l">01 / 24 · FIELD GUIDE</div><div class="r">SWISS · IKB</div></div>
+    <div class="chrome-min"><div class="l">01 / 27 · FIELD GUIDE</div><div class="r">SWISS · IKB</div></div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.5vh">
       <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.76);letter-spacing:.2em">ZERO TO A VERIFIABLE MVP</div>
       <h1 data-anim="title" class="deck-title" style="align-self:center;font-size:min(9.4vw,16vh);color:#fff">3 小时做完<br>一个<span style="font-style:italic;font-weight:300">小程序</span></h1>
@@ -15,7 +15,7 @@
 
 <section class="slide" data-layout="S03" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">02 / 24 · DEFINITION</div><div class="r">WHAT “DONE” MEANS</div></div>
+    <div class="chrome-min"><div class="l">02 / 27 · DEFINITION</div><div class="r">WHAT “DONE” MEANS</div></div>
     <h1 data-anim="title" class="deck-title deck-xl" style="margin:auto 0 2vh;max-width:13ch">先定义<span style="color:var(--accent)">做完</span><br>再谈速度</h1>
     <div data-anim="bottom" class="deck-bottom" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle)">
       <div class="deck-card" style="min-height:14vh"><span class="num">01</span><h3>核心闭环可运行</h3></div>
@@ -28,7 +28,7 @@
 
 <section class="slide grey" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">03 / 24 · SCOPE</div><div class="r">NOT IN 3 HOURS</div></div>
+    <div class="chrome-min"><div class="l">03 / 27 · SCOPE</div><div class="r">NOT IN 3 HOURS</div></div>
     <div data-anim="title"><div class="t-meta">BOUNDARY FIRST</div><h2 class="deck-title deck-lg">三小时，不包含这些</h2></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
       <div class="deck-card"><span class="num">01</span><h3>主体认证</h3><p>账号主体、企业资质与费用不在现场闭环内。</p></div>
@@ -39,9 +39,60 @@
   </div>
 </section>
 
+<section class="slide" data-layout="S05" data-animate="progression">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">04 / 27 · COMMON SENSE</div><div class="r">WHAT A MINI PROGRAM IS</div></div>
+    <div data-anim="title">
+      <div class="t-meta">KNOW THIS FIRST</div>
+      <h2 class="deck-title deck-lg">小程序，本质上跑在微信里</h2>
+      <div class="source-note" style="margin-top:1.2vh">来源：微信开放文档《开发指南》；服务端为本课边界说明</div>
+    </div>
+    <div data-anim="grid" class="deck-grid-3 deck-bottom">
+      <div class="deck-card ink-card"><span class="num">01 · HOST</span><h3>微信客户端</h3><p>提供运行环境、组件和 API。用户不用再安装一个独立 App。</p></div>
+      <div class="deck-card accent-card"><span class="num">02 · PACKAGE</span><h3>小程序代码包</h3><p>页面结构、样式、配置和交互逻辑，由微信加载运行。</p></div>
+      <div class="deck-card"><span class="num">03 · SERVICE</span><h3>可选服务端</h3><p>联网、账号、数据库按需求追加；本课案例暂时不接。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S19" data-animate="four-cards">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">05 / 27 · COMMON SENSE</div><div class="r">FOUR FILE TYPES</div></div>
+    <div data-anim="title">
+      <div class="t-meta">READ THE PROJECT</div>
+      <h2 class="deck-title deck-lg">四类文件，各管一件事</h2>
+      <div class="source-note" style="margin-top:1.2vh">来源：微信开放文档《小程序代码构成》</div>
+    </div>
+    <div data-anim="grid" class="deck-grid-4 deck-bottom">
+      <div class="deck-card"><span class="num">.JSON</span><h3>配置</h3><p>有哪些页面、窗口长什么样、工具如何编译。</p></div>
+      <div class="deck-card"><span class="num">.WXML</span><h3>结构</h3><p>页面上有哪些文字、输入框、按钮和容器。</p></div>
+      <div class="deck-card accent-card"><span class="num">.WXSS</span><h3>样式</h3><p>尺寸、间距、颜色和排版，类似网页中的 CSS。</p></div>
+      <div class="deck-card ink-card"><span class="num">.JS</span><h3>交互</h3><p>响应点击、处理数据，并把结果更新到页面。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">06 / 27 · COMMON SENSE</div><div class="r">VERSION CHAIN</div></div>
+    <div data-anim="title">
+      <div class="t-meta" style="color:rgba(255,255,255,.5)">THE BUTTONS ARE NOT THE SAME</div>
+      <h2 class="deck-title deck-lg">从电脑到上线，要经过五个状态</h2>
+      <div class="source-note" style="margin-top:1.2vh">来源：微信开放文档《编译预览》《小程序协同工作和发布》</div>
+    </div>
+    <div data-anim="timeline" class="loop-row deck-bottom">
+      <div class="loop-item"><b>01</b><strong>编译</strong><span>本地代码进入模拟器</span></div>
+      <div class="loop-item"><b>02</b><strong>预览</strong><span>扫码在开发者手机运行</span></div>
+      <div class="loop-item"><b>03</b><strong>上传</strong><span>形成后台开发版本</span></div>
+      <div class="loop-item"><b>04</b><strong>体验／审核</strong><span>内测或提交平台检查</span></div>
+      <div class="loop-item"><b>05</b><strong>发布</strong><span>审核后成为线上版本</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">04 / 24 · ROUTE</div><div class="r">180 MINUTES</div></div>
+    <div class="chrome-min"><div class="l">07 / 27 · ROUTE</div><div class="r">180 MINUTES</div></div>
     <div data-anim="title"><div class="t-meta">TIMEBOX</div><h2 class="deck-title deck-lg">180 分钟，只跑一条交付线</h2></div>
     <div data-anim="timeline" class="phase-bar deck-bottom">
       <div class="phase"><span class="mins">20</span><strong>选题砍需求</strong><small>00—20</small></div>
@@ -56,7 +107,7 @@
 
 <section class="slide dark" data-layout="S09" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">05 / 24 · BOTTLENECK</div><div class="r">THE REAL DELAY</div></div>
+    <div class="chrome-min"><div class="l">08 / 27 · BOTTLENECK</div><div class="r">THE REAL DELAY</div></div>
     <div data-anim="title" style="margin:auto 0">
       <div class="t-meta" style="color:rgba(255,255,255,.52)">THE CODE IS NOT THE BOTTLENECK</div>
       <h1 class="deck-title deck-xl" style="max-width:14ch">最慢的不是写代码<br><span style="color:#6f8cff">是需求不断变大</span></h1>
@@ -67,10 +118,10 @@
 
 <section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">06 / 24 · PROJECT</div><div class="r">ONE KIND ONLY</div></div>
+    <div class="chrome-min"><div class="l">09 / 27 · PROJECT</div><div class="r">ONE KIND ONLY</div></div>
     <div data-anim="title"><div class="t-meta">DEFAULT CASE</div><h2 class="deck-title deck-lg">只选纯前端计算器／转换器</h2></div>
     <div data-anim="image" class="image-stage">
-      <img class="generated-photo" src="images/06-one-loop-mvp.png" data-image-slot="s22-hero-21x9" alt="单一小程序闭环的原型工作台">
+      <img class="generated-photo" src="images/09-one-loop-mvp.png" data-image-slot="s22-hero-21x9" alt="单一小程序闭环的原型工作台">
       <div class="stage-stats">
         <div class="stage-stat"><b>1</b><span>一种输入</span></div>
         <div class="stage-stat"><b>1</b><span>一条处理规则</span></div>
@@ -82,7 +133,7 @@
 
 <section class="slide" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">07 / 24 · CUT</div><div class="r">SCOPE FILTER</div></div>
+    <div class="chrome-min"><div class="l">10 / 27 · CUT</div><div class="r">SCOPE FILTER</div></div>
     <div data-anim="title"><div class="t-meta">THREE FILTERS</div><h2 class="deck-title deck-lg">砍需求，只看三条</h2></div>
     <div data-anim="grid" class="deck-grid-3 deck-bottom">
       <div class="deck-card accent-card"><span class="num">01</span><h3>一句话能说清用户场景</h3><p>谁，在什么时候，为什么要用。</p></div>
@@ -94,7 +145,7 @@
 
 <section class="slide grey" data-layout="S05" data-animate="progression">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">08 / 24 · LOOP</div><div class="r">INPUT → PROCESS → OUTPUT</div></div>
+    <div class="chrome-min"><div class="l">11 / 27 · LOOP</div><div class="r">INPUT → PROCESS → OUTPUT</div></div>
     <div data-anim="title"><div class="t-meta">CORE LOOP</div><h2 class="deck-title deck-lg">一个完整闭环长这样</h2></div>
     <div data-anim="flow" class="io-flow deck-bottom">
       <div class="io-node"><b>01</b><div><h3>输入</h3><p>用户填入一个可理解、可限制的数据。</p></div></div>
@@ -108,7 +159,7 @@
 
 <section class="slide" data-layout="S04" data-animate="six-cells">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">09 / 24 · BRIEF</div><div class="r">ONE-PAGE SPEC</div></div>
+    <div class="chrome-min"><div class="l">12 / 27 · BRIEF</div><div class="r">ONE-PAGE SPEC</div></div>
     <div data-anim="title"><div class="t-meta">20—40 MIN</div><h2 class="deck-title deck-lg">把想法写成一页任务说明</h2></div>
     <div data-anim="grid" class="deck-grid-6 deck-bottom">
       <div class="deck-card"><span class="num">01 · USER</span><h3>谁会用</h3><p>一个具体用户，而不是“所有人”。</p></div>
@@ -123,7 +174,7 @@
 
 <section class="slide dark" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">10 / 24 · ROLES</div><div class="r">HUMAN IN THE LOOP</div></div>
+    <div class="chrome-min"><div class="l">13 / 27 · ROLES</div><div class="r">HUMAN IN THE LOOP</div></div>
     <div class="responsibility">
       <div data-anim="title" class="left"><div class="t-meta">AI EXECUTES</div><h2>人负责<br>四件事</h2><p>这四件事不外包，三小时才不会失控。</p></div>
       <div data-anim="grid" class="right">
@@ -138,7 +189,7 @@
 
 <section class="slide" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">11 / 24 · COLLABORATION</div><div class="r">CONTROL LOOP</div></div>
+    <div class="chrome-min"><div class="l">14 / 27 · COLLABORATION</div><div class="r">CONTROL LOOP</div></div>
     <div data-anim="title"><div class="t-meta">WORKING WITH AI</div><h2 class="deck-title deck-lg">不要上来就让 AI 开写</h2></div>
     <div data-anim="flow" class="loop-row deck-bottom">
       <div class="loop-item"><b>01</b><strong>理解</strong><span>复述需求与目标</span></div>
@@ -152,7 +203,7 @@
 
 <section class="slide accent" data-layout="S12" data-animate="manifesto">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">12 / 24 · PHASE I</div><div class="r">00—40 MIN</div></div>
+    <div class="chrome-min"><div class="l">15 / 27 · PHASE I</div><div class="r">00—40 MIN</div></div>
     <div data-anim="title" style="margin:auto 0">
       <div class="t-meta" style="color:rgba(255,255,255,.62)">LOCK THE SCOPE</div>
       <h1 class="deck-title deck-xl">前 40 分钟<br>不写一行代码</h1>
@@ -163,10 +214,10 @@
 
 <section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">13 / 24 · PHASE II</div><div class="r">40—90 MIN</div></div>
+    <div class="chrome-min"><div class="l">16 / 27 · PHASE II</div><div class="r">40—90 MIN</div></div>
     <div data-anim="title"><div class="t-meta">FIRST BUILD</div><h2 class="deck-title deck-lg">让 AI 生成第一版</h2></div>
     <div data-anim="image" class="image-stage">
-      <img class="generated-photo" src="images/13-ai-first-build.png" data-image-slot="s22-hero-21x9" alt="代码生成并在手机上测试第一版小程序的实操现场">
+      <img class="generated-photo" src="images/16-ai-first-build.png" data-image-slot="s22-hero-21x9" alt="代码生成并在手机上测试第一版小程序的实操现场">
       <div class="stage-stats">
         <div class="stage-stat"><b>50</b><span>分钟时间盒</span></div>
         <div class="stage-stat"><b>1</b><span>条核心路径</span></div>
@@ -178,7 +229,7 @@
 
 <section class="slide dark" data-layout="S03" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">14 / 24 · FIRST VERSION</div><div class="r">RUN BEFORE POLISH</div></div>
+    <div class="chrome-min"><div class="l">17 / 27 · FIRST VERSION</div><div class="r">RUN BEFORE POLISH</div></div>
     <h1 data-anim="title" class="deck-title deck-xl" style="margin:auto 0;max-width:13ch">第一版只求<br><span style="color:#6f8cff">能跑通</span></h1>
     <div data-anim="bottom" class="deck-bottom" style="display:flex;gap:4vw;border-top:1px solid rgba(255,255,255,.2);padding-top:2.3vh">
       <p class="deck-lead">不调颜色，不换图标，不加第二条功能。</p>
@@ -189,7 +240,7 @@
 
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">15 / 24 · PREVIEW</div><div class="r">90—135 MIN</div></div>
+    <div class="chrome-min"><div class="l">18 / 27 · PREVIEW</div><div class="r">90—135 MIN</div></div>
     <div data-anim="title"><div class="t-meta">TOOLCHAIN</div><h2 class="deck-title deck-lg">把代码变成可点击的东西</h2></div>
     <div data-anim="timeline" class="tool-flow deck-bottom">
       <div class="tool"><b>01</b><div><strong>导入项目</strong><p>微信开发者工具打开项目目录。</p></div></div>
@@ -202,7 +253,7 @@
 
 <section class="slide grey" data-layout="S04" data-animate="six-cells">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">16 / 24 · DEBUG</div><div class="r">HAND OVER THE EVIDENCE</div></div>
+    <div class="chrome-min"><div class="l">19 / 27 · DEBUG</div><div class="r">HAND OVER THE EVIDENCE</div></div>
     <div data-anim="title"><div class="t-meta">BUG REPORT TEMPLATE</div><h2 class="deck-title deck-lg">报错不要概括，要原样交付</h2></div>
     <div data-anim="grid" class="deck-grid-6 deck-bottom">
       <div class="deck-card"><span class="num">01</span><h3>哪个页面</h3><p>给页面名或路由。</p></div>
@@ -217,7 +268,7 @@
 
 <section class="slide dark" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">17 / 24 · REWORK</div><div class="r">ONE PATH AT A TIME</div></div>
+    <div class="chrome-min"><div class="l">20 / 27 · REWORK</div><div class="r">ONE PATH AT A TIME</div></div>
     <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.5)">TIGHT LOOP</div><h2 class="deck-title deck-lg">一次只修一条路径</h2></div>
     <div data-anim="flow" class="loop-row deck-bottom">
       <div class="loop-item"><b>1</b><strong>复现</strong><span>确认问题存在</span></div>
@@ -231,7 +282,7 @@
 
 <section class="slide" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">18 / 24 · DEVICE</div><div class="r">135—165 MIN</div></div>
+    <div class="chrome-min"><div class="l">21 / 27 · DEVICE</div><div class="r">135—165 MIN</div></div>
     <div data-anim="title"><div class="t-meta">SIMULATOR ≠ DEVICE</div><h2 class="deck-title deck-lg">模拟器通过，不代表真机通过</h2></div>
     <div data-anim="grid" class="compare deck-bottom">
       <div class="compare-col"><div class="t-meta">SIMULATOR</div><h2>电脑里</h2><ul><li>尺寸和字体可能不同</li><li>网络环境更稳定</li><li>系统权限通常不完整</li></ul></div>
@@ -242,7 +293,7 @@
 
 <section class="slide grey" data-layout="S04" data-animate="six-cells">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">19 / 24 · SMOKE TEST</div><div class="r">SIX REQUIRED ACTIONS</div></div>
+    <div class="chrome-min"><div class="l">22 / 27 · SMOKE TEST</div><div class="r">SIX REQUIRED ACTIONS</div></div>
     <div data-anim="title"><div class="t-meta">DO IT YOURSELF</div><h2 class="deck-title deck-lg">六个动作，必须亲手测</h2></div>
     <div data-anim="grid" class="deck-grid-6 deck-bottom">
       <div class="deck-card"><span class="num">01</span><h3>正常输入</h3><p>结果与人工验算一致。</p></div>
@@ -257,7 +308,7 @@
 
 <section class="slide dark" data-layout="S09" data-animate="statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">20 / 24 · EVIDENCE</div><div class="r">CLAIM IS NOT PROOF</div></div>
+    <div class="chrome-min"><div class="l">23 / 27 · EVIDENCE</div><div class="r">CLAIM IS NOT PROOF</div></div>
     <h1 data-anim="title" class="deck-title deck-xl" style="margin:auto 0;max-width:15ch"><span style="color:#6f8cff">AI 说完成</span><br>不算完成</h1>
     <p data-anim="bottom" class="deck-lead deck-bottom">“已修复”“已测试”“可以上线”都是陈述。只有你亲手跑过的结果，才是证据。</p>
   </div>
@@ -265,7 +316,7 @@
 
 <section class="slide" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">21 / 24 · DELIVERY</div><div class="r">165—180 MIN</div></div>
+    <div class="chrome-min"><div class="l">24 / 27 · DELIVERY</div><div class="r">165—180 MIN</div></div>
     <div data-anim="title"><div class="t-meta">DELIVERY PACK</div><h2 class="deck-title deck-lg">最后 15 分钟，整理交付四件套</h2></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
       <div class="deck-card"><span class="num">01</span><h3>源码</h3><p>能被重新导入的完整项目目录。</p></div>
@@ -278,7 +329,7 @@
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">22 / 24 · AFTER</div><div class="r">BEYOND 3 HOURS</div></div>
+    <div class="chrome-min"><div class="l">25 / 27 · AFTER</div><div class="r">BEYOND 3 HOURS</div></div>
     <div data-anim="title"><div class="t-meta">NEXT PATH</div><h2 class="deck-title deck-lg">三小时之后，才进入上线流程</h2></div>
     <div data-anim="timeline" class="tool-flow deck-bottom">
       <div class="tool"><b>01</b><div><strong>补完整资料</strong><p>名称、图标、隐私说明与类目。</p></div></div>
@@ -292,7 +343,7 @@
 
 <section class="slide" data-layout="S03" data-animate="split-statement">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">23 / 24 · PROMPT</div><div class="r">COPY & START</div></div>
+    <div class="chrome-min"><div class="l">26 / 27 · PROMPT</div><div class="r">COPY & START</div></div>
     <div class="prompt-box">
       <div data-anim="title" class="prompt-copy">
         <div><div class="t-meta">STARTER PROMPT</div><h2 class="deck-title deck-lg">直接复制<br>这段开工</h2></div>
@@ -319,7 +370,7 @@
     <div class="split-half">
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
-        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">24 / 24 · CLOSE</div><div class="r">SHIP WITH PROOF</div></div>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">27 / 27 · CLOSE</div><div class="r">SHIP WITH PROOF</div></div>
         <div data-anim="left" style="position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">THE SPEED COMES FROM SCOPE</div>
           <h1 class="deck-title" style="font-size:min(6.7vw,11.8vh);color:#fff">速度来自<br>边界</h1>
