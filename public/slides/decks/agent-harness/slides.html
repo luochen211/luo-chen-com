@@ -150,18 +150,17 @@
 
 <section class="slide light" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Context Anatomy · Six Sources</div><div class="r">09 / 37</div></div>
+    <div class="chrome-min"><div class="l">Context Anatomy · Five API Components</div><div class="r">09 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">WHAT THE MODEL ACTUALLY SEES</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 不是一段 Prompt</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 由五部分组成</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
       <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="shield-check"></i><h3 class="ttl">系统指令</h3><p class="desc">身份、权限、行为边界。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="message-square"></i><h3 class="ttl">当前请求</h3><p class="desc">用户这一轮明确表达。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="history"></i><h3 class="ttl">任务轨迹</h3><p class="desc">之前说过、想过、做过什么。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="braces"></i><h3 class="ttl">工具定义</h3><p class="desc">可用动作与参数格式。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="database"></i><h3 class="ttl">外部信息</h3><p class="desc">Memory 与 RAG 结果。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="activity"></i><h3 class="ttl">环境状态</h3><p class="desc">时间、库存、权限与任务进度。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="braces"></i><h3 class="ttl">工具定义</h3><p class="desc">可用工具、参数与返回格式。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="message-square"></i><h3 class="ttl">用户消息</h3><p class="desc">用户提出的请求与后续反馈。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="bot"></i><h3 class="ttl">模型回复</h3><p class="desc">模型此前生成的内容与工具调用。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">05</span><i data-lucide="activity"></i><h3 class="ttl">工具执行结果</h3><p class="desc">环境返回的新观察，追加进轨迹。</p></article>
     </div>
   </div>
 </section>
@@ -171,14 +170,13 @@
     <div class="chrome-min"><div class="l">ReAct · Operating Mechanism</div><div class="r">10 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">LOOP IS DYNAMICS, NOT ANATOMY</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">三部分怎样持续协同</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">思考、行动、观察怎样循环</h2>
     </div>
     <div style="flex:1;display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center" data-anim="up">
       <div style="display:flex;flex-direction:column">
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">01</span><div><h3 class="t-h-prod">观察 Observe</h3><p class="t-body-sm">读取当前 Context。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">02</span><div><h3 class="t-h-prod">推理 Reason</h3><p class="t-body-sm">模型选择下一步。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">03</span><div><h3 class="t-h-prod">行动 Act</h3><p class="t-body-sm">调用 Tool 改变或查询世界。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)"><span class="t-meta">04</span><div><h3 class="t-h-prod">写回 Update</h3><p class="t-body-sm">把结果追加到轨迹。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.5vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">01</span><div><h3 class="t-h-prod">思考 Reason</h3><p class="t-body-sm">模型基于当前上下文判断下一步。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.5vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">02</span><div><h3 class="t-h-prod">行动 Act</h3><p class="t-body-sm">调用工具查询或改变外部世界。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.5vh 0;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)"><span class="t-meta">03</span><div><h3 class="t-h-prod">观察 Observe</h3><p class="t-body-sm">框架把工具结果追加到轨迹，进入下一轮。</p></div></div>
       </div>
       <div style="position:relative;height:46vh;display:grid;place-items:center">
         <svg viewBox="0 0 600 420" style="width:100%;height:100%" aria-label="ReAct 循环几何图">
@@ -323,7 +321,7 @@
 
 <section class="slide dark" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Constraints · Three Enforcement Points</div><div class="r">18 / 37</div></div>
+    <div class="chrome-min"><div class="l">Constraints · Fault-safe Defaults</div><div class="r">18 / 37</div></div>
     <div style="display:grid;grid-template-columns:4fr 8fr;gap:3vw;flex:1">
       <div class="ink-block" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--accent)">
         <div class="t-meta" style="color:rgba(255,255,255,.75)">HARNESS FUNCTION 03</div>
@@ -331,9 +329,9 @@
         <div class="cross-mat" style="height:12vh;color:#fff"></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:1.5vh" data-anim="up">
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">01</div><div><h3 class="h-md">行动前</h3><p class="body-sm">用户未确认，不开放支付工具；身份未验证，不允许查订单。</p></div></article>
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">02</div><div><h3 class="h-md">参数中</h3><p class="body-sm">预算上限、退款金额、地址范围由代码校验，而不是相信模型。</p></div></article>
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent)">03</div><div><h3 class="h-md">行动后</h3><p class="body-sm">推荐结果必须重新检查全部硬约束，越界候选直接拦截。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">01</div><div><h3 class="h-md">默认关闭</h3><p class="body-sm">能力必须显式开放，不能因为模型提出调用就自动获得权限。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">02</div><div><h3 class="h-md">风险分级</h3><p class="body-sm">低、中、高风险工具采用不同审查强度，参数组合也可能改变风险。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent)">03</div><div><h3 class="h-md">人工确认</h3><p class="body-sm">取消订单、大额退款或付款等敏感操作，在执行前交由人类监督。</p></div></article>
       </div>
     </div>
   </div>
@@ -350,14 +348,14 @@
       <div class="col">
         <div class="col-tag"><span class="num">C</span> CLAIM</div>
         <div class="col-ttl">语言结论</div>
-        <p class="col-desc">“这款耳机 499 元、有货、支持双设备。”</p>
+        <p class="col-desc">“退款已经成功。”</p>
         <ul class="col-list"><li>可能来自旧知识</li><li>可能把计划当成事实</li><li>不能作为最终证据</li></ul>
       </div>
       <div class="vrule"></div>
       <div class="col accent">
         <div class="col-tag"><span class="num">E</span> EVIDENCE</div>
         <div class="col-ttl">外部证明</div>
-        <p class="col-desc">价格 Tool、库存 Tool、商品规格字段返回一致。</p>
+        <p class="col-desc">订单数据库中的退款状态已经更新。</p>
         <ul class="col-list"><li>来源明确</li><li>时间有效</li><li>可再次查询验证</li></ul>
       </div>
     </div>
@@ -373,11 +371,11 @@
     </div>
     <div class="timeline-h" data-anim="up">
       <div class="tl-row">
-        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">修参数</span><span class="desc">纠正格式或缺失字段</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">重试</span><span class="desc">处理短暂超时</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">换路径</span><span class="desc">替代 Tool 或候选项</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">请求补充</span><span class="desc">让用户解除歧义</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">降级 / 转人</span><span class="desc">避免继续扩大风险</span></div></div>
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">静默重试</span><span class="desc">先处理短暂超时</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">接续生成</span><span class="desc">从已有轨迹继续</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">回退</span><span class="desc">恢复上一稳定状态</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">熔断</span><span class="desc">连续失败停止重试</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">转人工</span><span class="desc">高风险或不可恢复</span></div></div>
       </div>
     </div>
     <div class="callout" style="margin-top:auto">可靠性不是永不失败，而是失败可见、可控、可恢复，并且知道何时停止。</div>
@@ -425,34 +423,33 @@
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Information Ownership · Four Assets</div><div class="r">23 / 37</div></div>
+    <div class="chrome-min"><div class="l">Information Layers · Storage and Retrieval</div><div class="r">23 / 37</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">DO NOT MIX THE LAYERS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">四类信息，四种生命周期</h2>
+      <div class="t-meta">TRAJECTORY · LONG-TERM MEMORY · BUSINESS STATE · KNOWLEDGE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">不同信息，放在不同层</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);margin-top:7vh;flex:1" data-anim="up">
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / STATE</span><h3 class="h-md" style="margin-top:2vh">任务事实</h3><p class="body-sm" style="margin-top:auto">系统保存的当前进度、候选集、权限与执行结果。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / CONTEXT</span><h3 class="h-md" style="margin-top:2vh">当前视图</h3><p class="body-sm" style="margin-top:auto">为一次模型决策临时组装，调用结束后可重建。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / MEMORY</span><h3 class="h-md" style="margin-top:2vh">跨会话偏好</h3><p class="body-sm" style="margin-top:auto">需要置信度、纠正、过期和遗忘规则。</p></article>
-      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / RAG</span><h3 class="h-md" style="margin-top:2vh;color:var(--accent-on)">外部知识</h3><p class="body-sm" style="margin-top:auto;color:var(--accent-on)">从受治理的知识源按问题检索，再注入 Context。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / TRAJECTORY</span><h3 class="h-md" style="margin-top:2vh">本次运行历史</h3><p class="body-sm" style="margin-top:auto">用户消息、模型回复、工具结果按时间追加，只增不改。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / USER MEMORY</span><h3 class="h-md" style="margin-top:2vh">跨会话稳定信息</h3><p class="body-sm" style="margin-top:auto">从多次交互中提炼，会被改写、合并和淘汰。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / BUSINESS STATE</span><h3 class="h-md" style="margin-top:2vh">任务逻辑阶段</h3><p class="body-sm" style="margin-top:auto">如需要澄清、处理中、等待付款或请求完成。</p></article>
+      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / RAG</span><h3 class="h-md" style="margin-top:2vh;color:var(--accent-on)">共享知识管道</h3><p class="body-sm" style="margin-top:auto;color:var(--accent-on)">检索相关片段，将外部知识注入当前上下文。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Memory · Governed Lifecycle</div><div class="r">24 / 37</div></div>
+    <div class="chrome-min"><div class="l">Memory · Three Design Questions</div><div class="r">24 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">MEMORY IS NOT CHAT HISTORY</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">记忆必须经历四个治理动作</h2>
+      <div class="t-meta">MEMORY IS A PREDICTIVE USER MODEL</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">设计记忆先回答三个问题</h2>
     </div>
     <div style="flex:1;display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center" data-anim="up">
       <div style="display:flex;flex-direction:column">
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">01</span><div><h3 class="t-h-prod">写入</h3><p class="t-body-sm">判断是否稳定、是否属于本人。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">02</span><div><h3 class="t-h-prod">读取</h3><p class="t-body-sm">只在与当前任务相关时召回。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">03</span><div><h3 class="t-h-prod">修正</h3><p class="t-body-sm">当前明确表达优先于旧偏好。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)"><span class="t-meta">04</span><div><h3 class="t-h-prod">遗忘</h3><p class="t-body-sm">过期、敏感或被否认的信息删除。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.8vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">01</span><div><h3 class="t-h-prod">放哪里</h3><p class="t-body-sm">区分单次轨迹、用户长期记忆与业务状态。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.8vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">02</span><div><h3 class="t-h-prod">怎么存</h3><p class="t-body-sm">在 Notes、JSON Cards 等格式间权衡简单性与表达力。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.8vh 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)"><span class="t-meta">03</span><div><h3 class="t-h-prod">存什么</h3><p class="t-body-sm">选择性提取对未来有用、可抽象且可结构化的信息。</p></div></div>
       </div>
       <div style="position:relative;height:46vh;display:grid;place-items:center">
         <svg viewBox="0 0 600 420" style="width:100%;height:100%" aria-label="Memory 生命周期几何图">
@@ -464,7 +461,7 @@
           <rect x="265" y="310" width="70" height="70" fill="var(--grey-3)"/>
           <rect x="115" y="175" width="70" height="70" fill="var(--grey-2)"/>
         </svg>
-        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="t-meta">GOVERN</div><div style="font-family:var(--sans);font-weight:200;font-size:min(4.6vw,8.2vh)">MEMORY</div></div></div>
+        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="t-meta">SELECT · ABSTRACT · STRUCTURE</div><div style="font-family:var(--sans);font-weight:200;font-size:min(4.6vw,8.2vh)">MEMORY</div></div></div>
       </div>
     </div>
   </div>
@@ -524,23 +521,23 @@
 
 <section class="slide light" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Router · Decision Order</div><div class="r">28 / 37</div></div>
+    <div class="chrome-min"><div class="l">Capability Loading · Progressive Disclosure</div><div class="r">28 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">ROUTING IS A PRODUCT DECISION</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">先判断缺什么，再选择调用什么</h2>
+      <div class="t-meta">DO NOT PUT EVERY TOOL IN CONTEXT</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">能力按需发现，逐层展开</h2>
     </div>
     <div class="pipeline-section" data-anim="up" style="margin-top:7vh">
-      <div class="pipeline-label">ROUTING PATH</div>
+      <div class="pipeline-label">DISCOVERY PATH</div>
       <div class="pipeline" data-cols="6">
-        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">识别任务</h3><p class="step-desc">咨询、比较、订单或售后</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">检查信息</h3><p class="step-desc">是否缺关键约束</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">直接回答</h3><p class="step-desc">已有可靠知识即可</p></div>
-        <div data-anim="step" class="step accent-top"><span class="step-nb">04</span><h3 class="step-title">加载 Skill</h3><p class="step-desc">需要领域流程</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">05</span><h3 class="step-title">调用 Tool</h3><p class="step-desc">需要真实数据或动作</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">转交</h3><p class="step-desc">权限或专业边界不同</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">保留索引</h3><p class="step-desc">上下文只放能力名称与摘要</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">理解任务</h3><p class="step-desc">判断当前需要哪类能力</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">发现 Skill</h3><p class="step-desc">读取领域说明与操作流程</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">04</span><h3 class="step-title">展开细节</h3><p class="step-desc">只加载当前相关的文档</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">05</span><h3 class="step-title">选择 Tool</h3><p class="step-desc">匹配接口、参数与风险</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">执行反馈</h3><p class="step-desc">结果写入轨迹继续判断</p></div>
       </div>
     </div>
-    <div class="callout" style="margin-top:auto">路由不是把一句话分到标签，而是决定接下来允许加载哪些上下文、能力与权限。</div>
+    <div class="callout" style="margin-top:auto">工具数量增大时，动态发现与 Skills 的渐进式披露可以降低上下文负担和选错工具的概率。</div>
   </div>
 </section>
 
@@ -548,22 +545,22 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">Single vs Multi Agent · Split Criteria</div><div class="r">29 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">SPLIT ONLY WHEN THE BOUNDARY IS REAL</div>
+      <div class="t-meta">THE KEY QUESTION IS INFORMATION GAIN</div>
       <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.3vw,9.3vh);line-height:1;letter-spacing:-.03em">多 Agent 不是默认升级</h2>
     </div>
     <div class="duo-compare" data-anim="up">
       <div class="col">
         <div class="col-tag"><span class="num">1</span> SINGLE AGENT + SKILLS</div>
-        <div class="col-ttl">共享一套目标</div>
-        <p class="col-desc">上下文、权限和完成标准基本一致时，保持一个决策主体。</p>
-        <ul class="col-list"><li>链路短、成本低</li><li>状态一致</li><li>更容易评测</li></ul>
+        <div class="col-ttl">没有新信息</div>
+        <p class="col-desc">如果只是让多个角色重看同一段材料，单 Agent 增加计算通常也能做到。</p>
+        <ul class="col-list"><li>协作不产生额外证据</li><li>通信增加成本</li><li>不应为了角色名而拆分</li></ul>
       </div>
       <div class="vrule"></div>
       <div class="col accent">
         <div class="col-tag"><span class="num">N</span> MULTI AGENT</div>
-        <div class="col-ttl">存在真实边界</div>
-        <p class="col-desc">专业能力、上下文隔离、权限或评测标准明显不同才拆分。</p>
-        <ul class="col-list"><li>需要明确交接协议</li><li>要防错误级联</li><li>必须单独评测路由</li></ul>
+        <div class="col-ttl">引入新信息</div>
+        <p class="col-desc">Reviewer 能获得测试结果、渲染截图或外部工具验证时，协作才有实质增益。</p>
+        <ul class="col-list"><li>共享或隔离上下文都可设计</li><li>交接传结构化摘要</li><li>评测必须覆盖协作轨迹</li></ul>
       </div>
     </div>
   </div>
@@ -571,25 +568,25 @@
 
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Project Architecture · Shopping Agent</div><div class="r">30 / 37</div></div>
+    <div class="chrome-min"><div class="l">Book Example · Refund Agent</div><div class="r">30 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.2vh">
-      <div class="t-meta">PUT EVERY CONCEPT IN ONE SYSTEM</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">购物助手的完整最小架构</h2>
+      <div class="t-meta">ONE EXAMPLE · FIVE HARNESS FUNCTIONS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">退掉 3 天前的订单</h2>
     </div>
     <div data-anim="up" style="flex:1;display:grid;grid-template-columns:2.3fr .35fr 3fr .35fr 3.6fr;gap:1vw;align-items:center;margin-top:4vh">
       <div class="card-ink" style="height:44vh;border:1px solid rgba(255,255,255,.2);padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
-        <span class="t-meta">INPUT</span><i data-lucide="message-circle" style="width:3vw;height:3vw"></i><div><h3 class="h-md">用户</h3><p class="body-sm">提出需求、补充条件、确认风险操作。</p></div>
+        <span class="t-meta">REQUEST</span><i data-lucide="message-circle" style="width:3vw;height:3vw"></i><div><h3 class="h-md">用户</h3><p class="body-sm">“帮我退掉 3 天前买的订单。”</p></div>
       </div>
       <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
       <div class="card-accent" style="height:52vh;padding:2.4vh 1.6vw;display:flex;flex-direction:column;justify-content:space-between">
-        <span class="t-meta">DECISION CORE</span><i data-lucide="git-branch" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">购物 Agent</h3><p class="body-sm" style="color:#fff">维护 State，组合 Context，加载商品比较 Skill，决定追问或调用 Tool。</p></div>
+        <span class="t-meta">MODEL</span><i data-lucide="git-branch" style="width:3vw;height:3vw"></i><div><h3 class="h-md" style="color:#fff">退款 Agent</h3><p class="body-sm" style="color:#fff">读取 7 天退款政策，决定查询订单并发起退款。</p></div>
       </div>
       <div style="font-size:3vw;color:var(--accent);display:grid;place-items:center">→</div>
       <div style="height:60vh;display:grid;grid-template-rows:repeat(4,1fr);gap:1vh">
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 01</span><h3 class="t-h-prod">商品搜索</h3></div><i data-lucide="search"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 02</span><h3 class="t-h-prod">价格 / 库存</h3></div><i data-lucide="badge-dollar-sign"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">KNOWLEDGE</span><h3 class="t-h-prod">RAG / Memory</h3></div><i data-lucide="database"></i></div>
-        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">PROOF</span><h3 class="t-h-prod">约束与验证</h3></div><i data-lucide="shield-check"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 01</span><h3 class="t-h-prod">query_order</h3></div><i data-lucide="search"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">TOOL 02</span><h3 class="t-h-prod">process_refund</h3></div><i data-lucide="badge-dollar-sign"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center"><div><span class="t-meta">CONSTRAIN</span><h3 class="t-h-prod">金额不得超出订单</h3></div><i data-lucide="shield"></i></div>
+        <div class="card-fill" style="padding:1.8vh 1.4vw;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--accent)"><div><span class="t-meta">VERIFY / CORRECT</span><h3 class="t-h-prod">查状态 / 超时重试</h3></div><i data-lucide="shield-check"></i></div>
       </div>
     </div>
   </div>
@@ -597,97 +594,97 @@
 
 <section class="slide light" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Project State · Six Fields</div><div class="r">31 / 37</div></div>
+    <div class="chrome-min"><div class="l">Refund Example · Harness Checklist</div><div class="r">31 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">MAKE THE TASK PERSISTABLE</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">架构最终要落到 State</h2>
+      <div class="t-meta">THE MODEL IS ONLY ONE PART</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">五个功能分别解决什么</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="target"></i><h3 class="ttl">goal</h3><p class="desc">选择一款符合条件的通勤耳机。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="lock-keyhole"></i><h3 class="ttl">hard_constraints</h3><p class="desc">≤500、ANC、双设备。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="sliders-horizontal"></i><h3 class="ttl">preferences</h3><p class="desc">长时佩戴、舒适度优先。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="list-filter"></i><h3 class="ttl">candidates</h3><p class="desc">当前候选与淘汰原因。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="route"></i><h3 class="ttl">progress</h3><p class="desc">已完成步骤与下一动作。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="badge-check"></i><h3 class="ttl">evidence</h3><p class="desc">价格、库存、规格来源与时间。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="eye"></i><h3 class="ttl">Context</h3><p class="desc">提供 7 天退款政策与用户请求。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="wrench"></i><h3 class="ttl">Tools</h3><p class="desc">查询订单并调用退款 API。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="lock-keyhole"></i><h3 class="ttl">Constrain</h3><p class="desc">退款金额不得超过订单金额。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="badge-check"></i><h3 class="ttl">Verify</h3><p class="desc">查询数据库，确认退款状态。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="refresh-cw"></i><h3 class="ttl">Correct</h3><p class="desc">API 超时先自动重试。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">+</span><i data-lucide="user-check"></i><h3 class="ttl">Human in the loop</h3><p class="desc">高风险或持续失败时交还人类。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Project Run · Concrete Trace</div><div class="r">32 / 37</div></div>
+    <div class="chrome-min"><div class="l">Refund Run · Concrete Trace</div><div class="r">32 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">FROM REQUEST TO PROVEN RESULT</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">一次完整执行怎样改变 State</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.1vw,9vh);line-height:1;letter-spacing:-.03em">一次退款怎样形成可验证轨迹</h2>
     </div>
     <div class="pipeline-section" data-anim="up" style="margin-top:6vh">
       <div class="pipeline-label">ACTUAL TRACE</div>
       <div class="pipeline" data-cols="6">
-        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">提取</h3><p class="step-desc">3 个硬约束 + 1 个偏好</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">搜索</h3><p class="step-desc">召回 18 款商品</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">规格过滤</h3><p class="step-desc">剩余 6 款</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">查价库存</h3><p class="step-desc">淘汰 3 款</p></div>
-        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">比较</h3><p class="step-desc">舒适、续航、降噪</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">验证</h3><p class="step-desc">1 款主推 + 1 款备选</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">读取政策</h3><p class="step-desc">7 天内可退款</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">查询订单</h3><p class="step-desc">确认订单与金额</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">03</span><h3 class="step-title">检查约束</h3><p class="step-desc">3 天内且金额合法</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">发起退款</h3><p class="step-desc">调用 process_refund</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">05</span><h3 class="step-title">处理超时</h3><p class="step-desc">按纠正规则重试</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">验证状态</h3><p class="step-desc">数据库显示成功</p></div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;margin-top:auto">
-      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">CANDIDATES</span><div class="h-md">18 → 2</div></div>
-      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">HARD CONSTRAINTS</span><div class="h-md">3 / 3</div></div>
-      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">EVIDENCE</span><div class="h-md" style="color:#fff">PRICE + STOCK + SPEC</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">TRAJECTORY</span><div class="h-md">MESSAGE + CALLS + RESULTS</div></div>
+      <div class="card-fill" style="padding:1.6vh 1.2vw"><span class="t-meta">CONSTRAINT</span><div class="h-md">AMOUNT ≤ ORDER</div></div>
+      <div class="card-accent" style="padding:1.6vh 1.2vw"><span class="t-meta">OUTCOME</span><div class="h-md" style="color:#fff">DATABASE = REFUNDED</div></div>
     </div>
   </div>
 </section>
 
 <section class="slide dark" data-layout="S16" data-animate="field-notes">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Failure Map · Six Recoveries</div><div class="r">33 / 37</div></div>
+    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">33 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THE NORMAL PATH IS NOT ENOUGH</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">每一种失败，都要有指定出口</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">确认无法恢复前，不暴露中间态</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">约束冲突</h3><p class="desc">指出冲突，请用户决定优先级。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">Tool 超时</h3><p class="desc">有限重试，失败后显示无法确认。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">商品缺货</h3><p class="desc">淘汰候选，继续查询备选。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">Memory 冲突</h3><p class="desc">当前明确表达优先并修正旧记忆。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">重复调用</h3><p class="desc">命中循环检测，熔断并总结状态。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">证据不足</h3><p class="desc">不下结论；解释缺口或请求人工。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">静默重试</h3><p class="desc">临时超时先在框架内部有限重试。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">接续生成</h3><p class="desc">模型输出中断时，从已有轨迹继续。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">回退稳定态</h3><p class="desc">异常后回滚到上一可验证状态。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">熔断停止</h3><p class="desc">连续错误达到阈值，停止重复尝试。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">人工干预</h3><p class="desc">持续失败或高风险操作交还人类。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">明确停止条件</h3><p class="desc">完成、超预算或不可恢复时结束循环。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Minimum Evaluation · Four Questions</div><div class="r">34 / 37</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Metrics · Process and Outcome</div><div class="r">34 / 37</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">PROVE THE SYSTEM, NOT THE SENTENCE</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">最小评测只问四件事</h2>
+      <div class="t-meta">TRACE + OUTCOME · QUALITY + SAFETY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测必须同时看过程与结果</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);margin-top:7vh;flex:1" data-anim="up">
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / UNDERSTAND</span><h3 class="h-md" style="margin-top:2vh">理解对吗</h3><p class="body-sm" style="margin-top:auto">是否提取了全部硬约束与关键偏好。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / ACT</span><h3 class="h-md" style="margin-top:2vh">行动对吗</h3><p class="body-sm" style="margin-top:auto">是否选择正确 Skill、Tool 与参数。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / VERIFY</span><h3 class="h-md" style="margin-top:2vh">事实对吗</h3><p class="body-sm" style="margin-top:auto">价格、库存、规格是否有有效证据。</p></article>
-      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / COMPLETE</span><h3 class="h-md" style="margin-top:2vh;color:#fff">任务完成吗</h3><p class="body-sm" style="margin-top:auto;color:#fff">结果是否满足约束并真正解决问题。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / PROCESS</span><h3 class="h-md" style="margin-top:2vh">行动是否合法</h3><p class="body-sm" style="margin-top:auto">工具与参数是否正确，路径是否高效，检索是否充分。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / OUTCOME</span><h3 class="h-md" style="margin-top:2vh">任务是否成功</h3><p class="body-sm" style="margin-top:auto">用任务成功率、Pass@k、Pass^k 或 Best@k 衡量。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / ROBUSTNESS</span><h3 class="h-md" style="margin-top:2vh">变化下是否稳定</h3><p class="body-sm" style="margin-top:auto">观察 API 抖动、页面变化、随机性和旧信息干扰。</p></article>
+      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / SAFETY</span><h3 class="h-md" style="margin-top:2vh;color:#fff">是否安全合规</h3><p class="body-sm" style="margin-top:auto;color:#fff">越权、敏感操作和数据泄漏采用零容忍否决。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Test Set · Six Boundary Cases</div><div class="r">35 / 37</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Dataset · Six Design Checks</div><div class="r">35 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">A DEMO IS ONE RUN · A PRODUCT IS A DISTRIBUTION</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">至少覆盖六种任务变化</h2>
+      <div class="t-meta">THE DATASET DETERMINES WHAT THE SCORE MEANS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测集要通过六项检查</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">信息完整</h3><p class="desc">直接搜索、过滤与比较。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">缺关键条件</h3><p class="desc">只追问会改变结果的问题。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">约束无解</h3><p class="desc">说明无满足项，不偷偷放宽预算。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">实时变化</h3><p class="desc">价格上涨或商品突然缺货。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">历史冲突</h3><p class="desc">Memory 与本轮明确需求相反。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">系统失败</h3><p class="desc">Tool 不可用时不编造答案。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">明确而开放</h3><p class="desc">目标可复现，但允许多种合理路径。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">真实且可控</h3><p class="desc">保留现实噪声，同时能稳定复现环境。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">分层难度</h3><p class="desc">简单、中等、困难对应不同能力瓶颈。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">客观可验证</h3><p class="desc">优先检查最终环境状态，而非语言声明。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">系统性分布</h3><p class="desc">覆盖能力、难度、场景与边界条件。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">质量与防泄漏</h3><p class="desc">人工筛选、参数化变体并持续修订。</p></article>
     </div>
   </div>
 </section>
@@ -703,11 +700,11 @@
       <div style="display:grid;grid-template-columns:2fr 6fr 3fr;gap:1vw">
         <div class="card-ink" style="border:1px solid rgba(255,255,255,.2);padding:2vh 1.4vw"><span class="t-meta">USER</span><h3 class="h-md">目标与反馈</h3></div>
         <div class="card-accent" style="padding:2vh 1.4vw"><span class="t-meta">AGENT / MODEL</span><h3 class="h-md" style="color:#fff">根据 Context 决定下一步</h3></div>
-        <div class="card-ink" style="border:1px solid rgba(255,255,255,.2);padding:2vh 1.4vw"><span class="t-meta">ROUTER</span><h3 class="h-md">选择 Skill / Agent</h3></div>
+        <div class="card-ink" style="border:1px solid rgba(255,255,255,.2);padding:2vh 1.4vw"><span class="t-meta">DISCOVERY</span><h3 class="h-md">按需加载 Skill / Tool</h3></div>
       </div>
       <div style="color:var(--accent);font-size:2vw;display:grid;place-items:center">↓ HARNESS RUNTIME ↓</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1vw">
-        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONTEXT</span><p class="body-sm">State、Memory、RAG 的当前视图</p></div>
+        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONTEXT</span><p class="body-sm">静态前缀 + 动态轨迹</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">TOOLS</span><p class="body-sm">查询与执行业务动作</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAINTS</span><p class="body-sm">阻止越界参数和动作</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VALIDATION</span><p class="body-sm">用外部事实证明结果</p></div>

@@ -43,9 +43,9 @@ const lessons = [
       ["LLM", "理解意图、比较候选并决定下一步，是概率性的决策核心。"],
       ["Context", "模型在当前决策点能够看见的信息，是观察空间。"],
       ["Tools", "搜索、查询和执行外部动作，是动作空间。"],
-      ["Loop", "Observe → Reason → Act → Update 驱动三部分持续协同，不是第四个内部组件。"]
+      ["ReAct", "模型思考并行动，工具结果成为新观察；框架将结果追加到轨迹。"]
     ],
-    boundary: "State 是系统保存的完整事实；Context 是 Harness 为某一次模型调用从 State 中编译出的受控视图。",
+    boundary: "Context 由系统提示词、工具定义、用户消息、模型回复和工具执行结果组成；前两项是静态前缀，后三项形成动态轨迹。",
     slideMap: [
       ["06—09", "定义三部分，并解释观察空间与动作空间。"],
       ["10", "用 ReAct 说明三部分怎样被循环驱动。"],
@@ -67,11 +67,11 @@ const lessons = [
     time: "35 min",
     objective: "理解模型负责判断，Harness 负责把判断放进可约束、可验证、可恢复的工程系统。",
     concepts: [
-      ["Context Composer", "从 State、Memory、RAG 和工具结果收集、选择并编排当前视图。"],
+      ["Context", "为模型提供系统指令、工具定义与不断增长的动态轨迹。"],
       ["Tool Interface", "为模型设计可理解、单一职责、参数防呆且返回可判定的接口。"],
       ["Constraints", "在行动前、参数中和行动后阻止越权与违反硬约束。"],
       ["Validation", "不用模型声明证明模型正确，而是回到业务事实验证结果。"],
-      ["Correction", "失败后按修参数、重试、换路径、补充信息、降级转人的阶梯恢复。"]
+      ["Correction", "失败后静默重试、接续生成、回退稳定态、熔断或交还人类。"]
     ],
     boundary: "Harness 不是第二个更聪明的模型，而是模型外部的确定性控制层。",
     slideMap: [
@@ -93,19 +93,19 @@ const lessons = [
     slides: "22—25",
     startSlide: 22,
     time: "15 min",
-    objective: "正确区分 State、Context、Memory、RAG 和实时 Tool，避免把所有信息都塞进 Prompt 或向量库。",
+    objective: "正确区分轨迹、用户长期记忆、业务状态与共享知识，避免把所有信息都塞进 Prompt 或向量库。",
     concepts: [
-      ["State", "系统持久保存的当前任务事实、进度、候选和证据。"],
-      ["Context", "为了这一次决策临时编译的模型视图。"],
-      ["Memory", "跨会话稳定偏好，需要写入、读取、修正和遗忘规则。"],
-      ["RAG", "按问题检索商品说明、政策等外部知识，再注入 Context。"],
-      ["实时 Tool", "读取当前价格、库存、物流等会变化的业务状态。"]
+      ["Trajectory", "用户消息、模型回复和工具执行结果按时间追加，只增不改。"],
+      ["User Memory", "跨会话提炼的稳定信息，会被改写、合并和淘汰。"],
+      ["Business State", "开发者定义的任务逻辑阶段，如需要澄清、处理中或已完成。"],
+      ["RAG", "从共享知识库检索相关片段，再注入当前 Context。"],
+      ["实时 Tool", "连接外部业务系统，读取或改变当前环境状态。"]
     ],
     boundary: "RAG 适合“查资料”，实时 Tool 适合“查现在”；把库存放进向量库不会让它变成实时事实。",
     slideMap: [
-      ["22—23", "建立四类信息资产的归属。"],
-      ["24", "展开 Memory 的完整生命周期。"],
-      ["25", "划清 RAG 与实时 Tool 的取数边界。"]
+      ["22—23", "建立轨迹、长期记忆、业务状态与知识管道的分层。"],
+      ["24", "用“放哪里、怎么存、存什么”设计用户记忆。"],
+      ["25", "理解 RAG 如何把外部知识注入 Context。"]
     ],
     experiment: "信息归属分类",
     instruction: "给每条信息选择唯一的主要归属，然后检查结果。错误项会解释为什么不能放在那里。",
@@ -117,30 +117,30 @@ const lessons = [
   },
   {
     id: "capability",
-    title: "Agent、Skill、Tool 与路由",
+    title: "能力发现与多 Agent",
     slides: "26—33",
     startSlide: 26,
     time: "25 min",
-    objective: "把决策主体、任务方法、原子动作和路由顺序放进同一个购物助手架构。",
+    objective: "区分 Agent、Skill 与 Tool，并理解能力的渐进式披露和多 Agent 的信息增益判据。",
     concepts: [
       ["Agent", "维护目标和 State，决定下一步做什么。"],
       ["Skill", "封装完成一类任务的步骤、规则和知识。"],
       ["Tool", "执行一个可验证的查询、计算或业务动作。"],
-      ["Router", "先识别任务和信息缺口，再决定直接答、追问、加载 Skill、调用 Tool 或转交。"]
+      ["Discovery", "先保留能力索引，再按任务需要展开 Skill 文档与工具定义。"]
     ],
-    boundary: "上下文、权限和评测边界没有真实分离时，多 Agent 只会增加通信成本与错误级联。",
+    boundary: "多 Agent 是否值得，关键看协作是否引入单 Agent 生成时原本拿不到的新信息。",
     slideMap: [
-      ["26—29", "区分三层能力、路由顺序和多 Agent 拆分条件。"],
-      ["30—31", "把全部模块装进购物助手架构与 State。"],
-      ["32—33", "观察正常执行如何改变 State，以及六类失败出口。"]
+      ["26—29", "区分三层能力、渐进式发现和多 Agent 信息增益判据。"],
+      ["30—31", "用书中的退款案例展开 Harness 五项功能。"],
+      ["32—33", "观察可验证轨迹与纠正恢复阶梯。"]
     ],
     experiment: "观察路由如何选择能力",
-    instruction: "选择不同用户请求并运行，观察 Router 是否追问、加载比较流程、调用商品 Tool 或安全转交。",
+    instruction: "选择不同用户请求并运行，观察系统如何按需加载 Skill、调用 Tool，并把结果写回轨迹。",
     mode: "routing",
     question: "什么时候才值得把售后拆成另一个 Agent？",
-    answers: ["只要名字不同就拆", "当上下文、权限或评测标准存在真实边界时", "任何项目都应该默认多 Agent"],
+    answers: ["只要名字不同就拆", "当协作能引入单 Agent 原本拿不到的新信息时", "任何项目都应该默认多 Agent"],
     correct: 1,
-    feedback: "拆分依据不是流程看起来复杂，而是上下文隔离、权限与完成标准是否真的不同。"
+    feedback: "拆分依据不是角色名字或流程复杂度，而是协作是否带来测试结果、外部验证或其他新增证据。"
   },
   {
     id: "evaluation",
@@ -148,45 +148,45 @@ const lessons = [
     slides: "34—37",
     startSlide: 34,
     time: "10 min",
-    objective: "用一组任务分布，而不是一次漂亮 Demo，检查理解、行动、事实和完成四类质量。",
+    objective: "同时评估执行轨迹与最终结果，并覆盖过程、结果、鲁棒性和安全合规。",
     concepts: [
-      ["Understand", "硬约束与关键偏好是否提取完整。"],
-      ["Act", "是否选择了正确 Skill、Tool 和参数。"],
-      ["Verify", "价格、库存和规格是否有有效证据。"],
-      ["Complete", "最终结果是否满足约束并真正解决问题。"]
+      ["Process", "行动合法率、工具调用正确率、路径效率和成本延迟。"],
+      ["Outcome", "任务成功率，以及 Pass@k、Pass^k、Best@k。"],
+      ["Robustness", "面对 API 抖动、页面变化和过时信息时是否稳定。"],
+      ["Safety", "越权、敏感操作和数据泄漏是否被零容忍拦截。"]
     ],
-    boundary: "一次成功轨迹只能证明“这一次成功”；至少覆盖信息缺失、无解、实时变化、历史冲突和系统失败。",
+    boundary: "只看轨迹会漏掉“说了但没做到”；只看最终结果又看不见中间步骤为什么走偏。",
     slideMap: [
-      ["34", "用四个问题定义最小评测。"],
-      ["35", "把一次 Demo 扩展为六种任务变化。"],
+      ["34", "同时评估过程、结果、鲁棒性与安全。"],
+      ["35", "检查评测集的明确性、真实性、难度、可验证性、分布与质量。"],
       ["36—37", "汇总系统地图并收束为看见、行动、证明三条原则。"]
     ],
-    experiment: "运行六类边界测试",
-    instruction: "运行 PPT 第 35 页的六类任务变化。重点不是总分，而是每类失败有没有被正确暴露。",
+    experiment: "检查六项评测集设计",
+    instruction: "逐项检查 PPT 第 35 页的评测集设计。重点不是总分，而是分数究竟代表什么能力。",
     mode: "evaluation",
     question: "为什么不能只用一个完整需求测试 Agent？",
     answers: ["因为一个测试运行得太快", "因为产品面对的是任务分布，不是单条演示路径", "因为必须测试一百条才有意义"],
     correct: 1,
-    feedback: "真实可用性来自对任务变化的覆盖。完整需求、缺条件、无解、实时变化、历史冲突和系统失败缺一不可。"
+    feedback: "真实可用性来自对任务分布的系统覆盖，并同时验证执行轨迹与最终环境状态。"
   }
 ];
 
 const classificationItems = [
-  { title: "当前任务预算 ≤ 500 元", note: "任务需要持久保存的硬约束", answer: "State" },
+  { title: "当前任务处于“等待用户确认”阶段", note: "开发者定义的任务逻辑阶段", answer: "Business State" },
   { title: "本轮模型看到的候选商品摘要", note: "为一次决策临时组装", answer: "Context" },
-  { title: "用户长期偏好半入耳式", note: "跨会话、可修正的稳定偏好", answer: "Memory" },
+  { title: "用户长期偏好半入耳式", note: "跨会话提炼的稳定信息", answer: "User Memory" },
   { title: "耳机降噪原理与选购指南", note: "来自受治理的外部知识库", answer: "RAG" },
   { title: "QuietPod S3 此刻是否有货", note: "高频变化的业务事实", answer: "实时 Tool" },
-  { title: "上一次工具调用返回“缺货”", note: "先写入轨迹，再成为下一轮观察", answer: "State" }
+  { title: "上一次工具调用返回“缺货”", note: "按时间追加并成为下一轮观察", answer: "Trajectory" }
 ];
 
 const evalCases = [
-  ["信息完整", "直接搜索、过滤与比较", "PASS"],
-  ["缺关键条件", "只追问会改变结果的预算", "PASS"],
-  ["约束无解", "明确无满足项，不偷偷放宽", "PASS"],
-  ["实时变化", "重新查询价格与库存", "PASS"],
-  ["历史冲突", "本轮明确表达覆盖旧 Memory", "PASS"],
-  ["系统失败", "有限重试后说明无法确认", "PASS"]
+  ["明确而开放", "目标可复现，允许多种合理路径", "PASS"],
+  ["真实且可控", "保留现实噪声，环境仍可稳定重放", "PASS"],
+  ["分层难度", "简单、中等、困难指向不同瓶颈", "PASS"],
+  ["客观可验证", "检查最终环境状态而非语言声明", "PASS"],
+  ["系统性分布", "覆盖能力、难度、场景与边界", "PASS"],
+  ["质量与防泄漏", "人工筛选、参数化并持续修订", "PASS"]
 ];
 
 const demoGuides = {
@@ -206,19 +206,19 @@ const demoGuides = {
     takeaway: "模型负责判断下一步；Harness 负责上下文、工具、约束、验证与纠正。"
   },
   classification: {
-    proof: "State、Context、Memory、RAG 和实时 Tool 解决的是不同的信息问题。",
-    cues: ["信息由谁长期保存", "这一轮模型是否需要看到", "事实是否会实时变化"],
-    takeaway: "不要把所有信息都塞进 Prompt 或向量库；先判断它属于任务事实、当前视图、长期偏好、知识还是实时状态。"
+    proof: "轨迹、用户长期记忆、业务状态与 RAG 知识管道解决的是不同的信息问题。",
+    cues: ["是否属于本次运行历史", "是否值得跨会话提炼", "是否来自共享知识库"],
+    takeaway: "轨迹只增不改，长期记忆会被整理，业务状态表达任务阶段，RAG 把外部知识注入当前上下文。"
   },
   routing: {
-    proof: "Router 决定的不只是标签，而是下一步允许加载的能力、上下文与权限。",
-    cues: ["缺条件时先追问", "比较任务加载对应 Skill", "权限边界不同就安全转交"],
-    takeaway: "Agent 决策，Skill 组织任务方法，Tool 执行原子动作；只有真实边界存在时才拆多 Agent。"
+    proof: "能力应按需发现；多 Agent 的价值来自协作过程中新增的外部信息。",
+    cues: ["先加载索引再展开细节", "Skill 描述流程", "Reviewer 是否获得新的验证结果"],
+    takeaway: "Agent 决策，Skill 组织任务方法，Tool 执行动作；协作没有新增信息时，不必拆多 Agent。"
   },
   evaluation: {
-    proof: "一次漂亮 Demo 不能证明产品可用，必须验证任务分布。",
-    cues: ["正常路径是否成功", "异常是否被正确暴露", "系统会不会偷偷放宽约束"],
-    takeaway: "最小评测同时检查理解、行动、事实与完成，并覆盖信息缺失、无解、变化、冲突和系统失败。"
+    proof: "一次漂亮 Demo 不能证明产品可用，必须验证任务分布、执行轨迹和最终结果。",
+    cues: ["过程指标是否可诊断", "最终状态是否真的改变", "安全与鲁棒性是否单独覆盖"],
+    takeaway: "评测同时看过程、结果、鲁棒性和安全，并让评测集保持明确、真实、分层且可验证。"
   }
 };
 
@@ -407,7 +407,7 @@ async function runRecovery() {
 }
 
 function renderClassification(workspace) {
-  const options = ["请选择", "State", "Context", "Memory", "RAG", "实时 Tool"];
+  const options = ["请选择", "Trajectory", "Business State", "Context", "User Memory", "RAG", "实时 Tool"];
   workspace.innerHTML = `
     <div class="classification-list">${classificationItems.map((item, index) => `
       <div class="classification-row" data-row="${index}">

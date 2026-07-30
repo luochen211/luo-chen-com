@@ -49,7 +49,7 @@
         <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">怎样证明</span><span class="desc">评测与证据</span></div></div>
       </div>
     </div>
-    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">五节课都回到同一个购物任务，不切换案例</div>
+    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">五节课都用同一组运行案例解释书中的机制</div>
   </div>
 </section>
 
@@ -138,18 +138,17 @@
 
 <section class="slide light" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Context Anatomy · Six Sources</div><div class="r">08 / 10</div></div>
+    <div class="chrome-min"><div class="l">Context Anatomy · Five API Components</div><div class="r">08 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">WHAT THE MODEL ACTUALLY SEES</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 不是一段 Prompt</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em">Context 由五部分组成</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
       <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="shield-check"></i><h3 class="ttl">系统指令</h3><p class="desc">身份、权限、行为边界。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="message-square"></i><h3 class="ttl">当前请求</h3><p class="desc">用户这一轮明确表达。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="history"></i><h3 class="ttl">任务轨迹</h3><p class="desc">之前说过、想过、做过什么。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="braces"></i><h3 class="ttl">工具定义</h3><p class="desc">可用动作与参数格式。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="database"></i><h3 class="ttl">外部信息</h3><p class="desc">Memory 与 RAG 结果。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="activity"></i><h3 class="ttl">环境状态</h3><p class="desc">时间、库存、权限与任务进度。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="braces"></i><h3 class="ttl">工具定义</h3><p class="desc">可用工具、参数与返回格式。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="message-square"></i><h3 class="ttl">用户消息</h3><p class="desc">用户提出的请求与后续反馈。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="bot"></i><h3 class="ttl">模型回复</h3><p class="desc">模型此前生成的内容与工具调用。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">05</span><i data-lucide="activity"></i><h3 class="ttl">工具执行结果</h3><p class="desc">环境返回的新观察，追加进轨迹。</p></article>
     </div>
   </div>
 </section>
@@ -159,14 +158,13 @@
     <div class="chrome-min"><div class="l">ReAct · Operating Mechanism</div><div class="r">09 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">LOOP IS DYNAMICS, NOT ANATOMY</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">三部分怎样持续协同</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">思考、行动、观察怎样循环</h2>
     </div>
     <div style="flex:1;display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center" data-anim="up">
       <div style="display:flex;flex-direction:column">
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">01</span><div><h3 class="t-h-prod">观察 Observe</h3><p class="t-body-sm">读取当前 Context。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">02</span><div><h3 class="t-h-prod">推理 Reason</h3><p class="t-body-sm">模型选择下一步。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">03</span><div><h3 class="t-h-prod">行动 Act</h3><p class="t-body-sm">调用 Tool 改变或查询世界。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)"><span class="t-meta">04</span><div><h3 class="t-h-prod">写回 Update</h3><p class="t-body-sm">把结果追加到轨迹。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.5vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">01</span><div><h3 class="t-h-prod">思考 Reason</h3><p class="t-body-sm">模型基于当前上下文判断下一步。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.5vh 0;border-top:1px solid rgba(255,255,255,.2)"><span class="t-meta">02</span><div><h3 class="t-h-prod">行动 Act</h3><p class="t-body-sm">调用工具查询或改变外部世界。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.5vh 0;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)"><span class="t-meta">03</span><div><h3 class="t-h-prod">观察 Observe</h3><p class="t-body-sm">框架把工具结果追加到轨迹，进入下一轮。</p></div></div>
       </div>
       <div style="position:relative;height:46vh;display:grid;place-items:center">
         <svg viewBox="0 0 600 420" style="width:100%;height:100%" aria-label="ReAct 循环几何图">
@@ -213,7 +211,7 @@
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">循环</h3><p class="body-sm">每次工具结果都要写回，成为下一轮观察。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">循环</h3><p class="body-sm">模型思考并行动，工具结果成为下一轮观察。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 01</span><span>NEXT · LESSON 02</span></div>

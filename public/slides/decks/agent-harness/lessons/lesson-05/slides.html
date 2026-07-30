@@ -6,13 +6,13 @@
       <div class="r">01 / 05 · 20 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">UNDERSTANDING · ACTION · FACT · COMPLETION</div>
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">PROCESS · OUTCOME · ROBUSTNESS · SAFETY</div>
       <div style="align-self:center">
         <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 05 课 · 评测与系统闭环</div>
         <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">怎样证明一个 Agent 系统<br/>真的更加可靠？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">用四类最小评测和六种边界任务检验整条运行轨迹，最后把所有概念放回一张系统地图。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">同时评估执行轨迹与最终结果，覆盖过程、结果、鲁棒性、安全性，并检查评测数据集的设计质量。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
@@ -21,35 +21,35 @@
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Minimum Evaluation · Four Questions</div><div class="r">02 / 05</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Metrics · Process and Outcome</div><div class="r">02 / 05</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">PROVE THE SYSTEM, NOT THE SENTENCE</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">最小评测只问四件事</h2>
+      <div class="t-meta">TRACE + OUTCOME · QUALITY + SAFETY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测必须同时看过程与结果</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);margin-top:7vh;flex:1" data-anim="up">
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / UNDERSTAND</span><h3 class="h-md" style="margin-top:2vh">理解对吗</h3><p class="body-sm" style="margin-top:auto">是否提取了全部硬约束与关键偏好。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / ACT</span><h3 class="h-md" style="margin-top:2vh">行动对吗</h3><p class="body-sm" style="margin-top:auto">是否选择正确 Skill、Tool 与参数。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / VERIFY</span><h3 class="h-md" style="margin-top:2vh">事实对吗</h3><p class="body-sm" style="margin-top:auto">价格、库存、规格是否有有效证据。</p></article>
-      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / COMPLETE</span><h3 class="h-md" style="margin-top:2vh;color:#fff">任务完成吗</h3><p class="body-sm" style="margin-top:auto;color:#fff">结果是否满足约束并真正解决问题。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / PROCESS</span><h3 class="h-md" style="margin-top:2vh">行动是否合法</h3><p class="body-sm" style="margin-top:auto">工具与参数是否正确，路径是否高效，检索是否充分。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / OUTCOME</span><h3 class="h-md" style="margin-top:2vh">任务是否成功</h3><p class="body-sm" style="margin-top:auto">用任务成功率、Pass@k、Pass^k 或 Best@k 衡量。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / ROBUSTNESS</span><h3 class="h-md" style="margin-top:2vh">变化下是否稳定</h3><p class="body-sm" style="margin-top:auto">观察 API 抖动、页面变化、随机性和旧信息干扰。</p></article>
+      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / SAFETY</span><h3 class="h-md" style="margin-top:2vh;color:#fff">是否安全合规</h3><p class="body-sm" style="margin-top:auto;color:#fff">越权、敏感操作和数据泄漏采用零容忍否决。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Test Set · Six Boundary Cases</div><div class="r">03 / 05</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Dataset · Six Design Checks</div><div class="r">03 / 05</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">A DEMO IS ONE RUN · A PRODUCT IS A DISTRIBUTION</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">至少覆盖六种任务变化</h2>
+      <div class="t-meta">THE DATASET DETERMINES WHAT THE SCORE MEANS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测集要通过六项检查</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">信息完整</h3><p class="desc">直接搜索、过滤与比较。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">缺关键条件</h3><p class="desc">只追问会改变结果的问题。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">约束无解</h3><p class="desc">说明无满足项，不偷偷放宽预算。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">实时变化</h3><p class="desc">价格上涨或商品突然缺货。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">历史冲突</h3><p class="desc">Memory 与本轮明确需求相反。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">系统失败</h3><p class="desc">Tool 不可用时不编造答案。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">明确而开放</h3><p class="desc">目标可复现，但允许多种合理路径。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">真实且可控</h3><p class="desc">保留现实噪声，同时能稳定复现环境。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">分层难度</h3><p class="desc">简单、中等、困难对应不同能力瓶颈。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">客观可验证</h3><p class="desc">优先检查最终环境状态，而非语言声明。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">系统性分布</h3><p class="desc">覆盖能力、难度、场景与边界条件。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">质量与防泄漏</h3><p class="desc">人工筛选、参数化变体并持续修订。</p></article>
     </div>
   </div>
 </section>
@@ -65,11 +65,11 @@
       <div style="display:grid;grid-template-columns:2fr 6fr 3fr;gap:1vw">
         <div class="card-ink" style="border:1px solid rgba(255,255,255,.2);padding:2vh 1.4vw"><span class="t-meta">USER</span><h3 class="h-md">目标与反馈</h3></div>
         <div class="card-accent" style="padding:2vh 1.4vw"><span class="t-meta">AGENT / MODEL</span><h3 class="h-md" style="color:#fff">根据 Context 决定下一步</h3></div>
-        <div class="card-ink" style="border:1px solid rgba(255,255,255,.2);padding:2vh 1.4vw"><span class="t-meta">ROUTER</span><h3 class="h-md">选择 Skill / Agent</h3></div>
+        <div class="card-ink" style="border:1px solid rgba(255,255,255,.2);padding:2vh 1.4vw"><span class="t-meta">DISCOVERY</span><h3 class="h-md">按需加载 Skill / Tool</h3></div>
       </div>
       <div style="color:var(--accent);font-size:2vw;display:grid;place-items:center">↓ HARNESS RUNTIME ↓</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1vw">
-        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONTEXT</span><p class="body-sm">State、Memory、RAG 的当前视图</p></div>
+        <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONTEXT</span><p class="body-sm">静态前缀 + 动态轨迹</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">TOOLS</span><p class="body-sm">查询与执行业务动作</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAINTS</span><p class="body-sm">阻止越界参数和动作</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VALIDATION</span><p class="body-sm">用外部事实证明结果</p></div>
@@ -91,7 +91,7 @@
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
-          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 06 · 运行六类边界任务</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 06 · 对照轨迹与最终业务状态</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
         </div>
       </div>
@@ -100,15 +100,15 @@
         <div data-anim="rules" style="display:flex;flex-direction:column">
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">01</div>
-            <div><h3 class="h-md">理解</h3><p class="body-sm">约束是否被识别并写入任务状态。</p></div>
+            <div><h3 class="h-md">过程</h3><p class="body-sm">行动合法率、工具正确率、路径效率与成本延迟。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">02</div>
-            <div><h3 class="h-md">行动</h3><p class="body-sm">工具、参数、顺序和路由是否合理。</p></div>
+            <div><h3 class="h-md">结果</h3><p class="body-sm">任务成功率与 Pass@k、Pass^k、Best@k。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">完成</h3><p class="body-sm">事实是否有证据，失败是否安全退出。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">边界</h3><p class="body-sm">鲁棒性与安全合规必须单独评估。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 05</span><span>NEXT · SYSTEM PRACTICE</span></div>

@@ -12,7 +12,7 @@
         <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">运行中的事实、视图和记忆<br/>应该分别放在哪里？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">区分系统持久事实与模型当前视图，明确 Memory、RAG、实时 Tool 的生命周期，并为每类失败指定出口。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">区分轨迹、用户长期记忆、业务状态与共享知识，理解信息怎样进入当前上下文，并看清失败后的恢复阶梯。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
@@ -95,34 +95,33 @@
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Information Ownership · Four Assets</div><div class="r">05 / 09</div></div>
+    <div class="chrome-min"><div class="l">Information Layers · Storage and Retrieval</div><div class="r">05 / 09</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">DO NOT MIX THE LAYERS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">四类信息，四种生命周期</h2>
+      <div class="t-meta">TRAJECTORY · LONG-TERM MEMORY · BUSINESS STATE · KNOWLEDGE</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">不同信息，放在不同层</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);margin-top:7vh;flex:1" data-anim="up">
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / STATE</span><h3 class="h-md" style="margin-top:2vh">任务事实</h3><p class="body-sm" style="margin-top:auto">系统保存的当前进度、候选集、权限与执行结果。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / CONTEXT</span><h3 class="h-md" style="margin-top:2vh">当前视图</h3><p class="body-sm" style="margin-top:auto">为一次模型决策临时组装，调用结束后可重建。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / MEMORY</span><h3 class="h-md" style="margin-top:2vh">跨会话偏好</h3><p class="body-sm" style="margin-top:auto">需要置信度、纠正、过期和遗忘规则。</p></article>
-      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / RAG</span><h3 class="h-md" style="margin-top:2vh;color:var(--accent-on)">外部知识</h3><p class="body-sm" style="margin-top:auto;color:var(--accent-on)">从受治理的知识源按问题检索，再注入 Context。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / TRAJECTORY</span><h3 class="h-md" style="margin-top:2vh">本次运行历史</h3><p class="body-sm" style="margin-top:auto">用户消息、模型回复、工具结果按时间追加，只增不改。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / USER MEMORY</span><h3 class="h-md" style="margin-top:2vh">跨会话稳定信息</h3><p class="body-sm" style="margin-top:auto">从多次交互中提炼，会被改写、合并和淘汰。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / BUSINESS STATE</span><h3 class="h-md" style="margin-top:2vh">任务逻辑阶段</h3><p class="body-sm" style="margin-top:auto">如需要澄清、处理中、等待付款或请求完成。</p></article>
+      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / RAG</span><h3 class="h-md" style="margin-top:2vh;color:var(--accent-on)">共享知识管道</h3><p class="body-sm" style="margin-top:auto;color:var(--accent-on)">检索相关片段，将外部知识注入当前上下文。</p></article>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Memory · Governed Lifecycle</div><div class="r">06 / 09</div></div>
+    <div class="chrome-min"><div class="l">Memory · Three Design Questions</div><div class="r">06 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">MEMORY IS NOT CHAT HISTORY</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">记忆必须经历四个治理动作</h2>
+      <div class="t-meta">MEMORY IS A PREDICTIVE USER MODEL</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">设计记忆先回答三个问题</h2>
     </div>
     <div style="flex:1;display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center" data-anim="up">
       <div style="display:flex;flex-direction:column">
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">01</span><div><h3 class="t-h-prod">写入</h3><p class="t-body-sm">判断是否稳定、是否属于本人。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">02</span><div><h3 class="t-h-prod">读取</h3><p class="t-body-sm">只在与当前任务相关时召回。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">03</span><div><h3 class="t-h-prod">修正</h3><p class="t-body-sm">当前明确表达优先于旧偏好。</p></div></div>
-        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2vh 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)"><span class="t-meta">04</span><div><h3 class="t-h-prod">遗忘</h3><p class="t-body-sm">过期、敏感或被否认的信息删除。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.8vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">01</span><div><h3 class="t-h-prod">放哪里</h3><p class="t-body-sm">区分单次轨迹、用户长期记忆与业务状态。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.8vh 0;border-top:1px solid var(--border-subtle)"><span class="t-meta">02</span><div><h3 class="t-h-prod">怎么存</h3><p class="t-body-sm">在 Notes、JSON Cards 等格式间权衡简单性与表达力。</p></div></div>
+        <div style="display:grid;grid-template-columns:4vw 1fr;gap:1vw;padding:2.8vh 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)"><span class="t-meta">03</span><div><h3 class="t-h-prod">存什么</h3><p class="t-body-sm">选择性提取对未来有用、可抽象且可结构化的信息。</p></div></div>
       </div>
       <div style="position:relative;height:46vh;display:grid;place-items:center">
         <svg viewBox="0 0 600 420" style="width:100%;height:100%" aria-label="Memory 生命周期几何图">
@@ -134,7 +133,7 @@
           <rect x="265" y="310" width="70" height="70" fill="var(--grey-3)"/>
           <rect x="115" y="175" width="70" height="70" fill="var(--grey-2)"/>
         </svg>
-        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="t-meta">GOVERN</div><div style="font-family:var(--sans);font-weight:200;font-size:min(4.6vw,8.2vh)">MEMORY</div></div></div>
+        <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="t-meta">SELECT · ABSTRACT · STRUCTURE</div><div style="font-family:var(--sans);font-weight:200;font-size:min(4.6vw,8.2vh)">MEMORY</div></div></div>
       </div>
     </div>
   </div>
@@ -167,18 +166,18 @@
 
 <section class="slide dark" data-layout="S16" data-animate="field-notes">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Failure Map · Six Recoveries</div><div class="r">08 / 09</div></div>
+    <div class="chrome-min"><div class="l">Correction · Recovery Ladder</div><div class="r">08 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THE NORMAL PATH IS NOT ENOUGH</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">每一种失败，都要有指定出口</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">确认无法恢复前，不暴露中间态</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">约束冲突</h3><p class="desc">指出冲突，请用户决定优先级。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">Tool 超时</h3><p class="desc">有限重试，失败后显示无法确认。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">商品缺货</h3><p class="desc">淘汰候选，继续查询备选。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">Memory 冲突</h3><p class="desc">当前明确表达优先并修正旧记忆。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">重复调用</h3><p class="desc">命中循环检测，熔断并总结状态。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">证据不足</h3><p class="desc">不下结论；解释缺口或请求人工。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">静默重试</h3><p class="desc">临时超时先在框架内部有限重试。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><h3 class="ttl">接续生成</h3><p class="desc">模型输出中断时，从已有轨迹继续。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><h3 class="ttl">回退稳定态</h3><p class="desc">异常后回滚到上一可验证状态。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><h3 class="ttl">熔断停止</h3><p class="desc">连续错误达到阈值，停止重复尝试。</p></article>
+      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><h3 class="ttl">人工干预</h3><p class="desc">持续失败或高风险操作交还人类。</p></article>
+      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><h3 class="ttl">明确停止条件</h3><p class="desc">完成、超预算或不可恢复时结束循环。</p></article>
     </div>
   </div>
 </section>
@@ -204,15 +203,15 @@
         <div data-anim="rules" style="display:flex;flex-direction:column">
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">01</div>
-            <div><h3 class="h-md">事实与视图</h3><p class="body-sm">State 归系统持有，Context 只是当前决策所见。</p></div>
+            <div><h3 class="h-md">分层</h3><p class="body-sm">轨迹记录本轮历史；长期记忆跨会话提炼稳定信息。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;">02</div>
-            <div><h3 class="h-md">长期与实时</h3><p class="body-sm">Memory 存偏好，RAG 查知识，Tool 查询此刻状态。</p></div>
+            <div><h3 class="h-md">检索</h3><p class="body-sm">RAG 从外部知识库找片段，再注入当前上下文。</p></div>
           </div>
           <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.1vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-weight:200;font-size:min(3.8vw,6.8vh);line-height:.9;color:var(--accent)">03</div>
-            <div><h3 class="h-md" style="color:var(--accent)">失败出口</h3><p class="body-sm">超时、缺字段、无库存和证据冲突必须走不同恢复路径。</p></div>
+            <div><h3 class="h-md" style="color:var(--accent)">恢复</h3><p class="body-sm">重试、回退、熔断和人工干预构成纠正阶梯。</p></div>
           </div>
         </div>
         <div class="t-meta" style="display:flex;justify-content:space-between"><span>END · LESSON 03</span><span>NEXT · LESSON 04</span></div>

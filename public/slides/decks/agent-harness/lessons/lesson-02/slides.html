@@ -87,7 +87,7 @@
 
 <section class="slide dark" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Constraints · Three Enforcement Points</div><div class="r">06 / 10</div></div>
+    <div class="chrome-min"><div class="l">Constraints · Fault-safe Defaults</div><div class="r">06 / 10</div></div>
     <div style="display:grid;grid-template-columns:4fr 8fr;gap:3vw;flex:1">
       <div class="ink-block" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--accent)">
         <div class="t-meta" style="color:rgba(255,255,255,.75)">HARNESS FUNCTION 03</div>
@@ -95,9 +95,9 @@
         <div class="cross-mat" style="height:12vh;color:#fff"></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:1.5vh" data-anim="up">
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">01</div><div><h3 class="h-md">行动前</h3><p class="body-sm">用户未确认，不开放支付工具；身份未验证，不允许查订单。</p></div></article>
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">02</div><div><h3 class="h-md">参数中</h3><p class="body-sm">预算上限、退款金额、地址范围由代码校验，而不是相信模型。</p></div></article>
-        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent)">03</div><div><h3 class="h-md">行动后</h3><p class="body-sm">推荐结果必须重新检查全部硬约束，越界候选直接拦截。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">01</div><div><h3 class="h-md">默认关闭</h3><p class="body-sm">能力必须显式开放，不能因为模型提出调用就自动获得权限。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200">02</div><div><h3 class="h-md">风险分级</h3><p class="body-sm">低、中、高风险工具采用不同审查强度，参数组合也可能改变风险。</p></div></article>
+        <article data-anim="card" class="card-fill" style="padding:2.4vh 2vw;display:grid;grid-template-columns:7vw 1fr;gap:2vw"><div style="font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent)">03</div><div><h3 class="h-md">人工确认</h3><p class="body-sm">取消订单、大额退款或付款等敏感操作，在执行前交由人类监督。</p></div></article>
       </div>
     </div>
   </div>
@@ -114,14 +114,14 @@
       <div class="col">
         <div class="col-tag"><span class="num">C</span> CLAIM</div>
         <div class="col-ttl">语言结论</div>
-        <p class="col-desc">“这款耳机 499 元、有货、支持双设备。”</p>
+        <p class="col-desc">“退款已经成功。”</p>
         <ul class="col-list"><li>可能来自旧知识</li><li>可能把计划当成事实</li><li>不能作为最终证据</li></ul>
       </div>
       <div class="vrule"></div>
       <div class="col accent">
         <div class="col-tag"><span class="num">E</span> EVIDENCE</div>
         <div class="col-ttl">外部证明</div>
-        <p class="col-desc">价格 Tool、库存 Tool、商品规格字段返回一致。</p>
+        <p class="col-desc">订单数据库中的退款状态已经更新。</p>
         <ul class="col-list"><li>来源明确</li><li>时间有效</li><li>可再次查询验证</li></ul>
       </div>
     </div>
@@ -137,11 +137,11 @@
     </div>
     <div class="timeline-h" data-anim="up">
       <div class="tl-row">
-        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">修参数</span><span class="desc">纠正格式或缺失字段</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">重试</span><span class="desc">处理短暂超时</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">换路径</span><span class="desc">替代 Tool 或候选项</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">请求补充</span><span class="desc">让用户解除歧义</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">降级 / 转人</span><span class="desc">避免继续扩大风险</span></div></div>
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">静默重试</span><span class="desc">先处理短暂超时</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">接续生成</span><span class="desc">从已有轨迹继续</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">回退</span><span class="desc">恢复上一稳定状态</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">熔断</span><span class="desc">连续失败停止重试</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">转人工</span><span class="desc">高风险或不可恢复</span></div></div>
       </div>
     </div>
     <div class="callout" style="margin-top:auto">可靠性不是永不失败，而是失败可见、可控、可恢复，并且知道何时停止。</div>
@@ -157,12 +157,12 @@
     </div>
     <div class="timeline-h" data-anim="up">
       <div class="tl-row">
-        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01 · CONTEXT</span><span class="name">编译当前视图</span><span class="desc">目标、State、历史、工具定义</span></div></div>
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01 · CONTEXT</span><span class="name">提供当前观察</span><span class="desc">系统指令、工具定义、动态轨迹</span></div></div>
         <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02 · MODEL</span><span class="name">选择下一动作</span><span class="desc">模型在 Harness 外负责判断</span></div></div>
         <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03 · CONSTRAIN</span><span class="name">执行前拦截</span><span class="desc">权限、参数、确认与预算</span></div></div>
         <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04 · TOOLS</span><span class="name">查询或改变世界</span><span class="desc">返回结构化结果与状态变化</span></div></div>
         <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05 · VERIFY</span><span class="name">对照完成条件</span><span class="desc">检查外部事实而非语言声明</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06 · CORRECT</span><span class="name">修复或安全退出</span><span class="desc">重试、换路径、追问、转人工</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06 · CORRECT</span><span class="name">修复或安全退出</span><span class="desc">重试、回退、熔断、转人工</span></div></div>
       </div>
     </div>
     <div class="callout" style="margin-top:auto;color:var(--paper);border-color:rgba(255,255,255,.25)">Verify 通过 → 提交 State 并完成；Verify 失败 → Correct 生成下一步，再回到 Context。</div>
