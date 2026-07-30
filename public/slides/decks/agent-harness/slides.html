@@ -221,23 +221,23 @@
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">One Decision · One New Trace</div><div class="r">12 / 37</div></div>
+    <div class="chrome-min"><div class="l">Trajectory vs Context · History and View</div><div class="r">12 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">HOW CONTEXT GROWS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">工具结果成为下一轮的观察</h2>
+      <div class="t-meta">COMPLETE HISTORY ≠ CURRENT MODEL INPUT</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">完整轨迹，不会原样进入 Context</h2>
     </div>
     <div class="pipeline-section" data-anim="up" style="margin-top:7vh">
-      <div class="pipeline-label">A SINGLE TURN</div>
+      <div class="pipeline-label">HARNESS COMPILES A VIEW FOR EACH DECISION</div>
       <div class="pipeline" data-cols="6">
-        <div data-anim="step" class="step"><span class="step-nb">01</span><h3 class="step-title">读取</h3><p class="step-desc">预算与硬约束</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">02</span><h3 class="step-title">决定</h3><p class="step-desc">需要查实时库存</p></div>
-        <div data-anim="step" class="step accent-top"><span class="step-nb">03</span><h3 class="step-title">调用</h3><p class="step-desc">check_inventory</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">04</span><h3 class="step-title">返回</h3><p class="step-desc">B 商品缺货</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">05</span><h3 class="step-title">写回</h3><p class="step-desc">轨迹新增事实</p></div>
-        <div data-anim="step" class="step"><span class="step-nb">06</span><h3 class="step-title">再决策</h3><p class="step-desc">淘汰 B，继续比较</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">T1</span><h3 class="step-title">用户约束</h3><p class="step-desc">预算、佩戴与设备</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">T2</span><h3 class="step-title">搜索结果</h3><p class="step-desc">十个候选商品</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">T3</span><h3 class="step-title">工具证据</h3><p class="step-desc">价格、库存与失败</p></div>
+        <div data-anim="step" class="step accent-top"><span class="step-nb">H</span><h3 class="step-title">选择与压缩</h3><p class="step-desc">保留当前决策所需</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">C1</span><h3 class="step-title">当前候选</h3><p class="step-desc">只带入相关商品</p></div>
+        <div data-anim="step" class="step"><span class="step-nb">C2</span><h3 class="step-title">下一问题</h3><p class="step-desc">现在应该验证什么</p></div>
       </div>
     </div>
-    <div class="callout" style="margin-top:auto">Agent 的轨迹不是日志附件，而是后续决策的一部分。缺失 Tool Result，模型就像蒙着眼继续行动。</div>
+    <div class="callout" style="margin-top:auto">Trajectory 是系统保存的完整运行历史；Context 是 Harness 为当前一次模型调用编译出的受控视图。</div>
   </div>
 </section>
 
@@ -414,16 +414,16 @@
     <div class="duo-compare" data-anim="up">
       <div class="col">
         <div class="col-tag"><span class="num">T</span> TRAJECTORY</div>
-        <div class="col-ttl">本次运行的完整历史</div>
-        <p class="col-desc">用户消息、模型回复和工具结果按时间追加，只增不改。</p>
-        <ul class="col-list"><li>服务当前任务决策</li><li>保留原始执行证据</li><li>会随本次会话持续增长</li></ul>
+        <div class="col-ttl">一次运行的证据账本</div>
+        <p class="col-desc">服务当前任务决策与事后复盘，保留事件发生的原始顺序。</p>
+        <ul class="col-list"><li>只属于这一次运行</li><li>追加新事实，不覆盖旧历史</li><li>任务结束后通常归档</li></ul>
       </div>
       <div class="vrule"></div>
       <div class="col accent">
         <div class="col-tag"><span class="num">M</span> USER MEMORY</div>
-        <div class="col-ttl">跨会话提炼的稳定信息</div>
-        <p class="col-desc">从多次对话中选择、抽象和结构化，会被改写、合并与淘汰。</p>
-        <ul class="col-list"><li>服务未来个性化任务</li><li>与特定用户绑定</li><li>不是原始聊天记录的复制</li></ul>
+        <div class="col-ttl">面向未来的用户预测模型</div>
+        <p class="col-desc">只提炼会影响未来判断的稳定特征，不追求保存完整对话。</p>
+        <ul class="col-list"><li>跨多次任务持续使用</li><li>允许改写、合并与淘汰</li><li>与特定用户身份绑定</li></ul>
       </div>
     </div>
   </div>
@@ -624,21 +624,29 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Progressive Disclosure · One Skill Run</div><div class="r">31 / 37</div></div>
+    <div class="chrome-min"><div class="l">Progressive Disclosure · Context Delta</div><div class="r">31 / 37</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">INDEX FIRST · DETAILS ON DEMAND</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">一次任务只展开需要的能力</h2>
+      <div class="t-meta">THE CHANGE HAPPENS INSIDE CONTEXT</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">加载 Skill 前后，模型看见了什么变化？</h2>
     </div>
-    <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="list"></i><h3 class="ttl">保留索引</h3><p class="desc">Context 先看见 Skill 名称和简短描述。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="target"></i><h3 class="ttl">匹配任务</h3><p class="desc">Agent 判断当前请求属于部署应用。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="book-open"></i><h3 class="ttl">加载 Skill</h3><p class="desc">只读取部署流程的完整说明。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="terminal"></i><h3 class="ttl">选择执行器</h3><p class="desc">使用通用 Bash Tool，而非新增三个专用工具。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="play"></i><h3 class="ttl">逐步执行</h3><p class="desc">每一步结果写入轨迹，再决定下一步。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="check-check"></i><h3 class="ttl">验证完成</h3><p class="desc">执行结果而不是 Skill 文本证明任务成功。</p></article>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">01</span> BEFORE LOAD</div>
+        <div class="col-ttl">Context 只有能力索引</div>
+        <p class="col-desc">模型知道存在“部署应用”这项能力，但完整流程尚未占用上下文。</p>
+        <ul class="col-list"><li>当前目标与任务状态</li><li>Skill 名称和一句话摘要</li><li>没有部署步骤和执行器细节</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">02</span> AFTER LOAD</div>
+        <div class="col-ttl">只注入本次需要的细节</div>
+        <p class="col-desc">匹配任务后，Harness 才把部署方法、执行接口和验收条件编入 Context。</p>
+        <ul class="col-list"><li>部署顺序、规则与失败处理</li><li>Bash Tool 的参数和返回格式</li><li>构建、发布与验证的完成标准</li></ul>
+      </div>
     </div>
+    <div class="callout" style="margin-top:auto">渐进式披露不是隐藏能力，而是让每次模型调用只承担当前任务需要的认知负担。</div>
   </div>
 </section>
 
@@ -695,17 +703,17 @@
 
 <section class="slide light" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Evaluation Metrics · Process and Outcome</div><div class="r">34 / 37</div></div>
+    <div class="chrome-min"><div class="l">Evaluation Dimensions · Beyond One Success</div><div class="r">34 / 37</div></div>
     <div style="height:2px;background:var(--accent);width:16vw;margin-bottom:3vh" data-anim="line"></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">TRACE + OUTCOME · QUALITY + SAFETY</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测必须同时看过程与结果</h2>
+      <div class="t-meta">CORRECTNESS · ROBUSTNESS · SAFETY · EFFICIENCY</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">一次成功，还不能证明系统可靠</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);margin-top:7vh;flex:1" data-anim="up">
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / PROCESS</span><h3 class="h-md" style="margin-top:2vh">行动是否合法</h3><p class="body-sm" style="margin-top:auto">工具与参数是否正确，路径是否高效，检索是否充分。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / OUTCOME</span><h3 class="h-md" style="margin-top:2vh">任务是否成功</h3><p class="body-sm" style="margin-top:auto">用任务成功率、Pass@k、Pass^k 或 Best@k 衡量。</p></article>
-      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / ROBUSTNESS</span><h3 class="h-md" style="margin-top:2vh">变化下是否稳定</h3><p class="body-sm" style="margin-top:auto">观察 API 抖动、页面变化、随机性和旧信息干扰。</p></article>
-      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / SAFETY</span><h3 class="h-md" style="margin-top:2vh;color:#fff">是否安全合规</h3><p class="body-sm" style="margin-top:auto;color:#fff">越权、敏感操作和数据泄漏采用零容忍否决。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">01 / CORRECTNESS</span><h3 class="h-md" style="margin-top:2vh">结果是否正确</h3><p class="body-sm" style="margin-top:auto">检查最终环境状态是否满足任务完成条件。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">02 / ROBUSTNESS</span><h3 class="h-md" style="margin-top:2vh">变化下是否稳定</h3><p class="body-sm" style="margin-top:auto">覆盖 API 抖动、页面变化、随机性和旧信息干扰。</p></article>
+      <article data-anim="card" class="card-fill" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">03 / SAFETY</span><h3 class="h-md" style="margin-top:2vh">失败是否越界</h3><p class="body-sm" style="margin-top:auto">越权、敏感操作和数据泄漏采用零容忍否决。</p></article>
+      <article data-anim="card" class="card-accent" style="padding:2.6vh 1.6vw;display:flex;flex-direction:column"><span class="t-meta">04 / EFFICIENCY</span><h3 class="h-md" style="margin-top:2vh;color:#fff">代价是否合理</h3><p class="body-sm" style="margin-top:auto;color:#fff">比较步骤、延迟、Token、工具调用次数和人工介入。</p></article>
     </div>
   </div>
 </section>

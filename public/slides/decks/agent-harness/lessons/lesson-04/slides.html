@@ -81,21 +81,29 @@
   </div>
 </section>
 
-<section class="slide light" data-layout="S04" data-animate="grid-reveal">
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Progressive Disclosure · One Skill Run</div><div class="r">05 / 09</div></div>
+    <div class="chrome-min"><div class="l">Progressive Disclosure · Context Delta</div><div class="r">05 / 09</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">INDEX FIRST · DETAILS ON DEMAND</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">一次任务只展开需要的能力</h2>
+      <div class="t-meta">THE CHANGE HAPPENS INSIDE CONTEXT</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.03em">加载 Skill 前后，模型看见了什么变化？</h2>
     </div>
-    <div class="sub-grid-3-2" data-anim="up">
-      <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="list"></i><h3 class="ttl">保留索引</h3><p class="desc">Context 先看见 Skill 名称和简短描述。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">02</span><i data-lucide="target"></i><h3 class="ttl">匹配任务</h3><p class="desc">Agent 判断当前请求属于部署应用。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">03</span><i data-lucide="book-open"></i><h3 class="ttl">加载 Skill</h3><p class="desc">只读取部署流程的完整说明。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">04</span><i data-lucide="terminal"></i><h3 class="ttl">选择执行器</h3><p class="desc">使用通用 Bash Tool，而非新增三个专用工具。</p></article>
-      <article data-anim="card" class="sub-card"><span class="nb-corner">05</span><i data-lucide="play"></i><h3 class="ttl">逐步执行</h3><p class="desc">每一步结果写入轨迹，再决定下一步。</p></article>
-      <article data-anim="card" class="sub-card accent"><span class="nb-corner">06</span><i data-lucide="check-check"></i><h3 class="ttl">验证完成</h3><p class="desc">执行结果而不是 Skill 文本证明任务成功。</p></article>
+    <div class="duo-compare" data-anim="up">
+      <div class="col">
+        <div class="col-tag"><span class="num">01</span> BEFORE LOAD</div>
+        <div class="col-ttl">Context 只有能力索引</div>
+        <p class="col-desc">模型知道存在“部署应用”这项能力，但完整流程尚未占用上下文。</p>
+        <ul class="col-list"><li>当前目标与任务状态</li><li>Skill 名称和一句话摘要</li><li>没有部署步骤和执行器细节</li></ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="col accent">
+        <div class="col-tag"><span class="num">02</span> AFTER LOAD</div>
+        <div class="col-ttl">只注入本次需要的细节</div>
+        <p class="col-desc">匹配任务后，Harness 才把部署方法、执行接口和验收条件编入 Context。</p>
+        <ul class="col-list"><li>部署顺序、规则与失败处理</li><li>Bash Tool 的参数和返回格式</li><li>构建、发布与验证的完成标准</li></ul>
+      </div>
     </div>
+    <div class="callout" style="margin-top:auto">渐进式披露不是隐藏能力，而是让每次模型调用只承担当前任务需要的认知负担。</div>
   </div>
 </section>
 
