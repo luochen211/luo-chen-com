@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <title>Agent Harness 讲师演示台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="course-header">
+      <div class="course-brand">
+        <span class="course-logo">AH</span>
+        <div>
+          <strong>Agent Harness 演示台</strong>
+          <span>讲师控制 · 500 元通勤耳机助手</span>
+        </div>
+      </div>
+      <a class="ppt-button" id="headerPptLink" href="/slides/decks/agent-harness/" target="_blank">
+        打开完整 PPT <span>↗</span>
+      </a>
+    </header>
+
+    <main class="course-shell">
+      <aside class="curriculum">
+        <div class="curriculum-head">
+          <span>Presenter Console</span>
+          <strong>演示索引</strong>
+          <p>讲到对应页码时打开。每个演示只负责证明一个关键结论。</p>
+        </div>
+        <nav id="lessonList" class="lesson-list" aria-label="演示列表"></nav>
+        <div class="curriculum-foot">
+          <span>统一演示对象</span>
+          <strong>500 元通勤耳机助手</strong>
+          <p>不更换案例，避免观众把注意力浪费在理解新业务上。</p>
+        </div>
+      </aside>
+
+      <section class="lesson-pane">
+        <div class="lesson-scroll">
+          <div class="lesson-meta">
+            <span id="lessonNumber">演示 1 / 6</span>
+            <a id="lessonPptLink" href="/slides/decks/agent-harness/?slide=1" target="_blank">对应 PPT 01—05 ↗</a>
+          </div>
+          <h1 id="lessonTitle"></h1>
+          <p class="lesson-objective" id="lessonObjective"></p>
+
+          <section class="teaching-block">
+            <span class="block-label">讲师只需讲清</span>
+            <div id="conceptList" class="concept-list"></div>
+          </section>
+
+          <section class="teaching-block">
+            <span class="block-label">演示前先说</span>
+            <blockquote id="boundaryText"></blockquote>
+          </section>
+
+          <section class="teaching-block slide-map-block">
+            <span class="block-label">PPT 承接关系</span>
+            <ol id="slideMap" class="slide-map"></ol>
+          </section>
+
+          <section class="teaching-block takeaway-block">
+            <span class="block-label">演示结束后落到</span>
+            <p id="presenterTakeaway"></p>
+          </section>
+        </div>
+
+        <div class="lesson-nav">
+          <button id="prevLesson" type="button">← 上一节</button>
+          <button id="nextLesson" class="next-button" type="button">下一节 →</button>
+        </div>
+      </section>
+
+      <section class="lab-pane">
+        <header class="lab-header">
+          <div>
+            <span>Live Demo</span>
+            <h2 id="experimentTitle"></h2>
+          </div>
+          <span class="lab-status" id="labStatus">等待操作</span>
+        </header>
+
+        <div class="proof-banner">
+          <span>这次演示只证明</span>
+          <strong id="proofStatement"></strong>
+        </div>
+
+        <div class="lab-instruction">
+          <span>讲师操作</span>
+          <p id="experimentInstruction"></p>
+        </div>
+
+        <div class="experiment-workspace" id="experimentWorkspace" aria-live="polite"></div>
+
+        <section class="audience-cues">
+          <div class="audience-cues-head">
+            <span>引导观众观察</span>
+            <strong>不要解释所有细节，只指向这些变化</strong>
+          </div>
+          <ol id="audienceCueList"></ol>
+        </section>
+      </section>
+    </main>
+
+    <template id="traceStepTemplate">
+      <li class="trace-step">
+        <span class="trace-index"></span>
+        <div>
+          <strong></strong>
+          <p></p>
+        </div>
+        <b></b>
+      </li>
+    </template>
+
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>

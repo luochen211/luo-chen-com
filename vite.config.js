@@ -13,8 +13,13 @@ export default defineConfig({
             '/slides/',
             '/slides/decks/ai-product-talk/',
             '/slides/decks/mini-program-ui/',
+            '/slides/decks/agent-harness/',
+            '/demos/agent-harness/',
           ])
-          if (indexes.has(req.url)) req.url += 'index.html'
+          const [pathname, query] = req.url.split('?')
+          if (indexes.has(pathname)) {
+            req.url = `${pathname}index.html${query ? `?${query}` : ''}`
+          }
           next()
         })
       },

@@ -68,6 +68,9 @@ describe('redesigned page purposes', () => {
   it('combines projects, writing, and talks on Output', () => {
     const { container } = render(<MemoryRouter><OutputPage t={siteContent.zh} locale="zh" /></MemoryRouter>)
     expect(container.querySelectorAll('.output-project')).toHaveLength(getProjectShowcase('zh').length)
+    const harnessDemo = [...container.querySelectorAll('.output-project')]
+      .find((project) => project.textContent.includes('Agent Harness 讲师演示台'))
+    expect(harnessDemo?.querySelector('a[href="/demos/agent-harness/"]')).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.output.writingTitle })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.course.archive.title })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /了解 AI接单实验室/ })).toHaveAttribute(
