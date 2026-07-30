@@ -1,0 +1,73 @@
+/* Deck-local Swiss locked additions. */
+.h-statement{font-family:var(--sans),var(--sans-zh);font-weight:200;line-height:.96;letter-spacing:-.035em;margin:auto 0 0;max-width:12ch}
+.stmt-anchor{font-family:var(--mono);font-size:max(14px,.86vw);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-helper);margin-top:auto;margin-bottom:3vh}
+.slide.dark .stmt-anchor{color:rgba(255,255,255,.62)}
+.slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:3vh}
+.slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:7.4vh!important}
+
+.cell-6{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1px;background:var(--border-subtle);margin-top:auto;margin-bottom:var(--nav-safe-bottom)}
+.cell-6 .cell{background:var(--paper);padding:2.1vh 1.5vw;min-height:15vh;color:var(--text-primary)}
+.cell-icon-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3vh}
+.cell-icon-row .lucide{width:24px;height:24px;stroke-width:1.6}
+.cell-num{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.12em;color:var(--accent)}
+.cell h4{font-weight:400;font-size:max(20px,1.42vw);margin-bottom:.6vh}
+.cell p{font-size:max(16px,.94vw);font-weight:400;line-height:1.45;color:var(--text-secondary)}
+
+.four-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);margin-top:auto;margin-bottom:var(--nav-safe-bottom)}
+.four-cards .fc-col{background:var(--paper);padding:2.4vh 1.5vw;min-height:34vh;display:flex;flex-direction:column;gap:2vh;color:var(--text-primary)}
+.four-cards h3{font-weight:300;font-size:min(3.8vw,6.8vh);letter-spacing:-.035em}
+.four-cards p{font-size:max(16px,1vw);font-weight:400;line-height:1.55;color:var(--text-secondary);margin-top:auto}
+.four-cards .is-accent{background:var(--accent);color:var(--accent-on)}
+.four-cards .is-accent .t-meta,.four-cards .is-accent p{color:var(--accent-on)}
+
+.duo-half{display:flex;flex-direction:column;gap:2vh;justify-content:center}
+.duo-half h2{font-weight:200;font-size:min(5.8vw,10vh);line-height:1;letter-spacing:-.035em}
+.duo-half p{max-width:32ch}
+.duo-half ul{list-style:none;display:grid;gap:1.1vh;margin-top:1vh}
+.duo-half li{font-size:max(16px,.98vw);font-weight:400;line-height:1.45;padding-left:1.3em;position:relative}
+.duo-half li::before{content:"";position:absolute;left:0;top:.72em;width:.55em;height:1px;background:currentColor}
+
+.loop-diagram{display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:center;margin-top:auto;margin-bottom:var(--nav-safe-bottom)}
+.loop-steps{display:flex;flex-direction:column;border-top:1px solid var(--border-subtle)}
+.loop-steps>div{display:grid;grid-template-columns:48px 1fr;gap:1.4vw;padding:1.6vh 0;border-bottom:1px solid var(--border-subtle)}
+.loop-steps span{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--accent)}
+.loop-steps strong{font-size:max(20px,1.32vw);font-weight:400}
+.loop-steps p{grid-column:2;font-size:max(16px,.92vw);font-weight:400;color:var(--text-secondary)}
+.loop-svg{position:relative;min-height:42vh}
+.loop-svg svg{position:absolute;inset:0;width:100%;height:100%}
+
+.three-forces{display:grid;grid-template-columns:5fr 11fr;gap:2vw;align-items:stretch;flex:1}
+.hero-ink-col{background:var(--ink);color:var(--paper);padding:4vh 2vw;display:flex;flex-direction:column;justify-content:space-between}
+.hero-ink-col h2{font-weight:200;font-size:min(4.8vw,8.5vh);line-height:1;letter-spacing:-.035em}
+.hero-ink-col p{font-size:max(16px,1vw);font-weight:400;line-height:1.55;color:rgba(255,255,255,.76)}
+.force-list{display:flex;flex-direction:column;gap:1px;background:var(--border-subtle)}
+.force-card{display:grid;grid-template-columns:auto 1fr;gap:0 2vw;background:var(--paper);padding:2.3vh 2vw;min-height:18vh}
+.force-num{grid-row:1 / span 2;font-size:min(5vw,8.8vh);font-weight:200;color:var(--accent);line-height:.9}
+.force-card h3{font-size:max(22px,1.75vw);font-weight:400}
+.force-card p{font-size:max(16px,.98vw);font-weight:400;line-height:1.5;color:var(--text-secondary)}
+
+.brief-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1px;background:var(--border-subtle);margin-top:auto;margin-bottom:var(--nav-safe-bottom)}
+.brief-card{background:var(--paper);min-height:22vh;padding:1.8vh 1.35vw;display:flex;flex-direction:column;justify-content:space-between;gap:1vh;overflow:hidden}
+.brief-card.is-accent{background:var(--accent);color:var(--accent-on)}
+.brief-card h3{font-size:max(21px,1.5vw);font-weight:400;line-height:1.2}
+.brief-card p{font-size:max(16px,.94vw);font-weight:400;line-height:1.45;color:var(--text-secondary)}
+.brief-card.is-accent p,.brief-card.is-accent .t-meta{color:var(--accent-on)}
+
+.system-diagram{display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center;flex:1;margin-bottom:var(--nav-safe-bottom)}
+.system-copy{display:flex;flex-direction:column;gap:2.4vh}
+.system-copy h2{font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1;letter-spacing:-.035em}
+.system-copy p{font-size:max(18px,1.08vw);font-weight:400;line-height:1.55;color:var(--text-secondary);max-width:34ch}
+.system-rings{position:relative;min-height:52vh;display:grid;place-items:center}
+.sys-ring{position:absolute;display:grid;place-items:center;border:1px solid var(--border-strong)}
+.sys-ring.outer{width:44vh;height:44vh;background:var(--grey-1)}
+.sys-ring.middle{width:30vh;height:30vh;background:var(--paper);border-color:var(--accent)}
+.sys-ring.core{width:16vh;height:16vh;background:var(--accent);color:var(--accent-on);border:0}
+.sys-label{font-family:var(--mono);font-size:max(14px,.84vw);font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:center}
+.sys-note{position:absolute;font-size:max(16px,.94vw);font-weight:500}
+.sys-note.n1{top:4%;right:2%}.sys-note.n2{bottom:7%;left:0}.sys-note.n3{top:18%;left:2%}
+
+@media(max-width:900px){
+  .cell-6,.brief-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
+  .four-cards{grid-template-columns:repeat(2,1fr)}
+}
+/* End deck-local Swiss locked additions. */

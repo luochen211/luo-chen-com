@@ -1,0 +1,336 @@
+<section class="slide accent" data-layout="SWISS-COVER-ASCII" data-animate="hero">
+  <div class="canvas-card">
+    <canvas class="ascii-bg" aria-hidden="true"></canvas>
+    <div class="chrome-min">
+      <div class="l">01 / 16 · DEVELOPMENT SYSTEM</div>
+      <div class="r">SWISS · IKB</div>
+    </div>
+    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">DIRECTED ACYCLIC GRAPH</div>
+      <h1 data-anim="title" style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(9.2vw,15.5vh);line-height:.96;letter-spacing:-.025em;color:#fff">如何利用 <span style="font-style:italic;font-weight:300">DAG</span><br/>完成高效开发</h1>
+      <div data-anim="bottom" style="display:grid;grid-template-rows:auto auto;gap:1.6vh;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
+        <div class="lead" style="max-width:58ch;color:rgba(255,255,255,.86);font-weight:400">把 GitHub Issues 从任务清单，升级为按依赖自动解锁的开发系统。</div>
+        <div style="display:flex;justify-content:space-between;align-items:end">
+          <div class="t-meta" style="color:rgba(255,255,255,.62)">落尘 · AI DEVELOPMENT FIELD NOTE</div>
+          <div class="t-meta" style="color:rgba(255,255,255,.62)">→ SWIPE / ARROW KEYS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S03" data-animate="statement">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">02 / 16 · THE SHIFT</div><div class="r">FROM CODING TO SCHEDULING</div></div>
+    <h1 data-anim="line" class="h-statement" style="font-size:min(8.2vw,14.2vh)">AI 越快，<br/><span style="color:var(--accent)">调度越重要。</span></h1>
+    <span data-anim="line" class="stmt-anchor">真正的瓶颈，从“会不会写”转向“先做什么、谁等谁、何时合并”。</span>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">03 / 16 · BEFORE / AFTER</div><div class="r">TASK LIST → DEPENDENCY GRAPH</div></div>
+    <div data-anim="up" class="duo-compare">
+      <div class="duo-half col">
+        <span class="t-cat">TODO LIST</span>
+        <h2>把任务<br/>排成一条线</h2>
+        <p class="body">看起来清楚，却把本来可以并行的工作错误地串行化。</p>
+        <ul>
+          <li>下游提前开工，重复改上游文件</li>
+          <li>多个分支同时漂移，合并时集中爆炸</li>
+          <li>下一步靠感觉，不靠系统判断</li>
+        </ul>
+      </div>
+      <span class="vrule"></span>
+      <div class="duo-half col accent">
+        <span class="t-cat accent">DAG</span>
+        <h2>把依赖<br/>讲清楚</h2>
+        <p class="body">节点是 Issue，边是 depends_on / blocks，输出是 Ready Queue。</p>
+        <ul>
+          <li>无依赖的任务立即并行</li>
+          <li>上游 Contract 先稳定、先合并</li>
+          <li>每次合并后自动解锁下一批</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">04 / 16 · PREPARATION</div><div class="r">BEFORE ANY CODE</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
+      <div class="t-meta">THE FIRST THIRD</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh);max-width:13ch">需求确认至少占开发时间的三分之一</h2>
+      <p class="lead" style="max-width:56ch;color:var(--text-secondary);font-size:max(18px,1.24vw)">需求模糊时，拆 Issue 只会把模糊放大；AI 会沿着错误理解高速制造分支和 PR。</p>
+    </div>
+    <div data-anim="up" class="timeline-h">
+      <div class="tl-row">
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">确认需求</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">沉淀文档</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">拆父 Issue</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">拆子 Issue</span></div></div>
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">建立 DAG</span></div></div>
+      </div>
+    </div>
+    <div class="t-meta" style="margin-bottom:var(--nav-safe-bottom)">先把目标、范围、边界和验收写清楚，再开始调度。</div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S05" data-animate="stack-build">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">05 / 16 · TASK ARCHITECTURE</div><div class="r">MANAGE · EXECUTE · SCHEDULE</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
+      <div class="t-meta">THREE LAYERS</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh)">管理看 Epic，执行看 Issue，调度看 Queue</h2>
+    </div>
+    <div class="stack-row nav-safe-bottom-tight">
+      <article class="stack-block b-ink">
+        <span class="layer-nb">LAYER 01 · EPIC</span><i data-lucide="boxes"></i>
+        <h3 class="layer-ttl">父 Issue 定义边界</h3>
+        <p class="layer-desc">一个清晰业务模块、交付目标、验收口径和子 Issue 索引。</p>
+        <span class="layer-tag">MANAGEMENT VIEW</span>
+      </article>
+      <article class="stack-block b-grey">
+        <span class="layer-nb">LAYER 02 · ISSUE</span><i data-lucide="square-check-big"></i>
+        <h3 class="layer-ttl">子 Issue 承接执行</h3>
+        <p class="layer-desc">可独立实现、独立验收、独立开 PR，范围不跨模块漂移。</p>
+        <span class="layer-tag">EXECUTION UNIT</span>
+      </article>
+      <article class="stack-block b-accent">
+        <span class="layer-nb">LAYER 03 · QUEUE</span><i data-lucide="git-branch"></i>
+        <h3 class="layer-ttl">Ready Queue 负责调度</h3>
+        <p class="layer-desc">只展示依赖已满足、现在可以安全开工的任务。</p>
+        <span class="layer-tag">SCHEDULING OUTPUT</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">06 / 16 · DAG ANATOMY</div><div class="r">SIX DEFINITIONS</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">LIGHTWEIGHT MODEL</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">你只需要看懂六件事</h2>
+    </div>
+    <div data-anim="up" class="cell-6">
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="circle-dot"></i><span class="cell-num">01</span></div><h4>Node</h4><p>一个可执行的 GitHub Issue</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="move-right"></i><span class="cell-num">02</span></div><h4>Edge</h4><p>depends_on 或 blocks 依赖方向</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="play"></i><span class="cell-num">03</span></div><h4>Ready</h4><p>所有前置依赖都已经完成</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="pause"></i><span class="cell-num">04</span></div><h4>Blocked</h4><p>必须等待上游或外部条件</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="git-pull-request"></i><span class="cell-num">05</span></div><h4>Review</h4><p>已有 PR，等待 CI 或合并</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="check-check"></i><span class="cell-num">06</span></div><h4>Done</h4><p>合并并关闭，触发下一轮解锁</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S17" data-animate="system-diagram">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">07 / 16 · DEPENDENCY SYSTEM</div><div class="r">CONTRACT BEFORE IMPLEMENTATION</div></div>
+    <div data-anim="line" class="system-diagram">
+      <div class="system-copy">
+        <span class="t-cat accent">THE REAL UPSTREAM</span>
+        <h2>前后端不必等待彼此完成</h2>
+        <p>“登录页面”不一定依赖“登录 API 完成”，它更可能只依赖 API Contract 明确。把依赖定义到正确层级，才会真正释放并行。</p>
+        <div class="t-meta">OUTER → IMPLEMENTATION · MIDDLE → CONTRACT · CORE → ACCEPTANCE</div>
+      </div>
+      <div data-anim="up" class="system-rings">
+        <div class="sys-ring outer"><span class="sys-label" style="align-self:start;margin-top:3vh">IMPLEMENTATION</span></div>
+        <div class="sys-ring middle"><span class="sys-label" style="align-self:start;margin-top:3vh;color:var(--accent)">CONTRACT</span></div>
+        <div class="sys-ring core"><span class="sys-label">验收<br/>标准</span></div>
+        <span class="sys-note n1">Frontend + Mock</span>
+        <span class="sys-note n2">Backend + Schema</span>
+        <span class="sys-note n3">Tests + Cases</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S09" data-animate="statement">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">08 / 16 · THE OUTPUT</div><div class="r">NOT A PRETTY GRAPH</div></div>
+    <div class="dot-mat lg" style="position:absolute;right:0;top:0;width:34vw;height:34vw;color:var(--accent)"></div>
+    <h1 data-anim="line" class="h-statement" style="font-size:min(8vw,14vh);max-width:11ch">DAG 的输出<br/>不是图，<br/><span style="color:var(--accent-bright)">是 Ready Queue。</span></h1>
+    <span data-anim="line" class="stmt-anchor">不要问“所有任务怎么排期”，先问“现在可以安全做哪些”。</span>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S19" data-animate="four-cards">
+  <div class="canvas-card">
+    <div data-anim="line">
+      <div style="width:80px;height:2px;background:var(--accent);margin-bottom:4vh"></div>
+      <div class="chrome-min"><div class="l">09 / 16 · READY QUEUE</div><div class="r">FOUR STATES</div></div>
+      <div style="display:flex;flex-direction:column;gap:1.4vh">
+        <div class="t-meta">STATUS IS A DECISION</div>
+        <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">每个 Issue 只能处在一个明确状态</h2>
+      </div>
+    </div>
+    <div data-anim="up" class="four-cards">
+      <div class="fc-col is-accent"><span class="t-meta">— 01 / READY</span><h3>现在开工</h3><p>依赖已满足，让 Agent 或开发者领取。</p></div>
+      <div class="fc-col"><span class="t-meta">— 02 / BLOCKED</span><h3>明确等待</h3><p>必须写清正在等谁，不提前改核心文件。</p></div>
+      <div class="fc-col"><span class="t-meta">— 03 / REVIEW</span><h3>先过关</h3><p>已有 PR，优先处理 CI、Review 和合并。</p></div>
+      <div class="fc-col"><span class="t-meta">— 04 / DONE</span><h3>重新计算</h3><p>合并并关闭后，立即解锁下一批 Ready。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S13" data-animate="three-forces">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">10 / 16 · FAILURE CASE</div><div class="r">PR #154</div></div>
+    <div data-anim="up" class="three-forces">
+      <div class="hero-ink-col">
+        <span class="t-cat on-dark">CONFLICT POSTMORTEM</span>
+        <h2>真正浪费时间的<br/>不是写代码</h2>
+        <p>PR #154 的代价来自执行前没有明确：#41 依赖哪些上游、谁该先合并、谁必须等待。</p>
+      </div>
+      <div class="force-list">
+        <article class="force-card card-fill"><span class="force-num">01</span><h3>上游尚未稳定</h3><p>多个下游分支同时修改同一批基础文件。</p></article>
+        <article class="force-card card-fill"><span class="force-num">02</span><h3>冲突被当成局部技术问题</h3><p>二进制冲突、分支落后、重开 PR 反复补丁式处理。</p></article>
+        <article class="force-card card-fill"><span class="force-num">03</span><h3>CI 与合并顺序缠在一起</h3><p>状态重跑、PR 被提前关闭，真正原因是依赖顺序错误。</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">11 / 16 · EXECUTION PROTOCOL</div><div class="r">ONE READY ISSUE AT A TIME</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.5vh">
+      <div class="t-meta">ISSUE → PR</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.6vh)">单个执行者，一次只做一个 Ready Issue</h2>
+      <p class="lead" style="max-width:55ch;color:var(--text-secondary);font-size:max(18px,1.24vw)">并发不是一个 Agent 同时乱做十件事，而是多个执行者各自领取互不冲突的 Ready Issue。</p>
+    </div>
+    <div data-anim="up" class="timeline-h">
+      <div class="tl-row">
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">复述目标</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">锁定 Scope</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">修改文件</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">运行检查</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">提交 PR</span></div></div>
+      </div>
+    </div>
+    <div class="t-meta" style="margin-bottom:var(--nav-safe-bottom)">PR 描述写明 Fixes #XX、验证结果、风险点，以及是否解锁后续 Issue。</div>
+  </div>
+</section>
+
+<section class="slide dark" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">12 / 16 · CONTEXT BOUNDARY</div><div class="r">ONE TERMINAL · ONE EPIC</div></div>
+    <div data-anim="up" class="duo-compare">
+      <div class="duo-half col">
+        <span class="t-cat on-dark">MIXED CONTEXT</span>
+        <h2>一个窗口<br/>跨多个 Epic</h2>
+        <p class="body">上下文、分支、检查和复盘来回切换，AI 的工作记忆会被污染。</p>
+        <ul><li>范围漂移</li><li>误改其他模块</li><li>依赖关系混在一起</li></ul>
+      </div>
+      <span class="vrule"></span>
+      <div class="duo-half col">
+        <span class="t-cat" style="color:var(--accent-bright)">BOUND CONTEXT</span>
+        <h2 style="color:var(--accent-bright)">一个窗口<br/>只管一个 Epic</h2>
+        <p class="body">另一个父 Issue 就新开终端，重新加载需求、子 Issue 和局部 DAG。</p>
+        <ul><li>记忆边界清晰</li><li>分支与 PR 可追踪</li><li>复盘能回到同一任务图</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S14" data-animate="loop-form">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">13 / 16 · FEEDBACK LOOP</div><div class="r">MERGE → RECALCULATE</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">DEVELOPMENT AS A FLOW</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.3vw,9.4vh)">每次合并，都要重新计算 DAG</h2>
+    </div>
+    <div data-anim="up" class="loop-diagram">
+      <div class="loop-steps">
+        <div><span>01</span><strong>领取 Ready Issue</strong><p>只处理依赖已满足的任务。</p></div>
+        <div><span>02</span><strong>开 PR + 运行 CI</strong><p>留下可回看、可回滚的证据。</p></div>
+        <div><span>03</span><strong>合并并关闭 Issue</strong><p>确认代码、状态和验收一致。</p></div>
+        <div><span>04</span><strong>更新 Ready Queue</strong><p>找出刚被解锁的下一批任务。</p></div>
+      </div>
+      <div class="loop-svg">
+        <svg viewBox="0 0 420 420" aria-hidden="true">
+          <circle cx="210" cy="210" r="145" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <circle cx="210" cy="210" r="90" fill="none" stroke="var(--ink)" stroke-width="1"/>
+          <path d="M210 65 L250 105 L210 145 L170 105 Z" fill="var(--accent)"/>
+          <path d="M355 210 L315 250 L275 210 L315 170 Z" fill="var(--grey-2)"/>
+          <path d="M210 355 L170 315 L210 275 L250 315 Z" fill="var(--grey-2)"/>
+          <path d="M65 210 L105 170 L145 210 L105 250 Z" fill="var(--grey-2)"/>
+        </svg>
+        <div style="position:absolute;inset:0;display:grid;place-items:center;font-size:min(5.2vw,9.2vh);font-weight:200;letter-spacing:-.04em">READY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">14 / 16 · AUTOMATION</div><div class="r">LET CI GUARD THE GRAPH</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">SYSTEM GUARDRAILS</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">不要靠人肉记住所有依赖</h2>
+    </div>
+    <div data-anim="up" class="cell-6">
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="circle-slash-2"></i><span class="cell-num">01</span></div><h4>禁止自依赖</h4><p>Issue 不能 depends_on 自己</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="refresh-cw-off"></i><span class="cell-num">02</span></div><h4>禁止循环</h4><p>A → B → C → A 必须失败</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="scan-search"></i><span class="cell-num">03</span></div><h4>引用必须存在</h4><p>depends_on 指向真实 Issue</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="shield-check"></i><span class="cell-num">04</span></div><h4>状态必须一致</h4><p>Closed 与 Blocked 不能矛盾</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="list-filter"></i><span class="cell-num">05</span></div><h4>自动输出 Ready</h4><p>只展示当前可领取节点</p></div>
+      <div class="cell"><div class="cell-icon-row"><i data-lucide="git-merge"></i><span class="cell-num">06</span></div><h4>合并后重算</h4><p>PR 状态变化触发新队列</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-layout="S16" data-animate="field-notes">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">15 / 16 · PROMPT KIT</div><div class="r">COPY · ADAPT · RUN</div></div>
+    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="t-meta">SIX COMMANDS</div>
+      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">把复杂方法压成六类指令</h2>
+    </div>
+    <div data-anim="up" class="brief-grid">
+      <article class="brief-card"><span class="t-meta">01 / INVENTORY</span><h3>先盘点，不写代码</h3><p>读取 Open Issues / PR，输出分类、疑似依赖、重复与第一批 Ready。</p></article>
+      <article class="brief-card is-accent"><span class="t-meta">02 / VISUALIZE</span><h3>生成主 DAG 与局部 DAG</h3><p>展示 Epic 依赖、完成度，以及未完成 Epic 的子任务图。</p></article>
+      <article class="brief-card"><span class="t-meta">03 / QUEUE</span><h3>输出四种状态</h3><p>Ready / Blocked / Review / Done；Blocked 必须说明在等谁。</p></article>
+      <article class="brief-card"><span class="t-meta">04 / EXECUTE</span><h3>只执行 #XX</h3><p>复述目标、范围、验收；只改相关文件，运行检查后开 PR。</p></article>
+      <article class="brief-card"><span class="t-meta">05 / RECALCULATE</span><h3>合并后重新读取状态</h3><p>确认 PR、CI、Issue，然后列出新解锁的 Ready Queue。</p></article>
+      <article class="brief-card"><span class="t-meta">06 / POSTMORTEM</span><h3>冲突先回到 DAG</h3><p>判断是局部代码冲突，还是依赖顺序错误；必要时暂停下游。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
+  <div class="canvas-card">
+    <div class="split-half">
+      <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
+        <canvas class="ascii-bg" aria-hidden="true"></canvas>
+        <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">16 / 16</div><div class="r">CLOSING</div></div>
+        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
+          <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">MANIFESTO</div>
+          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(7.2vw,12.5vh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">不要让 AI<br/>冲向错误的<span style="font-style:italic;font-weight:300">顺序</span></h2>
+          <p style="font-size:max(18px,1.06vw);line-height:1.6;color:rgba(255,255,255,.84);font-weight:400;max-width:36ch">DAG 不是额外的项目管理负担，而是把并发开发变成可计算、可审查、可持续解锁的系统。</p>
+        </div>
+        <div data-anim="signature" class="t-meta" style="color:rgba(255,255,255,.62);border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;position:relative;z-index:1">落尘 · AI DEVELOPMENT</div>
+      </div>
+      <div class="half" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between">
+        <div class="chrome-min"><div class="l">TAKEAWAYS</div><div class="r">03 RULES</div></div>
+        <div data-anim="rules" style="display:flex;flex-direction:column;gap:0">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.5vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9">01</div>
+            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);margin-bottom:1vh">需求先于 Issue</h3><p class="body-sm">先确认目标、范围、边界与验收，再拆任务。</p></div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.5vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9">02</div>
+            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);margin-bottom:1vh">Contract 先于实现</h3><p class="body-sm">把上游依赖定义在能释放并行的最小稳定层。</p></div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.5vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
+            <div style="font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--accent)">03</div>
+            <div><h3 style="font-weight:400;font-size:max(18px,1.75vw);color:var(--accent);margin-bottom:1vh">Ready Queue 先于排期</h3><p class="body-sm">系统先告诉你现在能做什么，再决定由谁领取。</p></div>
+          </div>
+        </div>
+        <div data-anim="foot" class="t-meta" style="text-align:right">→ END · BUILD THE GRAPH</div>
+      </div>
+    </div>
+  </div>
+</section>
