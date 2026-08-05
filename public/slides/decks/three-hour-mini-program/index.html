@@ -1345,10 +1345,16 @@
 .course-progress{width:min(31vw,410px);display:grid;gap:7px;text-align:right;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .course-progress .cp-label{justify-self:end;background:var(--accent);color:#fff;padding:4px 8px;font-size:12px;font-weight:800;line-height:1}
 .course-progress .cp-meta{font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.78}
+.course-progress .cp-total-meta{margin-top:1px}
+.course-progress .cp-part-track{height:5px;background:rgba(0,47,167,.16);opacity:1;position:relative;overflow:hidden}
+.course-progress .cp-part-fill{display:block;height:100%;background:var(--accent);opacity:1}
 .course-progress .cp-track{height:8px;background:rgba(82,82,82,.22);opacity:1;position:relative;overflow:hidden;border:1px solid rgba(0,47,167,.28)}
 .course-progress .cp-fill{display:block;height:100%;background:var(--accent);opacity:1}
 .slide.dark .course-progress .cp-track,.slide.accent .course-progress .cp-track{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
-.slide.dark .course-progress .cp-fill,.slide.accent .course-progress .cp-fill{background:#6f8cff}
+.slide.dark .course-progress .cp-part-track,.slide.accent .course-progress .cp-part-track{background:rgba(255,255,255,.2)}
+.slide.dark .course-progress .cp-fill,.slide.accent .course-progress .cp-fill,.slide.dark .course-progress .cp-part-fill,.slide.accent .course-progress .cp-part-fill{background:#6f8cff}
+.course-progress-floating{position:absolute;top:5.6vh;right:5vw;z-index:4;color:var(--ink)}
+.slide.split .course-progress-floating{color:var(--ink)}
 .speaker-intro{display:grid;grid-template-columns:minmax(260px,4fr) minmax(0,8fr);gap:4vw;align-items:center;flex:1;margin-bottom:var(--nav-safe-bottom)}
 .speaker-portrait{height:min(58vh,640px);background:var(--ink);overflow:hidden;border-left:8px solid var(--accent)}
 .speaker-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.16) contrast(1.08)}
@@ -1356,9 +1362,14 @@
 .speaker-copy .deck-xl{font-size:min(5.8vw,10vh)}
 .speaker-proof{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-subtle);margin-top:auto}
 .speaker-proof span{padding:1.8vh 1vw;background:var(--grey-1);font-size:max(14px,.88vw);line-height:1.45}
+.closing-recap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-subtle);margin-top:5vh}
+.closing-recap div{display:flex;flex-direction:column;gap:1.6vh;padding:2vh 1vw;background:var(--paper);border-top:2px solid var(--accent)}
+.closing-recap b{font-family:var(--mono);font-size:14px;letter-spacing:.1em;color:var(--accent)}
+.closing-recap span{font-size:max(16px,1vw);font-weight:500;line-height:1.35}
 .slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:4vh}
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
+.slide[data-layout="SWISS-CLOSING-ASCII"] .half.b-grey{padding-top:18vh!important}
 @media(max-width:900px){
   .deck-grid-4,.deck-grid-3,.deck-grid-6{grid-template-columns:repeat(2,1fr)}
   .phase-bar,.loop-row,.tool-flow{grid-template-columns:repeat(2,1fr)}
@@ -1625,7 +1636,7 @@
 </section>
 
 <section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
-  <div class="canvas-card"><div class="split-half"><div class="split-half-inner"><div class="t-meta">TAKEAWAY</div><h1 class="deck-title" style="font-size:min(6.7vw,11.8vh);color:#fff">速度来自<br>边界</h1></div></div><div class="split-half light"><div class="split-half-inner"><div class="t-meta">TAKEAWAY</div><h1 class="deck-title" style="font-size:min(5.8vw,10.2vh);color:var(--text-helper)">可信来自<br><span style="color:var(--accent)">验证</span></h1><p class="deck-lead">先科普，再动手；有余量才调优。</p></div></div></div>
+  <div class="canvas-card"><div class="split-half"><div class="half b-ink"><div class="t-meta">TAKEAWAY</div><h1 class="deck-title" style="font-size:min(6.7vw,11.8vh);color:#fff">速度来自<br>边界</h1><p class="deck-lead" style="color:rgba(255,255,255,.76);margin-top:auto">把第一版做小，把每一步做实。</p></div><div class="half b-grey r-border"><div class="t-meta">TAKEAWAY</div><h1 class="deck-title" style="font-size:min(5.8vw,10.2vh);color:var(--text-helper)">可信来自<br><span style="color:var(--accent)">验证</span></h1><p class="deck-lead">先科普，再动手；有余量才调优。</p><div class="closing-recap"><div><b>01</b><span>场景足够小</span></div><div><b>02</b><span>真机走通</span></div><div><b>03</b><span>交付证据留存</span></div></div></div></div></div>
 </section>
 
 </div>
@@ -2715,20 +2726,32 @@ if(motion){
 </script>
 <script>
 (() => {
-  const checkpoints = [0,0,0,0,0,0,0,30,30,30,30,40,55,75,85,90,105,125,135,145,155,155,165,170,175,180,180];
+  const checkpoints = [0,0,3,8,13,18,26,30,34,38,40,45,65,75,85,90,105,125,135,145,155,160,167,172,175,180,180];
   const sections = [
-    [0, 6, '第 1 部分 · 基础与准备'],
-    [7, 19, '第 2 部分 · 动手实操'],
-    [20, 24, '第 3 部分 · 调整调优'],
-    [25, 26, '收尾 · 交付与上线']
+    [0, 6, 1, '基础与准备', 0, 30],
+    [7, 19, 2, '动手实操', 30, 155],
+    [20, 26, 3, '调整调优与收尾', 155, 180]
   ];
-  const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end)?.[2] || '课程导航';
+  const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end) || sections[0];
   const render = (index) => {
     const minute = checkpoints[index] ?? 0;
     const remaining = Math.max(0, 180 - minute);
+    const [,, part, name, partStart, partEnd] = getSection(index);
+    const partTotal = Math.max(1, partEnd - partStart);
+    const partElapsed = Math.min(partTotal, Math.max(0, minute - partStart));
+    const finishedParts = partElapsed >= partTotal ? part : part - 1;
+    const progress = '<div class="course-progress"><div class="cp-label">第 ' + part + ' / 3 部分 · ' + name + '</div><div class="cp-meta">已完成 ' + finishedParts + ' / 3 个部分 · 本部分 ' + partElapsed + ' / ' + partTotal + ' 分钟</div><div class="cp-part-track"><i class="cp-part-fill" style="width:' + (partElapsed / partTotal * 100) + '%"></i></div><div class="cp-meta cp-total-meta">全程 ' + minute + ' / 180 分钟 · 还剩 ' + remaining + ' 分钟</div><div class="cp-track"><i class="cp-fill" style="width:' + (minute / 180 * 100) + '%"></i></div></div>';
     document.querySelectorAll('.chrome-min .r').forEach((node) => {
-      node.innerHTML = '<div class="course-progress"><div class="cp-label">' + getSection(index) + '</div><div class="cp-meta">课程 ' + minute + ' / 180 分钟 · 还剩 ' + remaining + ' 分钟</div><div class="cp-track"><i class="cp-fill" style="width:' + (minute / 180 * 100) + '%"></i></div></div>';
+      node.innerHTML = progress;
     });
+    document.querySelectorAll('.course-progress-floating').forEach((node) => node.remove());
+    const activeSlide = document.querySelectorAll('.slide')[index];
+    if (activeSlide && !activeSlide.querySelector('.chrome-min')) {
+      const floating = document.createElement('aside');
+      floating.className = 'course-progress-floating';
+      floating.innerHTML = progress;
+      activeSlide.appendChild(floating);
+    }
   };
   const originalGo = go;
   go = function(index) { originalGo(index); render(window.__currentSlideIndex || 0); };

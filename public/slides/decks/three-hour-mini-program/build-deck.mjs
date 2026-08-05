@@ -22,20 +22,32 @@ html = html.replace("</style>", `${styles}\n</style>`);
 
 const courseProgressScript = `<script>
 (() => {
-  const checkpoints = [0,0,0,0,0,0,0,30,30,30,30,40,55,75,85,90,105,125,135,145,155,155,165,170,175,180,180];
+  const checkpoints = [0,0,3,8,13,18,26,30,34,38,40,45,65,75,85,90,105,125,135,145,155,160,167,172,175,180,180];
   const sections = [
-    [0, 6, '第 1 部分 · 基础与准备'],
-    [7, 19, '第 2 部分 · 动手实操'],
-    [20, 24, '第 3 部分 · 调整调优'],
-    [25, 26, '收尾 · 交付与上线']
+    [0, 6, 1, '基础与准备', 0, 30],
+    [7, 19, 2, '动手实操', 30, 155],
+    [20, 26, 3, '调整调优与收尾', 155, 180]
   ];
-  const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end)?.[2] || '课程导航';
+  const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end) || sections[0];
   const render = (index) => {
     const minute = checkpoints[index] ?? 0;
     const remaining = Math.max(0, 180 - minute);
+    const [,, part, name, partStart, partEnd] = getSection(index);
+    const partTotal = Math.max(1, partEnd - partStart);
+    const partElapsed = Math.min(partTotal, Math.max(0, minute - partStart));
+    const finishedParts = partElapsed >= partTotal ? part : part - 1;
+    const progress = '<div class="course-progress"><div class="cp-label">第 ' + part + ' / 3 部分 · ' + name + '</div><div class="cp-meta">已完成 ' + finishedParts + ' / 3 个部分 · 本部分 ' + partElapsed + ' / ' + partTotal + ' 分钟</div><div class="cp-part-track"><i class="cp-part-fill" style="width:' + (partElapsed / partTotal * 100) + '%"></i></div><div class="cp-meta cp-total-meta">全程 ' + minute + ' / 180 分钟 · 还剩 ' + remaining + ' 分钟</div><div class="cp-track"><i class="cp-fill" style="width:' + (minute / 180 * 100) + '%"></i></div></div>';
     document.querySelectorAll('.chrome-min .r').forEach((node) => {
-      node.innerHTML = '<div class="course-progress"><div class="cp-label">' + getSection(index) + '</div><div class="cp-meta">课程 ' + minute + ' / 180 分钟 · 还剩 ' + remaining + ' 分钟</div><div class="cp-track"><i class="cp-fill" style="width:' + (minute / 180 * 100) + '%"></i></div></div>';
+      node.innerHTML = progress;
     });
+    document.querySelectorAll('.course-progress-floating').forEach((node) => node.remove());
+    const activeSlide = document.querySelectorAll('.slide')[index];
+    if (activeSlide && !activeSlide.querySelector('.chrome-min')) {
+      const floating = document.createElement('aside');
+      floating.className = 'course-progress-floating';
+      floating.innerHTML = progress;
+      activeSlide.appendChild(floating);
+    }
   };
   const originalGo = go;
   go = function(index) { originalGo(index); render(window.__currentSlideIndex || 0); };
