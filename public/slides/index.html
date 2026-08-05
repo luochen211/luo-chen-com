@@ -97,50 +97,29 @@
   .section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,520px);gap:48px;align-items:end;margin-bottom:42px}
   .section-head h2{margin:0;font-size:clamp(42px,6.2vw,112px);font-weight:220;letter-spacing:-.06em;line-height:.92;max-width:900px}
   .section-head p{margin:0;font-size:clamp(17px,1.15vw,22px);line-height:1.62;color:rgba(17,17,15,.68)}
+  .catalog-controls{display:grid;grid-template-columns:minmax(280px,1fr) auto;gap:18px;align-items:end;padding:24px 0 32px;border-top:1px solid var(--line)}
+  .search-field{display:grid;gap:9px}
+  .control-label,.results-count{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  .search-field input{width:100%;height:52px;padding:0 18px;border:1px solid rgba(17,17,15,.2);border-radius:4px;background:rgba(255,253,248,.72);color:var(--ink);font:inherit;font-size:16px;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+  .search-field input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,47,167,.1)}
+  .filter-group{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+  .filter-button{min-height:36px;padding:0 13px;border:1px solid rgba(17,17,15,.16);border-radius:999px;background:rgba(255,253,248,.38);color:var(--ink);font:600 13px/1 "Geist","Noto Sans SC",sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .filter-button:hover,.filter-button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+  .catalog-status{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:0 0 18px}
+  .empty-results{margin:0;padding:64px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:clamp(24px,3vw,42px);font-weight:250;letter-spacing:-.04em}
   .library-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:18px}
-  .deck-card,.note-card,.metric-card{
-    min-height:320px;border:1px solid rgba(17,17,15,.13);background:rgba(255,253,248,.58);backdrop-filter:blur(18px);
-    overflow:hidden;position:relative;border-radius:6px;
-  }
-  .deck-card{grid-column:span 7;min-height:560px;display:grid;grid-template-rows:1fr auto;color:var(--white);background:var(--ink)}
+  .deck-card{grid-column:span 6;min-height:500px;display:grid;grid-template-rows:1fr auto;overflow:hidden;position:relative;border:1px solid rgba(17,17,15,.13);border-radius:6px;color:var(--white);background:var(--ink)}
+  .deck-card.featured{grid-column:span 12;min-height:620px}
   .deck-card .cover{position:absolute;inset:0;overflow:hidden}
   .deck-card .cover img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) contrast(1.18) brightness(.55);transform:scale(1.02);transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .9s ease}
   .deck-card:hover .cover img{transform:scale(1.08);filter:grayscale(0) contrast(1.12) brightness(.62)}
   .deck-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.72))}
   .deck-content{position:relative;z-index:1;align-self:end;padding:34px;display:grid;gap:24px}
-  .deck-title{font-size:clamp(42px,5.4vw,92px);font-weight:240;letter-spacing:-.06em;line-height:.92}
+  .deck-title{font-size:clamp(34px,3.8vw,64px);font-weight:240;letter-spacing:-.06em;line-height:.92}
+  .deck-card.featured .deck-title{font-size:clamp(42px,5.4vw,86px)}
   .deck-copy{max-width:560px;color:rgba(255,255,255,.78);font-size:18px;line-height:1.58}
   .deck-meta{display:flex;flex-wrap:wrap;gap:10px}
   .chip{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);padding:8px 11px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78)}
-  .note-card{grid-column:span 5;padding:30px;display:flex;flex-direction:column;justify-content:space-between}
-  .note-card h3,.metric-card h3{margin:0;font-size:clamp(28px,3.1vw,56px);font-weight:270;letter-spacing:-.045em;line-height:1}
-  .note-card p,.metric-card p{margin:0;color:rgba(17,17,15,.66);font-size:17px;line-height:1.58}
-  .note-lines{display:grid;gap:12px;margin-top:34px}
-  .note-line{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:14px 0;border-top:1px solid var(--line)}
-  .note-line b{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-  .note-line span{color:rgba(17,17,15,.72);line-height:1.5}
-  .metric-card{grid-column:span 4;min-height:230px;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
-  .metric-card strong{font-size:clamp(48px,6vw,104px);font-weight:200;letter-spacing:-.07em;line-height:.85}
-  .metric-card.blue{background:var(--blue);color:#fff}
-  .metric-card.blue p{color:rgba(255,255,255,.74)}
-  .rail{padding-top:70px}
-  .rail-wrap{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:64px;align-items:start}
-  .rail-title{position:sticky;top:130px}
-  .rail-title h2{margin:0;font-size:clamp(44px,5vw,92px);font-weight:220;line-height:.94;letter-spacing:-.06em}
-  .rail-title p{margin:24px 0 0;color:rgba(17,17,15,.66);font-size:18px;line-height:1.62}
-  .accordion{display:grid;grid-template-columns:1fr 1fr 1fr;min-height:520px;border:1px solid var(--line);overflow:hidden;border-radius:6px;background:rgba(255,253,248,.58)}
-  .panel{position:relative;overflow:hidden;padding:26px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;transition:flex .65s cubic-bezier(.2,.8,.2,1),background .4s ease;color:var(--ink)}
-  .panel:last-child{border-right:0}
-  .panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .5s ease,transform .8s ease;filter:grayscale(.25) contrast(1.08) brightness(.76)}
-  .panel:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(247,244,238,.92),rgba(17,17,15,.2));z-index:1;transition:background .4s ease}
-  .panel > *:not(img){position:relative;z-index:2}
-  .accordion:hover{grid-template-columns:.75fr 1.5fr .75fr}
-  .panel:hover{color:#fff}
-  .panel:hover img{opacity:1;transform:scale(1)}
-  .panel:hover:before{background:linear-gradient(180deg,rgba(0,47,167,.22),rgba(0,0,0,.72))}
-  .panel h3{margin:0;font-size:clamp(28px,3.2vw,58px);font-weight:250;line-height:.98;letter-spacing:-.05em}
-  .panel p{margin:30px 0 0;max-width:32ch;font-size:16px;line-height:1.58;color:currentColor;opacity:.78}
-  .panel .arrow{font-size:34px;font-weight:200;align-self:flex-end}
   .closing{padding-bottom:80px}
   .closing-box{
     min-height:440px;background:var(--ink);color:var(--white);border-radius:6px;padding:44px;
@@ -158,7 +137,7 @@
     .nav{top:14px}
     .nav-links{display:none}
     .hero{padding-top:118px}
-    .hero-grid,.section-head,.rail-wrap,.closing-box{grid-template-columns:1fr}
+    .hero-grid,.section-head,.closing-box,.catalog-controls{grid-template-columns:1fr}
     .eyebrow{font-size:11px;line-height:1.45;letter-spacing:.15em;max-width:34ch}
     h1{font-size:clamp(42px,12.5vw,66px);letter-spacing:-.052em;line-height:.95}
     .only-mobile{display:block}
@@ -166,10 +145,7 @@
     .hero-media{display:none}
     .shot.main{width:86vw}.shot.side{width:58vw}.shot.top{width:48vw}
     section{padding:84px 0}
-    .deck-card,.note-card,.metric-card{grid-column:span 12}
-    .accordion{grid-template-columns:1fr;min-height:auto}
-    .accordion:hover{grid-template-columns:1fr}
-    .panel{min-height:280px;border-right:0;border-bottom:1px solid var(--line)}
+    .catalog-controls{gap:16px}.filter-group{justify-content:flex-start}.catalog-status{align-items:flex-start;flex-direction:column}.deck-card,.deck-card.featured{grid-column:span 12;min-height:480px}
     .footer{flex-direction:column}
   }
 </style>
@@ -182,9 +158,9 @@
     </a>
     <div class="nav-links">
       <a href="/">返回主站</a>
-      <a href="#library">作品</a>
-      <a href="#system">结构</a>
-      <a href="#next">新增</a>
+      <a href="#library">作品目录</a>
+      <a href="#library" data-catalog-link="agent">AI 与 Agent</a>
+      <a href="#library" data-catalog-link="miniapp">小程序</a>
       <a class="nav-action" href="/slides/decks/agent-harness/lessons/">看最新一份</a>
     </div>
   </nav>
@@ -198,7 +174,7 @@
           <p class="hero-lead reveal">这里集中存放落尘做过的公开分享、课程讲稿和项目复盘。每一份都保留成独立网页：能投屏，能转发，也能回看。</p>
           <div class="hero-actions reveal">
             <a class="btn primary" href="/slides/decks/agent-harness/lessons/">查看 Agent Harness 五节课</a>
-            <a class="btn secondary" href="#library">浏览全部 PPT</a>
+            <a class="btn secondary" href="#library">查找一份 PPT</a>
           </div>
         </div>
         <div class="hero-media reveal" aria-hidden="true">
@@ -213,12 +189,31 @@
 
     <section id="library" class="shell">
       <div class="section-head reveal">
-        <h2>已上线的 PPT</h2>
-        <p>这个页面是落尘 PPT 的总入口。真正的演示内容保持在各自 deck 目录里；以后新增一份，就在这里多一张作品卡。</p>
+        <h2>PPT 目录</h2>
+        <p>按主题、关键词或你正在解决的问题，直接找到一份值得打开的分享、课程或项目复盘。</p>
+      </div>
+
+      <div class="catalog-controls reveal" aria-label="作品查找工具">
+        <label class="search-field" for="deck-search">
+          <span class="control-label">查找</span>
+          <input id="deck-search" type="search" placeholder="例如：Agent、产品、UI、小程序、DAG" autocomplete="off">
+        </label>
+        <div class="filter-group" aria-label="按领域筛选">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button class="filter-button" type="button" data-filter="agent" aria-pressed="false">AI 与 Agent</button>
+          <button class="filter-button" type="button" data-filter="programming" aria-pressed="false">AI 编程</button>
+          <button class="filter-button" type="button" data-filter="miniapp" aria-pressed="false">小程序</button>
+          <button class="filter-button" type="button" data-filter="design" aria-pressed="false">产品与设计</button>
+          <button class="filter-button" type="button" data-filter="review" aria-pressed="false">项目复盘</button>
+        </div>
+      </div>
+
+      <div class="catalog-status" aria-live="polite">
+        <p id="results-count" class="results-count">5 份作品</p>
       </div>
 
       <div class="library-grid">
-        <a class="deck-card reveal" href="/slides/decks/agent-harness/lessons/">
+        <a class="deck-card featured reveal" href="/slides/decks/agent-harness/lessons/" data-tags="agent programming" data-search="Agent Harness 五节基础课 AI Agent 工程实践 课程 Context Tools Harness">
           <div class="cover"><img src="/slides/decks/agent-harness/preview.png" alt="Agent 与 Harness 基础课预览"></div>
           <div class="deck-content">
             <div>
@@ -226,15 +221,14 @@
               <p class="deck-copy">把两小时内容拆成五个可独立讲授的半小时单元，并用完整一节拆清 Harness 的五项功能、职责与运行控制流。</p>
             </div>
             <div class="deck-meta">
-              <span class="chip">5 lessons</span>
-              <span class="chip">42 slides</span>
-              <span class="chip">Presenter demo</span>
-              <span class="chip">Agent Harness</span>
+              <span class="chip">AI 与 Agent</span>
+              <span class="chip">工程实践</span>
+              <span class="chip">课程</span>
             </div>
           </div>
         </a>
 
-        <a class="deck-card reveal" href="/slides/decks/three-hour-mini-program/">
+        <a class="deck-card reveal" href="/slides/decks/three-hour-mini-program/" data-tags="programming miniapp" data-search="3 小时做完一个小程序 AI 编程 小程序 零基础 实战课">
           <div class="cover"><img src="/slides/decks/three-hour-mini-program/preview.png" alt="3 小时做完一个小程序预览"></div>
           <div class="deck-content">
             <div>
@@ -242,14 +236,14 @@
               <p class="deck-copy">面向零基础学员，把真实需求压成输入—处理—输出闭环，用 AI 完成第一版、真机验证和证据化交付。</p>
             </div>
             <div class="deck-meta">
-              <span class="chip">27 slides</span>
-              <span class="chip">Guizang Swiss</span>
-              <span class="chip">AI mini program</span>
+              <span class="chip">AI 编程</span>
+              <span class="chip">小程序</span>
+              <span class="chip">零基础实战</span>
             </div>
           </div>
         </a>
 
-        <a class="deck-card reveal" href="/slides/decks/dag-efficient-development/">
+        <a class="deck-card reveal" href="/slides/decks/dag-efficient-development/" data-tags="agent programming" data-search="如何利用 DAG 完成高效开发 AI Agent 工程协作 GitHub Issues 多 Agent 并发开发">
           <div class="cover"><img src="/slides/decks/dag-efficient-development/preview.png" alt="如何利用 DAG 完成高效开发预览"></div>
           <div class="deck-content">
             <div>
@@ -257,14 +251,14 @@
               <p class="deck-copy">把 GitHub Issues 从任务清单升级为依赖图，用 Ready Queue、单 Issue 执行协议和 CI 校验组织多人、多 Agent 并发开发。</p>
             </div>
             <div class="deck-meta">
-              <span class="chip">16 slides</span>
-              <span class="chip">Guizang Swiss</span>
-              <span class="chip">AI development</span>
+              <span class="chip">AI 与 Agent</span>
+              <span class="chip">工程协作</span>
+              <span class="chip">DAG</span>
             </div>
           </div>
         </a>
 
-        <a class="deck-card reveal" href="/slides/decks/mini-program-ui/">
+        <a class="deck-card reveal" href="/slides/decks/mini-program-ui/" data-tags="miniapp design" data-search="如何做出好看的小程序 产品设计 UI 小程序 用户体验">
           <div class="cover"><img src="/slides/decks/mini-program-ui/images/01-swiss-mini-program-hero.png" alt="如何做出好看的小程序预览"></div>
           <div class="deck-content">
             <div>
@@ -272,14 +266,14 @@
               <p class="deck-copy">从信任、停留、转化讲起，把小程序 UI 审美拆成统一、清楚、舒服、顺手、记住五个可执行标准。</p>
             </div>
             <div class="deck-meta">
-              <span class="chip">17 slides</span>
-              <span class="chip">Guizang Swiss</span>
-              <span class="chip">UI course</span>
+              <span class="chip">产品与设计</span>
+              <span class="chip">小程序</span>
+              <span class="chip">UI</span>
             </div>
           </div>
         </a>
 
-        <a class="deck-card reveal" href="/slides/decks/ai-product-talk/">
+        <a class="deck-card reveal" href="/slides/decks/ai-product-talk/" data-tags="agent review" data-search="我是如何半年动 100w 行代码 AI Agent 产品复盘 项目复盘 工程实践">
           <div class="cover"><img src="/slides/decks/ai-product-talk/preview-slide-08-image2.png" alt="我是如何半年动 100w+ 行代码的预览"></div>
           <div class="deck-content">
             <div>
@@ -287,72 +281,15 @@
               <p class="deck-copy">从半年 100w+ 行代码的真实项目里，复盘我怎么用 Agent 做项目，以及背后的产品判断。</p>
             </div>
             <div class="deck-meta">
-              <span class="chip">10 slides</span>
-              <span class="chip">Swiss style</span>
-              <span class="chip">20 min talk</span>
+              <span class="chip">AI 与 Agent</span>
+              <span class="chip">项目复盘</span>
+              <span class="chip">产品判断</span>
             </div>
           </div>
         </a>
 
-        <article class="note-card reveal">
-          <div>
-            <h3>一个入口，多个独立 deck。</h3>
-            <div class="note-lines">
-              <div class="note-line"><b>URL</b><span>每份 PPT 都有稳定链接，适合发给群、客户或课程学员。</span></div>
-              <div class="note-line"><b>Assets</b><span>图片、动效、脚本跟随 deck 目录走，不互相污染。</span></div>
-              <div class="note-line"><b>Deploy</b><span>新增后随 luo-chen.com 一起发布，根页会成为长期索引。</span></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="metric-card blue reveal">
-          <strong>04</strong>
-          <p>当前已上线的落尘网页 PPT。新增作品会直接进入这个入口，而不是另开散乱链接。</p>
-        </article>
-        <article class="metric-card reveal">
-          <strong>27</strong>
-          <p>最新小程序实战课页数。适合一次完整公开课或带屏幕演示的实操导学。</p>
-        </article>
-        <article class="metric-card reveal">
-          <strong>∞</strong>
-          <p>后续扩展容量：课程、复盘、案例、发布稿都可以放到同一入口。</p>
-        </article>
       </div>
-    </section>
-
-    <section id="system" class="rail shell">
-      <div class="rail-wrap">
-        <div class="rail-title reveal">
-          <h2>落尘的 PPT，以后都从这里进入。</h2>
-          <p class="scrub-text">根页面做成总入口，deck 目录做成单独作品。别人只记一个链接，你只维护一套部署。</p>
-        </div>
-        <div class="accordion reveal">
-          <a class="panel" href="/slides/">
-            <img src="/slides/decks/ai-product-talk/images/04-simple-leverage-image2.png" alt="">
-            <div>
-              <h3>首页负责<br>发现</h3>
-              <p>展示落尘最新、最重要、最适合分享出去的 PPT，不让访问者迷路。</p>
-            </div>
-            <span class="arrow">/</span>
-          </a>
-          <a class="panel" href="/slides/decks/ai-product-talk/">
-            <img src="/slides/decks/ai-product-talk/images/10-parallel-workflow-image2.png" alt="">
-            <div>
-              <h3>Deck 负责<br>演示</h3>
-              <p>每份 PPT 独立运行，横向翻页、图片资源、动效和页面参数都留在自己的目录里。</p>
-            </div>
-            <span class="arrow">/</span>
-          </a>
-          <a class="panel" href="#next">
-            <img src="/slides/decks/ai-product-talk/images/05-three-layers-image2.png" alt="">
-            <div>
-              <h3>新增负责<br>复用</h3>
-              <p>复制一个 deck 文件夹，改内容，加一张卡片，再部署。这个入口会自然变成落尘的 PPT 档案。</p>
-            </div>
-            <span class="arrow">/</span>
-          </a>
-        </div>
-      </div>
+      <p id="empty-results" class="empty-results" hidden>没有匹配的作品。试试换一个关键词，或查看全部。</p>
     </section>
 
     <section id="next" class="closing shell">
@@ -374,6 +311,48 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script>
+    const catalogCards = [...document.querySelectorAll(".deck-card")];
+    const filterButtons = [...document.querySelectorAll("[data-filter]")];
+    const searchInput = document.querySelector("#deck-search");
+    const resultsCount = document.querySelector("#results-count");
+    const emptyResults = document.querySelector("#empty-results");
+    let activeFilter = "all";
+
+    function updateCatalog() {
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      let visibleCount = 0;
+
+      catalogCards.forEach((card) => {
+        const matchesFilter = activeFilter === "all" || card.dataset.tags.split(" ").includes(activeFilter);
+        const matchesQuery = !query || card.dataset.search.toLocaleLowerCase().includes(query);
+        const isVisible = matchesFilter && matchesQuery;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      resultsCount.textContent = query || activeFilter !== "all"
+        ? `找到 ${visibleCount} 份作品`
+        : `${visibleCount} 份作品`;
+      emptyResults.hidden = visibleCount !== 0;
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        updateCatalog();
+      });
+    });
+
+    searchInput.addEventListener("input", updateCatalog);
+    document.querySelectorAll("[data-catalog-link]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const target = link.dataset.catalogLink;
+        const button = filterButtons.find((item) => item.dataset.filter === target);
+        if (button) button.click();
+      });
+    });
+
     const revealEls = document.querySelectorAll(".reveal");
     if (window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
