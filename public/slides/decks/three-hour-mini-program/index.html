@@ -1342,6 +1342,12 @@
 .prompt em{color:#9cb0ff;font-style:normal}
 .source-note{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--text-helper)}
 .slide.dark .source-note{color:rgba(255,255,255,.5)}
+.course-progress{width:min(27vw,360px);display:grid;gap:5px;text-align:right;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.course-progress .cp-label{font-size:12px;font-weight:700;color:inherit}
+.course-progress .cp-meta{font-size:11px;letter-spacing:.05em;opacity:.66}
+.course-progress .cp-track{height:3px;background:currentColor;opacity:.2;position:relative;overflow:hidden}
+.course-progress .cp-fill{display:block;height:100%;background:var(--accent);opacity:1}
+.slide.dark .course-progress .cp-fill,.slide.accent .course-progress .cp-fill{background:#fff}
 .slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:4vh}
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
@@ -1523,10 +1529,16 @@
   </div>
 </section>
 
-<section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
+<section class="slide dark" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="split-half"><div class="split-half-inner"><div class="t-meta">PART II · 30—155 MIN</div><h1 class="deck-title" style="font-size:min(6.7vw,11.8vh);color:#fff">现在开始<br>动手实操</h1></div></div>
-    <div class="split-half light"><div class="split-half-inner"><div class="t-meta">THE ONLY RULE</div><h2 class="deck-title deck-lg">每一步都要有<br><span style="color:var(--accent)">可见结果</span></h2><p class="deck-lead">建项目、生成、导入、报错、修复、真机：不跳步。</p></div></div>
+    <div class="chrome-min"><div class="l">11 / 27 · PART II</div><div class="r">30—155 MIN</div></div>
+    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">NOW WE BUILD</div><h1 class="deck-title deck-lg" style="color:#fff">第二部分：动手实操</h1><p class="deck-lead" style="margin-top:2vh">接下来的 125 分钟，不讲新概念，只把一个小程序做出来。</p></div>
+    <div data-anim="grid" class="deck-grid-4 deck-bottom">
+      <div class="deck-card ink-card"><span class="num">01</span><h3>建项目</h3><p>新建文件夹，粘贴确认后的需求。</p></div>
+      <div class="deck-card ink-card"><span class="num">02</span><h3>等第一版</h3><p>AI 写项目时，留出 10 分钟休息。</p></div>
+      <div class="deck-card ink-card"><span class="num">03</span><h3>导入并修错</h3><p>在微信开发者工具中编译、复制报错、重试。</p></div>
+      <div class="deck-card accent-card"><span class="num">04</span><h3>真机验证</h3><p>扫码走完整主路径，再决定要不要调优。</p></div>
+    </div>
   </div>
 </section>
 
@@ -2689,6 +2701,28 @@ if(motion){
   }
   addEventListener('swiss-low-power-change', e=>{e.detail.on ? stop() : start();});
   start();
+})();
+</script>
+<script>
+(() => {
+  const checkpoints = [0,0,0,0,0,0,30,30,30,30,30,40,55,75,85,90,105,125,135,145,155,155,165,170,175,180,180];
+  const sections = [
+    [0, 6, '第 1 部分 · 基础概念'],
+    [7, 19, '第 2 部分 · 动手实操'],
+    [20, 24, '第 3 部分 · 调整调优'],
+    [25, 26, '收尾 · 交付与上线']
+  ];
+  const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end)?.[2] || '课程导航';
+  const render = (index) => {
+    const minute = checkpoints[index] ?? 0;
+    const remaining = Math.max(0, 180 - minute);
+    document.querySelectorAll('.chrome-min .r').forEach((node) => {
+      node.innerHTML = '<div class="course-progress"><div class="cp-label">' + getSection(index) + '</div><div class="cp-meta">课程 ' + minute + ' / 180 分钟 · 还剩 ' + remaining + ' 分钟</div><div class="cp-track"><i class="cp-fill" style="width:' + (minute / 180 * 100) + '%"></i></div></div>';
+    });
+  };
+  const originalGo = go;
+  go = function(index) { originalGo(index); render(window.__currentSlideIndex || 0); };
+  render(window.__currentSlideIndex || 0);
 })();
 </script>
 </body>

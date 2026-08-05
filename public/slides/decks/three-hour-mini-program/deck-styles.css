@@ -71,6 +71,12 @@
 .prompt em{color:#9cb0ff;font-style:normal}
 .source-note{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--text-helper)}
 .slide.dark .source-note{color:rgba(255,255,255,.5)}
+.course-progress{width:min(27vw,360px);display:grid;gap:5px;text-align:right;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.course-progress .cp-label{font-size:12px;font-weight:700;color:inherit}
+.course-progress .cp-meta{font-size:11px;letter-spacing:.05em;opacity:.66}
+.course-progress .cp-track{height:3px;background:currentColor;opacity:.2;position:relative;overflow:hidden}
+.course-progress .cp-fill{display:block;height:100%;background:var(--accent);opacity:1}
+.slide.dark .course-progress .cp-fill,.slide.accent .course-progress .cp-fill{background:#fff}
 .slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:4vh}
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
