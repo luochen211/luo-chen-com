@@ -22,11 +22,11 @@ html = html.replace("</style>", `${styles}\n</style>`);
 
 const courseProgressScript = `<script>
 (() => {
-  const checkpoints = [0,0,3,8,13,18,26,30,34,38,40,45,65,75,85,90,105,125,135,145,155,160,167,172,175,180,180];
+  const checkpoints = [0,0,2,5,7,9,11,14,17,20,23,26,28,30,30,40,55,75,85,90,105,125,135,155,155,160,167,172,175,180,180];
   const sections = [
-    [0, 6, 1, '基础与准备', 0, 30],
-    [7, 19, 2, '动手实操', 30, 155],
-    [20, 26, 3, '调整调优与收尾', 155, 180]
+    [0, 13, 1, '基础与准备', 0, 30],
+    [14, 23, 2, '动手实操', 30, 155],
+    [24, 30, 3, '调整调优与收尾', 155, 180]
   ];
   const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end) || sections[0];
   const render = (index) => {
@@ -39,6 +39,10 @@ const courseProgressScript = `<script>
     const progress = '<div class="course-progress"><div class="cp-label">第 ' + part + ' / 3 部分 · ' + name + '</div><div class="cp-meta">已完成 ' + finishedParts + ' / 3 个部分 · 本部分 ' + partElapsed + ' / ' + partTotal + ' 分钟</div><div class="cp-part-track"><i class="cp-part-fill" style="width:' + (partElapsed / partTotal * 100) + '%"></i></div><div class="cp-meta cp-total-meta">全程 ' + minute + ' / 180 分钟 · 还剩 ' + remaining + ' 分钟</div><div class="cp-track"><i class="cp-fill" style="width:' + (minute / 180 * 100) + '%"></i></div></div>';
     document.querySelectorAll('.chrome-min .r').forEach((node) => {
       node.innerHTML = progress;
+    });
+    const totalSlides = document.querySelectorAll('.slide').length;
+    document.querySelectorAll('.chrome-min .l').forEach((node) => {
+      node.innerHTML = node.innerHTML.replace(/^\\d{2}\\s*\\/\\s*\\d+/, String(index + 1).padStart(2, '0') + ' / ' + totalSlides);
     });
     document.querySelectorAll('.course-progress-floating').forEach((node) => node.remove());
     const activeSlide = document.querySelectorAll('.slide')[index];
