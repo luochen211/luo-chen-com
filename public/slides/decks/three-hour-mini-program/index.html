@@ -1342,19 +1342,27 @@
 .prompt em{color:#9cb0ff;font-style:normal}
 .source-note{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--text-helper)}
 .slide.dark .source-note{color:rgba(255,255,255,.5)}
-.course-progress{width:min(27vw,360px);display:grid;gap:5px;text-align:right;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.course-progress .cp-label{font-size:12px;font-weight:700;color:inherit}
-.course-progress .cp-meta{font-size:11px;letter-spacing:.05em;opacity:.66}
-.course-progress .cp-track{height:3px;background:currentColor;opacity:.2;position:relative;overflow:hidden}
+.course-progress{width:min(31vw,410px);display:grid;gap:7px;text-align:right;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.course-progress .cp-label{justify-self:end;background:var(--accent);color:#fff;padding:4px 8px;font-size:12px;font-weight:800;line-height:1}
+.course-progress .cp-meta{font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.78}
+.course-progress .cp-track{height:8px;background:rgba(82,82,82,.22);opacity:1;position:relative;overflow:hidden;border:1px solid rgba(0,47,167,.28)}
 .course-progress .cp-fill{display:block;height:100%;background:var(--accent);opacity:1}
-.slide.dark .course-progress .cp-fill,.slide.accent .course-progress .cp-fill{background:#fff}
+.slide.dark .course-progress .cp-track,.slide.accent .course-progress .cp-track{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
+.slide.dark .course-progress .cp-fill,.slide.accent .course-progress .cp-fill{background:#6f8cff}
+.speaker-intro{display:grid;grid-template-columns:minmax(260px,4fr) minmax(0,8fr);gap:4vw;align-items:center;flex:1;margin-bottom:var(--nav-safe-bottom)}
+.speaker-portrait{height:min(58vh,640px);background:var(--ink);overflow:hidden;border-left:8px solid var(--accent)}
+.speaker-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.16) contrast(1.08)}
+.speaker-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2.2vh}
+.speaker-copy .deck-xl{font-size:min(5.8vw,10vh)}
+.speaker-proof{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-subtle);margin-top:auto}
+.speaker-proof span{padding:1.8vh 1vw;background:var(--grey-1);font-size:max(14px,.88vw);line-height:1.45}
 .slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:4vh}
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
 @media(max-width:900px){
   .deck-grid-4,.deck-grid-3,.deck-grid-6{grid-template-columns:repeat(2,1fr)}
   .phase-bar,.loop-row,.tool-flow{grid-template-columns:repeat(2,1fr)}
-  .image-stage,.prompt-box,.responsibility{grid-template-columns:1fr}
+  .image-stage,.prompt-box,.responsibility,.speaker-intro{grid-template-columns:1fr}
 }
 /* End deck-local Swiss locked additions. */
 </style>
@@ -1417,7 +1425,17 @@
 
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">02 / 27 · TODAY</div><div class="r">180 MINUTES</div></div>
+    <div class="chrome-min"><div class="l">02 / 27 · SPEAKER</div><div class="r">ABOUT LUOCHEN</div></div>
+    <div class="speaker-intro">
+      <div class="speaker-portrait"><img src="/头像111.jpg" alt="落尘个人头像"></div>
+      <div class="speaker-copy"><div class="t-meta">我是落尘 · LUOCHEN</div><h1 class="deck-title deck-xl">Agent Harness 工程师<br><span style="color:var(--accent)">× 全栈构建者</span></h1><p class="deck-lead">我把 AI 工程、公开写作和真实交付连在一起；这节课只讲一件事：让你亲手做出第一个可验证的小程序。</p><div class="speaker-proof"><span>代码｜开源 PR 与 AI 编程实战</span><span>产品｜从需求到可运行交付</span><span>输出｜文章、课程与公开视频</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">03 / 27 · TODAY</div><div class="r">180 MINUTES</div></div>
     <div data-anim="title"><div class="t-meta">THREE PARTS, ONE RESULT</div><h2 class="deck-title deck-lg">今天按三段走，不硬撑三小时</h2></div>
     <div data-anim="timeline" class="phase-bar deck-bottom">
       <div class="phase"><span class="mins">30</span><strong>基础概念</strong><small>00—30</small></div>
@@ -1430,7 +1448,7 @@
 
 <section class="slide grey" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">03 / 27 · DEFINITION</div><div class="r">DONE MEANS EVIDENCE</div></div>
+    <div class="chrome-min"><div class="l">04 / 27 · DEFINITION</div><div class="r">DONE MEANS EVIDENCE</div></div>
     <div data-anim="title"><div class="t-meta">DEFINE DONE FIRST</div><h2 class="deck-title deck-lg">“做完”有四个可检查的结果</h2></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
       <div class="deck-card"><span class="num">01</span><h3>闭环能跑</h3><p>输入、处理、输出完整发生。</p></div>
@@ -1443,7 +1461,7 @@
 
 <section class="slide grey" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">04 / 27 · BOUNDARY</div><div class="r">NOT TODAY</div></div>
+    <div class="chrome-min"><div class="l">05 / 27 · BOUNDARY</div><div class="r">NOT TODAY</div></div>
     <div data-anim="title"><div class="t-meta">THREE HOURS EXCLUDES</div><h2 class="deck-title deck-lg">三小时不承诺正式上线</h2></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
       <div class="deck-card"><span class="num">01</span><h3>主体与认证</h3><p>账号资质与费用另行处理。</p></div>
@@ -1456,7 +1474,7 @@
 
 <section class="slide" data-layout="S05" data-animate="progression">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">05 / 27 · BASICS</div><div class="r">TWO TOOLS</div></div>
+    <div class="chrome-min"><div class="l">06 / 27 · BASICS</div><div class="r">TWO TOOLS</div></div>
     <div data-anim="title"><div class="t-meta">JUST ENOUGH CONCEPT</div><h2 class="deck-title deck-lg">你不必先会代码，但要分清两个工具</h2></div>
     <div data-anim="flow" class="loop-row deck-bottom">
       <div class="loop-item"><b>01</b><strong>AI 编程工具</strong><span>把清楚的需求翻译成项目文件。</span></div>
@@ -1468,7 +1486,7 @@
 
 <section class="slide dark" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">06 / 27 · VERSION CHAIN</div><div class="r">FIVE STATES</div></div>
+    <div class="chrome-min"><div class="l">07 / 27 · VERSION CHAIN</div><div class="r">FIVE STATES</div></div>
     <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.5)">THE BUTTONS ARE NOT THE SAME</div><h2 class="deck-title deck-lg">预览不等于发布</h2></div>
     <div data-anim="timeline" class="loop-row deck-bottom">
       <div class="loop-item"><b>01</b><strong>编译</strong><span>电脑模拟器运行</span></div>
@@ -1477,14 +1495,6 @@
       <div class="loop-item"><b>04</b><strong>审核</strong><span>平台检查</span></div>
       <div class="loop-item"><b>05</b><strong>发布</strong><span>成为线上版本</span></div>
     </div>
-  </div>
-</section>
-
-<section class="slide accent" data-layout="S12" data-animate="manifesto">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">07 / 27 · PART I</div><div class="r">00—30 MIN</div></div>
-    <div data-anim="title" style="margin:auto 0"><div class="t-meta" style="color:rgba(255,255,255,.62)">FOUNDATION</div><h1 class="deck-title deck-xl">基础概念<br>只讲够用的</h1></div>
-    <p data-anim="bottom" class="lead deck-bottom" style="color:rgba(255,255,255,.82)">目标不是学会开发术语，而是知道：今天做什么、用什么验证、哪些事不做。</p>
   </div>
 </section>
 
@@ -2705,9 +2715,9 @@ if(motion){
 </script>
 <script>
 (() => {
-  const checkpoints = [0,0,0,0,0,0,30,30,30,30,30,40,55,75,85,90,105,125,135,145,155,155,165,170,175,180,180];
+  const checkpoints = [0,0,0,0,0,0,0,30,30,30,30,40,55,75,85,90,105,125,135,145,155,155,165,170,175,180,180];
   const sections = [
-    [0, 6, '第 1 部分 · 基础概念'],
+    [0, 6, '第 1 部分 · 基础与准备'],
     [7, 19, '第 2 部分 · 动手实操'],
     [20, 24, '第 3 部分 · 调整调优'],
     [25, 26, '收尾 · 交付与上线']
