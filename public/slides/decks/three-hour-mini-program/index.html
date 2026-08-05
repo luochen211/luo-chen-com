@@ -1588,6 +1588,19 @@
   </div>
 </section>
 
+<section class="slide grey" data-layout="S19" data-animate="four-cards">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">15 / 32 · SHARE YOUR IDEA</div><div class="r">LOOK BEFORE CODE</div></div>
+    <div data-anim="title"><div class="t-meta">MAKE THE IDEA VISIBLE BEFORE CODE</div><h2 class="deck-title deck-lg">需求整理好，发群里<br>让大家看看你的 idea</h2></div>
+    <div data-anim="grid" class="deck-grid-4 deck-bottom">
+      <div class="deck-card"><span class="num">01</span><h3>按四项发出</h3><p>场景、输入、规则、输出。</p></div>
+      <div class="deck-card"><span class="num">02</span><h3>每人看两份</h3><p>看看能不能一眼理解。</p></div>
+      <div class="deck-card"><span class="num">03</span><h3>说说你会怎么用</h3><p>用自己的话复述场景和结果。</p></div>
+      <div class="deck-card accent-card"><span class="num">04</span><h3>带着反馈开工</h3><p>把一处看不懂的地方补清楚。</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide dark" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">11 / 27 · PART II</div><div class="r">30—155 MIN</div></div>
@@ -1646,7 +1659,7 @@
 </section>
 
 <section class="slide grey" data-layout="S04" data-animate="six-cells">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">20 / 27 · TEST</div><div class="r">145—155 MIN</div></div><div data-anim="title"><div class="t-meta">MUST DO BEFORE POLISH</div><h2 class="deck-title deck-lg">六个动作，必须亲手测</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>正常输入</h3><p>与人工验算一致。</p></div><div class="deck-card"><span class="num">02</span><h3>空输入</h3><p>有提示，不崩溃。</p></div><div class="deck-card"><span class="num">03</span><h3>极端输入</h3><p>边界值有反馈。</p></div><div class="deck-card"><span class="num">04</span><h3>重复计算</h3><p>状态不互相污染。</p></div><div class="deck-card"><span class="num">05</span><h3>重进页面</h3><p>初始状态正确。</p></div><div class="deck-card accent-card"><span class="num">06</span><h3>真机点击</h3><p>没有遮挡和误触。</p></div></div></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">25 / 32 · TEST</div><div class="r">145—155 MIN</div></div><div data-anim="title"><div class="t-meta">MUST DO BEFORE POLISH</div><h2 class="deck-title deck-lg">六个动作：自己测，再让同伴复走</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>正常输入</h3><p>与人工验算一致。</p></div><div class="deck-card"><span class="num">02</span><h3>空输入</h3><p>有提示，不崩溃。</p></div><div class="deck-card"><span class="num">03</span><h3>极端输入</h3><p>边界值有反馈。</p></div><div class="deck-card"><span class="num">04</span><h3>重复计算</h3><p>状态不互相污染。</p></div><div class="deck-card"><span class="num">05</span><h3>重进页面</h3><p>初始状态正确。</p></div><div class="deck-card accent-card"><span class="num">06</span><h3>同伴真机验收</h3><p>扫码后按你的需求复走。</p></div></div></div>
 </section>
 
 <section class="slide accent" data-layout="S12" data-animate="manifesto">
@@ -2764,11 +2777,11 @@ if(motion){
 </script>
 <script>
 (() => {
-  const checkpoints = [0,0,2,5,7,9,11,14,17,20,23,26,28,30,30,40,55,75,85,90,105,125,135,155,155,160,167,172,175,180,180];
+  const checkpoints = [0,0,2,5,7,9,11,14,17,20,23,26,28,30,30,30,40,55,75,85,90,105,125,135,155,155,160,167,172,175,180,180];
   const sections = [
-    [0, 13, 1, '基础与准备', 0, 30],
-    [14, 23, 2, '动手实操', 30, 155],
-    [24, 30, 3, '调整调优与收尾', 155, 180]
+    [0, 14, 1, '基础与准备', 0, 30],
+    [15, 24, 2, '动手实操', 30, 155],
+    [25, 31, 3, '调整调优与收尾', 155, 180]
   ];
   const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end) || sections[0];
   const render = (index) => {

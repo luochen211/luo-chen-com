@@ -22,11 +22,11 @@ html = html.replace("</style>", `${styles}\n</style>`);
 
 const courseProgressScript = `<script>
 (() => {
-  const checkpoints = [0,0,2,5,7,9,11,14,17,20,23,26,28,30,30,40,55,75,85,90,105,125,135,155,155,160,167,172,175,180,180];
+  const checkpoints = [0,0,2,5,7,9,11,14,17,20,23,26,28,30,30,30,40,55,75,85,90,105,125,135,155,155,160,167,172,175,180,180];
   const sections = [
-    [0, 13, 1, '基础与准备', 0, 30],
-    [14, 23, 2, '动手实操', 30, 155],
-    [24, 30, 3, '调整调优与收尾', 155, 180]
+    [0, 14, 1, '基础与准备', 0, 30],
+    [15, 24, 2, '动手实操', 30, 155],
+    [25, 31, 3, '调整调优与收尾', 155, 180]
   ];
   const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end) || sections[0];
   const render = (index) => {
