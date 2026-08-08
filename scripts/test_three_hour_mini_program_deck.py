@@ -6,6 +6,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 DECK = ROOT / "public/slides/decks/three-hour-mini-program"
 OUT = Path(mkdtemp(prefix="three-hour-mini-program-screens-"))
+SLIDES = 32
 
 issues = []
 console_errors = []
@@ -25,10 +26,10 @@ with sync_playwright() as p:
     page.wait_for_load_state("networkidle")
     page.wait_for_timeout(1400)
 
-    assert page.locator("section.slide").count() == 27
-    assert page.locator("#nav .dot").count() == 27
+    assert page.locator("section.slide").count() == SLIDES
+    assert page.locator("#nav .dot").count() == SLIDES
 
-    for index in range(27):
+    for index in range(SLIDES):
         page.locator("#nav .dot").nth(index).click()
         page.wait_for_timeout(900)
         page.screenshot(path=str(OUT / f"slide-{index + 1:02d}.png"))
@@ -91,4 +92,4 @@ with sync_playwright() as p:
 
 assert not issues, issues
 assert not console_errors, console_errors
-print({"slides": 27, "layout_issues": issues, "console_errors": console_errors})
+print({"slides": SLIDES, "layout_issues": issues, "console_errors": console_errors})
