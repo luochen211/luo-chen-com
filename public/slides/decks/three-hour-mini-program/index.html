@@ -661,6 +661,27 @@
   body.low-power.motion-ready [data-anim],
   body.low-power [data-anim]{opacity:1!important;transform:none!important}
 
+  /* V2 deck motion: the current slides use data-anim blocks instead of the
+     legacy template selectors. Keep the movement visible but quiet. */
+  .slide.is-active .image-stage img.generated-photo{
+    animation:deck-image-breathe 12s ease-in-out .9s infinite alternate;
+    transform-origin:center center;
+  }
+  .slide.is-active .phase:nth-child(2)::after,
+  .slide.is-active .tool:nth-child(2)::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.15) 48%,transparent 76%);
+    transform:translateX(-120%);animation:deck-sheen 5.5s ease-in-out 1.1s infinite;
+  }
+  .phase,.tool{position:relative;overflow:hidden}
+  @keyframes deck-image-breathe{from{transform:scale(1)}to{transform:scale(1.035)}}
+  @keyframes deck-sheen{0%,35%{transform:translateX(-120%)}70%,100%{transform:translateX(120%)}}
+  @media(prefers-reduced-motion:reduce){
+    .slide.is-active .image-stage img.generated-photo,
+    .slide.is-active .phase:nth-child(2)::after,
+    .slide.is-active .tool:nth-child(2)::after{animation:none}
+  }
+
   /* ============================================================
      ↓↓↓ V2 EXTENSIONS · Canvas Mode + 参考图新类
      验证效果后沉淀回 template-swiss.html
@@ -1864,6 +1885,7 @@ function go(n){
   deck.style.transform=`translateX(${-idx*100}vw)`;
   nav.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
   const el=slides[idx];
+  slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===idx));
   const isDark = el.classList.contains('dark') || el.classList.contains('accent');
   document.body.classList.toggle('dark-bg', isDark);
   darkMode = isDark;
@@ -2004,6 +2026,43 @@ if(motion){
     {opacity:[0,1], y:[opts.y ?? 12, 0]},
     {duration:opts.duration ?? .6, delay:opts.delay ?? 0,
      easing:opts.easing ?? EASE_ENTRY_EXP});
+
+  /* Current deck adapter. The newer Swiss slides deliberately use a small,
+     stable vocabulary (title, grid, image, timeline, flow, bottom), while
+     the inherited recipes still target the old illustration classes. */
+  function rCurrentDeck(slide){
+    const chrome = slide.querySelector('.chrome-min');
+    if(chrome) animate(chrome,{opacity:[0,1],x:[-10,0]},
+      {duration:.34,delay:.05,easing:EASE_PROD});
+
+    const title = slide.querySelector('[data-anim="title"]');
+    if(title) animate(title,{opacity:[0,1],y:[22,0]},
+      {duration:.72,delay:.12,easing:EASE_ENTRY_EXP});
+
+    slide.querySelectorAll('[data-anim="grid"], [data-anim="timeline"], [data-anim="flow"], [data-anim="image"], [data-anim="right"]').forEach((group, groupIndex)=>{
+      const children = [...group.children];
+      const delay = group.dataset.anim === 'image' ? .28 : .34 + groupIndex*.08;
+      animate(group,{opacity:[0,1],y:[18,0]},
+        {duration:.5,delay,easing:EASE_ENTRY_EXP});
+      children.forEach((child,i)=>animate(child,{opacity:[0,1],y:[14,0],
+        ...(group.dataset.anim === 'right' ? {x:[18,0]} : {})},
+        {duration:.48,delay:delay+.08+i*.09,easing:EASE_ENTRY_EXP}));
+    });
+
+    slide.querySelectorAll('[data-anim="bottom"]').forEach((el,i)=>
+      animate(el,{opacity:[0,1],y:[16,0]},
+        {duration:.55,delay:.78+i*.1,easing:EASE_ENTRY_EXP}));
+
+    const portrait = slide.querySelector('.speaker-portrait');
+    const speakerCopy = slide.querySelector('.speaker-copy');
+    if(portrait) animate(portrait,{opacity:[0,1],x:[-24,0]},
+      {duration:.7,delay:.18,easing:EASE_ENTRY_EXP});
+    if(speakerCopy) animate(speakerCopy,{opacity:[0,1],x:[24,0]},
+      {duration:.7,delay:.34,easing:EASE_ENTRY_EXP});
+    slide.querySelectorAll('.speaker-proof > span').forEach((el,i)=>
+      animate(el,{opacity:[0,1],y:[12,0]},
+        {duration:.42,delay:.82+i*.09,easing:EASE_PROD}));
+  }
 
   /* ---------- recipe: hero · 封面索引 ----------
      大编号一个个亮起 → 索引行最后落定 */
@@ -2657,11 +2716,11 @@ if(motion){
     const all = [...slide.querySelectorAll('[data-anim]')];
     const recipe = slide.dataset.animate;
     const fn = RECIPES[recipe];
-    if(fn){ fn(slide, all); return; }
+    if(fn) fn(slide, all);
+    rCurrentDeck(slide);
 
     /* fallback: 平凡 fade */
-    if(all.length) animate(all, {opacity:[0,1], y:[12,0]},
-      {duration:.6, delay:i=>i*.08, easing:EASE_ENTRY_EXP});
+    if(!fn && !all.length) return;
   }
 
   window.__playSlide = playSlide;
