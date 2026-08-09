@@ -1428,10 +1428,35 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
 .argument-flow-step:nth-child(3) span{color:rgba(255,255,255,.76)}
 .argument-note{font-family:var(--mono);font-size:14px;letter-spacing:.05em;color:var(--text-helper)}
 .slide.dark .argument-note{color:rgba(255,255,255,.5)}
+.release-proof{display:grid;grid-template-columns:5fr 7fr;gap:2vw;align-items:stretch;flex:1;margin:3vh 0 var(--nav-safe-bottom)}
+.release-shot{background:#fff;border-top:3px solid var(--accent);padding:1.2vh 1vw;display:flex;flex-direction:column;justify-content:center;gap:1vh;min-width:0}
+.release-shot img{width:100%;max-height:34vh;object-fit:contain;object-position:center}
+.release-shot figcaption{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--text-helper)}
+.release-steps{display:grid;grid-template-rows:repeat(3,1fr);gap:1px;background:var(--border-subtle)}
+.release-step{background:var(--paper);padding:2vh 1.5vw;display:grid;grid-template-columns:auto 1fr;gap:1.2vw;align-items:center}
+.release-step.is-live{background:var(--accent);color:#fff}
+.release-step .release-num{font-size:min(4vw,7vh);font-weight:200;line-height:1;color:var(--accent)}
+.release-step.is-live .release-num{color:#9cb0ff}
+.release-step strong{font-size:max(20px,1.35vw);font-weight:400}
+.release-step span{display:block;font-size:max(15px,.9vw);line-height:1.4;color:var(--text-secondary);margin-top:.5vh}
+.release-step.is-live span{color:rgba(255,255,255,.76)}
+.version-proof{display:grid;grid-template-columns:4fr 8fr;gap:2.4vw;align-items:stretch;flex:1;margin:3vh 0 1vh}
+.version-states{display:grid;grid-template-rows:repeat(3,1fr);gap:1px;background:var(--border-subtle)}
+.version-state{background:var(--paper);padding:2.2vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between;border-left:4px solid var(--border-strong)}
+.version-state:nth-child(2){border-left-color:var(--accent)}
+.version-state:nth-child(3){background:var(--accent);color:#fff;border-left-color:#6f8cff}
+.version-state b{font-family:var(--mono);font-size:14px;letter-spacing:.14em;color:var(--accent)}
+.version-state:nth-child(3) b{color:#9cb0ff}
+.version-state strong{font-size:max(22px,1.55vw);font-weight:400}
+.version-state span{font-size:max(15px,.9vw);line-height:1.45;color:var(--text-secondary)}
+.version-state:nth-child(3) span{color:rgba(255,255,255,.76)}
+.version-shot{background:#fff;border-top:3px solid var(--accent);padding:1.2vh 1vw;display:flex;align-items:center;min-width:0}
+.version-shot img{width:100%;max-height:52vh;object-fit:contain}
 @media(max-width:900px){
   .argument-stage{grid-template-columns:1fr;gap:1px}
   .argument-arrow{min-height:5vh;transform:rotate(90deg)}
   .argument-flow{grid-template-columns:repeat(2,1fr)}
+  .release-proof,.version-proof{grid-template-columns:1fr}
   .chapter-curtain .curtain-copy{max-width:72vw}
 }
 @media(max-width:900px){
@@ -1583,17 +1608,35 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
   </div>
 </section>
 
-<section class="slide dark" data-layout="S11" data-animate="timeline-walk">
+<section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">07 / 27 · VERSION CHAIN</div><div class="r">FIVE STATES</div></div>
-    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.5)">THE BUTTONS ARE NOT THE SAME</div><h2 class="deck-title deck-lg">预览不等于发布</h2></div>
-    <div data-anim="timeline" class="loop-row deck-bottom">
-      <div class="loop-item"><b>01</b><strong>编译</strong><span>电脑模拟器运行</span></div>
-      <div class="loop-item"><b>02</b><strong>预览</strong><span>扫码在手机运行</span></div>
-      <div class="loop-item"><b>03</b><strong>上传</strong><span>形成开发版本</span></div>
-      <div class="loop-item"><b>04</b><strong>审核</strong><span>平台检查</span></div>
-      <div class="loop-item"><b>05</b><strong>发布</strong><span>成为线上版本</span></div>
+    <div class="chrome-min"><div class="l">10 / 34 · RELEASE PATH</div><div class="r">FROM PREVIEW TO ONLINE</div></div>
+    <div data-anim="title"><div class="t-meta">THE BUTTONS ARE NOT THE SAME</div><h2 class="deck-title deck-lg">预览不等于发布</h2></div>
+    <div data-anim="image" class="release-proof">
+      <figure class="release-shot"><img src="images/33-mini-program-release-status.png" data-image-slot="s33-release-status" alt="小程序信息、类目、微信认证和备案状态页面"><figcaption>真实平台状态：资料补全、认证、备案分别是不同阶段。</figcaption></figure>
+      <div class="release-steps">
+        <div class="release-step"><b class="release-num">01</b><div><strong>编译 / 预览</strong><span>电脑模拟器运行，扫码在手机上体验。</span></div></div>
+        <div class="release-step"><b class="release-num">02</b><div><strong>上传 / 审核</strong><span>形成开发版本，提交后等待平台检查。</span></div></div>
+        <div class="release-step is-live"><b class="release-num">03</b><div><strong>备案 / 正式上线</strong><span>补全小程序信息、类目、认证和备案，才进入线上版本。</span></div></div>
+      </div>
     </div>
+    <p class="argument-note">3 小时课内交付的是可运行、可预览、可验收的 MVP；正式上线是后续平台流程。</p>
+  </div>
+</section>
+
+<section class="slide grey" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">11 / 34 · VERSION MANAGEMENT</div><div class="r">ONE PROJECT · THREE STATES</div></div>
+    <div data-anim="title"><div class="t-meta">A VERSION IS A STATE, NOT A BUTTON</div><h2 class="deck-title deck-lg">版本管理：开发、审核、线上不是一回事</h2></div>
+    <div data-anim="image" class="version-proof">
+      <div class="version-states">
+        <div class="version-state"><b>01 / DEVELOP</b><strong>开发版本</strong><span>自己和同伴扫码体验；可以继续改。</span></div>
+        <div class="version-state"><b>02 / REVIEW</b><strong>审核版本</strong><span>提交给平台检查，等待审核结果。</span></div>
+        <div class="version-state"><b>03 / ONLINE</b><strong>线上版本</strong><span>审核通过后，用户实际使用的版本。</span></div>
+      </div>
+      <figure class="version-shot"><img src="images/34-version-management.png" data-image-slot="s34-version-management" alt="小程序版本管理页面，显示线上版本、审核版本和开发版本"></figure>
+    </div>
+    <p class="argument-note">不要把“开发工具里能跑”说成“已经上线”；先确认当前版本处在哪个状态。</p>
   </div>
 </section>
 
