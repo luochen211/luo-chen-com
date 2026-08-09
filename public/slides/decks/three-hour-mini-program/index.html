@@ -1395,6 +1395,45 @@
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half.b-grey{padding-top:18vh!important}
+
+/* Presentation rhythm: recurring chapter curtains and argument stages. */
+.chapter-curtain{background:var(--accent);color:#fff}
+body.canvas-mode .slide.chapter-curtain{background:var(--accent);color:#fff}
+body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);color:#fff}
+.chapter-curtain .canvas-card{position:relative;overflow:hidden}
+.chapter-curtain .curtain-number{font-size:min(32vw,54vh);font-weight:200;line-height:.72;letter-spacing:-.08em;color:#6f8cff}
+.chapter-curtain .curtain-copy{display:flex;flex-direction:column;justify-content:center;gap:2.4vh;max-width:62vw;margin-left:auto;margin-right:5vw}
+.chapter-curtain .curtain-copy h1{font-size:min(6.2vw,10.8vh);font-weight:200;line-height:1.02;letter-spacing:-.045em}
+.chapter-curtain .curtain-copy p{font-size:max(19px,1.35vw);line-height:1.5;color:rgba(255,255,255,.72);max-width:34ch}
+.chapter-curtain .curtain-band{position:absolute;left:-8vw;bottom:8vh;width:58vw;height:10vh;background:#fff;opacity:.09;transform:skewX(-24deg)}
+.chapter-curtain .curtain-mark{position:absolute;right:5vw;bottom:10vh;width:18vw;height:18vw;border:1px solid rgba(255,255,255,.35)}
+.chapter-curtain .curtain-mark::after{content:"";position:absolute;inset:22%;border:1px solid rgba(255,255,255,.35)}
+.argument-stage{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:1.4vw;flex:1;margin:4vh 0 var(--nav-safe-bottom)}
+.argument-node{background:var(--grey-1);color:var(--text-primary);padding:3.2vh 2vw;display:flex;flex-direction:column;justify-content:space-between;min-height:38vh;border-top:3px solid var(--ink)}
+.argument-node.is-focus{background:var(--accent);color:#fff;border-top-color:#6f8cff}
+.argument-node .argument-num{font-family:var(--mono);font-size:14px;letter-spacing:.15em;color:var(--accent)}
+.argument-node.is-focus .argument-num{color:#9cb0ff}
+.argument-node strong{font-size:min(4.2vw,7.6vh);font-weight:200;line-height:1}
+.argument-node h3{font-size:max(23px,1.7vw);font-weight:400;line-height:1.2}
+.argument-node p{font-size:max(16px,1vw);line-height:1.5;color:var(--text-secondary);max-width:22ch}
+.argument-node.is-focus p{color:rgba(255,255,255,.76)}
+.argument-arrow{display:grid;place-items:center;font-family:var(--mono);font-size:min(4vw,7vh);color:var(--accent);padding:0 .5vw}
+.argument-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);flex:1;margin:4vh 0 var(--nav-safe-bottom)}
+.argument-flow-step{background:var(--paper);padding:2.5vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between;border-top:3px solid var(--ink)}
+.argument-flow-step:nth-child(3){background:var(--accent);color:#fff;border-top-color:#6f8cff}
+.argument-flow-step .argument-num{font-size:min(4.2vw,7.6vh);font-weight:200;line-height:1;color:var(--accent)}
+.argument-flow-step:nth-child(3) .argument-num{color:#9cb0ff}
+.argument-flow-step strong{font-size:max(20px,1.35vw);font-weight:400}
+.argument-flow-step span{font-size:max(15px,.92vw);line-height:1.45;color:var(--text-secondary)}
+.argument-flow-step:nth-child(3) span{color:rgba(255,255,255,.76)}
+.argument-note{font-family:var(--mono);font-size:14px;letter-spacing:.05em;color:var(--text-helper)}
+.slide.dark .argument-note{color:rgba(255,255,255,.5)}
+@media(max-width:900px){
+  .argument-stage{grid-template-columns:1fr;gap:1px}
+  .argument-arrow{min-height:5vh;transform:rotate(90deg)}
+  .argument-flow{grid-template-columns:repeat(2,1fr)}
+  .chapter-curtain .curtain-copy{max-width:72vw}
+}
 @media(max-width:900px){
   .deck-grid-4,.deck-grid-3,.deck-grid-6{grid-template-columns:repeat(2,1fr)}
   .phase-bar,.loop-row,.tool-flow{grid-template-columns:repeat(2,1fr)}
@@ -1491,15 +1530,13 @@
   </div>
 </section>
 
-<section class="slide dark" data-layout="S19" data-animate="four-cards">
+<section class="slide chapter-curtain" data-layout="S12" data-animate="manifesto">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">06 / 31 · PART I</div><div class="r">00—30 MIN</div></div>
-    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">FIRST, BUILD THE MENTAL MODEL</div><h1 class="deck-title deck-lg" style="color:#fff">第一部分：基础与准备</h1><p class="deck-lead" style="margin-top:2vh">先把“做什么、谁判断、怎样验收”说清。</p></div>
-    <div data-anim="grid" class="deck-grid-4 deck-bottom">
-      <div class="deck-card ink-card"><span class="num">01</span><h3>产品边界</h3><p>一场景，一闭环。</p></div>
-      <div class="deck-card ink-card"><span class="num">02</span><h3>工具分工</h3><p>AI 写，工具预览，手机验。</p></div>
-      <div class="deck-card ink-card"><span class="num">03</span><h3>人的责任</h3><p>需求、边界、问题、验收。</p></div>
-      <div class="deck-card accent-card"><span class="num">04</span><h3>本段产物</h3><p>需求 + 验收标准。</p></div>
+    <div class="chrome-min"><div class="l">06 / 32 · PART I</div><div class="r">00—30 MIN</div></div>
+    <div class="curtain-band"></div><div class="curtain-mark"></div>
+    <div class="curtain-copy">
+      <div data-anim="title"><div class="curtain-number">01</div><div class="t-meta" style="color:rgba(255,255,255,.62)">FIRST, BUILD THE MENTAL MODEL</div><h1>三小时的秘密<br>不是速度，是边界</h1></div>
+      <p data-anim="bottom">先把“做什么、谁判断、怎样验收”说清，再让 AI 开始写。</p>
     </div>
   </div>
 </section>
@@ -1574,13 +1611,16 @@
 
 <section class="slide grey" data-layout="S05" data-animate="progression">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">09 / 27 · LOOP</div><div class="r">ONE PAGE MVP</div></div>
-    <div data-anim="title"><div class="t-meta">DEFAULT CASE</div><h2 class="deck-title deck-lg">默认做一页计算器／转换器</h2></div>
-    <div data-anim="flow" class="loop-row deck-bottom">
-      <div class="loop-item"><b>01</b><strong>输入</strong><span>用户填一个可理解的数据。</span></div>
-      <div class="loop-item"><b>02</b><strong>处理</strong><span>一条你能说明白的规则。</span></div>
-      <div class="loop-item"><b>03</b><strong>输出</strong><span>马上展示、可再次计算的结果。</span></div>
+    <div class="chrome-min"><div class="l">14 / 32 · LOOP</div><div class="r">ONE PAGE MVP</div></div>
+    <div data-anim="title"><div class="t-meta">CUT THE PRODUCT UNTIL IT CAN RUN</div><h2 class="deck-title deck-lg">把“大产品”砍成一条能验算的路径</h2></div>
+    <div data-anim="flow" class="argument-stage">
+      <div class="argument-node"><span class="argument-num">01 / INPUT</span><strong>用户填什么</strong><h3>一个可理解的数据</h3><p>只保留完成这一次任务所必须的输入。</p></div>
+      <div class="argument-arrow">→</div>
+      <div class="argument-node is-focus"><span class="argument-num">02 / PROCESS</span><strong>规则做什么</strong><h3>一条能讲明白的处理</h3><p>不接外部系统，不引入第二条功能。</p></div>
+      <div class="argument-arrow">→</div>
+      <div class="argument-node"><span class="argument-num">03 / OUTPUT</span><strong>结果长什么样</strong><h3>马上出现、可以复算</h3><p>五分钟内能人工验算，才进入第一版。</p></div>
     </div>
+    <p class="argument-note">不是做一个“小商城”；是先证明一条输入 → 处理 → 输出的闭环。</p>
   </div>
 </section>
 
@@ -1614,15 +1654,13 @@
   </div>
 </section>
 
-<section class="slide dark" data-layout="S19" data-animate="four-cards">
+<section class="slide chapter-curtain" data-layout="S12" data-animate="manifesto">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">11 / 27 · PART II</div><div class="r">30—155 MIN</div></div>
-    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">NOW WE BUILD</div><h1 class="deck-title deck-lg" style="color:#fff">第二部分：动手实操</h1><p class="deck-lead" style="margin-top:2vh">125 分钟，含两次休息；只做一个小程序。</p></div>
-    <div data-anim="grid" class="deck-grid-4 deck-bottom">
-      <div class="deck-card ink-card"><span class="num">01</span><h3>建项目</h3><p>需求 → 第一版。</p></div>
-      <div class="deck-card ink-card"><span class="num">02</span><h3>等第一版</h3><p>生成时休息 10 分钟。</p></div>
-      <div class="deck-card ink-card"><span class="num">03</span><h3>导入并修错</h3><p>编译，复制报错，重试。</p></div>
-      <div class="deck-card accent-card"><span class="num">04</span><h3>真机验证</h3><p>扫码重走主路径。</p></div>
+    <div class="chrome-min"><div class="l">17 / 32 · PART II</div><div class="r">30—155 MIN</div></div>
+    <div class="curtain-band"></div><div class="curtain-mark"></div>
+    <div class="curtain-copy">
+      <div data-anim="title"><div class="curtain-number">02</div><div class="t-meta" style="color:rgba(255,255,255,.62)">NOW WE BUILD</div><h1>AI 写得快<br>但人必须会验收</h1></div>
+      <p data-anim="bottom">从第一版开始，真正的工作不是等待生成，而是持续检查、复现和复测。</p>
     </div>
   </div>
 </section>
@@ -1660,7 +1698,7 @@
 </section>
 
 <section class="slide grey" data-layout="S04" data-animate="six-cells">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">17 / 27 · DEBUG</div><div class="r">105—125 MIN</div></div><div data-anim="title"><div class="t-meta">STEP 3 · COPY THE EVIDENCE</div><h2 class="deck-title deck-lg">报错不要概括，要原样交给 AI</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>哪个页面</h3><p>页面名或路由。</p></div><div class="deck-card"><span class="num">02</span><h3>做了什么</h3><p>按顺序写操作。</p></div><div class="deck-card"><span class="num">03</span><h3>现在怎样</h3><p>可观察到的结果。</p></div><div class="deck-card"><span class="num">04</span><h3>预期怎样</h3><p>正确状态是什么。</p></div><div class="deck-card accent-card"><span class="num">05</span><h3>贴原文</h3><p>Console 错误和截图。</p></div><div class="deck-card ink-card"><span class="num">06</span><h3>只修这一处</h3><p>不要顺手重构。</p></div></div></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">23 / 32 · DEBUG</div><div class="r">105—125 MIN</div></div><div data-anim="title"><div class="t-meta">COPY THE EVIDENCE, THEN NARROW THE REPAIR</div><h2 class="deck-title deck-lg">报错不是一句“坏了”</h2></div><div data-anim="flow" class="argument-flow"><div class="argument-flow-step"><span class="argument-num">01</span><strong>复现</strong><span>确认哪个页面、哪一步真的出错。</span></div><div class="argument-flow-step"><span class="argument-num">02</span><strong>复制</strong><span>把 Console 原文和截图交给 AI。</span></div><div class="argument-flow-step"><span class="argument-num">03</span><strong>限定</strong><span>只修这一处，不顺手重构。</span></div><div class="argument-flow-step"><span class="argument-num">04</span><strong>复测</strong><span>重新编译，重走同一条路径。</span></div></div><p class="argument-note">结构化报错 = 让 AI 面对证据，而不是猜测。</p></div>
 </section>
 
 <section class="slide dark" data-layout="S14" data-animate="loop-form">
@@ -1683,8 +1721,15 @@
   <div class="canvas-card"><div class="chrome-min"><div class="l">25 / 32 · TEST</div><div class="r">148—155 MIN</div></div><div data-anim="title"><div class="t-meta">MUST DO BEFORE POLISH</div><h2 class="deck-title deck-lg">六个动作：自己测，再让同伴复走</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>正常输入</h3><p>与人工验算一致。</p></div><div class="deck-card"><span class="num">02</span><h3>空输入</h3><p>有提示，不崩溃。</p></div><div class="deck-card"><span class="num">03</span><h3>极端输入</h3><p>边界值有反馈。</p></div><div class="deck-card"><span class="num">04</span><h3>重复计算</h3><p>状态不互相污染。</p></div><div class="deck-card"><span class="num">05</span><h3>重进页面</h3><p>初始状态正确。</p></div><div class="deck-card accent-card"><span class="num">06</span><h3>同伴真机验收</h3><p>扫码后按你的需求复走。</p></div></div></div>
 </section>
 
-<section class="slide accent" data-layout="S12" data-animate="manifesto">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">21 / 27 · PART III</div><div class="r">155—180 MIN</div></div><div data-anim="title" style="margin:auto 0"><div class="t-meta" style="color:rgba(255,255,255,.62)">ONLY IF THE LOOP PASSES</div><h1 class="deck-title deck-xl">有余量，再调优</h1></div><p data-anim="bottom" class="lead deck-bottom" style="color:rgba(255,255,255,.82)">主路径没通过？这 25 分钟继续修错；不是硬塞“美化作业”。</p></div>
+<section class="slide chapter-curtain" data-layout="S12" data-animate="manifesto">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l">28 / 32 · PART III</div><div class="r">155—180 MIN</div></div>
+    <div class="curtain-band"></div><div class="curtain-mark"></div>
+    <div class="curtain-copy">
+      <div data-anim="title"><div class="curtain-number">03</div><div class="t-meta" style="color:rgba(255,255,255,.62)">ONLY IF THE LOOP PASSES</div><h1>能跑通<br>才叫第一版</h1></div>
+      <p data-anim="bottom">有余量才调优；主路径没通过，就继续修错和验证。</p>
+    </div>
+  </div>
 </section>
 
 <section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
@@ -1700,7 +1745,7 @@
 </section>
 
 <section class="slide" data-layout="S19" data-animate="four-cards">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">25 / 27 · DELIVERY</div><div class="r">175—180 MIN</div></div><div data-anim="title"><div class="t-meta">FINAL FIVE MINUTES</div><h2 class="deck-title deck-lg">最后留下交付四件套</h2></div><div data-anim="grid" class="deck-grid-4 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>源码</h3><p>可重新导入的完整项目目录。</p></div><div class="deck-card"><span class="num">02</span><h3>演示证据</h3><p>真机截图或核心流程录屏。</p></div><div class="deck-card"><span class="num">03</span><h3>检查结果</h3><p>六项测试的通过记录。</p></div><div class="deck-card accent-card"><span class="num">04</span><h3>已知问题</h3><p>明确没做什么、风险在哪里。</p></div></div></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">32 / 32 · DELIVERY</div><div class="r">175—180 MIN</div></div><div data-anim="title"><div class="t-meta">LEAVE A TRACE OF THE WORK</div><h2 class="deck-title deck-lg">交付不是“发一句完成”</h2></div><div data-anim="flow" class="argument-stage"><div class="argument-node"><span class="argument-num">01 / SOURCE</span><strong>源码</strong><h3>别人能重新导入</h3><p>项目目录完整，边界没有藏起来。</p></div><div class="argument-arrow">→</div><div class="argument-node is-focus"><span class="argument-num">02 / PROOF</span><strong>演示证据</strong><h3>真机走过主路径</h3><p>截图、录屏或测试记录能复查。</p></div><div class="argument-arrow">→</div><div class="argument-node"><span class="argument-num">03 / LIMIT</span><strong>已知问题</strong><h3>明确什么还没做</h3><p>把风险写出来，交付才可信。</p></div></div><p class="argument-note">AI 的语气不是证据；可复查的结果才是交付。</p></div>
 </section>
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
