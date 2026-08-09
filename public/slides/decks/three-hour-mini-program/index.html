@@ -661,27 +661,6 @@
   body.low-power.motion-ready [data-anim],
   body.low-power [data-anim]{opacity:1!important;transform:none!important}
 
-  /* V2 deck motion: the current slides use data-anim blocks instead of the
-     legacy template selectors. Keep the movement visible but quiet. */
-  .slide.is-active .image-stage img.generated-photo{
-    animation:deck-image-breathe 12s ease-in-out .9s infinite alternate;
-    transform-origin:center center;
-  }
-  .slide.is-active .phase:nth-child(2)::after,
-  .slide.is-active .tool:nth-child(2)::after{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.15) 48%,transparent 76%);
-    transform:translateX(-120%);animation:deck-sheen 5.5s ease-in-out 1.1s infinite;
-  }
-  .phase,.tool{position:relative;overflow:hidden}
-  @keyframes deck-image-breathe{from{transform:scale(1)}to{transform:scale(1.035)}}
-  @keyframes deck-sheen{0%,35%{transform:translateX(-120%)}70%,100%{transform:translateX(120%)}}
-  @media(prefers-reduced-motion:reduce){
-    .slide.is-active .image-stage img.generated-photo,
-    .slide.is-active .phase:nth-child(2)::after,
-    .slide.is-active .tool:nth-child(2)::after{animation:none}
-  }
-
   /* ============================================================
      ↓↓↓ V2 EXTENSIONS · Canvas Mode + 参考图新类
      验证效果后沉淀回 template-swiss.html
@@ -1391,85 +1370,22 @@
 .closing-recap div{display:flex;flex-direction:column;gap:1.6vh;padding:2vh 1vw;background:var(--paper);border-top:2px solid var(--accent)}
 .closing-recap b{font-family:var(--mono);font-size:14px;letter-spacing:.1em;color:var(--accent)}
 .closing-recap span{font-size:max(16px,1vw);font-weight:500;line-height:1.35}
+.feedback-slide{background:var(--accent)!important;color:var(--accent-on)!important}
+.feedback-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,34%);align-items:center;gap:7vw;flex:1;margin-bottom:var(--nav-safe-bottom)}
+.feedback-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2.4vh}
+.feedback-copy .deck-xl{font-size:min(8vw,14vh);color:#fff}
+.feedback-copy .deck-lead{color:rgba(255,255,255,.84)}
+.feedback-art{display:flex;flex-direction:column;align-items:center;gap:1.8vh;margin:0;padding:2.5vh 2.2vw;background:#fff;border-radius:18px;color:var(--ink);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.feedback-art img{display:block;width:min(25vw,38vh);height:min(25vw,38vh);object-fit:contain}
+.feedback-art figcaption{font-size:max(14px,.95vw);font-weight:600;letter-spacing:.04em}
 .slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:4vh}
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half.b-grey{padding-top:18vh!important}
-
-/* Presentation rhythm: recurring chapter curtains and argument stages. */
-.chapter-curtain{background:var(--accent);color:#fff}
-body.canvas-mode .slide.chapter-curtain{background:var(--accent);color:#fff}
-body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);color:#fff}
-.chapter-curtain .canvas-card{position:relative;overflow:hidden}
-.chapter-curtain .curtain-number{font-size:min(32vw,54vh);font-weight:200;line-height:.72;letter-spacing:-.08em;color:#6f8cff}
-.chapter-curtain .curtain-copy{display:flex;flex-direction:column;justify-content:center;gap:2.4vh;max-width:62vw;margin-left:auto;margin-right:5vw}
-.chapter-curtain .curtain-copy h1{font-size:min(6.2vw,10.8vh);font-weight:200;line-height:1.02;letter-spacing:-.045em}
-.chapter-curtain .curtain-copy p{font-size:max(19px,1.35vw);line-height:1.5;color:rgba(255,255,255,.72);max-width:34ch}
-.chapter-curtain .curtain-band{position:absolute;left:-8vw;bottom:8vh;width:58vw;height:10vh;background:#fff;opacity:.09;transform:skewX(-24deg)}
-.chapter-curtain .curtain-mark{position:absolute;right:5vw;bottom:10vh;width:18vw;height:18vw;border:1px solid rgba(255,255,255,.35)}
-.chapter-curtain .curtain-mark::after{content:"";position:absolute;inset:22%;border:1px solid rgba(255,255,255,.35)}
-.argument-stage{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:1.4vw;flex:1;margin:4vh 0 var(--nav-safe-bottom)}
-.argument-node{background:var(--grey-1);color:var(--text-primary);padding:3.2vh 2vw;display:flex;flex-direction:column;justify-content:space-between;min-height:38vh;border-top:3px solid var(--ink)}
-.argument-node.is-focus{background:var(--accent);color:#fff;border-top-color:#6f8cff}
-.argument-node .argument-num{font-family:var(--mono);font-size:14px;letter-spacing:.15em;color:var(--accent)}
-.argument-node.is-focus .argument-num{color:#9cb0ff}
-.argument-node strong{font-size:min(4.2vw,7.6vh);font-weight:200;line-height:1}
-.argument-node h3{font-size:max(23px,1.7vw);font-weight:400;line-height:1.2}
-.argument-node p{font-size:max(16px,1vw);line-height:1.5;color:var(--text-secondary);max-width:22ch}
-.argument-node.is-focus p{color:rgba(255,255,255,.76)}
-.argument-arrow{display:grid;place-items:center;font-family:var(--mono);font-size:min(4vw,7vh);color:var(--accent);padding:0 .5vw}
-.argument-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-subtle);flex:1;margin:4vh 0 var(--nav-safe-bottom)}
-.argument-flow-step{background:var(--paper);padding:2.5vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between;border-top:3px solid var(--ink)}
-.argument-flow-step:nth-child(3){background:var(--accent);color:#fff;border-top-color:#6f8cff}
-.argument-flow-step .argument-num{font-size:min(4.2vw,7.6vh);font-weight:200;line-height:1;color:var(--accent)}
-.argument-flow-step:nth-child(3) .argument-num{color:#9cb0ff}
-.argument-flow-step strong{font-size:max(20px,1.35vw);font-weight:400}
-.argument-flow-step span{font-size:max(15px,.92vw);line-height:1.45;color:var(--text-secondary)}
-.argument-flow-step:nth-child(3) span{color:rgba(255,255,255,.76)}
-.argument-note{font-family:var(--mono);font-size:14px;letter-spacing:.05em;color:var(--text-helper)}
-.slide.dark .argument-note{color:rgba(255,255,255,.5)}
-.release-proof{display:grid;grid-template-columns:5fr 7fr;gap:2vw;align-items:stretch;flex:1;margin:3vh 0 var(--nav-safe-bottom)}
-.release-shot{background:#fff;border-top:3px solid var(--accent);padding:1.2vh 1vw;display:flex;flex-direction:column;justify-content:center;gap:1vh;min-width:0}
-.release-shot img{width:100%;max-height:34vh;object-fit:contain;object-position:center}
-.release-shot figcaption{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--text-helper)}
-.release-steps{display:grid;grid-template-rows:repeat(3,1fr);gap:1px;background:var(--border-subtle)}
-.release-step{background:var(--paper);padding:2vh 1.5vw;display:grid;grid-template-columns:auto 1fr;gap:1.2vw;align-items:center}
-.release-step.is-live{background:var(--accent);color:#fff}
-.release-step .release-num{font-size:min(4vw,7vh);font-weight:200;line-height:1;color:var(--accent)}
-.release-step.is-live .release-num{color:#9cb0ff}
-.release-step strong{font-size:max(20px,1.35vw);font-weight:400}
-.release-step span{display:block;font-size:max(15px,.9vw);line-height:1.4;color:var(--text-secondary);margin-top:.5vh}
-.release-step.is-live span{color:rgba(255,255,255,.76)}
-.version-proof{display:grid;grid-template-columns:4fr 8fr;gap:2.4vw;align-items:stretch;flex:1;margin:3vh 0 1vh}
-.version-states{display:grid;grid-template-rows:repeat(3,1fr);gap:1px;background:var(--border-subtle)}
-.version-state{background:var(--paper);padding:2.2vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between;border-left:4px solid var(--border-strong)}
-.version-state:nth-child(2){border-left-color:var(--accent)}
-.version-state:nth-child(3){background:var(--accent);color:#fff;border-left-color:#6f8cff}
-.version-state b{font-family:var(--mono);font-size:14px;letter-spacing:.14em;color:var(--accent)}
-.version-state:nth-child(3) b{color:#9cb0ff}
-.version-state strong{font-size:max(22px,1.55vw);font-weight:400}
-.version-state span{font-size:max(15px,.9vw);line-height:1.45;color:var(--text-secondary)}
-.version-state:nth-child(3) span{color:rgba(255,255,255,.76)}
-.version-shot{background:#fff;border-top:3px solid var(--accent);padding:1.2vh 1vw;display:flex;align-items:center;min-width:0}
-.version-shot img{width:100%;max-height:52vh;object-fit:contain}
-.checkin-layout{display:grid;grid-template-columns:5fr 7fr;gap:5vw;align-items:center;flex:1;margin:3vh 0 var(--nav-safe-bottom)}
-.checkin-copy{display:flex;flex-direction:column;gap:2.2vh}
-.checkin-copy h1{font-size:min(7vw,12vh);font-weight:200;line-height:.98;letter-spacing:-.05em}
-.checkin-copy p{font-size:max(19px,1.35vw);line-height:1.5;color:var(--text-secondary);max-width:22ch}
-.checkin-art{height:min(64vh,620px);background:var(--grey-1);border-top:3px solid var(--accent);display:grid;place-items:center;padding:2vh 2vw}
-.checkin-art img{width:min(100%,430px);height:auto;max-height:100%;object-fit:contain}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:900px){
-  .argument-stage{grid-template-columns:1fr;gap:1px}
-  .argument-arrow{min-height:5vh;transform:rotate(90deg)}
-  .argument-flow{grid-template-columns:repeat(2,1fr)}
-  .release-proof,.version-proof,.checkin-layout{grid-template-columns:1fr}
-  .chapter-curtain .curtain-copy{max-width:72vw}
-}
 @media(max-width:900px){
   .deck-grid-4,.deck-grid-3,.deck-grid-6{grid-template-columns:repeat(2,1fr)}
   .phase-bar,.loop-row,.tool-flow{grid-template-columns:repeat(2,1fr)}
-  .image-stage,.prompt-box,.responsibility,.speaker-intro{grid-template-columns:1fr}
+  .image-stage,.prompt-box,.responsibility,.speaker-intro,.feedback-layout{grid-template-columns:1fr}
 }
 /* End deck-local Swiss locked additions. */
 </style>
@@ -1530,16 +1446,6 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
   </div>
 </section>
 
-<section class="slide light checkin-slide" data-layout="S03" data-animate="split-statement">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">02 / 34 · CHECK IN</div><div class="r">START HERE</div></div>
-    <div class="checkin-layout">
-      <div data-anim="title" class="checkin-copy"><div class="t-meta">AI 编程实战聚会</div><h1>先签到<br>再开工</h1><p>打开微信，扫码完成签到；接下来一起用三小时，做出第一个可验证的小程序。</p></div>
-      <figure data-anim="right" class="checkin-art"><img src="images/02-check-in-qr.png" data-image-slot="s22-hero-21x9" alt="AI编程实战聚会签到二维码"><figcaption class="sr-only">签到二维码</figcaption></figure>
-    </div>
-  </div>
-</section>
-
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">02 / 27 · SPEAKER</div><div class="r">ABOUT LUOCHEN</div></div>
@@ -1555,11 +1461,11 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
     <div class="chrome-min"><div class="l">03 / 31 · TODAY</div><div class="r">180 MINUTES</div></div>
     <div data-anim="title"><div class="t-meta">THREE PARTS · ONE VERIFIABLE RESULT</div><h2 class="deck-title deck-lg">今天讲什么：3 段，180 分钟</h2><p class="deck-lead">先把需求讲明白；再让它在真机跑通；有余量才调优并整理交付。</p></div>
     <div data-anim="timeline" class="phase-bar deck-bottom">
-      <div class="phase"><span class="mins">30</span><strong>基础概念</strong><small>00—30</small></div>
-      <div class="phase"><span class="mins">125</span><strong>动手实操</strong><small>30—155 · 含 2 次休息</small></div>
+      <div class="phase"><span class="mins">15</span><strong>基础概念</strong><small>00—15</small></div>
+      <div class="phase"><span class="mins">140</span><strong>动手实操</strong><small>15—155 · 含 2 次休息</small></div>
       <div class="phase"><span class="mins">25</span><strong>调整调优</strong><small>155—180</small></div>
     </div>
-    <p class="source-note">第 75—85 分钟与 130—140 分钟各休息 10 分钟；主路径没跑通时，调优时间自动回归修错。</p>
+    <p class="source-note">前 15 分钟完成基础讲解；第 75—85 分钟与 130—140 分钟各休息 10 分钟；主路径没跑通时，调优时间自动回归修错。</p>
   </div>
 </section>
 
@@ -1572,13 +1478,15 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
   </div>
 </section>
 
-<section class="slide chapter-curtain" data-layout="S12" data-animate="manifesto">
+<section class="slide dark" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">06 / 32 · PART I</div><div class="r">00—30 MIN</div></div>
-    <div class="curtain-band"></div><div class="curtain-mark"></div>
-    <div class="curtain-copy">
-      <div data-anim="title"><div class="curtain-number">01</div><div class="t-meta" style="color:rgba(255,255,255,.62)">FIRST, BUILD THE MENTAL MODEL</div><h1>三小时的秘密<br>不是速度，是边界</h1></div>
-      <p data-anim="bottom">先把“做什么、谁判断、怎样验收”说清，再让 AI 开始写。</p>
+    <div class="chrome-min"><div class="l">06 / 31 · PART I</div><div class="r">00—15 MIN</div></div>
+    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">FIRST, BUILD THE MENTAL MODEL</div><h1 class="deck-title deck-lg" style="color:#fff">第一部分：基础与准备</h1><p class="deck-lead" style="margin-top:2vh">先把“做什么、谁判断、怎样验收”说清。</p></div>
+    <div data-anim="grid" class="deck-grid-4 deck-bottom">
+      <div class="deck-card ink-card"><span class="num">01</span><h3>产品边界</h3><p>一场景，一闭环。</p></div>
+      <div class="deck-card ink-card"><span class="num">02</span><h3>工具分工</h3><p>AI 写，工具预览，手机验。</p></div>
+      <div class="deck-card ink-card"><span class="num">03</span><h3>人的责任</h3><p>需求、边界、问题、验收。</p></div>
+      <div class="deck-card accent-card"><span class="num">04</span><h3>本段产物</h3><p>需求 + 验收标准。</p></div>
     </div>
   </div>
 </section>
@@ -1625,42 +1533,24 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
   </div>
 </section>
 
-<section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
+<section class="slide dark" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">10 / 34 · RELEASE PATH</div><div class="r">FROM PREVIEW TO ONLINE</div></div>
-    <div data-anim="title"><div class="t-meta">THE BUTTONS ARE NOT THE SAME</div><h2 class="deck-title deck-lg">预览不等于发布</h2></div>
-    <div data-anim="image" class="release-proof">
-      <figure class="release-shot"><img src="images/33-mini-program-release-status.png" data-image-slot="s33-release-status" alt="小程序信息、类目、微信认证和备案状态页面"><figcaption>真实平台状态：资料补全、认证、备案分别是不同阶段。</figcaption></figure>
-      <div class="release-steps">
-        <div class="release-step"><b class="release-num">01</b><div><strong>编译 / 预览</strong><span>电脑模拟器运行，扫码在手机上体验。</span></div></div>
-        <div class="release-step"><b class="release-num">02</b><div><strong>上传 / 审核</strong><span>形成开发版本，提交后等待平台检查。</span></div></div>
-        <div class="release-step is-live"><b class="release-num">03</b><div><strong>备案 / 正式上线</strong><span>补全小程序信息、类目、认证和备案，才进入线上版本。</span></div></div>
-      </div>
+    <div class="chrome-min"><div class="l">07 / 27 · VERSION CHAIN</div><div class="r">FIVE STATES</div></div>
+    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.5)">THE BUTTONS ARE NOT THE SAME</div><h2 class="deck-title deck-lg">预览不等于发布</h2></div>
+    <div data-anim="timeline" class="loop-row deck-bottom">
+      <div class="loop-item"><b>01</b><strong>编译</strong><span>电脑模拟器运行</span></div>
+      <div class="loop-item"><b>02</b><strong>预览</strong><span>扫码在手机运行</span></div>
+      <div class="loop-item"><b>03</b><strong>上传</strong><span>形成开发版本</span></div>
+      <div class="loop-item"><b>04</b><strong>审核</strong><span>平台检查</span></div>
+      <div class="loop-item"><b>05</b><strong>发布</strong><span>成为线上版本</span></div>
     </div>
-    <p class="argument-note">3 小时课内交付的是可运行、可预览、可验收的 MVP；正式上线是后续平台流程。</p>
-  </div>
-</section>
-
-<section class="slide grey" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">11 / 34 · VERSION MANAGEMENT</div><div class="r">ONE PROJECT · THREE STATES</div></div>
-    <div data-anim="title"><div class="t-meta">A VERSION IS A STATE, NOT A BUTTON</div><h2 class="deck-title deck-lg">版本管理：开发、审核、线上不是一回事</h2></div>
-    <div data-anim="image" class="version-proof">
-      <div class="version-states">
-        <div class="version-state"><b>01 / DEVELOP</b><strong>开发版本</strong><span>自己和同伴扫码体验；可以继续改。</span></div>
-        <div class="version-state"><b>02 / REVIEW</b><strong>审核版本</strong><span>提交给平台检查，等待审核结果。</span></div>
-        <div class="version-state"><b>03 / ONLINE</b><strong>线上版本</strong><span>审核通过后，用户实际使用的版本。</span></div>
-      </div>
-      <figure class="version-shot"><img src="images/34-version-management.png" data-image-slot="s34-version-management" alt="小程序版本管理页面，显示线上版本、审核版本和开发版本"></figure>
-    </div>
-    <p class="argument-note">不要把“开发工具里能跑”说成“已经上线”；先确认当前版本处在哪个状态。</p>
   </div>
 </section>
 
 <section class="slide" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">08 / 27 · CHOOSE</div><div class="r">ONE SMALL LOOP</div></div>
-    <div data-anim="title"><div class="t-meta">30—40 MIN</div><h2 class="deck-title deck-lg">动手前，只留一个小需求</h2></div>
+    <div data-anim="title"><div class="t-meta">15—30 MIN</div><h2 class="deck-title deck-lg">动手前，只留一个小需求</h2></div>
     <div data-anim="grid" class="deck-grid-3 deck-bottom">
       <div class="deck-card accent-card"><span class="num">01</span><h3>一句话说清场景</h3><p>谁，在什么时候，为何要用。</p></div>
       <div class="deck-card"><span class="num">02</span><h3>不靠外部系统</h3><p>默认不登录、不支付、不接数据库。</p></div>
@@ -1671,16 +1561,13 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
 
 <section class="slide grey" data-layout="S05" data-animate="progression">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">14 / 32 · LOOP</div><div class="r">ONE PAGE MVP</div></div>
-    <div data-anim="title"><div class="t-meta">CUT THE PRODUCT UNTIL IT CAN RUN</div><h2 class="deck-title deck-lg">把“大产品”砍成一条能验算的路径</h2></div>
-    <div data-anim="flow" class="argument-stage">
-      <div class="argument-node"><span class="argument-num">01 / INPUT</span><strong>用户填什么</strong><h3>一个可理解的数据</h3><p>只保留完成这一次任务所必须的输入。</p></div>
-      <div class="argument-arrow">→</div>
-      <div class="argument-node is-focus"><span class="argument-num">02 / PROCESS</span><strong>规则做什么</strong><h3>一条能讲明白的处理</h3><p>不接外部系统，不引入第二条功能。</p></div>
-      <div class="argument-arrow">→</div>
-      <div class="argument-node"><span class="argument-num">03 / OUTPUT</span><strong>结果长什么样</strong><h3>马上出现、可以复算</h3><p>五分钟内能人工验算，才进入第一版。</p></div>
+    <div class="chrome-min"><div class="l">09 / 27 · LOOP</div><div class="r">ONE PAGE MVP</div></div>
+    <div data-anim="title"><div class="t-meta">DEFAULT CASE</div><h2 class="deck-title deck-lg">默认做一页计算器／转换器</h2></div>
+    <div data-anim="flow" class="loop-row deck-bottom">
+      <div class="loop-item"><b>01</b><strong>输入</strong><span>用户填一个可理解的数据。</span></div>
+      <div class="loop-item"><b>02</b><strong>处理</strong><span>一条你能说明白的规则。</span></div>
+      <div class="loop-item"><b>03</b><strong>输出</strong><span>马上展示、可再次计算的结果。</span></div>
     </div>
-    <p class="argument-note">不是做一个“小商城”；是先证明一条输入 → 处理 → 输出的闭环。</p>
   </div>
 </section>
 
@@ -1714,13 +1601,15 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
   </div>
 </section>
 
-<section class="slide chapter-curtain" data-layout="S12" data-animate="manifesto">
+<section class="slide dark" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">17 / 32 · PART II</div><div class="r">30—155 MIN</div></div>
-    <div class="curtain-band"></div><div class="curtain-mark"></div>
-    <div class="curtain-copy">
-      <div data-anim="title"><div class="curtain-number">02</div><div class="t-meta" style="color:rgba(255,255,255,.62)">NOW WE BUILD</div><h1>AI 写得快<br>但人必须会验收</h1></div>
-      <p data-anim="bottom">从第一版开始，真正的工作不是等待生成，而是持续检查、复现和复测。</p>
+    <div class="chrome-min"><div class="l">11 / 27 · PART II</div><div class="r">15—155 MIN</div></div>
+    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">NOW WE BUILD</div><h1 class="deck-title deck-lg" style="color:#fff">第二部分：动手实操</h1><p class="deck-lead" style="margin-top:2vh">140 分钟，含两次休息；只做一个小程序。</p></div>
+    <div data-anim="grid" class="deck-grid-4 deck-bottom">
+      <div class="deck-card ink-card"><span class="num">01</span><h3>建项目</h3><p>需求 → 第一版。</p></div>
+      <div class="deck-card ink-card"><span class="num">02</span><h3>等第一版</h3><p>生成时休息 10 分钟。</p></div>
+      <div class="deck-card ink-card"><span class="num">03</span><h3>导入并修错</h3><p>编译，复制报错，重试。</p></div>
+      <div class="deck-card accent-card"><span class="num">04</span><h3>真机验证</h3><p>扫码重走主路径。</p></div>
     </div>
   </div>
 </section>
@@ -1758,7 +1647,7 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
 </section>
 
 <section class="slide grey" data-layout="S04" data-animate="six-cells">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">23 / 32 · DEBUG</div><div class="r">105—125 MIN</div></div><div data-anim="title"><div class="t-meta">COPY THE EVIDENCE, THEN NARROW THE REPAIR</div><h2 class="deck-title deck-lg">报错不是一句“坏了”</h2></div><div data-anim="flow" class="argument-flow"><div class="argument-flow-step"><span class="argument-num">01</span><strong>复现</strong><span>确认哪个页面、哪一步真的出错。</span></div><div class="argument-flow-step"><span class="argument-num">02</span><strong>复制</strong><span>把 Console 原文和截图交给 AI。</span></div><div class="argument-flow-step"><span class="argument-num">03</span><strong>限定</strong><span>只修这一处，不顺手重构。</span></div><div class="argument-flow-step"><span class="argument-num">04</span><strong>复测</strong><span>重新编译，重走同一条路径。</span></div></div><p class="argument-note">结构化报错 = 让 AI 面对证据，而不是猜测。</p></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">17 / 27 · DEBUG</div><div class="r">105—125 MIN</div></div><div data-anim="title"><div class="t-meta">STEP 3 · COPY THE EVIDENCE</div><h2 class="deck-title deck-lg">报错不要概括，要原样交给 AI</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>哪个页面</h3><p>页面名或路由。</p></div><div class="deck-card"><span class="num">02</span><h3>做了什么</h3><p>按顺序写操作。</p></div><div class="deck-card"><span class="num">03</span><h3>现在怎样</h3><p>可观察到的结果。</p></div><div class="deck-card"><span class="num">04</span><h3>预期怎样</h3><p>正确状态是什么。</p></div><div class="deck-card accent-card"><span class="num">05</span><h3>贴原文</h3><p>Console 错误和截图。</p></div><div class="deck-card ink-card"><span class="num">06</span><h3>只修这一处</h3><p>不要顺手重构。</p></div></div></div>
 </section>
 
 <section class="slide dark" data-layout="S14" data-animate="loop-form">
@@ -1781,15 +1670,8 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
   <div class="canvas-card"><div class="chrome-min"><div class="l">25 / 32 · TEST</div><div class="r">148—155 MIN</div></div><div data-anim="title"><div class="t-meta">MUST DO BEFORE POLISH</div><h2 class="deck-title deck-lg">六个动作：自己测，再让同伴复走</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>正常输入</h3><p>与人工验算一致。</p></div><div class="deck-card"><span class="num">02</span><h3>空输入</h3><p>有提示，不崩溃。</p></div><div class="deck-card"><span class="num">03</span><h3>极端输入</h3><p>边界值有反馈。</p></div><div class="deck-card"><span class="num">04</span><h3>重复计算</h3><p>状态不互相污染。</p></div><div class="deck-card"><span class="num">05</span><h3>重进页面</h3><p>初始状态正确。</p></div><div class="deck-card accent-card"><span class="num">06</span><h3>同伴真机验收</h3><p>扫码后按你的需求复走。</p></div></div></div>
 </section>
 
-<section class="slide chapter-curtain" data-layout="S12" data-animate="manifesto">
-  <div class="canvas-card">
-    <div class="chrome-min"><div class="l">28 / 32 · PART III</div><div class="r">155—180 MIN</div></div>
-    <div class="curtain-band"></div><div class="curtain-mark"></div>
-    <div class="curtain-copy">
-      <div data-anim="title"><div class="curtain-number">03</div><div class="t-meta" style="color:rgba(255,255,255,.62)">ONLY IF THE LOOP PASSES</div><h1>能跑通<br>才叫第一版</h1></div>
-      <p data-anim="bottom">有余量才调优；主路径没通过，就继续修错和验证。</p>
-    </div>
-  </div>
+<section class="slide accent" data-layout="S12" data-animate="manifesto">
+  <div class="canvas-card"><div class="chrome-min"><div class="l">21 / 27 · PART III</div><div class="r">155—180 MIN</div></div><div data-anim="title" style="margin:auto 0"><div class="t-meta" style="color:rgba(255,255,255,.62)">ONLY IF THE LOOP PASSES</div><h1 class="deck-title deck-xl">有余量，再调优</h1></div><p data-anim="bottom" class="lead deck-bottom" style="color:rgba(255,255,255,.82)">主路径没通过？这 25 分钟继续修错；不是硬塞“美化作业”。</p></div>
 </section>
 
 <section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
@@ -1805,7 +1687,7 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
 </section>
 
 <section class="slide" data-layout="S19" data-animate="four-cards">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">32 / 32 · DELIVERY</div><div class="r">175—180 MIN</div></div><div data-anim="title"><div class="t-meta">LEAVE A TRACE OF THE WORK</div><h2 class="deck-title deck-lg">交付不是“发一句完成”</h2></div><div data-anim="flow" class="argument-stage"><div class="argument-node"><span class="argument-num">01 / SOURCE</span><strong>源码</strong><h3>别人能重新导入</h3><p>项目目录完整，边界没有藏起来。</p></div><div class="argument-arrow">→</div><div class="argument-node is-focus"><span class="argument-num">02 / PROOF</span><strong>演示证据</strong><h3>真机走过主路径</h3><p>截图、录屏或测试记录能复查。</p></div><div class="argument-arrow">→</div><div class="argument-node"><span class="argument-num">03 / LIMIT</span><strong>已知问题</strong><h3>明确什么还没做</h3><p>把风险写出来，交付才可信。</p></div></div><p class="argument-note">AI 的语气不是证据；可复查的结果才是交付。</p></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">25 / 27 · DELIVERY</div><div class="r">175—180 MIN</div></div><div data-anim="title"><div class="t-meta">FINAL FIVE MINUTES</div><h2 class="deck-title deck-lg">最后留下交付四件套</h2></div><div data-anim="grid" class="deck-grid-4 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>源码</h3><p>可重新导入的完整项目目录。</p></div><div class="deck-card"><span class="num">02</span><h3>演示证据</h3><p>真机截图或核心流程录屏。</p></div><div class="deck-card"><span class="num">03</span><h3>检查结果</h3><p>六项测试的通过记录。</p></div><div class="deck-card accent-card"><span class="num">04</span><h3>已知问题</h3><p>明确没做什么、风险在哪里。</p></div></div></div>
 </section>
 
 <section class="slide grey" data-layout="S11" data-animate="timeline-walk">
@@ -1814,6 +1696,16 @@ body.canvas-mode .slide.chapter-curtain .canvas-card{background:var(--accent);co
 
 <section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
   <div class="canvas-card"><div class="split-half"><div class="half b-ink"><div class="t-meta">TAKEAWAY</div><h1 class="deck-title" style="font-size:min(6.7vw,11.8vh);color:#fff">速度来自<br>边界</h1><p class="deck-lead" style="color:rgba(255,255,255,.76);margin-top:auto">把第一版做小，把每一步做实。</p></div><div class="half b-grey r-border"><div class="t-meta">TAKEAWAY</div><h1 class="deck-title" style="font-size:min(5.8vw,10.2vh);color:var(--text-helper)">可信来自<br><span style="color:var(--accent)">验证</span></h1><p class="deck-lead">先科普，再动手；有余量才调优。</p><div class="closing-recap"><div><b>01</b><span>场景足够小</span></div><div><b>02</b><span>真机走通</span></div><div><b>03</b><span>交付证据留存</span></div></div></div></div></div>
+</section>
+
+<section class="slide accent" data-layout="S12" data-animate="manifesto">
+  <div class="canvas-card feedback-slide">
+    <div class="chrome-min"><div class="l">33 / 33 · FEEDBACK</div><div class="r">THANK YOU</div></div>
+    <div class="feedback-layout">
+      <div data-anim="title" class="feedback-copy"><div class="t-meta">LEAVE YOUR FEEDBACK</div><h1 class="deck-title deck-xl">扫码反馈</h1><p class="deck-lead">谢谢你一起完成这 3 小时。<br>欢迎告诉我：哪里有帮助，哪里还可以更好。</p></div>
+      <figure data-anim="right" class="feedback-art"><img src="images/feedback-qr.png" alt="课程反馈二维码"><figcaption>打开微信扫码填写反馈</figcaption></figure>
+    </div>
+  </div>
 </section>
 
 </div>
@@ -1990,7 +1882,6 @@ function go(n){
   deck.style.transform=`translateX(${-idx*100}vw)`;
   nav.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
   const el=slides[idx];
-  slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===idx));
   const isDark = el.classList.contains('dark') || el.classList.contains('accent');
   document.body.classList.toggle('dark-bg', isDark);
   darkMode = isDark;
@@ -2131,43 +2022,6 @@ if(motion){
     {opacity:[0,1], y:[opts.y ?? 12, 0]},
     {duration:opts.duration ?? .6, delay:opts.delay ?? 0,
      easing:opts.easing ?? EASE_ENTRY_EXP});
-
-  /* Current deck adapter. The newer Swiss slides deliberately use a small,
-     stable vocabulary (title, grid, image, timeline, flow, bottom), while
-     the inherited recipes still target the old illustration classes. */
-  function rCurrentDeck(slide){
-    const chrome = slide.querySelector('.chrome-min');
-    if(chrome) animate(chrome,{opacity:[0,1],x:[-10,0]},
-      {duration:.34,delay:.05,easing:EASE_PROD});
-
-    const title = slide.querySelector('[data-anim="title"]');
-    if(title) animate(title,{opacity:[0,1],y:[22,0]},
-      {duration:.72,delay:.12,easing:EASE_ENTRY_EXP});
-
-    slide.querySelectorAll('[data-anim="grid"], [data-anim="timeline"], [data-anim="flow"], [data-anim="image"], [data-anim="right"]').forEach((group, groupIndex)=>{
-      const children = [...group.children];
-      const delay = group.dataset.anim === 'image' ? .28 : .34 + groupIndex*.08;
-      animate(group,{opacity:[0,1],y:[18,0]},
-        {duration:.5,delay,easing:EASE_ENTRY_EXP});
-      children.forEach((child,i)=>animate(child,{opacity:[0,1],y:[14,0],
-        ...(group.dataset.anim === 'right' ? {x:[18,0]} : {})},
-        {duration:.48,delay:delay+.08+i*.09,easing:EASE_ENTRY_EXP}));
-    });
-
-    slide.querySelectorAll('[data-anim="bottom"]').forEach((el,i)=>
-      animate(el,{opacity:[0,1],y:[16,0]},
-        {duration:.55,delay:.78+i*.1,easing:EASE_ENTRY_EXP}));
-
-    const portrait = slide.querySelector('.speaker-portrait');
-    const speakerCopy = slide.querySelector('.speaker-copy');
-    if(portrait) animate(portrait,{opacity:[0,1],x:[-24,0]},
-      {duration:.7,delay:.18,easing:EASE_ENTRY_EXP});
-    if(speakerCopy) animate(speakerCopy,{opacity:[0,1],x:[24,0]},
-      {duration:.7,delay:.34,easing:EASE_ENTRY_EXP});
-    slide.querySelectorAll('.speaker-proof > span').forEach((el,i)=>
-      animate(el,{opacity:[0,1],y:[12,0]},
-        {duration:.42,delay:.82+i*.09,easing:EASE_PROD}));
-  }
 
   /* ---------- recipe: hero · 封面索引 ----------
      大编号一个个亮起 → 索引行最后落定 */
@@ -2821,11 +2675,11 @@ if(motion){
     const all = [...slide.querySelectorAll('[data-anim]')];
     const recipe = slide.dataset.animate;
     const fn = RECIPES[recipe];
-    if(fn) fn(slide, all);
-    rCurrentDeck(slide);
+    if(fn){ fn(slide, all); return; }
 
     /* fallback: 平凡 fade */
-    if(!fn && !all.length) return;
+    if(all.length) animate(all, {opacity:[0,1], y:[12,0]},
+      {duration:.6, delay:i=>i*.08, easing:EASE_ENTRY_EXP});
   }
 
   window.__playSlide = playSlide;
@@ -2941,11 +2795,11 @@ if(motion){
 </script>
 <script>
 (() => {
-  const checkpoints = [0,0,2,7,9,11,14,17,20,23,26,28,30,30,30,40,55,75,85,90,105,125,130,140,155,155,160,167,172,175,180,180];
+  const checkpoints = [0,0,0,2,7,9,11,13,15,15,20,25,35,45,15,55,75,85,90,105,125,130,130,140,148,155,155,160,167,172,175,180,180];
   const sections = [
-    [0, 13, 1, '基础与准备', 0, 30],
-    [14, 23, 2, '动手实操', 30, 155],
-    [24, 30, 3, '调整调优与收尾', 155, 180]
+    [0, 13, 1, '基础与准备', 0, 15],
+    [14, 24, 2, '动手实操', 15, 155],
+    [25, 32, 3, '调整调优与收尾', 155, 180]
   ];
   const getSection = (index) => sections.find(([start, end]) => index >= start && index <= end) || sections[0];
   const render = (index) => {
