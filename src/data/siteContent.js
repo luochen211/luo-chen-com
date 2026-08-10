@@ -1,5 +1,10 @@
 import { projects, writingColumns } from './siteData'
 
+export const socialProfiles = {
+  xiaohongshu: 'https://www.xiaohongshu.com/user/profile/69ce663f000000003402ed88',
+  douyin: 'https://www.douyin.com/user/MS4wLjABAAAAtYCinBiak1TCwh-6_Hf4bZe2LemQmf7tT5WePT13LPMMsEtvBgRPZFwA2xGLsPJD',
+}
+
 const localizedContent = {
   en: {
     seoTitle: 'Agent Harness Engineer & Full-Stack Builder',
@@ -232,6 +237,16 @@ const localizedContent = {
           label: 'GitHub',
           value: 'github.com/luochen211',
           href: 'https://github.com/luochen211',
+        },
+        {
+          label: 'REDnote',
+          value: '300 followers',
+          href: socialProfiles.xiaohongshu,
+        },
+        {
+          label: 'Douyin',
+          value: '1,000 followers',
+          href: socialProfiles.douyin,
         },
         {
           label: 'Domain',
@@ -580,6 +595,16 @@ const localizedContent = {
           label: 'GitHub',
           value: 'github.com/luochen211',
           href: 'https://github.com/luochen211',
+        },
+        {
+          label: '小红书',
+          value: '300 粉丝',
+          href: socialProfiles.xiaohongshu,
+        },
+        {
+          label: '抖音',
+          value: '1000 粉丝',
+          href: socialProfiles.douyin,
         },
         { label: '域名', value: 'luo-chen.com', href: 'https://luo-chen.com' },
         {

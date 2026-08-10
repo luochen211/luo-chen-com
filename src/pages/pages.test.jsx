@@ -93,6 +93,18 @@ describe('redesigned page purposes', () => {
     expect(action).toHaveAttribute('href', expect.stringContaining('Project%20context'))
   })
 
+  it('publishes Xiaohongshu and Douyin profiles with follower counts', () => {
+    render(<ContactPage t={siteContent.zh} />)
+    expect(screen.getByRole('link', { name: /小红书300 粉丝/ })).toHaveAttribute(
+      'href',
+      'https://www.xiaohongshu.com/user/profile/69ce663f000000003402ed88',
+    )
+    expect(screen.getByRole('link', { name: /抖音1000 粉丝/ })).toHaveAttribute(
+      'href',
+      expect.stringContaining('www.douyin.com/user/'),
+    )
+  })
+
   it('renders English article display metadata on Home', () => {
     render(<MemoryRouter><HomePage t={siteContent.en} locale="en" /></MemoryRouter>)
     expect(screen.getByRole('heading', { name: 'After Watching The Years of the Dragon' })).toBeInTheDocument()

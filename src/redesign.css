@@ -815,7 +815,7 @@ body {
 
 .footer strong { color: var(--ink); font-size: 0.9rem; letter-spacing: 0.08em; }
 .footer p { margin: 0.8rem 0 0; }
-.footer nav { display: flex; gap: 1.5rem; }
+.footer nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1rem 1.5rem; }
 .footer a { color: var(--ink-soft); }
 .footer a:hover { color: var(--brand-warm); }
 
@@ -934,6 +934,7 @@ body {
   .contact-wechat img { grid-column: 1 / -1; margin: 1rem 0 0; }
 
   .footer { align-items: flex-start; flex-direction: column; min-height: 18rem; }
+  .footer nav { justify-content: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
