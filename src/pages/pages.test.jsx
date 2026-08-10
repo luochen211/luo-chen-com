@@ -30,6 +30,15 @@ describe('redesigned page purposes', () => {
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
   })
 
+  it('keeps every homepage motion scene represented in the document', () => {
+    const { container } = render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    expect(container.querySelector('.fluid-field')).toBeInTheDocument()
+    expect(container.querySelectorAll('.proof-scene')).toHaveLength(4)
+    expect(container.querySelectorAll('.project-orbit-card')).toHaveLength(3)
+    expect(container.querySelectorAll('.writing-stack > a')).toHaveLength(4)
+    expect(container.querySelector('.cta-expansion-surface')).toBeInTheDocument()
+  })
+
   it('does not list unpublished columns on Writing', () => {
     render(<MemoryRouter><WritingPage t={siteContent.zh} locale="zh" /></MemoryRouter>)
     expect(screen.queryByText('Agent Harness 实践')).not.toBeInTheDocument()

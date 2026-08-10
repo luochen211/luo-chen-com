@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import FluidField from '../components/FluidField'
 import { localizeArticles } from '../data/siteContent'
 import { articleIndex } from '../data/siteData'
 import { getProjectShowcase } from '../data/projectShowcase'
@@ -13,6 +14,10 @@ function Hero({ t, locale }) {
   const isEnglish = locale === 'en'
   return (
     <section className="focused-hero home-focused-hero">
+      <div className="hero-fluid-wrap">
+        <FluidField />
+        <div className="fluid-glass" aria-hidden="true" />
+      </div>
       <div className="hero-copy">
         <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
         <h1>
@@ -25,6 +30,9 @@ function Hero({ t, locale }) {
           <Link className="btn ghost" to="/contact">{t.homeUi.contact}</Link>
         </div>
       </div>
+      <p className="fluid-instruction" aria-hidden="true">
+        <span />{isEnglish ? 'Move to distort' : '移动光标，扰动流场'}
+      </p>
       <figure className="hero-portrait-panel">
         <img src="/头像111.jpg" alt={t.hero.avatarAlt} width="940" height="938" />
         <figcaption><span>{t.homeUi.belief}</span><small>LUOCHEN / 2026</small></figcaption>
@@ -43,19 +51,35 @@ function Hero({ t, locale }) {
 function ProofGrid({ t, items }) {
   return (
     <section className="chapter home-proof-chapter">
-      <div className="chapter-heading editorial-heading">
-        <p>{t.homeUi.assets}</p>
-        <h2>{t.home.proofTitle}</h2>
-      </div>
-      <div className="focused-proof-grid">
-        {items.map((item, index) => (
-          <article className={`focused-proof-item proof-card proof-card-${index + 1}`} data-testid="proof-item" key={item.title}>
-            <p>{item.label}</p>
-            <h3>{item.title}</h3>
-            <span>{item.text}</span>
-            <b aria-hidden="true">{String(index + 1).padStart(2, '0')}</b>
-          </article>
-        ))}
+      <div className="proof-scene-shell">
+        <div className="proof-scene-stage">
+          <div className="chapter-heading editorial-heading">
+            <p>{t.homeUi.assets}</p>
+            <h2>{t.home.proofTitle}</h2>
+          </div>
+          <div className="proof-scene-visual" aria-hidden="true">
+            {items.map((item, index) => (
+              <div className={`proof-visual-layer proof-visual-layer-${index + 1}`} data-scene={index} key={item.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{item.label}</p>
+                <i />
+              </div>
+            ))}
+          </div>
+          <p className="proof-scroll-note">
+            SCROLL <span aria-hidden="true">↓</span>
+          </p>
+        </div>
+        <div className="proof-scene-list">
+          {items.map((item, index) => (
+            <article className="proof-scene proof-card" data-scene={index} data-testid="proof-item" key={item.title}>
+              <p>{item.label}</p>
+              <h3>{item.title}</h3>
+              <span>{item.text}</span>
+              <b aria-hidden="true">{String(index + 1).padStart(2, '0')}</b>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -65,27 +89,38 @@ function SelectedWork({ t, locale }) {
   const work = getProjectShowcase(locale).filter((project) => ['imaging', 'logistics', 'career'].includes(project.id))
   return (
     <section className="chapter selected-work">
-      <div className="chapter-heading sticky-chapter-title">
-        <p>{locale === 'zh' ? '真实交付' : 'Selected evidence'}</p>
-        <h2>{t.home.workTitle}</h2>
-        <Link to="/output">{t.nav.output} →</Link>
-      </div>
-      <div className="selected-work-list">
-        {work.map((project) => (
-          <article className="selected-work-card project-stack-card" key={project.name}>
-            <div className="project-visual">
-              <img src={selectedProjectMedia[project.id]} alt="" loading="lazy" />
-            </div>
-            <div className="project-card-copy">
-              <p>{project.status} · {project.year}</p>
-              <h3>{project.name}</h3>
-              <span>{project.role}</span>
-              <p>{project.summary}</p>
-              <strong>{project.outcome}</strong>
-              <a href={project.href} target="_blank" rel="noreferrer">{locale === 'zh' ? '查看项目' : 'Inspect project'} ↗</a>
-            </div>
-          </article>
-        ))}
+      <div className="project-orbit-stage">
+        <div className="chapter-heading sticky-chapter-title">
+          <p>{locale === 'zh' ? '真实交付' : 'Selected evidence'}</p>
+          <h2>{t.home.workTitle}</h2>
+          <Link to="/output">{t.nav.output} →</Link>
+        </div>
+        <div className="project-orbit-viewport">
+          <div className="project-orbit" role="list">
+            {work.map((project, index) => (
+              <article
+                className="selected-work-card project-orbit-card"
+                key={project.name}
+                role="listitem"
+                style={{ '--project-index': index }}
+              >
+                <div className="project-visual">
+                  <img src={selectedProjectMedia[project.id]} alt="" loading="lazy" />
+                </div>
+                <div className="project-card-copy">
+                  <p>{project.status} · {project.year}</p>
+                  <h3>{project.name}</h3>
+                  <span>{project.role}</span>
+                  <p>{project.summary}</p>
+                  <strong>{project.outcome}</strong>
+                  <a href={project.href} target="_blank" rel="noreferrer">{locale === 'zh' ? '查看项目' : 'Inspect project'} ↗</a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="orbit-axis" aria-hidden="true"><span /></div>
+          <p className="orbit-counter" aria-hidden="true"><span>01</span> / 03</p>
+        </div>
       </div>
     </section>
   )
@@ -103,9 +138,10 @@ function SelectedWriting({ t, locale }) {
         <h2>{t.home.writingTitle}</h2>
         <Link to="/output">{t.nav.output} →</Link>
       </div>
-      <div className="writing-accordion">
-        {latest.map((article) => (
-          <Link to={article.href} key={article.slug}>
+      <div className="writing-accordion writing-stack">
+        {latest.map((article, index) => (
+          <Link to={article.href} key={article.slug} style={{ '--article-index': index }}>
+            <span className="writing-stack-index" aria-hidden="true">0{index + 1}</span>
             <div className="article-list-meta">
               <time>{article.date}</time>
               <span className="article-column">{article.column.title}</span>
@@ -122,9 +158,16 @@ function SelectedWriting({ t, locale }) {
 function CollaborationCta({ t }) {
   return (
     <section className="collaboration-cta">
-      <p>{t.contact.intro}</p>
-      <h2>{t.home.contactTitle}</h2>
-      <Link className="btn cta-button" to="/contact">{t.contact.email} ↗</Link>
+      <div className="cta-expansion-sticky">
+        <div className="cta-expansion-surface">
+          <div className="cta-expansion-copy">
+            <p>{t.contact.intro}</p>
+            <h2>{t.home.contactTitle}</h2>
+            <Link className="btn cta-button" to="/contact">{t.contact.email} ↗</Link>
+          </div>
+          <span className="cta-expansion-ring" aria-hidden="true" />
+        </div>
+      </div>
     </section>
   )
 }
