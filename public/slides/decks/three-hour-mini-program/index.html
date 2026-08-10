@@ -1375,9 +1375,10 @@
 .feedback-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2.4vh}
 .feedback-copy .deck-xl{font-size:min(8vw,14vh);color:#fff}
 .feedback-copy .deck-lead{color:rgba(255,255,255,.84)}
-.feedback-art{display:flex;flex-direction:column;align-items:center;gap:1.8vh;margin:0;padding:2.5vh 2.2vw;background:#fff;border-radius:18px;color:var(--ink);box-shadow:0 18px 45px rgba(0,0,0,.18)}
-.feedback-art img{display:block;width:min(25vw,38vh);height:min(25vw,38vh);object-fit:contain}
+.feedback-art{display:flex;flex-direction:column;align-items:center;gap:1.4vh;margin:0;padding:2vh 2.2vw;background:#fff;border-radius:18px;color:var(--ink);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.feedback-art img{display:block;width:min(23vw,34vh);height:min(23vw,34vh);object-fit:contain}
 .feedback-art figcaption{font-size:max(14px,.95vw);font-weight:600;letter-spacing:.04em}
+.slide[data-layout="S04"] .deck-card p{font-size:max(12px,.76vw);line-height:1.3}
 .slide[data-layout="SWISS-COVER-ASCII"] [data-anim="bottom"]{margin-bottom:4vh}
 .slide[data-layout="S11"] .source-note{margin-bottom:4vh}
 .slide[data-layout="SWISS-CLOSING-ASCII"] .half{padding-bottom:8.6vh!important}
@@ -1493,34 +1494,34 @@
 
 <section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">07 / 31 · CONCEPT</div><div class="r">SCENE → MVP</div></div>
-    <div data-anim="title"><div class="t-meta">WHAT WE MEAN BY “MINI PROGRAM” TODAY</div><h2 class="deck-title deck-lg" style="font-size:min(4.6vw,8.2vh)">从一个场景，做成<br>可验证的小闭环</h2></div>
-    <div data-anim="image" class="image-stage"><img class="generated-photo" src="images/07-scene-to-mvp-concept-v2.png" data-image-slot="s22-hero-21x9" alt="从真实场景、用户输入、处理规则到验证结果的概念流程图"><div class="stage-stats"><div class="stage-stat"><b>01</b><span>场景要清楚</span></div><div class="stage-stat"><b>02</b><span>输入到结果</span></div><div class="stage-stat"><b>03</b><span>结果可验证</span></div></div></div>
+    <div class="chrome-min"><div class="l">07 / 31 · README</div><div class="r">START WITH CLARITY</div></div>
+    <div data-anim="title"><div class="t-meta">BASIC CONCEPT · 01</div><h2 class="deck-title deck-lg" style="font-size:min(4.6vw,8.2vh)">README 是什么？<br>是项目的公开说明书</h2></div>
+    <div data-anim="image" class="image-stage"><img class="generated-photo" src="images/07-scene-to-mvp-concept-v2.png" data-image-slot="s22-hero-21x9" alt="README 将场景、目标、范围和验收标准写成项目说明书"><div class="stage-stats"><div class="stage-stat"><b>01</b><span>写给自己：防止做到一半忘了目标</span></div><div class="stage-stat"><b>02</b><span>写给别人：后续接手也能看懂</span></div><div class="stage-stat"><b>03</b><span>写给 AI：明确边界和验收标准</span></div></div></div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">04 / 27 · DEFINITION</div><div class="r">DONE MEANS EVIDENCE</div></div>
-    <div data-anim="title"><div class="t-meta">DEFINE DONE FIRST</div><h2 class="deck-title deck-lg">“做完”有四个可检查的结果</h2></div>
+    <div class="chrome-min"><div class="l">04 / 27 · ARCHITECTURE</div><div class="r">DISH · KITCHEN · INGREDIENTS</div></div>
+    <div data-anim="title"><div class="t-meta">BASIC CONCEPT · 02</div><h2 class="deck-title deck-lg">前端、后端、数据库<br>先用一顿饭理解</h2></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
-      <div class="deck-card"><span class="num">01</span><h3>闭环能跑</h3><p>输入、处理、输出完整发生。</p></div>
-      <div class="deck-card"><span class="num">02</span><h3>工具可预览</h3><p>微信开发者工具无阻塞报错。</p></div>
-      <div class="deck-card"><span class="num">03</span><h3>真机点过</h3><p>至少一次手机扫码验证。</p></div>
-      <div class="deck-card accent-card"><span class="num">04</span><h3>留下证据</h3><p>源码、截图、测试记录、已知问题。</p></div>
+      <div class="deck-card"><span class="num">01</span><h3>前端 = 可以吃的菜</h3><p>用户看见、点击和使用的页面。</p></div>
+      <div class="deck-card"><span class="num">02</span><h3>后端 = 厨房</h3><p>接收请求，执行规则，处理结果。</p></div>
+      <div class="deck-card"><span class="num">03</span><h3>数据库 = 生食材</h3><p>还没准备好的菜，先保存起来，需要时再取。</p></div>
+      <div class="deck-card accent-card"><span class="num">04</span><h3>先问：今天需要哪一层？</h3><p>单页本地工具，可能只需要前端。</p></div>
     </div>
   </div>
 </section>
 
 <section class="slide grey" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">05 / 27 · BOUNDARY</div><div class="r">NOT TODAY</div></div>
-    <div data-anim="title"><div class="t-meta">THREE HOURS EXCLUDES</div><h2 class="deck-title deck-lg">三小时不承诺正式上线</h2></div>
+    <div class="chrome-min"><div class="l">05 / 27 · WECHAT CLOUD</div><div class="r">WHEN THE KITCHEN MOVES ONLINE</div></div>
+    <div data-anim="title"><div class="t-meta">BASIC CONCEPT · 03</div><h2 class="deck-title deck-lg">微信云服务是什么？<br>把厨房和仓库放到云上</h2></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
-      <div class="deck-card"><span class="num">01</span><h3>主体与认证</h3><p>账号资质与费用另行处理。</p></div>
-      <div class="deck-card"><span class="num">02</span><h3>备案</h3><p>受平台与监管流程影响。</p></div>
-      <div class="deck-card"><span class="num">03</span><h3>平台审核</h3><p>提交后由平台判断，不可压缩成现场动作。</p></div>
-      <div class="deck-card ink-card"><span class="num">04</span><h3>复杂服务</h3><p>登录、支付、数据库都不进今天范围。</p></div>
+      <div class="deck-card"><span class="num">01</span><h3>云函数 = 云上的厨房</h3><p>不用自己买服务器，也能执行后端逻辑。</p></div>
+      <div class="deck-card"><span class="num">02</span><h3>云数据库 = 云上的仓库</h3><p>保存用户、订单和业务数据。</p></div>
+      <div class="deck-card"><span class="num">03</span><h3>云存储 = 云上的冷藏柜</h3><p>放图片、文件等较大的材料。</p></div>
+      <div class="deck-card ink-card"><span class="num">04</span><h3>不是今天必选</h3><p>没有登录、数据共享需求，就先不加。</p></div>
     </div>
   </div>
 </section>
@@ -1604,29 +1605,29 @@
 <section class="slide dark" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">11 / 27 · PART II</div><div class="r">15—155 MIN</div></div>
-    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">NOW WE BUILD</div><h1 class="deck-title deck-lg" style="color:#fff">第二部分：动手实操</h1><p class="deck-lead" style="margin-top:2vh">140 分钟，含两次休息；只做一个小程序。</p></div>
+    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.54)">NOW WE BUILD · THREE STEPS</div><h1 class="deck-title deck-lg" style="color:#fff">第二部分：动手实操</h1><p class="deck-lead" style="margin-top:2vh">140 分钟，含两次休息；按三步把一个小程序做出来。</p></div>
     <div data-anim="grid" class="deck-grid-4 deck-bottom">
-      <div class="deck-card ink-card"><span class="num">01</span><h3>建项目</h3><p>需求 → 第一版。</p></div>
-      <div class="deck-card ink-card"><span class="num">02</span><h3>等第一版</h3><p>生成时休息 10 分钟。</p></div>
-      <div class="deck-card ink-card"><span class="num">03</span><h3>导入并修错</h3><p>编译，复制报错，重试。</p></div>
-      <div class="deck-card accent-card"><span class="num">04</span><h3>真机验证</h3><p>扫码重走主路径。</p></div>
+      <div class="deck-card ink-card"><span class="num">01</span><h3>先写 README</h3><p>把要做什么写清楚，也让别人看得懂。</p></div>
+      <div class="deck-card ink-card"><span class="num">02</span><h3>按需做视觉</h3><p>有必要再让 AH 生成图标和 UI。</p></div>
+      <div class="deck-card ink-card"><span class="num">03</span><h3>分批让 AI 执行</h3><p>每批完成先检查，再决定下一批。</p></div>
+      <div class="deck-card accent-card"><span class="num">04</span><h3>截图反馈再调整</h3><p>报错和结果都给证据，不让 AI 猜。</p></div>
     </div>
   </div>
 </section>
 
 <section class="slide light" data-layout="S22" data-animate="image-hero" data-image-slot="s22-hero-21x9">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">12 / 27 · BUILD</div><div class="r">40—55 MIN</div></div>
-    <div data-anim="title"><div class="t-meta">STEP 1 · CREATE A PROJECT</div><h2 class="deck-title deck-lg">在 AI 工具里新建一个空项目</h2></div>
-    <div data-anim="image" class="image-stage"><img class="generated-photo" src="images/16-ai-first-build.png" data-image-slot="s22-hero-21x9" alt="AI 编程工具中创建项目并生成第一版小程序"><div class="stage-stats"><div class="stage-stat"><b>01</b><span>新建空文件夹</span></div><div class="stage-stat"><b>02</b><span>粘贴确认后的需求</span></div><div class="stage-stat"><b>03</b><span>等待 AI 写入项目</span></div></div></div>
+    <div class="chrome-min"><div class="l">12 / 27 · README</div><div class="r">40—55 MIN</div></div>
+    <div data-anim="title"><div class="t-meta">STEP 1 · WRITE THE README</div><h2 class="deck-title deck-lg">先写 README：<br>确定自己到底要做什么</h2></div>
+    <div data-anim="image" class="image-stage"><img class="generated-photo" src="images/16-ai-first-build.png" data-image-slot="s22-hero-21x9" alt="开始小程序前先写清目标、边界和验收标准"><div class="stage-stats"><div class="stage-stat"><b>01</b><span>目标：解决谁的什么问题</span></div><div class="stage-stat"><b>02</b><span>范围：只保留一条核心闭环</span></div><div class="stage-stat"><b>03</b><span>验收：什么结果算做完</span></div></div></div>
   </div>
 </section>
 
 <section class="slide dark" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">13 / 27 · CONTROL</div><div class="r">55—75 MIN</div></div>
-    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.5)">AI WORKS, YOU CHECK</div><h2 class="deck-title deck-lg">AI 开写后，你只盯三件事</h2></div>
-    <div data-anim="flow" class="loop-row deck-bottom"><div class="loop-item"><b>01</b><strong>目录</strong><span>项目是否真的写进了新文件夹。</span></div><div class="loop-item"><b>02</b><strong>范围</strong><span>有没有擅自加登录、后端或第二条功能。</span></div><div class="loop-item"><b>03</b><strong>卡点</strong><span>遇到问题先记录，不顺手大改。</span></div></div>
+    <div data-anim="title"><div class="t-meta" style="color:rgba(255,255,255,.5)">STEP 2 · ONLY IF IT HELPS</div><h2 class="deck-title deck-lg">有条件再让 AH 做图标和 UI</h2></div>
+    <div data-anim="flow" class="loop-row deck-bottom"><div class="loop-item"><b>01</b><strong>先判断必要性</strong><span>功能和流程没跑通，不急着做视觉。</span></div><div class="loop-item"><b>02</b><strong>有必要再生成</strong><span>让 AH 根据 README 产出图标、颜色和 UI 方向。</span></div><div class="loop-item"><b>03</b><strong>没有必要就跳过</strong><span>不要让装饰抢走实操时间。</span></div></div>
   </div>
 </section>
 
@@ -1639,7 +1640,7 @@
 </section>
 
 <section class="slide dark" data-layout="S03" data-animate="statement">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">15 / 27 · FIRST VERSION</div><div class="r">85—90 MIN</div></div><h1 data-anim="title" class="deck-title deck-xl" style="margin:auto 0;max-width:13ch">第一版只求<br><span style="color:#6f8cff">能跑通</span></h1><div data-anim="bottom" class="deck-bottom" style="display:flex;gap:4vw;border-top:1px solid rgba(255,255,255,.2);padding-top:2.3vh"><p class="deck-lead">不调颜色，不换图标。</p><p class="deck-lead">先证明“输入 → 处理 → 输出”。</p></div></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">15 / 27 · FIRST VERSION</div><div class="r">85—90 MIN</div></div><h1 data-anim="title" class="deck-title deck-xl" style="margin:auto 0;max-width:13ch">让 AI 根据 README<br><span style="color:#6f8cff">分批执行</span></h1><div data-anim="bottom" class="deck-bottom" style="display:flex;gap:4vw;border-top:1px solid rgba(255,255,255,.2);padding-top:2.3vh"><p class="deck-lead">不要一次性把所有任务交出去。</p><p class="deck-lead">每批完成先检查，方便及时调整。</p></div></div>
 </section>
 
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
@@ -1647,7 +1648,7 @@
 </section>
 
 <section class="slide grey" data-layout="S04" data-animate="six-cells">
-  <div class="canvas-card"><div class="chrome-min"><div class="l">17 / 27 · DEBUG</div><div class="r">105—125 MIN</div></div><div data-anim="title"><div class="t-meta">STEP 3 · COPY THE EVIDENCE</div><h2 class="deck-title deck-lg">报错不要概括，要原样交给 AI</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>哪个页面</h3><p>页面名或路由。</p></div><div class="deck-card"><span class="num">02</span><h3>做了什么</h3><p>按顺序写操作。</p></div><div class="deck-card"><span class="num">03</span><h3>现在怎样</h3><p>可观察到的结果。</p></div><div class="deck-card"><span class="num">04</span><h3>预期怎样</h3><p>正确状态是什么。</p></div><div class="deck-card accent-card"><span class="num">05</span><h3>贴原文</h3><p>Console 错误和截图。</p></div><div class="deck-card ink-card"><span class="num">06</span><h3>只修这一处</h3><p>不要顺手重构。</p></div></div></div>
+  <div class="canvas-card"><div class="chrome-min"><div class="l">17 / 27 · DEBUG</div><div class="r">105—125 MIN</div></div><div data-anim="title"><div class="t-meta">STEP 3 · FEED BACK WITH EVIDENCE</div><h2 class="deck-title deck-lg">所有报错都截图，<br>反馈给 AI</h2></div><div data-anim="grid" class="deck-grid-6 deck-bottom"><div class="deck-card"><span class="num">01</span><h3>哪个页面</h3><p>页面名或路由。</p></div><div class="deck-card"><span class="num">02</span><h3>做了什么</h3><p>按顺序写操作。</p></div><div class="deck-card"><span class="num">03</span><h3>现在怎样</h3><p>把结果截图下来。</p></div><div class="deck-card"><span class="num">04</span><h3>预期怎样</h3><p>写清正确状态。</p></div><div class="deck-card accent-card"><span class="num">05</span><h3>贴原文</h3><p>Console 错误和截图一起给。</p></div><div class="deck-card ink-card"><span class="num">06</span><h3>只修这一处</h3><p>不要顺手重构。</p></div></div></div>
 </section>
 
 <section class="slide dark" data-layout="S14" data-animate="loop-form">
