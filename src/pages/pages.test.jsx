@@ -24,9 +24,9 @@ const pages = [
 afterEach(cleanup)
 
 describe('redesigned page purposes', () => {
-  it('limits the homepage to three proof items', () => {
+  it('uses a complete four-card proof bento on the homepage', () => {
     render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
-    expect(screen.getAllByTestId('proof-item')).toHaveLength(3)
+    expect(screen.getAllByTestId('proof-item')).toHaveLength(4)
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
   })
 

@@ -10,6 +10,7 @@ import {
   useParams,
 } from 'react-router-dom'
 import './App.css'
+import './redesign.css'
 import CollectionView from './components/CollectionView'
 import SiteNav from './components/SiteNav'
 import ArticlePage from './pages/ArticlePage'
@@ -75,27 +76,34 @@ function SiteApp() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
     const context = gsap.context(() => {
       gsap.fromTo(
-        '.focused-hero-copy > *',
+        '.hero-copy > *',
         { opacity: 0, y: 34 },
         { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08 },
       )
       gsap.fromTo(
-        '.focused-portrait',
-        { opacity: 0, y: 42, rotate: -1.5 },
-        { opacity: 1, y: 0, rotate: 0, duration: 1.1, ease: 'power3.out', delay: 0.12 },
+        '.hero-portrait-panel',
+        { opacity: 0, y: 52, rotate: 2.5, scale: 0.92 },
+        { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1.15, ease: 'power3.out', delay: 0.12 },
       )
-      gsap.utils.toArray('.focused-proof-item, .selected-work-card').forEach((item) => {
-        gsap.fromTo(item, { opacity: 0.18, y: 34 }, {
+      gsap.utils.toArray('.proof-card').forEach((item) => {
+        gsap.fromTo(item, { opacity: 0.46, y: 34 }, {
           opacity: 1, y: 0, ease: 'none',
           scrollTrigger: { trigger: item, start: 'top 90%', end: 'top 48%', scrub: true },
         })
       })
-      gsap.utils.toArray('.selected-work .chapter-heading').forEach((heading) => {
-        gsap.fromTo(heading, { opacity: 1 }, {
-          opacity: 1,
-          scrollTrigger: {
-            trigger: '.selected-work', start: 'top 16%', end: 'bottom 70%', pin: heading, pinSpacing: false,
-          },
+      gsap.utils.toArray('.project-stack-card').forEach((card, index) => {
+        gsap.fromTo(card, { y: 80, scale: 0.94, opacity: 0.58 }, {
+          y: 0, scale: 1, opacity: 1, ease: 'none',
+          scrollTrigger: { trigger: card, start: 'top 92%', end: 'top 36%', scrub: true },
+        })
+        const image = card.querySelector('.project-visual img')
+        if (image) gsap.fromTo(image, { scale: 0.82, opacity: 0.45 }, {
+          scale: 1, opacity: 1, ease: 'none',
+          scrollTrigger: { trigger: card, start: 'top bottom', end: 'center center', scrub: true },
+        })
+        if (index > 0) gsap.fromTo(card, { '--stack-shadow': '0' }, {
+          '--stack-shadow': '1', ease: 'none',
+          scrollTrigger: { trigger: card, start: 'top 76%', end: 'top 22%', scrub: true },
         })
       })
     })
@@ -128,7 +136,17 @@ function SiteApp() {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </main>
-      <footer className="footer container"><p>© {new Date().getFullYear()} {t.footer.text}</p></footer>
+      <footer className="footer container">
+        <div>
+          <strong>{t.common.brand || 'LUOCHEN'}</strong>
+          <p>© {new Date().getFullYear()} {t.footer.text}</p>
+        </div>
+        <nav aria-label={t.common.primaryNav}>
+          <a href="https://github.com/luochen211" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:cuidong111@gmail.com">Email</a>
+          <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Top</a>
+        </nav>
+      </footer>
     </div>
   )
 }

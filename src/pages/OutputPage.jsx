@@ -9,9 +9,19 @@ const outputTypes = {
   en: { all: 'All', projects: 'Projects', writing: 'Writing', talks: 'Talks' },
 }
 
+const projectMedia = {
+  imaging: '/media/imaging-architecture.png',
+  logistics: '/media/logistics-working-sheet.png',
+  career: '/media/career-ops-architecture.png',
+  'harness-demo': '/demos/agent-harness/preview.png',
+}
+
 export default function OutputPage({ t, locale = 'zh' }) {
   const [activeType, setActiveType] = useState('all')
   const projects = useMemo(() => getProjectShowcase(locale), [locale])
+  const selectedIds = ['imaging', 'logistics', 'career', 'harness-demo']
+  const selectedProjects = selectedIds.map((id) => projects.find((project) => project.id === id)).filter(Boolean)
+  const archivedProjects = projects.filter((project) => !selectedIds.includes(project.id))
   const columns = localizeColumns(getPublicColumns(), locale)
   const latest = localizeArticles(
     [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8),
@@ -24,12 +34,9 @@ export default function OutputPage({ t, locale = 'zh' }) {
     <section className="output-page">
       <header className="output-cover output-slide">
         <div>
-          <p className="purpose-label">{t.output.eyebrow}</p>
+          <p className="output-overline">{locale === 'zh' ? '产出不是终点，是下一次判断的证据。' : 'Output is evidence for the next decision.'}</p>
           <h1>{t.output.title}</h1>
           <p className="output-intro">{t.output.intro}</p>
-        </div>
-        <div className="output-cover-index" aria-hidden="true">
-          <span>01</span><span>04</span>
         </div>
         <nav className="output-filter" aria-label={t.output.filterLabel}>
           {Object.entries(types).map(([key, label]) => (
@@ -48,20 +55,36 @@ export default function OutputPage({ t, locale = 'zh' }) {
       {show('projects') && (
         <section className="output-chapter output-projects" id="projects">
           <header className="output-chapter-heading">
-            <p>01 / {t.output.projectsLabel}</p>
+            <p>{t.output.projectsLabel}</p>
             <h2>{t.output.projectsTitle}</h2>
           </header>
-          <div className="output-project-list">
-            {projects.map((project, index) => (
-              <article className="output-project" key={project.id}>
-                <div className="output-project-number">{String(index + 1).padStart(2, '0')}</div>
+          <div className="output-project-accordion">
+            {selectedProjects.map((project) => (
+              <article className="output-project output-project-featured" key={project.id}>
+                <div className="output-project-media"><img src={projectMedia[project.id]} alt="" loading="lazy" /></div>
                 <div className="output-project-copy">
-                  <p>{project.role} · {project.year}</p>
+                  <span>{project.status}</span>
                   <h3>{project.name}</h3>
                   <p>{project.summary}</p>
                 </div>
                 <div className="output-project-result">
-                  <span>{project.status}</span>
+                  <p>{project.outcome}</p>
+                  <div>
+                    {project.liveHref && <a href={project.liveHref} target="_blank" rel="noreferrer">{t.output.viewLive} ↗</a>}
+                    <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="output-project-archive">
+            {archivedProjects.map((project) => (
+              <article className="output-project output-project-compact" key={project.id}>
+                <div className="output-project-copy">
+                  <span>{project.role} · {project.year}</span>
+                  <h3>{project.name}</h3>
+                </div>
+                <div className="output-project-result">
                   <p>{project.outcome}</p>
                   <div>
                     {project.liveHref && <a href={project.liveHref} target="_blank" rel="noreferrer">{t.output.viewLive} ↗</a>}
@@ -77,7 +100,7 @@ export default function OutputPage({ t, locale = 'zh' }) {
       {show('writing') && (
         <section className="output-chapter output-writing" id="writing">
           <header className="output-chapter-heading">
-            <p>02 / {t.output.writingLabel}</p>
+            <p>{t.output.writingLabel}</p>
             <h2>{t.output.writingTitle}</h2>
           </header>
           <div className="output-column-strip">
@@ -100,9 +123,11 @@ export default function OutputPage({ t, locale = 'zh' }) {
 
       {show('talks') && (
         <section className="output-deck output-slide" id="talks">
-          <div className="output-deck-number">03</div>
+          <div className="output-deck-preview">
+            <img src="/slides/decks/agent-harness/lessons-preview.png" alt="" loading="lazy" />
+          </div>
           <div>
-            <p className="purpose-label">{t.output.talksLabel}</p>
+            <p className="output-deck-kicker">{t.output.talksLabel}</p>
             <h2>{t.course.archive.title}</h2>
             <p>{t.course.archive.description}</p>
             <div className="output-deck-actions">
@@ -114,7 +139,7 @@ export default function OutputPage({ t, locale = 'zh' }) {
       )}
 
       <section className="output-end output-slide">
-        <p>04 / {t.output.endLabel}</p>
+        <p>{t.output.endLabel}</p>
         <h2>{t.output.endTitle}</h2>
         <Link to="/contact">{t.output.contactAction} →</Link>
       </section>
