@@ -6,9 +6,9 @@ const redesignCss = readFileSync(new URL('./redesign.css', import.meta.url), 'ut
 
 describe('PPT archive redesign', () => {
   it('uses the shared navy and burnt-orange palette', () => {
-    expect(html).toContain('--navy-900:#061424')
+    expect(html).toContain('--navy-900:#0b3158')
     expect(html).toContain('--orange-600:#c75b2d')
-    expect(redesignCss).toContain('--bg: #061424')
+    expect(redesignCss).toContain('--bg: #0b3158')
     expect(redesignCss).toContain('--paper: #c75b2d')
   })
 
