@@ -10,6 +10,9 @@ export default function ContactPage({ t }) {
     ? 'Hi Luochen,\n\nProject context:\nDesired outcome:\nTimeline:\nBudget range:\n'
     : '落尘你好，\n\n项目背景：\n期望结果：\n时间计划：\n预算范围：\n')
   const mailto = `mailto:cuidong111@gmail.com?subject=${subject}&body=${body}`
+  const contactCards = t.contact.cards.slice(1)
+  const socialCards = contactCards.filter((card) => card.icon)
+  const directoryCards = contactCards.filter((card) => !card.icon)
   return (
     <section className="focused-page contact-redesign">
       <header className="route-hero contact-hero">
@@ -27,11 +30,25 @@ export default function ContactPage({ t }) {
       <section className="collaboration-types">
         {types.map((type, index) => <article key={type}><span>{String(index + 1).padStart(2, '0')}</span><h2>{type}</h2></article>)}
       </section>
-      <div className="contact-directory">
-        {t.contact.cards.slice(1).map((card) => card.href ? (
-          <a className={card.icon ? 'contact-social-link' : undefined} href={card.href} target="_blank" rel="noreferrer" key={card.value}>
-            <span>{card.icon ? <SocialIcon name={card.icon} /> : null}{card.label}</span>
+      <section className="social-reach" aria-label={isEnglish ? 'Social audience' : '社交平台关注'}>
+        <div>
+          <span>{isEnglish ? 'PUBLIC AUDIENCE' : '公开关注'}</span>
+          <h2>{isEnglish ? '1,000+ followers across platforms' : '全网 1000+ 粉丝'}</h2>
+        </div>
+        <p>{isEnglish ? 'REDnote · Douyin · X' : '小红书 · 抖音 · X'}</p>
+      </section>
+      <div className="social-profile-grid">
+        {socialCards.map((card) => (
+          <a className="contact-social-link" href={card.href} target="_blank" rel="noreferrer" key={card.value}>
+            <span><SocialIcon name={card.icon} />{card.label}</span>
             <strong>{card.value}</strong>
+          </a>
+        ))}
+      </div>
+      <div className="contact-directory">
+        {directoryCards.map((card) => card.href ? (
+          <a href={card.href} target="_blank" rel="noreferrer" key={card.value}>
+            <span>{card.label}</span><strong>{card.value}</strong>
           </a>
         ) : (
           <div className="contact-wechat" key={card.value}><span>{card.label}</span><strong>{card.value}</strong>{card.qrSrc ? <img src={card.qrSrc} alt={card.qrAlt} width="128" height="128" /> : null}</div>

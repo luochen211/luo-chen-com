@@ -107,6 +107,10 @@ describe('redesigned page purposes', () => {
     )
     expect(xiaohongshu.querySelector('.social-icon-xiaohongshu')).toBeInTheDocument()
     expect(douyin.querySelector('.social-icon-douyin')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '全网 1000+ 粉丝' })).toBeInTheDocument()
+    const x = screen.getByRole('link', { name: /X@luochenkafei/ })
+    expect(x).toHaveAttribute('href', 'https://x.com/luochenkafei')
+    expect(x.querySelector('.social-icon-x')).toBeInTheDocument()
   })
 
   it('renders English article display metadata on Home', () => {

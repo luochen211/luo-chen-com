@@ -3,6 +3,7 @@ import { projects, writingColumns } from './siteData'
 export const socialProfiles = {
   xiaohongshu: 'https://www.xiaohongshu.com/user/profile/69ce663f000000003402ed88',
   douyin: 'https://www.douyin.com/user/MS4wLjABAAAAtYCinBiak1TCwh-6_Hf4bZe2LemQmf7tT5WePT13LPMMsEtvBgRPZFwA2xGLsPJD',
+  x: 'https://x.com/luochenkafei',
 }
 
 const localizedContent = {
@@ -249,6 +250,12 @@ const localizedContent = {
           value: '1,000 followers',
           href: socialProfiles.douyin,
           icon: 'douyin',
+        },
+        {
+          label: 'X',
+          value: '@luochenkafei',
+          href: socialProfiles.x,
+          icon: 'x',
         },
         {
           label: 'Domain',
@@ -609,6 +616,12 @@ const localizedContent = {
           value: '1000 粉丝',
           href: socialProfiles.douyin,
           icon: 'douyin',
+        },
+        {
+          label: 'X',
+          value: '@luochenkafei',
+          href: socialProfiles.x,
+          icon: 'x',
         },
         { label: '域名', value: 'luo-chen.com', href: 'https://luo-chen.com' },
         {

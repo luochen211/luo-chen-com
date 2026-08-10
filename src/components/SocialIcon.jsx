@@ -1,7 +1,8 @@
-import { SiTiktok, SiXiaohongshu } from 'react-icons/si'
+import { SiTiktok, SiX, SiXiaohongshu } from 'react-icons/si'
 
 const icons = {
   douyin: SiTiktok,
+  x: SiX,
   xiaohongshu: SiXiaohongshu,
 }
 
