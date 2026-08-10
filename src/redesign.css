@@ -1349,9 +1349,9 @@ body {
 
 .project-orbit-viewport {
   position: absolute;
-  inset: 0 0 0 25vw;
-  perspective: 1500px;
-  perspective-origin: 55% 50%;
+  inset: 0 0 0 28vw;
+  perspective: 2100px;
+  perspective-origin: 58% 50%;
 }
 
 .project-orbit {
@@ -1364,17 +1364,17 @@ body {
 .project-orbit .project-orbit-card {
   position: absolute;
   top: 50%;
-  left: 55%;
+  left: 58%;
   display: grid;
-  width: min(54vw, 48rem);
-  height: min(70svh, 47rem);
-  grid-template-rows: minmax(14rem, 1.1fr) auto;
+  width: min(42vw, 40rem);
+  height: min(58svh, 36rem);
+  grid-template-rows: minmax(10rem, 1fr) auto;
   overflow: hidden;
   border: 1px solid rgba(244, 241, 233, 0.22);
   background: rgba(16, 18, 20, 0.98);
   box-shadow: 0 3rem 7rem rgba(0, 0, 0, 0.52);
   backface-visibility: hidden;
-  transform: translate(-50%, -50%) rotateY(calc(var(--project-index) * 120deg)) translateZ(clamp(31rem, 41vw, 44rem));
+  transform: translate(-50%, -50%) rotateY(calc(var(--project-index) * 120deg)) translateZ(clamp(22rem, 30vw, 28rem));
 }
 
 .project-orbit-card .project-visual {
@@ -1398,6 +1398,15 @@ body {
   line-height: 1.5;
 }
 
+.project-orbit-card .project-card-copy > p:not(:first-child) {
+  display: none;
+}
+
+.project-orbit-card .project-card-copy strong {
+  grid-column: 1 / -1;
+  max-width: 36rem;
+}
+
 .project-orbit-card .project-card-copy a {
   margin-top: 0.2rem;
   font-size: 0.82rem;
@@ -1406,9 +1415,9 @@ body {
 .orbit-axis {
   position: absolute;
   z-index: 4;
-  left: 55%;
+  left: 58%;
   bottom: 3.5vh;
-  width: min(34vw, 31rem);
+  width: min(30vw, 28rem);
   height: 1px;
   background: rgba(244, 241, 233, 0.22);
   transform: translateX(-50%);
@@ -1579,8 +1588,9 @@ body {
 @media (max-width: 980px) {
   .proof-scene-shell { grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.72fr); gap: 3rem; }
   .project-orbit-stage > .chapter-heading { width: 31vw; }
-  .project-orbit-viewport { left: 27vw; }
-  .project-orbit .project-orbit-card { width: min(59vw, 45rem); }
+  .project-orbit-viewport { left: 28vw; perspective-origin: 56% 50%; }
+  .project-orbit .project-orbit-card { left: 56%; width: min(48vw, 38rem); height: min(64svh, 36rem); }
+  .orbit-axis { left: 56%; }
   .project-orbit-card .project-card-copy > p:not(:first-child),
   .project-orbit-card .project-card-copy strong { display: none; }
 }
