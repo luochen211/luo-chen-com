@@ -95,14 +95,18 @@ describe('redesigned page purposes', () => {
 
   it('publishes Xiaohongshu and Douyin profiles with follower counts', () => {
     render(<ContactPage t={siteContent.zh} />)
-    expect(screen.getByRole('link', { name: /小红书300 粉丝/ })).toHaveAttribute(
+    const xiaohongshu = screen.getByRole('link', { name: /小红书300 粉丝/ })
+    expect(xiaohongshu).toHaveAttribute(
       'href',
       'https://www.xiaohongshu.com/user/profile/69ce663f000000003402ed88',
     )
-    expect(screen.getByRole('link', { name: /抖音1000 粉丝/ })).toHaveAttribute(
+    const douyin = screen.getByRole('link', { name: /抖音1000 粉丝/ })
+    expect(douyin).toHaveAttribute(
       'href',
       expect.stringContaining('www.douyin.com/user/'),
     )
+    expect(xiaohongshu.querySelector('.social-icon-xiaohongshu')).toBeInTheDocument()
+    expect(douyin.querySelector('.social-icon-douyin')).toBeInTheDocument()
   })
 
   it('renders English article display metadata on Home', () => {

@@ -242,11 +242,13 @@ const localizedContent = {
           label: 'REDnote',
           value: '300 followers',
           href: socialProfiles.xiaohongshu,
+          icon: 'xiaohongshu',
         },
         {
           label: 'Douyin',
           value: '1,000 followers',
           href: socialProfiles.douyin,
+          icon: 'douyin',
         },
         {
           label: 'Domain',
@@ -600,11 +602,13 @@ const localizedContent = {
           label: '小红书',
           value: '300 粉丝',
           href: socialProfiles.xiaohongshu,
+          icon: 'xiaohongshu',
         },
         {
           label: '抖音',
           value: '1000 粉丝',
           href: socialProfiles.douyin,
+          icon: 'douyin',
         },
         { label: '域名', value: 'luo-chen.com', href: 'https://luo-chen.com' },
         {

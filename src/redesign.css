@@ -789,6 +789,23 @@ body {
 
 .contact-directory > * { min-height: 5rem; align-items: center; }
 .contact-directory strong { font-size: clamp(1rem, 1.8vw, 1.45rem); }
+.contact-social-link > span,
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.social-icon {
+  flex: 0 0 auto;
+  width: 1.05em;
+  height: 1.05em;
+  color: var(--brand-warm);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.contact-social-link:hover .social-icon,
+.social-link:hover .social-icon { color: var(--brand-link); transform: translateY(-1px); }
 
 .contact-directory .contact-wechat {
   display: grid;

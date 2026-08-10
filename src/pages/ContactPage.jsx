@@ -1,3 +1,5 @@
+import SocialIcon from '../components/SocialIcon'
+
 export default function ContactPage({ t }) {
   const isEnglish = t.nav.home === 'Home'
   const types = isEnglish
@@ -27,7 +29,10 @@ export default function ContactPage({ t }) {
       </section>
       <div className="contact-directory">
         {t.contact.cards.slice(1).map((card) => card.href ? (
-          <a href={card.href} target="_blank" rel="noreferrer" key={card.value}><span>{card.label}</span><strong>{card.value}</strong></a>
+          <a className={card.icon ? 'contact-social-link' : undefined} href={card.href} target="_blank" rel="noreferrer" key={card.value}>
+            <span>{card.icon ? <SocialIcon name={card.icon} /> : null}{card.label}</span>
+            <strong>{card.value}</strong>
+          </a>
         ) : (
           <div className="contact-wechat" key={card.value}><span>{card.label}</span><strong>{card.value}</strong>{card.qrSrc ? <img src={card.qrSrc} alt={card.qrAlt} width="128" height="128" /> : null}</div>
         ))}

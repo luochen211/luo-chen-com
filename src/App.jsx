@@ -13,6 +13,7 @@ import './App.css'
 import './redesign.css'
 import CollectionView from './components/CollectionView'
 import SiteNav from './components/SiteNav'
+import SocialIcon from './components/SocialIcon'
 import ArticlePage from './pages/ArticlePage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
@@ -143,8 +144,8 @@ function SiteApp() {
         </div>
         <nav aria-label={t.common.primaryNav}>
           <a href="https://github.com/luochen211" target="_blank" rel="noreferrer">GitHub</a>
-          <a href={socialProfiles.xiaohongshu} target="_blank" rel="noreferrer">{locale === 'zh' ? '小红书 · 300 粉丝' : 'REDnote · 300'}</a>
-          <a href={socialProfiles.douyin} target="_blank" rel="noreferrer">{locale === 'zh' ? '抖音 · 1000 粉丝' : 'Douyin · 1,000'}</a>
+          <a className="social-link" href={socialProfiles.xiaohongshu} target="_blank" rel="noreferrer"><SocialIcon name="xiaohongshu" />{locale === 'zh' ? '小红书 · 300 粉丝' : 'REDnote · 300'}</a>
+          <a className="social-link" href={socialProfiles.douyin} target="_blank" rel="noreferrer"><SocialIcon name="douyin" />{locale === 'zh' ? '抖音 · 1000 粉丝' : 'Douyin · 1,000'}</a>
           <a href="mailto:cuidong111@gmail.com">Email</a>
           <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Top</a>
         </nav>
