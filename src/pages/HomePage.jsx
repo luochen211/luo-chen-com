@@ -17,7 +17,6 @@ function Hero({ t, locale }) {
         <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
         <h1>
           <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>
-          <span className="hero-inline-image" aria-hidden="true" />
           <span>{isEnglish ? 'reliably delivered.' : '变成可靠交付。'}</span>
         </h1>
         <p className="hero-intro">{t.hero.intro}</p>
