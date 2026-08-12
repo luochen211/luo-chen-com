@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import FluidField from '../components/FluidField'
 import { localizeArticles } from '../data/siteContent'
 import { articleIndex } from '../data/siteData'
 import { getProjectShowcase } from '../data/projectShowcase'
@@ -14,34 +13,34 @@ function Hero({ t, locale }) {
   const isEnglish = locale === 'en'
   return (
     <section className="focused-hero home-focused-hero">
-      <div className="hero-fluid-wrap">
-        <FluidField />
-        <div className="fluid-glass" aria-hidden="true" />
-      </div>
-      <div className="hero-copy">
-        <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
-        <h1>
-          <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>
-          <span>{isEnglish ? 'reliably delivered.' : '变成可靠交付。'}</span>
-        </h1>
-        <p className="hero-intro">{t.hero.intro}</p>
-        <div className="hero-actions">
-          <Link className="btn primary" to="/output">{t.homeUi.view}</Link>
-          <Link className="btn ghost" to="/contact">{t.homeUi.contact}</Link>
+      <div className="hero-sticky-frame">
+        <div className="hero-portrait-background">
+          <img src="/头像111.jpg" alt={t.hero.avatarAlt} width="940" height="938" />
+          <div className="hero-portrait-scrim" aria-hidden="true" />
+          <div className="hero-portrait-haze" aria-hidden="true" />
         </div>
-      </div>
-      <p className="fluid-instruction" aria-hidden="true">
-        <span />{isEnglish ? 'Move to distort' : '移动光标，扰动流场'}
-      </p>
-      <figure className="hero-portrait-panel">
-        <img src="/头像111.jpg" alt={t.hero.avatarAlt} width="940" height="938" />
-        <figcaption><span>{t.homeUi.belief}</span><small>LUOCHEN / 2026</small></figcaption>
-      </figure>
-      <div className="hero-marquee" aria-hidden="true">
-        <div className="hero-marquee-track">
-          {[0, 1].map((loop) => (
-            <span key={loop}>Agent Harness <i /> Full-stack Delivery <i /> Open Source <i /> Public Writing <i /></span>
-          ))}
+        <div className="hero-copy">
+          <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
+          <h1>
+            <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>
+            <span>{isEnglish ? 'reliably delivered.' : '变成可靠交付。'}</span>
+          </h1>
+          <p className="hero-intro">{t.hero.intro}</p>
+          <div className="hero-actions">
+            <Link className="btn primary" to="/output">{t.homeUi.view}</Link>
+            <Link className="btn ghost" to="/contact">{t.homeUi.contact}</Link>
+          </div>
+        </div>
+        <p className="portrait-focus-instruction" aria-hidden="true">
+          <span />{isEnglish ? 'Scroll to bring the portrait into focus' : '向下滑动，让画面逐渐清晰'}
+        </p>
+        <p className="hero-portrait-signature"><span>{t.homeUi.belief}</span><small>LUOCHEN / 2026</small></p>
+        <div className="hero-marquee" aria-hidden="true">
+          <div className="hero-marquee-track">
+            {[0, 1].map((loop) => (
+              <span key={loop}>Agent Harness <i /> Full-stack Delivery <i /> Open Source <i /> Public Writing <i /></span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

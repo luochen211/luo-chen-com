@@ -32,7 +32,8 @@ describe('redesigned page purposes', () => {
 
   it('keeps every homepage motion scene represented in the document', () => {
     const { container } = render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
-    expect(container.querySelector('.fluid-field')).toBeInTheDocument()
+    expect(container.querySelector('.hero-portrait-background img')).toHaveAttribute('src', '/头像111.jpg')
+    expect(container.querySelector('.portrait-focus-instruction')).toBeInTheDocument()
     expect(container.querySelectorAll('.proof-scene')).toHaveLength(4)
     expect(container.querySelectorAll('.project-orbit-card')).toHaveLength(3)
     expect(container.querySelectorAll('.writing-stack > a')).toHaveLength(4)

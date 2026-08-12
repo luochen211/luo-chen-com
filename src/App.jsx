@@ -83,15 +83,29 @@ function SiteApp() {
         { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08 },
       )
       gsap.fromTo(
-        '.hero-portrait-panel',
-        { opacity: 0, y: 52, rotate: 2.5, scale: 0.92 },
-        { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1.15, ease: 'power3.out', delay: 0.12 },
+        '.hero-portrait-signature',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.35 },
       )
-      gsap.fromTo('.hero-fluid-wrap', { scale: 1 }, {
-        scale: 1.12,
-        opacity: 0.45,
+      const portraitBlur = window.innerWidth <= 800 ? 6 : 9
+      gsap.fromTo('.hero-portrait-background img', {
+        filter: `blur(${portraitBlur}px) saturate(0.72) brightness(0.68)`,
+        scale: 1.065,
+      }, {
+        filter: 'blur(0px) saturate(1.04) brightness(0.94)',
+        scale: 1,
         ease: 'none',
-        scrollTrigger: { trigger: '.home-focused-hero', start: 'top top', end: 'bottom top', scrub: true },
+        scrollTrigger: { trigger: '.home-focused-hero', start: 'top top', end: 'bottom bottom', scrub: 0.45 },
+      })
+      gsap.fromTo('.hero-portrait-haze', { opacity: 0.92 }, {
+        opacity: 0.18,
+        ease: 'none',
+        scrollTrigger: { trigger: '.home-focused-hero', start: 'top top', end: 'bottom bottom', scrub: 0.45 },
+      })
+      gsap.to('.portrait-focus-instruction', {
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: { trigger: '.home-focused-hero', start: 'top top', end: 'bottom bottom', scrub: 0.45 },
       })
 
       const proofScenes = gsap.utils.toArray('.proof-scene')
@@ -172,7 +186,7 @@ function SiteApp() {
   }, [location.pathname, locale])
 
   return (
-    <div className="page">
+    <div className={`page${location.pathname === '/' ? ' home-route' : ''}`}>
       <div className="bg-orb orb-a" aria-hidden="true" />
       <div className="bg-orb orb-b" aria-hidden="true" />
       <div className="bg-grid" aria-hidden="true" />
