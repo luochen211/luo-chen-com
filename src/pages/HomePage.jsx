@@ -32,9 +32,8 @@ function Hero({ t, locale }) {
           </div>
         </div>
         <p className="portrait-focus-instruction" aria-hidden="true">
-          <span />{isEnglish ? 'Scroll to bring the portrait into focus' : '向下滑动，让画面逐渐清晰'}
+          <span />{isEnglish ? 'Hover over the portrait to bring it into focus' : '鼠标移到右侧，让头像逐渐清晰'}
         </p>
-        <p className="hero-portrait-signature"><span>{t.homeUi.belief}</span><small>LUOCHEN / 2026</small></p>
         <div className="hero-marquee" aria-hidden="true">
           <div className="hero-marquee-track">
             {[0, 1].map((loop) => (
