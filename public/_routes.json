@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "include": [
+    "/about",
+    "/now",
+    "/output",
+    "/contact",
+    "/work",
+    "/writing",
+    "/projects",
+    "/course",
+    "/roundtable",
+    "/lab/roundtable",
+    "/articles/*",
+    "/columns/*",
+    "/topics/*"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/slides/*",
+    "/demos/*"
+  ]
+}
