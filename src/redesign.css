@@ -745,7 +745,7 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* About is an editorial biography: portrait, trajectory, principles, then contact. */
+/* About is an editorial biography: trajectory, principles, then contact. */
 .about-hero > * {
   animation: about-rise 0.8s cubic-bezier(0.2, 0.75, 0.2, 1) both;
 }
@@ -753,34 +753,6 @@ body {
 .about-hero > h1 { animation-delay: 80ms; }
 .about-hero > p { animation-delay: 160ms; }
 .about-hero > div > span { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.12em; }
-
-.about-introduction {
-  display: grid;
-  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
-  align-items: end;
-  gap: clamp(3rem, 9vw, 10rem);
-  margin: clamp(7rem, 14vw, 13rem) 0;
-}
-
-.about-portrait {
-  margin: 0;
-  overflow: hidden;
-  background: var(--surface);
-}
-
-.about-portrait img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 50% 42%;
-  filter: grayscale(1) contrast(1.08);
-  transition: filter 0.7s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.about-portrait:hover img { filter: grayscale(0.3) contrast(1.03); transform: scale(1.035); }
-.about-introduction h2 { max-width: 52rem; margin: 0; font-size: clamp(2.8rem, 6vw, 6.4rem); line-height: 0.94; letter-spacing: -0.065em; }
-.about-introduction > div > p:last-child { max-width: 46rem; margin: 2rem 0 0; color: var(--ink-soft); font-size: clamp(1.05rem, 1.45vw, 1.25rem); line-height: 1.8; }
 
 .about-timeline-chapter { padding: clamp(6rem, 12vw, 11rem) 0; border-block: 1px solid var(--line); }
 .about-timeline-chapter .chapter-heading { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr); align-items: start; }
@@ -1080,7 +1052,6 @@ body {
   .output-project-featured .output-project-result > p { max-height: 9rem; margin-top: 1rem; opacity: 1; }
   .output-deck { grid-template-columns: 1fr; }
   .contact-hero { grid-template-columns: 1fr; }
-  .about-introduction { grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr); gap: 3rem; }
   .about-principles { gap: 4rem; }
   .about-contact-heading { grid-template-columns: 1fr; }
 }
@@ -1154,10 +1125,8 @@ body {
   .output-project-compact:hover { padding-inline: 0.75rem; }
 
   .route-hero { min-height: 72svh; }
-  .about-introduction,
   .about-principles,
   .about-contact-lead { grid-template-columns: 1fr; }
-  .about-portrait { width: min(100%, 32rem); }
   .about-timeline-chapter .chapter-heading { grid-template-columns: 1fr; }
   .about-timeline-scroll { width: 100vw; margin-left: calc(50% - 50vw); padding-inline: 1rem; }
   .about-timeline-track { min-width: 44rem; }

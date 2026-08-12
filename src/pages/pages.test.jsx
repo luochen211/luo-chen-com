@@ -108,6 +108,7 @@ describe('redesigned page purposes', () => {
 
   it('combines a personal timeline and prefilled collaboration email on About', () => {
     render(<AboutPage t={siteContent.en} locale="en" />)
+    expect(document.querySelector('.about-introduction')).not.toBeInTheDocument()
     expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '6')
     expect(screen.getByRole('heading', { name: 'Born' })).toBeInTheDocument()
     expect(screen.getByText('2006', { selector: 'time' })).toHaveAttribute('datetime', '2006')

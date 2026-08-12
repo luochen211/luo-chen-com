@@ -25,17 +25,6 @@ export default function AboutPage({ t, locale = 'zh' }) {
         <p>{t.about.intro}</p>
       </header>
 
-      <section className="about-introduction reveal">
-        <figure className="about-portrait">
-          <img src="/头像111.jpg" alt={t.about.portraitAlt} width="940" height="938" />
-        </figure>
-        <div>
-          <p className="route-overline">{t.about.storyEyebrow}</p>
-          <h2>{t.about.storyTitle}</h2>
-          <p>{t.about.storyText}</p>
-        </div>
-      </section>
-
       <section className="about-timeline-chapter" aria-labelledby="timeline-title">
         <header className="chapter-heading editorial-heading">
           <p>{t.about.timelineEyebrow}</p>
