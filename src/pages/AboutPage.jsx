@@ -44,7 +44,11 @@ export default function AboutPage({ t, locale = 'zh' }) {
         <div className="about-timeline reveal">
           <p className="about-timeline-hint">{t.about.timelineHint}</p>
           <div className="about-timeline-scroll">
-            <ol className="about-timeline-track" style={{ '--point-count': t.about.timeline.length }}>
+            <ol
+              className="about-timeline-track"
+              data-point-count={t.about.timeline.length}
+              style={{ '--point-count': t.about.timeline.length }}
+            >
               {t.about.timeline.map((item, index) => {
                 const isActive = activeTimelineIndex === index
                 return (
