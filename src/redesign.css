@@ -745,6 +745,99 @@ body {
   letter-spacing: 0.1em;
 }
 
+/* About is an editorial biography: portrait, trajectory, principles, then contact. */
+.about-hero > * {
+  animation: about-rise 0.8s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.about-hero > h1 { animation-delay: 80ms; }
+.about-hero > p { animation-delay: 160ms; }
+.about-hero > div > span { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.12em; }
+
+.about-introduction {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+  align-items: end;
+  gap: clamp(3rem, 9vw, 10rem);
+  margin: clamp(7rem, 14vw, 13rem) 0;
+}
+
+.about-portrait {
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 42%;
+  filter: grayscale(1) contrast(1.08);
+  transition: filter 0.7s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.about-portrait:hover img { filter: grayscale(0.3) contrast(1.03); transform: scale(1.035); }
+.about-introduction h2 { max-width: 52rem; margin: 0; font-size: clamp(2.8rem, 6vw, 6.4rem); line-height: 0.94; letter-spacing: -0.065em; }
+.about-introduction > div > p:last-child { max-width: 46rem; margin: 2rem 0 0; color: var(--ink-soft); font-size: clamp(1.05rem, 1.45vw, 1.25rem); line-height: 1.8; }
+
+.about-timeline-chapter { padding: clamp(6rem, 12vw, 11rem) 0; border-block: 1px solid var(--line); }
+.about-timeline-chapter .chapter-heading { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr); align-items: start; }
+.about-timeline-chapter .chapter-heading h2 { max-width: 62rem; }
+.about-timeline { margin: clamp(4rem, 8vw, 7rem) 0 0; padding: 0; list-style: none; }
+
+.about-timeline-item {
+  display: grid;
+  grid-template-columns: clamp(6rem, 16vw, 13rem) 2rem minmax(0, 1fr);
+  min-height: 18rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.about-timeline-item:last-child { border-bottom: 1px solid var(--line); }
+.about-timeline-item time { color: var(--ink); font-size: clamp(2.2rem, 5vw, 5.4rem); font-weight: 720; line-height: 0.92; letter-spacing: -0.06em; }
+.about-timeline-marker { position: relative; }
+.about-timeline-marker::before { content: ''; position: absolute; top: 0.35rem; left: 0.45rem; z-index: 1; width: 0.65rem; aspect-ratio: 1; border: 2px solid var(--brand-warm); border-radius: 50%; background: var(--bg-deep); transition: background 180ms ease, transform 180ms ease; }
+.about-timeline-item:not(:last-child) .about-timeline-marker::after { content: ''; position: absolute; top: 1rem; bottom: -2.6rem; left: 0.75rem; width: 1px; background: var(--line); }
+.about-timeline-item > div { max-width: 52rem; padding-left: clamp(1rem, 3vw, 3rem); }
+.about-timeline-item > div > p:first-child { margin: 0 0 1rem; color: var(--brand-warm); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; }
+.about-timeline-item h3 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 4rem); line-height: 1; letter-spacing: -0.05em; transition: color 180ms ease, transform 180ms ease; }
+.about-timeline-item > div > p:last-child { max-width: 42rem; margin: 1.5rem 0 0; color: var(--ink-soft); font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.75; }
+.about-timeline-item:hover h3 { color: var(--brand-warm); transform: translateX(0.35rem); }
+.about-timeline-item:hover .about-timeline-marker::before { background: var(--brand-warm); transform: scale(1.2); }
+
+.about-principles {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(3rem, 9vw, 10rem);
+  padding: clamp(8rem, 15vw, 14rem) 0;
+}
+
+.about-principles > header { position: sticky; top: 8rem; align-self: start; }
+.about-principles h2 { max-width: 34rem; margin: 0; font-size: clamp(2.5rem, 5vw, 5.2rem); line-height: 0.96; letter-spacing: -0.06em; }
+.about-principles ol { margin: 0; padding: 0; list-style: none; }
+.about-principles li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.5rem; padding: 2.5rem 0; border-top: 1px solid var(--line); }
+.about-principles li:last-child { border-bottom: 1px solid var(--line); }
+.about-principles li > span { color: var(--brand-warm); font-size: 0.72rem; letter-spacing: 0.12em; }
+.about-principles h3 { margin: 0; font-size: clamp(1.6rem, 3vw, 3.2rem); line-height: 1.05; letter-spacing: -0.045em; }
+.about-principles li p { max-width: 42rem; margin: 1rem 0 0; color: var(--ink-soft); line-height: 1.75; }
+
+.about-contact { scroll-margin-top: 7rem; padding: clamp(7rem, 14vw, 13rem) 0 0; border-top: 1px solid var(--line); }
+.about-contact-heading { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr); align-items: end; gap: clamp(3rem, 9vw, 10rem); }
+.about-contact-heading h2 { max-width: 68rem; margin: 0; font-size: clamp(3.5rem, 7.5vw, 7.8rem); line-height: 0.9; letter-spacing: -0.07em; }
+.about-contact-heading > p { max-width: 34rem; margin: 0; color: var(--ink-soft); font-size: 1.1rem; line-height: 1.7; }
+.about-contact-lead { display: grid; grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr); gap: clamp(2rem, 6vw, 7rem); margin: clamp(5rem, 10vw, 9rem) 0; }
+.about-contact-lead ol { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+.about-contact-lead li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+.about-contact-lead li span { color: var(--brand-warm); font-size: 0.7rem; letter-spacing: 0.1em; }
+.about-contact-lead li strong { font-size: clamp(1.15rem, 2vw, 1.8rem); line-height: 1.25; }
+
+@keyframes about-rise {
+  from { opacity: 0; transform: translateY(2rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .contact-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
@@ -931,6 +1024,9 @@ body {
   .output-project-featured .output-project-result > p { max-height: 9rem; margin-top: 1rem; opacity: 1; }
   .output-deck { grid-template-columns: 1fr; }
   .contact-hero { grid-template-columns: 1fr; }
+  .about-introduction { grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr); gap: 3rem; }
+  .about-principles { gap: 4rem; }
+  .about-contact-heading { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 800px) {
@@ -1002,6 +1098,16 @@ body {
   .output-project-compact:hover { padding-inline: 0.75rem; }
 
   .route-hero { min-height: 72svh; }
+  .about-introduction,
+  .about-principles,
+  .about-contact-lead { grid-template-columns: 1fr; }
+  .about-portrait { width: min(100%, 32rem); }
+  .about-timeline-chapter .chapter-heading { grid-template-columns: 1fr; }
+  .about-timeline-item { grid-template-columns: 5.4rem 1.5rem minmax(0, 1fr); min-height: 15rem; }
+  .about-timeline-item > div { padding-left: 0.75rem; }
+  .about-timeline-marker::before { left: 0.2rem; }
+  .about-timeline-item:not(:last-child) .about-timeline-marker::after { left: 0.5rem; }
+  .about-principles > header { position: static; }
   .now-redesign blockquote { padding-inline: 2rem; }
   .now-focus-list section { grid-template-columns: 2rem 1fr; }
   .now-focus-list ul { grid-column: 2; }
@@ -1020,6 +1126,11 @@ body {
 }
 
 @media (max-width: 560px) {
+  .about-timeline-item { grid-template-columns: 4.4rem 1.1rem minmax(0, 1fr); padding-block: 2rem; }
+  .about-timeline-item time { font-size: 1.7rem; }
+  .about-timeline-marker::before { left: 0; width: 0.55rem; }
+  .about-timeline-item:not(:last-child) .about-timeline-marker::after { left: 0.28rem; }
+  .about-contact-heading h2 { font-size: clamp(3rem, 15vw, 4.6rem); }
   .social-profile-grid { grid-template-columns: 1fr 1fr; }
   .social-profile-grid .contact-social-link { min-height: 9rem; padding: 1.25rem; }
   .social-profile-grid .contact-social-link > strong { font-size: clamp(1.55rem, 7vw, 2rem); }

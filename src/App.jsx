@@ -14,8 +14,8 @@ import './redesign.css'
 import CollectionView from './components/CollectionView'
 import SiteNav from './components/SiteNav'
 import SocialIcon from './components/SocialIcon'
+import AboutPage from './pages/AboutPage'
 import ArticlePage from './pages/ArticlePage'
-import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
 import NowPage from './pages/NowPage'
 import OutputPage from './pages/OutputPage'
@@ -26,9 +26,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 function getRouteTitle(pathname, t) {
   if (pathname.startsWith('/articles/')) return null
+  if (pathname === '/about') return t.about.title
   if (pathname === '/now') return t.now.title
   if (['/output', '/work', '/projects', '/writing', '/course'].includes(pathname)) return t.output.title
-  if (pathname === '/contact') return t.contact.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
   if (pathname.startsWith('/columns/')) {
     const slug = pathname.slice('/columns/'.length)
@@ -62,6 +62,14 @@ function SiteApp() {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     mainRef.current?.focus({ preventScroll: true })
   }, [location.pathname])
+
+  useEffect(() => {
+    if (!location.hash) return
+    const frame = window.requestAnimationFrame(() => {
+      document.querySelector(location.hash)?.scrollIntoView?.({ block: 'start', behavior: 'auto' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [location.pathname, location.hash])
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -171,6 +179,7 @@ function SiteApp() {
       <main className="container route-main" ref={mainRef} tabIndex="-1">
         <Routes>
           <Route path="/" element={<HomePage t={t} locale={locale} />} />
+          <Route path="/about" element={<AboutPage t={t} locale={locale} />} />
           <Route path="/now" element={<NowPage t={t} />} />
           <Route path="/output" element={<OutputPage t={t} locale={locale} />} />
           <Route path="/work" element={<Navigate replace to="/output" />} />
@@ -182,7 +191,7 @@ function SiteApp() {
           <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />
           <Route path="/topics/where-do-we-go" element={<CollectionView locale={locale} slug="where-do-we-go" topicCopy={t.topic} />} />
           <Route path="/articles/:slug" element={<IndexedArticleRoute locale={locale} />} />
-          <Route path="/contact" element={<ContactPage t={t} />} />
+          <Route path="/contact" element={<Navigate replace to="/about#contact" />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </main>

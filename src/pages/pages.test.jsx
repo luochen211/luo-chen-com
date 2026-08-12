@@ -4,8 +4,8 @@ import { cleanup, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { afterEach, describe, expect, it } from 'vitest'
+import AboutPage from './AboutPage'
 import HomePage from './HomePage'
-import ContactPage from './ContactPage'
 import NowPage from './NowPage'
 import WorkPage from './WorkPage'
 import WritingPage from './WritingPage'
@@ -19,7 +19,7 @@ const pages = [
   ['Writing', WritingPage, { locale: 'zh' }],
   ['Output', OutputPage, { locale: 'zh' }],
   ['Now', NowPage],
-  ['Contact', ContactPage],
+  ['About', AboutPage, { locale: 'zh' }],
 ]
 
 afterEach(cleanup)
@@ -106,15 +106,17 @@ describe('redesigned page purposes', () => {
     expect(screen.getByRole('heading', { name: siteContent.zh.now.projects })).toBeInTheDocument()
   })
 
-  it('provides a prefilled collaboration email on Contact', () => {
-    render(<ContactPage t={siteContent.en} />)
+  it('combines a personal timeline and prefilled collaboration email on About', () => {
+    render(<AboutPage t={siteContent.en} locale="en" />)
+    expect(screen.getByRole('heading', { name: 'Born' })).toBeInTheDocument()
+    expect(screen.getByText('2006', { selector: 'time' })).toHaveAttribute('datetime', '2006')
     const action = screen.getByRole('link', { name: /Send a collaboration email/ })
     expect(action).toHaveAttribute('href', expect.stringContaining('subject=Collaboration%20inquiry'))
     expect(action).toHaveAttribute('href', expect.stringContaining('Project%20context'))
   })
 
   it('publishes Xiaohongshu and Douyin profiles with follower counts', () => {
-    render(<ContactPage t={siteContent.zh} />)
+    render(<AboutPage t={siteContent.zh} locale="zh" />)
     const xiaohongshu = screen.getByRole('link', { name: /小红书300 粉丝/ })
     expect(xiaohongshu).toHaveAttribute(
       'href',

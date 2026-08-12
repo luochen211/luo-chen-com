@@ -141,7 +141,7 @@ export default function OutputPage({ t, locale = 'zh' }) {
       <section className="output-end output-slide">
         <p>{t.output.endLabel}</p>
         <h2>{t.output.endTitle}</h2>
-        <Link to="/contact">{t.output.contactAction} →</Link>
+        <Link to="/about#contact">{t.output.contactAction} →</Link>
       </section>
     </section>
   )

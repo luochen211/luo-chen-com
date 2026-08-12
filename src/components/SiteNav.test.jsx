@@ -8,7 +8,7 @@ import { siteContent } from '../data/siteContent'
 import SiteNav from './SiteNav'
 
 const t = {
-  nav: { home: '首页', output: '产出', now: 'Now', contact: '联系' },
+  nav: { home: '首页', about: '关于', output: '产出', now: 'Now' },
   common: { menu: '打开菜单', close: '关闭菜单' },
 }
 
@@ -80,6 +80,8 @@ describe('SiteNav', () => {
 
     const drawerOutput = screen.getAllByRole('link', { name: '产出' })[1]
     expect(drawerOutput).toHaveAttribute('href', '/output')
+    expect(screen.getAllByRole('link', { name: '关于' })[1]).toHaveAttribute('href', '/about')
+    expect(screen.queryByRole('link', { name: '联系' })).not.toBeInTheDocument()
     expect(screen.queryByRole('link', { name: '实验室' })).not.toBeInTheDocument()
 
     await user.click(drawerOutput)

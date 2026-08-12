@@ -36,7 +36,7 @@ function Hero({ t, locale }) {
           <p className="hero-intro">{t.hero.intro}</p>
           <div className="hero-actions">
             <Link className="btn primary" to="/output">{t.homeUi.view}</Link>
-            <Link className="btn ghost" to="/contact">{t.homeUi.contact}</Link>
+            <Link className="btn ghost" to="/about#contact">{t.homeUi.contact}</Link>
           </div>
         </div>
         <p className="portrait-focus-instruction" aria-hidden="true">
@@ -169,7 +169,7 @@ function CollaborationCta({ t }) {
           <div className="cta-expansion-copy">
             <p>{t.contact.intro}</p>
             <h2>{t.home.contactTitle}</h2>
-            <Link className="btn cta-button" to="/contact">{t.contact.email} ↗</Link>
+            <Link className="btn cta-button" to="/about#contact">{t.contact.email} ↗</Link>
           </div>
           <span className="cta-expansion-ring" aria-hidden="true" />
         </div>

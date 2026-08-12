@@ -639,7 +639,7 @@ const localizedContent = {
 
 const requiredSections = {
   zh: {
-    nav: { home: '首页', output: '产出', now: 'Now', contact: '联系' },
+    nav: { home: '首页', about: '关于', output: '产出', now: 'Now', contact: '联系' },
     common: { menu: '打开菜单', close: '关闭菜单', primaryNav: '主导航', mobileNav: '移动端导航', readMore: '继续阅读', brand: '落尘 / LUOCHEN', columnReserved: '这个栏目已经预留', columnReservedDetail: '后续文章会按系列挂在这里，形成可以继续展开的索引，而不是混进最新文章列表。' },
     article: { readingTime: '分钟阅读', previous: '上一篇', next: '下一篇', related: '继续读', unavailable: '文章暂时无法读取', loading: '加载中', pagerLabel: '同系列上一篇和下一篇', series: '同系列文章', unknownLabel: '文章' },
     home: { title: '可靠 Agent 需要 Harness', proofTitle: '用真实结果证明工程判断', workTitle: '精选项目', writingTitle: '最近写作', contactTitle: '把复杂问题变成可靠交付' },
@@ -649,10 +649,32 @@ const requiredSections = {
     writing: { eyebrow: '写作与产出', title: '把实践沉淀成可以继续使用的资产', collections: '文章栏目', latest: '最新文章', products: '产品与学习材料', talks: '公开分享与 PPT' },
     output: { eyebrow: '产出 / OUTPUT', title: '我把想法变成可以被验证的产出', intro: '产品、代码、写作与公开分享。每一项都来自真实实践，也继续参与下一次建造。', filterLabel: '筛选产出类型', projectsLabel: '项目', projectsTitle: '做出来，也交付出去', writingLabel: '写作', writingTitle: '把经验留成可以复用的文字', talksLabel: '公开分享', viewLive: '在线体验', endLabel: '继续建造', endTitle: '下一项产出，正在发生。', contactAction: '一起做点值得留下的东西' },
     now: { eyebrow: '现在', title: '我最近在做什么', updated: '最后更新', direction: '当前方向', projects: '正在推进', learning: '学习中', open: '开放合作', routine: '长期习惯' },
+    about: {
+      eyebrow: '关于我 / ABOUT', range: '2006 — NOW', title: '我在把复杂问题，变成可靠交付。',
+      intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
+      portraitAlt: '落尘的个人照片', storyEyebrow: '我的位置', storyTitle: '工程、写作与真实交付，是同一件事。',
+      storyText: '我更愿意用做出来的东西介绍自己：能运行的产品、进入真实仓库的代码、被使用的业务系统，以及把过程讲清楚的文章。它们共同指向一个长期方向——让 AI 不只会回答问题，也能在可靠的工程边界里完成工作。',
+      timelineEyebrow: '个人时间线', timelineTitle: '从 2006，到正在发生的现在。',
+      timeline: [
+        { year: '2006', dateTime: '2006', label: '起点', title: '出生', text: '我的个人时间线从这里开始。' },
+        { year: '2026', dateTime: '2026', label: '真实交付', title: '把 AI 编程带进真实业务', text: '围绕订单、物流与多角色协作完成全栈系统交付，让代码进入真实流程，而不只停在演示里。' },
+        { year: '2026', dateTime: '2026', label: '公开协作', title: '把工程实践放进开源世界', text: '通过真实 PR、测试、质量门禁和失败恢复，积累可以被外部检查的工程记录。' },
+        { year: 'NOW', dateTime: '2026', label: '长期方向', title: '走向 Agent Harness 工程', text: '继续研究工具调用安全、评估门禁和 AI Coding CLI，并用写作、课程与产品把经验公开沉淀。' },
+      ],
+      principlesEyebrow: '做事原则', principlesTitle: '我想长期保留的三种工作方式。',
+      principles: [
+        { title: '先做出可验证的结果', text: '目标、边界、验收和真实运行状态，比听起来完整更重要。' },
+        { title: '把经验变成公开资产', text: '代码、文章、课程和产品会互相连接，也让一次经验继续复利。' },
+        { title: '对事实保持诚实', text: 'MVP、备案申请、正式上线与生产交付是不同层级，表达必须与证据一致。' },
+      ],
+      contactPrompt: '请带上项目背景、期望结果、时间计划和预算范围。',
+      contactTypes: ['Agent 工具链与评估 Harness', '远程产品工程协作', '端到端全栈交付'],
+      audienceLabel: '社交平台关注', audienceEyebrow: '公开关注', audienceTitle: '全网 1000+ 粉丝', audiencePlatforms: '小红书 · 抖音 · X',
+    },
     contact: { eyebrow: '联系', title: '一起解决值得解决的问题', intro: '开放远程工程、Agent 工具链和全栈产品交付合作。', response: '通常会在 48 小时内回复。', email: '发送合作邮件' },
   },
   en: {
-    nav: { home: 'Home', output: 'Output', now: 'Now', contact: 'Contact' },
+    nav: { home: 'Home', about: 'About', output: 'Output', now: 'Now', contact: 'Contact' },
     common: { menu: 'Open menu', close: 'Close menu', primaryNav: 'Primary navigation', mobileNav: 'Mobile navigation', readMore: 'Read more', brand: 'LUOCHEN', columnReserved: 'This collection is reserved', columnReservedDetail: 'Future articles will be organized here by series, forming an expandable index instead of disappearing into the latest-articles feed.' },
     article: { readingTime: 'min read', previous: 'Previous', next: 'Next', related: 'Keep reading', unavailable: 'This article is currently unavailable', loading: 'Loading', pagerLabel: 'Previous and next articles in this series', series: 'More in this series', unknownLabel: 'Article' },
     home: { title: 'Reliable agents need a harness.', proofTitle: 'Engineering judgment, proven by real outcomes.', workTitle: 'Selected Work', writingTitle: 'Recent Writing', contactTitle: 'Turn complex problems into reliable delivery.' },
@@ -662,6 +684,28 @@ const requiredSections = {
     writing: { eyebrow: 'Writing and Output', title: 'Turn practice into assets people can keep using.', collections: 'Writing Collections', latest: 'Latest Articles', products: 'Products and Learning', talks: 'Public Talks and Decks' },
     output: { eyebrow: 'OUTPUT / PUBLIC PROOF', title: 'I turn ideas into output people can verify.', intro: 'Products, code, writing, and public talks—drawn from real practice and carried into the next build.', filterLabel: 'Filter output by type', projectsLabel: 'Projects', projectsTitle: 'Built, shipped, and put to work.', writingLabel: 'Writing', writingTitle: 'Experience, made reusable.', talksLabel: 'Public Talks', viewLive: 'Live product', endLabel: 'Keep building', endTitle: 'The next output is already in motion.', contactAction: 'Let’s make something worth keeping' },
     now: { eyebrow: 'Now', title: 'What I am doing now', updated: 'Last updated', direction: 'Current Direction', projects: 'In Progress', learning: 'Learning', open: 'Open to Work', routine: 'Long-term Routine' },
+    about: {
+      eyebrow: 'ABOUT', range: '2006 — NOW', title: 'I turn complex problems into reliable delivery.',
+      intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',
+      portraitAlt: 'Portrait of Luochen', storyEyebrow: 'Where I stand', storyTitle: 'Engineering, writing, and real delivery are one practice.',
+      storyText: 'I prefer to introduce myself through what I make: runnable products, code that enters real repositories, business systems people use, and writing that explains the process. Together they point toward one long-term direction—helping AI complete work inside reliable engineering boundaries.',
+      timelineEyebrow: 'Personal timeline', timelineTitle: 'From 2006 to the work still unfolding.',
+      timeline: [
+        { year: '2006', dateTime: '2006', label: 'Beginning', title: 'Born', text: 'My personal timeline starts here.' },
+        { year: '2026', dateTime: '2026', label: 'Real delivery', title: 'Bringing AI coding into real operations', text: 'I shipped full-stack systems for orders, logistics, and multi-role collaboration so code could enter real workflows instead of stopping at demos.' },
+        { year: '2026', dateTime: '2026', label: 'Public collaboration', title: 'Moving engineering practice into open source', text: 'Real pull requests, tests, quality gates, and recovery paths became externally verifiable engineering records.' },
+        { year: 'NOW', dateTime: '2026', label: 'Long-term direction', title: 'Growing into Agent Harness engineering', text: 'I continue studying tool-call safety, evaluation gates, and AI Coding CLIs while turning the work into writing, courses, and products.' },
+      ],
+      principlesEyebrow: 'Working principles', principlesTitle: 'Three ways of working I want to keep.',
+      principles: [
+        { title: 'Make the result verifiable', text: 'Goals, boundaries, acceptance, and real runtime state matter more than sounding complete.' },
+        { title: 'Turn experience into public assets', text: 'Code, writing, courses, and products connect so one experience can keep compounding.' },
+        { title: 'Stay honest about evidence', text: 'An MVP, a filing application, a formal launch, and production delivery are different states. The language should match the proof.' },
+      ],
+      contactPrompt: 'Bring the project context, desired outcome, timeline, and budget range.',
+      contactTypes: ['Agent tooling and evaluation harnesses', 'Remote product engineering', 'End-to-end full-stack delivery'],
+      audienceLabel: 'Social audience', audienceEyebrow: 'Public audience', audienceTitle: '1,000+ followers across platforms', audiencePlatforms: 'REDnote · Douyin · X',
+    },
     contact: { eyebrow: 'Contact', title: 'Let’s solve something worth solving.', intro: 'Open to remote engineering, Agent tooling, and full-stack product delivery.', response: 'I usually reply within 48 hours.', email: 'Send a collaboration email' },
   },
 }

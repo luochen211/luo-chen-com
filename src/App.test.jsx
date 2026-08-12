@@ -36,17 +36,19 @@ afterEach(() => {
 
 describe('localized route rendering', () => {
   it.each([
+    ['/contact', '/about', '#contact'],
     ['/work', '/output'],
     ['/writing', '/output'],
     ['/projects', '/output'],
     ['/course', '/output'],
     ['/roundtable', '/'],
     ['/lab/roundtable', '/'],
-  ])('redirects legacy route %s to %s', async (legacyRoute, primaryRoute) => {
+  ])('redirects legacy route %s to %s', async (legacyRoute, primaryRoute, hash = '') => {
     window.history.replaceState({}, '', legacyRoute)
     render(<App />)
 
     await waitFor(() => expect(window.location.pathname).toBe(primaryRoute))
+    expect(window.location.hash).toBe(hash)
   })
 
   it('renders collection and series chrome in English after switching locale', async () => {
