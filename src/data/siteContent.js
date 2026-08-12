@@ -656,7 +656,7 @@ const requiredSections = {
       timeline: [
         { year: '2006', dateTime: '2006', label: '起点', title: '出生', text: '2006 年出生。我的个人时间线从这里开始。' },
         { year: '初中', label: '第一次赚钱', title: '开始卖东西赚钱', text: '初中开始卖东西，第一次靠自己赚到钱。' },
-        { year: '高考后', label: '没有达到预期', title: '自学没有成功', text: '我打算靠自学，但最后没怎么成功，高考后进入了一所民办二本。' },
+        { year: '高考后', label: '没有达到预期', title: '自学没有成功', text: '我打算靠自学，和老师 battle，和老师纠缠，尝试回家自学，但最后没怎么成功。一方面没有去成，另一方面到家也没有学很多。高考后，我进入了一所民办二本。' },
         { year: '2024', dateTime: '2024', label: 'AI 编程', title: '开始用 Cursor 做小程序', text: '开始使用 Cursor 做小程序，也第一次把 AI 编程真正用在开发上。' },
         { year: '2025', dateTime: '2025', label: '真实业务', title: '开始做企业商单', text: '开始承接企业商单，把小程序和全栈开发用进真实业务。' },
         { year: '2026', dateTime: '2026', label: '公开表达', title: '开始做自媒体', text: '开始做自媒体，持续公开记录自己的项目、写作和 AI 编程实践。' },
@@ -691,7 +691,7 @@ const requiredSections = {
       timeline: [
         { year: '2006', dateTime: '2006', label: 'Beginning', title: 'Born', text: 'I was born in 2006. My personal timeline starts here.' },
         { year: 'MIDDLE SCHOOL', label: 'First income', title: 'Started selling things', text: 'I began selling things in middle school and earned money on my own for the first time.' },
-        { year: 'AFTER GAOKAO', label: 'Below expectations', title: 'Self-study did not work out', text: 'I planned to rely on self-study, but it did not really work out. After the Gaokao, I entered a private second-tier university.' },
+        { year: 'AFTER GAOKAO', label: 'Below expectations', title: 'Self-study did not work out', text: 'I planned to rely on self-study. I battled and went back and forth with my teachers, trying to study from home, but it did not really work out. Sometimes I could not get home; even when I did, I did not study very much. After the Gaokao, I entered a private second-tier university.' },
         { year: '2024', dateTime: '2024', label: 'AI coding', title: 'Started building Mini Programs with Cursor', text: 'I began using Cursor to build Mini Programs and started applying AI coding to actual development.' },
         { year: '2025', dateTime: '2025', label: 'Real business', title: 'Started taking commercial projects', text: 'I began taking projects from companies and applying Mini Program and full-stack development to real business work.' },
         { year: '2026', dateTime: '2026', label: 'Public expression', title: 'Started creating public content', text: 'I began creating public content about my projects, writing, and AI coding practice.' },
