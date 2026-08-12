@@ -656,10 +656,12 @@ const requiredSections = {
       storyText: '我更愿意用做出来的东西介绍自己：能运行的产品、进入真实仓库的代码、被使用的业务系统，以及把过程讲清楚的文章。它们共同指向一个长期方向——让 AI 不只会回答问题，也能在可靠的工程边界里完成工作。',
       timelineEyebrow: '个人时间线', timelineTitle: '从 2006，到正在发生的现在。', timelineHint: '选择坐标，查看对应事件',
       timeline: [
-        { year: '2006', dateTime: '2006', label: '起点', title: '出生', text: '我的个人时间线从这里开始。' },
-        { year: '2026', dateTime: '2026', label: '真实交付', title: '把 AI 编程带进真实业务', text: '围绕订单、物流与多角色协作完成全栈系统交付，让代码进入真实流程，而不只停在演示里。' },
-        { year: '2026', dateTime: '2026', label: '公开协作', title: '把工程实践放进开源世界', text: '通过真实 PR、测试、质量门禁和失败恢复，积累可以被外部检查的工程记录。' },
-        { year: 'NOW', dateTime: '2026', label: '长期方向', title: '走向 Agent Harness 工程', text: '继续研究工具调用安全、评估门禁和 AI Coding CLI，并用写作、课程与产品把经验公开沉淀。' },
+        { year: '2006', dateTime: '2006', label: '起点', title: '出生', text: '2006 年出生。我的个人时间线从这里开始。' },
+        { year: '初中', label: '第一次赚钱', title: '开始卖东西赚钱', text: '初中开始卖东西，第一次靠自己赚到钱。' },
+        { year: '高考后', label: '没有达到预期', title: '自学没有成功', text: '我打算靠自学，但最后没怎么成功，高考后进入了一所民办二本。' },
+        { year: '2024', dateTime: '2024', label: 'AI 编程', title: '开始用 Cursor 做小程序', text: '开始使用 Cursor 做小程序，也第一次把 AI 编程真正用在开发上。' },
+        { year: '2025', dateTime: '2025', label: '真实业务', title: '开始做企业商单', text: '开始承接企业商单，把小程序和全栈开发用进真实业务。' },
+        { year: '2026', dateTime: '2026', label: '公开表达', title: '开始做自媒体', text: '开始做自媒体，持续公开记录自己的项目、写作和 AI 编程实践。' },
       ],
       principlesEyebrow: '做事原则', principlesTitle: '我想长期保留的三种工作方式。',
       principles: [
@@ -691,10 +693,12 @@ const requiredSections = {
       storyText: 'I prefer to introduce myself through what I make: runnable products, code that enters real repositories, business systems people use, and writing that explains the process. Together they point toward one long-term direction—helping AI complete work inside reliable engineering boundaries.',
       timelineEyebrow: 'Personal timeline', timelineTitle: 'From 2006 to the work still unfolding.', timelineHint: 'Select a coordinate to view the event',
       timeline: [
-        { year: '2006', dateTime: '2006', label: 'Beginning', title: 'Born', text: 'My personal timeline starts here.' },
-        { year: '2026', dateTime: '2026', label: 'Real delivery', title: 'Bringing AI coding into real operations', text: 'I shipped full-stack systems for orders, logistics, and multi-role collaboration so code could enter real workflows instead of stopping at demos.' },
-        { year: '2026', dateTime: '2026', label: 'Public collaboration', title: 'Moving engineering practice into open source', text: 'Real pull requests, tests, quality gates, and recovery paths became externally verifiable engineering records.' },
-        { year: 'NOW', dateTime: '2026', label: 'Long-term direction', title: 'Growing into Agent Harness engineering', text: 'I continue studying tool-call safety, evaluation gates, and AI Coding CLIs while turning the work into writing, courses, and products.' },
+        { year: '2006', dateTime: '2006', label: 'Beginning', title: 'Born', text: 'I was born in 2006. My personal timeline starts here.' },
+        { year: 'MIDDLE SCHOOL', label: 'First income', title: 'Started selling things', text: 'I began selling things in middle school and earned money on my own for the first time.' },
+        { year: 'AFTER GAOKAO', label: 'Below expectations', title: 'Self-study did not work out', text: 'I planned to rely on self-study, but it did not really work out. After the Gaokao, I entered a private second-tier university.' },
+        { year: '2024', dateTime: '2024', label: 'AI coding', title: 'Started building Mini Programs with Cursor', text: 'I began using Cursor to build Mini Programs and started applying AI coding to actual development.' },
+        { year: '2025', dateTime: '2025', label: 'Real business', title: 'Started taking commercial projects', text: 'I began taking projects from companies and applying Mini Program and full-stack development to real business work.' },
+        { year: '2026', dateTime: '2026', label: 'Public expression', title: 'Started creating public content', text: 'I began creating public content about my projects, writing, and AI coding practice.' },
       ],
       principlesEyebrow: 'Working principles', principlesTitle: 'Three ways of working I want to keep.',
       principles: [
