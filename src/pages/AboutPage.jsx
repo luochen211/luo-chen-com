@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import SocialIcon from '../components/SocialIcon'
 
 export default function AboutPage({ t, locale = 'zh' }) {
+  const [activeTimelineIndex, setActiveTimelineIndex] = useState(0)
   const isEnglish = locale === 'en'
   const subject = encodeURIComponent(isEnglish ? 'Collaboration inquiry' : '合作咨询')
   const body = encodeURIComponent(isEnglish
@@ -10,6 +12,7 @@ export default function AboutPage({ t, locale = 'zh' }) {
   const contactCards = t.contact.cards.slice(1)
   const socialCards = contactCards.filter((card) => card.icon)
   const directoryCards = contactCards.filter((card) => !card.icon)
+  const activeTimelineItem = t.about.timeline[activeTimelineIndex]
 
   return (
     <section className="focused-page about-redesign">
@@ -38,19 +41,44 @@ export default function AboutPage({ t, locale = 'zh' }) {
           <p>{t.about.timelineEyebrow}</p>
           <h2 id="timeline-title">{t.about.timelineTitle}</h2>
         </header>
-        <ol className="about-timeline">
-          {t.about.timeline.map((item) => (
-            <li className="about-timeline-item reveal" key={`${item.year}-${item.title}`}>
-              <time dateTime={item.dateTime}>{item.year}</time>
-              <span className="about-timeline-marker" aria-hidden="true" />
-              <div>
-                <p>{item.label}</p>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div className="about-timeline reveal">
+          <p className="about-timeline-hint">{t.about.timelineHint}</p>
+          <div className="about-timeline-scroll">
+            <ol className="about-timeline-track" style={{ '--point-count': t.about.timeline.length }}>
+              {t.about.timeline.map((item, index) => {
+                const isActive = activeTimelineIndex === index
+                return (
+                  <li className={isActive ? 'is-active' : ''} key={`${item.year}-${item.title}`}>
+                    <button
+                      aria-label={`${item.year} · ${item.title}`}
+                      aria-pressed={isActive}
+                      className="about-timeline-coordinate"
+                      onClick={() => setActiveTimelineIndex(index)}
+                      onFocus={() => setActiveTimelineIndex(index)}
+                      onMouseEnter={() => setActiveTimelineIndex(index)}
+                      type="button"
+                    >
+                      <span className="about-timeline-year">{item.year}</span>
+                      <span className="about-timeline-dot" aria-hidden="true" />
+                      <span className="about-timeline-coordinate-title">{item.title}</span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+          <article className="about-timeline-event" key={`${activeTimelineItem.year}-${activeTimelineItem.title}`} aria-live="polite">
+            <div className="about-timeline-event-meta">
+              <strong>{String(activeTimelineIndex + 1).padStart(2, '0')} / {String(t.about.timeline.length).padStart(2, '0')}</strong>
+              <span>{activeTimelineItem.label}</span>
+            </div>
+            <div>
+              <time dateTime={activeTimelineItem.dateTime}>{activeTimelineItem.year}</time>
+              <h3>{activeTimelineItem.title}</h3>
+              <p>{activeTimelineItem.text}</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section className="about-principles" aria-labelledby="principles-title">

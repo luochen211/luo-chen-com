@@ -785,27 +785,78 @@ body {
 .about-timeline-chapter { padding: clamp(6rem, 12vw, 11rem) 0; border-block: 1px solid var(--line); }
 .about-timeline-chapter .chapter-heading { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr); align-items: start; }
 .about-timeline-chapter .chapter-heading h2 { max-width: 62rem; }
-.about-timeline { margin: clamp(4rem, 8vw, 7rem) 0 0; padding: 0; list-style: none; }
+.about-timeline { margin: clamp(4rem, 8vw, 7rem) 0 0; }
+.about-timeline-hint { margin: 0 0 2.5rem; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-align: right; text-transform: uppercase; }
+.about-timeline-scroll { overflow-x: auto; scrollbar-color: var(--brand-warm) transparent; scrollbar-width: thin; }
 
-.about-timeline-item {
+.about-timeline-track {
+  --point-count: 4;
+  position: relative;
   display: grid;
-  grid-template-columns: clamp(6rem, 16vw, 13rem) 2rem minmax(0, 1fr);
-  min-height: 18rem;
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(var(--point-count), minmax(10rem, 1fr));
+  min-width: 48rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.about-timeline-item:last-child { border-bottom: 1px solid var(--line); }
-.about-timeline-item time { color: var(--ink); font-size: clamp(2.2rem, 5vw, 5.4rem); font-weight: 720; line-height: 0.92; letter-spacing: -0.06em; }
-.about-timeline-marker { position: relative; }
-.about-timeline-marker::before { content: ''; position: absolute; top: 0.35rem; left: 0.45rem; z-index: 1; width: 0.65rem; aspect-ratio: 1; border: 2px solid var(--brand-warm); border-radius: 50%; background: var(--bg-deep); transition: background 180ms ease, transform 180ms ease; }
-.about-timeline-item:not(:last-child) .about-timeline-marker::after { content: ''; position: absolute; top: 1rem; bottom: -2.6rem; left: 0.75rem; width: 1px; background: var(--line); }
-.about-timeline-item > div { max-width: 52rem; padding-left: clamp(1rem, 3vw, 3rem); }
-.about-timeline-item > div > p:first-child { margin: 0 0 1rem; color: var(--brand-warm); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; }
-.about-timeline-item h3 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 4rem); line-height: 1; letter-spacing: -0.05em; transition: color 180ms ease, transform 180ms ease; }
-.about-timeline-item > div > p:last-child { max-width: 42rem; margin: 1.5rem 0 0; color: var(--ink-soft); font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.75; }
-.about-timeline-item:hover h3 { color: var(--brand-warm); transform: translateX(0.35rem); }
-.about-timeline-item:hover .about-timeline-marker::before { background: var(--brand-warm); transform: scale(1.2); }
+.about-timeline-track::before {
+  content: '';
+  position: absolute;
+  top: 3.36rem;
+  right: calc(50% / var(--point-count));
+  left: calc(50% / var(--point-count));
+  height: 1px;
+  background: linear-gradient(90deg, var(--brand-warm), var(--line) 28%, var(--line) 72%, var(--brand-warm));
+}
+
+.about-timeline-coordinate {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  min-height: 9.5rem;
+  grid-template-rows: 2rem 2.75rem minmax(3.5rem, auto);
+  justify-items: center;
+  padding: 0 1rem;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.about-timeline-year { align-self: start; font-size: clamp(0.9rem, 1.3vw, 1.1rem); font-weight: 720; letter-spacing: -0.02em; transition: color 180ms ease; }
+.about-timeline-dot { align-self: center; width: 0.78rem; aspect-ratio: 1; border: 2px solid var(--brand-warm); border-radius: 50%; background: var(--bg-deep); box-shadow: 0 0 0 0.55rem var(--bg-deep); transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease; }
+.about-timeline-coordinate-title { max-width: 12rem; align-self: start; color: var(--ink-soft); font-size: clamp(0.85rem, 1.15vw, 1rem); font-weight: 680; line-height: 1.35; transition: color 180ms ease, transform 180ms ease; }
+.about-timeline-coordinate:hover .about-timeline-dot,
+.about-timeline-coordinate:focus-visible .about-timeline-dot,
+.about-timeline-track li.is-active .about-timeline-dot { background: var(--brand-warm); box-shadow: 0 0 0 0.55rem var(--bg-deep), 0 0 0 0.7rem rgba(223, 113, 56, 0.3); transform: scale(1.22); }
+.about-timeline-coordinate:hover .about-timeline-year,
+.about-timeline-coordinate:focus-visible .about-timeline-year,
+.about-timeline-track li.is-active .about-timeline-year,
+.about-timeline-track li.is-active .about-timeline-coordinate-title { color: var(--brand-warm); }
+.about-timeline-coordinate:hover .about-timeline-coordinate-title { color: var(--ink); transform: translateY(0.2rem); }
+.about-timeline-coordinate:focus-visible { outline: 1px solid var(--brand-warm); outline-offset: -0.2rem; }
+
+.about-timeline-event {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.45fr) minmax(0, 1.55fr);
+  gap: clamp(2rem, 8vw, 9rem);
+  min-height: 22rem;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding: clamp(3rem, 7vw, 6rem) 0;
+  border-block: 1px solid var(--line);
+  animation: timeline-event-in 320ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.about-timeline-event-meta { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
+.about-timeline-event-meta strong { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.12em; }
+.about-timeline-event-meta span { color: var(--brand-warm); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; }
+.about-timeline-event time { display: block; color: var(--brand-warm); font-size: 0.82rem; font-weight: 750; letter-spacing: 0.12em; }
+.about-timeline-event h3 { max-width: 56rem; margin: 1.2rem 0 0; font-size: clamp(2.5rem, 5.5vw, 6rem); line-height: 0.94; letter-spacing: -0.065em; }
+.about-timeline-event > div:last-child > p { max-width: 46rem; margin: 2rem 0 0; color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.18rem); line-height: 1.75; }
 
 .about-principles {
   display: grid;
@@ -835,6 +886,11 @@ body {
 
 @keyframes about-rise {
   from { opacity: 0; transform: translateY(2rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes timeline-event-in {
+  from { opacity: 0; transform: translateY(0.8rem); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -1103,10 +1159,11 @@ body {
   .about-contact-lead { grid-template-columns: 1fr; }
   .about-portrait { width: min(100%, 32rem); }
   .about-timeline-chapter .chapter-heading { grid-template-columns: 1fr; }
-  .about-timeline-item { grid-template-columns: 5.4rem 1.5rem minmax(0, 1fr); min-height: 15rem; }
-  .about-timeline-item > div { padding-left: 0.75rem; }
-  .about-timeline-marker::before { left: 0.2rem; }
-  .about-timeline-item:not(:last-child) .about-timeline-marker::after { left: 0.5rem; }
+  .about-timeline-scroll { width: 100vw; margin-left: calc(50% - 50vw); padding-inline: 1rem; }
+  .about-timeline-track { min-width: 44rem; }
+  .about-timeline-hint { text-align: left; }
+  .about-timeline-event { grid-template-columns: 1fr; min-height: 19rem; gap: 3rem; }
+  .about-timeline-event-meta { flex-direction: row; }
   .about-principles > header { position: static; }
   .now-redesign blockquote { padding-inline: 2rem; }
   .now-focus-list section { grid-template-columns: 2rem 1fr; }
@@ -1126,10 +1183,8 @@ body {
 }
 
 @media (max-width: 560px) {
-  .about-timeline-item { grid-template-columns: 4.4rem 1.1rem minmax(0, 1fr); padding-block: 2rem; }
-  .about-timeline-item time { font-size: 1.7rem; }
-  .about-timeline-marker::before { left: 0; width: 0.55rem; }
-  .about-timeline-item:not(:last-child) .about-timeline-marker::after { left: 0.28rem; }
+  .about-timeline-track { min-width: 40rem; grid-template-columns: repeat(var(--point-count), minmax(9rem, 1fr)); }
+  .about-timeline-event h3 { font-size: clamp(2.4rem, 13vw, 4rem); }
   .about-contact-heading h2 { font-size: clamp(3rem, 15vw, 4.6rem); }
   .social-profile-grid { grid-template-columns: 1fr 1fr; }
   .social-profile-grid .contact-social-link { min-height: 9rem; padding: 1.25rem; }

@@ -654,7 +654,7 @@ const requiredSections = {
       intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
       portraitAlt: '落尘的个人照片', storyEyebrow: '我的位置', storyTitle: '工程、写作与真实交付，是同一件事。',
       storyText: '我更愿意用做出来的东西介绍自己：能运行的产品、进入真实仓库的代码、被使用的业务系统，以及把过程讲清楚的文章。它们共同指向一个长期方向——让 AI 不只会回答问题，也能在可靠的工程边界里完成工作。',
-      timelineEyebrow: '个人时间线', timelineTitle: '从 2006，到正在发生的现在。',
+      timelineEyebrow: '个人时间线', timelineTitle: '从 2006，到正在发生的现在。', timelineHint: '选择坐标，查看对应事件',
       timeline: [
         { year: '2006', dateTime: '2006', label: '起点', title: '出生', text: '我的个人时间线从这里开始。' },
         { year: '2026', dateTime: '2026', label: '真实交付', title: '把 AI 编程带进真实业务', text: '围绕订单、物流与多角色协作完成全栈系统交付，让代码进入真实流程，而不只停在演示里。' },
@@ -689,7 +689,7 @@ const requiredSections = {
       intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',
       portraitAlt: 'Portrait of Luochen', storyEyebrow: 'Where I stand', storyTitle: 'Engineering, writing, and real delivery are one practice.',
       storyText: 'I prefer to introduce myself through what I make: runnable products, code that enters real repositories, business systems people use, and writing that explains the process. Together they point toward one long-term direction—helping AI complete work inside reliable engineering boundaries.',
-      timelineEyebrow: 'Personal timeline', timelineTitle: 'From 2006 to the work still unfolding.',
+      timelineEyebrow: 'Personal timeline', timelineTitle: 'From 2006 to the work still unfolding.', timelineHint: 'Select a coordinate to view the event',
       timeline: [
         { year: '2006', dateTime: '2006', label: 'Beginning', title: 'Born', text: 'My personal timeline starts here.' },
         { year: '2026', dateTime: '2026', label: 'Real delivery', title: 'Bringing AI coding into real operations', text: 'I shipped full-stack systems for orders, logistics, and multi-role collaboration so code could enter real workflows instead of stopping at demos.' },
