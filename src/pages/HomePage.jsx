@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { localizeArticles } from '../data/siteContent'
 import { articleIndex } from '../data/siteData'
@@ -11,18 +12,25 @@ const selectedProjectMedia = {
 
 function Hero({ t, locale }) {
   const isEnglish = locale === 'en'
+  const [portraitRevealed, setPortraitRevealed] = useState(false)
   return (
     <section className="focused-hero home-focused-hero">
       <div className="hero-sticky-frame">
-        <div className="hero-portrait-background">
+        <button
+          aria-label={isEnglish ? 'Toggle portrait focus' : '切换头像清晰度'}
+          aria-pressed={portraitRevealed}
+          className={`hero-portrait-background${portraitRevealed ? ' is-revealed' : ''}`}
+          onClick={() => setPortraitRevealed((current) => !current)}
+          type="button"
+        >
           <img src="/头像111.jpg" alt={t.hero.avatarAlt} width="940" height="938" />
           <div className="hero-portrait-scrim" aria-hidden="true" />
           <div className="hero-portrait-haze" aria-hidden="true" />
-        </div>
+        </button>
         <div className="hero-copy">
           <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
           <h1>
-            <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>
+            <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>{isEnglish ? ' ' : null}
             <span>{isEnglish ? 'reliably delivered.' : '变成可靠交付。'}</span>
           </h1>
           <p className="hero-intro">{t.hero.intro}</p>
@@ -32,7 +40,7 @@ function Hero({ t, locale }) {
           </div>
         </div>
         <p className="portrait-focus-instruction" aria-hidden="true">
-          <span />{isEnglish ? 'Hover over the portrait to bring it into focus' : '鼠标移到右侧，让头像逐渐清晰'}
+          <span />{isEnglish ? 'Portrait fragment · hover to reveal' : '头像局部 · 移入显影'}
         </p>
         <div className="hero-marquee" aria-hidden="true">
           <div className="hero-marquee-track">

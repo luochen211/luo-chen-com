@@ -1066,9 +1066,14 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 52%;
+  left: 66%;
   overflow: hidden;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: #050708;
   cursor: crosshair;
+  text-align: inherit;
 }
 
 .hero-portrait-background img {
@@ -1084,9 +1089,16 @@ body {
   will-change: filter, transform;
 }
 
-.hero-portrait-background:hover img {
+.hero-portrait-background:hover img,
+.hero-portrait-background:focus-visible img,
+.hero-portrait-background.is-revealed img {
   filter: blur(0) saturate(1.03) brightness(0.94);
   transform: scale(1);
+}
+
+.hero-portrait-background:focus-visible {
+  outline: 1px solid rgba(223, 113, 56, 0.85);
+  outline-offset: -3px;
 }
 
 .hero-portrait-scrim,
@@ -1111,7 +1123,9 @@ body {
   will-change: opacity;
 }
 
-.hero-portrait-background:hover .hero-portrait-haze { opacity: 0.08; }
+.hero-portrait-background:hover .hero-portrait-haze,
+.hero-portrait-background:focus-visible .hero-portrait-haze,
+.hero-portrait-background.is-revealed .hero-portrait-haze { opacity: 0.08; }
 
 .home-focused-hero .hero-copy {
   z-index: 3;
@@ -1129,6 +1143,7 @@ body {
 }
 
 .home-focused-hero .hero-intro {
+  max-width: min(44rem, 54vw);
   color: rgba(244, 241, 233, 0.77);
 }
 
@@ -1147,7 +1162,12 @@ body {
   letter-spacing: 0.13em;
   text-transform: uppercase;
   writing-mode: vertical-rl;
+  transition: opacity 0.35s ease;
 }
+
+.hero-portrait-background:hover ~ .portrait-focus-instruction,
+.hero-portrait-background:focus-visible ~ .portrait-focus-instruction,
+.hero-portrait-background.is-revealed ~ .portrait-focus-instruction { opacity: 0; }
 
 .portrait-focus-instruction span {
   display: block;
@@ -1640,13 +1660,14 @@ body {
     padding: 0;
   }
   .hero-sticky-frame { padding: 7.5rem 1rem 8.5rem; }
-  .hero-portrait-background { left: 42%; cursor: default; }
+  .hero-portrait-background { left: 62%; cursor: pointer; }
   .hero-portrait-background img { object-position: 50% 50%; filter: blur(10px) saturate(0.76) brightness(0.66); }
   .hero-portrait-scrim {
     background:
-      linear-gradient(90deg, #050708 0%, rgba(5, 7, 8, 0.72) 24%, rgba(5, 7, 8, 0.14) 72%),
+      linear-gradient(90deg, #050708 0%, rgba(5, 7, 8, 0.76) 28%, rgba(5, 7, 8, 0.34) 100%),
       linear-gradient(180deg, rgba(5, 7, 8, 0.3) 0%, rgba(5, 7, 8, 0.08) 42%, rgba(5, 7, 8, 0.82) 100%);
   }
+  .home-focused-hero .hero-intro { max-width: none; }
   .portrait-focus-instruction { display: none; }
 
   .home-proof-chapter { padding: 6rem 1rem; }

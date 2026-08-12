@@ -1,6 +1,7 @@
 /* @vitest-environment jsdom */
 import '@testing-library/jest-dom/vitest'
 import { cleanup, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { afterEach, describe, expect, it } from 'vitest'
 import HomePage from './HomePage'
@@ -38,6 +39,15 @@ describe('redesigned page purposes', () => {
     expect(container.querySelectorAll('.project-orbit-card')).toHaveLength(3)
     expect(container.querySelectorAll('.writing-stack > a')).toHaveLength(4)
     expect(container.querySelector('.cta-expansion-surface')).toBeInTheDocument()
+  })
+
+  it('lets pointer and keyboard users toggle the portrait focus state', async () => {
+    render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    const portrait = screen.getByRole('button', { name: '切换头像清晰度' })
+    expect(portrait).toHaveAttribute('aria-pressed', 'false')
+    await userEvent.click(portrait)
+    expect(portrait).toHaveAttribute('aria-pressed', 'true')
+    expect(portrait).toHaveClass('is-revealed')
   })
 
   it('does not list unpublished columns on Writing', () => {
