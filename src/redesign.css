@@ -1216,10 +1216,14 @@ body {
 }
 
 /* Home motion system: portrait hover focus, scene switching, orbit, stack, expansion. */
+.home-route {
+  --home-gutter: max(1rem, calc((100vw - 1380px) / 2));
+}
+
 .home-focused-hero {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  min-height: 100svh;
+  min-height: max(760px, 90svh);
   padding: 0;
   overflow: clip;
   background: #050708;
@@ -1227,9 +1231,9 @@ body {
 
 .hero-sticky-frame {
   position: relative;
-  height: 100svh;
+  height: max(760px, 90svh);
   overflow: hidden;
-  padding: clamp(9rem, 19vh, 13rem) max(1.5rem, calc((100vw - 1380px) / 2)) 8rem;
+  padding: clamp(9rem, 19vh, 13rem) var(--home-gutter) 8rem;
 }
 
 .home-route .topbar {
@@ -1238,6 +1242,18 @@ body {
   top: 0;
   right: 0;
   left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 1.2rem var(--home-gutter) 0;
+}
+
+.home-route .desktop-nav {
+  padding-inline: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .hero-portrait-background {
@@ -1836,10 +1852,19 @@ body {
 
 @media (max-width: 800px) {
   .home-focused-hero {
-    min-height: 100svh;
+    min-height: max(760px, 90svh);
     padding: 0;
   }
-  .hero-sticky-frame { padding: 7.5rem 1rem 8.5rem; }
+  .home-route .topbar { padding-top: 0.8rem; }
+  .home-route .mobile-nav-shell {
+    padding-inline: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .hero-sticky-frame { padding: 7.5rem var(--home-gutter) 8.5rem; }
   .hero-portrait-background { left: 62%; cursor: pointer; }
   .hero-portrait-background img { object-position: 50% 50%; filter: blur(10px) saturate(0.76) brightness(0.66); }
   .hero-portrait-scrim {
