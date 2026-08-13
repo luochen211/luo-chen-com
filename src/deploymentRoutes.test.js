@@ -32,4 +32,19 @@ describe('Cloudflare Pages routing', () => {
     expect(fetch).toHaveBeenCalledOnce()
     expect(fetch.mock.calls[0][0].url).toBe('https://luo-chen.com/')
   })
+
+  it('serves article Markdown as a static asset instead of the SPA shell', async () => {
+    const fetch = vi.fn().mockResolvedValue(new Response('# Article', {
+      status: 200,
+      headers: { 'content-type': 'text/markdown; charset=utf-8' },
+    }))
+    const request = new Request('https://luo-chen.com/articles/example.md?source=test')
+
+    const response = await onRequestGet({ request, env: { ASSETS: { fetch } } })
+
+    expect(response.status).toBe(200)
+    expect(await response.text()).toBe('# Article')
+    expect(fetch).toHaveBeenCalledOnce()
+    expect(fetch.mock.calls[0][0]).toBe(request)
+  })
 })

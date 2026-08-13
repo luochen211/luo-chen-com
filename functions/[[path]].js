@@ -1,5 +1,10 @@
 function serveApplicationShell({ request, env }) {
-  const assetUrl = new URL(request.url)
+  const requestUrl = new URL(request.url)
+  if (requestUrl.pathname.startsWith('/articles/') && requestUrl.pathname.endsWith('.md')) {
+    return env.ASSETS.fetch(request)
+  }
+
+  const assetUrl = requestUrl
   assetUrl.pathname = '/'
   assetUrl.search = ''
 
