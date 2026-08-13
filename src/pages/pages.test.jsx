@@ -99,6 +99,16 @@ describe('redesigned page purposes', () => {
     )
   })
 
+  it('keeps the Output closing statement in two deliberate lines with highlighted keywords', () => {
+    const { container } = render(<MemoryRouter><OutputPage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    const statement = screen.getByRole('heading', { name: siteContent.zh.output.endTitle })
+    const lines = statement.querySelectorAll('.output-end-line')
+    expect(lines).toHaveLength(2)
+    expect(lines[0]).toHaveTextContent('下一项 产出，')
+    expect(lines[1]).toHaveTextContent('正在 发生。')
+    expect([...container.querySelectorAll('.output-end em')].map((node) => node.textContent)).toEqual(['产出', '发生'])
+  })
+
   it('keeps Now current and omits general career positioning', () => {
     render(<NowPage t={siteContent.zh} />)
     expect(screen.getByText(/2026\.07\.10/)).toHaveAttribute('datetime', '2026-07-10')

@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import './redesign.css'
+import './output-end.css'
 import CollectionView from './components/CollectionView'
 import BrandMark from './components/BrandMark'
 import SiteNav from './components/SiteNav'

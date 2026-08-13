@@ -1,0 +1,80 @@
+.output-end {
+  min-height: calc(100svh - 6rem);
+  padding-block: clamp(7rem, 11vw, 11rem);
+}
+
+.output-end h2 {
+  max-width: none;
+  margin: 1.25rem 0 3.5rem;
+  font-size: clamp(4.5rem, 8vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+  text-wrap: initial;
+}
+
+.output-end-line {
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.output-end-line + .output-end-line {
+  margin-top: 0.08em;
+  margin-left: clamp(1.4rem, 7vw, 7rem);
+}
+
+.output-end em {
+  color: var(--brand-warm);
+  font-style: normal;
+}
+
+.output-end a {
+  position: relative;
+  padding-bottom: 0.45rem;
+  color: var(--ink);
+}
+
+.output-end a::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--brand-warm);
+  transform: scaleX(0.2);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.output-end a:hover::after,
+.output-end a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 800px) {
+  .output-end {
+    min-height: calc(100svh - 5rem);
+    padding-block: 6rem;
+  }
+
+  .output-end h2 {
+    margin-bottom: 2.75rem;
+    font-size: clamp(3.05rem, 12.4vw, 5.1rem);
+    line-height: 0.94;
+  }
+
+  .output-end-line + .output-end-line {
+    margin-left: clamp(0.75rem, 5vw, 2.5rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .output-end h2 {
+    font-size: clamp(2.65rem, 12.8vw, 3.35rem);
+  }
+
+  .output-end-line + .output-end-line {
+    margin-left: 0;
+  }
+}

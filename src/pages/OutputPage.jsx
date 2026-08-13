@@ -140,7 +140,19 @@ export default function OutputPage({ t, locale = 'zh' }) {
 
       <section className="output-end output-slide">
         <p>{t.output.endLabel}</p>
-        <h2>{t.output.endTitle}</h2>
+        <h2 aria-label={t.output.endTitle}>
+          {locale === 'zh' ? (
+            <>
+              <span className="output-end-line">下一项 <em>产出</em>，</span>
+              <span className="output-end-line">正在 <em>发生</em>。</span>
+            </>
+          ) : (
+            <>
+              <span className="output-end-line">The next <em>output</em></span>
+              <span className="output-end-line">is already in <em>motion</em>.</span>
+            </>
+          )}
+        </h2>
         <Link to="/about#contact">{t.output.contactAction} →</Link>
       </section>
     </section>
