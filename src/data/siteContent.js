@@ -652,14 +652,14 @@ const requiredSections = {
     about: {
       eyebrow: '关于我 / ABOUT', range: '2006 — NOW', title: '我在把复杂问题，变成可靠交付。',
       intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
-      timelineEyebrow: '个人时间线', timelineTitle: '从 2006，到正在发生的现在。', timelineHint: '选择坐标，查看对应事件',
+      timelineEyebrow: '能力形成', timelineTitle: '从自己找机会，到开始为结果负责。', timelineHint: '选择节点，查看这段经历留下了什么',
       timeline: [
-        { year: '2006', dateTime: '2006', label: '起点', title: '出生', text: '2006 年出生。我的个人时间线从这里开始。' },
-        { year: '初中', label: '第一次赚钱', title: '开始卖东西赚钱', text: '初中开始卖东西，第一次靠自己赚到钱。' },
-        { year: '高考后', label: '没有达到预期', title: '自学没有成功', text: '我打算靠自学，和老师 battle，和老师纠缠，尝试回家自学，但最后没怎么成功。一方面没有去成，另一方面到家也没有学很多。高考后，我进入了一所民办二本。' },
-        { year: '2024', dateTime: '2024', label: 'AI 编程', title: '开始用 Cursor 做小程序', text: '开始使用 Cursor 做小程序，也第一次把 AI 编程真正用在开发上。' },
-        { year: '2025', dateTime: '2025', label: '真实业务', title: '开始做企业商单', text: '开始承接企业商单，把小程序和全栈开发用进真实业务。' },
-        { year: '2026', dateTime: '2026', label: '公开表达', title: '开始做自媒体', text: '开始做自媒体，持续公开记录自己的项目、写作和 AI 编程实践。' },
+        { year: '初中', label: '主动找机会', title: '第一次靠自己赚到钱', text: '初中开始卖东西，第一次靠自己赚到钱。那是我第一次感受到：想法只有进入真实交换，才会变成结果。' },
+        { year: '高考后', label: '自主选择的代价', title: '想靠自学走自己的路，但没有成功', text: '我曾和老师反复争取回家自学，但最后既没有真正离开原来的路径，也没有把自学执行下来。高考后，我进入一所民办二本。这次失败让我看到：想走自己的路，首先要有承担结果的能力。' },
+        { year: '2024', dateTime: '2024', label: '找到杠杆', title: '开始用 Cursor 把想法做成小程序', text: '我开始使用 Cursor 做小程序，也第一次把 AI 编程真正用在开发上。AI 不再只是要学习的新工具，而是把想法变成可运行产品的杠杆。' },
+        { year: '2025', dateTime: '2025', label: '进入真实业务', title: '开始为企业项目交付结果', text: '我开始承接企业商单，面对真实需求、期限、修改和验收。开发不再只是把功能写出来，而是把结果交出去。' },
+        { year: '2026', dateTime: '2026', label: '从开发到系统', title: '把重心放到 Agent Harness', text: '在全栈交付之外，我开始深入 CLI 工具链、工具调用安全、评估门禁和批处理 workflow，关注如何让 Agent 在真实系统里可靠工作。' },
+        { year: '现在', label: '公开积累', title: '让项目、写作和代码互相证明', text: '我持续公开记录项目、写作和 AI 编程实践，把一次次交付沉淀成别人可以检查的公开作品。' },
       ],
       principlesEyebrow: '做事原则', principlesTitle: '我想长期保留的三种工作方式。',
       principles: [
@@ -687,14 +687,14 @@ const requiredSections = {
     about: {
       eyebrow: 'ABOUT', range: '2006 — NOW', title: 'I turn complex problems into reliable delivery.',
       intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',
-      timelineEyebrow: 'Personal timeline', timelineTitle: 'From 2006 to the work still unfolding.', timelineHint: 'Select a coordinate to view the event',
+      timelineEyebrow: 'How the capability formed', timelineTitle: 'From finding my own opportunities to owning the outcome.', timelineHint: 'Select a point to see what the experience left behind',
       timeline: [
-        { year: '2006', dateTime: '2006', label: 'Beginning', title: 'Born', text: 'I was born in 2006. My personal timeline starts here.' },
-        { year: 'MIDDLE SCHOOL', label: 'First income', title: 'Started selling things', text: 'I began selling things in middle school and earned money on my own for the first time.' },
-        { year: 'AFTER GAOKAO', label: 'Below expectations', title: 'Self-study did not work out', text: 'I planned to rely on self-study. I battled and went back and forth with my teachers, trying to study from home, but it did not really work out. Sometimes I could not get home; even when I did, I did not study very much. After the Gaokao, I entered a private second-tier university.' },
-        { year: '2024', dateTime: '2024', label: 'AI coding', title: 'Started building Mini Programs with Cursor', text: 'I began using Cursor to build Mini Programs and started applying AI coding to actual development.' },
-        { year: '2025', dateTime: '2025', label: 'Real business', title: 'Started taking commercial projects', text: 'I began taking projects from companies and applying Mini Program and full-stack development to real business work.' },
-        { year: '2026', dateTime: '2026', label: 'Public expression', title: 'Started creating public content', text: 'I began creating public content about my projects, writing, and AI coding practice.' },
+        { year: 'MIDDLE SCHOOL', label: 'Finding opportunities', title: 'Earned money on my own for the first time', text: 'I started selling things in middle school and earned money on my own for the first time. It showed me that an idea becomes a result only when it enters a real exchange.' },
+        { year: 'AFTER GAOKAO', label: 'The cost of choosing for myself', title: 'Tried to take my own path through self-study, but failed', text: 'I repeatedly tried to persuade my teachers to let me study from home, but I neither left the original path nor followed through on self-study. After the Gaokao, I entered a private second-tier university. The failure taught me that choosing my own path also means owning the outcome.' },
+        { year: '2024', dateTime: '2024', label: 'Finding leverage', title: 'Used Cursor to turn ideas into Mini Programs', text: 'I began using Cursor to build Mini Programs and applied AI coding to real development for the first time. AI became leverage for turning an idea into a working product.' },
+        { year: '2025', dateTime: '2025', label: 'Entering real business', title: 'Started delivering outcomes for company projects', text: 'I began taking commercial projects and facing real requirements, deadlines, revisions, and acceptance. Development was no longer just about writing features; it was about delivering the outcome.' },
+        { year: '2026', dateTime: '2026', label: 'From development to systems', title: 'Shifted my focus toward Agent Harness', text: 'Alongside full-stack delivery, I began going deeper into CLI toolchains, tool-call safety, evaluation gates, and batch workflows—asking how agents can work reliably in real systems.' },
+        { year: 'NOW', label: 'Building in public', title: 'Let projects, writing, and code prove one another', text: 'I keep documenting projects, writing, and AI coding practice in public, turning each delivery into work other people can inspect.' },
       ],
       principlesEyebrow: 'Working principles', principlesTitle: 'Three ways of working I want to keep.',
       principles: [

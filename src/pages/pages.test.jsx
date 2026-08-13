@@ -120,8 +120,8 @@ describe('redesigned page purposes', () => {
     render(<AboutPage t={siteContent.en} locale="en" />)
     expect(document.querySelector('.about-introduction')).not.toBeInTheDocument()
     expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '6')
-    expect(screen.getByRole('heading', { name: 'Born' })).toBeInTheDocument()
-    expect(screen.getByText('2006', { selector: 'time' })).toHaveAttribute('datetime', '2006')
+    expect(screen.getByRole('heading', { name: 'Earned money on my own for the first time' })).toBeInTheDocument()
+    expect(screen.getByText('MIDDLE SCHOOL', { selector: 'time' })).not.toHaveAttribute('datetime')
     expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(6)
     const action = screen.getByRole('link', { name: /Send a collaboration email/ })
     expect(action).toHaveAttribute('href', expect.stringContaining('subject=Collaboration%20inquiry'))
@@ -130,14 +130,14 @@ describe('redesigned page purposes', () => {
 
   it('reveals the event attached to a selected timeline coordinate', async () => {
     render(<AboutPage t={siteContent.zh} locale="zh" />)
-    const commercialCoordinate = screen.getByRole('button', { name: '2025 · 开始做企业商单' })
+    const commercialCoordinate = screen.getByRole('button', { name: '2025 · 开始为企业项目交付结果' })
     expect(commercialCoordinate).toHaveAttribute('aria-pressed', 'false')
 
     await userEvent.click(commercialCoordinate)
 
     expect(commercialCoordinate).toHaveAttribute('aria-pressed', 'true')
-    expect(screen.getByRole('heading', { name: '开始做企业商单' })).toBeInTheDocument()
-    expect(screen.getByText(/把小程序和全栈开发用进真实业务/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '开始为企业项目交付结果' })).toBeInTheDocument()
+    expect(screen.getByText(/开发不再只是把功能写出来/)).toBeInTheDocument()
   })
 
   it('publishes Xiaohongshu and Douyin profiles with follower counts', () => {
