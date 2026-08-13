@@ -113,6 +113,10 @@ body {
   overflow-x: clip;
 }
 
+.home-redesign {
+  overflow-x: visible;
+}
+
 .home-focused-hero {
   position: relative;
   display: block;
@@ -1397,7 +1401,7 @@ body {
   position: sticky;
   top: 0;
   height: 100svh;
-  padding-top: clamp(7rem, 13vh, 9rem);
+  padding-top: clamp(2rem, 4vh, 3.5rem);
   overflow: hidden;
 }
 
@@ -1852,7 +1856,7 @@ body {
 
 @media (max-width: 800px) {
   .home-focused-hero {
-    min-height: max(760px, 90svh);
+    min-height: 0;
     padding: 0;
   }
   .home-route .topbar { padding-top: 0.8rem; }
@@ -1864,7 +1868,10 @@ body {
     box-shadow: none;
     backdrop-filter: none;
   }
-  .hero-sticky-frame { padding: 7.5rem var(--home-gutter) 8.5rem; }
+  .hero-sticky-frame {
+    height: auto;
+    padding: 7.5rem var(--home-gutter) 0;
+  }
   .hero-portrait-background { left: 62%; cursor: pointer; }
   .hero-portrait-background img { object-position: 50% 50%; filter: blur(10px) saturate(0.76) brightness(0.66); }
   .hero-portrait-scrim {
@@ -1875,7 +1882,7 @@ body {
   .home-focused-hero .hero-intro { max-width: none; }
   .portrait-focus-instruction { display: none; }
 
-  .home-proof-chapter { padding: 6rem 1rem; }
+  .home-proof-chapter { padding: 2rem 1rem 6rem; }
   .proof-scene-shell { display: block; }
   .proof-scene-stage { position: relative; height: auto; padding: 0; overflow: visible; }
   .proof-scene-stage .chapter-heading { margin-bottom: 4rem; }
