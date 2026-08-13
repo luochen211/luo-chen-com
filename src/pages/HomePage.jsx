@@ -12,21 +12,17 @@ const selectedProjectMedia = {
 
 function Hero({ t, locale }) {
   const isEnglish = locale === 'en'
-  const [portraitRevealed, setPortraitRevealed] = useState(false)
+  const evidenceLoop = isEnglish
+    ? ['Imaging system · production delivery', 'BEST GROUP · phase one shipped', 'career-ops · maintained in public', 'Agent Harness · active build']
+    : ['得到影像 · 生产交付', 'BEST GROUP · 一期交付', 'career-ops · 持续维护', 'Agent Harness · 公开建造']
   return (
     <section className="focused-hero home-focused-hero">
       <div className="hero-sticky-frame">
-        <button
-          aria-label={isEnglish ? 'Toggle portrait focus' : '切换头像清晰度'}
-          aria-pressed={portraitRevealed}
-          className={`hero-portrait-background${portraitRevealed ? ' is-revealed' : ''}`}
-          onClick={() => setPortraitRevealed((current) => !current)}
-          type="button"
-        >
-          <img src="/头像111.jpg" alt={t.hero.avatarAlt} width="940" height="938" />
-          <div className="hero-portrait-scrim" aria-hidden="true" />
-          <div className="hero-portrait-haze" aria-hidden="true" />
-        </button>
+        <div className="hero-portrait-background" aria-hidden="true">
+          <img src="/头像111.jpg" alt="" width="940" height="938" />
+          <div className="hero-portrait-scrim" />
+          <div className="hero-portrait-haze" />
+        </div>
         <div className="hero-copy">
           <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
           <h1>
@@ -39,13 +35,12 @@ function Hero({ t, locale }) {
             <Link className="btn ghost" to="/about#contact">{t.homeUi.contact}</Link>
           </div>
         </div>
-        <p className="portrait-focus-instruction" aria-hidden="true">
-          <span />{isEnglish ? 'Portrait fragment · hover to reveal' : '头像局部 · 移入显影'}
-        </p>
         <div className="hero-marquee" aria-hidden="true">
           <div className="hero-marquee-track">
             {[0, 1].map((loop) => (
-              <span key={loop}>Agent Harness <i /> Full-stack Delivery <i /> Open Source <i /> Public Writing <i /></span>
+              <span key={loop}>
+                {evidenceLoop.map((item) => <span className="hero-marquee-item" key={`${loop}-${item}`}>{item}<i /></span>)}
+              </span>
             ))}
           </div>
         </div>
@@ -57,35 +52,19 @@ function Hero({ t, locale }) {
 function ProofGrid({ t, items }) {
   return (
     <section className="chapter home-proof-chapter">
-      <div className="proof-scene-shell">
-        <div className="proof-scene-stage">
-          <div className="chapter-heading editorial-heading">
-            <p>{t.homeUi.assets}</p>
-            <h2>{t.home.proofTitle}</h2>
-          </div>
-          <div className="proof-scene-visual" aria-hidden="true">
-            {items.map((item, index) => (
-              <div className={`proof-visual-layer proof-visual-layer-${index + 1}`} data-scene={index} key={item.title}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <p>{item.label}</p>
-                <i />
-              </div>
-            ))}
-          </div>
-          <p className="proof-scroll-note">
-            SCROLL <span aria-hidden="true">↓</span>
-          </p>
-        </div>
-        <div className="proof-scene-list">
-          {items.map((item, index) => (
-            <article className="proof-scene proof-card" data-scene={index} data-testid="proof-item" key={item.title}>
-              <p>{item.label}</p>
-              <h3>{item.title}</h3>
-              <span>{item.text}</span>
-              <b aria-hidden="true">{String(index + 1).padStart(2, '0')}</b>
-            </article>
-          ))}
-        </div>
+      <div className="chapter-heading editorial-heading">
+        <p>{t.homeUi.assets}</p>
+        <h2>{t.home.proofTitle}</h2>
+      </div>
+      <div className="proof-bento">
+        {items.map((item) => (
+          <article className="proof-bento-card" data-testid="proof-item" key={item.title}>
+            <p>{item.label}</p>
+            <h3>{item.title}</h3>
+            <span>{item.text}</span>
+            <i aria-hidden="true" />
+          </article>
+        ))}
       </div>
     </section>
   )
@@ -93,39 +72,61 @@ function ProofGrid({ t, items }) {
 
 function SelectedWork({ t, locale }) {
   const work = getProjectShowcase(locale).filter((project) => ['imaging', 'logistics', 'career'].includes(project.id))
+  const [activeProject, setActiveProject] = useState(0)
+  const selected = work[activeProject]
+  const moveSelection = (direction) => {
+    setActiveProject((current) => (current + direction + work.length) % work.length)
+  }
   return (
     <section className="chapter selected-work">
-      <div className="project-orbit-stage">
-        <div className="chapter-heading sticky-chapter-title">
-          <p>{locale === 'zh' ? '真实交付' : 'Selected evidence'}</p>
-          <h2>{t.home.workTitle}</h2>
-          <Link to="/output">{t.nav.output} →</Link>
+      <div className="chapter-heading sticky-chapter-title">
+        <p>{locale === 'zh' ? '真实交付' : 'Selected evidence'}</p>
+        <h2>{t.home.workTitle}</h2>
+        <Link to="/output">{t.nav.output} →</Link>
+      </div>
+      <div className="project-accordion" role="list">
+        {work.map((project, index) => (
+          <article
+            className={`project-accordion-card${activeProject === index ? ' is-active' : ''}`}
+            key={project.name}
+            onFocus={() => setActiveProject(index)}
+            onMouseEnter={() => setActiveProject(index)}
+            role="listitem"
+          >
+            <div className="project-accordion-image">
+              <img src={selectedProjectMedia[project.id]} alt="" loading="lazy" />
+            </div>
+            <button
+              aria-pressed={activeProject === index}
+              onClick={() => setActiveProject(index)}
+              type="button"
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{project.name}</strong>
+            </button>
+            <div className="project-accordion-copy">
+              <p>{project.status} · {project.year}</p>
+              <span>{project.role}</span>
+              <a href={project.href} target="_blank" rel="noreferrer">{locale === 'zh' ? '查看项目' : 'Inspect project'} ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="evidence-carousel" aria-live="polite">
+        <div className="evidence-carousel-thumbs" aria-hidden="true">
+          {work.map((project, index) => (
+            <img className={activeProject === index ? 'is-active' : ''} src={selectedProjectMedia[project.id]} alt="" key={project.id} />
+          ))}
         </div>
-        <div className="project-orbit-viewport">
-          <div className="project-orbit" role="list">
-            {work.map((project, index) => (
-              <article
-                className="selected-work-card project-orbit-card"
-                key={project.name}
-                role="listitem"
-                style={{ '--project-index': index }}
-              >
-                <div className="project-visual">
-                  <img src={selectedProjectMedia[project.id]} alt="" loading="lazy" />
-                </div>
-                <div className="project-card-copy">
-                  <p>{project.status} · {project.year}</p>
-                  <h3>{project.name}</h3>
-                  <span>{project.role}</span>
-                  <p>{project.summary}</p>
-                  <strong>{project.outcome}</strong>
-                  <a href={project.href} target="_blank" rel="noreferrer">{locale === 'zh' ? '查看项目' : 'Inspect project'} ↗</a>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="orbit-axis" aria-hidden="true"><span /></div>
-          <p className="orbit-counter" aria-hidden="true"><span>01</span> / 03</p>
+        <div className="evidence-carousel-copy">
+          <p>{locale === 'zh' ? '交付结果' : 'Delivery outcome'}</p>
+          <blockquote>{selected.outcome}</blockquote>
+          <span>{selected.name}</span>
+        </div>
+        <div className="evidence-carousel-controls">
+          <button aria-label={locale === 'zh' ? '上一个项目' : 'Previous project'} onClick={() => moveSelection(-1)} type="button">←</button>
+          <span>{String(activeProject + 1).padStart(2, '0')} / {String(work.length).padStart(2, '0')}</span>
+          <button aria-label={locale === 'zh' ? '下一个项目' : 'Next project'} onClick={() => moveSelection(1)} type="button">→</button>
         </div>
       </div>
     </section>
