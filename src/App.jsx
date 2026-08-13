@@ -51,6 +51,7 @@ function SiteApp() {
   const mainRef = useRef(null)
   const previousPathRef = useRef(location.pathname)
   const t = siteContent[locale]
+  const isFuturesDemo = location.pathname === '/demos/futures-trader'
 
   useEffect(() => {
     window.localStorage.setItem('site-locale', locale)
@@ -170,6 +171,8 @@ function SiteApp() {
     })
     return () => context.revert()
   }, [location.pathname, locale])
+
+  if (isFuturesDemo) return <FuturesTraderDemoPage />
 
   return (
     <div className={`page${location.pathname === '/' ? ' home-route' : ''}`}>
