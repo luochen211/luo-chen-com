@@ -31,8 +31,8 @@ describe('output community call to action', () => {
 
     expect(rule).toMatch(/color:\s*#f4f1e9/)
     expect(rule).toMatch(/background:\s*#050b12/)
-    expect(hoverRule).toMatch(/color:\s*#050b12/)
-    expect(hoverRule).toMatch(/background:\s*#f4f1e9/)
+    expect(hoverRule).toMatch(/color:\s*#f4f1e9/)
+    expect(hoverRule).toMatch(/background:\s*#050b12/)
     expect(rule).not.toMatch(/#c94f31/)
   })
 })

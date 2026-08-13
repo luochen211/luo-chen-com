@@ -149,7 +149,9 @@
 .output-deck-link { display: inline-block; padding-bottom: .3rem; border-bottom: 1px solid currentColor; color: #050b12; font-weight: 800; transition: color .2s ease, background .2s ease, transform .2s ease; }
 .output-deck-link:hover { color: #050b12; transform: translateY(-2px); }
 .output-deck-link-community { display: inline-flex; align-items: center; min-height: 3.25rem; padding: .75rem 1rem; border: 1px solid #050b12; color: #f4f1e9; background: #050b12; }
-.output-deck-link-community:hover { color: #050b12; background: #f4f1e9; }
+.output-deck-link-community:hover { color: #f4f1e9; background: #050b12; }
+.output-deck-link-community:focus-visible,
+.output-deck-link-community:active { color: #f4f1e9; background: #050b12; }
 .output-deck-link-community:focus-visible { outline-color: #050b12; }
 .output-end { display: flex; flex-direction: column; justify-content: center; padding: clamp(6rem, 14vw, 13rem) 0; }
 .output-end > p { color: var(--brand-warm); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
