@@ -68,6 +68,39 @@ body {
   text-transform: none;
 }
 
+.brand-mark {
+  display: grid;
+  flex: 0 0 auto;
+  width: 5.6rem;
+  height: 2.75rem;
+  overflow: hidden;
+  background: #000;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.brand-mark img {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 180ms ease;
+}
+
+.brand-mark-image-light { opacity: 0; }
+
+.brand-mark:hover,
+.brand-mark:focus-visible {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.brand-mark:hover .brand-mark-image-dark,
+.brand-mark:focus-visible .brand-mark-image-dark { opacity: 0; }
+
+.brand-mark:hover .brand-mark-image-light,
+.brand-mark:focus-visible .brand-mark-image-light { opacity: 1; }
+
 .desktop-nav a:not(.brand),
 .lang-toggle {
   font-size: 0.82rem;
@@ -1149,6 +1182,13 @@ body {
 
   .footer { align-items: flex-start; flex-direction: column; min-height: 18rem; }
   .footer nav { justify-content: flex-start; }
+}
+
+@media (max-width: 760px) {
+  .brand-mark {
+    width: 4.7rem;
+    height: 2.5rem;
+  }
 }
 
 @media (max-width: 560px) {

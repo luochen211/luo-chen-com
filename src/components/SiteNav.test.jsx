@@ -15,6 +15,17 @@ const t = {
 afterEach(() => cleanup())
 
 describe('SiteNav', () => {
+  it('uses the Luóchén logo as the home link on desktop and mobile', () => {
+    render(<MemoryRouter><SiteNav locale="zh" t={siteContent.zh} onToggleLocale={vi.fn()} /></MemoryRouter>)
+
+    const desktopBrand = screen.getByRole('link', { name: '落尘 / LUOCHEN' })
+    const mobileBrand = screen.getAllByRole('link', { name: '首页' }).find((link) => link.classList.contains('brand-mark'))
+    expect(desktopBrand).toHaveClass('brand-mark')
+    expect(desktopBrand.querySelector('.brand-mark-image-dark')).toHaveAttribute('src', '/media/luochen-logo-dark.png')
+    expect(desktopBrand.querySelector('.brand-mark-image-light')).toHaveAttribute('src', '/media/luochen-logo-light.png')
+    expect(mobileBrand).toHaveClass('brand-mark')
+  })
+
   it('opens and closes the mobile menu with accessible state', async () => {
     const user = userEvent.setup()
     render(<MemoryRouter><SiteNav locale="zh" t={t} onToggleLocale={vi.fn()} /></MemoryRouter>)

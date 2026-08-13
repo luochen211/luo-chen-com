@@ -23,6 +23,29 @@ function PrimaryLinks({ t, firstLinkRef, onNavigate }) {
   ))
 }
 
+function BrandLink({ label }) {
+  return (
+    <Link className="brand brand-mark" to="/" aria-label={label}>
+      <img
+        alt=""
+        aria-hidden="true"
+        className="brand-mark-image brand-mark-image-dark"
+        height="520"
+        src="/media/luochen-logo-dark.png"
+        width="961"
+      />
+      <img
+        alt=""
+        aria-hidden="true"
+        className="brand-mark-image brand-mark-image-light"
+        height="520"
+        src="/media/luochen-logo-light.png"
+        width="961"
+      />
+    </Link>
+  )
+}
+
 export default function SiteNav({ locale, t, onToggleLocale }) {
   const [open, setOpen] = useState(false)
   const location = useLocation()
@@ -93,7 +116,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
   return (
     <>
       <nav className="desktop-nav" aria-label={t.common.primaryNav}>
-        <Link className="brand" to="/">{t.common.brand || 'LUOCHEN'}</Link>
+        <BrandLink label={t.common.brand || 'LUOCHEN'} />
         <div className="desktop-nav-links">
           <PrimaryLinks t={t} />
         </div>
@@ -105,7 +128,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
       </nav>
 
       <nav className="mobile-nav-shell" aria-label={t.common.mobileNav}>
-        <Link className="brand" to="/" aria-label={t.nav.home}>{t.common.brand || 'LUOCHEN'}</Link>
+        <BrandLink label={t.nav.home} />
         <button
           className="menu-toggle"
           type="button"
