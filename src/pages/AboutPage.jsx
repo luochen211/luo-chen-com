@@ -9,6 +9,7 @@ export default function AboutPage({ t, locale = 'zh' }) {
     ? 'Hi Luochen,\n\nProject context:\nDesired outcome:\nTimeline:\nBudget range:\n'
     : '落尘你好，\n\n项目背景：\n期望结果：\n时间计划：\n预算范围：\n')
   const mailto = `mailto:cuidong111@gmail.com?subject=${subject}&body=${body}`
+  const contactTitleSegments = isEnglish ? [t.contact.title] : ['一起解决', '值得解决', '的问题']
   const contactCards = t.contact.cards.slice(1)
   const socialCards = contactCards.filter((card) => card.icon)
   const directoryCards = contactCards.filter((card) => !card.icon)
@@ -93,7 +94,11 @@ export default function AboutPage({ t, locale = 'zh' }) {
         <header className="about-contact-heading">
           <div>
             <p className="route-overline">{t.contact.eyebrow}</p>
-            <h2 id="contact-title">{t.contact.title}</h2>
+            <h2 id="contact-title">
+              {contactTitleSegments.map((segment) => (
+                <span className="contact-title-segment" key={segment} style={{ display: 'inline-block' }}>{segment}</span>
+              ))}
+            </h2>
           </div>
           <p>{t.contact.intro}</p>
         </header>
