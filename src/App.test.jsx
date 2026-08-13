@@ -35,6 +35,15 @@ afterEach(() => {
 })
 
 describe('localized route rendering', () => {
+  it('uses the shared monochrome logo in the footer', () => {
+    render(<App />)
+
+    const footerBrand = document.querySelector('.footer .footer-brand-mark')
+    expect(footerBrand).toHaveAttribute('href', '/')
+    expect(footerBrand.querySelector('.brand-mark-image-dark')).toHaveAttribute('src', '/media/luochen-logo-dark.png')
+    expect(footerBrand.querySelector('.brand-mark-image-light')).toHaveAttribute('src', '/media/luochen-logo-light.png')
+  })
+
   it.each([
     ['/contact', '/about', '#contact'],
     ['/work', '/output'],

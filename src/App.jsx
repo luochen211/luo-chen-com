@@ -12,6 +12,7 @@ import {
 import './App.css'
 import './redesign.css'
 import CollectionView from './components/CollectionView'
+import BrandMark from './components/BrandMark'
 import SiteNav from './components/SiteNav'
 import SocialIcon from './components/SocialIcon'
 import AboutPage from './pages/AboutPage'
@@ -197,7 +198,10 @@ function SiteApp() {
       </main>
       <footer className="footer container">
         <div>
-          <strong>{t.common.brand || 'LUOCHEN'}</strong>
+          <BrandMark
+            className="footer-brand-mark"
+            label={`${t.common.brand || 'LUOCHEN'} · ${t.nav.home}`}
+          />
           <p>© {new Date().getFullYear()} {t.footer.text}</p>
         </div>
         <nav aria-label={t.common.primaryNav}>

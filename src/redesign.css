@@ -1045,7 +1045,7 @@ body {
   color: var(--muted);
 }
 
-.footer strong { color: var(--ink); font-size: 0.9rem; letter-spacing: 0.08em; }
+.footer-brand-mark { width: 7rem; height: 3.8rem; }
 .footer p { margin: 0.8rem 0 0; }
 .footer nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1rem 1.5rem; font-size: 0.88rem; }
 .footer a { color: var(--ink-soft); }
@@ -1188,6 +1188,11 @@ body {
   .brand-mark {
     width: 4.7rem;
     height: 2.5rem;
+  }
+
+  .footer .footer-brand-mark {
+    width: 6rem;
+    height: 3.25rem;
   }
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
+import BrandMark from './BrandMark'
 
 const primaryLinks = [
   { key: 'home', to: '/', end: true },
@@ -21,29 +22,6 @@ function PrimaryLinks({ t, firstLinkRef, onNavigate }) {
       {t.nav[key]}
     </NavLink>
   ))
-}
-
-function BrandLink({ label }) {
-  return (
-    <Link className="brand brand-mark" to="/" aria-label={label}>
-      <img
-        alt=""
-        aria-hidden="true"
-        className="brand-mark-image brand-mark-image-dark"
-        height="520"
-        src="/media/luochen-logo-dark.png"
-        width="961"
-      />
-      <img
-        alt=""
-        aria-hidden="true"
-        className="brand-mark-image brand-mark-image-light"
-        height="520"
-        src="/media/luochen-logo-light.png"
-        width="961"
-      />
-    </Link>
-  )
 }
 
 export default function SiteNav({ locale, t, onToggleLocale }) {
@@ -116,7 +94,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
   return (
     <>
       <nav className="desktop-nav" aria-label={t.common.primaryNav}>
-        <BrandLink label={t.common.brand || 'LUOCHEN'} />
+        <BrandMark label={t.common.brand || 'LUOCHEN'} />
         <div className="desktop-nav-links">
           <PrimaryLinks t={t} />
         </div>
@@ -128,7 +106,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
       </nav>
 
       <nav className="mobile-nav-shell" aria-label={t.common.mobileNav}>
-        <BrandLink label={t.nav.home} />
+        <BrandMark label={t.nav.home} />
         <button
           className="menu-toggle"
           type="button"
