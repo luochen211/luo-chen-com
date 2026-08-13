@@ -260,11 +260,6 @@ const localizedContent = {
           icon: 'x',
         },
         {
-          label: 'Domain',
-          value: 'luo-chen.com',
-          href: 'https://luo-chen.com',
-        },
-        {
           label: 'WeChat',
           value: 'luo002chen',
           note: 'Scan the QR code to add me on WeChat.',
@@ -627,7 +622,6 @@ const localizedContent = {
           href: socialProfiles.x,
           icon: 'x',
         },
-        { label: '域名', value: 'luo-chen.com', href: 'https://luo-chen.com' },
         {
           label: '微信',
           value: 'luo002chen',
