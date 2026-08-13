@@ -21,6 +21,7 @@ import ArticlePage from './pages/ArticlePage'
 import HomePage from './pages/HomePage'
 import NowPage from './pages/NowPage'
 import OutputPage from './pages/OutputPage'
+import FuturesTraderDemoPage from './pages/FuturesTraderDemoPage'
 import { getInitialLocale, siteContent, socialProfiles } from './data/siteContent'
 import { findArticle } from './lib/articles'
 
@@ -188,6 +189,7 @@ function SiteApp() {
           <Route path="/writing" element={<Navigate replace to="/output" />} />
           <Route path="/projects" element={<Navigate replace to="/output" />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
+          <Route path="/demos/futures-trader" element={<FuturesTraderDemoPage />} />
           <Route path="/lab/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />
