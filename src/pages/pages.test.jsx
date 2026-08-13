@@ -34,20 +34,20 @@ describe('redesigned page purposes', () => {
   it('keeps every homepage motion scene represented in the document', () => {
     const { container } = render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
     expect(container.querySelector('.hero-portrait-background img')).toHaveAttribute('src', '/头像111.jpg')
-    expect(container.querySelectorAll('.proof-bento-card')).toHaveLength(4)
-    expect(container.querySelectorAll('.project-accordion-card')).toHaveLength(3)
-    expect(container.querySelector('.evidence-carousel')).toBeInTheDocument()
+    expect(container.querySelector('.portrait-focus-instruction')).toBeInTheDocument()
+    expect(container.querySelectorAll('.proof-scene')).toHaveLength(4)
+    expect(container.querySelectorAll('.project-orbit-card')).toHaveLength(3)
     expect(container.querySelectorAll('.writing-stack > a')).toHaveLength(4)
     expect(container.querySelector('.cta-expansion-surface')).toBeInTheDocument()
   })
 
-  it('lets users move through delivery evidence with explicit controls', async () => {
+  it('lets pointer and keyboard users toggle the portrait focus state', async () => {
     render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
-    expect(screen.getByText(/客户下单、销售跟进/)).toBeInTheDocument()
-    await userEvent.click(screen.getByRole('button', { name: '下一个项目' }))
-    expect(screen.getByText(/41 个业务页面/)).toBeInTheDocument()
-    await userEvent.click(screen.getByRole('button', { name: '下一个项目' }))
-    expect(screen.getByText(/35 个已合并/)).toBeInTheDocument()
+    const portrait = screen.getByRole('button', { name: '切换头像清晰度' })
+    expect(portrait).toHaveAttribute('aria-pressed', 'false')
+    await userEvent.click(portrait)
+    expect(portrait).toHaveAttribute('aria-pressed', 'true')
+    expect(portrait).toHaveClass('is-revealed')
   })
 
   it('does not list unpublished columns on Writing', () => {
@@ -74,8 +74,8 @@ describe('redesigned page purposes', () => {
 
   it('routes every homepage archive action through Output', () => {
     render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
-    expect(screen.getAllByRole('link', { name: /查看真实交付|产出/ })).toHaveLength(3)
-    screen.getAllByRole('link', { name: /查看真实交付|产出/ }).forEach((link) => {
+    expect(screen.getAllByRole('link', { name: /查看内容|产出/ })).toHaveLength(3)
+    screen.getAllByRole('link', { name: /查看内容|产出/ }).forEach((link) => {
       expect(link).toHaveAttribute('href', '/output')
     })
   })

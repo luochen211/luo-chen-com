@@ -93,18 +93,56 @@ function SiteApp() {
         { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08 },
       )
 
-      gsap.utils.toArray('.project-accordion-image img').forEach((image) => {
-        gsap.fromTo(image, { scale: 0.82, opacity: 0.28 }, {
+      const proofScenes = gsap.utils.toArray('.proof-scene')
+      const proofLayers = gsap.utils.toArray('.proof-visual-layer')
+      proofScenes.forEach((scene, index) => {
+        const layer = proofLayers[index]
+        gsap.fromTo(scene, { opacity: 0.28, y: 32 }, {
+          opacity: 1,
+          y: 0,
+          ease: 'none',
+          scrollTrigger: { trigger: scene, start: 'top 76%', end: 'center 54%', scrub: true },
+        })
+        gsap.to(scene, {
+          opacity: index === proofScenes.length - 1 ? 1 : 0.28,
+          ease: 'none',
+          scrollTrigger: { trigger: scene, start: 'center 46%', end: 'bottom 24%', scrub: true },
+        })
+        if (!layer) return
+        gsap.fromTo(layer, { opacity: index === 0 ? 1 : 0, yPercent: 10, scale: 0.96 }, {
+          opacity: 1,
+          yPercent: 0,
           scale: 1,
-          opacity: 0.82,
           ease: 'none',
-          scrollTrigger: { trigger: image, start: 'top 92%', end: 'center 56%', scrub: true },
+          scrollTrigger: { trigger: scene, start: 'top 76%', end: 'center 54%', scrub: true },
         })
-        gsap.to(image, {
-          opacity: 0.2,
+        if (index < proofScenes.length - 1) gsap.to(layer, {
+          opacity: 0,
+          yPercent: -8,
+          scale: 1.025,
           ease: 'none',
-          scrollTrigger: { trigger: image, start: 'center 30%', end: 'bottom top', scrub: true },
+          scrollTrigger: { trigger: scene, start: 'center 46%', end: 'bottom 24%', scrub: true },
         })
+      })
+
+      const orbitCounter = document.querySelector('.orbit-counter span')
+      gsap.to('.project-orbit', {
+        rotateY: -240,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.selected-work',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1,
+          onUpdate: (self) => {
+            if (orbitCounter) orbitCounter.textContent = String(Math.min(3, Math.round(self.progress * 2) + 1)).padStart(2, '0')
+          },
+        },
+      })
+      gsap.fromTo('.orbit-axis span', { scaleX: 1 }, {
+        scaleX: 3,
+        ease: 'none',
+        scrollTrigger: { trigger: '.selected-work', start: 'top top', end: 'bottom bottom', scrub: 1 },
       })
 
       gsap.utils.toArray('.writing-stack > a').forEach((article) => {
@@ -116,6 +154,18 @@ function SiteApp() {
         })
       })
 
+      gsap.to('.cta-expansion-surface', {
+        clipPath: 'circle(78% at 50% 50%)',
+        ease: 'none',
+        scrollTrigger: { trigger: '.collaboration-cta', start: 'top top', end: 'bottom bottom', scrub: 1 },
+      })
+      gsap.to('.cta-expansion-copy', {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: '.collaboration-cta', start: 'top -20%', end: 'bottom 35%', scrub: 1 },
+      })
     })
     return () => context.revert()
   }, [location.pathname, locale])
