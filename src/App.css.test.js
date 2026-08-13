@@ -23,3 +23,16 @@ describe('homepage portrait', () => {
     expect(portraitRule).toMatch(/object-fit:\s*contain/)
   })
 })
+
+describe('output community call to action', () => {
+  it('uses a high-contrast dark surface instead of the former orange-on-orange treatment', () => {
+    const rule = css.match(/\.output-deck-link-community\s*\{([^}]*)\}/)?.[1] || ''
+    const hoverRule = css.match(/\.output-deck-link-community:hover\s*\{([^}]*)\}/)?.[1] || ''
+
+    expect(rule).toMatch(/color:\s*#f4f1e9/)
+    expect(rule).toMatch(/background:\s*#050b12/)
+    expect(hoverRule).toMatch(/color:\s*#050b12/)
+    expect(hoverRule).toMatch(/background:\s*#f4f1e9/)
+    expect(rule).not.toMatch(/#c94f31/)
+  })
+})
