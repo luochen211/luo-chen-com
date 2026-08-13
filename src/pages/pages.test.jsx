@@ -119,10 +119,11 @@ describe('redesigned page purposes', () => {
   it('combines a personal timeline and prefilled collaboration email on About', () => {
     render(<AboutPage t={siteContent.en} locale="en" />)
     expect(document.querySelector('.about-introduction')).not.toBeInTheDocument()
-    expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '6')
+    expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '7')
     expect(screen.getByRole('heading', { name: 'Earned money on my own for the first time' })).toBeInTheDocument()
     expect(screen.getByText('MIDDLE SCHOOL', { selector: 'time' })).not.toHaveAttribute('datetime')
-    expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(6)
+    expect(screen.getByRole('button', { name: 'HIGH SCHOOL · Ran Chinese metaphysics training and became a Taoist priest' })).toBeInTheDocument()
+    expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(7)
     const action = screen.getByRole('link', { name: /Send a collaboration email/ })
     expect(action).toHaveAttribute('href', expect.stringContaining('subject=Collaboration%20inquiry'))
     expect(action).toHaveAttribute('href', expect.stringContaining('Project%20context'))

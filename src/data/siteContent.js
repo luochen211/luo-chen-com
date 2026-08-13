@@ -655,6 +655,7 @@ const requiredSections = {
       timelineEyebrow: '能力形成', timelineTitle: '从自己找机会，到开始为结果负责。', timelineHint: '选择节点，查看这段经历留下了什么',
       timeline: [
         { year: '初中', label: '主动找机会', title: '第一次靠自己赚到钱', text: '初中开始卖东西，第一次靠自己赚到钱。那是我第一次感受到：想法只有进入真实交换，才会变成结果。' },
+        { year: '高中', label: '把所学变成服务', title: '做国学培训，也成为道士', text: '高中时，我开始做国学培训，内容包括算卦、算命，也在这个阶段成为道士。和初中卖东西相比，这次不只是完成交易，而是开始把自己掌握的一套知识整理出来、讲给别人，并提供具体服务。' },
         { year: '高考后', label: '自主选择的代价', title: '想靠自学走自己的路，但没有成功', text: '我曾和老师反复争取回家自学，但最后既没有真正离开原来的路径，也没有把自学执行下来。高考后，我进入一所民办二本。这次失败让我看到：想走自己的路，首先要有承担结果的能力。' },
         { year: '2024', dateTime: '2024', label: '找到杠杆', title: '开始用 Cursor 把想法做成小程序', text: '我开始使用 Cursor 做小程序，也第一次把 AI 编程真正用在开发上。AI 不再只是要学习的新工具，而是把想法变成可运行产品的杠杆。' },
         { year: '2025', dateTime: '2025', label: '进入真实业务', title: '开始为企业项目交付结果', text: '我开始承接企业商单，面对真实需求、期限、修改和验收。开发不再只是把功能写出来，而是把结果交出去。' },
@@ -690,6 +691,7 @@ const requiredSections = {
       timelineEyebrow: 'How the capability formed', timelineTitle: 'From finding my own opportunities to owning the outcome.', timelineHint: 'Select a point to see what the experience left behind',
       timeline: [
         { year: 'MIDDLE SCHOOL', label: 'Finding opportunities', title: 'Earned money on my own for the first time', text: 'I started selling things in middle school and earned money on my own for the first time. It showed me that an idea becomes a result only when it enters a real exchange.' },
+        { year: 'HIGH SCHOOL', label: 'Turning knowledge into a service', title: 'Ran Chinese metaphysics training and became a Taoist priest', text: 'In high school, I ran training in traditional Chinese metaphysics, including divination and fortune-telling, and became a Taoist priest. Compared with selling things in middle school, this was not only about completing a transaction; it was about organizing what I knew, explaining it to others, and turning it into a concrete service.' },
         { year: 'AFTER GAOKAO', label: 'The cost of choosing for myself', title: 'Tried to take my own path through self-study, but failed', text: 'I repeatedly tried to persuade my teachers to let me study from home, but I neither left the original path nor followed through on self-study. After the Gaokao, I entered a private second-tier university. The failure taught me that choosing my own path also means owning the outcome.' },
         { year: '2024', dateTime: '2024', label: 'Finding leverage', title: 'Used Cursor to turn ideas into Mini Programs', text: 'I began using Cursor to build Mini Programs and applied AI coding to real development for the first time. AI became leverage for turning an idea into a working product.' },
         { year: '2025', dateTime: '2025', label: 'Entering real business', title: 'Started delivering outcomes for company projects', text: 'I began taking commercial projects and facing real requirements, deadlines, revisions, and acceptance. Development was no longer just about writing features; it was about delivering the outcome.' },
