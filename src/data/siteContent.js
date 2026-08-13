@@ -39,11 +39,13 @@ const localizedContent = {
     },
     now: {
       label: 'Now',
-      title: 'Now: June 2026',
+      title: 'I am currently focused on AI content.',
       learningTitle: 'Learning',
       learning: [
-        'Using the summer break to go deeper into Agent Harness, AI Coding CLI internals, tool-call safety, and evaluation gates.',
-        'Improving English every day: listening, speaking practice, and technical writing for remote collaboration.',
+        'My current focus is AI content: connecting what I learn, what I build, and what I can explain clearly in public.',
+        'Going deeper into Agent Harness, AI Coding CLI internals, tool-call safety, and evaluation gates so the content is grounded in real engineering practice.',
+        'Practicing topic selection, hooks, spoken-script structure, on-camera delivery, and review—not just collecting more information.',
+        'Continuing to improve English listening, speaking, and technical writing for access to first-hand material and remote collaboration.',
       ],
       careerTitle: 'Career Goal',
       career: [
@@ -54,19 +56,19 @@ const localizedContent = {
       ],
       buildingTitle: 'Current Projects',
       building: [
-        'Continuing open-source practice around Agent CLI, test harnesses, command safety, and batch workflows.',
-        'Turning Agent Harness and AI coding practice into articles, tools, products, recorded videos, and community output.',
-        'Continuing feature delivery and operations for the Image Retouching Order Mini Program.',
-        'Updating this personal site as a living record of work and growth.',
+        'Selecting topics around AI coding, Agent Harness, Codex, and the real problems people encounter when using AI tools.',
+        'Turning learning notes and project experience into directly speakable scripts instead of information summaries.',
+        'Recording, editing, and publishing short videos, then reviewing the hook, pacing, completion, and audience response.',
+        'Reusing one substantial piece of practice across videos, writing, courses, and this website, so the work keeps compounding.',
       ],
       routineTitle: 'Weekly Routine',
       routine: [
         'Strength training every week to keep energy, posture, and execution stable.',
-        'Practicing Ashtanga Yoga during the summer break for discipline, mobility, breath, and long-term focus.',
+        'Practicing Ashtanga Yoga for discipline, mobility, breath, and long-term focus.',
       ],
       mindsetTitle: 'Current Mindset',
       mindset:
-        'Summer is for compounding: train the body, deepen the harness direction, publish consistently, and keep building visible proof.',
+        'Learn AI, build real things, then turn what I genuinely understand into spoken scripts, videos, and public work.',
     },
     summary: {
       label: 'Professional Summary',
@@ -305,11 +307,13 @@ const localizedContent = {
     },
     now: {
       label: 'Now',
-      title: '我最近在做什么（2026年6月）',
+      title: '我现在主要在做 AI 自媒体',
       learningTitle: '学习中',
       learning: [
-        '暑假期间集中深入 Agent Harness、AI Coding CLI 内部机制、工具调用安全和评估门禁。',
-        '持续学习英语：听力、口语表达和技术写作同步推进，为海外远程协作做准备。',
+        '当前主线是 AI 自媒体：把我正在学习的、正在做的，以及真正能讲清楚的东西连接起来。',
+        '继续深入 Agent Harness、AI Coding CLI 内部机制、工具调用安全和评估门禁，让内容建立在真实工程实践上。',
+        '练习选题判断、开头钩子、口播结构、镜头表达和发布复盘，而不只是继续收集信息。',
+        '持续练习英语听力、口语和技术写作，用来接触一手资料，也为海外远程协作做准备。',
       ],
       careerTitle: '职业目标',
       career: [
@@ -320,18 +324,18 @@ const localizedContent = {
       ],
       buildingTitle: '正在推进的项目',
       building: [
-        '持续围绕 Agent CLI、测试 harness、命令安全和批处理 workflow 做开源实践。',
-        '把 Agent Harness 和 AI 编程实践沉淀成文章、工具产品、录制视频和社群内容。',
-        '继续推进“得到影像在线修图订单小程序”的功能交付与线上运营支持。',
-        '把个人网站作为长期更新的成长记录。',
+        '围绕 AI 编程、Agent Harness、Codex，以及普通人使用 AI 工具时遇到的真实问题持续选题。',
+        '把学习笔记和项目经验写成可以直接说出口的口播稿，而不是只做信息整理。',
+        '持续录制、剪辑和发布短视频，再复盘开头、节奏、完播和观众反馈。',
+        '把一次有实质内容的实践复用到视频、文章、课程和个人网站，让内容持续积累。',
       ],
       routineTitle: '长期习惯',
       routine: [
         '每周坚持撸铁，保持体能、姿态和稳定执行力。',
-        '暑假期间持续练习阿斯汤加瑜伽，用来训练纪律、柔韧性、呼吸和长期专注。',
+        '持续练习阿斯汤加瑜伽，用来训练纪律、柔韧性、呼吸和长期专注。',
       ],
       mindsetTitle: '当前状态',
-      mindset: '暑假是复利期：训练身体，深入 harness 方向，稳定输出内容，持续积累看得见的证据。',
+      mindset: '一边学习 AI，一边做真实项目，再把真正理解的东西写成口播、录成视频、公开发布。',
     },
     summary: {
       label: '职业综述',
@@ -648,7 +652,7 @@ const requiredSections = {
     work: { eyebrow: '作品与交付', title: '从 Agent Harness 到生产系统', intro: '开源贡献、商业系统和端到端工程交付。', details: '技术细节' },
     writing: { eyebrow: '写作与产出', title: '把实践沉淀成可以继续使用的资产', collections: '文章栏目', latest: '最新文章', products: '产品与学习材料', talks: '公开分享与 PPT' },
     output: { eyebrow: '产出 / OUTPUT', title: '我把想法变成可以被验证的产出', intro: '产品、代码、写作与公开分享。每一项都来自真实实践，也继续参与下一次建造。', filterLabel: '筛选产出类型', projectsLabel: '项目', projectsTitle: '做出来，也交付出去', writingLabel: '写作', writingTitle: '把经验留成可以复用的文字', talksLabel: '公开分享', viewLive: '在线体验', endLabel: '继续建造', endTitle: '下一项产出，正在发生。', contactAction: '一起做点值得留下的东西' },
-    now: { eyebrow: '现在', title: '我最近在做什么', updated: '最后更新', direction: '当前方向', projects: '正在推进', learning: '学习中', open: '开放合作', routine: '长期习惯' },
+    now: { eyebrow: '现在', title: '我现在主要在做 AI 自媒体', updated: '最后更新', updatedAt: '2026-08-13', updatedDate: '2026.08.13', direction: '当前主线', projects: '内容生产', learning: '学习与练习', open: '开放合作', routine: '长期习惯' },
     about: {
       eyebrow: '关于我 / ABOUT', range: '2006 — NOW', title: '我在把复杂问题，变成可靠交付。',
       intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
@@ -684,7 +688,7 @@ const requiredSections = {
     work: { eyebrow: 'Work and Delivery', title: 'From Agent Harness to production systems.', intro: 'Open-source contributions, commercial systems, and end-to-end engineering delivery.', details: 'Technical details' },
     writing: { eyebrow: 'Writing and Output', title: 'Turn practice into assets people can keep using.', collections: 'Writing Collections', latest: 'Latest Articles', products: 'Products and Learning', talks: 'Public Talks and Decks' },
     output: { eyebrow: 'OUTPUT / PUBLIC PROOF', title: 'I turn ideas into output people can verify.', intro: 'Products, code, writing, and public talks—drawn from real practice and carried into the next build.', filterLabel: 'Filter output by type', projectsLabel: 'Projects', projectsTitle: 'Built, shipped, and put to work.', writingLabel: 'Writing', writingTitle: 'Experience, made reusable.', talksLabel: 'Public Talks', viewLive: 'Live product', endLabel: 'Keep building', endTitle: 'The next output is already in motion.', contactAction: 'Let’s make something worth keeping' },
-    now: { eyebrow: 'Now', title: 'What I am doing now', updated: 'Last updated', direction: 'Current Direction', projects: 'In Progress', learning: 'Learning', open: 'Open to Work', routine: 'Long-term Routine' },
+    now: { eyebrow: 'Now', title: 'I am currently focused on AI content', updated: 'Last updated', updatedAt: '2026-08-13', updatedDate: '2026.08.13', direction: 'Current Focus', projects: 'Content Production', learning: 'Learning and Practice', open: 'Open to Work', routine: 'Long-term Routine' },
     about: {
       eyebrow: 'ABOUT', range: '2006 — NOW', title: 'I turn complex problems into reliable delivery.',
       intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',

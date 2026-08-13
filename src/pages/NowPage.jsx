@@ -10,7 +10,7 @@ export default function NowPage({ t }) {
       <header className="route-hero">
         <div>
           <p className="route-overline">{t.now.eyebrow}</p>
-          <time dateTime="2026-07-10">{t.now.updated} · 2026.07.10</time>
+          <time dateTime={t.now.updatedAt}>{t.now.updated} · {t.now.updatedDate}</time>
         </div>
         <h1>{t.now.title}</h1>
       </header>

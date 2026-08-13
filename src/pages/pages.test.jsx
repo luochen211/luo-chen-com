@@ -111,9 +111,11 @@ describe('redesigned page purposes', () => {
 
   it('keeps Now current and omits general career positioning', () => {
     render(<NowPage t={siteContent.zh} />)
-    expect(screen.getByText(/2026\.07\.10/)).toHaveAttribute('datetime', '2026-07-10')
+    expect(screen.getByText(/2026\.08\.13/)).toHaveAttribute('datetime', '2026-08-13')
     expect(screen.queryByText(siteContent.zh.now.careerTitle)).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.now.projects })).toBeInTheDocument()
+    expect(screen.getByText(/可以直接说出口的口播稿/)).toBeInTheDocument()
+    expect(screen.getByText(/录制、剪辑和发布短视频/)).toBeInTheDocument()
   })
 
   it('combines a personal timeline and prefilled collaboration email on About', () => {
