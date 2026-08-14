@@ -13,11 +13,13 @@
     "/lab/roundtable",
     "/articles/*",
     "/columns/*",
-    "/topics/*"
+    "/topics/*",
+    "/demos/futures-trader",
+    "/demos/futures-trader/*"
   ],
   "exclude": [
     "/assets/*",
     "/slides/*",
-    "/demos/*"
+    "/demos/agent-harness/*"
   ]
 }
