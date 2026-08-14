@@ -16,6 +16,14 @@ npm run remotion:render
 
 输出：`docs/personal-site-coolness-deck/final/coolness-deck.mp4`
 
+网站交互案例演示：
+
+```bash
+npx remotion render docs/personal-site-coolness-deck/remotion/entry.jsx WebsiteInteractionDemo docs/personal-site-coolness-deck/final/website-interaction-demo.mp4 --codec=h264 --concurrency=1
+```
+
+这个版本使用当前网站真实滚动位置的画面，演示滚动叙事、Sticky 场景、项目 Orbit、文章叠卡和 CTA 展开。
+
 ## 生成内嵌视频的 PPTX
 
 ```bash

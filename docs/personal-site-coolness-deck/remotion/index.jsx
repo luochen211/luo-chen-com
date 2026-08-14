@@ -1,5 +1,10 @@
 import React from 'react'
-import { AbsoluteFill, Composition, Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion'
+import { AbsoluteFill, Composition, Img, Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion'
+import site01 from './assets/site-01.png'
+import site02 from './assets/site-02.png'
+import site03 from './assets/site-03.png'
+import site04 from './assets/site-04.png'
+import site05 from './assets/site-05.png'
 
 const C = { bg: '#070809', paper: '#efe9dd', ink: '#f4f1e9', muted: '#9c9b92', orange: '#df7138', blue: '#2b8ca5', line: 'rgba(244,241,233,.2)' }
 
@@ -43,4 +48,39 @@ function Slide({ data, index, duration }) {
 
 function Deck() { const { fps } = useVideoConfig(); const duration = 5 * fps; return <AbsoluteFill>{slides.map((data, index) => <Sequence key={data.kicker} from={index * duration} durationInFrames={duration}><Slide data={data} index={index} duration={duration} /></Sequence>)}</AbsoluteFill> }
 
-export function RemotionRoot() { return <Composition id="CoolnessDeck" component={Deck} durationInFrames={11 * 5 * 30} fps={30} width={1920} height={1080} /> }
+export function RemotionRoot() { return <><Composition id="CoolnessDeck" component={Deck} durationInFrames={11 * 5 * 30} fps={30} width={1920} height={1080} /><InteractionComposition /></> }
+
+const interactionScenes = [
+  { image: site01, kicker: '01 / SCROLLTELLING', title: '滚动叙述', copy: '用户向下滚动，信息按“定位 → 证据 → 作品 → 行动”推进。' },
+  { image: site02, kicker: '02 / STICKY SCENE', title: '粘性场景', copy: '左侧视觉固定在视口，右侧内容继续进入，形成对照。' },
+  { image: site03, kicker: '03 / PROJECT ORBIT', title: '项目 3D Orbit', copy: '滚动距离被转译成项目卡片的旋转，作品像在空间里环绕。' },
+  { image: site04, kicker: '04 / CARD STACK', title: '文章叠卡', copy: '每张文章卡片停在顶部，下一张继续覆盖，形成阅读节奏。' },
+  { image: site05, kicker: '05 / CTA EXPANSION', title: '行动展开', copy: '最后一个区域从一个圆形视觉扩张成完整的联系入口。' },
+]
+
+function InteractionScene({ scene, index, duration }) {
+  const frame = useCurrentFrame(); const { fps } = useVideoConfig()
+  const enter = spring({ frame, fps, config: { damping: 20, stiffness: 100 } })
+  const imageScale = interpolate(frame, [0, duration], [1.02, 1], { extrapolateRight: 'clamp' })
+  return <AbsoluteFill style={{ background: C.bg, color: C.ink, fontFamily: 'Arial, PingFang SC, sans-serif', padding: '112px 88px' }}>
+    <div style={{ position: 'absolute', top: 66, left: 88, color: C.orange, fontSize: 18, letterSpacing: 4 }}>{scene.kicker}</div>
+    <div style={{ position: 'absolute', top: 66, right: 88, color: C.muted, fontSize: 18, letterSpacing: 3 }}>SITE INTERACTION / {String(index + 1).padStart(2, '0')} / 05</div>
+    <div style={{ position: 'absolute', left: 88, top: 255, width: 560, opacity: enter, transform: `translateY(${interpolate(enter, [0, 1], [36, 0])}px)` }}>
+      <h1 style={{ margin: 0, fontSize: 82, lineHeight: .98, letterSpacing: -5, fontWeight: 750 }}>{scene.title}</h1>
+      <p style={{ marginTop: 36, color: C.muted, fontSize: 28, lineHeight: 1.55, maxWidth: 520 }}>{scene.copy}</p>
+      <div style={{ marginTop: 56, color: C.blue, fontSize: 18, letterSpacing: 2 }}>SCROLL POSITION → VISUAL STATE</div>
+    </div>
+    <div style={{ position: 'absolute', left: 730, top: 170, width: 1040, height: 650, overflow: 'hidden', border: `1px solid ${C.line}`, background: '#111417', transform: `translateY(${interpolate(enter, [0, 1], [28, 0])}px)`, opacity: enter }}>
+      <Img src={scene.image} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${imageScale})` }} />
+      <div style={{ position: 'absolute', left: 24, bottom: 20, color: C.ink, fontSize: 16, letterSpacing: 2 }}>ACTUAL SITE FRAME / {String(index + 1).padStart(2, '0')}</div>
+    </div>
+    <div style={{ position: 'absolute', left: 88, right: 88, bottom: 66, height: 2, background: C.line }}><div style={{ width: `${((index + (frame / duration)) / interactionScenes.length) * 100}%`, height: '100%', background: C.orange }} /></div>
+  </AbsoluteFill>
+}
+
+function InteractionDemo() {
+  const { fps } = useVideoConfig(); const duration = 5 * fps
+  return <AbsoluteFill>{interactionScenes.map((scene, index) => <Sequence key={scene.kicker} from={index * duration} durationInFrames={duration}><InteractionScene scene={scene} index={index} duration={duration} /></Sequence>)}</AbsoluteFill>
+}
+
+export function InteractionComposition() { return <Composition id="WebsiteInteractionDemo" component={InteractionDemo} durationInFrames={5 * 5 * 30} fps={30} width={1920} height={1080} /> }
