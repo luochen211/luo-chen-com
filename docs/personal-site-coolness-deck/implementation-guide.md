@@ -1,696 +1,690 @@
-# 个人网站炫酷交互 PPT：落地实施方案
+# 个人网站炫酷交互 PPT：落地说明
 
-## 1. 目标定义
+## 1. 这份文档解决什么问题
 
-这份交付物不是“把 PPT 做成一条视频”，也不是用一段视频代替 PPT。
+这不是一份代码教程，也不是 Remotion API 说明。
 
-目标是制作一份网页 PPT：
+它解决的是：
 
-```text
-PPT 是主体
-├── 解释个人网站为什么需要交互设计
-├── 介绍滚动叙事、Sticky、视差、叠卡等呈现方式
-├── 拆解当前个人网站的实际结构
-└── 在其中一页内嵌网站交互案例视频
-```
+如何把一个真实的个人网站，整理成一份有观点、有案例、有动态演示的网页 PPT，让观众理解网站为什么这样设计，以及这些交互到底解决了什么问题。
 
-内嵌视频的任务，是让观众看到网站中真实存在的交互效果，包括：
+整套作品由三部分组成：
 
-- 滚动叙事 Scrollytelling
-- Sticky Stage 粘性舞台
-- 项目 3D Orbit
-- 文章 Card Stack
-- CTA Expansion
+- 网站：真实的交互体验。
+- 视频：把网站中的交互过程剪成容易观看的案例。
+- PPT：解释交互名称、使用场景和信息作用。
 
-视频不是在讲 PPT 内容，而是在 PPT 中作为“真实案例证据”播放。
+三者的关系是：
 
-## 2. 内容边界
+> 网站负责发生，视频负责证明，PPT 负责解释。
 
-### PPT 负责解释
+## 2. 最终交付物
 
-PPT 页面回答三个问题：
+本项目最终不是一张静态图片，而是一套可以直接打开和演示的网页 PPT。
 
-1. 这个交互方式叫什么？
-2. 它解决了什么信息传递问题？
-3. 当前网站在哪个位置使用了它？
+交付物包括：
 
-### 视频负责证明
+1. 一份 9 页的 Guizang Swiss 网页 PPT。
+2. 第 08 页嵌入一段真实网站交互演示视频。
+3. 一段约 25 秒的视频，展示五种网站交互。
+4. 一张视频 poster，用于视频加载前的预览。
+5. 一份可以继续扩展的交互案例清单。
+6. 一份面向讲解者的页面结构和验收标准。
 
-视频只展示真实网站的交互案例，不再额外塞入大量方法论文字。每个案例用以下结构：
+网页 PPT 的入口位于：
 
-```text
-交互名称 → 网站画面 → 用户动作 → 视觉变化 → 信息作用
-```
+public/slides/decks/personal-site-coolness/index.html
+
+案例视频和 poster 位于：
+
+public/slides/decks/personal-site-coolness/assets/
+
+Remotion 的动态演示素材位于：
+
+docs/personal-site-coolness-deck/remotion/
+
+## 3. 设计原则
+
+### 3.1 炫酷不是动效数量
+
+个人网站的炫酷感，不来自页面上同时出现很多动画，而来自观众能感觉到：
+
+- 信息正在被推进。
+- 页面有空间关系。
+- 用户动作会改变视觉状态。
+- 重点会出现，次要内容会退后。
+- 页面最终会自然地把人带到下一步。
+
+因此，每个动效都必须回答一个问题：
+
+> 它让观众更容易理解什么？
+
+如果一个效果只是让页面动起来，却没有改变理解，就不应该进入主叙事。
+
+### 3.2 先确定信息，再选择交互
+
+不能先决定“我要用 3D”，再去寻找内容。
+
+正确顺序是：
+
+1. 先确定观众要理解的内容。
+2. 判断内容是顺序、层级、对比、空间还是行动关系。
+3. 再选择最适合的交互方式。
+4. 最后决定动效强度和视觉风格。
 
 例如：
 
-```text
-滚动叙事
-用户向下滚动
-右侧内容逐段进入
-左侧视觉保持节奏
-观众从定位走到证据，再走到行动
-```
+- 内容有明确先后关系，适合滚动叙事。
+- 内容需要固定参照物，适合 Sticky。
+- 内容是多个项目之间的浏览，适合 Orbit。
+- 内容需要制造阅读层次，适合叠卡。
+- 内容需要把注意力推向行动，适合 CTA 展开。
 
-已有的呈现方式清单见：[website-presentation-patterns.md](./website-presentation-patterns.md)。它负责提供术语和选择范围；本文负责规定如何把其中少数方式制作成 PPT 与视频。
+### 3.3 PPT 和视频不要重复承担同一件事
 
-## 3. 推荐 PPT 结构
+PPT 页面应该告诉观众：
 
-当前版本是 1 张封面 + 8 张内容页，共 9 页；每页只承担一个判断：
+- 这种交互叫什么。
+- 它解决什么信息问题。
+- 当前网站在哪里使用。
+- 观众看视频时应该注意什么。
 
-| 页码 | 页面任务 | 主要内容 | 是否放视频 |
+视频应该让观众看到：
+
+- 用户做了什么。
+- 页面发生了什么。
+- 内容关系如何改变。
+- 这种变化为什么有用。
+
+视频不需要重复讲一遍完整的方法论。
+
+## 4. 当前网站的交互地图
+
+当前首页可以拆成六类交互。
+
+| 网站区域 | 用户动作 | 交互名称 | 信息作用 |
 | --- | --- | --- | --- |
-| 01 | 封面 | 个人网站如何做得炫酷 | 否 |
-| 02 | 定调 | 个人网站为什么值得做 | 否 |
-| 03 | 误解 | 炫酷不是动效越多越好 | 否 |
-| 04 | 术语 | 滚动叙事、Sticky、视差 | 否 |
-| 05 | 方法 | 艺术字如何通过提示词反推 | 否 |
-| 06 | 交付 | Cloudflare Pages 部署与国内访问边界 | 否 |
-| 07 | 案例入口 | 当前网站使用了哪些交互 | 可放封面/按钮 |
-| 08 | 案例演示 | 播放真实网站交互视频 | 是 |
-| 09 | 总结 | 内容骨架 × 空间关系 × 动效反馈 × 留白 | 否 |
+| Hero 头像 | 移入、点击、键盘聚焦 | Focus Reveal | 让注意力从模糊背景转向人物本身 |
+| Proof 区域 | 连续向下滚动 | Scrollytelling | 把个人定位、证据和能力组织成一条叙事 |
+| Proof 舞台 | 右侧内容继续滚动 | Sticky Stage | 保留一个稳定的视觉参照物 |
+| Selected Work | 持续向下滚动 | 3D Orbit | 把项目列表变成空间中的浏览过程 |
+| Selected Writing | 向下滚动 | Card Stack | 让文章像一叠内容一样逐张进入 |
+| Collaboration CTA | 向下滚动到底部 | CTA Expansion | 把浏览状态转化为联系行动 |
 
-当前网页 PPT 使用 Guizang Swiss 风格，并以第三种 `S03 Statement` 左侧大字版式承载核心判断。视频页采用：
+另外还有一种背景型动效：
 
-```text
-左侧：交互名称和一句解释
-右侧：内嵌视频播放器
-底部：案例范围和播放提示
-```
+- Hero Marquee：持续移动的文字带，用来制造环境节奏，不承担主要信息。
 
-这样可以保持“PPT 讲清楚，视频证明真实效果”的分工。
+## 5. 交互方式如何讲清楚
 
-## 4. 视频制作方案
+### 5.1 Focus Reveal：注意力聚焦
 
-### 4.1 素材来源
+这个效果不属于滚动叙事。
 
-视频优先使用当前网站的真实画面，不使用抽象 UI 代替实际案例。
+用户把鼠标移到头像区域，或者通过键盘聚焦，头像从模糊变清晰。
 
-素材采集流程：
+它传达的不是“我有一个滤镜”，而是：
 
-1. 启动当前网站本地开发服务。
-2. 使用 Playwright 打开首页。
-3. 在关键滚动位置截图，保留真实文字、项目图和页面结构。
-4. 将截图作为 Remotion 的输入素材。
-5. 用 Remotion 给每个画面加上交互名称、解释文字和时间轴。
+> 信息不会一开始全部交给你，注意力本身也是一次交互。
 
-关键位置至少包括：
+讲解时要强调：
 
-```text
-首屏 Hero
-Proof / Sticky 场景
-Selected Work / 项目 Orbit
-Selected Writing / 文章叠卡
-Collaboration CTA / 行动展开
-```
+- 默认状态是模糊和克制的。
+- 用户主动靠近后，人物信息变清晰。
+- 这是用视觉清晰度引导注意力。
+- 它适合人物介绍、品牌主视觉和需要延迟揭示的内容。
 
-### 4.2 Remotion 时间轴
+### 5.2 Scrollytelling：把滚动变成叙事
 
-每个案例建议 4–6 秒，总片长控制在 20–30 秒：
+滚动叙事不是“页面很长”。
 
-```text
-0.0–0.6s   交互名称进入
-0.6–1.2s   网站画面进入
-1.2–4.2s   画面保持，突出交互关系
-4.2–5.0s   进度推进，切换下一个案例
-```
+它要求滚动位置承担叙事顺序，让观众随着页面向下理解：
 
-Remotion 的角色是“案例视频生成器”，不是网站运行时：
+1. 你是谁。
+2. 你做过什么。
+3. 你如何证明。
+4. 下一步可以做什么。
 
-```text
-真实网站：React + CSS + GSAP / ScrollTrigger
-案例视频：React + Remotion + 真实网站截图
-网页 PPT：HTML + Guizang 模板 + <video>
-```
+当前网站的 Proof 区域使用四个证据场景：
 
-### 4.3 视频文案原则
+- 工具和测试能力。
+- 公开写作。
+- 交付流程。
+- 验收和上线。
 
-视频内每一页只保留三类文字：
+每一个场景都不是孤立卡片，而是同一条叙事中的一个阶段。
 
-- 交互名称：例如 `SCROLLTELLING`
-- 中文名称：例如“滚动叙事”
-- 一句作用说明：例如“把滚动位置变成信息推进的时间轴”
+讲解时可以说：
 
-不要在视频里重复整段 PPT 讲稿，也不要把所有技术实现细节堆到画面上。
+> 这里不是把四张卡片排在页面上，而是让滚动位置成为叙事时间轴。
 
-## 5. 网页 PPT 嵌入方案
+### 5.3 Sticky Stage：保留一个视觉参照物
 
-使用 Guizang Swiss 模板生成单 HTML 网页 PPT，视频作为第 08 页内的原生 HTML5 视频：
+Sticky 的价值不是“固定一个元素”。
 
-```html
-<video controls muted playsinline preload="metadata" poster="./assets/website-interaction-demo-poster.png">
-  <source src="./assets/website-interaction-demo.mp4" type="video/mp4">
-</video>
-```
+它解决的是：
 
-必须满足：
+当右侧内容不断变化时，左侧仍然有一个稳定的舞台，观众不会失去方向。
 
-- 视频有 `controls`，用户可以暂停、拖动和重新播放。
-- 视频有 `poster`，加载前先显示真实网站案例画面，不显示空白黑框。
-- 视频默认 `muted`，避免翻页时突然播放声音。
-- 视频旁边有简短说明，不要求观众先看完整视频才能理解页面。
-- 移动端保持 16:9 比例，不让播放器撑破页面。
-- 首页或封面提供“交互案例 / 08”入口，避免观众不知道视频在哪一页。
+当前网站的表现是：
 
-当前实现位置：
+- 左侧标题和视觉舞台保持在视口中。
+- 右侧四个内容场景逐段进入。
+- 当前场景变亮。
+- 已经经过的场景降低存在感。
+- 内容走完后，舞台才离开。
 
-- 网页 PPT：`public/slides/decks/personal-site-coolness/index.html`
-- 视频素材：`public/slides/decks/personal-site-coolness/assets/website-interaction-demo.mp4`
-- Remotion 组合：`WebsiteInteractionDemo`
-- Remotion 源码：`docs/personal-site-coolness-deck/remotion/index.jsx`
+讲解时不要只说“用了 Sticky”，还要说明：
 
-## 6. 运行与生成命令
+> Sticky 让观众在变化中保持参照，让复杂信息不至于变成一串无关卡片。
 
-### 生成网站交互案例视频
+### 5.4 3D Orbit：让项目从列表变成空间
 
-```bash
-npx remotion render \
-  docs/personal-site-coolness-deck/remotion/entry.jsx \
-  WebsiteInteractionDemo \
-  docs/personal-site-coolness-deck/final/website-interaction-demo.mp4 \
-  --codec=h264 \
-  --concurrency=1
-```
+Selected Work 不是普通的横向轮播。
 
-如果本机没有 Remotion 自带的 Chrome，可以显式指定本机 Chrome：
+它把三个项目放入一个具有前后关系的空间中，滚动时项目卡围绕中心旋转。
 
-```bash
---browser-executable="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-```
+它解决的问题是：
 
-### 本地预览网页 PPT
+普通项目列表只能告诉观众“有哪些项目”，空间浏览还可以告诉观众“当前看哪个、下一个是什么、它们之间如何切换”。
 
-```bash
-npm run dev
-open http://localhost:5173/slides/decks/personal-site-coolness/?slide=8
-```
+视频中应该让观众看到三个阶段：
 
-### 验证网页 PPT
+- 第一张项目卡正面展示。
+- 第一张离开，第二张进入。
+- 第三张成为当前项目。
 
-```bash
-node /Users/luochen/.codex/skills/guizang-ppt-skill/scripts/validate-swiss-deck.mjs \
-  public/slides/decks/personal-site-coolness/index.html
-```
+如果只展示最终的 3D 画面，观众会把它理解成装饰，而不是一种浏览方式。
 
-## 7. 发布路径
+### 5.5 Card Stack：把阅读变成层层进入
 
-网页 PPT 和视频都属于 `public/` 静态资源，因此发布链路是：
+Selected Writing 使用文章叠卡。
 
-```text
-修改网页 PPT / 重新生成 MP4
-        ↓
-复制视频到 public/slides/decks/personal-site-coolness/assets/
-        ↓
-git commit + git push
-        ↓
-GitHub Actions lint + build
-        ↓
-Cloudflare Pages 部署
-        ↓
-线上检查 HTML 与 MP4 资源
-```
+第一张卡停在顶部，下一张卡随着滚动覆盖进来，再下一张继续叠上去。
 
-部署成功不等于所有网络环境都可访问。上线后至少检查：
+它表达的是：
 
-- 网页 PPT URL 是否返回 200。
-- 视频 URL 是否返回 `Content-Type: video/mp4`。
-- 视频是否支持拖动和分段加载。
-- 自定义域名是否命中最新版本，而不是旧缓存。
-- 中国大陆访问是否受 DNS、IPv4/IPv6、运营商、地区网络或备案要求影响。
+> 文章不是一次性全部铺开，而是按照阅读节奏逐张进入。
 
-## 8. 验收标准
+这种方式适合：
 
-### 内容验收
+- 文章归档。
+- 案例列表。
+- 多个观点。
+- 一组需要逐层查看的内容。
 
-- 观众能说出网站为什么使用滚动叙事。
-- 观众能区分滚动叙事、Sticky、Orbit 和叠卡。
-- 每种交互都绑定了当前网站的真实画面。
-- PPT 和视频之间没有重复堆砌。
+它和普通卡片网格的区别是：
 
-### 交互验收
+- 网格强调同时比较。
+- 叠卡强调依次阅读。
+- 网格是平面关系。
+- 叠卡是时间和层级关系。
 
-- PPT 可以通过键盘、滚轮和触屏翻页。
-- 第 8 页存在可见视频播放器。
-- 视频可以播放、暂停、拖动和重新播放。
-- 封面可以直接跳到“交互案例 / 08”。
-- 视频加载失败时，旁边的文字仍能说明案例是什么。
+### 5.6 CTA Expansion：让行动自然出现
 
-### 工程验收
+CTA 展开是最后的收束动作。
 
-- Guizang Swiss deck validation 通过。
-- `npm test`、`npm run lint`、`npm run build` 通过。
-- MP4 为 1920×1080、H.264，片长约 20–30 秒。
-- 视频文件被复制到 `public/`，不会依赖本机路径。
-- 推送后 CI/CD 到达成功终态。
-- 线上 HTML 和 MP4 资源分别完成核验。
-
-## 9. 非目标
-
-本方案暂不要求：
-
-- 把所有 27 种网站呈现方式都塞入 PPT。
-- 把网站所有页面完整录制成一条长视频。
-- 在 PPT 中复刻网站全部 GSAP 动画逻辑。
-- 用视频替代可访问的 HTML 文本。
-- 把 Remotion 当作网站线上运行时。
-
-最终的判断标准只有一个：
-
-> PPT 让观众理解交互方式，视频让观众相信这些交互真的存在于网站里。
-
-## 10. 当前网站的真实交互地图
+它不是突然在页面底部放一个“联系我”按钮，而是让一个小范围视觉随着滚动逐步扩张，最后变成完整的联系区域。
 
-制作案例视频时，不要先凭想象写一个“看起来像网站”的动画，再给它套术语。应当先从当前网站的 DOM、CSS 和 GSAP 触发器中确认交互，再决定视频里展示什么。
+它的叙事作用是：
 
-当前首页结构在 src/pages/HomePage.jsx，滚动触发逻辑在 src/App.jsx，空间和层叠关系在 src/redesign.css。
+- 前面先让观众认识你。
+- 中间让观众看到证据。
+- 最后把注意力集中到下一步行动。
 
-| 网站区域 | 用户动作 | 实现方式 | 对应术语 | 视频表达重点 |
-| --- | --- | --- | --- | --- |
-| Hero 头像区域 | 移入、点击、键盘聚焦 | React state + CSS filter/transform | Focus Reveal / Hover Reveal | 模糊头像变清晰，说明交互也可以是“聚焦” |
-| Proof 区域 | 向下滚动 | position: sticky + GSAP ScrollTrigger | Scrollytelling / Sticky Stage | 左侧舞台固定，右侧四个证据场景依次进入 |
-| Selected Work | 持续向下滚动 | perspective + transform-style: preserve-3d + GSAP rotateY | 3D Orbit / Spatial Navigation | 三张项目卡沿 Y 轴旋转，计数器从 01 到 03 |
-| Selected Writing | 向下滚动 | 每张卡 position: sticky，不同 top 值 | Card Stack / Layered Reveal | 下一张文章卡覆盖上一张，卡片同时放大和变亮 |
-| Collaboration CTA | 向下滚动 | GSAP clipPath + sticky surface | CTA Expansion / Reveal | 联系区域从小范围圆形扩张成完整行动入口 |
-| Hero Marquee | 页面打开后自动运行 | CSS @keyframes | Marquee / Ambient Motion | 作为背景节奏，不承担主要信息 |
+讲解时可以说：
 
-### 10.1 Hero：不是滚动案例，而是交互式显影
-
-Hero 的核心不是 scroll，而是“用户把注意力放到头像上，头像才显影”。当前实现用 React state 保存清晰状态，用 CSS 负责模糊、亮度和缩放：
+> 行动不是额外插入的按钮，而是前面信息推进之后自然出现的出口。
 
-~~~jsx
-const [portraitRevealed, setPortraitRevealed] = useState(false)
-
-<button
-  aria-pressed={portraitRevealed}
-  className={`hero-portrait-background${portraitRevealed ? ' is-revealed' : ''}`}
-  onClick={() => setPortraitRevealed((current) => !current)}
->
-  <img src="/头像111.jpg" alt={t.hero.avatarAlt} />
-</button>
-~~~
-
-~~~css
-.hero-portrait-background img {
-  filter: blur(13px) saturate(0.76) brightness(0.68);
-  transform: scale(1.035);
-  transition: filter 0.72s ease, transform 0.9s ease;
-}
-
-.hero-portrait-background:hover img,
-.hero-portrait-background.is-revealed img {
-  filter: blur(0) saturate(1.03) brightness(0.94);
-  transform: scale(1);
-}
-~~~
-
-视频里不要把这个效果标成 Scrollytelling。正确的讲法是 Hover / Focus Reveal：通过注意力聚焦改变信息清晰度。
-
-### 10.2 Proof：滚动叙事与 Sticky Stage
-
-Proof 区域由两列组成：
-
-~~~text
-左列：proof-scene-stage，固定在视口
-右列：proof-scene-list，四个可滚动场景
-~~~
-
-关键 CSS 是：
-
-~~~css
-.proof-scene-stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-}
-
-.proof-scene-list {
-  padding-block: 36svh;
-}
-
-.proof-scene {
-  min-height: 72svh;
-  opacity: 0.28;
-}
-~~~
-
-关键 GSAP 关系是：
-
-~~~js
-gsap.fromTo(scene, { opacity: 0.28, y: 32 }, {
-  opacity: 1,
-  y: 0,
-  scrollTrigger: {
-    trigger: scene,
-    start: 'top 76%',
-    end: 'center 54%',
-    scrub: true,
-  },
-})
-~~~
-
-这里的炫酷来自三个关系同时成立：
-
-1. 滚动位置决定当前叙事节点。
-2. 左侧视觉不离开视口。
-3. 当前节点变亮，前后节点降低存在感。
-
-所以案例视频必须同时拍到左侧固定舞台和右侧内容推进，只截一张局部图无法证明 Sticky 的存在。
-
-### 10.3 Selected Work：滚动驱动的 3D Orbit
-
-项目区是一个 360svh 的长滚动段，内部舞台保持一屏高度：
-
-~~~css
-.selected-work {
-  height: 360svh;
-}
-
-.project-orbit-stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-}
-
-.project-orbit-viewport {
-  perspective: 2100px;
-}
-
-.project-orbit {
-  transform-style: preserve-3d;
-}
-~~~
-
-GSAP 将滚动进度映射为旋转角度：
-
-~~~js
-gsap.to('.project-orbit', {
-  rotateY: -240,
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '.selected-work',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 1,
-  },
-})
-~~~
-
-视频里要展示三个状态，而不是只展示最终状态：
-
-~~~text
-状态 A：第一张项目卡正面
-状态 B：第一张离开、第二张进入
-状态 C：第三张项目卡成为当前项目
-~~~
-
-这三个状态才能让观众理解“滚动距离 → 空间旋转 → 当前项目”的转换关系。
-
-### 10.4 Selected Writing：文章 Card Stack
-
-文章卡片使用浏览器原生 sticky 叠放能力，每张卡的顶部位置由文章序号决定：
-
-~~~css
-.writing-stack > a {
-  position: sticky;
-  top: calc(6.2rem + var(--article-index) * 0.75rem);
-  min-height: min(68svh, 44rem);
-  margin-bottom: 16svh;
-}
-~~~
-
-GSAP 负责让卡片从较小、较暗的状态进入当前状态：
-
-~~~js
-gsap.fromTo(article, { scale: 0.94, opacity: 0.58 }, {
-  scale: 1,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: article,
-    start: 'top 92%',
-    end: 'top 26%',
-    scrub: true,
-  },
-})
-~~~
-
-因此叠卡由三部分共同完成：
-
-- CSS sticky：决定卡片停留在哪里。
-- --article-index：决定每张卡的层级节奏。
-- GSAP scrub：决定卡片进入时的缩放和透明度。
-
-### 10.5 CTA：从圆形视觉扩张成行动入口
-
-CTA 不是普通的底部按钮。当前实现先让 surface 只显示一个较小的圆形区域，再随着滚动扩大：
-
-~~~js
-gsap.to('.cta-expansion-surface', {
-  clipPath: 'circle(78% at 50% 50%)',
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '.collaboration-cta',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 1,
-  },
-})
-~~~
-
-案例视频应当保留“从小到大”的过程，不能只截 CTA 完成后的画面。视频中的一句话可以写成：
-
-> 当观众完成浏览，视觉范围扩大，下一步行动也变得明确。
-
-## 11. 从网站到视频的完整生产流程
-
-### 第一步：先建立案例表
-
-不要直接打开 Remotion 写动画，先填写一张表：
-
-| 字段 | 示例 |
-| --- | --- |
-| 案例编号 | 03 |
-| 网站区域 | Selected Work |
-| 用户动作 | 向下滚动 |
-| 视觉状态 A | 第一张项目卡正面 |
-| 视觉状态 B | 第二张项目卡进入 |
-| 视觉状态 C | 第三张项目卡成为当前项 |
-| 交互术语 | 3D Orbit / Scroll-linked Motion |
-| 信息作用 | 把项目列表变成空间浏览 |
-| 截图文件 | site-03.png |
-| 视频时长 | 5 秒 |
-
-这张表是 PPT 文案、截图顺序和 Remotion interactionScenes 数组的共同来源。
-
-### 第二步：启动网站并采集真实画面
-
-终端一启动当前网站：
-
-~~~bash
-npm run dev -- --host 127.0.0.1
-~~~
-
-终端二打开首页：
-
-~~~text
-http://127.0.0.1:5173/
-~~~
-
-采集时固定以下条件：
-
-- 浏览器视口：1920 × 1080 或 1440 × 900。
-- 语言：固定中文或英文，不要在截图过程中切换。
-- 页面状态：从页面顶部开始，等待图片和字体加载完成。
-- 动效：采集前等待 GSAP 初始化，避免截到未初始化状态。
-- 滚动位置：记录实际 scrollY，不要凭感觉拖动。
-
-当前仓库已有五张真实网站截图：
-
-~~~text
-docs/personal-site-coolness-deck/remotion/assets/site-01.png  Hero / Scrollytelling 起点
-docs/personal-site-coolness-deck/remotion/assets/site-02.png  Sticky Proof
-docs/personal-site-coolness-deck/remotion/assets/site-03.png  Project Orbit
-docs/personal-site-coolness-deck/remotion/assets/site-04.png  Writing Stack
-docs/personal-site-coolness-deck/remotion/assets/site-05.png  CTA Expansion
-~~~
-
-### 第三步：把截图接入 Remotion
-
-docs/personal-site-coolness-deck/remotion/index.jsx 中的 interactionScenes 是视频的内容配置：
-
-~~~jsx
-const interactionScenes = [
-  {
-    image: site01,
-    kicker: '01 / SCROLLTELLING',
-    title: '滚动叙述',
-    copy: '用户向下滚动，信息按“定位 → 证据 → 作品 → 行动”推进。',
-  },
-]
-~~~
-
-每个 scene 由 InteractionScene 统一渲染：
-
-~~~text
-左侧：名称、中文解释、信息作用
-右侧：真实网站截图
-顶部：案例编号
-底部：整条视频的进度条
-~~~
-
-新增第六个案例时：
-
-1. 增加一张网站截图。
-2. 增加一个 interactionScenes 配置项。
-3. 更新进度显示的总案例数。
-4. 重新渲染 MP4。
-5. 复制 MP4 到 public。
-
-### 第四步：渲染并检查视频
-
-~~~bash
-npx remotion render \
-  docs/personal-site-coolness-deck/remotion/entry.jsx \
-  WebsiteInteractionDemo \
-  docs/personal-site-coolness-deck/final/website-interaction-demo.mp4 \
-  --codec=h264 \
-  --concurrency=1
-~~~
-
-检查视频技术属性：
-
-~~~bash
-ffprobe -v error \
-  -show_entries stream=width,height,codec_name \
-  -show_entries format=duration \
-  -of default=noprint_wrappers=1 \
-  docs/personal-site-coolness-deck/final/website-interaction-demo.mp4
-~~~
-
-期望结果：
-
-~~~text
-width=1920
-height=1080
-codec_name=h264
-duration=25.0 左右
-~~~
-
-复制到静态资源目录：
-
-~~~bash
-cp docs/personal-site-coolness-deck/final/website-interaction-demo.mp4 \
-  public/slides/decks/personal-site-coolness/assets/website-interaction-demo.mp4
-~~~
-
-从视频中抽取 poster：
-
-~~~bash
-ffmpeg -y -ss 3 \
-  -i docs/personal-site-coolness-deck/final/website-interaction-demo.mp4 \
-  -frames:v 1 \
-  public/slides/decks/personal-site-coolness/assets/website-interaction-demo-poster.png
-~~~
-
-### 第五步：嵌入网页 PPT
-
-视频页位于 public/slides/decks/personal-site-coolness/index.html。
-
-~~~html
-<video
-  controls
-  muted
-  playsinline
-  preload="metadata"
-  poster="./assets/website-interaction-demo-poster.png"
-  aria-label="网站交互案例演示视频"
->
-  <source src="./assets/website-interaction-demo.mp4" type="video/mp4">
-</video>
-~~~
-
-属性与作用：
-
-| 属性 | 作用 |
-| --- | --- |
-| controls | 允许暂停、拖动和重新播放 |
-| muted | 翻页时不突然播放声音 |
-| playsinline | 手机端不强制跳出全屏播放器 |
-| preload="metadata" | 先获取时长和尺寸，不抢占大量带宽 |
-| poster | 视频加载前先显示有意义的画面 |
-| aria-label | 让辅助技术知道视频的内容 |
-
-### 第六步：本地验收网页 PPT
-
-~~~bash
-npm run dev
-open 'http://localhost:5173/slides/decks/personal-site-coolness/?slide=8'
-~~~
-
-按顺序检查：
-
-1. 封面点击“交互案例 / 08”后，确实跳到视频页。
-2. 视频页左侧标题为“把网站交互讲清楚”。
-3. 视频播放器显示 poster，而不是黑色空框。
-4. 点击播放后能看到真实网站截图和五个交互标签。
-5. 暂停、拖动、重新播放都正常。
-6. 翻到下一页后，视频不会自动带声音播放。
-7. 缩窄浏览器窗口后，视频仍保持 16:9，不撑破页面。
-
-## 12. 当前实现与后续增强的边界
-
-### 当前已经落地
-
-- Guizang Swiss 单 HTML 网页 PPT。
-- 第 08 页原生 HTML5 视频播放器。
-- Remotion WebsiteInteractionDemo 组合。
-- 五张来自当前网站的真实交互截图。
-- 约 25 秒、1920 × 1080、H.264 案例视频。
-- poster、视频资源和网页 PPT 均位于 public 静态目录。
-- 封面可通过 ?slide=8 直接跳到视频页。
-
-### 还可以继续增强
-
-- 把截图采集过程整理成独立 Playwright 脚本，减少手工滚动误差。
-- 为每个案例加上“用户动作 → 页面状态”的可视化箭头。
-- 在视频页增加静音播放按钮和当前案例名称同步显示。
-- 增加移动端专用视频比例或备用 poster。
-- 录制真实浏览器滚动过程，展示 GSAP 连续运动，而不仅是关键帧截图。
-- 为 PPT 增加讲解者备注，标记每页讲 30–60 秒时应该说什么。
-
-这些增强不应改变核心分工：网站负责真实交互，Remotion 负责案例可视化，网页 PPT 负责解释和组织。
-
-## 13. 最终交付检查表
-
-### 内容层
-
-- [ ] 每个案例都有明确术语。
-- [ ] 每个术语都说明解决的信息问题。
-- [ ] 每个术语都绑定当前网站的真实区域。
-- [ ] 视频没有重复整段 PPT 讲稿。
-
-### 画面层
-
-- [ ] 封面是左侧大字的 Guizang Swiss 版式。
-- [ ] 案例视频页左文右视频。
-- [ ] 五个案例有清晰的编号和进度关系。
-- [ ] poster 不是黑帧，也不是与视频无关的旧素材。
-- [ ] 桌面和窄屏都没有文字或播放器溢出。
-
-### 工程层
-
-- [ ] validate-swiss-deck.mjs 通过。
-- [ ] npm test -- --run 通过。
-- [ ] npm run lint 通过。
-- [ ] npm run build 通过。
-- [ ] ffprobe 确认视频是 1920×1080 H.264。
-- [ ] MP4 和 poster 都在 public/slides/decks/personal-site-coolness/assets/。
-- [ ] GitHub Actions 到达成功终态。
-- [ ] 线上 HTML、MP4、poster 分别返回 200。
-
-### 讲解层
-
-- [ ] 先解释为什么做个人网站。
-- [ ] 再解释炫酷不是动效越多越好。
-- [ ] 然后讲术语和信息作用。
-- [ ] 最后播放真实网站交互视频。
-- [ ] 收束到一句话：PPT 解释，视频证明。
+## 6. PPT 页面如何组织
+
+整套 PPT 使用“封面 + 8 页内容”的结构。
+
+每页只承担一个判断，不同时讲太多概念。
+
+### 第 01 页：封面
+
+页面标题：
+
+个人网站，怎么做得炫酷？
+
+页面作用：
+
+- 建立主题。
+- 提出问题。
+- 让观众知道接下来不是讲普通网页制作，而是讲信息如何被看见。
+
+视觉形式：
+
+- Guizang Swiss 风格。
+- 左侧大字。
+- 一个具有记忆点的“炫”字作为视觉锚点。
+- 底部提供“交互案例 / 08”入口。
+
+讲解重点：
+
+> 炫酷不是堆特效，而是设计信息如何被看见。
+
+### 第 02 页：为什么还要做个人网站
+
+页面回答：
+
+为什么不只使用社交平台、简历平台或作品平台？
+
+页面观点：
+
+个人网站的价值是把简历、作品、判断和联系方式放在一个自己可以控制的公开资产里。
+
+讲解重点：
+
+- 平台页面展示的是平台允许你展示的内容。
+- 个人网站可以组织完整叙事。
+- 网站不是简历的复制品，而是个人判断和能力的容器。
+- 它可以长期积累，而不是随着某个平台的规则变化而消失。
+
+### 第 03 页：炫酷不是动得多
+
+页面观点：
+
+动效数量不等于体验质量。
+
+页面上只保留三个词：
+
+- 注意力。
+- 理解。
+- 记忆。
+
+讲解重点：
+
+- 动效要帮助观众知道先看什么。
+- 动效要帮助观众理解内容之间的关系。
+- 动效要让关键判断更容易被记住。
+
+### 第 04 页：滚动叙事
+
+页面标题：
+
+把滚动变成叙事。
+
+页面内容：
+
+- 定位。
+- 证据。
+- 作品。
+- 行动。
+
+讲解重点：
+
+页面滚动不是浏览器默认行为，而是可以被设计成一条信息时间轴。
+
+### 第 05 页：艺术字和视觉反推
+
+页面标题：
+
+先描述视觉，再反推提示词。
+
+这一页讲的不是某个具体生成工具，而是一种创作方法。
+
+先把视觉拆成：
+
+- 字形结构。
+- 材质。
+- 光线。
+- 构图。
+- 色彩。
+- 禁止项。
+
+然后再把这些视觉判断组织成提示词。
+
+核心观点：
+
+> 不是让工具替你想风格，而是你先知道自己要什么，再让工具生成它。
+
+### 第 06 页：从本地到线上
+
+页面标题：
+
+从本地到线上。
+
+页面展示四个阶段：
+
+1. 提交源码。
+2. 自动构建。
+3. Cloudflare Pages 部署。
+4. 自定义域名访问。
+
+需要额外说明：
+
+Cloudflare Pages 部署成功，只代表构建产物已经发布，不代表所有地区和所有运营商都一定访问稳定。
+
+国内访问还要单独检查：
+
+- DNS 解析。
+- IPv4 和 IPv6。
+- CDN 缓存。
+- 运营商线路。
+- 域名和备案相关要求。
+- 实际地区访问情况。
+
+### 第 07 页：案例入口
+
+页面标题：
+
+Hero → Proof → Orbit → Stack → CTA
+
+页面作用：
+
+把当前网站的五段交互编排成一条路线。
+
+讲解重点：
+
+- Hero 负责第一印象。
+- Proof 负责建立可信度。
+- Orbit 负责展示项目。
+- Stack 负责沉淀写作。
+- CTA 负责引导行动。
+
+这一页不需要播放视频，只需要让观众知道马上要看什么。
+
+### 第 08 页：网站交互案例视频
+
+页面结构：
+
+- 左侧：案例总标题和一句话解释。
+- 右侧：视频播放器。
+- 底部：视频说明和播放提示。
+
+视频展示五个案例：
+
+1. Scrollytelling：滚动叙述。
+2. Sticky Stage：粘性舞台。
+3. 3D Orbit：项目空间旋转。
+4. Card Stack：文章叠卡。
+5. CTA Expansion：行动展开。
+
+讲解方式：
+
+播放前先说：
+
+> 接下来不再解释概念，直接看这些交互在真实网站里如何发生。
+
+播放后再说：
+
+> 这些动效不是独立的视觉玩具，而是分别对应定位、证据、项目、内容和行动五个阶段。
+
+### 第 09 页：总结
+
+页面观点：
+
+最好的炫酷，是让人愿意继续往下看。
+
+最终公式：
+
+内容骨架 × 空间关系 × 动效反馈 × 留白
+
+四个部分分别对应：
+
+- 内容骨架：观众知道信息顺序。
+- 空间关系：观众知道内容如何组织。
+- 动效反馈：观众知道自己的动作产生了什么变化。
+- 留白：观众有时间理解，而不是被效果淹没。
+
+## 7. 视频如何编排
+
+### 7.1 视频的任务
+
+视频不是把整个网站录屏一遍。
+
+它只做一件事：
+
+让观众在较短时间内看到五个交互方式各自如何工作。
+
+因此视频需要有明确的案例节奏：
+
+- 每个案例约 5 秒。
+- 总长度控制在 20–30 秒。
+- 每个案例都包含名称、画面和作用。
+- 案例之间有统一的转场和进度关系。
+
+### 7.2 五段视频顺序
+
+第一段：滚动叙述
+
+- 网站画面：首屏和内容推进。
+- 观众动作：向下滚动。
+- 视觉变化：内容从定位推进到证据。
+- 解释重点：滚动位置成为叙事时间轴。
+
+第二段：粘性舞台
+
+- 网站画面：左侧视觉和右侧内容同时出现。
+- 观众动作：继续向下滚动。
+- 视觉变化：左侧保持稳定，右侧场景更替。
+- 解释重点：变化中保留参照物。
+
+第三段：项目 Orbit
+
+- 网站画面：Selected Work 项目卡。
+- 观众动作：持续滚动。
+- 视觉变化：项目卡沿空间旋转。
+- 解释重点：项目从列表变成空间浏览。
+
+第四段：文章叠卡
+
+- 网站画面：Selected Writing。
+- 观众动作：继续向下滚动。
+- 视觉变化：文章卡逐张覆盖进入。
+- 解释重点：阅读节奏由层叠关系表达。
+
+第五段：CTA 展开
+
+- 网站画面：底部联系区域。
+- 观众动作：滚动到最后。
+- 视觉变化：圆形视觉逐渐扩大。
+- 解释重点：行动是信息叙事的自然出口。
+
+### 7.3 视频中的文字控制
+
+每个案例只需要三类文字：
+
+- 英文交互名称。
+- 中文交互名称。
+- 一句说明它解决什么问题的话。
+
+不要放：
+
+- 大段技术实现。
+- 完整 PPT 讲稿。
+- 复杂参数。
+- 与画面无关的装饰文案。
+
+视频的视觉重点应该始终是网站画面和状态变化。
+
+## 8. Remotion 在整个方案里的位置
+
+Remotion 不负责让线上网站运行。
+
+它负责把已经存在的网站交互，整理成一段可控时长、可重复渲染的动态案例。
+
+整个链路可以理解为：
+
+1. 当前网站产生真实页面状态。
+2. 从关键位置获取网站画面。
+3. Remotion 把这些画面按时间顺序组织。
+4. 每段画面加上案例名称和解释。
+5. 输出一段适合放进 PPT 的视频。
+6. 网页 PPT 使用原生播放器播放视频。
+
+Remotion 的优势是：
+
+- 每个案例时长可控。
+- 每次重新渲染结果稳定。
+- 可以统一字体、颜色和进度条。
+- 可以快速替换截图或案例文案。
+- 视频和 PPT 的视觉系统可以保持一致。
+
+Remotion 不应该被用来：
+
+- 复刻线上网站所有逻辑。
+- 代替真实网站运行。
+- 把所有交互都重新写一遍。
+- 让 PPT 变成一条没有解释的长视频。
+
+## 9. 网页 PPT 的嵌入方式
+
+视频页必须让观众一眼看出：
+
+这里是一个可以播放的真实案例。
+
+页面需要具备：
+
+- 明确的视频边框。
+- 视频加载前的 poster。
+- 播放、暂停和拖动能力。
+- 左侧的案例说明。
+- 视频下方的简短提示。
+- 移动端仍然保持合理比例。
+
+视频默认静音，原因是翻页时不能突然播放声音。
+
+视频使用内联播放，原因是手机端不应强制跳出全屏。
+
+视频只预加载基本元数据，原因是网页 PPT 本身还要承担翻页和视觉动画，不能一打开页面就占满带宽。
+
+poster 必须来自真实案例视频中的有效画面，不能使用一张与视频无关的装饰图。
+
+## 10. 资源如何管理
+
+建议保持以下结构：
+
+- 网页 PPT 页面文件。
+- PPT 专用静态资源目录。
+- Remotion 源文件。
+- Remotion 使用的网站截图。
+- 本地渲染出来的最终视频。
+- 质量检查和讲解资料。
+
+文件命名应该直接表达用途：
+
+- site-01：第一个网站状态。
+- site-02：第二个网站状态。
+- website-interaction-demo：网页 PPT 使用的交互视频。
+- website-interaction-demo-poster：视频预览图。
+
+不要把本地路径、临时截图或测试视频直接写进线上网页。
+
+网页 PPT 只能引用属于项目发布目录的资源。
+
+## 11. 发布和验收
+
+### 11.1 本地验收
+
+本地打开网页 PPT 后，依次检查：
+
+- 封面是否是左侧大字版式。
+- 封面入口是否能跳到第 08 页。
+- 第 08 页是否能看到视频播放器。
+- 视频加载前是否显示真实 poster。
+- 视频是否可以播放、暂停和拖动。
+- 播放视频时是否能辨认五个案例。
+- 切换页面后视频是否不会突然发声。
+- 缩窄浏览器后页面是否仍然可读。
+- 键盘、滚轮和触屏是否都能翻页。
+
+### 11.2 内容验收
+
+观众看完后应该能够回答：
+
+- 为什么个人网站需要自己的叙事空间？
+- Scrollytelling 和普通长页面有什么区别？
+- Sticky 解决了什么问题？
+- Orbit 为什么比项目列表更有表现力？
+- Card Stack 为什么适合文章？
+- CTA Expansion 如何把浏览转成行动？
+- Remotion 在这套方案里负责什么？
+
+如果观众只能说“这个网站很酷”，却说不出这些交互解决了什么问题，说明讲解还不够清楚。
+
+### 11.3 工程验收
+
+需要确认：
+
+- PPT 页数和编号一致。
+- 视频页入口和实际页码一致。
+- 视频、poster 和网页页面都在发布目录。
+- 视频尺寸和格式适合网页播放。
+- 网页 PPT 构建成功。
+- 自动部署成功。
+- 线上页面返回正常。
+- 视频资源返回正常。
+- poster 资源返回正常。
+- 自定义域名没有继续命中旧缓存。
+
+### 11.4 国内访问验收
+
+国内访问不能只用“部署成功”判断。
+
+至少要分别检查：
+
+- 国内不同网络环境能否打开首页。
+- PPT 页面能否加载。
+- 视频资源能否加载。
+- 视频是否能拖动。
+- DNS 是否稳定。
+- 是否存在 IPv6 或运营商线路差异。
+- 域名和备案条件是否满足当前部署方式。
+
+最终报告中要把以下状态分开写：
+
+- 已部署。
+- 线上 URL 可访问。
+- 视频资源可访问。
+- 国内访问已核验或尚未核验。
+
+## 12. 当前版本已经完成什么
+
+当前版本已经完成：
+
+- Guizang Swiss 网页 PPT。
+- 左侧大字的核心版式。
+- 9 页完整叙事结构。
+- 第 08 页真实网站交互视频。
+- 五个网站交互案例。
+- Remotion 动态演示组合。
+- 视频 poster。
+- Cloudflare Pages 发布。
+- 线上网页、MP4 和 poster 核验。
+
+## 13. 后续可以继续做什么
+
+后续增强可以按优先级推进：
+
+第一优先级：让案例更容易讲
+
+- 为每个案例增加一句讲解者提示。
+- 在视频中增加用户动作和页面变化之间的视觉箭头。
+- 为每个案例明确“看哪里”。
+
+第二优先级：让视频更接近真实交互
+
+- 录制真实浏览器滚动过程。
+- 展示连续的 GSAP 运动，而不是只展示关键状态。
+- 增加鼠标移动、点击和焦点变化。
+
+第三优先级：让 PPT 更适合公开分享
+
+- 增加讲解者备注。
+- 为每页设定建议时长。
+- 增加开场和结尾的口播衔接。
+- 准备一版无视频依赖的备用演示。
+
+第四优先级：让网站和 PPT 形成长期内容资产
+
+- 每新增一种网站交互，就增加一个案例卡。
+- 每次网站大改版，重新采集关键状态。
+- 保持网站术语、PPT 术语和视频字幕一致。
+- 把交互案例清单持续沉淀成个人网站设计方法论。
+
+最终的判断标准仍然只有一句话：
+
+> 观众不仅觉得网站炫，还能说清楚它为什么这样炫，以及这种炫酷如何帮助他理解你。
