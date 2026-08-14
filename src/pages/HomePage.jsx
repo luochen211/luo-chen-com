@@ -55,6 +55,26 @@ function Hero({ t, locale }) {
 }
 
 function ProofGrid({ t, items }) {
+  const evidenceArt = [
+    <div className="proof-evidence-art proof-evidence-terminal" key="terminal">
+      <div className="evidence-window-bar"><i /><i /><i /><span>agent-cli / test-run</span></div>
+      <div className="evidence-code-lines"><b>$</b><span /><span /><span /><span /><span /><strong>PASS · 14 checks</strong></div>
+    </div>,
+    <div className="proof-evidence-art proof-evidence-writing" key="writing">
+      <div className="evidence-page-index">PUBLIC / 026</div>
+      <div className="evidence-writing-lines"><i /><i /><i /><i /><i /><b /></div>
+      <time>2026.08.13</time>
+    </div>,
+    <div className="proof-evidence-art proof-evidence-pipeline" key="pipeline">
+      <div><b>ORDER</b><span>01</span></div><i>→</i><div><b>PAYMENT</b><span>02</span></div><i>→</i><div><b>DELIVERY</b><span>03</span></div>
+    </div>,
+    <div className="proof-evidence-art proof-evidence-checklist" key="checklist">
+      <div><b>01</b><span>需求边界</span><i>✓</i></div>
+      <div><b>02</b><span>验收条件</span><i>✓</i></div>
+      <div><b>03</b><span>上线验证</span><i>✓</i></div>
+      <strong>READY TO SHIP</strong>
+    </div>,
+  ]
   return (
     <section className="chapter home-proof-chapter">
       <div className="proof-scene-shell">
@@ -69,6 +89,7 @@ function ProofGrid({ t, items }) {
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <p>{item.label}</p>
                 <i />
+                {evidenceArt[index]}
               </div>
             ))}
           </div>
