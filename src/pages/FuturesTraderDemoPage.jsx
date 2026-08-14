@@ -9,11 +9,21 @@ const navItems = [
   { id: 'accounts', label: '账户与风控', icon: FiShield },
 ]
 
-const positions = [
-  { symbol: 'RU 主力', name: '橡胶', side: '多', qty: '240', price: '16,820', pnl: '+12,480', positive: true },
-  { symbol: 'AU 主力', name: '黄金', side: '空', qty: '8', price: '1,154.6', pnl: '-2,160', positive: false },
-  { symbol: 'SC 主力', name: '原油', side: '多', qty: '36', price: '612.8', pnl: '+4,860', positive: true },
-]
+const positionsByAccount = {
+  'SIM-01': [
+    { symbol: 'RU 主力', name: '橡胶', side: '多', qty: '240', price: '16,820', pnl: '+12,480', positive: true },
+    { symbol: 'AU 主力', name: '黄金', side: '空', qty: '8', price: '1,154.6', pnl: '-2,160', positive: false },
+    { symbol: 'SC 主力', name: '原油', side: '多', qty: '36', price: '612.8', pnl: '+4,860', positive: true },
+  ],
+  'SIM-02': [
+    { symbol: 'M 主力', name: '豆粕', side: '多', qty: '120', price: '3,156', pnl: '+5,280', positive: true },
+    { symbol: 'I 主力', name: '铁矿石', side: '空', qty: '60', price: '818.2', pnl: '-1,920', positive: false },
+  ],
+  'SIM-03': [
+    { symbol: 'AU 主力', name: '黄金', side: '多', qty: '12', price: '1,148.3', pnl: '+3,640', positive: true },
+    { symbol: 'CU 主力', name: '铜', side: '空', qty: '10', price: '78,110', pnl: '+1,280', positive: true },
+  ],
+}
 
 const instruments = [
   { symbol: 'RU 主力', name: '橡胶', exchange: 'SHFE', screen: 1, last: '16,980', change: '+1.42%', pnl: '+12,480', positive: true },
@@ -62,25 +72,22 @@ function OrderBook({ instrument }) {
   return <section className="workspace-panel orderbook-panel"><div className="panel-heading compact"><div><span className="panel-kicker">LEVEL II / {instrument.symbol}</span><h2>五档盘口</h2></div><FiList className="panel-heading-icon" /></div><div className="orderbook-table"><div className="orderbook-head"><span>档位</span><span>价格</span><span>数量</span></div>{orderBook.map(([level, bookPrice, qty]) => <div className={`orderbook-row ${level.startsWith('买') ? 'bid' : 'ask'}`} key={level}><span>{level}</span><strong>{bookPrice}</strong><span>{qty}</span></div>)}</div><div className="book-mid"><span>最新价</span><strong>{instrument.last}</strong><small className={instrument.positive ? 'up' : 'down'}>{instrument.change}</small></div><div className="book-footer"><span>买卖价差</span><strong>10</strong><span>盘口深度正常</span></div></section>
 }
 
-function MiniChart() {
-  const bars = [34, 42, 37, 52, 46, 61, 55, 66, 60, 73, 69, 81, 76, 86, 78, 91, 84, 96, 90, 103, 98, 112, 106, 118]
+function MiniChart({ selectedTimeframe }) {
+  const candles = [
+    [16, 22, 12, 28], [21, 28, 17, 24], [26, 32, 20, 29], [28, 36, 24, 33],
+    [32, 39, 27, 30], [29, 35, 23, 26], [25, 34, 20, 31], [31, 42, 27, 38],
+    [38, 48, 33, 44], [44, 52, 39, 41], [41, 55, 36, 49], [49, 61, 45, 57],
+    [56, 68, 51, 54], [54, 65, 48, 61], [61, 74, 56, 70], [70, 82, 65, 76],
+    [76, 90, 71, 84], [84, 99, 78, 91], [91, 106, 85, 97], [97, 114, 91, 108],
+  ]
+  const bars = [34, 42, 37, 52, 46, 61, 55, 66, 60, 73, 69, 81, 76, 86, 78, 91, 84, 96, 90, 103]
   return (
-    <div className="futures-chart" aria-label="橡胶主力分钟行情示意图">
+    <div className="futures-chart" aria-label={`橡胶主力${selectedTimeframe}K线行情示意图`}>
       <div className="chart-grid" />
-      <svg viewBox="0 0 720 220" preserveAspectRatio="none" role="img">
-        <defs>
-          <linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#c9ff4a" stopOpacity=".24" />
-            <stop offset="100%" stopColor="#c9ff4a" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <path d="M0 190 C45 174 65 182 103 157 S160 172 200 136 S255 151 292 119 S350 128 388 91 S444 112 478 70 S535 85 568 57 S631 76 720 24 L720 220 L0 220 Z" fill="url(#areaFill)" />
-        <path d="M0 190 C45 174 65 182 103 157 S160 172 200 136 S255 151 292 119 S350 128 388 91 S444 112 478 70 S535 85 568 57 S631 76 720 24" fill="none" stroke="#c9ff4a" strokeWidth="3" vectorEffect="non-scaling-stroke" />
-        <path d="M0 178 C65 168 94 161 146 151 S232 142 290 129 S402 117 480 99 S604 79 720 64" fill="none" stroke="#8d99a7" strokeDasharray="5 8" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-      </svg>
+      <div className="candles" role="img" aria-label="开高低收蜡烛图">{candles.map(([open, high, low, close], index) => { const up = close >= open; const bodyTop = Math.min(open, close); const bodyHeight = Math.max(Math.abs(close - open), 4); return <i className={up ? 'candle-up' : 'candle-down'} key={index} style={{ '--high': `${118 - high * 1.02}px`, '--low': `${118 - low * 1.02}px`, '--top': `${118 - (bodyTop + bodyHeight) * 1.02}px`, '--height': `${bodyHeight * 1.02}px` }} /> })}</div>
       <div className="chart-last-price"><span>16,980</span><small>+1.42%</small></div>
       <div className="chart-axis"><span>09:00</span><span>10:00</span><span>11:00</span><span>13:30</span><span>14:30</span></div>
-      <div className="volume-bars" aria-hidden="true">{bars.map((height, index) => <i key={index} style={{ height: `${height / 1.7}px` }} />)}</div>
+      <div className="volume-bars" aria-hidden="true">{bars.map((height, index) => <i className={candles[index][3] >= candles[index][0] ? 'volume-up' : 'volume-down'} key={index} style={{ height: `${height / 1.7}px` }} />)}</div>
     </div>
   )
 }
@@ -96,6 +103,7 @@ function FuturesTraderDemoPage() {
   const [selectedTimeframe, setSelectedTimeframe] = useState('1m')
   const [selectedScreen, setSelectedScreen] = useState('all')
   const [selectedInstrument, setSelectedInstrument] = useState('RU 主力')
+  const [selectedAccount, setSelectedAccount] = useState('SIM-01')
   const [signalQueue, setSignalQueue] = useState(initialSignals)
   const [toast, setToast] = useState('')
   const [marketVersion, setMarketVersion] = useState(1)
@@ -184,14 +192,14 @@ function FuturesTraderDemoPage() {
           </section>
 
           <div className="trading-grid">
-            <section className="workspace-panel chart-panel"><div className="panel-heading"><div><span className="panel-kicker">MARKET / RU MAIN · SYNC {marketVersion}</span><h2>橡胶主力 <small>分时盘口</small></h2></div><div className="timeframes">{['分时', '1m', '5m', '15m', '日线'].map((timeframe) => <button className={selectedTimeframe === timeframe ? 'selected' : ''} key={timeframe} onClick={() => { setSelectedTimeframe(timeframe); notify(`行情周期已切换为 ${timeframe}`) }}>{timeframe}</button>)}</div></div><MiniChart /><div className="chart-footer"><span><i className="legend-line lime" />价格走势</span><span><i className="legend-line muted" />20 日均线</span><span><FiActivity /> 数据延迟 0.3s</span></div></section>
+            <section className="workspace-panel chart-panel"><div className="panel-heading"><div><span className="panel-kicker">MARKET / RU MAIN · SYNC {marketVersion}</span><h2>橡胶主力 <small>K线 / {selectedTimeframe}</small></h2></div><div className="timeframes">{['分时', '1m', '5m', '15m', '日线'].map((timeframe) => <button className={selectedTimeframe === timeframe ? 'selected' : ''} key={timeframe} onClick={() => { setSelectedTimeframe(timeframe); notify(`行情周期已切换为 ${timeframe} K线`) }}>{timeframe}</button>)}</div></div><MiniChart selectedTimeframe={selectedTimeframe} /><div className="chart-footer"><span><i className="legend-candle up-candle" />上涨</span><span><i className="legend-candle down-candle" />下跌</span><span><FiActivity /> 数据延迟 0.3s</span></div></section>
 
             <OrderBook instrument={selected} />
 
             <section className={`order-panel ${summary.tone}`}><div className="order-panel-top"><span className="signal-label"><FiCpu />策略信号 · 是否交易</span><span className="signal-time">09:37:42 · {currentSignal.exchange}</span></div><h2>{summary.title}</h2><p className="signal-copy">{currentSignal.rule}。来自屏幕 {currentSignal.screen || selected.screen} 的品种信号，请判断是否执行。</p><div className="order-data"><div><small>方向</small><strong className={currentSignal.side.startsWith('买') ? 'buy-text' : 'sell-text'}><FiArrowUpRight />{currentSignal.side}</strong></div><div><small>建议手数</small><strong>{currentSignal.qty} <em>手</em></strong></div><div><small>推荐价格</small><strong>{price} <em>元/吨</em></strong></div></div><div className="order-price-editor">{editPrice ? <><label htmlFor="futures-price">委托价格</label><div className="price-input-wrap"><input id="futures-price" value={price} onChange={(event) => setPrice(event.target.value)} autoFocus /><span>元/吨</span></div><small className="price-valid"><FiCheck />在涨跌停及最小变动价位内</small></> : <div className="locked-price"><FiShield /><span>{orderState === '已取消' ? '已选择不交易，可等待下一次信号' : signalQueue.length ? '价格已锁定，点击下方改价' : '当前没有待确认信号'}</span></div>}</div><div className="order-footer"><span><FiShield />AI 给建议，人做决定</span><div><button className="cancel-action" onClick={declineOrder}><FiX />不交易</button><button className="secondary-action" onClick={() => { setEditPrice((current) => !current); notify(editPrice ? '价格已锁定，等待确认' : '价格输入已解锁') }}><FiEdit3 />{editPrice ? '锁定价格' : '改价'}</button><button className="primary-action" onClick={confirmOrder} disabled={!signalQueue.length}><FiCheck />{orderState === '已提交模拟单' ? '已交易' : '交易确认'}</button></div></div></section>
           </div>
 
-          <section className="lower-grid"><div className="workspace-panel positions-panel"><div className="panel-heading compact"><div><span className="panel-kicker">ACCOUNT / SIM-01</span><h2>当前持仓</h2></div><span className="account-value">权益 <strong>¥ 1,248,620</strong></span></div><div className="position-table"><div className="table-row table-head"><span>合约</span><span>方向</span><span>持仓</span><span>均价</span><span>浮动盈亏</span></div>{positions.map((position) => <div className="table-row" key={position.symbol}><span><strong>{position.symbol}</strong><small>{position.name}</small></span><span className={position.side === '多' ? 'buy-text' : 'sell-text'}>{position.side}</span><span>{position.qty}</span><span>{position.price}</span><span className={position.positive ? 'up' : 'down'}>{position.pnl}</span></div>)}</div></div><div className="workspace-panel activity-panel"><div className="panel-heading compact"><div><span className="panel-kicker">EVENT LOG</span><h2>运行状态</h2></div><span className="running"><StatusDot />实时</span></div><div className="activity-list"><p><b>09:37</b><span><StatusDot />策略信号已生成：RU 主力</span></p><p><b>09:31</b><span><StatusDot color="blue" />行情连接保持稳定</span></p><p><b>09:00</b><span><StatusDot color="amber" />晨报已通过飞书推送</span></p></div></div></section>
+          <section className="lower-grid"><div className="workspace-panel positions-panel"><div className="panel-heading compact"><div><span className="panel-kicker">ACCOUNT / {selectedAccount}</span><h2>当前持仓</h2></div><div className="position-account-control"><label htmlFor="position-account">查看账户</label><select id="position-account" value={selectedAccount} onChange={(event) => { setSelectedAccount(event.target.value); notify(`持仓已切换至 ${event.target.value}`) }}>{accountRows.slice(0, 3).map((account) => <option key={account.id} value={account.id}>{account.id} · {account.name}</option>)}</select></div></div><div className="position-table"><div className="table-row table-head"><span>合约</span><span>方向</span><span>持仓</span><span>均价</span><span>浮动盈亏</span></div>{(positionsByAccount[selectedAccount] || []).map((position) => <div className="table-row" key={position.symbol}><span><strong>{position.symbol}</strong><small>{position.name}</small></span><span className={position.side === '多' ? 'buy-text' : 'sell-text'}>{position.side}</span><span>{position.qty}</span><span>{position.price}</span><span className={position.positive ? 'up' : 'down'}>{position.pnl}</span></div>)}</div></div><div className="workspace-panel activity-panel"><div className="panel-heading compact"><div><span className="panel-kicker">EVENT LOG</span><h2>运行状态</h2></div><span className="running"><StatusDot />实时</span></div><div className="activity-list"><p><b>09:37</b><span><StatusDot />策略信号已生成：RU 主力</span></p><p><b>09:31</b><span><StatusDot color="blue" />行情连接保持稳定</span></p><p><b>09:00</b><span><StatusDot color="amber" />晨报已通过飞书推送</span></p></div></div></section>
         </>}
 
         {active === 'strategy' && <section className="detail-view"><div className="detail-intro"><span className="panel-kicker">STRATEGY PROFILE / XUNLIAN</span><h2>你的交易方式，正在变成可读的规则。</h2><p>讯联完成历史记录分析后，电脑端把已确认的策略参数变成实时提醒；参数不会自动改写实盘配置。</p><button className="secondary-action" onClick={() => notify('已将止损 150 点加入模拟观察参数')}><FiCheck />加入模拟观察</button></div><div className="metric-row"><div><small>样本交易</small><strong>4,826</strong><span>过去 26 个月</span></div><div><small>胜率</small><strong>68.4%</strong><span className="up">+4.2% vs 上期</span></div><div><small>盈亏比</small><strong>1.82</strong><span>样本内统计</span></div><div><small>最大回撤</small><strong>5.2%</strong><span className="up">风险可控</span></div></div><div className="strategy-columns"><div className="workspace-panel insight-panel"><span className="insight-number">01</span><h3>当前最稳定的动作</h3><p>橡胶在 1 分钟级别突破后回踩入场，是过去两年胜率最高的条件组合。</p><div className="insight-bar"><span style={{ width: '74%' }} /></div><small>信号吻合度 <strong>74%</strong></small></div><div className="workspace-panel insight-panel"><span className="insight-number">02</span><h3>下一步建议观察</h3><p>把止损从 200 点缩小至 150 点，仅作为回测建议；先进入模拟盘观察期。</p><button className="secondary-action" onClick={() => notify('已打开模拟观察参数：止损 150 点')}><FiSliders />查看观察参数</button></div></div></section>}
