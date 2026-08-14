@@ -73,13 +73,30 @@ function OrderBook({ instrument }) {
 }
 
 function MiniChart({ selectedTimeframe }) {
-  const candles = [
+  const baseCandles = [
     [16, 22, 12, 28], [21, 28, 17, 24], [26, 32, 20, 29], [28, 36, 24, 33],
     [32, 39, 27, 30], [29, 35, 23, 26], [25, 34, 20, 31], [31, 42, 27, 38],
     [38, 48, 33, 44], [44, 52, 39, 41], [41, 55, 36, 49], [49, 61, 45, 57],
     [56, 68, 51, 54], [54, 65, 48, 61], [61, 74, 56, 70], [70, 82, 65, 76],
     [76, 90, 71, 84], [84, 99, 78, 91], [91, 106, 85, 97], [97, 114, 91, 108],
   ]
+  const timeframeProfiles = {
+    '分时': { scale: 0.72, offset: 8, wave: 3.6 },
+    '1m': { scale: 1, offset: 0, wave: 2.4 },
+    '5m': { scale: 1.18, offset: -7, wave: 1.7 },
+    '15m': { scale: 1.42, offset: -18, wave: 1.25 },
+    '日线': { scale: 1.65, offset: -30, wave: 0.9 },
+  }
+  const profile = timeframeProfiles[selectedTimeframe] || timeframeProfiles['1m']
+  const candles = baseCandles.map(([open, high, low, close], index) => {
+    const wave = Math.sin(index * profile.wave) * (selectedTimeframe === '1m' ? 2 : 6)
+    const transform = (value) => 54 + (value - 54) * profile.scale + profile.offset + wave
+    const nextOpen = transform(open)
+    const nextClose = transform(close)
+    const nextHigh = Math.max(nextOpen, nextClose) + (high - Math.max(open, close)) * profile.scale + 2
+    const nextLow = Math.min(nextOpen, nextClose) - (Math.min(open, close) - low) * profile.scale - 2
+    return [nextOpen, nextHigh, nextLow, nextClose]
+  })
   const bars = [34, 42, 37, 52, 46, 61, 55, 66, 60, 73, 69, 81, 76, 86, 78, 91, 84, 96, 90, 103]
   return (
     <div className="futures-chart" aria-label={`橡胶主力${selectedTimeframe}K线行情示意图`}>
