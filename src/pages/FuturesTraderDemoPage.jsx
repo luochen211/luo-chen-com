@@ -1,12 +1,12 @@
 import { useMemo, useRef, useState } from 'react'
-import { FiActivity, FiArrowDownRight, FiArrowUpRight, FiBell, FiCheck, FiChevronDown, FiClock, FiCpu, FiEdit3, FiFeather, FiGrid, FiHeadphones, FiMic, FiRadio, FiRefreshCw, FiShield, FiSliders, FiTerminal, FiX } from 'react-icons/fi'
+import { FiActivity, FiArrowUpRight, FiBell, FiCheck, FiChevronDown, FiClock, FiCpu, FiEdit3, FiGrid, FiList, FiMic, FiRefreshCw, FiShield, FiSliders, FiTerminal, FiX } from 'react-icons/fi'
 import './FuturesTraderDemoPage.css'
 
 const navItems = [
   { id: 'trading', label: '交易台', icon: FiGrid },
+  { id: 'replay', label: '交易复盘', icon: FiClock },
   { id: 'strategy', label: '策略分析', icon: FiActivity },
-  { id: 'news', label: '资讯中心', icon: FiRadio },
-  { id: 'night', label: '夜盘报告', icon: FiClock },
+  { id: 'accounts', label: '账户与风控', icon: FiShield },
 ]
 
 const positions = [
@@ -15,11 +15,20 @@ const positions = [
   { symbol: 'SC 主力', name: '原油', side: '多', qty: '36', price: '612.8', pnl: '+4,860', positive: true },
 ]
 
-const newsItems = [
-  { time: '07:42', tag: '橡胶', title: '泰国南部降雨预期上调，原料价格短线偏强', source: '财讯社', impact: '偏多' },
-  { time: '07:18', tag: '宏观', title: '美元指数回落，商品板块获得边际支撑', source: '财通社', impact: '中性' },
-  { time: '06:55', tag: '原油', title: 'API 原油库存意外下降，关注夜盘高点突破', source: '财讯社', impact: '偏多' },
+const replayRows = [
+  { time: '09:37:42', symbol: 'RU 主力', action: '买入 / 做多', qty: '100 手', price: '16,900', result: '+¥ 8,240', positive: true },
+  { time: '10:12:06', symbol: 'RU 主力', action: '卖出 / 平多', qty: '40 手', price: '17,020', result: '+¥ 4,800', positive: true },
+  { time: '13:45:18', symbol: 'AU 主力', action: '卖出 / 做空', qty: '8 手', price: '1,154.6', result: '-¥ 2,160', positive: false },
 ]
+
+const orderBook = [
+  ['卖五', '17,050', '12'], ['卖四', '17,030', '28'], ['卖三', '17,020', '34'], ['卖二', '17,000', '18'], ['卖一', '16,990', '42'],
+  ['买一', '16,980', '36'], ['买二', '16,960', '25'], ['买三', '16,940', '40'], ['买四', '16,920', '18'], ['买五', '16,900', '53'],
+]
+
+function OrderBook() {
+  return <section className="workspace-panel orderbook-panel"><div className="panel-heading compact"><div><span className="panel-kicker">LEVEL II / RU MAIN</span><h2>五档盘口</h2></div><FiList className="panel-heading-icon" /></div><div className="orderbook-table"><div className="orderbook-head"><span>档位</span><span>价格</span><span>数量</span></div>{orderBook.map(([level, bookPrice, qty]) => <div className={`orderbook-row ${level.startsWith('买') ? 'bid' : 'ask'}`} key={level}><span>{level}</span><strong>{bookPrice}</strong><span>{qty}</span></div>)}</div><div className="book-mid"><span>最新价</span><strong>16,980</strong><small>+1.42%</small></div><div className="book-footer"><span>买卖价差</span><strong>10</strong><span>盘口深度正常</span></div></section>
+}
 
 function MiniChart() {
   const bars = [34, 42, 37, 52, 46, 61, 55, 66, 60, 73, 69, 81, 76, 86, 78, 91, 84, 96, 90, 103, 98, 112, 106, 118]
@@ -51,9 +60,8 @@ function FuturesTraderDemoPage() {
   const [editPrice, setEditPrice] = useState(false)
   const [price, setPrice] = useState('16,900')
   const [orderState, setOrderState] = useState('待人工确认')
-  const [voiceState, setVoiceState] = useState('点击模拟飞书语音指令')
+  const [voiceState] = useState('音频播报在飞书 App 中完成')
   const [selectedTimeframe, setSelectedTimeframe] = useState('1m')
-  const [isPlaying, setIsPlaying] = useState(false)
   const [toast, setToast] = useState('')
   const [marketVersion, setMarketVersion] = useState(1)
   const toastTimerRef = useRef(null)
@@ -74,19 +82,6 @@ function FuturesTraderDemoPage() {
     notify(`已打开${label}`)
   }
 
-  function togglePlayback(label) {
-    setIsPlaying((current) => !current)
-    notify(isPlaying ? `已暂停${label}` : `正在播放${label}`)
-  }
-
-  function simulateVoice() {
-    setVoiceState('已识别：买橡胶 100 手，16,900 元')
-    setEditPrice(true)
-    setPrice('16,900')
-    setOrderState('待人工确认')
-    notify('飞书语音已转为待确认交易指令')
-  }
-
   function confirmOrder() {
     if (orderState === '已提交模拟单') {
       notify('这笔模拟委托已经提交，请查看运行状态')
@@ -97,10 +92,10 @@ function FuturesTraderDemoPage() {
     notify(`模拟委托已提交：买入 100 手，${price} 元/吨`)
   }
 
-  function cancelOrder() {
+  function declineOrder() {
     setOrderState('已取消')
     setEditPrice(false)
-    notify('交易指令已取消，未发送至 CTP')
+    notify('已选择不交易，本次信号不会发送至 CTP')
   }
 
   return (
@@ -126,8 +121,8 @@ function FuturesTraderDemoPage() {
 
         {active === 'trading' && <>
           <section className="futures-commandbar">
-            <div className="command-context"><span className="command-icon"><FiMic /></span><div><strong>语音指令入口</strong><span>{voiceState}</span></div></div>
-            <button className="voice-button" onClick={simulateVoice}><FiMic />模拟飞书语音</button>
+            <div className="command-context"><span className="command-icon"><FiMic /></span><div><strong>飞书资讯通道</strong><span>{voiceState}</span></div></div>
+            <button className="voice-button" onClick={() => notify('请在飞书 App 中收听晨报；电脑端只负责交易与复盘')}><FiMic />查看飞书连接</button>
           </section>
 
           <section className="market-strip">
@@ -137,19 +132,21 @@ function FuturesTraderDemoPage() {
           </section>
 
           <div className="trading-grid">
-            <section className="workspace-panel chart-panel"><div className="panel-heading"><div><span className="panel-kicker">MARKET / RU MAIN · SYNC {marketVersion}</span><h2>橡胶主力 <small>分钟行情</small></h2></div><div className="timeframes">{['分时', '1m', '5m', '15m', '日线'].map((timeframe) => <button className={selectedTimeframe === timeframe ? 'selected' : ''} key={timeframe} onClick={() => { setSelectedTimeframe(timeframe); notify(`行情周期已切换为 ${timeframe}`) }}>{timeframe}</button>)}</div></div><MiniChart /><div className="chart-footer"><span><i className="legend-line lime" />价格走势</span><span><i className="legend-line muted" />20 日均线</span><span><FiActivity /> 数据延迟 0.3s</span></div></section>
+            <section className="workspace-panel chart-panel"><div className="panel-heading"><div><span className="panel-kicker">MARKET / RU MAIN · SYNC {marketVersion}</span><h2>橡胶主力 <small>分时盘口</small></h2></div><div className="timeframes">{['分时', '1m', '5m', '15m', '日线'].map((timeframe) => <button className={selectedTimeframe === timeframe ? 'selected' : ''} key={timeframe} onClick={() => { setSelectedTimeframe(timeframe); notify(`行情周期已切换为 ${timeframe}`) }}>{timeframe}</button>)}</div></div><MiniChart /><div className="chart-footer"><span><i className="legend-line lime" />价格走势</span><span><i className="legend-line muted" />20 日均线</span><span><FiActivity /> 数据延迟 0.3s</span></div></section>
 
-            <section className={`order-panel ${summary.tone}`}><div className="order-panel-top"><span className="signal-label"><FiCpu />策略信号</span><span className="signal-time">09:37:42</span></div><h2>{summary.title}</h2><p className="signal-copy">突破 16,850 阻力位，符合您的“趋势跟随 / 回踩入场”规则。</p><div className="order-data"><div><small>方向</small><strong className="buy-text"><FiArrowUpRight />买入 / 做多</strong></div><div><small>建议手数</small><strong>100 <em>手</em></strong></div><div><small>推荐价格</small><strong>{price} <em>元/吨</em></strong></div></div><div className="order-price-editor">{editPrice ? <><label htmlFor="futures-price">委托价格</label><div className="price-input-wrap"><input id="futures-price" value={price} onChange={(event) => setPrice(event.target.value)} autoFocus /><span>元/吨</span></div><small className="price-valid"><FiCheck />在涨跌停及最小变动价位内</small></> : <div className="locked-price"><FiShield /><span>{orderState === '已取消' ? '指令已取消，可重新生成' : '价格已锁定，点击下方改价'}</span></div>}</div><div className="order-footer"><span><FiShield />每笔交易需人工确认</span><div><button className="cancel-action" onClick={cancelOrder}><FiX />取消</button><button className="secondary-action" onClick={() => { setEditPrice((current) => !current); notify(editPrice ? '价格已锁定，等待确认' : '价格输入已解锁') }}><FiEdit3 />{editPrice ? '锁定价格' : '改价'}</button><button className="primary-action" onClick={confirmOrder}><FiCheck />{orderState === '已提交模拟单' ? '已提交' : '确认下单'}</button></div></div></section>
+            <OrderBook />
+
+            <section className={`order-panel ${summary.tone}`}><div className="order-panel-top"><span className="signal-label"><FiCpu />策略信号 · 是否交易</span><span className="signal-time">09:37:42</span></div><h2>{summary.title}</h2><p className="signal-copy">盘口突破 16,850，符合您的“趋势跟随 / 回踩入场”规则。请判断是否执行。</p><div className="order-data"><div><small>方向</small><strong className="buy-text"><FiArrowUpRight />买入 / 做多</strong></div><div><small>建议手数</small><strong>100 <em>手</em></strong></div><div><small>推荐价格</small><strong>{price} <em>元/吨</em></strong></div></div><div className="order-price-editor">{editPrice ? <><label htmlFor="futures-price">委托价格</label><div className="price-input-wrap"><input id="futures-price" value={price} onChange={(event) => setPrice(event.target.value)} autoFocus /><span>元/吨</span></div><small className="price-valid"><FiCheck />在涨跌停及最小变动价位内</small></> : <div className="locked-price"><FiShield /><span>{orderState === '已取消' ? '已选择不交易，可等待下一次信号' : '价格已锁定，点击下方改价'}</span></div>}</div><div className="order-footer"><span><FiShield />AI 给建议，人做决定</span><div><button className="cancel-action" onClick={declineOrder}><FiX />不交易</button><button className="secondary-action" onClick={() => { setEditPrice((current) => !current); notify(editPrice ? '价格已锁定，等待确认' : '价格输入已解锁') }}><FiEdit3 />{editPrice ? '锁定价格' : '改价'}</button><button className="primary-action" onClick={confirmOrder}><FiCheck />{orderState === '已提交模拟单' ? '已交易' : '交易确认'}</button></div></div></section>
           </div>
 
           <section className="lower-grid"><div className="workspace-panel positions-panel"><div className="panel-heading compact"><div><span className="panel-kicker">ACCOUNT / SIM-01</span><h2>当前持仓</h2></div><span className="account-value">权益 <strong>¥ 1,248,620</strong></span></div><div className="position-table"><div className="table-row table-head"><span>合约</span><span>方向</span><span>持仓</span><span>均价</span><span>浮动盈亏</span></div>{positions.map((position) => <div className="table-row" key={position.symbol}><span><strong>{position.symbol}</strong><small>{position.name}</small></span><span className={position.side === '多' ? 'buy-text' : 'sell-text'}>{position.side}</span><span>{position.qty}</span><span>{position.price}</span><span className={position.positive ? 'up' : 'down'}>{position.pnl}</span></div>)}</div></div><div className="workspace-panel activity-panel"><div className="panel-heading compact"><div><span className="panel-kicker">EVENT LOG</span><h2>运行状态</h2></div><span className="running"><StatusDot />实时</span></div><div className="activity-list"><p><b>09:37</b><span><StatusDot />策略信号已生成：RU 主力</span></p><p><b>09:31</b><span><StatusDot color="blue" />行情连接保持稳定</span></p><p><b>09:00</b><span><StatusDot color="amber" />晨报已通过飞书推送</span></p></div></div></section>
         </>}
 
-        {active === 'strategy' && <section className="detail-view"><div className="detail-intro"><span className="panel-kicker">STRATEGY PROFILE</span><h2>你的交易方式，正在变成可读的规则。</h2><p>讯联完成历史记录分析后，电脑端把已确认的策略参数变成实时提醒；参数不会自动改写实盘配置。</p></div><div className="metric-row"><div><small>样本交易</small><strong>4,826</strong><span>过去 26 个月</span></div><div><small>胜率</small><strong>68.4%</strong><span className="up">+4.2% vs 上期</span></div><div><small>盈亏比</small><strong>1.82</strong><span>样本内统计</span></div><div><small>最大回撤</small><strong>5.2%</strong><span className="up">风险可控</span></div></div><div className="strategy-columns"><div className="workspace-panel insight-panel"><span className="insight-number">01</span><h3>当前最稳定的动作</h3><p>橡胶在 1 分钟级别突破后回踩入场，是过去两年胜率最高的条件组合。</p><div className="insight-bar"><span style={{ width: '74%' }} /></div><small>信号吻合度 <strong>74%</strong></small></div><div className="workspace-panel insight-panel"><span className="insight-number">02</span><h3>下一步建议观察</h3><p>把止损从 200 点缩小至 150 点，仅作为回测建议；先进入模拟盘观察期。</p><button className="secondary-action" onClick={() => togglePlayback('策略优化建议')}><FiHeadphones />{isPlaying ? '暂停建议' : '听取建议'}</button></div></div></section>}
+        {active === 'strategy' && <section className="detail-view"><div className="detail-intro"><span className="panel-kicker">STRATEGY PROFILE / XUNLIAN</span><h2>你的交易方式，正在变成可读的规则。</h2><p>讯联完成历史记录分析后，电脑端把已确认的策略参数变成实时提醒；参数不会自动改写实盘配置。</p><button className="secondary-action" onClick={() => notify('已将止损 150 点加入模拟观察参数')}><FiCheck />加入模拟观察</button></div><div className="metric-row"><div><small>样本交易</small><strong>4,826</strong><span>过去 26 个月</span></div><div><small>胜率</small><strong>68.4%</strong><span className="up">+4.2% vs 上期</span></div><div><small>盈亏比</small><strong>1.82</strong><span>样本内统计</span></div><div><small>最大回撤</small><strong>5.2%</strong><span className="up">风险可控</span></div></div><div className="strategy-columns"><div className="workspace-panel insight-panel"><span className="insight-number">01</span><h3>当前最稳定的动作</h3><p>橡胶在 1 分钟级别突破后回踩入场，是过去两年胜率最高的条件组合。</p><div className="insight-bar"><span style={{ width: '74%' }} /></div><small>信号吻合度 <strong>74%</strong></small></div><div className="workspace-panel insight-panel"><span className="insight-number">02</span><h3>下一步建议观察</h3><p>把止损从 200 点缩小至 150 点，仅作为回测建议；先进入模拟盘观察期。</p><button className="secondary-action" onClick={() => notify('已打开模拟观察参数：止损 150 点')}><FiSliders />查看观察参数</button></div></div></section>}
 
-        {active === 'news' && <section className="detail-view news-view"><div className="detail-intro"><span className="panel-kicker">MORNING BRIEF / 07:30—09:00</span><h2>今天，只听与你有关的资讯。</h2><p>资讯由外部授权接口采集，电脑端负责筛选、归档和关联行情；飞书是可选的播报出口。</p><button className="voice-button" onClick={() => togglePlayback('今日晨报')}><FiHeadphones />{isPlaying ? '暂停今日晨报' : '播放今日晨报 · 04:32'}</button></div><div className="news-list">{newsItems.map((item) => <article key={item.time}><time>{item.time}</time><div><span className="news-tag">{item.tag}</span><h3>{item.title}</h3><small>{item.source} · <span className={item.impact === '偏多' ? 'up' : ''}>{item.impact}</span></small></div><button className="news-expand" aria-label={`查看${item.title}详情`} onClick={() => notify(`${item.source} · ${item.time}：已打开资讯详情`)}><FiChevronDown /></button></article>)}</div></section>}
+        {active === 'replay' && <section className="detail-view replay-view"><div className="detail-intro"><span className="panel-kicker">REPLAY / 2026.08.13</span><h2>收盘后，把每一次交易重新走一遍。</h2><p>电脑 App 负责复盘交易策略：逐笔查看入场依据、盘口变化、执行价格和最终盈亏。</p><div className="replay-controls"><button className="secondary-action" onClick={() => notify('日期已切换：2026 年 8 月 13 日')}><FiClock />2026.08.13</button><button className="primary-action" onClick={() => notify('正在播放今日交易回放')}><FiActivity />播放交易回放</button></div></div><div className="replay-summary"><div><small>今日交易</small><strong>23</strong><span>笔</span></div><div><small>胜率</small><strong>65.2%</strong><span className="up">+3.1%</span></div><div><small>净盈亏</small><strong className="up">+¥ 10,880</strong><span>含手续费</span></div><div><small>最大回撤</small><strong>1.8%</strong><span>日内</span></div></div><section className="workspace-panel replay-table-panel"><div className="panel-heading compact"><div><span className="panel-kicker">EXECUTION LOG</span><h2>逐笔交易</h2></div><button className="secondary-action" onClick={() => notify('已导出今日复盘 CSV')}><FiList />导出 CSV</button></div><div className="replay-table"><div className="replay-row replay-head"><span>时间</span><span>合约</span><span>动作</span><span>数量</span><span>价格</span><span>结果</span></div>{replayRows.map((row) => <button className="replay-row" key={row.time} onClick={() => notify(`${row.time} · ${row.symbol}：已打开交易前后盘口对比`)}><span>{row.time}</span><strong>{row.symbol}</strong><span className={row.action.startsWith('买') ? 'buy-text' : 'sell-text'}>{row.action}</span><span>{row.qty}</span><span>{row.price}</span><span className={row.positive ? 'up' : 'down'}>{row.result}</span></button>)}</div></section></section>}
 
-        {active === 'night' && <section className="detail-view night-view"><div className="detail-intro"><span className="panel-kicker">NIGHT SESSION / AUG 12</span><h2>夜盘结束，明天日盘有迹可循。</h2><p>按品种交易日历生成，不把收盘时间写死；报告会把行情、持仓、资讯和历史规则放在同一条复盘链里。</p><button className="primary-action" onClick={() => togglePlayback('夜盘总结')}><FiHeadphones />{isPlaying ? '暂停夜盘总结' : '播放夜盘总结 · 03:18'}</button></div><div className="night-report-grid"><div className="workspace-panel report-highlight"><span className="panel-kicker">RU 主力</span><strong>+2.01%</strong><small>夜盘涨幅</small><div className="report-sparkline"><span /><span /><span /><span /><span /><span /><span /></div><p>成交量较近 5 日夜盘均值 <b>放大 35%</b></p></div><div className="workspace-panel report-list"><p><span>关键变化</span><strong>突破 16,850 阻力位</strong></p><p><span>持仓量</span><strong>+12,400 手</strong></p><p><span>资讯关联</span><strong>2 条重要节点</strong></p><p><span>明日关注</span><strong className="up">回踩 16,900 附近</strong></p></div></div></section>}
+        {active === 'accounts' && <section className="detail-view accounts-view"><div className="detail-intro"><span className="panel-kicker">ACCOUNTS / RISK CONTROL</span><h2>下单之前，先把风险看清楚。</h2><p>每笔委托经过账户资金、仓位、价格偏离和单日亏损限制检查；多账户拆单只在期货公司权限允许时执行。</p></div><div className="account-cards"><div className="workspace-panel"><span className="panel-kicker">SIM-01</span><h3>模拟账户 A</h3><strong>¥ 1,248,620</strong><p>可用资金 <b>¥ 742,300</b></p><span className="account-online"><StatusDot />CTP 已连接</span></div><div className="workspace-panel"><span className="panel-kicker">RISK LIMIT</span><h3>今日风控</h3><strong className="up">正常</strong><p>单日亏损限额 <b>¥ 30,000</b></p><button className="secondary-action" onClick={() => notify('风控配置已锁定，修改需要管理员确认')}><FiShield />查看风控规则</button></div></div></section>}
       </main>
     </div>
   )
