@@ -24,16 +24,6 @@ export default function AboutPage({ t, locale = 'zh' }) {
         </div>
         <h1>{t.about.title}</h1>
         <p>{t.about.intro}</p>
-        <div className="about-photo-gallery" aria-label={isEnglish ? 'Personal and workshop photos' : '个人与工作现场照片'}>
-          <figure>
-            <img src="/media/about-training.jpg" alt={t.hero.avatarAlt} width="809" height="603" />
-            <figcaption><small>{isEnglish ? 'PERSONAL PRACTICE' : '个人状态'}</small></figcaption>
-          </figure>
-          <figure>
-            <img src="/media/about-workshop.jpg" alt={isEnglish ? 'Workshop participants listening to a presentation' : '工作坊现场，参与者正在听分享'} width="1368" height="1824" />
-            <figcaption><small>{isEnglish ? 'REAL DELIVERY' : '现场交付'}</small></figcaption>
-          </figure>
-        </div>
       </header>
 
       <section className="about-timeline-chapter" aria-labelledby="timeline-title">

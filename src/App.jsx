@@ -186,7 +186,7 @@ function SiteApp() {
         <Routes>
           <Route path="/" element={<HomePage t={t} locale={locale} />} />
           <Route path="/about" element={<AboutPage t={t} locale={locale} />} />
-          <Route path="/now" element={<NowPage t={t} />} />
+          <Route path="/now" element={<NowPage t={t} locale={locale} />} />
           <Route path="/output" element={<OutputPage t={t} locale={locale} />} />
           <Route path="/work" element={<Navigate replace to="/output" />} />
           <Route path="/writing" element={<Navigate replace to="/output" />} />
