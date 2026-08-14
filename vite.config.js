@@ -20,6 +20,7 @@ export default defineConfig({
             '/slides/decks/agent-harness/lessons/lesson-03/',
             '/slides/decks/agent-harness/lessons/lesson-04/',
             '/slides/decks/agent-harness/lessons/lesson-05/',
+            '/slides/decks/personal-site-coolness/',
             '/demos/agent-harness/',
           ])
           const [pathname, query] = req.url.split('?')
