@@ -15,6 +15,29 @@ const positions = [
   { symbol: 'SC 主力', name: '原油', side: '多', qty: '36', price: '612.8', pnl: '+4,860', positive: true },
 ]
 
+const instruments = [
+  { symbol: 'RU 主力', name: '橡胶', exchange: 'SHFE', screen: 1, last: '16,980', change: '+1.42%', pnl: '+12,480', positive: true },
+  { symbol: 'SC 主力', name: '原油', exchange: 'INE', screen: 1, last: '612.8', change: '+0.86%', pnl: '+4,860', positive: true },
+  { symbol: 'AU 主力', name: '黄金', exchange: 'SHFE', screen: 2, last: '1,154.6', change: '-0.38%', pnl: '-2,160', positive: false },
+  { symbol: 'CU 主力', name: '铜', exchange: 'SHFE', screen: 2, last: '78,420', change: '+0.64%', pnl: '+3,220', positive: true },
+  { symbol: 'I 主力', name: '铁矿石', exchange: 'DCE', screen: 3, last: '812.5', change: '-1.12%', pnl: '-1,480', positive: false },
+  { symbol: 'M 主力', name: '豆粕', exchange: 'DCE', screen: 3, last: '3,182', change: '+0.22%', pnl: '+920', positive: true },
+]
+
+const screens = [
+  { id: 1, label: '屏幕 01', detail: '橡胶 / 原油' },
+  { id: 2, label: '屏幕 02', detail: '黄金 / 铜' },
+  { id: 3, label: '屏幕 03', detail: '铁矿 / 豆粕' },
+  { id: 4, label: '屏幕 04', detail: '待配置' },
+  { id: 5, label: '屏幕 05', detail: '待配置' },
+  { id: 6, label: '屏幕 06', detail: '待配置' },
+]
+
+const initialSignals = [
+  { id: 'sig-ru-093742', symbol: 'RU 主力', name: '橡胶', exchange: 'SHFE', side: '买入 / 做多', qty: '100', price: '16,900', rule: '趋势跟随 / 回踩入场', screen: 1 },
+  { id: 'sig-cu-094118', symbol: 'CU 主力', name: '铜', exchange: 'SHFE', side: '卖出 / 做空', qty: '20', price: '78,420', rule: '波动率突破', screen: 2 },
+]
+
 const replayRows = [
   { time: '09:37:42', symbol: 'RU 主力', action: '买入 / 做多', qty: '100 手', price: '16,900', result: '+¥ 8,240', positive: true },
   { time: '10:12:06', symbol: 'RU 主力', action: '卖出 / 平多', qty: '40 手', price: '17,020', result: '+¥ 4,800', positive: true },
@@ -26,8 +49,8 @@ const orderBook = [
   ['买一', '16,980', '36'], ['买二', '16,960', '25'], ['买三', '16,940', '40'], ['买四', '16,920', '18'], ['买五', '16,900', '53'],
 ]
 
-function OrderBook() {
-  return <section className="workspace-panel orderbook-panel"><div className="panel-heading compact"><div><span className="panel-kicker">LEVEL II / RU MAIN</span><h2>五档盘口</h2></div><FiList className="panel-heading-icon" /></div><div className="orderbook-table"><div className="orderbook-head"><span>档位</span><span>价格</span><span>数量</span></div>{orderBook.map(([level, bookPrice, qty]) => <div className={`orderbook-row ${level.startsWith('买') ? 'bid' : 'ask'}`} key={level}><span>{level}</span><strong>{bookPrice}</strong><span>{qty}</span></div>)}</div><div className="book-mid"><span>最新价</span><strong>16,980</strong><small>+1.42%</small></div><div className="book-footer"><span>买卖价差</span><strong>10</strong><span>盘口深度正常</span></div></section>
+function OrderBook({ instrument }) {
+  return <section className="workspace-panel orderbook-panel"><div className="panel-heading compact"><div><span className="panel-kicker">LEVEL II / {instrument.symbol}</span><h2>五档盘口</h2></div><FiList className="panel-heading-icon" /></div><div className="orderbook-table"><div className="orderbook-head"><span>档位</span><span>价格</span><span>数量</span></div>{orderBook.map(([level, bookPrice, qty]) => <div className={`orderbook-row ${level.startsWith('买') ? 'bid' : 'ask'}`} key={level}><span>{level}</span><strong>{bookPrice}</strong><span>{qty}</span></div>)}</div><div className="book-mid"><span>最新价</span><strong>{instrument.last}</strong><small className={instrument.positive ? 'up' : 'down'}>{instrument.change}</small></div><div className="book-footer"><span>买卖价差</span><strong>10</strong><span>盘口深度正常</span></div></section>
 }
 
 function MiniChart() {
@@ -62,14 +85,21 @@ function FuturesTraderDemoPage() {
   const [orderState, setOrderState] = useState('待人工确认')
   const [voiceState] = useState('音频播报在飞书 App 中完成')
   const [selectedTimeframe, setSelectedTimeframe] = useState('1m')
+  const [selectedScreen, setSelectedScreen] = useState('all')
+  const [selectedInstrument, setSelectedInstrument] = useState('RU 主力')
+  const [signalQueue, setSignalQueue] = useState(initialSignals)
   const [toast, setToast] = useState('')
   const [marketVersion, setMarketVersion] = useState(1)
   const toastTimerRef = useRef(null)
 
   const summary = useMemo(() => ({
-    title: orderState === '已提交模拟单' ? '模拟委托已提交' : '策略信号 · 橡胶主力',
+    title: orderState === '已提交模拟单' ? '模拟委托已提交' : signalQueue[0] ? `策略信号 · ${signalQueue[0].symbol}` : '暂无待确认信号',
     tone: orderState === '已提交模拟单' ? 'success' : 'warning',
-  }), [orderState])
+  }), [orderState, signalQueue])
+
+  const selected = instruments.find((item) => item.symbol === selectedInstrument) || instruments[0]
+  const visibleInstruments = selectedScreen === 'all' ? instruments : instruments.filter((item) => item.screen === selectedScreen)
+  const currentSignal = signalQueue[0] || { symbol: selected.symbol, name: selected.name, exchange: selected.exchange, side: '等待下一条信号', qty: '—', price: selected.last, rule: '当前没有待确认信号' }
 
   function notify(message) {
     setToast(message)
@@ -82,18 +112,27 @@ function FuturesTraderDemoPage() {
     notify(`已打开${label}`)
   }
 
+  function selectInstrument(instrument) {
+    setSelectedInstrument(instrument.symbol)
+    setPrice(instrument.last)
+    setOrderState('待人工确认')
+    notify(`已切换到${instrument.name} · ${instrument.exchange} · ${instrument.symbol}`)
+  }
+
   function confirmOrder() {
     if (orderState === '已提交模拟单') {
       notify('这笔模拟委托已经提交，请查看运行状态')
       return
     }
     setOrderState('已提交模拟单')
+    setSignalQueue((queue) => queue.slice(1))
     setEditPrice(false)
-    notify(`模拟委托已提交：买入 100 手，${price} 元/吨`)
+    notify(`模拟委托已提交：${currentSignal.side} ${currentSignal.qty} 手，${price} 元`)
   }
 
   function declineOrder() {
     setOrderState('已取消')
+    setSignalQueue((queue) => queue.slice(1))
     setEditPrice(false)
     notify('已选择不交易，本次信号不会发送至 CTP')
   }
@@ -105,7 +144,7 @@ function FuturesTraderDemoPage() {
         <div className="futures-brand"><span className="brand-mark">Δ</span><div><strong>FIELD / 01</strong><small>Futures Desk</small></div></div>
         <div className="sidebar-section-label">WORKSPACE</div>
         <nav className="futures-nav" aria-label="交易软件导航">
-          {navItems.map((item) => <button className={active === item.id ? 'active' : ''} key={item.id} onClick={() => changeSection(item.id, item.label)}>{<item.icon />}{item.label}{item.id === 'news' && <b>3</b>}</button>)}
+          {navItems.map((item) => <button className={active === item.id ? 'active' : ''} key={item.id} onClick={() => changeSection(item.id, item.label)}>{<item.icon />}{item.label}{item.id === 'replay' && <b>23</b>}</button>)}
         </nav>
         <div className="sidebar-bottom">
           <div className="connection-status"><StatusDot /><span>CTP 模拟环境</span><strong>在线</strong></div>
@@ -125,18 +164,22 @@ function FuturesTraderDemoPage() {
             <button className="voice-button" onClick={() => notify('请在飞书 App 中收听晨报；电脑端只负责交易与复盘')}><FiMic />查看飞书连接</button>
           </section>
 
+          <section className="summary-report-strip"><div className="summary-report-title"><span className="panel-kicker">PORTFOLIO OVERVIEW</span><strong>全部账户总览</strong><small>最后同步 09:38:24</small></div><div><small>累计投入</small><strong>¥ 2,500,000</strong></div><div><small>运行时间</small><strong>2 年 4 个月</strong></div><div><small>总盈亏</small><strong className="up">+¥ 186,420</strong></div><div><small>收益率</small><strong className="up">+7.46%</strong></div><div><small>账户 / 品种</small><strong>6 / 6</strong></div></section>
+
+          <section className="screen-control-panel"><div className="screen-control-heading"><div><span className="panel-kicker">MULTI-SCREEN CONTROL</span><strong>六屏看盘 · App 统一主控</strong></div><small>外部交易界面负责观察，本 App 负责信号、确认、复盘</small></div><div className="screen-tabs"><button className={selectedScreen === 'all' ? 'active' : ''} onClick={() => { setSelectedScreen('all'); notify('已查看全部屏幕品种') }}>总览</button>{screens.map((screen) => <button className={selectedScreen === screen.id ? 'active' : ''} key={screen.id} onClick={() => { setSelectedScreen(screen.id); notify(`${screen.label}：${screen.detail}`) }}>{screen.label}<small>{screen.detail}</small></button>)}</div><div className="instrument-grid">{visibleInstruments.map((instrument) => <button className={`instrument-tile ${selectedInstrument === instrument.symbol ? 'selected' : ''}`} key={instrument.symbol} onClick={() => selectInstrument(instrument)}><span><strong>{instrument.name}</strong><small>{instrument.exchange} · {instrument.symbol}</small></span><b>{instrument.last}</b><em className={instrument.positive ? 'up' : 'down'}>{instrument.change}</em><i className={instrument.positive ? 'up' : 'down'}>{instrument.pnl}</i></button>)}</div></section>
+
           <section className="market-strip">
-            <div className="market-lead"><span className="instrument-dot" /><div><strong>橡胶 RU 主力</strong><small>SHFE · 1 分钟</small></div><span className="market-change">+1.42%</span></div>
-            <div><small>最新价</small><strong>16,980</strong></div><div><small>涨跌</small><strong className="up">+238</strong></div><div><small>成交量</small><strong>128.4K</strong></div><div><small>持仓量</small><strong>312.8K</strong></div>
+            <div className="market-lead"><span className="instrument-dot" /><div><strong>{selected.name} {selected.symbol}</strong><small>{selected.exchange} · 1 分钟 · 屏幕 {selected.screen}</small></div><span className={`market-change ${selected.positive ? 'up' : 'down'}`}>{selected.change}</span></div>
+            <div><small>最新价</small><strong>{selected.last}</strong></div><div><small>涨跌</small><strong className={selected.positive ? 'up' : 'down'}>{selected.positive ? '+' : '-'}238</strong></div><div><small>成交量</small><strong>128.4K</strong></div><div><small>持仓量</small><strong>312.8K</strong></div>
             <button className="refresh-button" aria-label="刷新行情" onClick={() => { setMarketVersion((current) => current + 1); notify(`行情已刷新 · 第 ${marketVersion + 1} 次`) }}><FiRefreshCw /></button>
           </section>
 
           <div className="trading-grid">
             <section className="workspace-panel chart-panel"><div className="panel-heading"><div><span className="panel-kicker">MARKET / RU MAIN · SYNC {marketVersion}</span><h2>橡胶主力 <small>分时盘口</small></h2></div><div className="timeframes">{['分时', '1m', '5m', '15m', '日线'].map((timeframe) => <button className={selectedTimeframe === timeframe ? 'selected' : ''} key={timeframe} onClick={() => { setSelectedTimeframe(timeframe); notify(`行情周期已切换为 ${timeframe}`) }}>{timeframe}</button>)}</div></div><MiniChart /><div className="chart-footer"><span><i className="legend-line lime" />价格走势</span><span><i className="legend-line muted" />20 日均线</span><span><FiActivity /> 数据延迟 0.3s</span></div></section>
 
-            <OrderBook />
+            <OrderBook instrument={selected} />
 
-            <section className={`order-panel ${summary.tone}`}><div className="order-panel-top"><span className="signal-label"><FiCpu />策略信号 · 是否交易</span><span className="signal-time">09:37:42</span></div><h2>{summary.title}</h2><p className="signal-copy">盘口突破 16,850，符合您的“趋势跟随 / 回踩入场”规则。请判断是否执行。</p><div className="order-data"><div><small>方向</small><strong className="buy-text"><FiArrowUpRight />买入 / 做多</strong></div><div><small>建议手数</small><strong>100 <em>手</em></strong></div><div><small>推荐价格</small><strong>{price} <em>元/吨</em></strong></div></div><div className="order-price-editor">{editPrice ? <><label htmlFor="futures-price">委托价格</label><div className="price-input-wrap"><input id="futures-price" value={price} onChange={(event) => setPrice(event.target.value)} autoFocus /><span>元/吨</span></div><small className="price-valid"><FiCheck />在涨跌停及最小变动价位内</small></> : <div className="locked-price"><FiShield /><span>{orderState === '已取消' ? '已选择不交易，可等待下一次信号' : '价格已锁定，点击下方改价'}</span></div>}</div><div className="order-footer"><span><FiShield />AI 给建议，人做决定</span><div><button className="cancel-action" onClick={declineOrder}><FiX />不交易</button><button className="secondary-action" onClick={() => { setEditPrice((current) => !current); notify(editPrice ? '价格已锁定，等待确认' : '价格输入已解锁') }}><FiEdit3 />{editPrice ? '锁定价格' : '改价'}</button><button className="primary-action" onClick={confirmOrder}><FiCheck />{orderState === '已提交模拟单' ? '已交易' : '交易确认'}</button></div></div></section>
+            <section className={`order-panel ${summary.tone}`}><div className="order-panel-top"><span className="signal-label"><FiCpu />策略信号 · 是否交易</span><span className="signal-time">09:37:42 · {currentSignal.exchange}</span></div><h2>{summary.title}</h2><p className="signal-copy">{currentSignal.rule}。来自屏幕 {currentSignal.screen || selected.screen} 的品种信号，请判断是否执行。</p><div className="order-data"><div><small>方向</small><strong className={currentSignal.side.startsWith('买') ? 'buy-text' : 'sell-text'}><FiArrowUpRight />{currentSignal.side}</strong></div><div><small>建议手数</small><strong>{currentSignal.qty} <em>手</em></strong></div><div><small>推荐价格</small><strong>{price} <em>元/吨</em></strong></div></div><div className="order-price-editor">{editPrice ? <><label htmlFor="futures-price">委托价格</label><div className="price-input-wrap"><input id="futures-price" value={price} onChange={(event) => setPrice(event.target.value)} autoFocus /><span>元/吨</span></div><small className="price-valid"><FiCheck />在涨跌停及最小变动价位内</small></> : <div className="locked-price"><FiShield /><span>{orderState === '已取消' ? '已选择不交易，可等待下一次信号' : signalQueue.length ? '价格已锁定，点击下方改价' : '当前没有待确认信号'}</span></div>}</div><div className="order-footer"><span><FiShield />AI 给建议，人做决定</span><div><button className="cancel-action" onClick={declineOrder}><FiX />不交易</button><button className="secondary-action" onClick={() => { setEditPrice((current) => !current); notify(editPrice ? '价格已锁定，等待确认' : '价格输入已解锁') }}><FiEdit3 />{editPrice ? '锁定价格' : '改价'}</button><button className="primary-action" onClick={confirmOrder} disabled={!signalQueue.length}><FiCheck />{orderState === '已提交模拟单' ? '已交易' : '交易确认'}</button></div></div></section>
           </div>
 
           <section className="lower-grid"><div className="workspace-panel positions-panel"><div className="panel-heading compact"><div><span className="panel-kicker">ACCOUNT / SIM-01</span><h2>当前持仓</h2></div><span className="account-value">权益 <strong>¥ 1,248,620</strong></span></div><div className="position-table"><div className="table-row table-head"><span>合约</span><span>方向</span><span>持仓</span><span>均价</span><span>浮动盈亏</span></div>{positions.map((position) => <div className="table-row" key={position.symbol}><span><strong>{position.symbol}</strong><small>{position.name}</small></span><span className={position.side === '多' ? 'buy-text' : 'sell-text'}>{position.side}</span><span>{position.qty}</span><span>{position.price}</span><span className={position.positive ? 'up' : 'down'}>{position.pnl}</span></div>)}</div></div><div className="workspace-panel activity-panel"><div className="panel-heading compact"><div><span className="panel-kicker">EVENT LOG</span><h2>运行状态</h2></div><span className="running"><StatusDot />实时</span></div><div className="activity-list"><p><b>09:37</b><span><StatusDot />策略信号已生成：RU 主力</span></p><p><b>09:31</b><span><StatusDot color="blue" />行情连接保持稳定</span></p><p><b>09:00</b><span><StatusDot color="amber" />晨报已通过飞书推送</span></p></div></div></section>
