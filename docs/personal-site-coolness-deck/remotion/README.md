@@ -15,3 +15,13 @@ npm run remotion:render
 ```
 
 输出：`docs/personal-site-coolness-deck/final/coolness-deck.mp4`
+
+## 生成内嵌视频的 PPTX
+
+```bash
+npm run ppt:build
+```
+
+输出：`docs/personal-site-coolness-deck/final/personal-site-coolness-with-remotion.pptx`
+
+第 10 页内嵌 `coolness-deck.mp4`，PowerPoint 演示时可以直接点击播放。
