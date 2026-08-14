@@ -56,14 +56,14 @@ PPT 页面回答三个问题：
 
 ## 3. 推荐 PPT 结构
 
-建议控制在 8–10 页，每页只承担一个判断：
+当前版本是 1 张封面 + 8 张内容页，共 9 页；每页只承担一个判断：
 
 | 页码 | 页面任务 | 主要内容 | 是否放视频 |
 | --- | --- | --- | --- |
-| 01 | 定调 | 个人网站为什么值得做 | 否 |
-| 02 | 误解 | 炫酷不是动效越多越好 | 否 |
-| 03 | 术语 | 滚动叙事、Sticky、视差 | 否 |
-| 04 | 结构 | 信息如何从定位推进到行动 | 否 |
+| 01 | 封面 | 个人网站如何做得炫酷 | 否 |
+| 02 | 定调 | 个人网站为什么值得做 | 否 |
+| 03 | 误解 | 炫酷不是动效越多越好 | 否 |
+| 04 | 术语 | 滚动叙事、Sticky、视差 | 否 |
 | 05 | 方法 | 艺术字如何通过提示词反推 | 否 |
 | 06 | 交付 | Cloudflare Pages 部署与国内访问边界 | 否 |
 | 07 | 案例入口 | 当前网站使用了哪些交互 | 可放封面/按钮 |
@@ -135,10 +135,10 @@ Remotion 的角色是“案例视频生成器”，不是网站运行时：
 
 ## 5. 网页 PPT 嵌入方案
 
-使用 Guizang Swiss 模板生成单 HTML 网页 PPT，视频作为某个 slide 内的原生 HTML5 视频：
+使用 Guizang Swiss 模板生成单 HTML 网页 PPT，视频作为第 08 页内的原生 HTML5 视频：
 
 ```html
-<video controls muted playsinline preload="metadata" poster="./assets/site-03.png">
+<video controls muted playsinline preload="metadata" poster="./assets/website-interaction-demo-poster.png">
   <source src="./assets/website-interaction-demo.mp4" type="video/mp4">
 </video>
 ```
@@ -146,7 +146,7 @@ Remotion 的角色是“案例视频生成器”，不是网站运行时：
 必须满足：
 
 - 视频有 `controls`，用户可以暂停、拖动和重新播放。
-- 视频有 `poster`，加载前不显示空白黑框。
+- 视频有 `poster`，加载前先显示真实网站案例画面，不显示空白黑框。
 - 视频默认 `muted`，避免翻页时突然播放声音。
 - 视频旁边有简短说明，不要求观众先看完整视频才能理解页面。
 - 移动端保持 16:9 比例，不让播放器撑破页面。
