@@ -12,8 +12,9 @@ describe('PPT archive redesign', () => {
     expect(redesignCss).toContain('--paper: #c75b2d')
   })
 
-  it('keeps all five deck destinations in a dense archive', () => {
-    expect(html.match(/class="deck-card"/g)).toHaveLength(5)
+  it('keeps all six deck destinations in a dense archive', () => {
+    expect(html.match(/class="deck-card"/g)).toHaveLength(6)
+    expect(html).toContain('/slides/decks/personal-site-coolness/')
     expect(html).toContain('/slides/decks/agent-harness/lessons/')
     expect(html).toContain('/slides/decks/three-hour-mini-program/')
     expect(html).toContain('/slides/decks/dag-efficient-development/')
