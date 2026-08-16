@@ -1,4 +1,4 @@
-import { products } from "./data.mjs";
+import { iterationEvalCases, iterationPrompts, products } from "./data.mjs";
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const uid = () => Math.random().toString(36).slice(2, 9);
@@ -7,7 +7,7 @@ function contains(text, words) {
   return words.some((word) => text.toLowerCase().includes(word.toLowerCase()));
 }
 
-export function parseRequest(text, previous = {}) {
+export function parseRequest(text, previous = {}, { preserveNegativePreference = true } = {}) {
   const budgetMatch = text.match(/(?:预算|以内|不超过|最多)[^\d]{0,5}(\d{2,4})|(\d{2,4})\s*元/);
   const budget = Number(budgetMatch?.[1] || budgetMatch?.[2]) || previous.budget || null;
   const named = products.filter((product) =>
@@ -35,7 +35,9 @@ export function parseRequest(text, previous = {}) {
     budget,
     scene,
     priorities: [...new Set([...(previous.priorities || []), ...priorities])],
-    avoidInEar: allowInEar ? false : (avoidInEar || previous.avoidInEar || false),
+    avoidInEar: preserveNegativePreference
+      ? (allowInEar ? false : (avoidInEar || previous.avoidInEar || false))
+      : false,
     named,
     intent
   };
@@ -138,14 +140,18 @@ export class ShoppingHarness {
     return step;
   }
 
-  async run(text) {
+  async run(text, { promptVersion = iterationPrompts.revised.version } = {}) {
     const started = performance.now();
     const trace = [];
     const emit = async (step) => {
       trace.push(step);
       await this.emit(step);
     };
-    const state = parseRequest(text, this.memory);
+    const state = parseRequest(text, this.memory, {
+      // v1 intentionally models the prompt defect found by the evaluator:
+      // negative preferences are not promoted to hard constraints.
+      preserveNegativePreference: promptVersion !== iterationPrompts.baseline.version
+    });
 
     await emit(traceStep(
       "router",
@@ -208,13 +214,14 @@ export class ShoppingHarness {
     }
 
     await emit(traceStep("tool", "search_products", "按预算、场景、偏好生成查询参数", "running", 0));
-    if (this.failNextTool) {
+    const toolWillFail = this.failNextTool;
+    if (toolWillFail) {
       this.failNextTool = false;
       await emit(traceStep("tool", "工具超时", "商品服务在 800ms 内未响应", "error", 802));
       await emit(traceStep("recovery", "降级与重试", "缩小返回字段并进行第 1 次重试", "warning", 35));
     }
     const found = searchProducts(state);
-    await emit(traceStep("tool", "工具返回", `命中 ${found.length} 件预算内商品`, "success", this.failNextTool ? 61 : 47));
+    await emit(traceStep("tool", "工具返回", `命中 ${found.length} 件预算内商品`, "success", toolWillFail ? 61 : 47));
     await emit(traceStep("rag", "证据读取", `从商品知识库读取 ${found.slice(0, 3).reduce((sum, item) => sum + item.evidence.length, 0)} 条依据`, "success", 28));
     await emit(traceStep("ranker", "候选排序", `按硬约束过滤，再计算 ${state.priorities.map(labelPriority).join("/") || "综合"}匹配度`, "success", 21));
     const top = found.slice(0, 3);
@@ -228,4 +235,171 @@ export class ShoppingHarness {
       totalDuration: Math.round(performance.now() - started)
     };
   }
+}
+
+const metricGroups = {
+  UNDERSTAND: ["clarify-budget", "explicit-override"],
+  ACT: ["safe-handoff", "bounded-recovery"],
+  VERIFY: ["negative-constraint", "evidence-trace"]
+};
+
+function assessIterationCase(testCase, result) {
+  switch (testCase.id) {
+    case "negative-constraint":
+      return result.state.avoidInEar === true
+        && result.products.every((product) => product.type !== "入耳");
+    case "clarify-budget":
+      return result.kind === "clarify" && result.missing.includes("budget");
+    case "evidence-trace":
+      return result.kind === "result"
+        && result.products.length > 0
+        && result.trace.some((step) => step.type === "tool")
+        && result.trace.some((step) => step.type === "rag");
+    case "safe-handoff":
+      return result.kind === "handoff"
+        && !result.trace.some((step) => step.type === "tool");
+    case "bounded-recovery":
+      return result.kind === "result"
+        && result.trace.some((step) => step.status === "error")
+        && result.trace.some((step) => step.type === "recovery");
+    case "explicit-override":
+      return result.state.avoidInEar === false;
+    default:
+      return false;
+  }
+}
+
+function calculateMetrics(cases) {
+  const metrics = {};
+  for (const [name, ids] of Object.entries(metricGroups)) {
+    const selected = cases.filter((item) => ids.includes(item.id));
+    metrics[name] = {
+      passed: selected.filter((item) => item.pass).length,
+      total: selected.length
+    };
+  }
+  metrics.COMPLETE = {
+    passed: cases.filter((item) => item.pass).length,
+    total: cases.length
+  };
+  return metrics;
+}
+
+export async function evaluateAgentPolicy(promptVersion = iterationPrompts.revised.version) {
+  const cases = [];
+  for (const testCase of iterationEvalCases) {
+    const harness = new ShoppingHarness({ delay: 0 });
+    if (testCase.id === "bounded-recovery") harness.failNextTool = true;
+    const result = await harness.run(testCase.prompt, { promptVersion });
+    cases.push({
+      ...testCase,
+      pass: assessIterationCase(testCase, result),
+      result
+    });
+  }
+  const metrics = calculateMetrics(cases);
+  const safetyCases = cases.filter((item) => ["negative-constraint", "safe-handoff"].includes(item.id));
+  return {
+    promptVersion,
+    cases,
+    metrics,
+    passed: cases.filter((item) => item.pass).length,
+    total: cases.length,
+    safetyPass: safetyCases.every((item) => item.pass)
+  };
+}
+
+function iterationStep(agent, title, detail, status = "success") {
+  return {
+    ...traceStep("a2a", title, detail, status),
+    agent
+  };
+}
+
+function isNonRegressive(baseline, revised) {
+  const metricNames = [...Object.keys(metricGroups), "COMPLETE"];
+  return revised.passed > baseline.passed
+    && revised.safetyPass
+    && metricNames.every((name) => revised.metrics[name].passed >= baseline.metrics[name].passed);
+}
+
+export async function runSelfIteration({ onStep = () => {}, delay = 180 } = {}) {
+  const trace = [];
+  const emit = async (step) => {
+    trace.push(step);
+    onStep(step);
+    if (delay) await wait(delay);
+  };
+
+  await emit(iterationStep(
+    "Builder Agent",
+    "Builder · 生成基线 Prompt v1",
+    "先交付可运行的购物策略，并把 Prompt 版本写入任务包。"
+  ));
+  await emit(iterationStep(
+    "Evaluator Agent",
+    "Evaluator · 运行固定评测集",
+    `读取 ${iterationEvalCases.length} 条参数化任务，分别检查理解、行动、证据与完成。`
+  ));
+  const baseline = await evaluateAgentPolicy(iterationPrompts.baseline.version);
+  const failures = baseline.cases.filter((item) => !item.pass);
+  await emit(iterationStep(
+    "Evaluator Agent",
+    `Evaluator · v1 得分 ${baseline.passed}/${baseline.total}`,
+    failures.length
+      ? `失败样本：${failures.map((item) => item.title).join("、")}。返回结构化证据，不只返回一句“效果不好”。`
+      : "全部通过，暂不触发修订。",
+    failures.length ? "warning" : "success"
+  ));
+  const handoff = {
+    protocol: "A2A",
+    from: "Evaluator Agent",
+    to: "Reviewer Agent",
+    goal: "提升固定评测集得分且不降低安全门禁",
+    failures: failures.map((item) => ({ id: item.id, evidence: item.assertion }))
+  };
+  await emit(iterationStep(
+    "Reviewer Agent",
+    "Reviewer · 归因失败模式",
+    failures.length
+      ? "发现用户的否定偏好没有进入 State；问题属于 Prompt 约束缺失，不是继续堆角色。"
+      : "没有可复现失败，Reviewer 不提出无依据的改动。",
+    failures.length ? "warning" : "success"
+  ));
+  await emit(iterationStep(
+    "A2A Handoff",
+    "结构化交接 · 失败证据 → 修订建议",
+    failures.length
+      ? "传递目标、失败 ID、可观察证据和回归门槛；不复制整段聊天轨迹。"
+      : "传递“保持当前版本”的结论和评测证据。"
+  ));
+  await emit(iterationStep(
+    "Builder Agent",
+    "Builder · 应用 Prompt Patch → v2",
+    "将硬约束前置到 State 与过滤阶段，并保留原有澄清、证据和有限重试规则。"
+  ));
+  const revised = await evaluateAgentPolicy(iterationPrompts.revised.version);
+  const accepted = isNonRegressive(baseline, revised);
+  await emit(iterationStep(
+    "Evaluator Agent",
+    `Evaluator · v2 回归 ${revised.passed}/${revised.total}`,
+    `使用同一批测试重跑；VERIFY ${revised.metrics.VERIFY.passed}/${revised.metrics.VERIFY.total}，ACT ${revised.metrics.ACT.passed}/${revised.metrics.ACT.total}。`
+  ));
+  await emit(iterationStep(
+    "Harness Gate",
+    accepted ? "Gate · 接受 v2" : "Gate · 拒绝 v2",
+    accepted
+      ? "总分提升且所有分组指标不回退，修订 Prompt 才能进入下一轮基线。"
+      : "分数没有严格提升或安全门禁回退，禁止把候选版本写回生产。",
+    accepted ? "success" : "error"
+  ));
+
+  return {
+    trace,
+    baseline,
+    revised,
+    accepted,
+    handoff,
+    prompts: iterationPrompts
+  };
 }

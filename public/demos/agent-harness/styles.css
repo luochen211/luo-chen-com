@@ -193,6 +193,9 @@ blockquote {
   display: flex; align-items: center; gap: 8px; padding: 12px;
   background: var(--paper); border: 1px solid var(--line); border-radius: 9px 9px 0 0;
 }
+.usefulness-contract { margin-bottom: 9px; padding: 11px 12px; background: var(--ink); color: white; border-radius: 8px; }
+.usefulness-contract span { display: block; color: #aeb8ce; font-size: 9px; font-weight: 700; letter-spacing: .08em; }
+.usefulness-contract strong { display: block; margin-top: 5px; font-size: 11px; line-height: 1.45; }
 .lab-toolbar select {
   flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 6px;
   padding: 9px 10px; background: white; font-size: 11px;
@@ -267,6 +270,19 @@ blockquote {
 .test-status.running { color: var(--blue); }
 .test-status.pass { color: var(--green); }
 .test-status.fail { color: var(--red); }
+.iteration-table td:first-child { min-width: 142px; }
+.iteration-table td:first-child strong { display: block; margin-top: 4px; font-size: 10px; }
+.eval-id { display: block; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .04em; }
+.prompt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.prompt-card { min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; }
+.prompt-card.baseline { border-top: 3px solid var(--orange); }
+.prompt-card.revised { border-top: 3px solid var(--green); }
+.prompt-card > span { display: block; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .06em; }
+.prompt-card > strong { display: block; font-size: 11px; margin-top: 5px; }
+.prompt-card pre { margin: 8px 0 0; min-height: 96px; white-space: pre-wrap; color: #475467; font: 10px/1.5 var(--sans); }
+.eval-note, .a2a-handoff { margin-top: 9px; padding: 10px 12px; background: var(--blue-soft); color: #173b93; border-radius: 7px; font-size: 10px; line-height: 1.5; }
+.a2a-handoff { background: var(--orange-soft); color: #71400c; }
+.a2a-trace-panel { margin-top: 9px; border: 1px solid var(--line); border-radius: 8px; min-height: 150px; max-height: 280px; overflow-y: auto; }
 .eval-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
 .eval-summary div { background: var(--paper); border: 1px solid var(--line); border-radius: 7px; padding: 9px; }
 .eval-summary span { display: block; font-size: 9px; color: var(--muted); }
@@ -303,6 +319,7 @@ blockquote {
   .audience-cues { margin-left: 18px; margin-right: 18px; }
   .audience-cues ol { grid-template-columns: 1fr; }
   .compare-board { grid-template-columns: 1fr; }
+  .prompt-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {

@@ -257,3 +257,67 @@ export const scenarios = [
     note: "直接路由到对比工具"
   }
 ];
+
+export const iterationPrompts = {
+  baseline: {
+    version: "v1",
+    label: "基线 Prompt · v1",
+    text: `你是购物决策 Agent，目标是帮助用户减少买错耳机的概率。
+根据用户当前消息提取预算、场景和偏好，在预算内搜索商品，
+给出一个首选和一个备选。如果信息不完整，优先继续搜索，尽量不要打断用户。`
+  },
+  revised: {
+    version: "v2",
+    label: "修订 Prompt · v2",
+    text: `你是购物决策 Agent，目标是帮助用户减少买错耳机的概率。
+先编译任务约束，再决定是否行动。
+预算和用户明确表达的排除条件是硬约束，必须写入 State 并在排序前过滤；
+缺少会改变结果的预算时先澄清；每个推荐都要能回指商品数据证据。
+工具失败只能按 Harness 的有限重试策略处理，不得用猜测填补实时事实。`
+  }
+};
+
+export const iterationEvalCases = [
+  {
+    id: "negative-constraint",
+    dimension: "VERIFY",
+    title: "否定偏好不丢失",
+    prompt: "预算 500 元，通勤坐地铁，不喜欢堵耳朵，但希望尽量安静。",
+    assertion: "avoidInEar 保持为 true，候选不能包含入耳式，避免用户买到明确不要的佩戴形式"
+  },
+  {
+    id: "clarify-budget",
+    dimension: "UNDERSTAND",
+    title: "缺少预算先澄清",
+    prompt: "我每天坐地铁，想买一副降噪强、戴久一点也舒服的耳机。",
+    assertion: "返回 clarify，并指出缺少 budget"
+  },
+  {
+    id: "evidence-trace",
+    dimension: "VERIFY",
+    title: "推荐带证据轨迹",
+    prompt: "预算 500 元以内，每天坐地铁 40 分钟，想要降噪强、通话清楚的耳机。",
+    assertion: "返回 result，并经过工具与证据读取步骤，而不是凭记忆推荐"
+  },
+  {
+    id: "safe-handoff",
+    dimension: "ACT",
+    title: "越界任务安全转交",
+    prompt: "耳机坏了，我要查订单并申请售后退货。",
+    assertion: "返回 handoff，不调用购买前商品工具"
+  },
+  {
+    id: "bounded-recovery",
+    dimension: "ACT",
+    title: "工具故障可恢复",
+    prompt: "预算 500 元以内，每天坐地铁 40 分钟，想要降噪强、通话清楚的耳机。",
+    assertion: "出现工具错误后，按有限策略进入 recovery 并完成"
+  },
+  {
+    id: "explicit-override",
+    dimension: "UNDERSTAND",
+    title: "明确新信息覆盖旧记忆",
+    prompt: "预算 500 元，这次可以戴入耳，优先地铁降噪。",
+    assertion: "新消息明确允许入耳，State 将 avoidInEar 改为 false"
+  }
+];

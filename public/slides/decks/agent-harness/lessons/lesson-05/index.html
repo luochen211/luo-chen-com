@@ -1238,7 +1238,7 @@
         <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">怎样证明一个 Agent 系统<br/>真的更加可靠？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">同时评估执行轨迹与最终结果，覆盖过程、结果、鲁棒性、安全性，并检查评测数据集的设计质量。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">让固定评测集产生可交接的失败证据，驱动 Prompt Patch，再由回归门禁决定系统是否真的变好。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
@@ -1318,7 +1318,7 @@
     <div class="chrome-min"><div class="l">Evaluation Dataset · Six Design Checks</div><div class="r">05 / 07</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THE DATASET DETERMINES WHAT THE SCORE MEANS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测集要通过六项检查</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em">评测集要能驱动下一轮修订</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
       <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><h3 class="ttl">明确而开放</h3><p class="desc">目标可复现，但允许多种合理路径。</p></article>
@@ -1333,10 +1333,10 @@
 
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l">Final Map · One System</div><div class="r">06 / 07</div></div>
+    <div class="chrome-min"><div class="l">Final Map · Evaluation-Gated Iteration</div><div class="r">06 / 07</div></div>
     <div style="display:flex;flex-direction:column;gap:1.2vh">
       <div class="t-meta">EVERY CONCEPT HAS ONE PLACE</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">把所有概念放回同一张地图</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.8vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">把评测证据写回同一张地图</h2>
     </div>
     <div data-anim="up" style="flex:1;display:grid;grid-template-rows:1fr auto 1fr;gap:1.6vh;margin-top:4vh">
       <div style="display:grid;grid-template-columns:2fr 6fr 3fr;gap:1vw">
@@ -1350,7 +1350,7 @@
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">TOOLS</span><p class="body-sm">查询与执行业务动作</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">CONSTRAIN</span><p class="body-sm">阻止越界参数和动作</p></div>
         <div class="card-fill" style="padding:2vh 1.2vw"><span class="t-meta">VERIFY</span><p class="body-sm">用外部事实证明结果</p></div>
-        <div class="card-accent" style="padding:2vh 1.2vw"><span class="t-meta">CORRECT</span><p class="body-sm" style="color:#fff">重试、回退与安全退出</p></div>
+        <div class="card-accent" style="padding:2vh 1.2vw"><span class="t-meta">CORRECT / ITERATE</span><p class="body-sm" style="color:#fff">重试、Prompt Patch、回归与安全退出</p></div>
       </div>
     </div>
   </div>
@@ -1368,7 +1368,7 @@
         </div>
         <div style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">LIVE DEMO</div>
-          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 06 · 对照轨迹、最终状态与重复运行稳定性</div>
+          <div style="font-size:max(16px,1vw);line-height:1.5;color:rgba(255,255,255,.88);margin-top:.8vh">演示 06 · A2A 交接、Prompt Patch 与固定评测回归</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-top:1vh">luo-chen.com/demos/agent-harness/</div>
         </div>
       </div>

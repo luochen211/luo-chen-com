@@ -1,5 +1,5 @@
-import { scenarios } from "./data.mjs";
-import { ShoppingHarness } from "./harness.mjs";
+import { iterationEvalCases, iterationPrompts, scenarios } from "./data.mjs";
+import { evaluateAgentPolicy, runSelfIteration, ShoppingHarness } from "./harness.mjs";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -18,21 +18,21 @@ const lessons = [
     concepts: [
       ["回答", "模型基于当前信息生成内容，输出文本后任务就结束。"],
       ["完成", "系统根据环境反馈继续行动，直到满足预先定义的完成条件。"],
-      ["贯穿项目", "预算、降噪、双设备、佩戴、实时性和证据共同定义“买到合适耳机”。"]
+      ["有用标准", "不是推荐更多商品，而是降低买错概率：预算不超、明确禁忌不违背、理由能回指数据。"]
     ],
-    boundary: "“推荐三款耳机”只是语言输出；只有查到有效价格与库存、过滤硬约束并给出证据，才接近完成任务。",
+    boundary: "“推荐三款耳机”只是语言输出；只有过滤预算和佩戴硬约束，并给出可回指的商品数据，才接近完成决策。实时库存不在这个本地 Demo 的证明范围内。",
     slideMap: [
       ["02—03", "暴露“名词很多但没有系统地图”的学习痛点。"],
-      ["04", "固定购物助手案例的六项完成条件。"],
+      ["04", "固定购物助手案例的完成条件：不超预算、不违背禁忌、有证据。"],
       ["05", "正式区分 Chat Response 与 Agent Task。"]
     ],
     experiment: "边界判断：回答还是完成",
     instruction: "依次判断三个任务只需要生成回答，还是需要 Agent 持续行动。点击案例查看系统边界。",
     mode: "boundary",
-    question: "为什么“推荐 A、B、C”不能证明购物任务已完成？",
+    question: "为什么“推荐 A、B、C”不能证明用户已经做出可靠购买决策？",
     answers: ["因为答案不够长", "因为没有验证实时事实与硬约束", "因为必须使用多 Agent"],
     correct: 1,
-    feedback: "完成条件不由文本流畅度决定，而由预算、库存、规格等外部事实是否被验证决定。"
+    feedback: "价值不由文本流畅度决定，而由预算、佩戴形式、规格和证据是否满足验收条件决定。"
   },
   {
     id: "agent",
@@ -71,7 +71,7 @@ const lessons = [
     slides: "02—09",
     startSlide: 2,
     time: "30 min",
-    objective: "理解模型负责判断，Harness 负责把判断放进可约束、可验证、可恢复的工程系统。",
+    objective: "理解模型负责判断，Harness 负责把“可能买错”的风险变成可约束、可验证、可恢复的决策流程。",
     concepts: [
       ["Context", "为模型提供系统指令、工具定义与不断增长的动态轨迹。"],
       ["Tool Interface", "为模型设计可理解、单一职责、参数防呆且返回可判定的接口。"],
@@ -79,7 +79,7 @@ const lessons = [
       ["Verify", "不用模型声明证明模型正确，而是回到业务事实验证结果。"],
       ["Correct", "失败后静默重试、接续生成、回退稳定态、熔断或交还人类。"]
     ],
-    boundary: "Harness 不是第二个更聪明的模型，而是模型外部的确定性控制层。",
+    boundary: "Harness 不是第二个更聪明的模型，而是模型外部的确定性控制层；它的价值是减少错误决策和人工返工。",
     slideMap: [
       ["02—03", "建立 Model + Harness，并展开 Harness 的五项工程职责。"],
       ["04—08", "依次展开 Context、Tool、Constrain、Verify 与 Correct。"],
@@ -101,7 +101,7 @@ const lessons = [
     slides: "02—08",
     startSlide: 2,
     time: "25 min",
-    objective: "正确区分轨迹、用户长期记忆、业务状态与共享知识，避免把所有信息都塞进 Prompt 或向量库。",
+    objective: "正确区分轨迹、用户长期记忆、业务状态与共享知识，避免因为信息放错位置而给出过时或不符合约束的推荐。",
     concepts: [
       ["Trajectory", "用户消息、模型回复和工具执行结果按时间追加，只增不改。"],
       ["User Memory", "跨会话提炼的稳定信息，会被改写、合并和淘汰。"],
@@ -127,11 +127,11 @@ const lessons = [
     id: "capability",
     course: "第 04 课",
     deck: "lesson-04",
-    title: "能力发现与多 Agent",
+    title: "能力发现：什么时候不需要多 Agent",
     slides: "02—08",
     startSlide: 2,
     time: "20 min",
-    objective: "区分 Agent、Skill 与 Tool，并理解能力的渐进式披露和多 Agent 的信息增益判据。",
+    objective: "只在能减少错误或引入新证据时使用 Skill 和多 Agent；否则一个清晰的单 Agent 流程更有用。",
     concepts: [
       ["Agent", "维护目标和 State，决定下一步做什么。"],
       ["Skill", "封装完成一类任务的步骤、规则和知识。"],
@@ -160,26 +160,26 @@ const lessons = [
     slides: "02—06",
     startSlide: 2,
     time: "20 min",
-    objective: "先区分执行轨迹与最终结果，再检查正确性、鲁棒性、安全性与效率。",
+    objective: "把评测变成 Agent 之间可以消费的证据：先跑固定评测集，再让 Builder、Evaluator 与 Reviewer 通过 A2A 交接完成一次受门禁的 Prompt 自迭代。",
     concepts: [
-      ["Correctness", "最终环境状态是否真正满足任务完成条件。"],
-      ["Robustness", "面对 API 抖动、页面变化和过时信息时是否稳定。"],
-      ["Safety", "越权、敏感操作和数据泄漏是否被零容忍拦截。"],
-      ["Efficiency", "完成任务所需的步骤、延迟、Token、工具调用和人工介入。"]
+      ["Evaluation", "用固定、可重复的任务分布检查系统，而不是凭一次漂亮 Demo 下结论。"],
+      ["A2A Handoff", "Evaluator 不转发整段聊天，而是把失败 ID、证据和验收门槛交给 Reviewer。"],
+      ["Prompt Patch", "Reviewer 归因后，Builder 只修改能解释失败的规则，并保留原有约束。"],
+      ["Regression Gate", "修订版本必须在同一评测集上提升，且安全与其他分组指标不能回退。"]
     ],
-    boundary: "只看轨迹会漏掉“说了但没做到”；只看最终结果又看不见中间步骤为什么走偏。",
+    boundary: "自迭代不是 Agent 自己说“我变好了”，而是失败证据经过 A2A 交接后形成 Prompt 修订，再由固定评测集和 Harness 门禁决定是否接受。",
     slideMap: [
-      ["02—03", "先区分执行轨迹与最终状态，再检查正确性、鲁棒性、安全性与效率。"],
-      ["04", "用 Pass@k、Pass^k 和 Best@k 区分能力上限与稳定性。"],
-      ["05—06", "检查评测集设计，并把指标放回完整系统地图。"]
+      ["02—03", "区分执行轨迹、最终状态和可诊断的评测对象。"],
+      ["04", "用重复运行和分组指标区分能力提升与稳定性回退。"],
+      ["05—06", "让评测证据通过 A2A 交接驱动 Prompt Patch，再经过回归门禁。"]
     ],
-    experiment: "检查六项评测集设计",
-    instruction: "逐项检查第 05 课第 05 页的评测集设计。重点不是总分，而是分数究竟代表什么能力。",
+    experiment: "评测驱动的 A2A 自迭代",
+    instruction: "先跑同一批固定任务，观察 v1 的失败证据如何交给 Reviewer，再由 Builder 修订 Prompt 并回归；只有门禁通过，v2 才会被接受。",
     mode: "evaluation",
-    question: "为什么不能只用一个完整需求测试 Agent？",
-    answers: ["因为一个测试运行得太快", "因为产品面对的是任务分布，不是单条演示路径", "因为必须测试一百条才有意义"],
+    question: "什么条件下，A2A 自迭代才算真的改善了系统？",
+    answers: ["Reviewer 说 Prompt 更完整了", "固定评测集得分提升，且安全与其他指标没有回退", "参与的 Agent 数量变多"],
     correct: 1,
-    feedback: "真实可用性来自对任务分布的系统覆盖，并同时验证执行轨迹与最终环境状态。"
+    feedback: "迭代的证据来自同一评测集上的可重复提升；Prompt 文案变长、角色变多或 Agent 自评都不能替代回归门禁。"
   }
 ];
 
@@ -190,15 +190,6 @@ const classificationItems = [
   { title: "耳机降噪原理与选购指南", note: "来自受治理的外部知识库", answer: "RAG" },
   { title: "QuietPod S3 此刻是否有货", note: "高频变化的业务事实", answer: "实时 Tool" },
   { title: "上一次工具调用返回“缺货”", note: "按时间追加并成为下一轮观察", answer: "Trajectory" }
-];
-
-const evalCases = [
-  ["明确而开放", "目标可复现，允许多种合理路径", "PASS"],
-  ["真实且可控", "保留现实噪声，环境仍可稳定重放", "PASS"],
-  ["分层难度", "简单、中等、困难指向不同瓶颈", "PASS"],
-  ["客观可验证", "检查最终环境状态而非语言声明", "PASS"],
-  ["系统性分布", "覆盖能力、难度、场景与边界", "PASS"],
-  ["质量与防泄漏", "人工筛选、参数化并持续修订", "PASS"]
 ];
 
 const demoGuides = {
@@ -228,9 +219,9 @@ const demoGuides = {
     takeaway: "Agent 决策，Skill 组织任务方法，Tool 执行动作；协作没有新增信息时，不必拆多 Agent。"
   },
   evaluation: {
-    proof: "一次漂亮 Demo 不能证明产品可用，必须验证任务分布、执行轨迹和最终结果。",
-    cues: ["过程指标是否可诊断", "最终状态是否真的改变", "安全与鲁棒性是否单独覆盖"],
-    takeaway: "先验证轨迹与最终状态，再检查正确性、鲁棒性、安全性和效率，并让评测集保持明确、真实、分层且可验证。"
+    proof: "评测证据必须能跨 Agent 传递，并由回归门禁决定 Prompt 修订是否真的生效。",
+    cues: ["Evaluator 是否返回失败证据", "Reviewer 是否只提出可解释的修订", "v2 是否提升且没有安全回退"],
+    takeaway: "A2A 不是把角色串起来，而是让评测结果成为下一轮 Prompt 与代码的输入，并用 Harness 门禁控制自迭代边界。"
   }
 };
 
@@ -305,7 +296,7 @@ function renderBoundary(workspace) {
   const cases = [
     ["解释 ANC 是什么", "只需要基于稳定知识进行说明。", "回答", "没有外部动作，也没有随环境变化的完成条件。"],
     ["推荐 500 元内耳机", "要求满足预算，但没有要求核验实时库存。", "视条件而定", "如果只是给选购思路，可以回答；如果承诺“可以买”，就必须查询实时事实。"],
-    ["找到今天能下单的耳机", "要求价格、库存、到货时间都有效。", "Agent", "需要查、筛、证、答，并根据工具反馈持续调整。"]
+    ["找到符合条件且有证据的耳机", "要求预算、佩戴形式和关键规格都满足。", "Agent", "需要查、筛、证、答，并根据工具反馈持续调整。"]
   ];
   workspace.innerHTML = `
     <div class="case-grid">${cases.map((item, index) => `
@@ -362,7 +353,7 @@ function mapPhase(step) {
   return step.type.toUpperCase();
 }
 
-function appendTraceStep(step, index) {
+function appendTraceStep(step, index, list = $("#traceList")) {
   $("#traceEmpty")?.remove();
   const node = $("#traceStepTemplate").content.firstElementChild.cloneNode(true);
   node.classList.add(step.status);
@@ -370,7 +361,7 @@ function appendTraceStep(step, index) {
   node.querySelector("strong").textContent = step.title;
   node.querySelector("p").textContent = step.detail;
   node.querySelector("b").textContent = mapPhase(step);
-  $("#traceList").append(node);
+  list.append(node);
 }
 
 function revealNextTrace() {
@@ -390,12 +381,12 @@ function revealNextTrace() {
 function renderRecovery(workspace) {
   workspace.innerHTML = `
     <div class="lab-toolbar">
-      <div style="flex:1;font-size:11px;color:#667085">故障条件：search_products 首次调用超时 800ms</div>
+      <div style="flex:1;font-size:11px;color:#667085">故障条件：商品查询首次调用超时 800ms；目标：不要用猜测替代证据</div>
       <button id="runRecovery" class="run-button" type="button">触发对照实验</button>
     </div>
     <div class="compare-board" style="margin-top:10px">
       <section class="compare-column unsafe"><header><span>MODEL ONLY</span><strong>没有 Harness</strong></header><ul id="unsafeList"><li>等待实验</li></ul></section>
-      <section class="compare-column safe"><header><span>MODEL + HARNESS</span><strong>确定性恢复策略</strong></header><ul id="safeList"><li>等待实验</li></ul></section>
+      <section class="compare-column safe"><header><span>MODEL + HARNESS</span><strong>避免用户得到假结论</strong></header><ul id="safeList"><li>等待实验</li></ul></section>
     </div>
     <div class="trace-panel" style="margin-top:10px;border-top:1px solid #dfe3ea;border-radius:9px"><ol class="trace-list" id="traceList"></ol></div>
   `;
@@ -415,7 +406,7 @@ async function runRecovery() {
   $("#safeList").innerHTML = `
     <li>800ms 超时由代码判定，不依赖模型自述。</li>
     <li>缩小返回字段并执行第 1 次有限重试。</li>
-    <li>成功则继续；仍失败则明确“无法确认”并安全退出。</li>`;
+    <li>成功则继续；仍失败则明确“无法确认”，不让用户据此买错。</li>`;
   $("#traceList").innerHTML = "";
   result.trace.forEach(appendTraceStep);
   $("#runRecovery").disabled = false;
@@ -458,7 +449,7 @@ function renderRouting(workspace) {
       <button id="runRoute" class="run-button" type="button">运行能力选择</button>
     </div>
     <div id="routeMap" class="route-map pending">
-      <div class="route-node"><span>WHO / AGENT</span><strong id="routeAgent">购物 Agent</strong><p>维护目标、State 与下一步决策。</p></div>
+      <div class="route-node"><span>WHO / AGENT</span><strong id="routeAgent">购物 Agent</strong><p>维护“减少买错”的目标、State 与下一步决策。</p></div>
       <div class="route-arrow">→</div>
       <div class="route-node"><span>HOW / SKILL</span><strong id="routeSkill">等待判断</strong><p id="routeSkillNote">根据任务与信息缺口选择流程。</p></div>
       <div class="route-arrow">→</div>
@@ -506,14 +497,23 @@ async function runRoute() {
 
 function renderEvaluation(workspace) {
   workspace.innerHTML = `
+    <div class="usefulness-contract"><span>USEFULNESS CONTRACT</span><strong>降低买错概率：预算不超 · 明确禁忌不违背 · 推荐理由可回指数据</strong></div>
     <div class="lab-toolbar">
-      <div style="flex:1;font-size:11px;color:#667085">评测集设计检查：明确性、真实性、难度、可验证性、分布与质量</div>
-      <button id="runEvaluation" class="run-button" type="button">检查 6 个维度</button>
+      <div style="flex:1;font-size:11px;color:#667085">固定评测集：6 条任务 · 3 个能力分组 · 1 个回归门禁</div>
+      <button id="runEvaluation" class="run-button" type="button">运行 v2 评测</button>
+      <button id="runIteration" class="step-button" type="button">运行 A2A 自迭代</button>
     </div>
-    <table class="test-table" style="margin-top:10px">
-      <thead><tr><th>设计维度</th><th>检查标准</th><th>结果</th></tr></thead>
-      <tbody>${evalCases.map((item, index) => `<tr><td>0${index + 1} · ${item[0]}</td><td>${item[1]}</td><td class="test-status" data-test="${index}">待运行</td></tr>`).join("")}</tbody>
+    <div class="prompt-grid">
+      <article class="prompt-card baseline"><span>BASELINE PROMPT</span><strong>${iterationPrompts.baseline.label}</strong><pre>${iterationPrompts.baseline.text}</pre></article>
+      <article class="prompt-card revised"><span>PATCHED PROMPT</span><strong>${iterationPrompts.revised.label}</strong><pre>${iterationPrompts.revised.text}</pre></article>
+    </div>
+    <div class="eval-note" id="policyRunSummary">先运行 v2 评测，或观察一次完整的 A2A 交接与回归。</div>
+    <table class="test-table iteration-table" style="margin-top:10px">
+      <thead><tr><th>评测任务</th><th>可验证断言</th><th>结果</th></tr></thead>
+      <tbody>${iterationEvalCases.map((item, index) => `<tr data-eval-id="${item.id}"><td><span class="eval-id">0${index + 1} · ${item.dimension}</span><strong>${item.title}</strong></td><td>${item.assertion}</td><td class="test-status" data-test="${item.id}">待运行</td></tr>`).join("")}</tbody>
     </table>
+    <div class="a2a-handoff" id="a2aHandoff">A2A 交接包尚未生成：Evaluator 会把失败 ID、证据与回归门槛交给 Reviewer。</div>
+    <div class="trace-panel a2a-trace-panel"><div class="trace-empty" id="a2aTraceEmpty">运行自迭代后，这里会显示 Builder、Evaluator、Reviewer 与 Harness Gate 的交接轨迹。</div><ol class="trace-list" id="a2aTraceList"></ol></div>
     <div class="eval-summary">
       <div><span>UNDERSTAND</span><strong id="understandScore">—</strong></div>
       <div><span>ACT</span><strong id="actScore">—</strong></div>
@@ -522,63 +522,56 @@ function renderEvaluation(workspace) {
     </div>
   `;
   $("#runEvaluation").addEventListener("click", runEvaluation);
+  $("#runIteration").addEventListener("click", runA2ASelfIteration);
+}
+
+function formatMetric(metric) {
+  return `${metric.passed} / ${metric.total}`;
+}
+
+function renderPolicyReport(report, label = "v2") {
+  const results = new Map(report.cases.map((item) => [item.id, item]));
+  iterationEvalCases.forEach((testCase) => {
+    const result = results.get(testCase.id);
+    const status = $(`[data-test="${testCase.id}"]`);
+    status.textContent = result.pass ? "PASS" : "FAIL";
+    status.className = `test-status ${result.pass ? "pass" : "fail"}`;
+  });
+  $("#understandScore").textContent = formatMetric(report.metrics.UNDERSTAND);
+  $("#actScore").textContent = formatMetric(report.metrics.ACT);
+  $("#verifyScore").textContent = formatMetric(report.metrics.VERIFY);
+  $("#completeScore").textContent = formatMetric(report.metrics.COMPLETE);
+  $("#policyRunSummary").textContent = `${label}：${report.passed}/${report.total} 通过 · 安全门禁 ${report.safetyPass ? "通过" : "失败"} · 同一评测集可用于下一轮回归。`;
 }
 
 async function runEvaluation() {
   $("#runEvaluation").disabled = true;
+  $("#runIteration").disabled = true;
   setStatus("测试运行中", "running");
-  const statuses = $$(".test-status");
-  const runCases = [
-    async () => {
-      harness.reset();
-      const result = await harness.run(scenarios[0].prompt);
-      return result.kind === "result" && result.products.length > 0;
-    },
-    async () => {
-      harness.reset();
-      const result = await harness.run(scenarios[1].prompt);
-      return result.kind === "clarify" && result.missing.includes("budget");
-    },
-    async () => {
-      harness.reset();
-      const result = await harness.run("预算 100 元，每天坐地铁，必须要 40dB 以上主动降噪。");
-      return result.kind === "result" && result.products.length === 0;
-    },
-    async () => {
-      harness.reset();
-      const result = await harness.run(scenarios[0].prompt);
-      return result.trace.some((step) => step.type === "tool" && step.title === "search_products");
-    },
-    async () => {
-      harness.reset();
-      harness.memory = { avoidInEar: true };
-      const result = await harness.run("预算 500 元，这次可以戴入耳，优先地铁降噪。");
-      return result.state.avoidInEar === false;
-    },
-    async () => {
-      harness.reset();
-      harness.failNextTool = true;
-      const result = await harness.run(scenarios[0].prompt);
-      return result.trace.some((step) => step.status === "error")
-        && result.trace.some((step) => step.type === "recovery");
-    }
-  ];
-  let passed = 0;
-  for (let index = 0; index < evalCases.length; index += 1) {
-    statuses[index].textContent = "运行中";
-    statuses[index].className = "test-status running";
-    const pass = await runCases[index]();
-    await wait(190);
-    statuses[index].textContent = pass ? "PASS" : "FAIL";
-    statuses[index].className = `test-status ${pass ? "pass" : "fail"}`;
-    if (pass) passed += 1;
-  }
-  $("#understandScore").textContent = passed === 6 ? "6 / 6" : `${passed} / 6`;
-  $("#actScore").textContent = passed === 6 ? "6 / 6" : `${passed} / 6`;
-  $("#verifyScore").textContent = passed === 6 ? "6 / 6" : `${passed} / 6`;
-  $("#completeScore").textContent = passed === 6 ? "6 / 6" : `${passed} / 6`;
+  const report = await evaluateAgentPolicy(iterationPrompts.revised.version);
+  renderPolicyReport(report);
   $("#runEvaluation").disabled = false;
-  setStatus(`${passed} / 6 通过`, passed === 6 ? "success" : "running");
+  $("#runIteration").disabled = false;
+  setStatus(`${report.passed} / ${report.total} 通过`, report.passed === report.total ? "success" : "running");
+}
+
+async function runA2ASelfIteration() {
+  $("#runEvaluation").disabled = true;
+  $("#runIteration").disabled = true;
+  $("#a2aTraceList").innerHTML = "";
+  $("#a2aTraceEmpty").textContent = "A2A 轨迹运行中：先看 v1 的失败，再看 Prompt Patch 与 v2 回归。";
+  $("#a2aHandoff").textContent = "正在生成 A2A 交接包……";
+  setStatus("A2A 自迭代中", "running");
+  const iteration = await runSelfIteration({
+    delay: 150,
+    onStep: (step) => appendTraceStep(step, $("#a2aTraceList").children.length, $("#a2aTraceList"))
+  });
+  renderPolicyReport(iteration.revised, iteration.accepted ? "v2 accepted" : "v2 rejected");
+  $("#a2aHandoff").textContent = `A2A 交接：${iteration.handoff.from} → ${iteration.handoff.to} · ${iteration.handoff.failures.length} 个失败证据 · 回归结果：${iteration.accepted ? "接受 v2" : "拒绝 v2"}`;
+  $("#a2aTraceEmpty")?.remove();
+  $("#runEvaluation").disabled = false;
+  $("#runIteration").disabled = false;
+  setStatus(iteration.accepted ? "迭代门禁通过" : "迭代门禁拒绝", iteration.accepted ? "success" : "running");
 }
 
 $("#prevLesson").addEventListener("click", () => switchLesson(currentLesson - 1));
