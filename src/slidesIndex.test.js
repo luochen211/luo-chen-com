@@ -22,6 +22,12 @@ describe('PPT archive redesign', () => {
     expect(html).toContain('/slides/decks/ai-product-talk/')
   })
 
+  it('states the useful-first editorial rule on the archive landing page', () => {
+    expect(html).toContain('所有 PPT 的核心规则：')
+    expect(html).toContain('有用。')
+    expect(html).toContain('没有必要的概念全部不讲')
+  })
+
   it('loads animation locally without hiding readable content by default', () => {
     expect(html).toContain('src="/slides/assets/gsap.min.js"')
     expect(html).toContain('src="/slides/assets/ScrollTrigger.min.js"')
