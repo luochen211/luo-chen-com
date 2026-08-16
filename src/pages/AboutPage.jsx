@@ -26,6 +26,20 @@ export default function AboutPage({ t, locale = 'zh' }) {
         <p>{t.about.intro}</p>
       </header>
 
+      <section className="about-origin-chapter" aria-labelledby="origin-title">
+        <header className="chapter-heading about-origin-heading editorial-heading">
+          <p>{t.about.originEyebrow}</p>
+          <div>
+            <h2 id="origin-title">{t.about.originTitle}</h2>
+            <blockquote>{t.about.originQuote}</blockquote>
+          </div>
+        </header>
+        <div className="about-origin-body">
+          <span className="about-origin-signature" aria-hidden="true">{t.about.originSignature}</span>
+          {t.about.originParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </section>
+
       <section className="about-timeline-chapter" aria-labelledby="timeline-title">
         <header className="chapter-heading editorial-heading">
           <p>{t.about.timelineEyebrow}</p>

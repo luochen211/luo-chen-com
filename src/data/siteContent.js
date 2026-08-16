@@ -650,6 +650,16 @@ const requiredSections = {
     about: {
       eyebrow: '关于我 / ABOUT', range: '2006 — NOW', title: '我在把复杂问题，变成可靠交付。',
       intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
+      originEyebrow: '人生原点', originSignature: '落尘咖啡', originTitle: '即使人生大写着失败，我也愿意一往无前。', originQuote: '我宁可承担自己选择后的失败，也不愿把人生交给别人安排。', originParagraphs: [
+        '对我来说，咖啡豆的味道和尼古丁是类似的。我的第一个网名，是“落尘咖啡”。',
+        '我其实对尼古丁的味道很敏感。无论是跟随父亲的脚步，还是夜晚疲惫想睡觉，甚至在酒桌上谈天说地，我都闻到过这种味道。但我很讨厌烟的味道。',
+        '我对苦难一直是不拒绝的。我能接受每天只睡 4 个小时，能接受生吞咖啡粉，这些都不重要。我希望有自由的身体和精神。',
+        '我不甘心每天雷打不动地在课堂上疲惫，所以决心那天下午不去上课，即使老师和家长的电话打过来。父母和班主任都严重警告我，别最后瞎折腾，本科都考不上。',
+        '我希望掌控自己的人生。即使失败，我也愿意承担后果。',
+        '我选择回家听完课，自己去学，全力学习数学。最终考完数学，我就知道自己注定数学不及格。我心甘情愿地接受我的失败。',
+        '我希望有更大的机会，选择大城市，见识大人物，经历大风暴。最终，我从偏僻的县城到了繁华的杭州，但是我一直在路上学习。我积极参加线下课，也举办过线下活动，教其他人做小程序。',
+        '我心甘情愿地一往无前，即使人生大写着失败。这是我的一个人生故事。',
+      ],
       timelineEyebrow: '能力形成', timelineTitle: '从自己找机会，到开始为结果负责。', timelineHint: '选择节点，查看这段经历留下了什么',
       timeline: [
         { year: '初中', label: '主动找机会', title: '第一次靠自己赚到钱', text: '初中开始卖东西，第一次靠自己赚到钱。那是我第一次感受到：想法只有进入真实交换，才会变成结果。' },
@@ -686,6 +696,16 @@ const requiredSections = {
     about: {
       eyebrow: 'ABOUT', range: '2006 — NOW', title: 'I turn complex problems into reliable delivery.',
       intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',
+      originEyebrow: 'ORIGIN STORY', originSignature: 'LUOCHEN COFFEE', originTitle: 'Even with failure written large across my life, I keep moving forward.', originQuote: 'I would rather carry the consequences of my own choices than hand my life over to someone else.', originParagraphs: [
+        'To me, the taste of coffee beans and nicotine feel related. My first online name was “Luochen Coffee.”',
+        'I have always been sensitive to the smell of nicotine. I encountered it following in my father’s footsteps, fighting sleep late at night, and talking freely around a dinner table. But I have always hated the smell of cigarettes.',
+        'I have never refused hardship. I can live on four hours of sleep a night, and I can swallow coffee grounds whole. None of that is the point. I want freedom in both body and mind.',
+        'I could not accept feeling exhausted in class on a fixed schedule, so one afternoon I decided not to go, even when calls came from my teachers and parents. They warned me seriously not to make a mess of things and end up unable to get into university.',
+        'I wanted to take control of my life. Even if I failed, I was willing to carry the consequences.',
+        'I went home, finished the lessons, and studied on my own, putting everything into mathematics. By the time I finished the math exam, I knew I was destined to fail it. I accepted that failure willingly.',
+        'I wanted larger opportunities: a big city, important people, and bigger storms. Eventually I left a remote county for bustling Hangzhou, but I kept learning along the way. I joined offline classes, organized offline events, and taught other people how to build Mini Programs.',
+        'I keep moving forward willingly, even with failure written large across my life. This is one of my life stories.',
+      ],
       timelineEyebrow: 'How the capability formed', timelineTitle: 'From finding my own opportunities to owning the outcome.', timelineHint: 'Select a point to see what the experience left behind',
       timeline: [
         { year: 'MIDDLE SCHOOL', label: 'Finding opportunities', title: 'Earned money on my own for the first time', text: 'I started selling things in middle school and earned money on my own for the first time. It showed me that an idea becomes a result only when it enters a real exchange.' },

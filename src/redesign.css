@@ -790,6 +790,49 @@ body {
 .about-hero > h1 { animation-delay: 80ms; }
 .about-hero > p { animation-delay: 160ms; }
 .about-hero > div > span { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.12em; }
+.about-origin-chapter {
+  padding: clamp(6rem, 12vw, 11rem) 0;
+  border-block: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(223, 113, 56, 0.08), transparent 42%);
+}
+.about-origin-heading {
+  grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr);
+  align-items: start;
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+.about-origin-heading h2 { max-width: 58rem; }
+.about-origin-heading blockquote {
+  max-width: 46rem;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  padding-left: 1.5rem;
+  border-left: 0.22rem solid var(--brand-warm);
+  color: var(--ink-soft);
+  font-size: clamp(1.15rem, 2vw, 1.75rem);
+  line-height: 1.45;
+}
+.about-origin-body {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr);
+  gap: clamp(2rem, 8vw, 9rem);
+}
+.about-origin-signature {
+  grid-column: 1;
+  color: var(--brand-warm);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  writing-mode: vertical-rl;
+}
+.about-origin-body > div,
+.about-origin-body > p { grid-column: 2; }
+.about-origin-body p {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.85;
+}
+.about-origin-body p + p { margin-top: 1.35rem; }
 .now-photo-chapter {
   padding: clamp(6rem, 12vw, 11rem) 0;
   border-bottom: 1px solid var(--line);
@@ -1196,6 +1239,11 @@ body {
   .now-photo-gallery { grid-template-columns: 1fr; margin-top: 3rem; }
   .now-photo-gallery figcaption { align-items: flex-start; flex-direction: column; gap: 0.4rem; }
   .now-photo-gallery figcaption span { text-align: left; }
+  .about-origin-heading,
+  .about-origin-body { grid-template-columns: 1fr; }
+  .about-origin-signature { writing-mode: initial; }
+  .about-origin-body > div,
+  .about-origin-body > p { grid-column: 1; }
   .about-principles,
   .about-contact-lead { grid-template-columns: 1fr; }
   .about-timeline-chapter .chapter-heading { grid-template-columns: 1fr; }
