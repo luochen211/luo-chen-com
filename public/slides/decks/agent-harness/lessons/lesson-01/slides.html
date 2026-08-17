@@ -6,13 +6,13 @@
       <div class="r">01 / 10 · 25 MIN</div>
     </div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">USEFULNESS · RISK · EVIDENCE · ACTION</div>
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">USEFULNESS · TASK · RISK · AGENT</div>
       <div style="align-self:center">
         <div class="t-meta" style="color:rgba(255,255,255,.7);margin-bottom:2vh">第 01 课 · 为什么需要 Agent</div>
-        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">为什么“推荐几款耳机”<br/>还不够？</h1>
+        <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.5vw,13.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">为什么要有 Agent？</h1>
       </div>
       <div data-anim="bottom" style="display:grid;grid-template-columns:8fr 4fr;gap:3vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;align-items:end">
-        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">用户要的是少买错一次，不是一段听起来合理的话。先看普通回答为什么不够，再看 Agent 如何观察、行动和验证。</div>
+        <div class="lead" style="color:rgba(255,255,255,.88);font-weight:300">因为有些任务不是写一段答案，而是要在变化的环境里查信息、做动作，并确认结果真的达标。</div>
         <div class="t-meta" style="color:rgba(255,255,255,.62);text-align:right">← → 翻页 · B 静态 · ESC 索引</div>
       </div>
     </div>
@@ -23,13 +23,13 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">Opening · The real learning gap</div><div class="r">02 / 10</div></div>
     <div style="flex:1;display:grid;grid-template-columns:3fr 9fr;align-items:center;gap:3vw">
-      <div data-anim="left" class="t-meta" style="align-self:start;padding-top:2vh">THE GAP</div>
+      <div data-anim="left" class="t-meta" style="align-self:start;padding-top:2vh">WHY AGENT</div>
       <div data-anim="title">
-        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(6.5vw,11.4vh);line-height:1.02;letter-spacing:-.035em">知道很多名词，<br/>不等于<span style="color:var(--accent)">看懂系统</span>。</h2>
-        <p class="lead" style="max-width:42ch;margin-top:4vh;color:var(--text-secondary)">真正困难的不是记住 RAG、Memory、Skill、Tool，而是知道它们何时出现、彼此怎样连接、出错由谁负责。</p>
+        <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(6.5vw,11.4vh);line-height:1.02;letter-spacing:-.035em">用户不是想听推荐，<br/>而是想<span style="color:var(--accent)">少买错一次</span>。</h2>
+        <p class="lead" style="max-width:42ch;margin-top:4vh;color:var(--text-secondary)">“推荐几款耳机”只是输出；真正的任务是把预算、佩戴、降噪、双设备和当前商品事实放在一起，完成一次可验收的选择。</p>
       </div>
     </div>
-    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">本课只建立一张可用于判断与设计的最小地图</div>
+    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">先定义要交付的结果，再决定要不要引入 Agent</div>
   </div>
 </section>
 
@@ -37,19 +37,19 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">Learning Path · Five Questions</div><div class="r">03 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">ONE PROBLEM · FIVE NECESSARY LAYERS</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.8vw,10.2vh);line-height:1;letter-spacing:-.03em">Agent 能行动，<br/>为什么还要后面四课？</h2>
+      <div class="t-meta">WHEN CHAT STOPS</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.8vw,10.2vh);line-height:1;letter-spacing:-.03em">当任务有这三个特征，<br/>普通回答就不够了</h2>
     </div>
     <div class="timeline-h" data-anim="up">
       <div class="tl-row">
-        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">Agent</span><span class="desc">让系统能行动</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">Harness</span><span class="desc">让行动可控</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">State</span><span class="desc">让信息不失真</span></div></div>
-        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">Capability</span><span class="desc">让分工有收益</span></div></div>
-        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">Evaluation</span><span class="desc">证明真的变好</span></div></div>
+        <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">环境会变化</span><span class="desc">价格 · 库存 · 物流</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">约束不能漏</span><span class="desc">预算 · 佩戴 · 权限</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">动作要接力</span><span class="desc">查 · 筛 · 确认</span></div></div>
+        <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">结果有门槛</span><span class="desc">不只是说得像</span></div></div>
+        <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">这才需要 Agent</span><span class="desc">观察 → 行动 → 验证</span></div></div>
       </div>
     </div>
-    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">Agent 负责把事情往前推进；后四课负责让行动可控、信息可靠、协作有收益、结果可证明</div>
+    <div class="t-meta" style="border-top:1px solid var(--border-subtle);padding-top:1.5vh">没有这些条件，普通回答更简单；有这些条件，Agent 才有存在价值</div>
   </div>
 </section>
 
@@ -57,8 +57,8 @@
   <div class="canvas-card">
     <div class="chrome-min"><div class="l">Project Brief · Shopping Assistant</div><div class="r">04 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">CASE A · A DECISION WITH A REAL COST</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1.02;letter-spacing:-.03em">500 元通勤耳机助手</h2>
+      <div class="t-meta">CASE A · THE OUTCOME HAS A REAL COST</div>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:1.02;letter-spacing:-.03em">先把“完成”说清楚：500 元通勤耳机</h2>
     </div>
     <div class="sub-grid-3-2" data-anim="up">
       <article data-anim="card" class="sub-card"><span class="nb-corner">01</span><i data-lucide="wallet"></i><h3 class="ttl">预算</h3><p class="desc">最终支付价不超过 500 元。</p></article>
@@ -76,7 +76,7 @@
     <div class="chrome-min"><div class="l">Answering vs Completing</div><div class="r">05 / 10</div></div>
     <div style="display:flex;flex-direction:column;gap:1.4vh">
       <div class="t-meta">THE FIRST DISTINCTION</div>
-      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">Agent 能行动，不等于达到预期</h2>
+      <h2 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.4vw,9.5vh);line-height:1;letter-spacing:-.03em;color:var(--paper)">Agent 解决的是“推进任务”，<br/>不是“自动正确”</h2>
     </div>
     <div class="duo-compare" data-anim="up">
       <div class="col">
