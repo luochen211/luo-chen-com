@@ -358,8 +358,9 @@ blockquote {
 .test-status.running { color: var(--blue); }
 .test-status.pass { color: var(--green); }
 .test-status.fail { color: var(--red); }
-.iteration-table td:first-child { min-width: 142px; }
+.iteration-table td:first-child { min-width: 188px; }
 .iteration-table td:first-child strong { display: block; margin-top: 4px; font-size: 10px; }
+.case-input { display: block; margin-top: 6px; color: var(--muted); font-size: 9px; line-height: 1.45; }
 .eval-id { display: block; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .04em; }
 .prompt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
 .prompt-card { min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; }
@@ -368,6 +369,10 @@ blockquote {
 .prompt-card > span { display: block; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .06em; }
 .prompt-card > strong { display: block; font-size: 11px; margin-top: 5px; }
 .prompt-card pre { margin: 8px 0 0; min-height: 96px; white-space: pre-wrap; color: #475467; font: 10px/1.5 var(--sans); }
+.case-contract { margin-top: 9px; padding: 11px 12px; background: #172033; color: white; border-radius: 8px; }
+.case-contract span { display: block; color: #aeb8ce; font-size: 9px; font-weight: 700; letter-spacing: .08em; }
+.case-contract strong { display: block; margin-top: 5px; font-size: 12px; }
+.case-contract p { margin: 5px 0 0; color: #c4cada; font-size: 10px; line-height: 1.5; }
 .eval-note, .a2a-handoff { margin-top: 9px; padding: 10px 12px; background: var(--blue-soft); color: #173b93; border-radius: 7px; font-size: 10px; line-height: 1.5; }
 .a2a-handoff { background: var(--orange-soft); color: #71400c; }
 .a2a-trace-panel { margin-top: 9px; border: 1px solid var(--line); border-radius: 8px; min-height: 150px; max-height: 280px; overflow-y: auto; }

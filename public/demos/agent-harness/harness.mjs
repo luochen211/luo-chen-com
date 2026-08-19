@@ -338,8 +338,8 @@ export async function runSelfIteration({ onStep = () => {}, delay = 180 } = {}) 
   ));
   await emit(iterationStep(
     "Evaluator Agent",
-    "Evaluator · 运行固定评测集",
-    `读取 ${iterationEvalCases.length} 条参数化任务，分别检查理解、行动、证据与完成。`
+    "Evaluator · 运行固定 Case 集",
+    `读取 ${iterationEvalCases.length} 个固定 Case，分别检查理解、行动、证据与完成。`
   ));
   const baseline = await evaluateAgentPolicy(iterationPrompts.baseline.version);
   const failures = baseline.cases.filter((item) => !item.pass);
@@ -355,7 +355,7 @@ export async function runSelfIteration({ onStep = () => {}, delay = 180 } = {}) 
     protocol: "A2A",
     from: "Evaluator Agent",
     to: "Reviewer Agent",
-    goal: "提升固定评测集得分且不降低安全门禁",
+    goal: "提升固定 Case 通过数且不降低安全断言",
     failures: failures.map((item) => ({ id: item.id, evidence: item.assertion }))
   };
   await emit(iterationStep(
@@ -383,7 +383,7 @@ export async function runSelfIteration({ onStep = () => {}, delay = 180 } = {}) 
   await emit(iterationStep(
     "Evaluator Agent",
     `Evaluator · v2 回归 ${revised.passed}/${revised.total}`,
-    `使用同一批测试重跑；VERIFY ${revised.metrics.VERIFY.passed}/${revised.metrics.VERIFY.total}，ACT ${revised.metrics.ACT.passed}/${revised.metrics.ACT.total}。`
+    `使用同一批 Case 重跑；VERIFY ${revised.metrics.VERIFY.passed}/${revised.metrics.VERIFY.total}，ACT ${revised.metrics.ACT.passed}/${revised.metrics.ACT.total}。`
   ));
   await emit(iterationStep(
     "Harness Gate",

@@ -159,30 +159,30 @@ const lessons = [
     id: "evaluation",
     course: "第 05 课",
     deck: "lesson-05",
-    title: "没有评测，谁能证明它变好了？",
+    title: "没有 Case，谁能证明它变好了？",
     slides: "02—06",
     startSlide: 2,
     time: "20 min",
-    objective: "如果没有固定评测集和回归门禁，v2 只要自称变好就可能把坏规则写回生产；评测要把失败变成证据，再决定修订是否真的减少了错误。",
+    objective: "如果没有固定 Case，评测就只剩一个模糊总分；每个 Case 都要固定输入、环境、期望行为和验收断言，才能知道 v2 到底修掉了哪个错误后果。",
     concepts: [
-      ["没有固定评测集", "每次换一批题，分数变化就无法说明系统真的变好了。"],
+      ["没有 Case 输入", "每次任务都不一样，分数变化无法说明系统真的变好了。"],
+      ["没有 Case 断言", "Evaluator 只能说“看起来不错”，无法判断真假链接或错配商品是否被拦住。"],
       ["没有失败证据", "Reviewer 只能凭感觉改 Prompt，找不到是哪条规则导致了错误。"],
-      ["没有 A2A Handoff", "失败会停在某个 Agent 手里，Builder 收不到可执行的修订依据。"],
       ["没有 Regression Gate", "新版本即使伤害安全约束，也可能因为一次漂亮 Demo 被接受。"]
     ],
-    boundary: "如果没有固定评测和 Harness 门禁，Agent 自己说“我变好了”就足以把坏版本放行；自迭代必须经过失败证据、A2A 交接、Prompt 修订和同一评测集回归。",
+    boundary: "如果没有固定 Case 和验收断言，Agent 自己说“我变好了”就足以把坏版本放行；自迭代必须在同一批 Case 上重跑，并且每个后果都有可判定的 PASS/FAIL。",
     slideMap: [
-      ["02—03", "如果没有可诊断的评测对象，失败只能变成一句模糊的“不好用”。"],
-      ["04", "如果不重复跑同一批任务，提升和回退就无法区分。"],
-      ["05—06", "如果没有 A2A 交接和回归门禁，修订就不能安全写回下一轮。"]
+      ["02—03", "如果没有 Case，失败只能变成一句模糊的“不好用”。"],
+      ["04", "如果没有输入、环境和断言，PASS/FAIL 就没有依据。"],
+      ["05—06", "如果不重复跑同一批 Case，修订就不能安全写回下一轮。"]
     ],
-    experiment: "如果没有门禁，谁来阻止坏版本？",
-    instruction: "先跑同一批固定任务；看 v1 的失败如何交给 Reviewer，再看 v2 为什么必须经过回归门禁才能被接受。",
+    experiment: "靠 Case，怎么测评？",
+    instruction: "先查看每个 Case 要拦住的后果，再运行同一批 Case；看 v1 的失败如何交给 Reviewer，最后由 PASS/FAIL 决定 v2 能不能接受。",
     mode: "evaluation",
-    question: "什么条件下，A2A 自迭代才算真的改善了系统？",
-    answers: ["Reviewer 说 Prompt 更完整了", "固定评测集得分提升，且安全与其他指标没有回退", "参与的 Agent 数量变多"],
+    question: "一个技术 Case 什么时候算 PASS？",
+    answers: ["Agent 自己说结果更好了", "输入和环境固定，期望行为与验收断言都满足", "参与的 Agent 数量变多"],
     correct: 1,
-    feedback: "迭代的证据来自同一评测集上的可重复提升；Prompt 文案变长、角色变多或 Agent 自评都不能替代回归门禁。"
+    feedback: "Case 把后果变成可判定的断言；同一批 Case 重跑后，只有 PASS 增加且安全断言不回退，才说明系统真的改善。"
   }
 ];
 
@@ -611,22 +611,23 @@ async function runRoute() {
 function renderEvaluation(workspace) {
   workspace.innerHTML = `
     <div class="usefulness-contract"><span>如果缺少核验</span><strong>可能是假链接；即使链接是真的，也可能超预算、违背禁忌或不符合使用场景。</strong></div>
+    <div class="case-contract"><span>TECHNICAL CASE = 4 个固定部分</span><strong>输入 · 环境 / 故障 · 期望行为 · 验收断言</strong><p>每个 Case 都只拦一个可观察后果；PASS 不是 Agent 自评，而是断言真的成立。</p></div>
     <div class="lab-toolbar">
-      <div style="flex:1;font-size:11px;color:#667085">如果没有固定评测和回归门禁，坏 Prompt 也可能被写回：6 条任务 · 3 个能力分组 · 1 个门禁</div>
-      <button id="runEvaluation" class="run-button" type="button">运行 v2 评测</button>
-      <button id="runIteration" class="step-button" type="button">运行 A2A 自迭代</button>
+      <div style="flex:1;font-size:11px;color:#667085">如果没有固定 Case 和回归门禁，坏 Prompt 也可能被写回：6 个 Case · 3 个能力分组 · 1 个门禁</div>
+      <button id="runEvaluation" class="run-button" type="button">运行 6 个 Case</button>
+      <button id="runIteration" class="step-button" type="button">让 Case 驱动自迭代</button>
     </div>
     <div class="prompt-grid">
       <article class="prompt-card baseline"><span>BASELINE PROMPT</span><strong>${iterationPrompts.baseline.label}</strong><pre>${iterationPrompts.baseline.text}</pre></article>
       <article class="prompt-card revised"><span>PATCHED PROMPT</span><strong>${iterationPrompts.revised.label}</strong><pre>${iterationPrompts.revised.text}</pre></article>
     </div>
-    <div class="eval-note" id="policyRunSummary">先运行 v2 评测，或查看一次完整的 A2A 交接与回归。</div>
+    <div class="eval-note" id="policyRunSummary">先运行 6 个 Case，或查看一次由失败 Case 驱动的 A2A 修订。</div>
     <table class="test-table iteration-table" style="margin-top:10px">
-      <thead><tr><th>评测任务</th><th>可验证断言</th><th>结果</th></tr></thead>
-      <tbody>${iterationEvalCases.map((item, index) => `<tr data-eval-id="${item.id}"><td><span class="eval-id">0${index + 1} · ${item.dimension}</span><strong>${item.title}</strong></td><td>${item.assertion}</td><td class="test-status" data-test="${item.id}">待运行</td></tr>`).join("")}</tbody>
+      <thead><tr><th>CASE / 输入</th><th>要拦住的后果 / 断言</th><th>结果</th></tr></thead>
+      <tbody>${iterationEvalCases.map((item, index) => `<tr data-eval-id="${item.id}"><td><span class="eval-id">0${index + 1} · ${item.dimension}</span><strong>${item.title}</strong><small class="case-input">输入：${item.prompt}</small></td><td>${item.assertion}</td><td class="test-status" data-test="${item.id}">待运行</td></tr>`).join("")}</tbody>
     </table>
-    <div class="a2a-handoff" id="a2aHandoff">A2A 交接包尚未生成：Evaluator 会把失败 ID、证据与回归门槛交给 Reviewer。</div>
-    <div class="trace-panel a2a-trace-panel"><div class="trace-empty" id="a2aTraceEmpty">运行自迭代后，这里会显示 Builder、Evaluator、Reviewer 与 Harness Gate 的交接轨迹。</div><ol class="trace-list" id="a2aTraceList"></ol></div>
+    <div class="a2a-handoff" id="a2aHandoff">A2A 交接包尚未生成：Evaluator 会把失败 Case、证据与回归门槛交给 Reviewer。</div>
+    <div class="trace-panel a2a-trace-panel"><div class="trace-empty" id="a2aTraceEmpty">让 Case 驱动自迭代后，这里会显示 Builder、Evaluator、Reviewer 与 Harness Gate 如何交接。</div><ol class="trace-list" id="a2aTraceList"></ol></div>
     <div class="eval-summary">
       <div><span>UNDERSTAND</span><strong id="understandScore">—</strong></div>
       <div><span>ACT</span><strong id="actScore">—</strong></div>
@@ -654,7 +655,7 @@ function renderPolicyReport(report, label = "v2") {
   $("#actScore").textContent = formatMetric(report.metrics.ACT);
   $("#verifyScore").textContent = formatMetric(report.metrics.VERIFY);
   $("#completeScore").textContent = formatMetric(report.metrics.COMPLETE);
-  $("#policyRunSummary").textContent = `${label}：${report.passed}/${report.total} 通过 · 安全门禁 ${report.safetyPass ? "通过" : "失败"} · 同一评测集可用于下一轮回归。`;
+  $("#policyRunSummary").textContent = `${label}：${report.passed}/${report.total} 个 Case 通过 · 安全断言 ${report.safetyPass ? "通过" : "失败"} · 同一批 Case 可用于下一轮回归。`;
 }
 
 async function runEvaluation() {
@@ -672,7 +673,7 @@ async function runA2ASelfIteration() {
   $("#runEvaluation").disabled = true;
   $("#runIteration").disabled = true;
   $("#a2aTraceList").innerHTML = "";
-  $("#a2aTraceEmpty").textContent = "A2A 轨迹运行中：先看 v1 的失败，再看 Prompt Patch 与 v2 回归。";
+  $("#a2aTraceEmpty").textContent = "A2A 轨迹运行中：先看失败 Case，再看 Prompt Patch 与同一批 Case 回归。";
   $("#a2aHandoff").textContent = "正在生成 A2A 交接包……";
   setStatus("A2A 自迭代中", "running");
   const iteration = await runSelfIteration({

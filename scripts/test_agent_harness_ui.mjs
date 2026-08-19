@@ -17,12 +17,12 @@ await page.locator(".journey-product").nth(1).click();
 if (!(await page.locator("#journeyEvidence").innerText()).includes("为什么选它")) {
   throw new Error("product evidence interaction did not render");
 }
-await page.getByRole("button", { name: /没有评测.*谁能证明/ }).click();
-if (await page.locator("#experimentTitle").innerText() !== "如果没有门禁，谁来阻止坏版本？") {
+await page.getByRole("button", { name: /没有 Case.*谁能证明/ }).click();
+if (await page.locator("#experimentTitle").innerText() !== "靠 Case，怎么测评？") {
   throw new Error("lesson 05 did not render");
 }
 
-await page.getByRole("button", { name: "运行 A2A 自迭代" }).click();
+await page.getByRole("button", { name: "让 Case 驱动自迭代" }).click();
 await page.locator("#policyRunSummary").waitFor({ state: "visible", timeout: 10000 });
 await page.waitForFunction(() => document.querySelector("#policyRunSummary")?.textContent.includes("v2 accepted"));
 
