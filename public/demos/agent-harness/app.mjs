@@ -29,8 +29,8 @@ const lessons = [
       ["04", "固定完成条件：不超预算、不违背禁忌、有证据。"],
       ["05", "说明 Agent 能推进任务，但不保证自动正确。"]
     ],
-    experiment: "边界判断：回答还是完成",
-    instruction: "点击三个任务，判断它们只需要生成回答，还是需要 Agent 持续行动。",
+    experiment: "一次真实耳机选择",
+    instruction: "先选你要的结果，再让系统推进一次购买任务。只看 Context、Tool 和 Tool Result 怎样改变结论。",
     mode: "boundary",
     question: "为什么“推荐 A、B、C”不能证明用户已经做出可靠购买决策？",
     answers: ["因为答案不够长", "因为没有验证实时事实与硬约束", "因为必须使用多 Agent"],
@@ -198,7 +198,7 @@ const classificationItems = [
 const demoGuides = {
   boundary: {
     proof: "一次流畅回答，不等于任务已经完成。",
-    cues: ["任务是否依赖外部事实", "结果是否有完成条件", "系统是否需要继续行动"],
+    cues: ["01 Context：当前任务与约束出现", "02 Tool：执行外部商品查询", "03 Tool Result：结果写回下一轮"],
     takeaway: "Agent 的价值不在多说几轮，而在根据环境反馈持续行动，直到完成条件被满足。"
   },
   trace: {
@@ -296,26 +296,136 @@ function renderExperiment(mode) {
 }
 
 function renderBoundary(workspace) {
-  const cases = [
-    ["解释 ANC 是什么", "只需要基于稳定知识进行说明。", "回答", "没有外部动作，也没有随环境变化的完成条件。"],
-    ["推荐 500 元内耳机", "要求满足预算，但没有要求核验实时库存。", "视条件而定", "如果只是给选购思路，可以回答；如果承诺“可以买”，就必须查询实时事实。"],
-    ["找到符合条件且有证据的耳机", "要求预算、佩戴形式和关键规格都满足。", "Agent", "需要查、筛、证、答，并根据工具反馈持续调整。"]
-  ];
+  const taskPrompt = scenarios[0].prompt;
   workspace.innerHTML = `
-    <div class="case-grid">${cases.map((item, index) => `
-      <button class="case-button" type="button" data-case="${index}">
-        <span>案例 0${index + 1}</span><strong>${item[0]}</strong><p>${item[1]}</p>
-      </button>`).join("")}
-    </div>
-    <div id="caseResult" class="case-result">点击一个案例，先判断它需要“回答”还是“完成”。</div>
+    <section class="task-journey" id="taskJourney" data-phase="choice">
+      <div class="journey-topline">
+        <span>一个真实任务</span>
+        <strong id="journeyProgress">先决定你要什么结果</strong>
+      </div>
+      <div class="journey-intro">
+        <div>
+          <span class="journey-kicker">500 元通勤耳机</span>
+          <h3>你需要的是一句解释，还是一个能买的结果？</h3>
+          <p>同样是“推荐耳机”，前者可以直接回答；后者必须把约束、外部事实和完成条件都跑完。</p>
+        </div>
+        <div class="journey-choice-list">
+          <button class="journey-choice" type="button" data-choice="answer">
+            <span>01</span><strong>只听懂 ANC</strong><small>稳定知识，回答就结束</small>
+          </button>
+          <button class="journey-choice" type="button" data-choice="agent">
+            <span>02</span><strong>买到不踩坑</strong><small>预算、场景、证据都要兑现</small>
+          </button>
+        </div>
+      </div>
+      <div class="journey-panel" id="journeyPanel" aria-live="polite">
+        <div class="journey-placeholder">选一个结果，任务才会开始。</div>
+      </div>
+    </section>
   `;
-  $$(".case-button").forEach((button) => button.addEventListener("click", () => {
-    $$(".case-button").forEach((item) => item.classList.remove("selected"));
+
+  $$(".journey-choice").forEach((button) => button.addEventListener("click", () => {
+    $$(".journey-choice").forEach((item) => item.classList.remove("selected"));
     button.classList.add("selected");
-    const item = cases[Number(button.dataset.case)];
-    $("#caseResult").innerHTML = `<strong>判断：${item[2]}</strong><br>${item[3]}`;
-    setStatus("已完成判断", "success");
+    if (button.dataset.choice === "answer") renderAnswerPath();
+    else renderContextPath(taskPrompt);
   }));
+
+  function renderAnswerPath() {
+    $("#taskJourney").dataset.phase = "answer";
+    $("#journeyProgress").textContent = "回答已足够";
+    $("#journeyPanel").innerHTML = `
+      <div class="journey-answer">
+        <div class="journey-phase-label"><span>完成</span><strong>这件事不需要 Agent</strong></div>
+        <p>解释 ANC 只依赖稳定知识，没有实时商品、外部动作或必须兑现的完成条件。</p>
+        <div class="answer-mark"><span>✓</span><strong>生成回答 → 任务结束</strong></div>
+        <button class="journey-link" type="button" id="tryAgentPath">换成“买到不踩坑” →</button>
+      </div>
+    `;
+    $("#tryAgentPath").addEventListener("click", () => {
+      $(".journey-choice[data-choice=answer]").classList.remove("selected");
+      $(".journey-choice[data-choice=agent]").classList.add("selected");
+      renderContextPath(taskPrompt);
+    });
+    setStatus("回答已足够", "success");
+  }
+
+  function renderContextPath(prompt) {
+    $("#taskJourney").dataset.phase = "context";
+    $("#journeyProgress").textContent = "任务还没有完成";
+    $("#journeyPanel").innerHTML = `
+      <div class="journey-phase-head">
+        <div><span>01 Context</span><strong>先把需求变成可验收的任务</strong></div>
+        <em>已生成</em>
+      </div>
+      <div class="journey-request"><span>用户说</span><strong>${prompt}</strong></div>
+      <div class="constraint-line" aria-label="当前任务约束">
+        <span>预算 ≤ ¥500</span><span>每天地铁 40 分钟</span><span>降噪强</span><span>通话清楚</span>
+      </div>
+      <div class="journey-gap"><strong>现在还不能下结论</strong><span>这些是约束，不是当前商品事实。</span></div>
+      <button class="journey-action" type="button" id="journeyQuery">02 Tool · 去查商品信息 <span>→</span></button>
+    `;
+    $("#journeyQuery").addEventListener("click", () => runJourneyTool(prompt));
+    setStatus("等待外部信息", "running");
+  }
+
+  async function runJourneyTool(prompt) {
+    const panel = $("#journeyPanel");
+    $("#taskJourney").dataset.phase = "tool";
+    $("#journeyProgress").textContent = "正在执行外部动作";
+    panel.innerHTML = `
+      <div class="journey-phase-head">
+        <div><span>02 Tool</span><strong>去商品系统查一次</strong></div>
+        <em class="is-running">查询中</em>
+      </div>
+      <div class="tool-live"><span class="tool-pulse"></span><code>search_products</code><span>按预算、通勤、降噪和通话筛选</span></div>
+      <div class="journey-gap"><strong>Agent 暂时不回答</strong><span>它先去拿会变化的外部事实。</span></div>
+    `;
+    setStatus("Tool 查询中", "running");
+    harness.reset();
+    const result = await harness.run(prompt);
+    await wait(420);
+    renderToolResult(result);
+  }
+
+  function renderToolResult(result) {
+    const products = result.products || [];
+    const first = products[0];
+    $("#taskJourney").dataset.phase = "result";
+    $("#journeyProgress").textContent = "完成条件已满足";
+    $("#journeyPanel").innerHTML = `
+      <div class="journey-phase-head">
+        <div><span>03 Tool Result</span><strong>结果写回下一轮判断</strong></div>
+        <em class="is-done">已返回 ${products.length} 件</em>
+      </div>
+      <div class="tool-result-line"><strong>Tool Result</strong><span>返回结构化商品记录，下一轮 Context 可以继续判断。</span></div>
+      <div class="journey-products" role="list" aria-label="商品结果">
+        ${products.slice(0, 3).map((product, index) => `
+          <button class="journey-product ${index === 0 ? "selected" : ""}" type="button" data-product="${product.id}" role="listitem">
+            <span>0${index + 1}</span><strong>${product.brand} ${product.name}</strong><b>¥${product.price}</b><small>${product.anc}dB 降噪 · 通话 ${product.mic}/10</small>
+          </button>`).join("")}
+      </div>
+      <div class="journey-evidence" id="journeyEvidence">
+        <div><span>为什么首选</span><strong>${first ? first.brand + " " + first.name : "没有符合项"}</strong></div>
+        <p>${first ? first.evidence[0] : "当前约束下没有可验证的商品结果。"}</p>
+        <small>${first ? `代价：${first.tradeoff}` : "系统没有为了给出答案而忽略硬约束。"}</small>
+      </div>
+      <div class="journey-completion"><span>完成条件</span><strong>3 / 3</strong><small>预算 · 场景 · 证据</small></div>
+      <div class="journey-finish"><strong>现在才可以回答“选哪一副”</strong><span>不是因为模型多说了一轮，而是因为外部结果回来了。</span></div>
+    `;
+    $$(".journey-product").forEach((button) => button.addEventListener("click", () => {
+      $$(".journey-product").forEach((item) => item.classList.remove("selected"));
+      button.classList.add("selected");
+      const product = products.find((item) => item.id === button.dataset.product);
+      if (!product) return;
+      $("#journeyEvidence").innerHTML = `
+        <div><span>为什么选它</span><strong>${product.brand} ${product.name}</strong></div>
+        <p>${product.evidence[0]}</p>
+        <small>代价：${product.tradeoff}</small>
+      `;
+    }));
+    setStatus("任务完成", "success");
+  }
 }
 
 function renderTraceLab(workspace) {
