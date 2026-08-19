@@ -82,8 +82,8 @@ function buildRecommendation(items, state) {
   const [best, second] = items;
   if (!best) {
     return {
-      title: "当前约束下没有合适商品",
-      body: "可以提高预算，或放宽佩戴形式与降噪要求后重新搜索。",
+      title: "没有合适商品，继续推荐会造成买错",
+      body: "当前约束下没有被证据支持的候选；可以提高预算，或放宽佩戴形式与降噪要求后重新搜索。",
       reasons: [],
       caveat: "系统没有为了给出答案而忽略硬约束。"
     };
@@ -162,10 +162,10 @@ export class ShoppingHarness {
     ));
 
     if (state.intent === "AFTER_SALES") {
-      await emit(traceStep("guardrail", "能力边界", "当前 Demo 只覆盖购买前决策，售后任务转人工。", "warning", 6));
+      await emit(traceStep("guardrail", "能力边界", "如果购买前 Agent 直接查售后订单，就会在错误权限下继续判断；当前任务转人工。", "warning", 6));
       return {
         kind: "handoff",
-        message: "当前互动只处理购买前决策。售后问题需要订单、商家规则等实时信息，任务会转交给售后流程。",
+        message: "如果购买前 Agent 直接处理售后，就可能在没有订单和商家规则的情况下编造结论；任务转交给售后流程。",
         trace,
         state,
         totalDuration: Math.round(performance.now() - started)
@@ -174,10 +174,10 @@ export class ShoppingHarness {
 
     if (!state.budget && state.intent !== "COMPARE") {
       this.memory = { ...this.memory, ...state };
-      await emit(traceStep("context", "参数检查", "缺少硬约束：预算", "waiting", 9));
+      await emit(traceStep("context", "参数检查", "如果没有预算这个硬约束，后续推荐会失真；先停止搜索并追问。", "waiting", 9));
       return {
         kind: "clarify",
-        message: "为了避免推荐一堆不合适的商品，我还需要知道：你的预算上限大约是多少？",
+        message: "如果现在继续推荐，真实商品也可能不符合你的承受范围；请先告诉我预算上限。",
         trace,
         state,
         missing: ["budget"],
@@ -190,16 +190,16 @@ export class ShoppingHarness {
     await emit(traceStep(
       "context",
       "上下文编译",
-      `预算 ${state.budget ? `¥${state.budget}` : "未限制"} · ${state.scene || "通用场景"} · ${state.priorities.map(labelPriority).join("/")}`,
+      `如果这些约束不写入 Context，下一轮就会丢失：预算 ${state.budget ? `¥${state.budget}` : "未限制"} · ${state.scene || "通用场景"} · ${state.priorities.map(labelPriority).join("/")}`,
       "success",
       12
     ));
 
     if (state.intent === "COMPARE" && state.named.length >= 2) {
-      await emit(traceStep("tool", "compare_products", `输入 ${state.named.length} 个商品 ID`, "running", 0));
+      await emit(traceStep("tool", "compare_products", `如果不读取指定商品的真实记录，对比结论就只能靠猜；输入 ${state.named.length} 个商品 ID`, "running", 0));
       const compared = compareProducts(state.named);
-      await emit(traceStep("tool", "工具返回", `返回 ${compared.length} 条结构化商品记录`, "success", 44));
-      await emit(traceStep("rag", "证据读取", `读取 ${compared.length * 3} 条商品说明与实测摘要`, "success", 31));
+      await emit(traceStep("tool", "工具返回", `返回 ${compared.length} 条结构化商品记录，先确认商品确实存在`, "success", 44));
+      await emit(traceStep("rag", "证据读取", `读取 ${compared.length * 3} 条商品说明与实测摘要，否则真实链接也不代表符合需求`, "success", 31));
       return {
         kind: "result",
         message: buildRecommendation(
@@ -213,17 +213,17 @@ export class ShoppingHarness {
       };
     }
 
-    await emit(traceStep("tool", "search_products", "按预算、场景、偏好生成查询参数", "running", 0));
+    await emit(traceStep("tool", "search_products", "按预算、场景、偏好生成查询参数，否则搜索结果会从错误需求出发", "running", 0));
     const toolWillFail = this.failNextTool;
     if (toolWillFail) {
       this.failNextTool = false;
-      await emit(traceStep("tool", "工具超时", "商品服务在 800ms 内未响应", "error", 802));
-      await emit(traceStep("recovery", "降级与重试", "缩小返回字段并进行第 1 次重试", "warning", 35));
+      await emit(traceStep("tool", "工具超时", "商品服务在 800ms 内未响应；没有 Harness，Agent 仍可能用猜测填出链接", "error", 802));
+      await emit(traceStep("recovery", "降级与重试", "有限重试并保留失败状态，避免假的或错配的推荐进入结果", "warning", 35));
     }
     const found = searchProducts(state);
-    await emit(traceStep("tool", "工具返回", `命中 ${found.length} 件预算内商品`, "success", toolWillFail ? 61 : 47));
-    await emit(traceStep("rag", "证据读取", `从商品知识库读取 ${found.slice(0, 3).reduce((sum, item) => sum + item.evidence.length, 0)} 条依据`, "success", 28));
-    await emit(traceStep("ranker", "候选排序", `按硬约束过滤，再计算 ${state.priorities.map(labelPriority).join("/") || "综合"}匹配度`, "success", 21));
+    await emit(traceStep("tool", "工具返回", `命中 ${found.length} 件预算内商品；先确认返回的是实际记录，不是假链接`, "success", toolWillFail ? 61 : 47));
+    await emit(traceStep("rag", "证据读取", `从商品知识库读取 ${found.slice(0, 3).reduce((sum, item) => sum + item.evidence.length, 0)} 条依据，否则真实商品也可能不符合需求`, "success", 28));
+    await emit(traceStep("ranker", "候选排序", `按硬约束过滤，再计算 ${state.priorities.map(labelPriority).join("/") || "综合"}匹配度；真实链接不等于适合用户`, "success", 21));
     const top = found.slice(0, 3);
 
     return {

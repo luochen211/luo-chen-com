@@ -10,29 +10,29 @@ const lessons = [
     id: "start",
     course: "第 01 课",
     deck: "lesson-01",
-    title: "为什么需要 Agent",
+    title: "没有 Agent，会买错什么？",
     slides: "02—05",
     startSlide: 2,
     time: "25 min",
-    objective: "回答“为什么要有 Agent”：当任务面对变化环境、多个约束、连续动作和完成条件时，单次回答不够；Agent 让系统可以持续推进，但不保证结果正确。",
+    objective: "如果只输出一段推荐，系统不会继续核对实时商品和完成条件，用户就可能在预算、佩戴或通话上买错；Agent 的必要性，是让任务在结果出来前继续推进。",
     concepts: [
-      ["单次回答", "模型基于当前信息生成内容，输出文本后任务就结束。"],
-      ["真实任务", "任务面对变化环境、多个约束、连续动作和明确的完成条件。"],
-      ["Agent", "系统根据环境反馈继续观察、行动和调整，尝试满足完成条件。"],
-      ["有用标准", "不是推荐更多商品，而是降低买错概率：预算不超、明确禁忌不违背、理由能回指数据。"],
-      ["可靠边界", "能行动不等于达到预期；必须用外部约束、正确的信息和可重复评测继续检验。"]
+      ["没有外部事实", "模型只能用当前看到的内容，可能把过时信息或猜测当成推荐依据。"],
+      ["没有完成条件", "系统只能生成“看起来合理”的答案，不知道预算和禁忌是否真的满足。"],
+      ["没有持续行动", "第一次回答结束后，缺口不会自动补齐；查询、筛选和回退都不会继续。"],
+      ["没有有用标准", "推荐得再多，也无法确认买错概率下降了：预算、禁忌和证据必须能验收。"],
+      ["没有可靠边界", "能行动不等于达成结果；没有外部约束和评测，系统可能把自信误当成正确。"]
     ],
-    boundary: "如果只是解释 ANC，一段回答就够；如果要在预算、佩戴、降噪、双设备和当前商品事实都满足时选到耳机，任务就需要查、筛、确认和回退。Agent 负责推进这个过程，但不能靠自我声明证明结果正确。实时库存不在这个本地 Demo 的证明范围内。",
+    boundary: "如果只是解释 ANC，一段回答就够；但如果没有查询、筛选、确认和回退，预算、佩戴、降噪和当前商品事实就无法同时兑现。Agent 只能把过程推进下去，不能靠自我声明证明结果正确。实时库存不在这个本地 Demo 的证明范围内。",
     slideMap: [
-      ["02", "把耳机案例的实际结果说清：用户要少买错一次。"],
-      ["03", "列出普通回答失效的条件，得出 Agent 的必要性。"],
-      ["04", "固定完成条件：不超预算、不违背禁忌、有证据。"],
-      ["05", "说明 Agent 能推进任务，但不保证自动正确。"]
+      ["02", "如果只生成推荐，用户会在哪些约束上买错。"],
+      ["03", "如果没有持续行动，外部事实为什么不会自己出现。"],
+      ["04", "如果没有完成条件，系统凭什么知道已经选对。"],
+      ["05", "即使 Agent 继续行动，没有验证仍可能把错误带到结果。"]
     ],
     experiment: "一次真实耳机选择",
     instruction: "先选你要的结果，再让系统推进一次购买任务。只看 Context、Tool 和 Tool Result 怎样改变结论。",
     mode: "boundary",
-    question: "为什么“推荐 A、B、C”不能证明用户已经做出可靠购买决策？",
+    question: "如果系统只回答“推荐 A、B、C”，用户会在哪一步买错？",
     answers: ["因为答案不够长", "因为没有验证实时事实与硬约束", "因为必须使用多 Agent"],
     correct: 1,
     feedback: "价值不由文本流畅度决定，而由预算、佩戴形式、规格和证据是否满足验收条件决定；Agent 能推进过程，但还需要外部机制确认结果。"
@@ -41,25 +41,25 @@ const lessons = [
     id: "agent",
     course: "第 01 课",
     deck: "lesson-01",
-    title: "Agent 的内部结构",
+    title: "没有 Context，下一轮会忘掉什么？",
     slides: "06—09",
     startSlide: 6,
     time: "25 min",
-    objective: "把“Agent = LLM + Context + Tools”和 ReAct 循环分开：前者回答由什么组成，后者回答它怎样运行；两者解释行动能力，不等于结果可靠。",
+    objective: "如果上一轮 Tool Result 没有写回 Context，Agent 下一轮就会看不到刚查到的事实，重复查询或凭空推荐；所以 Context 不是名词，而是让连续行动不丢状态。",
     concepts: [
-      ["LLM", "理解意图、比较候选并决定下一步，是概率性的决策核心。"],
-      ["Context", "模型在当前决策点能够看见的信息，是观察空间。"],
-      ["Tools", "搜索、查询和执行外部动作，是动作空间。"],
-      ["ReAct", "模型思考并行动，工具结果成为新观察；框架将结果追加到轨迹。"]
+      ["没有 LLM 判断", "系统只会机械执行，遇到新结果时不知道下一步该改什么。"],
+      ["没有 Context", "模型下一轮看不到任务、约束和之前结果，只能重新猜。"],
+      ["没有 Tools", "当前库存、价格和商品事实进不来，系统只能依赖旧信息。"],
+      ["没有 Loop", "Tool Result 不会成为下一轮观察，系统会在第一次回答处提前结束。"]
     ],
-    boundary: "Context 由系统提示词、工具定义、用户消息、模型回复和工具执行结果组成；前两项是静态前缀，后三项形成动态轨迹。这三个组件描述能力来源，不是可靠性承诺。",
+    boundary: "如果 Context 不包含用户约束和 Tool Result，下一轮就会丢掉决定所需的信息；LLM、Context、Tools 解释系统怎样行动，却不承诺结果可靠。",
     slideMap: [
-      ["06", "用 Agent = LLM + Context + Tools 定义内部组成。"],
-      ["07—08", "解释观察空间、动作空间和 Context 的五类来源。"],
-      ["09", "用 ReAct 说明三部分怎样被循环驱动。"]
+      ["06", "如果没有 Context，下一轮为什么会忘掉任务和约束。"],
+      ["07—08", "如果没有 Tool，当前商品事实为什么进不来。"],
+      ["09", "如果没有 Loop，Tool Result 为什么不会改变下一轮判断。"]
     ],
-    experiment: "逐步查看一次 Agent 运行",
-    instruction: "运行完整购物需求，然后每次只展开一个步骤。查看上一轮 Tool Result 如何成为下一轮 Context。",
+    experiment: "如果结果不写回，下一轮会怎样？",
+    instruction: "运行一次完整购物需求，逐步展开每个变化；只看 Tool Result 写回后，下一轮 Context 多了什么。",
     mode: "trace",
     question: "为什么 Loop 不应该被写成 Agent 的第四个内部组件？",
     answers: ["Loop 是三部分的运行机制，不是内部能力来源", "Loop 只属于 Tool", "Loop 与 Context 完全相同"],
@@ -70,56 +70,56 @@ const lessons = [
     id: "harness",
     course: "第 02 课",
     deck: "lesson-02",
-    title: "Harness 如何保证可靠",
+    title: "没有 Harness，为什么能用还会错？",
     slides: "02—09",
     startSlide: 2,
     time: "30 min",
-    objective: "理解模型负责判断，Harness 负责把“可能买错”的风险变成可约束、可验证、可恢复的决策流程。",
+    objective: "如果没有 Harness，Agent 依然可以调用工具、生成结果，看起来“可以用”；但最后可能给出假的商品链接，或者给出真实却不符合用户需求的商品，错误判断会被交给用户。",
     concepts: [
-      ["Context", "为模型提供系统指令、工具定义与不断增长的动态轨迹。"],
-      ["Tool Interface", "为模型设计可理解、单一职责、参数防呆且返回可判定的接口。"],
-      ["Constrain", "在行动前、参数中和行动后阻止越权与违反硬约束。"],
-      ["Verify", "不用模型声明证明模型正确，而是回到业务事实验证结果。"],
-      ["Correct", "失败后静默重试、接续生成、回退稳定态、熔断或交还人类。"]
+      ["没有事实核验", "Agent 可能编造一个假的商品链接，用户点进去才发现根本买不到。"],
+      ["没有需求约束", "链接是真的，但商品可能超预算、佩戴不合适，或降噪和通话不满足要求。"],
+      ["没有结果验证", "Agent 只要说“查到了”就能交付，系统不会区分真实来源和看似合理的幻觉。"],
+      ["没有 Correct", "一次错误会直接进入最终判断，没有有限重试、降级或交还人的出口。"],
+      ["没有完成门槛", "真实链接也会被误当成正确推荐，用户承担的是买错后的成本。"]
     ],
-    boundary: "Harness 不是第二个更聪明的模型，而是模型外部的确定性控制层；它的价值是减少错误决策和人工返工。",
+    boundary: "没有 Harness，Agent 不是不能用，而是能用却不可信：结果可能是假的，也可能是真的但不适合用户。Harness 必须同时核验事实真假和需求是否满足，再允许结果交付。",
     slideMap: [
-      ["02—03", "建立 Model + Harness，并展开 Harness 的五项工程职责。"],
-      ["04—08", "依次展开 Context、Tool、Constrain、Verify 与 Correct。"],
-      ["09", "用退款控制流观察五部分怎样按顺序接力。"]
+      ["02—03", "如果没有 Harness，Agent 为什么能运行却不能直接相信。"],
+      ["04—08", "分别核验链接是真的、商品符合需求，并阻止错误进入最终判断。"],
+      ["09", "看一次故障如何被留在系统内部，而不是变成用户的错误决定。"]
     ],
-    experiment: "工具超时对照实验",
-    instruction: "触发同一次商品搜索，比较“只有模型”和“加入 Harness”在工具超时时分别会发生什么。",
+    experiment: "能运行，不等于判断可信",
+    instruction: "触发一次工具故障，比较没有 Harness 和加入 Harness 后，Agent 会把什么样的判断交给用户。",
     mode: "recovery",
-    question: "工具超时后的重试次数和安全退出应该由谁控制？",
-    answers: ["让模型临场自由决定", "由 Harness 的确定性策略控制", "让用户自己刷新页面"],
+    question: "为什么真实商品链接也不能证明推荐正确？",
+    answers: ["链接能打开就代表适合", "事实真实和符合用户需求是两层验证", "必须使用多 Agent"],
     correct: 1,
-    feedback: "模型可以判断是否值得继续，但最大重试次数、超时和降级出口必须由 Harness 控制。"
+    feedback: "因为“链接是真的”和“商品符合这个用户”是两层不同的判断；没有 Harness，任何一层都可能缺失，Agent 仍会把结果说得像真的。"
   },
   {
     id: "information",
     course: "第 03 课",
     deck: "lesson-03",
-    title: "信息到底放在哪里",
+    title: "信息放错，会拿旧事实做决定",
     slides: "02—08",
     startSlide: 2,
     time: "25 min",
-    objective: "正确区分轨迹、用户长期记忆、业务状态与共享知识，避免因为信息放错位置而给出过时或不符合约束的推荐。",
+    objective: "如果把轨迹、长期记忆、业务状态、共享知识和实时事实放错位置，系统就会拿旧库存、旧偏好或错误阶段做决定。",
     concepts: [
-      ["Trajectory", "用户消息、模型回复和工具执行结果按时间追加，只增不改。"],
-      ["User Memory", "跨会话提炼的稳定信息，会被改写、合并和淘汰。"],
-      ["Business State", "开发者定义的任务逻辑阶段，如需要澄清、处理中或已完成。"],
-      ["RAG", "从共享知识库检索相关片段，再注入当前 Context。"],
-      ["实时 Tool", "连接外部业务系统，读取或改变当前环境状态。"]
+      ["没有 Trajectory", "下一轮看不到刚刚发生过什么，系统会重复动作或丢掉失败原因。"],
+      ["没有 User Memory 边界", "临时偏好会污染下一次任务，用户已经改变的要求仍被旧记忆绑住。"],
+      ["没有 Business State", "系统不知道是在澄清、处理中还是完成，可能在未完成时提前收尾。"],
+      ["没有 RAG 边界", "共享知识和本次事实混在一起，静态说明会被误当成当前库存。"],
+      ["没有实时 Tool", "价格、库存和业务状态变化后，推荐仍会引用已经过期的信息。"]
     ],
-    boundary: "RAG 适合“查资料”，实时 Tool 适合“查现在”；把库存放进向量库不会让它变成实时事实。",
+    boundary: "如果把“查资料”和“查现在”放进同一个来源，库存一变化，系统仍会用旧内容做决定；RAG 解决共享知识，实时 Tool 才能补当前事实。",
     slideMap: [
-      ["02—04", "区分 State、Context，并建立四类信息资产总览。"],
-      ["05—07", "区分 Trajectory、User Memory 与共享知识的时间尺度和所有权。"],
-      ["08", "区分 RAG 的共享知识与实时 Tool 的当前事实。"]
+      ["02—04", "如果 State 和 Context 不分开，任务阶段会被错误地当成普通文本。"],
+      ["05—07", "如果历史、记忆和知识没有时间边界，旧信息会继续影响新任务。"],
+      ["08", "如果静态知识代替实时 Tool，当前库存变化就不会进入判断。"]
     ],
-    experiment: "信息归属分类",
-    instruction: "给每条信息选择唯一的主要归属，然后查看结果。错误项会解释为什么不能放在那里。",
+    experiment: "缺少正确来源，哪个结果会失真？",
+    instruction: "给每条信息选择主要归属；放错后，看它会让哪一个判断变旧、变错或提前结束。",
     mode: "classification",
     question: "“此刻某款耳机是否有货”最可靠的来源是什么？",
     answers: ["Memory", "RAG 文档库", "实时库存 Tool"],
@@ -130,25 +130,25 @@ const lessons = [
     id: "capability",
     course: "第 04 课",
     deck: "lesson-04",
-    title: "能力发现：什么时候不需要多 Agent",
+    title: "没有新增证据，多 Agent 只会增加什么？",
     slides: "02—08",
     startSlide: 2,
     time: "20 min",
-    objective: "只在能减少错误或引入新证据时使用 Skill 和多 Agent；否则一个清晰的单 Agent 流程更有用。",
+    objective: "如果多 Agent 没有带来单 Agent 原本拿不到的新证据，新增角色只会增加交接、状态同步和出错位置；所以先问协作缺什么，再决定要不要拆。",
     concepts: [
-      ["Agent", "维护目标和 State，决定下一步做什么。"],
-      ["Skill", "封装完成一类任务的步骤、规则和知识。"],
-      ["Tool", "执行一个可验证的查询、计算或业务动作。"],
-      ["Discovery", "先保留能力索引，再按任务需要展开 Skill 文档与工具定义。"]
+      ["没有 Agent 目标", "各角色只完成自己的动作，却没人负责最终结果。"],
+      ["没有 Skill 边界", "步骤和规则散落在 Prompt 里，换一次任务就容易漏掉关键动作。"],
+      ["没有 Tool 证据", "角色之间只能转发观点，不能带来新的事实或验证结果。"],
+      ["没有 Discovery", "所有能力一开始都塞进 Context，噪声变多，真正需要的动作反而更容易选错。"]
     ],
-    boundary: "多 Agent 是否值得，关键看协作是否引入单 Agent 生成时原本拿不到的新信息。",
+    boundary: "如果协作没有引入单 Agent 原本拿不到的新信息，多一个 Agent 就多一个交接和失误点；拆分的理由必须是新增证据，而不是角色听起来更专业。",
     slideMap: [
-      ["02—03", "区分三层能力，并解释能力为什么要渐进式披露。"],
-      ["04—05", "用部署 Skill 观察能力怎样按需展开并由通用 Tool 执行。"],
-      ["06—08", "判断何时拆 Agent、Reviewer 如何获得新证据，以及怎样交接任务包。"]
+      ["02—03", "如果所有能力一开始都展开，Context 会变长，选择错误会增加。"],
+      ["04—05", "如果没有 Skill 边界，重复步骤会散落在每次对话里。"],
+      ["06—08", "只有 Reviewer 带来新验证结果时，拆 Agent 才值得承担交接成本。"]
     ],
-    experiment: "查看能力怎样按需加载",
-    instruction: "选择不同请求并运行，查看系统如何按需加载 Skill、调用 Tool，并把结果写回轨迹。",
+    experiment: "拆 Agent 前，先看缺了什么证据",
+    instruction: "选择不同请求并运行；如果没有新增信息，系统会展示为什么不该拆，如果有缺口，再看 Skill 和 Tool 如何补上。",
     mode: "routing",
     question: "什么时候才值得把售后拆成另一个 Agent？",
     answers: ["只要名字不同就拆", "当协作能引入单 Agent 原本拿不到的新信息时", "任何项目都应该默认多 Agent"],
@@ -159,25 +159,25 @@ const lessons = [
     id: "evaluation",
     course: "第 05 课",
     deck: "lesson-05",
-    title: "怎样证明系统可用",
+    title: "没有评测，谁能证明它变好了？",
     slides: "02—06",
     startSlide: 2,
     time: "20 min",
-    objective: "把评测变成 Agent 之间可以消费的证据：先跑固定评测集，再让 Builder、Evaluator 与 Reviewer 通过 A2A 交接完成一次受门禁的 Prompt 自迭代。",
+    objective: "如果没有固定评测集和回归门禁，v2 只要自称变好就可能把坏规则写回生产；评测要把失败变成证据，再决定修订是否真的减少了错误。",
     concepts: [
-      ["Evaluation", "用固定、可重复的任务分布检查系统，而不是凭一次漂亮 Demo 下结论。"],
-      ["A2A Handoff", "Evaluator 不转发整段聊天，而是把失败 ID、证据和验收门槛交给 Reviewer。"],
-      ["Prompt Patch", "Reviewer 归因后，Builder 只修改能解释失败的规则，并保留原有约束。"],
-      ["Regression Gate", "修订版本必须在同一评测集上提升，且安全与其他分组指标不能回退。"]
+      ["没有固定评测集", "每次换一批题，分数变化就无法说明系统真的变好了。"],
+      ["没有失败证据", "Reviewer 只能凭感觉改 Prompt，找不到是哪条规则导致了错误。"],
+      ["没有 A2A Handoff", "失败会停在某个 Agent 手里，Builder 收不到可执行的修订依据。"],
+      ["没有 Regression Gate", "新版本即使伤害安全约束，也可能因为一次漂亮 Demo 被接受。"]
     ],
-    boundary: "自迭代不是 Agent 自己说“我变好了”，而是失败证据经过 A2A 交接后形成 Prompt 修订，再由固定评测集和 Harness 门禁决定是否接受。",
+    boundary: "如果没有固定评测和 Harness 门禁，Agent 自己说“我变好了”就足以把坏版本放行；自迭代必须经过失败证据、A2A 交接、Prompt 修订和同一评测集回归。",
     slideMap: [
-      ["02—03", "区分执行轨迹、最终状态和可诊断的评测对象。"],
-      ["04", "用重复运行和分组指标区分能力提升与稳定性回退。"],
-      ["05—06", "让评测证据通过 A2A 交接驱动 Prompt Patch，再经过回归门禁。"]
+      ["02—03", "如果没有可诊断的评测对象，失败只能变成一句模糊的“不好用”。"],
+      ["04", "如果不重复跑同一批任务，提升和回退就无法区分。"],
+      ["05—06", "如果没有 A2A 交接和回归门禁，修订就不能安全写回下一轮。"]
     ],
-    experiment: "评测驱动的 A2A 自迭代",
-    instruction: "先跑同一批固定任务，查看 v1 的失败证据如何交给 Reviewer，再由 Builder 修订 Prompt 并回归；只有门禁通过，v2 才会被接受。",
+    experiment: "如果没有门禁，谁来阻止坏版本？",
+    instruction: "先跑同一批固定任务；看 v1 的失败如何交给 Reviewer，再看 v2 为什么必须经过回归门禁才能被接受。",
     mode: "evaluation",
     question: "什么条件下，A2A 自迭代才算真的改善了系统？",
     answers: ["Reviewer 说 Prompt 更完整了", "固定评测集得分提升，且安全与其他指标没有回退", "参与的 Agent 数量变多"],
@@ -187,29 +187,29 @@ const lessons = [
 ];
 
 const classificationItems = [
-  { title: "当前任务处于“等待用户确认”阶段", note: "开发者定义的任务逻辑阶段", answer: "Business State" },
-  { title: "本轮模型看到的候选商品摘要", note: "为一次决策临时组装", answer: "Context" },
-  { title: "用户长期偏好半入耳式", note: "跨会话提炼的稳定信息", answer: "User Memory" },
-  { title: "耳机降噪原理与选购指南", note: "来自受治理的外部知识库", answer: "RAG" },
-  { title: "QuietPod S3 此刻是否有货", note: "高频变化的业务事实", answer: "实时 Tool" },
-  { title: "上一次工具调用返回“缺货”", note: "按时间追加并成为下一轮观察", answer: "Trajectory" }
+  { title: "没有阶段状态：系统会提前收尾", note: "当前任务处于“等待用户确认”", answer: "Business State" },
+  { title: "没有当前上下文：模型会丢掉本轮候选", note: "本轮模型看到的商品摘要", answer: "Context" },
+  { title: "没有记忆边界：旧偏好会污染新任务", note: "用户长期偏好半入耳式", answer: "User Memory" },
+  { title: "没有共享知识：稳定原理无法被复用", note: "耳机降噪原理与选购指南", answer: "RAG" },
+  { title: "没有实时来源：库存变化不会进入判断", note: "QuietPod S3 此刻是否有货", answer: "实时 Tool" },
+  { title: "没有运行轨迹：系统会忘掉上次缺货", note: "上一次工具调用返回“缺货”", answer: "Trajectory" }
 ];
 
 const demoGuides = {
   boundary: {
-    proof: "一次流畅回答，不等于任务已经完成。",
-    cues: ["01 Context：当前任务与约束出现", "02 Tool：执行外部商品查询", "03 Tool Result：结果写回下一轮"],
-    takeaway: "Agent 的价值不在多说几轮，而在根据环境反馈持续行动，直到完成条件被满足。"
+    proof: "如果没有外部事实和完成条件，答案看起来正确，也可能把用户带到错误购买结果。",
+    cues: ["没有 Context：任务约束不会留下", "没有 Tool：当前商品事实进不来", "没有 Tool Result：下一轮无法修正"],
+    takeaway: "Agent 不是为了多说，而是为了在缺口未补齐时继续行动；缺少它，任务会在答案生成处提前结束。"
   },
   trace: {
-    proof: "LLM、Context、Tools 是组成；Loop 是驱动它们协同的运行机制。",
-    cues: ["Context 里出现当前任务和约束", "Tool 去查询外部商品信息", "Tool Result 回到下一轮判断"],
-    takeaway: "Agent = LLM + Context + Tools；ReAct Loop 解释这三部分怎样持续运行。"
+    proof: "如果 Tool Result 不写回 Context，下一轮就会重复查询或凭空判断；Loop 解决的是状态丢失。",
+    cues: ["没有 Context：下一轮看不到任务和约束", "没有 Tool：外部事实进不来", "没有 Tool Result：下一轮无法改变判断"],
+    takeaway: "如果结果不能进入下一轮，Agent 的内部结构就无法形成连续判断；每一次行动都会像从零开始。"
   },
   recovery: {
-    proof: "可靠性来自模型外部的确定性 Harness，而不是模型承诺自己会小心。",
-    cues: ["超时由规则判定", "重试次数受到限制", "失败存在安全出口"],
-    takeaway: "模型负责判断下一步；Harness 负责上下文、工具、约束、验证与纠正。"
+    proof: "没有 Harness，Agent 可能给你一个假的商品链接；即使链接是真的，也不代表符合你的需求。",
+    cues: ["假的链接：结果根本不存在", "真的链接：商品仍可能不符合约束", "没有验证：两种错误都会被交付"],
+    takeaway: "Harness 要同时验证事实真假和需求匹配，阻止“能行动”被误认为“判断正确”。"
   },
   classification: {
     proof: "轨迹、用户长期记忆、业务状态与 RAG 知识管道解决的是不同的信息问题。",
@@ -494,12 +494,12 @@ function revealNextTrace() {
 function renderRecovery(workspace) {
   workspace.innerHTML = `
     <div class="lab-toolbar">
-      <div style="flex:1;font-size:11px;color:#667085">故障条件：商品查询首次调用超时 800ms；目标：不要用猜测替代证据</div>
-      <button id="runRecovery" class="run-button" type="button">触发对照实验</button>
+      <div style="flex:1;font-size:11px;color:#667085">触发一次工具故障；看没有 Harness 时，Agent 为什么仍能说出一个错误结论。</div>
+      <button id="runRecovery" class="run-button" type="button">让后果发生</button>
     </div>
     <div class="compare-board" style="margin-top:10px">
-      <section class="compare-column unsafe"><header><span>MODEL ONLY</span><strong>没有 Harness</strong></header><ul id="unsafeList"><li>等待实验</li></ul></section>
-      <section class="compare-column safe"><header><span>MODEL + HARNESS</span><strong>避免用户得到假结论</strong></header><ul id="safeList"><li>等待实验</li></ul></section>
+      <section class="compare-column unsafe"><header><span>没有 Harness</span><strong>Agent 能用，但判断会漂</strong></header><ul id="unsafeList"><li>等待实验</li></ul></section>
+      <section class="compare-column safe"><header><span>有 Harness</span><strong>把错误挡在交付前</strong></header><ul id="safeList"><li>等待实验</li></ul></section>
     </div>
     <div class="trace-panel" style="margin-top:10px;border-top:1px solid #dfe3ea;border-radius:9px"><ol class="trace-list" id="traceList"></ol></div>
   `;
@@ -513,13 +513,13 @@ async function runRecovery() {
   harness.failNextTool = true;
   const result = await harness.run(scenarios[0].prompt);
   $("#unsafeList").innerHTML = `
-    <li>工具超时后没有最大重试次数。</li>
-    <li>模型可能重复调用，也可能凭已有知识继续生成。</li>
-    <li>用户无法区分“已验证”和“模型猜测”。</li>`;
+    <li>工具没有返回，Agent 仍然可能继续生成一个假的商品链接。</li>
+    <li>即使链接碰巧是真的，也没有重新核对预算、佩戴、降噪和通话。</li>
+    <li>用户看到的是“能用”的回答，却无法知道它是否真实、是否适合自己。</li>`;
   $("#safeList").innerHTML = `
-    <li>800ms 超时由代码判定，不依赖模型自述。</li>
-    <li>缩小返回字段并执行第 1 次有限重试。</li>
-    <li>成功则继续；仍失败则明确“无法确认”，不让用户据此买错。</li>`;
+    <li>故障由代码判定，不让 Agent 自己宣布“已经查到”。</li>
+    <li>返回后同时核验来源和用户硬约束，真实但不合适也不能通过。</li>
+    <li>仍无法确认就停止生成，不把幻觉或错配商品交给用户。</li>`;
   $("#traceList").innerHTML = "";
   result.trace.forEach(appendTraceStep);
   $("#runRecovery").disabled = false;
@@ -553,7 +553,7 @@ function renderClassification(workspace) {
 
 function renderRouting(workspace) {
   const routingScenarios = [...scenarios, {
-    title: "售后越界",
+    title: "没有权限边界，售后会越界",
     prompt: "耳机坏了，我要查订单并申请售后退货。"
   }];
   workspace.innerHTML = `
@@ -562,11 +562,11 @@ function renderRouting(workspace) {
       <button id="runRoute" class="run-button" type="button">运行能力选择</button>
     </div>
     <div id="routeMap" class="route-map pending">
-      <div class="route-node"><span>WHO / AGENT</span><strong id="routeAgent">购物 Agent</strong><p>维护“减少买错”的目标、State 与下一步决策。</p></div>
+      <div class="route-node"><span>WHO / AGENT</span><strong id="routeAgent">购物 Agent</strong><p>如果没有结果目标，角色只会完成动作，却没人负责后果。</p></div>
       <div class="route-arrow">→</div>
-      <div class="route-node"><span>HOW / SKILL</span><strong id="routeSkill">等待判断</strong><p id="routeSkillNote">根据任务与信息缺口选择流程。</p></div>
+      <div class="route-node"><span>HOW / SKILL</span><strong id="routeSkill">等待判断</strong><p id="routeSkillNote">如果没有 Skill 边界，步骤会散落并漏掉关键动作。</p></div>
       <div class="route-arrow">→</div>
-      <div class="route-node"><span>ACT / TOOL</span><strong id="routeTool">等待判断</strong><p id="routeToolNote">只在需要真实数据或动作时调用。</p></div>
+      <div class="route-node"><span>ACT / TOOL</span><strong id="routeTool">等待判断</strong><p id="routeToolNote">如果没有 Tool 证据，角色之间只能转发观点。</p></div>
     </div>
     <div class="trace-panel" style="margin-top:10px;border-top:1px solid #dfe3ea;border-radius:9px"><ol class="trace-list" id="traceList"></ol></div>
   `;
@@ -610,9 +610,9 @@ async function runRoute() {
 
 function renderEvaluation(workspace) {
   workspace.innerHTML = `
-    <div class="usefulness-contract"><span>USEFULNESS CONTRACT</span><strong>降低买错概率：预算不超 · 明确禁忌不违背 · 推荐理由可回指数据</strong></div>
+    <div class="usefulness-contract"><span>如果缺少核验</span><strong>可能是假链接；即使链接是真的，也可能超预算、违背禁忌或不符合使用场景。</strong></div>
     <div class="lab-toolbar">
-      <div style="flex:1;font-size:11px;color:#667085">固定评测集：6 条任务 · 3 个能力分组 · 1 个回归门禁</div>
+      <div style="flex:1;font-size:11px;color:#667085">如果没有固定评测和回归门禁，坏 Prompt 也可能被写回：6 条任务 · 3 个能力分组 · 1 个门禁</div>
       <button id="runEvaluation" class="run-button" type="button">运行 v2 评测</button>
       <button id="runIteration" class="step-button" type="button">运行 A2A 自迭代</button>
     </div>

@@ -16,7 +16,7 @@
         <span class="course-logo">AH</span>
         <div>
           <strong>Agent 系统互动实验</strong>
-          <span>可操作学习 · 从一次耳机选择看懂 Agent</span>
+          <span>先看少了什么会坏 · 再决定要不要 Agent</span>
         </div>
       </div>
       <a class="ppt-button" id="headerPptLink" href="/slides/decks/agent-harness/lessons/lesson-01/" target="_blank">
@@ -29,13 +29,13 @@
         <div class="curriculum-head">
           <span>INTERACTIVE LAB</span>
           <strong>互动模块</strong>
-          <p>6 个互动模块，从“为什么需要 Agent”一路走到“如何证明它真的有用”。</p>
+          <p>6 个互动模块，每一节都从“少了什么会坏”开始。</p>
         </div>
         <nav id="lessonList" class="lesson-list" aria-label="互动模块列表"></nav>
         <div class="curriculum-foot">
           <span>统一案例主线</span>
-          <strong>500 元通勤耳机：从推荐到可靠决策</strong>
-          <p>从买错的代价开始，逐步看懂约束、证据、恢复和评测什么时候真的有用。</p>
+          <strong>500 元通勤耳机：从买错倒推系统</strong>
+          <p>每一步都只追问：缺少它，会让哪一个结果失真？</p>
         </div>
       </aside>
 
@@ -49,22 +49,22 @@
           <p class="lesson-objective" id="lessonObjective"></p>
 
           <section class="teaching-block">
-            <span class="block-label">先理解这几个概念</span>
+            <span class="block-label">少了它，会坏在哪里</span>
             <div id="conceptList" class="concept-list"></div>
           </section>
 
           <section class="teaching-block">
-            <span class="block-label">先看清边界</span>
+            <span class="block-label">不补上，会发生什么</span>
             <blockquote id="boundaryText"></blockquote>
           </section>
 
           <section class="teaching-block slide-map-block">
-            <span class="block-label">课件地图</span>
+            <span class="block-label">这次要避免哪个后果</span>
             <ol id="slideMap" class="slide-map"></ol>
           </section>
 
           <section class="teaching-block takeaway-block">
-            <span class="block-label">这一节的结论</span>
+            <span class="block-label">最后避免什么后果</span>
             <p id="presenterTakeaway"></p>
           </section>
         </div>
@@ -78,19 +78,19 @@
       <section class="lab-pane">
         <header class="lab-header">
           <div>
-            <span>互动实验</span>
+            <span>看一个后果发生</span>
             <h2 id="experimentTitle"></h2>
           </div>
           <span class="lab-status" id="labStatus">等待操作</span>
         </header>
 
         <div class="proof-banner">
-          <span>这次互动验证</span>
+          <span>如果缺少它</span>
           <strong id="proofStatement"></strong>
         </div>
 
         <div class="lab-instruction">
-          <span>你的操作</span>
+          <span>让后果发生</span>
           <p id="experimentInstruction"></p>
         </div>
 
@@ -98,8 +98,8 @@
 
         <section class="audience-cues">
           <div class="audience-cues-head">
-            <span>操作后看这里</span>
-            <strong>不需要记住所有细节，只看这些变化</strong>
+            <span>结果变化</span>
+            <strong>只看缺少它之后，哪个结果变错</strong>
           </div>
           <ol id="audienceCueList"></ol>
         </section>

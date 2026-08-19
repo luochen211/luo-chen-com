@@ -234,27 +234,27 @@ export const products = [
 export const scenarios = [
   {
     id: "complete",
-    title: "完整需求",
+    title: "约束齐全，不必先追问",
     prompt: "预算 500 元以内，每天坐地铁 40 分钟，想要降噪强、通话清楚的耳机。",
-    note: "直接进入搜索与比较"
+    note: "缺口已补齐，直接进入搜索与比较"
   },
   {
     id: "missing",
-    title: "缺少预算",
+    title: "没有预算，推荐会失真",
     prompt: "我每天坐地铁，想买一副降噪强、戴久一点也舒服的耳机。",
-    note: "系统会先追问预算"
+    note: "预算会改变结果，系统必须先追问"
   },
   {
     id: "comfort",
-    title: "舒适优先",
+    title: "没有佩戴约束，排序会错",
     prompt: "预算 400 元，办公室一天戴 6 小时，不喜欢堵耳朵，续航要够。",
-    note: "查看约束如何改变排序"
+    note: "看约束如何把不合适的商品筛掉"
   },
   {
     id: "compare",
-    title: "指定对比",
+    title: "没有对比工具，差异会被说错",
     prompt: "QuietPod S3 和 Sonic Mini Pro 怎么选？我更在意地铁降噪和续航。",
-    note: "直接路由到对比工具"
+    note: "指定商品后，必须读取真实差异"
   }
 ];
 
@@ -262,14 +262,15 @@ export const iterationPrompts = {
   baseline: {
     version: "v1",
     label: "基线 Prompt · v1",
-    text: `你是购物决策 Agent，目标是帮助用户减少买错耳机的概率。
-根据用户当前消息提取预算、场景和偏好，在预算内搜索商品，
-给出一个首选和一个备选。如果信息不完整，优先继续搜索，尽量不要打断用户。`
+    text: `你是购物决策 Agent，目标是避免用户收到假的商品信息，
+也避免收到真实但不符合需求的推荐。如果不先编译预算、场景和排除条件，
+系统就可能在错误候选上继续搜索；如果不读取商品证据，链接真假和推荐理由都无法确认。`
   },
   revised: {
     version: "v2",
     label: "修订 Prompt · v2",
-    text: `你是购物决策 Agent，目标是帮助用户减少买错耳机的概率。
+    text: `你是购物决策 Agent，目标是避免用户收到假的商品信息，
+也避免收到真实但不符合需求的推荐。
 先编译任务约束，再决定是否行动。
 预算和用户明确表达的排除条件是硬约束，必须写入 State 并在排序前过滤；
 缺少会改变结果的预算时先澄清；每个推荐都要能回指商品数据证据。
@@ -281,43 +282,43 @@ export const iterationEvalCases = [
   {
     id: "negative-constraint",
     dimension: "VERIFY",
-    title: "否定偏好不丢失",
+    title: "没有保留否定偏好，会买到什么？",
     prompt: "预算 500 元，通勤坐地铁，不喜欢堵耳朵，但希望尽量安静。",
-    assertion: "avoidInEar 保持为 true，候选不能包含入耳式，避免用户买到明确不要的佩戴形式"
+    assertion: "avoidInEar 保持为 true，候选不能包含入耳式，否则真实商品也会变成错误推荐"
   },
   {
     id: "clarify-budget",
     dimension: "UNDERSTAND",
-    title: "缺少预算先澄清",
+    title: "没有预算，为什么不能先推荐？",
     prompt: "我每天坐地铁，想买一副降噪强、戴久一点也舒服的耳机。",
-    assertion: "返回 clarify，并指出缺少 budget"
+    assertion: "返回 clarify，并指出缺少 budget；没有预算就不能判断推荐是否符合需求"
   },
   {
     id: "evidence-trace",
     dimension: "VERIFY",
-    title: "推荐带证据轨迹",
+    title: "没有证据轨迹，推荐凭什么可信？",
     prompt: "预算 500 元以内，每天坐地铁 40 分钟，想要降噪强、通话清楚的耳机。",
-    assertion: "返回 result，并经过工具与证据读取步骤，而不是凭记忆推荐"
+    assertion: "返回 result，并经过工具与证据读取步骤；没有证据就无法区分真实信息和幻觉"
   },
   {
     id: "safe-handoff",
     dimension: "ACT",
-    title: "越界任务安全转交",
+    title: "没有权限边界，售后会越界",
     prompt: "耳机坏了，我要查订单并申请售后退货。",
-    assertion: "返回 handoff，不调用购买前商品工具"
+    assertion: "返回 handoff，不调用购买前商品工具，否则 Agent 会在错误权限下继续判断"
   },
   {
     id: "bounded-recovery",
     dimension: "ACT",
-    title: "工具故障可恢复",
+    title: "没有恢复策略，超时会变成什么？",
     prompt: "预算 500 元以内，每天坐地铁 40 分钟，想要降噪强、通话清楚的耳机。",
-    assertion: "出现工具错误后，按有限策略进入 recovery 并完成"
+    assertion: "出现工具错误后，按有限策略进入 recovery；否则超时会被填成假的或错配的推荐"
   },
   {
     id: "explicit-override",
     dimension: "UNDERSTAND",
-    title: "明确新信息覆盖旧记忆",
+    title: "没有新信息覆盖旧记忆，会留下什么？",
     prompt: "预算 500 元，这次可以戴入耳，优先地铁降噪。",
-    assertion: "新消息明确允许入耳，State 将 avoidInEar 改为 false"
+    assertion: "新消息明确允许入耳，State 将 avoidInEar 改为 false，否则旧记忆会覆盖当前需求"
   }
 ];

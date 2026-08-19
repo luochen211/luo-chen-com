@@ -4,7 +4,7 @@ const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 960 } });
 await page.goto("http://127.0.0.1:5173/demos/agent-harness/", { waitUntil: "networkidle" });
 
-if (!(await page.locator("#lessonTitle").innerText()).includes("为什么需要 Agent")) {
+if (!(await page.locator("#lessonTitle").innerText()).includes("没有 Agent")) {
   throw new Error("first agent lesson is missing from the page");
 }
 await page.getByRole("button", { name: /买到不踩坑/ }).click();
@@ -17,8 +17,8 @@ await page.locator(".journey-product").nth(1).click();
 if (!(await page.locator("#journeyEvidence").innerText()).includes("为什么选它")) {
   throw new Error("product evidence interaction did not render");
 }
-await page.getByRole("button", { name: /怎样证明系统可用/ }).click();
-if (await page.locator("#experimentTitle").innerText() !== "评测驱动的 A2A 自迭代") {
+await page.getByRole("button", { name: /没有评测.*谁能证明/ }).click();
+if (await page.locator("#experimentTitle").innerText() !== "如果没有门禁，谁来阻止坏版本？") {
   throw new Error("lesson 05 did not render");
 }
 
@@ -29,8 +29,8 @@ await page.waitForFunction(() => document.querySelector("#policyRunSummary")?.te
 if (await page.locator(".iteration-table .test-status.pass").count() !== 6) {
   throw new Error("not all evaluation cases passed");
 }
-if (!(await page.locator(".usefulness-contract").innerText()).includes("降低买错概率")) {
-  throw new Error("usefulness contract is missing from evaluation workspace");
+if (!(await page.locator(".usefulness-contract").innerText()).includes("假链接")) {
+  throw new Error("fact and fit contract is missing from evaluation workspace");
 }
 if (!(await page.locator("#a2aHandoff").innerText()).includes("A2A 交接")) {
   throw new Error("A2A handoff was not rendered");
