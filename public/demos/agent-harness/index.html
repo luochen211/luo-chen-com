@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f7f8fa" />
-    <title>Agent Harness 讲师演示台</title>
+    <title>Agent 系统互动实验</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
       <div class="course-brand">
         <span class="course-logo">AH</span>
         <div>
-          <strong>Agent Harness 演示台</strong>
-          <span>讲师控制 · 减少买错耳机的决策系统</span>
+          <strong>Agent 系统互动实验</strong>
+          <span>可操作学习 · 从一次耳机选择看懂 Agent</span>
         </div>
       </div>
       <a class="ppt-button" id="headerPptLink" href="/slides/decks/agent-harness/lessons/lesson-01/" target="_blank">
@@ -27,51 +27,51 @@
     <main class="course-shell">
       <aside class="curriculum">
         <div class="curriculum-head">
-          <span>Presenter Console</span>
-          <strong>演示索引</strong>
-          <p>6 个讲师实验服务 5 节课；第一课包含边界判断和运行轨迹两个实验。</p>
+          <span>INTERACTIVE LAB</span>
+          <strong>互动模块</strong>
+          <p>6 个互动模块，从“为什么需要 Agent”一路走到“如何证明它真的有用”。</p>
         </div>
-        <nav id="lessonList" class="lesson-list" aria-label="演示列表"></nav>
+        <nav id="lessonList" class="lesson-list" aria-label="互动模块列表"></nav>
         <div class="curriculum-foot">
-          <span>统一演示主线</span>
+          <span>统一案例主线</span>
           <strong>500 元通勤耳机：从推荐到可靠决策</strong>
-          <p>先让大家看懂买错的代价，再用约束、证据、恢复和评测说明 Harness 什么时候真的有用。</p>
+          <p>从买错的代价开始，逐步看懂约束、证据、恢复和评测什么时候真的有用。</p>
         </div>
       </aside>
 
       <section class="lesson-pane">
         <div class="lesson-scroll">
           <div class="lesson-meta">
-            <span id="lessonNumber">演示 1 / 6</span>
-            <a id="lessonPptLink" href="/slides/decks/agent-harness/lessons/lesson-01/?slide=2" target="_blank">第 01 课 · PPT 02—05 ↗</a>
+            <span id="lessonNumber">模块 1 / 6</span>
+            <a id="lessonPptLink" href="/slides/decks/agent-harness/lessons/lesson-01/?slide=2" target="_blank">第 01 课 · 课件 02—05 ↗</a>
           </div>
           <h1 id="lessonTitle"></h1>
           <p class="lesson-objective" id="lessonObjective"></p>
 
           <section class="teaching-block">
-            <span class="block-label">讲师只需讲清</span>
+            <span class="block-label">先理解这几个概念</span>
             <div id="conceptList" class="concept-list"></div>
           </section>
 
           <section class="teaching-block">
-            <span class="block-label">演示前先说</span>
+            <span class="block-label">先看清边界</span>
             <blockquote id="boundaryText"></blockquote>
           </section>
 
           <section class="teaching-block slide-map-block">
-            <span class="block-label">PPT 承接关系</span>
+            <span class="block-label">课件地图</span>
             <ol id="slideMap" class="slide-map"></ol>
           </section>
 
           <section class="teaching-block takeaway-block">
-            <span class="block-label">演示结束后落到</span>
+            <span class="block-label">这一节的结论</span>
             <p id="presenterTakeaway"></p>
           </section>
         </div>
 
         <div class="lesson-nav">
-          <button id="prevLesson" type="button">← 上一节</button>
-          <button id="nextLesson" class="next-button" type="button">下一节 →</button>
+          <button id="prevLesson" type="button">← 上一个模块</button>
+          <button id="nextLesson" class="next-button" type="button">下一个模块 →</button>
         </div>
       </section>
 
@@ -85,12 +85,12 @@
         </header>
 
         <div class="proof-banner">
-          <span>这次演示只证明</span>
+          <span>这次互动验证</span>
           <strong id="proofStatement"></strong>
         </div>
 
         <div class="lab-instruction">
-          <span>讲师操作</span>
+          <span>你的操作</span>
           <p id="experimentInstruction"></p>
         </div>
 
@@ -98,8 +98,8 @@
 
         <section class="audience-cues">
           <div class="audience-cues-head">
-            <span>引导观众观察</span>
-            <strong>不要解释所有细节，只指向这些变化</strong>
+            <span>操作后看这里</span>
+            <strong>不需要记住所有细节，只看这些变化</strong>
           </div>
           <ol id="audienceCueList"></ol>
         </section>

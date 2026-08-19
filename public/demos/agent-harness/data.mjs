@@ -242,13 +242,13 @@ export const scenarios = [
     id: "missing",
     title: "缺少预算",
     prompt: "我每天坐地铁，想买一副降噪强、戴久一点也舒服的耳机。",
-    note: "观察 Agent 主动追问"
+    note: "系统会先追问预算"
   },
   {
     id: "comfort",
     title: "舒适优先",
     prompt: "预算 400 元，办公室一天戴 6 小时，不喜欢堵耳朵，续航要够。",
-    note: "观察约束如何改变排序"
+    note: "查看约束如何改变排序"
   },
   {
     id: "compare",

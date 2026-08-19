@@ -30,7 +30,7 @@ const lessons = [
       ["05", "说明 Agent 能推进任务，但不保证自动正确。"]
     ],
     experiment: "边界判断：回答还是完成",
-    instruction: "依次判断三个任务只需要生成回答，还是需要 Agent 持续行动。点击案例查看系统边界。",
+    instruction: "点击三个任务，判断它们只需要生成回答，还是需要 Agent 持续行动。",
     mode: "boundary",
     question: "为什么“推荐 A、B、C”不能证明用户已经做出可靠购买决策？",
     answers: ["因为答案不够长", "因为没有验证实时事实与硬约束", "因为必须使用多 Agent"],
@@ -58,8 +58,8 @@ const lessons = [
       ["07—08", "解释观察空间、动作空间和 Context 的五类来源。"],
       ["09", "用 ReAct 说明三部分怎样被循环驱动。"]
     ],
-    experiment: "逐步观察一次 Agent 运行",
-    instruction: "运行完整购物需求，然后每次只展开一个步骤。观察上一轮 Tool Result 如何成为下一轮 Context。",
+    experiment: "逐步查看一次 Agent 运行",
+    instruction: "运行完整购物需求，然后每次只展开一个步骤。查看上一轮 Tool Result 如何成为下一轮 Context。",
     mode: "trace",
     question: "为什么 Loop 不应该被写成 Agent 的第四个内部组件？",
     answers: ["Loop 是三部分的运行机制，不是内部能力来源", "Loop 只属于 Tool", "Loop 与 Context 完全相同"],
@@ -89,7 +89,7 @@ const lessons = [
       ["09", "用退款控制流观察五部分怎样按顺序接力。"]
     ],
     experiment: "工具超时对照实验",
-    instruction: "触发同一次商品搜索。比较“只有模型”与“加入 Harness”在工具超时时分别会发生什么。",
+    instruction: "触发同一次商品搜索，比较“只有模型”和“加入 Harness”在工具超时时分别会发生什么。",
     mode: "recovery",
     question: "工具超时后的重试次数和安全退出应该由谁控制？",
     answers: ["让模型临场自由决定", "由 Harness 的确定性策略控制", "让用户自己刷新页面"],
@@ -119,7 +119,7 @@ const lessons = [
       ["08", "区分 RAG 的共享知识与实时 Tool 的当前事实。"]
     ],
     experiment: "信息归属分类",
-    instruction: "给每条信息选择唯一的主要归属，然后检查结果。错误项会解释为什么不能放在那里。",
+    instruction: "给每条信息选择唯一的主要归属，然后查看结果。错误项会解释为什么不能放在那里。",
     mode: "classification",
     question: "“此刻某款耳机是否有货”最可靠的来源是什么？",
     answers: ["Memory", "RAG 文档库", "实时库存 Tool"],
@@ -147,8 +147,8 @@ const lessons = [
       ["04—05", "用部署 Skill 观察能力怎样按需展开并由通用 Tool 执行。"],
       ["06—08", "判断何时拆 Agent、Reviewer 如何获得新证据，以及怎样交接任务包。"]
     ],
-    experiment: "观察能力怎样按需加载",
-    instruction: "选择不同用户请求并运行，观察系统如何按需加载 Skill、调用 Tool，并把结果写回轨迹。",
+    experiment: "查看能力怎样按需加载",
+    instruction: "选择不同请求并运行，查看系统如何按需加载 Skill、调用 Tool，并把结果写回轨迹。",
     mode: "routing",
     question: "什么时候才值得把售后拆成另一个 Agent？",
     answers: ["只要名字不同就拆", "当协作能引入单 Agent 原本拿不到的新信息时", "任何项目都应该默认多 Agent"],
@@ -177,7 +177,7 @@ const lessons = [
       ["05—06", "让评测证据通过 A2A 交接驱动 Prompt Patch，再经过回归门禁。"]
     ],
     experiment: "评测驱动的 A2A 自迭代",
-    instruction: "先跑同一批固定任务，观察 v1 的失败证据如何交给 Reviewer，再由 Builder 修订 Prompt 并回归；只有门禁通过，v2 才会被接受。",
+    instruction: "先跑同一批固定任务，查看 v1 的失败证据如何交给 Reviewer，再由 Builder 修订 Prompt 并回归；只有门禁通过，v2 才会被接受。",
     mode: "evaluation",
     question: "什么条件下，A2A 自迭代才算真的改善了系统？",
     answers: ["Reviewer 说 Prompt 更完整了", "固定评测集得分提升，且安全与其他指标没有回退", "参与的 Agent 数量变多"],
@@ -198,27 +198,27 @@ const classificationItems = [
 const demoGuides = {
   boundary: {
     proof: "一次流畅回答，不等于任务已经完成。",
-    cues: ["任务有没有外部事实", "结果有没有完成条件", "系统是否需要继续行动"],
+    cues: ["任务是否依赖外部事实", "结果是否有完成条件", "系统是否需要继续行动"],
     takeaway: "Agent 的价值不在多说几轮，而在根据环境反馈持续行动，直到完成条件被满足。"
   },
   trace: {
     proof: "LLM、Context、Tools 是组成；Loop 是驱动它们协同的运行机制。",
-    cues: ["Context 先提供观察", "Tool 执行外部动作", "Tool Result 写回下一轮"],
+    cues: ["Context 先提供当前信息", "Tool 执行外部动作", "Tool Result 写回下一轮"],
     takeaway: "Agent = LLM + Context + Tools；ReAct Loop 解释这三部分怎样持续运行。"
   },
   recovery: {
     proof: "可靠性来自模型外部的确定性 Harness，而不是模型承诺自己会小心。",
-    cues: ["超时由代码判定", "重试次数受到限制", "失败存在安全出口"],
+    cues: ["超时由规则判定", "重试次数受到限制", "失败存在安全出口"],
     takeaway: "模型负责判断下一步；Harness 负责上下文、工具、约束、验证与纠正。"
   },
   classification: {
     proof: "轨迹、用户长期记忆、业务状态与 RAG 知识管道解决的是不同的信息问题。",
-    cues: ["是否属于本次运行历史", "是否值得跨会话提炼", "是否来自共享知识库"],
+    cues: ["它是否属于本次运行历史", "它是否值得跨会话保存", "它是否来自共享知识库"],
     takeaway: "轨迹只增不改，长期记忆会被整理，业务状态表达任务阶段，RAG 把外部知识注入当前上下文。"
   },
   routing: {
     proof: "能力应按需发现；多 Agent 的价值来自协作过程中新增的外部信息。",
-    cues: ["先加载索引再展开细节", "Skill 描述流程", "Reviewer 是否获得新的验证结果"],
+    cues: ["先加载索引再展开细节", "Skill 描述流程", "Reviewer 是否拿到了新的验证结果"],
     takeaway: "Agent 决策，Skill 组织任务方法，Tool 执行动作；协作没有新增信息时，不必拆多 Agent。"
   },
   evaluation: {
@@ -257,14 +257,14 @@ function switchLesson(index) {
   revealedTrace = 0;
 
   const guide = demoGuides[lesson.mode];
-  $("#lessonNumber").textContent = `演示 ${currentLesson + 1} / ${lessons.length}`;
+  $("#lessonNumber").textContent = `模块 ${currentLesson + 1} / ${lessons.length}`;
   $("#lessonTitle").textContent = lesson.title;
   $("#lessonObjective").textContent = lesson.objective;
   const pptBase = location.pathname.includes("/demos/agent-harness")
     ? `/slides/decks/agent-harness/lessons/${lesson.deck}/`
     : `../ppt/lessons/${lesson.deck}/`;
   const pptHref = `${pptBase}?slide=${lesson.startSlide}`;
-  $("#lessonPptLink").textContent = `${lesson.course} · PPT ${lesson.slides} ↗`;
+  $("#lessonPptLink").textContent = `${lesson.course} · 课件 ${lesson.slides} ↗`;
   $("#lessonPptLink").href = pptHref;
   $("#headerPptLink").href = pptHref;
   $("#conceptList").innerHTML = lesson.concepts.map((concept, index) => `
@@ -314,7 +314,7 @@ function renderBoundary(workspace) {
     button.classList.add("selected");
     const item = cases[Number(button.dataset.case)];
     $("#caseResult").innerHTML = `<strong>判断：${item[2]}</strong><br>${item[3]}`;
-    setStatus("已观察", "success");
+    setStatus("已完成判断", "success");
   }));
 }
 
@@ -374,8 +374,8 @@ function revealNextTrace() {
   if (revealedTrace === currentTrace.length) {
     $("#revealStep").disabled = true;
     $("#traceResult").className = "result-strip";
-    $("#traceResult").textContent = "观察结论：工具返回不是日志附件，它被写回 State，并成为下一轮 Context 的来源。";
-    setStatus("观察完成", "success");
+    $("#traceResult").textContent = "关键结论：工具返回不是日志附件，它被写回 State，并成为下一轮 Context 的来源。";
+    setStatus("查看完成", "success");
   } else {
     $("#revealStep").textContent = `显示下一步（${revealedTrace}/${currentTrace.length}）`;
   }
@@ -510,7 +510,7 @@ function renderEvaluation(workspace) {
       <article class="prompt-card baseline"><span>BASELINE PROMPT</span><strong>${iterationPrompts.baseline.label}</strong><pre>${iterationPrompts.baseline.text}</pre></article>
       <article class="prompt-card revised"><span>PATCHED PROMPT</span><strong>${iterationPrompts.revised.label}</strong><pre>${iterationPrompts.revised.text}</pre></article>
     </div>
-    <div class="eval-note" id="policyRunSummary">先运行 v2 评测，或观察一次完整的 A2A 交接与回归。</div>
+    <div class="eval-note" id="policyRunSummary">先运行 v2 评测，或查看一次完整的 A2A 交接与回归。</div>
     <table class="test-table iteration-table" style="margin-top:10px">
       <thead><tr><th>评测任务</th><th>可验证断言</th><th>结果</th></tr></thead>
       <tbody>${iterationEvalCases.map((item, index) => `<tr data-eval-id="${item.id}"><td><span class="eval-id">0${index + 1} · ${item.dimension}</span><strong>${item.title}</strong></td><td>${item.assertion}</td><td class="test-status" data-test="${item.id}">待运行</td></tr>`).join("")}</tbody>

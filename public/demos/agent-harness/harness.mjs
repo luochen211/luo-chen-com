@@ -165,7 +165,7 @@ export class ShoppingHarness {
       await emit(traceStep("guardrail", "能力边界", "当前 Demo 只覆盖购买前决策，售后任务转人工。", "warning", 6));
       return {
         kind: "handoff",
-        message: "这个演示目前只处理购买前决策。售后问题需要订单、商家规则等实时信息，我会把任务转交给售后流程。",
+        message: "当前互动只处理购买前决策。售后问题需要订单、商家规则等实时信息，任务会转交给售后流程。",
         trace,
         state,
         totalDuration: Math.round(performance.now() - started)
