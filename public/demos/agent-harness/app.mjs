@@ -203,7 +203,7 @@ const demoGuides = {
   },
   trace: {
     proof: "LLM、Context、Tools 是组成；Loop 是驱动它们协同的运行机制。",
-    cues: ["Context 先提供当前信息", "Tool 执行外部动作", "Tool Result 写回下一轮"],
+    cues: ["Context 里出现当前任务和约束", "Tool 去查询外部商品信息", "Tool Result 回到下一轮判断"],
     takeaway: "Agent = LLM + Context + Tools；ReAct Loop 解释这三部分怎样持续运行。"
   },
   recovery: {
