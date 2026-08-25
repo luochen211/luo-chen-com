@@ -2,9 +2,11 @@
 
 | Check | Result | Evidence |
 |---|---|---|
-| Remotion composition loads | pass | `CoolnessDeck`, 1920x1080, 30fps |
-| Dynamic render | pass | `final/coolness-deck.mp4`, H.264, 55.06s |
-| Still-frame visual check | pass | `final/coolness-deck-frame-330.png` |
+| Web deck page structure | pass | 14 pages: 1 cover + 13 demo pages |
+| Requested terms | pass | 13 exact terms, 13 dedicated demo titles |
+| Browser interaction check | pass | pointer, hover, click and scroll demos verified in Chrome |
+| Local asset loading | pass | no 4xx responses; Motion loaded from `/slides/assets/motion.min.js` |
+| Tests | pass | `npm test`, 14 files / 75 tests |
 | Lint | pass | `npm run lint` |
 | Existing site build | pass | `npm run build` |
 | Git diff whitespace | pass | `git diff --check` |

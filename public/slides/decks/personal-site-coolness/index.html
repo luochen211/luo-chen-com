@@ -1259,6 +1259,70 @@
     .glyph-title{font-size:min(6.2vw,10vh)}
     .glyph-subtitle{font-size:min(3.2vw,5.2vh)}
   }
+
+  /* ============ 13 个必要交互术语 · 独立演示页 ============ */
+  .demo-slide .canvas-card{padding:4.7vh 5vw 4.2vh}
+  .demo-layout{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:3vw;align-items:stretch;flex:1;min-height:0}
+  .demo-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:2vh 0 var(--nav-safe-bottom)}
+  .demo-index{font-family:var(--mono);font-size:max(14px,.78vw);letter-spacing:.18em;color:var(--accent);font-weight:600;margin-bottom:2.2vh}
+  .demo-title{font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(4.8vw,8.8vh);line-height:1.03;letter-spacing:-.035em;max-width:8.6em;color:currentColor;overflow-wrap:anywhere}
+  .demo-standfirst{font-size:min(1.55vw,2.9vh);line-height:1.55;color:var(--text-secondary);max-width:27em;margin-top:3vh}
+  .demo-instruction{display:inline-flex;align-items:center;gap:.7em;margin-top:4vh;font-family:var(--mono);font-size:max(13px,.72vw);letter-spacing:.12em;color:var(--text-helper);text-transform:uppercase}
+  .demo-instruction::before{content:"";width:28px;height:1px;background:var(--accent)}
+  .demo-panel{position:relative;min-width:0;min-height:0;overflow:hidden;border:1px solid var(--border-strong);background:#f1f1ee;color:var(--ink)}
+  .demo-panel.dark{background:#0b0e12;color:var(--paper);border-color:rgba(255,255,255,.22)}
+  .demo-panel-label{position:absolute;left:24px;top:20px;z-index:4;font-family:var(--mono);font-size:max(12px,.7vw);letter-spacing:.14em;color:var(--text-helper);text-transform:uppercase}
+  .demo-panel.dark .demo-panel-label{color:rgba(255,255,255,.58)}
+  .demo-panel-footer{position:absolute;left:24px;right:24px;bottom:18px;z-index:4;display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:max(11px,.64vw);letter-spacing:.12em;color:var(--text-helper);text-transform:uppercase}
+  .demo-panel.dark .demo-panel-footer{color:rgba(255,255,255,.48)}
+  .demo-panel button{font:inherit}
+  .demo-pointer{cursor:crosshair}
+  .repulsion-grid{position:absolute;inset:78px 58px 68px;display:grid;grid-template-columns:repeat(13,1fr);grid-template-rows:repeat(8,1fr);place-items:center}
+  .repulsion-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);transform:translate(var(--dx,0),var(--dy,0)) scale(var(--dot-scale,1));transition:transform .08s linear,background .2s}
+  .repulsion-dot:nth-child(3n){background:#e05b38}.repulsion-dot:nth-child(5n){background:#121212}
+  .repulsion-core{position:absolute;left:50%;top:50%;width:160px;height:160px;border:1px dashed rgba(0,47,167,.35);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+  .grid-demo-svg{position:absolute;inset:70px 34px 48px;width:calc(100% - 68px);height:calc(100% - 118px);overflow:visible}
+  .grid-demo-svg path{fill:none;stroke:rgba(0,47,167,.55);stroke-width:1.2}
+  .grid-demo-svg path:nth-child(2n){stroke:#e05b38;stroke-opacity:.55}
+  .grid-core{fill:#0a0a0a;opacity:.8}
+  .sticky-demo-scroll{position:absolute;inset:66px 28px 42px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:var(--accent) transparent}
+  .sticky-visual{position:sticky;top:0;height:min(520px,calc(100% - 20px));min-height:300px;display:grid;place-items:center;background:#0a0a0a;color:#fff;align-self:start}
+  .sticky-visual::after{content:"STICKY";position:absolute;right:14px;bottom:12px;font:12px var(--mono);letter-spacing:.14em;color:rgba(255,255,255,.48)}
+  .sticky-object{width:170px;height:170px;border:1px solid var(--accent-bright);display:grid;place-items:center;color:var(--accent-bright);font:600 17px var(--mono);letter-spacing:.16em;transform:rotate(45deg)}
+  .sticky-object span{transform:rotate(-45deg)}
+  .sticky-copy{display:grid;gap:18px;padding-bottom:320px}
+  .sticky-copy article{min-height:150px;border-top:1px solid var(--border-strong);padding:18px 0}
+  .sticky-copy b{display:block;font-size:23px;font-weight:400;margin-bottom:10px}.sticky-copy p{font-size:16px;color:var(--text-secondary);line-height:1.5}
+  .hover-video-wrap{position:absolute;inset:68px 34px 50px;display:grid;place-items:center;background:#050608}
+  .hover-video-wrap video{width:100%;height:100%;object-fit:cover;opacity:.88;filter:saturate(.8);transition:filter .5s,opacity .5s,transform .8s}
+  .hover-video-wrap:hover video{opacity:1;filter:saturate(1.3) contrast(1.08);transform:scale(1.025)}
+  .hover-video-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:14px 18px;border:1px solid rgba(255,255,255,.72);color:#fff;background:rgba(0,0,0,.35);font:600 13px var(--mono);letter-spacing:.16em;pointer-events:none;transition:opacity .3s}
+  .hover-video-wrap:hover .hover-video-badge{opacity:0}
+  .speed-track{position:absolute;inset:90px 52px 76px;display:grid;align-content:center;gap:14px}
+  .speed-row{display:flex;align-items:center;gap:16px}.speed-row span{width:82px;color:var(--text-helper);font:12px var(--mono);letter-spacing:.12em}.speed-bar{height:18px;flex:1;background:var(--accent);transform-origin:left center;transition:transform .18s cubic-bezier(.2,0,.38,.9),filter .18s}.speed-row:nth-child(2n) .speed-bar{background:#e05b38}.speed-row:nth-child(3n) .speed-bar{background:#111}
+  .speed-readout{position:absolute;right:22px;top:18px;font:600 18px var(--mono);letter-spacing:.08em;color:var(--accent)}
+  .accordion-demo{position:absolute;inset:84px 34px 60px;display:flex;gap:8px;align-items:stretch}
+  .accordion-item{position:relative;min-width:0;flex:1;border:1px solid var(--border-strong);background:#fafaf8;cursor:pointer;transition:flex .55s var(--ease-exp),background .35s,color .35s;overflow:hidden;padding:24px}
+  .accordion-item.is-open{flex:2.8;background:var(--ink);color:#fff}.accordion-item .accordion-number{font:600 14px var(--mono);color:var(--accent);letter-spacing:.12em}.accordion-item h3{font-size:24px;font-weight:300;margin-top:26px;white-space:nowrap;writing-mode:vertical-rl;transition:writing-mode .2s}.accordion-item.is-open h3{writing-mode:horizontal-tb;white-space:normal}.accordion-item p{position:absolute;left:24px;right:24px;bottom:24px;font-size:16px;line-height:1.5;color:var(--text-secondary);opacity:0;transform:translateY(12px);transition:opacity .3s .12s,transform .3s .12s}.accordion-item.is-open p{opacity:1;transform:translateY(0);color:rgba(255,255,255,.7)}
+  .fluid-demo-svg{position:absolute;inset:72px 36px 54px;width:calc(100% - 72px);height:calc(100% - 126px);overflow:visible;filter:url(#fluid-filter)}
+  .fluid-demo-svg circle:nth-child(1){fill:#002fa7}.fluid-demo-svg circle:nth-child(2){fill:#e05b38}.fluid-demo-svg circle:nth-child(3){fill:#111}.fluid-demo-svg circle{mix-blend-mode:multiply;transition:cx .1s,cy .1s}
+  .scene-demo{position:absolute;inset:76px 34px 58px;overflow:hidden;background:#0a0a0a;color:#fff}
+  .scene-card{position:absolute;inset:0;padding:32px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;transform:translateX(60px) scale(.98);transition:opacity .5s,transform .6s var(--ease-exp)}.scene-card.is-active{opacity:1;transform:none}.scene-card:nth-child(1){background:linear-gradient(135deg,#002fa7,#07101d)}.scene-card:nth-child(2){background:linear-gradient(135deg,#e05b38,#22100b)}.scene-card:nth-child(3){background:linear-gradient(135deg,#111,#454545)}.scene-card strong{font-size:54px;font-weight:200;letter-spacing:-.04em}.scene-card p{max-width:23em;color:rgba(255,255,255,.72);font-size:18px;line-height:1.5}.scene-progress{position:absolute;right:22px;top:20px;z-index:3;font:600 14px var(--mono);letter-spacing:.12em;color:#fff}
+  .ring-demo{position:absolute;inset:62px 26px 42px;display:grid;place-items:center;perspective:900px;overflow:hidden;background:radial-gradient(circle at center,rgba(0,47,167,.18),transparent 44%)}
+  .ring-orbit{position:relative;width:260px;height:260px;transform-style:preserve-3d;transition:transform .3s var(--ease-exp)}
+  .ring-orbit::before{content:"";position:absolute;inset:-38px;border:1px solid rgba(0,47,167,.42);border-radius:50%;transform:rotateX(68deg)}
+  .ring-card{position:absolute;left:50%;top:50%;width:150px;height:102px;margin:-51px 0 0 -75px;display:grid;place-items:center;background:#fafaf8;border:1px solid #111;color:#111;font:600 14px var(--mono);letter-spacing:.12em;backface-visibility:hidden;transform-style:preserve-3d}
+  .ring-center{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 14px rgba(0,47,167,.12)}
+  .stagger-demo{position:absolute;inset:78px 48px 54px;display:flex;flex-direction:column;justify-content:center;gap:12px;background:#fafaf8}
+  .stagger-line{display:flex;gap:.08em;overflow:hidden;font-size:min(5.2vw,9vh);font-weight:300;line-height:.95;letter-spacing:-.06em}.stagger-word{display:inline-block;opacity:0;transform:translateY(1.1em)}.stagger-demo.ready .stagger-word{animation:stagger-in .8s var(--ease-entry-exp) forwards;animation-delay:calc(var(--i) * 70ms)}
+  @keyframes stagger-in{to{opacity:1;transform:translateY(0)}}
+  .stagger-replay{align-self:flex-start;margin-top:28px;padding:11px 15px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font:600 12px var(--mono);letter-spacing:.12em}
+  .snap-scroll{position:absolute;inset:66px 42px 44px;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-color:var(--accent) transparent}
+  .snap-card{height:82%;scroll-snap-align:start;display:grid;align-content:center;padding:38px;margin-bottom:20px;background:#0a0a0a;color:#fff;border-left:12px solid var(--accent)}.snap-card:nth-child(2){border-color:#e05b38}.snap-card:nth-child(3){border-color:#111}.snap-card b{font:600 15px var(--mono);letter-spacing:.14em;color:var(--accent-bright)}.snap-card strong{font-size:50px;font-weight:200;margin-top:20px}.snap-card p{font-size:17px;color:rgba(255,255,255,.68);margin-top:18px}
+  .layer-demo{position:absolute;inset:72px 36px 52px;overflow:hidden;background:#111}.layer-demo .layer-track{position:absolute;inset:0}.layer-block{position:absolute;inset:54px 58px 54px;display:flex;align-items:flex-end;padding:28px;color:#fff;font-size:34px;font-weight:300;letter-spacing:-.03em;transform-origin:center bottom;transition:transform .2s,opacity .2s}.layer-block:nth-child(1){background:#002fa7}.layer-block:nth-child(2){background:#e05b38}.layer-block:nth-child(3){background:#111}.layer-block small{font:12px var(--mono);letter-spacing:.12em;position:absolute;right:24px;top:22px;color:rgba(255,255,255,.65)}
+  .expand-demo{position:absolute;inset:72px 36px 52px;overflow:hidden;background:#0a0a0a;color:#fff}.expand-core{position:absolute;left:50%;top:50%;width:190px;height:190px;transform:translate(-50%,-50%) scale(var(--expand-scale,1));border:1px solid var(--accent-bright);background:var(--accent);border-radius:50%;transition:transform .2s,border-radius .2s,opacity .2s}.expand-copy{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:var(--expand-copy,0);transition:opacity .25s}.expand-copy strong{font-size:68px;font-weight:200;letter-spacing:-.05em}.expand-copy p{font:14px var(--mono);letter-spacing:.14em;color:rgba(255,255,255,.62);margin-top:16px}.expand-meter{position:absolute;left:24px;right:24px;bottom:20px;height:3px;background:rgba(255,255,255,.2)}.expand-meter i{display:block;height:100%;width:var(--expand-progress,0%);background:var(--accent-bright);transition:width .2s}
+  .demo-panel[data-demo="grid"],.demo-panel[data-demo="fluid"]{cursor:crosshair}
+  @media (max-width:900px){.demo-layout{grid-template-columns:1fr 1.35fr;gap:2vw}.demo-title{font-size:min(5.2vw,8.6vh)}.demo-standfirst{font-size:1.9vw}.sticky-demo-scroll{grid-template-columns:1fr}.sticky-visual{height:220px;min-height:220px}.sticky-copy{padding-bottom:180px}.accordion-item{padding:16px}.accordion-item h3{font-size:18px}.ring-card{width:110px;height:82px;margin:-41px 0 0 -55px;font-size:11px}}
 </style>
 </head>
 <body class="canvas-mode">
@@ -1309,78 +1373,66 @@
 
 <section class="slide light" data-layout="SWISS-COVER-GLYPH" data-opening="glyph-split" data-animate="glyph-cover">
   <div class="canvas-card">
-    <div class="chrome-min tight"><div class="l">PERSONAL SITE · MOTION STUDY</div><div class="r">SS · 26.08.14 · 01 / 11</div></div>
+    <div class="chrome-min tight"><div class="l">PERSONAL SITE · MOTION STUDY</div><div class="r">SS · 26.08.14 · 01 / 14</div></div>
     <div class="glyph-cover">
       <div class="glyph-anchor-zone" data-anim="glyph"><img class="glyph-lettering" src="./assets/personal-site-lettering.png?v=ink-strong" alt="个人网站艺术字" /><div class="glyph-index">ANCHOR · 01</div></div>
       <div class="glyph-copy"><div class="t-meta glyph-kicker" data-anim="kicker">SCROLL / SPACE / MOTION</div><h1 class="glyph-title" data-anim="title">如何做个人名片？</h1><h2 class="glyph-subtitle" data-anim="subtitle">设计信息如何惊艳的被看见。</h2><div class="glyph-speaker" data-anim="speaker">落尘 · Personal Site</div></div>
     </div>
-    <div class="glyph-footer" data-anim="footer"><span>WEB EXPERIENCE FIELD NOTE</span><a href="?slide=10" style="color:inherit;text-decoration:none">→ 交互案例 / 10</a><span>→ SWIPE / ARROW KEYS</span></div>
+    <div class="glyph-footer" data-anim="footer"><span>WEB EXPERIENCE FIELD NOTE</span><a href="?slide=2" style="color:inherit;text-decoration:none">→ 交互演示 / 02</a><span>→ SWIPE / ARROW KEYS</span></div>
   </div>
 </section>
 
-<section class="slide light" data-layout="S03" data-animate="statement-rise">
-  <div class="canvas-card"><header class="chrome-min"><div class="l">02 / WHY</div><div class="r">OWN THE CONTEXT</div></header><h1 class="h-statement" style="max-width:10ch"><span>为什么</span><br><span>还要做</span><br><span style="color:var(--accent)">个人网站？</span></h1><span class="stmt-anchor">— 把简历、作品、判断和联系，放进一个自己控制的公开资产。</span></div>
+<!-- ============ 13 个术语 ============ -->
+<section class="slide light demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="repulsion">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">02 / INTERACTION DEMO</div><div class="r">DISTANCE FIELD</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">01 / INPUT → RESPONSE</div><h1 class="demo-title">距离驱动的排斥位移</h1><p class="demo-standfirst">指针靠近元素时，元素按距离计算反向位移，形成可感知的空间压力。</p><div class="demo-instruction">移动指针</div></div><div class="demo-panel demo-pointer" data-demo="repulsion" data-anim="panel"><div class="demo-panel-label">DISTANCE → REPULSION</div><div class="repulsion-grid" aria-hidden="true"></div><div class="repulsion-core" aria-hidden="true"></div><div class="demo-panel-footer"><span>POINTER DISTANCE</span><span>LIVE FIELD</span></div></div></div></div>
 </section>
 
-<section class="slide grey" data-layout="S03" data-animate="statement-rise">
-    <div class="canvas-card"><header class="chrome-min"><div class="l">03 / REFRAME</div><div class="r">NOT MORE MOTION</div></header><h1 class="h-statement" style="max-width:11ch"><span>炫酷</span><br><span>不是</span><br><span style="color:var(--accent)">动得多。</span></h1><span class="stmt-anchor">— 动效服务于注意力、理解与记忆。</span></div>
+<section class="slide grey demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="grid">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">03 / INTERACTION DEMO</div><div class="r">POINTER FIELD</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">02 / POINTER → SURFACE</div><h1 class="demo-title">指针驱动的网格变形</h1><p class="demo-standfirst">指针不是按钮，而是一块能让平面产生局部起伏的场。</p><div class="demo-instruction">移动指针</div></div><div class="demo-panel" data-demo="grid" data-anim="panel"><div class="demo-panel-label">POINTER → GRID DEFORMATION</div><svg class="grid-demo-svg" viewBox="0 0 700 420" preserveAspectRatio="none" aria-label="指针驱动的网格变形演示"></svg><div class="demo-panel-footer"><span>VECTOR SURFACE</span><span>LOCAL WARP</span></div></div></div></div>
 </section>
 
-<section class="slide grey" data-layout="S04" data-animate="grid-reveal">
-  <div class="canvas-card">
-    <header class="chrome-min"><div class="l">04 / DESIGN SYSTEM</div><div class="r">SIX VISUAL TOKENS</div></header>
-    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
-      <div class="t-meta">DESIGN IS A SYSTEM, NOT A SKIN</div>
-      <h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">先把设计拆成六个可复用的决定</h2>
-    </div>
-    <div data-anim="up" class="sub-grid-3-2">
-      <article class="sub-card"><span class="nb-corner">01</span><div class="ttl">Grid / 网格</div><p class="desc">让内容有轴线，视觉才不会散。</p></article>
-      <article class="sub-card"><span class="nb-corner">02</span><div class="ttl">Type / 字体</div><p class="desc">用字重和字号建立阅读顺序。</p></article>
-      <article class="sub-card accent"><span class="nb-corner">03</span><div class="ttl">Color / 色彩</div><p class="desc">只留一个 accent，让重点真的成为重点。</p></article>
-      <article class="sub-card"><span class="nb-corner">04</span><div class="ttl">Space / 间距</div><p class="desc">留白不是空白，是给判断留时间。</p></article>
-      <article class="sub-card"><span class="nb-corner">05</span><div class="ttl">Rule / 线条</div><p class="desc">用 1px 分隔信息，不用阴影堆层次。</p></article>
-      <article class="sub-card"><span class="nb-corner">06</span><div class="ttl">Motion / 动效</div><p class="desc">每一次运动都对应一个理解动作。</p></article>
-    </div>
-  </div>
+<section class="slide light demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="sticky">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">04 / INTERACTION DEMO</div><div class="r">STICKY STORY</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">03 / SCROLL → FIXED</div><h1 class="demo-title">滚动固定</h1><p class="demo-standfirst">左侧视觉固定在视口，右侧信息继续滚动，让一个空间承担连续叙事。</p><div class="demo-instruction">在右侧区域滚动</div></div><div class="demo-panel" data-demo="sticky" data-anim="panel"><div class="demo-panel-label">STICKY POSITIONING</div><div class="sticky-demo-scroll"><div class="sticky-visual"><div class="sticky-object"><span>FIXED</span></div></div><div class="sticky-copy"><article><b>定位</b><p>视觉保持在同一个位置，建立叙事锚点。</p></article><article><b>证据</b><p>右侧内容继续进入，左侧不离开视线。</p></article><article><b>行动</b><p>当信息滚完，固定元素才释放空间。</p></article><article><b>下一段</b><p>滚动固定不是停住，而是让对照关系持续存在。</p></article></div></div><div class="demo-panel-footer"><span>STICKY TOP: 0</span><span>SCROLL THE COPY</span></div></div></div></div>
 </section>
 
-<section class="slide light" data-layout="S13" data-animate="three-forces">
-  <div class="canvas-card">
-    <header class="chrome-min"><div class="l">05 / DESIGN PRINCIPLES</div><div class="r">WHY IT FEELS CLEAR</div></header>
-    <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta">THREE FORCES BEHIND THE EXPERIENCE</div><h2 class="h-xl-zh" style="font-size:min(5.2vw,9.2vh)">让人愿意继续看的，不是装饰</h2></div>
-    <div data-anim="up" style="display:grid;grid-template-columns:4fr 8fr;gap:3vw;align-items:stretch;flex:1;margin-top:4vh;margin-bottom:var(--nav-safe-bottom)">
-      <div class="card-ink" style="padding:3.2vh 2vw;display:flex;flex-direction:column;justify-content:space-between"><span class="t-meta">THE TEST</span><strong style="font-size:min(4.6vw,8.5vh);font-weight:200;line-height:.95;letter-spacing:-.04em">看得懂<br>记得住<br><em style="color:var(--accent-bright);font-style:normal">走得下去。</em></strong><p class="body-sm" style="color:rgba(255,255,255,.72)">设计的任务，是把下一步变得自然。</p></div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw">
-        <article class="card-fill" style="padding:2.8vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between"><div><span class="big-num">01</span><h3 style="font-size:2vw;font-weight:300;margin-top:2vh">层级</h3></div><p class="body-sm">先让人知道哪里最重要，再决定看多深。</p></article>
-        <article class="card-fill" style="padding:2.8vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between"><div><span class="big-num">02</span><h3 style="font-size:2vw;font-weight:300;margin-top:2vh">节奏</h3></div><p class="body-sm">静止、移动、留白交替，注意力才不会疲劳。</p></article>
-        <article class="card-accent" style="padding:2.8vh 1.5vw;display:flex;flex-direction:column;justify-content:space-between"><div><span class="big-num">03</span><h3 style="font-size:2vw;font-weight:300;margin-top:2vh">克制</h3></div><p class="body-sm">删掉不服务于理解的效果，反而更有记忆点。</p></article>
-      </div>
-    </div>
-  </div>
+<section class="slide dark demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="video">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">05 / INTERACTION DEMO</div><div class="r">HOVER PREVIEW</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">04 / HOVER → VIDEO</div><h1 class="demo-title">悬停触发视频预览</h1><p class="demo-standfirst" style="color:rgba(255,255,255,.68)">先让用户看到动态证据，再决定是否点击进入完整内容。</p><div class="demo-instruction" style="color:rgba(255,255,255,.58)">悬停右侧画面</div></div><div class="demo-panel dark" data-demo="video" data-anim="panel"><div class="demo-panel-label">HOVER TO PLAY</div><div class="hover-video-wrap"><video muted loop playsinline preload="metadata" poster="./assets/website-interaction-demo-poster.png" aria-label="悬停触发视频预览"><source src="./assets/website-interaction-demo.mp4" type="video/mp4"></video><div class="hover-video-badge">HOVER / PLAY</div></div><div class="demo-panel-footer"><span>VIDEO PREVIEW</span><span>NO CLICK REQUIRED</span></div></div></div></div>
 </section>
 
-<section class="slide light" data-layout="S05" data-animate="sub-stack">
-  <div class="canvas-card"><header class="chrome-min"><div class="l">06 / SCROLLTELLING</div><div class="r">THREE FORCES</div></header><div class="grid-2-9" style="margin-top:auto;margin-bottom:var(--nav-safe-bottom)"><div class="lead-col"><span class="t-cat">滚动叙事</span><h2 class="h-xl">把滚动<br>变成叙事。</h2></div><div class="sub-card-stack"><article class="card-fill sub-card"><span class="big-num">01</span><h4>定位</h4><p>先让人知道你是谁。</p></article><article class="card-fill sub-card"><span class="big-num">02</span><h4>证据</h4><p>再让人看到你做过什么。</p></article><article class="card-fill sub-card"><span class="big-num">03</span><h4>行动</h4><p>最后给出下一步。</p></article></div></div></div>
+<section class="slide grey demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="speed">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">06 / INTERACTION DEMO</div><div class="r">VELOCITY FIELD</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">05 / SCROLL SPEED → FORM</div><h1 class="demo-title">滚动速度驱动的形变</h1><p class="demo-standfirst">慢速滚动保持结构，快速滚动让形体被拉长、倾斜和拖尾。</p><div class="demo-instruction">在右侧区域快速滚动</div></div><div class="demo-panel" data-demo="speed" data-anim="panel"><div class="demo-panel-label">VELOCITY → DEFORMATION</div><div class="speed-readout">v = 0.00</div><div class="speed-track"><div class="speed-row"><span>01 / SLOW</span><i class="speed-bar"></i></div><div class="speed-row"><span>02 / FAST</span><i class="speed-bar"></i></div><div class="speed-row"><span>03 / FAST</span><i class="speed-bar"></i></div><div class="speed-row"><span>04 / SLOW</span><i class="speed-bar"></i></div><div class="speed-row"><span>05 / FAST</span><i class="speed-bar"></i></div></div><div class="demo-panel-footer"><span>WHEEL DELTA</span><span>SHAPE MEMORY</span></div></div></div></div>
 </section>
 
-<section class="slide dark" data-layout="S03" data-animate="statement-rise">
-  <div class="canvas-card"><header class="chrome-min"><div class="l">07 / LETTERING</div><div class="r">PROMPT BACKWARD</div></header><h1 class="h-statement" style="max-width:11ch"><span>先描述</span><br><span>视觉，</span><br><span style="color:var(--accent-bright)">再反推提示词。</span></h1><span class="stmt-anchor">— 字形结构 + 材质 + 光线 + 构图 + 禁止项。</span></div>
+<section class="slide light demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="accordion">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">07 / INTERACTION DEMO</div><div class="r">LAYOUT EXPANSION</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">06 / CLICK → SPACE</div><h1 class="demo-title">手风琴式拓展布局</h1><p class="demo-standfirst">同一组内容在收起时保持节奏，打开后获得完整的阅读空间。</p><div class="demo-instruction">点击任意一列</div></div><div class="demo-panel" data-demo="accordion" data-anim="panel"><div class="demo-panel-label">ACCORDION EXPANSION</div><div class="accordion-demo"><button class="accordion-item is-open"><span class="accordion-number">01</span><h3>定位</h3><p>先以窄列保留整体结构，点击后扩展成完整说明。</p></button><button class="accordion-item"><span class="accordion-number">02</span><h3>证据</h3><p>把案例、图片或视频放进被打开的空间。</p></button><button class="accordion-item"><span class="accordion-number">03</span><h3>过程</h3><p>让过程内容拥有比摘要更大的阅读面积。</p></button><button class="accordion-item"><span class="accordion-number">04</span><h3>行动</h3><p>最后一列承担下一步，而不是同时抢占注意力。</p></button></div><div class="demo-panel-footer"><span>CLICK TO EXPAND</span><span>ONE OPEN AT A TIME</span></div></div></div></div>
 </section>
 
-<section class="slide light" data-layout="S11" data-animate="timeline-walk">
-  <div class="canvas-card"><header class="chrome-min"><div class="l">08 / DEPLOYMENT</div><div class="r">CLOUDFLARE PAGES</div></header><div style="display:flex;flex-direction:column;justify-content:center;flex:1;margin-bottom:var(--nav-safe-bottom)"><h2 class="h-xl" style="max-width:9ch">从本地<br>到线上。</h2><div class="pipeline" data-cols="4" style="margin-top:5vh"><div class="step"><span class="step-nb">01</span><b class="step-title">GIT PUSH</b><small class="step-desc">提交源码</small></div><div class="step"><span class="step-nb">02</span><b class="step-title">BUILD</b><small class="step-desc">构建静态产物</small></div><div class="step"><span class="step-nb">03</span><b class="step-title">PAGES</b><small class="step-desc">自动部署</small></div><div class="step"><span class="step-nb">04</span><b class="step-title">DOMAIN</b><small class="step-desc">国内访问另行核验</small></div></div></div></div>
+<section class="slide dark demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="fluid">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">08 / INTERACTION DEMO</div><div class="r">FLUID RESPONSE</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">07 / POINTER → FLUID</div><h1 class="demo-title">交互式流体扭曲</h1><p class="demo-standfirst" style="color:rgba(255,255,255,.68)">指针改变扰动源，图形像液体一样彼此推挤、融合和回弹。</p><div class="demo-instruction" style="color:rgba(255,255,255,.58)">移动指针</div></div><div class="demo-panel dark" data-demo="fluid" data-anim="panel"><div class="demo-panel-label">INTERACTIVE FLUID DISTORTION</div><svg class="fluid-demo-svg" viewBox="0 0 700 420" preserveAspectRatio="none" aria-label="交互式流体扭曲演示"><defs><filter id="fluid-filter" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="8" result="noise"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs><circle cx="240" cy="210" r="130"></circle><circle cx="420" cy="205" r="110"></circle><circle cx="350" cy="290" r="90"></circle></svg><div class="demo-panel-footer"><span>NOISE FIELD</span><span>POINTER DISTORTION</span></div></div></div></div>
 </section>
 
-<section class="slide grey" data-layout="S03" data-animate="statement-rise">
-  <div class="canvas-card"><header class="chrome-min"><div class="l">09 / CASE STUDY</div><div class="r">SCROLL CHOREOGRAPHY</div></header><h1 class="h-statement" style="max-width:12ch"><span>Hero</span><br><span>Proof</span><br><span>Orbit</span><br><span style="color:var(--accent)">Stack → CTA</span></h1><span class="stmt-anchor">— 从自我介绍，到证据，再到行动。</span></div>
+<section class="slide light demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="scene">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">09 / INTERACTION DEMO</div><div class="r">NARRATIVE STATE</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">08 / SCROLL → SCENE</div><h1 class="demo-title">滚动驱动的场景切换</h1><p class="demo-standfirst">滚动不是移动页面，而是把同一屏切换成下一种叙事状态。</p><div class="demo-instruction">在右侧区域滚动</div></div><div class="demo-panel dark" data-demo="scene" data-anim="panel"><div class="demo-panel-label">SCROLL POSITION → SCENE</div><div class="scene-demo"><div class="scene-progress">01 / 03</div><article class="scene-card is-active"><strong>定位</strong><p>第一场先回答：你是谁，用户为什么要留下。</p></article><article class="scene-card"><strong>证据</strong><p>第二场把作品、过程和判断推到视线中心。</p></article><article class="scene-card"><strong>行动</strong><p>第三场把继续滚动变成一个自然的下一步。</p></article></div><div class="demo-panel-footer"><span>SCROLL DELTA</span><span>SCENE 01 → 03</span></div></div></div></div>
 </section>
 
-<section class="slide dark" data-layout="S03" data-animate="statement-rise">
-  <div class="canvas-card" style="display:grid;grid-template-columns:5fr 7fr;gap:3vw;align-items:center"><div><header class="chrome-min"><div class="l">10 / WEBSITE INTERACTION</div><div class="r">REMOTION CASE DEMO</div></header><h1 class="h-statement" style="font-size:min(7.6vw,13vh);max-width:7ch;margin-top:5vh"><span>把网站</span><br><span>交互</span><br><span style="color:var(--accent-bright)">讲清楚。</span></h1><span class="stmt-anchor">— 滚动叙事、Sticky、Orbit、叠卡、CTA 展开。</span></div><div style="border:1px solid var(--border-subtle);padding:1vw;background:#0b0e12"><video controls muted playsinline preload="metadata" poster="./assets/website-interaction-demo-poster.png" aria-label="网站交互案例演示视频" style="display:block;width:100%;height:auto;aspect-ratio:16/9;background:#050608"><source src="./assets/website-interaction-demo.mp4" type="video/mp4"></video><div class="t-meta" style="margin-top:1.2vh;color:var(--text-helper)">ACTUAL SITE FRAME / REMOTION TIMELINE · 点击播放</div></div></div>
+<section class="slide grey demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="ring">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">10 / INTERACTION DEMO</div><div class="r">SPATIAL CAROUSEL</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">09 / SCROLL → ORBIT</div><h1 class="demo-title">滚动驱动的3d环形轮播</h1><p class="demo-standfirst">每一次滚动都改变环形角度，让项目卡片在空间里重新排序。</p><div class="demo-instruction">在右侧区域滚动</div></div><div class="demo-panel" data-demo="ring" data-anim="panel"><div class="demo-panel-label">3D RING CAROUSEL</div><div class="ring-demo"><div class="ring-orbit"><div class="ring-card">PROJECT / 01</div><div class="ring-card">PROJECT / 02</div><div class="ring-card">PROJECT / 03</div><div class="ring-card">PROJECT / 04</div><div class="ring-card">PROJECT / 05</div><div class="ring-card">PROJECT / 06</div><div class="ring-center"></div></div></div><div class="demo-panel-footer"><span>ROTATION: 0°</span><span>SCROLL TO ORBIT</span></div></div></div></div>
 </section>
 
-<section class="slide split" data-layout="SWISS-CLOSING-ASCII" data-animate="split-statement">
-  <div class="canvas-card"><div class="split-half"><div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:center"><div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">TAKEAWAY</div><div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7vw,12vh);line-height:.92;color:#fff;margin-top:2vh">最好的<br>炫酷，<br><em style="color:var(--accent-bright);font-style:normal">是继续看。</em></div></div><div class="half b-paper" style="padding:5.6vh 3.6vw 4.4vh;justify-content:center"><div class="t-meta">THE RULE</div><p class="lead" style="margin-top:3vh">Design the next scroll,<br>not just the first screen.</p><div class="t-meta" style="margin-top:8vh;color:var(--text-helper)">落尘 · 2026</div></div></div></div>
+<section class="slide light demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="stagger">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">11 / INTERACTION DEMO</div><div class="r">TYPOGRAPHIC ENTRY</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">10 / TIME → LETTER</div><h1 class="demo-title">逐字错峰入场</h1><p class="demo-standfirst">文字不是整块出现，而是让每一个字拥有自己的节拍。</p><div class="demo-instruction">点击 replay 重新播放</div></div><div class="demo-panel" data-demo="stagger" data-anim="panel"><div class="demo-panel-label">STAGGERED CHARACTER REVEAL</div><div class="stagger-demo ready"><div class="stagger-line" aria-label="先让人停下来"><span class="stagger-word" style="--i:0">先</span><span class="stagger-word" style="--i:1">让</span><span class="stagger-word" style="--i:2">人</span><span class="stagger-word" style="--i:3">停</span><span class="stagger-word" style="--i:4">下</span><span class="stagger-word" style="--i:5">来</span></div><div class="stagger-line" aria-label="再让人继续看"><span class="stagger-word" style="--i:6">再</span><span class="stagger-word" style="--i:7">让</span><span class="stagger-word" style="--i:8">人</span><span class="stagger-word" style="--i:9">继</span><span class="stagger-word" style="--i:10">续</span><span class="stagger-word" style="--i:11">看</span></div><button class="stagger-replay" type="button">REPLAY / 重新播放</button></div><div class="demo-panel-footer"><span>CHARACTER DELAY</span><span>70 MS / STEP</span></div></div></div></div>
+</section>
+
+<section class="slide dark demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="snap">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">12 / INTERACTION DEMO</div><div class="r">SCROLL NAVIGATION</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">11 / SCROLL → SNAP</div><h1 class="demo-title">滚动吸附</h1><p class="demo-standfirst" style="color:rgba(255,255,255,.68)">滚动结束时，内容自动吸附到清晰的阅读位置，避免停在两页之间。</p><div class="demo-instruction" style="color:rgba(255,255,255,.58)">在右侧区域滚动</div></div><div class="demo-panel dark" data-demo="snap" data-anim="panel"><div class="demo-panel-label">SCROLL SNAP / MANDATORY</div><div class="snap-scroll"><article class="snap-card"><b>01 / START</b><strong>进入</strong><p>滚动结束，第一张卡片吸附到顶部。</p></article><article class="snap-card"><b>02 / HOLD</b><strong>停留</strong><p>每一屏都成为一个稳定的阅读单元。</p></article><article class="snap-card"><b>03 / NEXT</b><strong>继续</strong><p>下一次滚动从明确的位置重新开始。</p></article></div><div class="demo-panel-footer"><span>Y SNAP: MANDATORY</span><span>SCROLL THE CARDS</span></div></div></div></div>
+</section>
+
+<section class="slide grey demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="layers">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">13 / INTERACTION DEMO</div><div class="r">LAYER TRANSITION</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">12 / SCROLL → LAYERS</div><h1 class="demo-title">滚动叠层转场</h1><p class="demo-standfirst">下一层不是突然替换，而是从上一层之上进入，保留前后状态的关系。</p><div class="demo-instruction">在右侧区域滚动</div></div><div class="demo-panel dark" data-demo="layers" data-anim="panel"><div class="demo-panel-label">LAYERED SCROLL TRANSITION</div><div class="layer-demo"><div class="layer-track"><div class="layer-block"><small>LAYER / 01</small>定位</div><div class="layer-block"><small>LAYER / 02</small>证据</div><div class="layer-block"><small>LAYER / 03</small>行动</div></div></div><div class="demo-panel-footer"><span>DEPTH ORDER</span><span>SCROLL TO STACK</span></div></div></div></div>
+</section>
+
+<section class="slide dark demo-slide" data-layout="INTERACTION-DEMO" data-animate="demo-reveal" data-demo="expand">
+  <div class="canvas-card"><header class="chrome-min"><div class="l">14 / INTERACTION DEMO</div><div class="r">FULLSCREEN TRANSITION</div></header><div class="demo-layout"><div class="demo-copy" data-anim="copy"><div class="demo-index">13 / SCROLL → FULLSCREEN</div><h1 class="demo-title">滚动驱动的全屏幕拓展转场</h1><p class="demo-standfirst" style="color:rgba(255,255,255,.68)">一个局部视觉随着滚动扩大，最后接管整个画面，把用户带入下一场。</p><div class="demo-instruction" style="color:rgba(255,255,255,.58)">在右侧区域滚动</div></div><div class="demo-panel dark" data-demo="expand" data-anim="panel"><div class="demo-panel-label">FULLSCREEN EXPANSION</div><div class="expand-demo"><div class="expand-core"></div><div class="expand-copy"><div><strong>下一场</strong><p>THE NEXT SCENE IS THE WHOLE SCREEN</p></div></div><div class="expand-meter"><i></i></div></div><div class="demo-panel-footer"><span>EXPANSION: 0%</span><span>SCROLL TO TAKE OVER</span></div></div></div></div>
 </section>
 
 <!-- ============ 开场路由:只保留一种封面 ============
@@ -1762,6 +1814,145 @@ const initialSlideParam = new URLSearchParams(location.search).get('slide');
 const initialSlide = initialSlideParam ? Number(initialSlideParam) - 1 : 0;
 go(Number.isFinite(initialSlide) ? initialSlide : 0);
 </script>
+<script>
+/* ============ 用户指定的 13 个交互演示 ============ */
+(function(){
+  const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  const customWheel=(el,handler)=>el.addEventListener('wheel',event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    handler(event.deltaY,event);
+  },{passive:false});
+
+  /* 距离驱动的排斥位移 */
+  const repel=document.querySelector('.demo-panel[data-demo="repulsion"]');
+  if(repel){
+    const grid=repel.querySelector('.repulsion-grid');
+    const dots=[];
+    for(let row=0;row<8;row++) for(let col=0;col<13;col++){
+      const dot=document.createElement('i');
+      dot.className='repulsion-dot';
+      dot.dataset.x=col/12;dot.dataset.y=row/7;
+      grid.appendChild(dot);dots.push(dot);
+    }
+    let pointer=null,raf=0;
+    const draw=()=>{
+      raf=0;
+      dots.forEach(dot=>{
+        if(!pointer){dot.style.setProperty('--dx','0px');dot.style.setProperty('--dy','0px');dot.style.setProperty('--dot-scale','1');return;}
+        const dx=Number(dot.dataset.x)-pointer.x,dy=Number(dot.dataset.y)-pointer.y;
+        const distance=Math.hypot(dx,dy),force=clamp((.25-distance)/.25,0,1);
+        const length=Math.max(distance,.001);
+        dot.style.setProperty('--dx',`${(dx/length)*force*74}px`);
+        dot.style.setProperty('--dy',`${(dy/length)*force*74}px`);
+        dot.style.setProperty('--dot-scale',`${1+force*.9}`);
+      });
+    };
+    const schedule=()=>{if(!raf)raf=requestAnimationFrame(draw)};
+    repel.addEventListener('pointermove',event=>{const r=repel.getBoundingClientRect();pointer={x:clamp((event.clientX-r.left)/r.width,0,1),y:clamp((event.clientY-r.top)/r.height,0,1)};schedule()});
+    repel.addEventListener('pointerleave',()=>{pointer=null;schedule()});
+  }
+
+  /* 指针驱动的网格变形 */
+  const gridPanel=document.querySelector('.demo-panel[data-demo="grid"]');
+  if(gridPanel){
+    const svg=gridPanel.querySelector('.grid-demo-svg');
+    const ns='http://www.w3.org/2000/svg';
+    for(let i=0;i<11;i++){const path=document.createElementNS(ns,'path');path.dataset.axis='h';path.dataset.index=i;svg.appendChild(path)}
+    for(let i=0;i<13;i++){const path=document.createElementNS(ns,'path');path.dataset.axis='v';path.dataset.index=i;svg.appendChild(path)}
+    const core=document.createElementNS(ns,'circle');core.classList.add('grid-core');svg.appendChild(core);
+    let point={x:350,y:210};
+    const draw=()=>{
+      const influence=clamp(1-Math.hypot(point.x-350,point.y-210)/390,.08,1);
+      svg.querySelectorAll('path').forEach(path=>{
+        const i=Number(path.dataset.index);
+        if(path.dataset.axis==='h'){
+          const y=34+i*35, bend=(point.y-y)*influence*.68;
+          path.setAttribute('d',`M 0 ${y} Q 350 ${y+bend} 700 ${y}`);
+        }else{
+          const x=16+i*56, bend=(point.x-x)*influence*.68;
+          path.setAttribute('d',`M ${x} 0 Q ${x+bend} 210 ${x} 420`);
+        }
+      });
+      core.setAttribute('cx',point.x);core.setAttribute('cy',point.y);core.setAttribute('r',`${10+influence*18}`);
+    };
+    gridPanel.addEventListener('pointermove',event=>{const r=gridPanel.getBoundingClientRect();point={x:clamp((event.clientX-r.left)/r.width*700,0,700),y:clamp((event.clientY-r.top)/r.height*420,0,420)};draw()});
+    gridPanel.addEventListener('pointerleave',()=>{point={x:350,y:210};draw()});
+    draw();
+  }
+
+  /* 滚动固定：让内部滚动不触发整份 deck 翻页 */
+  document.querySelectorAll('[data-demo="sticky"] .sticky-demo-scroll,[data-demo="snap"] .snap-scroll').forEach(el=>el.addEventListener('wheel',event=>event.stopPropagation(),{passive:true}));
+
+  /* 悬停触发视频预览 */
+  const videoWrap=document.querySelector('.demo-panel[data-demo="video"] .hover-video-wrap');
+  if(videoWrap){
+    const video=videoWrap.querySelector('video');
+    videoWrap.addEventListener('mouseenter',()=>video.play().catch(()=>{}));
+    videoWrap.addEventListener('mouseleave',()=>{video.pause();video.currentTime=0});
+  }
+
+  /* 滚动速度驱动的形变 */
+  const speedPanel=document.querySelector('.demo-panel[data-demo="speed"]');
+  if(speedPanel){
+    const bars=[...speedPanel.querySelectorAll('.speed-bar')],readout=speedPanel.querySelector('.speed-readout');
+    let velocity=0,resetTimer=0;
+    const draw=()=>{
+      bars.forEach((bar,i)=>{const amount=Math.abs(velocity),direction=velocity>=0?1:-1;bar.style.transform=`translateX(${direction*amount*(i%2?18:-10)}px) scaleX(${1+amount*(.7+i*.12)}) rotate(${direction*amount*(i%2?2:-1)}deg)`;bar.style.filter=`blur(${amount*(i%2?1.5:.5)}px)`});
+      readout.textContent=`v = ${velocity.toFixed(2)}`;
+    };
+    customWheel(speedPanel,delta=>{velocity=clamp(velocity+clamp(delta/280,-.38,.38),-1,1);draw();clearTimeout(resetTimer);resetTimer=setTimeout(()=>{velocity=0;draw()},360)});
+    draw();
+  }
+
+  /* 手风琴式拓展布局 */
+  const accordion=document.querySelector('.demo-panel[data-demo="accordion"]');
+  if(accordion){
+    const items=[...accordion.querySelectorAll('.accordion-item')];
+    items.forEach(item=>item.addEventListener('click',event=>{event.stopPropagation();items.forEach(other=>other.classList.toggle('is-open',other===item))}));
+  }
+
+  /* 交互式流体扭曲 */
+  const fluid=document.querySelector('.demo-panel[data-demo="fluid"]');
+  if(fluid){
+    const turbulence=fluid.querySelector('feTurbulence'),displacement=fluid.querySelector('feDisplacementMap'),circles=[...fluid.querySelectorAll('circle')];
+    fluid.addEventListener('pointermove',event=>{const r=fluid.getBoundingClientRect(),x=clamp((event.clientX-r.left)/r.width,0,1)*700,y=clamp((event.clientY-r.top)/r.height,0,1)*420;const force=1-Math.hypot(x-350,y-210)/410;turbulence.setAttribute('baseFrequency',(.006+clamp(force,0,1)*.03).toFixed(3));displacement.setAttribute('scale',String(14+clamp(force,0,1)*66));circles.forEach((circle,i)=>{circle.setAttribute('cx',String([240,420,350][i]+(x-350)*.08));circle.setAttribute('cy',String([210,205,290][i]+(y-210)*.08))})});
+    fluid.addEventListener('pointerleave',()=>{turbulence.setAttribute('baseFrequency','.012');displacement.setAttribute('scale','18')});
+  }
+
+  /* 滚动驱动的场景切换 */
+  const scene=document.querySelector('.demo-panel[data-demo="scene"]');
+  if(scene){
+    const cards=[...scene.querySelectorAll('.scene-card')],progress=scene.querySelector('.scene-progress');let active=0;
+    const draw=()=>{cards.forEach((card,i)=>card.classList.toggle('is-active',i===active));progress.textContent=`0${active+1} / 03`};
+    customWheel(scene,delta=>{active=clamp(active+(delta>0?1:-1),0,cards.length-1);draw()});draw();
+  }
+
+  /* 滚动驱动的3d环形轮播 */
+  const ring=document.querySelector('.demo-panel[data-demo="ring"]');
+  if(ring){
+    const orbit=ring.querySelector('.ring-orbit'),cards=[...ring.querySelectorAll('.ring-card')],label=ring.querySelector('.demo-panel-footer span');let rotation=0;
+    const draw=()=>{cards.forEach((card,i)=>card.style.transform=`rotateY(${rotation+i*(360/cards.length)}deg) translateZ(190px)`);label.textContent=`ROTATION: ${Math.round(rotation)%360}°`};
+    customWheel(ring,delta=>{rotation+=delta>0?-18:18;draw()});draw();
+  }
+
+  /* 逐字错峰入场 */
+  const stagger=document.querySelector('.demo-panel[data-demo="stagger"]');
+  if(stagger){const stage=stagger.querySelector('.stagger-demo'),button=stagger.querySelector('.stagger-replay');button.addEventListener('click',event=>{event.stopPropagation();stage.classList.remove('ready');void stage.offsetWidth;stage.classList.add('ready')})}
+
+  /* 滚动吸附 */
+  const snap=document.querySelector('.demo-panel[data-demo="snap"]');
+  if(snap){const scroller=snap.querySelector('.snap-scroll');scroller.addEventListener('scroll',()=>{const n=Math.round(scroller.scrollTop/Math.max(1,scroller.clientHeight*.82));const footer=snap.querySelector('.demo-panel-footer span:last-child');footer.textContent=`SNAP ${String(clamp(n+1,1,3)).padStart(2,'0')} / 03`})}
+
+  /* 滚动叠层转场 */
+  const layers=document.querySelector('.demo-panel[data-demo="layers"]');
+  if(layers){const blocks=[...layers.querySelectorAll('.layer-block')];let position=0;const draw=()=>{blocks.forEach((block,i)=>{const distance=i-position;block.style.transform=`translateY(${distance*46}px) scale(${1-Math.min(Math.abs(distance)*.055,.16)})`;block.style.opacity=String(Math.max(.24,1-Math.abs(distance)*.28));block.style.zIndex=String(10-i)});};customWheel(layers,delta=>{position=clamp(position+(delta>0?.38:-.38),0,2);draw()});draw()}
+
+  /* 滚动驱动的全屏幕拓展转场 */
+  const expand=document.querySelector('.demo-panel[data-demo="expand"]');
+  if(expand){const core=expand.querySelector('.expand-core'),copy=expand.querySelector('.expand-copy'),meter=expand.querySelector('.expand-meter i'),footer=expand.querySelector('.demo-panel-footer span');let progress=0;const draw=()=>{core.style.setProperty('--expand-scale',String(1+progress*5.6));core.style.borderRadius=`${50-progress*50}%`;copy.style.setProperty('--expand-copy',String(clamp((progress-.55)*2.3,0,1)));meter.style.setProperty('--expand-progress',`${Math.round(progress*100)}%`);footer.textContent=`EXPANSION: ${Math.round(progress*100)}%`};customWheel(expand,delta=>{progress=clamp(progress+(delta>0?.12:-.12),0,1);draw()});draw()}
+})();
+</script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>lucide.createIcons();</script>
 
@@ -1769,7 +1960,7 @@ go(Number.isFinite(initialSlide) ? initialSlide : 0);
 <script type="module">
 let motion;
 try {
-  motion = await import('./assets/motion.min.js');
+  motion = await import('../../assets/motion.min.js');
 } catch(e1) {
   try {
     motion = await import('https://cdn.jsdelivr.net/npm/motion@11.11.17/+esm');
