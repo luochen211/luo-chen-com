@@ -1,5 +1,7 @@
 .ai-talk-page { --talk-paper: #f2eee6; --talk-ink: #0a0d12; --talk-muted: rgba(242,238,230,.56); width: 100%; overflow: clip; }
-.ai-talk-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 19rem; align-items: end; min-height: calc(100svh - 5rem); padding: clamp(5rem, 10vw, 9rem) 0 2rem; border-bottom: 1px solid var(--line); }
+.ai-talk-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(25rem, 32rem); align-items: end; min-height: calc(100svh - 5rem); padding: clamp(5rem, 10vw, 9rem) 0 2rem; border-bottom: 1px solid var(--line); isolation: isolate; }
+.ai-talk-hero::before { position: absolute; z-index: -1; top: 7%; right: -8%; width: min(58vw, 900px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(223,113,56,.2) 0%, rgba(223,113,56,.08) 28%, transparent 68%); content: ''; filter: blur(18px); pointer-events: none; }
+.ai-talk-hero::after { position: absolute; z-index: -1; top: 17%; right: 1%; width: min(38vw, 560px); height: 62%; border-top: 1px solid rgba(223,113,56,.2); border-right: 1px solid rgba(223,113,56,.12); border-radius: 0 100% 0 0; content: ''; opacity: .72; pointer-events: none; }
 .ai-talk-hero-copy { max-width: 66rem; padding-bottom: clamp(3rem, 8vw, 7rem); }
 .ai-talk-eyebrow, .ai-talk-section-label, .ai-talk-hero-foot, .ai-talk-module-title p, .ai-talk-close-line { display: flex; justify-content: space-between; gap: 1rem; color: var(--brand-warm); font-size: .7rem; font-weight: 700; letter-spacing: .13em; line-height: 1.4; text-transform: uppercase; }
 .ai-talk-eyebrow { max-width: 43rem; margin: 0 0 clamp(3.5rem, 9vw, 8rem); }
@@ -7,7 +9,7 @@
 .ai-talk-hero h1 span { display: block; }
 .ai-talk-hero h1 span:last-child { color: var(--brand-warm); }
 .ai-talk-intro { max-width: 38rem; margin: 2.5rem 0 0; color: var(--ink-soft); font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.7; }
-.ai-talk-hero-art { display: block; align-self: center; justify-self: end; width: min(34vw, 510px); height: auto; transform: translate(3%, 2%); filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.36)); }
+.ai-talk-hero-art { display: block; align-self: center; justify-self: end; width: min(48vw, 800px); height: auto; transform: translate(8%, 2%); filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.36)); }
 .ai-talk-hero-foot { position: absolute; right: 0; bottom: 2rem; left: 0; color: var(--muted); }
 .ai-talk-hero-foot span:first-child { color: var(--brand-warm); }
 .ai-talk-thesis { display: grid; grid-template-columns: minmax(8rem, .35fr) minmax(0, 1.65fr); gap: clamp(2rem, 8vw, 10rem); margin-inline: calc(50% - 50vw); padding: clamp(6rem, 13vw, 13rem) max(1rem, calc((100vw - min(1320px, calc(100vw - 2rem))) / 2)); background: var(--talk-paper); color: var(--talk-ink); }
@@ -35,7 +37,7 @@
   .ai-talk-hero { display: block; min-height: 0; padding-top: 4rem; }
   .ai-talk-hero-copy { padding-bottom: 7rem; }
   .ai-talk-eyebrow { display: grid; gap: .45rem; margin-bottom: 5rem; }
-  .ai-talk-hero-art { position: absolute; right: -10%; bottom: 1.5rem; width: 44vw; transform: none; opacity: .76; }
+  .ai-talk-hero-art { position: absolute; right: -10%; bottom: 1.5rem; width: 54vw; transform: none; opacity: .78; }
   .ai-talk-hero-foot { bottom: 1.25rem; }
   .ai-talk-thesis, .ai-talk-outline-heading { grid-template-columns: 1fr; gap: 2rem; }
   .ai-talk-module { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
