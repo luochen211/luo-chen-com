@@ -13,6 +13,7 @@ describe('Cloudflare Pages routing', () => {
     expect(functionRoutes.include).toContain('/articles/*')
     expect(functionRoutes.include).toContain('/columns/*')
     expect(functionRoutes.include).toContain('/demos/futures-trader')
+    expect(functionRoutes.include).toContain('/talks/ai-delivery')
     expect(functionRoutes.exclude).toContain('/assets/*')
     expect(functionRoutes.exclude).toContain('/demos/agent-harness/*')
     expect(redirectLines).not.toContain('/* /index.html 200')

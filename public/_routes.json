@@ -14,6 +14,7 @@
     "/articles/*",
     "/columns/*",
     "/topics/*",
+    "/talks/ai-delivery",
     "/demos/futures-trader",
     "/demos/futures-trader/*"
   ],

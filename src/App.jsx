@@ -22,17 +22,19 @@ import HomePage from './pages/HomePage'
 import NowPage from './pages/NowPage'
 import OutputPage from './pages/OutputPage'
 import FuturesTraderDemoPage from './pages/FuturesTraderDemoPage'
+import AiDeliveryTalkPage from './pages/AiDeliveryTalkPage'
 import { getInitialLocale, siteContent, socialProfiles } from './data/siteContent'
 import { findArticle } from './lib/articles'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function getRouteTitle(pathname, t) {
+function getRouteTitle(pathname, t, locale) {
   if (pathname.startsWith('/articles/')) return null
   if (pathname === '/about') return t.about.title
   if (pathname === '/now') return t.now.title
   if (['/output', '/work', '/projects', '/writing', '/course'].includes(pathname)) return t.output.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
+  if (pathname === '/talks/ai-delivery') return locale === 'zh' ? '客户为什么愿意把结果交给你？ · LUOCHEN' : 'Why Would a Client Trust You With the Result? · LUOCHEN'
   if (pathname.startsWith('/columns/')) {
     const slug = pathname.slice('/columns/'.length)
     return t.collections[slug]?.title || t.seoTitle.text
@@ -56,7 +58,7 @@ function SiteApp() {
   useEffect(() => {
     window.localStorage.setItem('site-locale', locale)
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en'
-    const routeTitle = getRouteTitle(location.pathname, t)
+    const routeTitle = getRouteTitle(location.pathname, t, locale)
     if (routeTitle) document.title = routeTitle
   }, [locale, location.pathname, t])
 
@@ -193,6 +195,7 @@ function SiteApp() {
           <Route path="/projects" element={<Navigate replace to="/output" />} />
           <Route path="/course" element={<Navigate replace to="/output" />} />
           <Route path="/demos/futures-trader" element={<FuturesTraderDemoPage />} />
+          <Route path="/talks/ai-delivery" element={<AiDeliveryTalkPage locale={locale} />} />
           <Route path="/lab/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/roundtable" element={<Navigate replace to="/" />} />
           <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />

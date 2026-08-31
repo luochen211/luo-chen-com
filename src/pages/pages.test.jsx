@@ -10,6 +10,7 @@ import NowPage from './NowPage'
 import WorkPage from './WorkPage'
 import WritingPage from './WritingPage'
 import OutputPage from './OutputPage'
+import AiDeliveryTalkPage from './AiDeliveryTalkPage'
 import { siteContent } from '../data/siteContent'
 import { getProjectShowcase } from '../data/projectShowcase'
 
@@ -20,6 +21,7 @@ const pages = [
   ['Output', OutputPage, { locale: 'zh' }],
   ['Now', NowPage],
   ['About', AboutPage, { locale: 'zh' }],
+  ['AI delivery talk', AiDeliveryTalkPage, { locale: 'zh' }],
 ]
 
 afterEach(cleanup)
@@ -97,6 +99,13 @@ describe('redesigned page purposes', () => {
       'href',
       'https://my.feishu.cn/docx/XKuRdcy3MoxS9ixBaa1cPzTYnVp',
     )
+  })
+
+  it('renders the AI delivery talk as four modules around one core judgment', () => {
+    const { container } = render(<MemoryRouter><AiDeliveryTalkPage locale="zh" /></MemoryRouter>)
+    expect(screen.getByRole('heading', { name: /客户为什么愿意把结果交给你/ })).toBeInTheDocument()
+    expect(container.querySelectorAll('.ai-talk-module')).toHaveLength(4)
+    expect(screen.getByText(/客户真正购买的，不是你的身份/)).toBeInTheDocument()
   })
 
   it('keeps the Output closing statement in two deliberate lines with highlighted keywords', () => {
