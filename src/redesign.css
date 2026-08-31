@@ -71,8 +71,8 @@ body {
 .brand-mark {
   display: grid;
   flex: 0 0 auto;
-  width: 5.6rem;
-  height: 2.75rem;
+  width: 5.2rem;
+  height: 2.55rem;
   overflow: hidden;
   background: #000;
   transition: background 180ms ease, transform 180ms ease;
@@ -1272,8 +1272,8 @@ body {
 
 @media (max-width: 760px) {
   .brand-mark {
-    width: 4.7rem;
-    height: 2.5rem;
+    width: 4.2rem;
+    height: 2.25rem;
   }
 
   .footer .footer-brand-mark {
