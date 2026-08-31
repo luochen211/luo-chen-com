@@ -1409,6 +1409,20 @@ body {
 .hero-portrait-background:focus-visible .hero-portrait-haze,
 .hero-portrait-background.is-revealed .hero-portrait-haze { opacity: 0.08; }
 
+.hero-delivery-art {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: max(-4rem, calc((100vw - 1380px) / -2));
+  width: min(58vw, 760px);
+  height: auto;
+  transform: translateY(-46%);
+  opacity: 0.96;
+  filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.36));
+  pointer-events: none;
+  user-select: none;
+}
+
 .home-focused-hero .hero-copy {
   z-index: 3;
   pointer-events: none;
@@ -2021,6 +2035,15 @@ body {
     padding: 7.5rem var(--home-gutter) 0;
   }
   .hero-portrait-background { left: 62%; cursor: pointer; }
+  .hero-delivery-art {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(100vw, 520px);
+    margin: -1rem calc(var(--home-gutter) * -1) 0 auto;
+    transform: none;
+    opacity: 0.9;
+  }
   .hero-portrait-background img { object-position: 50% 50%; filter: blur(10px) saturate(0.76) brightness(0.66); }
   .hero-portrait-scrim {
     background:
