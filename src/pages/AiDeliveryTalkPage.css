@@ -7,10 +7,7 @@
 .ai-talk-hero h1 span { display: block; }
 .ai-talk-hero h1 span:last-child { color: var(--brand-warm); }
 .ai-talk-intro { max-width: 38rem; margin: 2.5rem 0 0; color: var(--ink-soft); font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.7; }
-.ai-talk-stamp { display: grid; align-self: center; justify-self: end; width: 15rem; aspect-ratio: 1; place-content: center; border: 1px solid var(--brand-warm); border-radius: 50%; color: var(--brand-warm); transform: rotate(11deg); text-align: center; }
-.ai-talk-stamp span { display: block; font-size: 2.6rem; font-weight: 800; letter-spacing: -.08em; line-height: .9; }
-.ai-talk-stamp span:nth-child(2) { color: var(--ink); font-size: 1.25rem; letter-spacing: .16em; margin-top: .35rem; }
-.ai-talk-stamp small { margin-top: 1rem; color: var(--muted); font-size: .55rem; letter-spacing: .08em; }
+.ai-talk-hero-art { display: block; align-self: center; justify-self: end; width: min(34vw, 510px); height: auto; transform: translate(3%, 2%); filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.36)); }
 .ai-talk-hero-foot { position: absolute; right: 0; bottom: 2rem; left: 0; color: var(--muted); }
 .ai-talk-hero-foot span:first-child { color: var(--brand-warm); }
 .ai-talk-thesis { display: grid; grid-template-columns: minmax(8rem, .35fr) minmax(0, 1.65fr); gap: clamp(2rem, 8vw, 10rem); margin-inline: calc(50% - 50vw); padding: clamp(6rem, 13vw, 13rem) max(1rem, calc((100vw - min(1320px, calc(100vw - 2rem))) / 2)); background: var(--talk-paper); color: var(--talk-ink); }
@@ -38,10 +35,7 @@
   .ai-talk-hero { display: block; min-height: 0; padding-top: 4rem; }
   .ai-talk-hero-copy { padding-bottom: 7rem; }
   .ai-talk-eyebrow { display: grid; gap: .45rem; margin-bottom: 5rem; }
-  .ai-talk-stamp { position: absolute; right: 1rem; bottom: 5rem; width: 8.5rem; }
-  .ai-talk-stamp span { font-size: 1.45rem; }
-  .ai-talk-stamp span:nth-child(2) { font-size: .72rem; }
-  .ai-talk-stamp small { margin-top: .55rem; font-size: .4rem; }
+  .ai-talk-hero-art { position: absolute; right: -10%; bottom: 1.5rem; width: 44vw; transform: none; opacity: .76; }
   .ai-talk-hero-foot { bottom: 1.25rem; }
   .ai-talk-thesis, .ai-talk-outline-heading { grid-template-columns: 1fr; gap: 2rem; }
   .ai-talk-module { grid-template-columns: 2.5rem 1fr; gap: 1rem; }

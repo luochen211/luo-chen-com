@@ -39,13 +39,6 @@ function Hero({ t, locale }) {
             <Link className="btn ghost" to="/about#contact">{t.homeUi.contact}</Link>
           </div>
         </div>
-        <img
-          className="hero-delivery-art"
-          src="/media/ai-delivery-hero-v2.png"
-          alt={isEnglish ? 'AI delivery system illustration' : 'AI 交付系统插画'}
-          width="1354"
-          height="1161"
-        />
         <p className="portrait-focus-instruction" aria-hidden="true">
           <span />{isEnglish ? 'Portrait fragment · hover to reveal' : '头像局部 · 移入显影'}
         </p>

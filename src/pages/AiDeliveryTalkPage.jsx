@@ -95,11 +95,7 @@ export default function AiDeliveryTalkPage({ locale = 'zh' }) {
           <h1>{t.title.split('\n').map((line) => <span key={line}>{line}</span>)}</h1>
           <p className="ai-talk-intro">{t.intro}</p>
         </div>
-        <div className="ai-talk-stamp" aria-label={t.stamp}>
-          <span>AI</span>
-          <span>DELIVERY</span>
-          <small>{t.stamp}</small>
-        </div>
+        <img className="ai-talk-hero-art" src="/media/ai-delivery-hero-v2.png" alt={locale === 'zh' ? 'AI 交付系统插画' : 'AI delivery system illustration'} width="1354" height="1161" />
         <div className="ai-talk-hero-foot"><span>01 / 04</span><span>SHARE OUTLINE</span></div>
       </header>
 
