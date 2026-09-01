@@ -18,7 +18,7 @@ export default function RoundtablePage() {
   const [query, setQuery] = useState('')
   const [activeFilter, setActiveFilter] = useState(filters[0])
   const [selectedSalon, setSelectedSalon] = useState(salons[0])
-  const members = selectedSalon.members || []
+  const members = useMemo(() => selectedSalon.members || [], [selectedSalon])
   const [selected, setSelected] = useState(members[0])
   const visibleMembers = useMemo(() => members.filter((member) => {
     const matchesQuery = !query || `${member.name} ${member.id} ${member.intro} ${member.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase())
