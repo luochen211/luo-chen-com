@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import './RoundtablePage.css'
+import { salons } from '../data/salonData'
 
 const members = [
   { name: '辰风', id: '59368', avatar: '辰风', tone: 'mint', role: '本局嘉宾', tags: ['公众号', '内容流量', 'AI 应用'], intro: '做到公众号矩阵 10 万粉，跑通公众号爆款与流量变现；辅导垂直话题引流，并带领数百位学员完成知识付费 0—1。', proof: '8295.6万 · #301' },
@@ -30,6 +31,7 @@ export default function RoundtablePage() {
   const [query, setQuery] = useState('')
   const [activeFilter, setActiveFilter] = useState(filters[0])
   const [selected, setSelected] = useState(members[0])
+  const [selectedSalon, setSelectedSalon] = useState(salons[0])
   const visibleMembers = useMemo(() => members.filter((member) => {
     const matchesQuery = !query || `${member.name} ${member.id} ${member.intro} ${member.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase())
     const category = activeFilter === filters[0] || member.tags.some((tag) => activeFilter.includes(tag.split('与')[0]))
@@ -38,18 +40,19 @@ export default function RoundtablePage() {
 
   return <article className="roundtable-page">
     <header className="roundtable-header">
-      <div className="roundtable-brand"><span>HZ</span><div><strong>杭州项目沙龙</strong><small>成员与项目连接地图</small></div></div>
-      <div className="roundtable-date"><b>SEP</b><strong>05</strong><span>2026 · SAT</span></div>
+      <div className="roundtable-brand"><span>SC</span><div><strong>生财项目沙龙</strong><small>全部活动与项目连接地图</small></div></div>
+      <div className="roundtable-date"><b>{selectedSalon.dateLabel.split(' ')[0]}</b><strong>{selectedSalon.dateLabel.split(' ')[1]}</strong><span>2026 · SAT</span></div>
     </header>
+    <section className="salon-overview" aria-labelledby="salon-overview-title"><div className="salon-overview-heading"><div><p className="roundtable-kicker"><span />SALON INDEX</p><h2 id="salon-overview-title">全部沙龙，<br /><em>先选一场。</em></h2></div><p><b>已同步 {salons.length} 场</b><br />选择沙龙后查看对应的报名情况、成员项目和组队建议。</p></div><div className="salon-list">{salons.map((salon) => <button className={`salon-list-item ${selectedSalon.id === salon.id ? 'active' : ''}`} key={salon.id} onClick={() => setSelectedSalon(salon)} type="button"><span><b>{salon.city}</b><small>{salon.date}</small></span><strong>{salon.title}</strong><em>{salon.status}</em><i>→</i></button>)}</div></section>
 
     <section className="roundtable-hero">
       <div className="roundtable-hero-copy">
-        <p className="roundtable-kicker"><span />AI 项目沙龙 · 杭州</p>
-        <h1>如何用 AI 自动化<br />跑通贴图等内容生产<br />与变现</h1>
+        <p className="roundtable-kicker"><span />AI 项目沙龙 · {selectedSalon.city}</p>
+        <h1>{selectedSalon.title}</h1>
         <p className="roundtable-lead">这不是一份冷冰冰的通讯录。先看每个人正在做什么，再找到能把资源、能力和项目真正拼起来的人。</p>
         <div className="roundtable-actions"><a href="#members">开始看成员 <span>↓</span></a><a href="#matching">查看组队建议 <span>→</span></a></div>
       </div>
-      <aside className="event-brief"><div className="brief-top"><b>EVENT BRIEF</b><span>已满员</span></div><dl><div><dt>时间</dt><dd><strong>9 月 5 日 14:00</strong><small>预计 13:50—18:00</small></dd></div><div><dt>地点</dt><dd><strong>杭州市</strong><small>详细地址活动前约 2 天群内公布</small></dd></div><div><dt>规模</dt><dd><strong>30 / 30</strong><small>成员页共展示 31 人（含组局官与嘉宾）</small></dd></div><div><dt>费用</dt><dd><strong>¥99</strong></dd></div></dl><a href="#members" className="brief-link">查看活动原页 ↗</a></aside>
+      <aside className="event-brief"><div className="brief-top"><b>EVENT BRIEF</b><span>{selectedSalon.status}</span></div><dl><div><dt>时间</dt><dd><strong>{selectedSalon.date}</strong><small>预计 13:50—18:00</small></dd></div><div><dt>地点</dt><dd><strong>{selectedSalon.location}</strong><small>详细地址活动前约 2 天群内公布</small></dd></div><div><dt>规模</dt><dd><strong>{selectedSalon.capacity}</strong><small>成员页共展示 31 人（含组局官与嘉宾）</small></dd></div><div><dt>费用</dt><dd><strong>{selectedSalon.fee}</strong></dd></div></dl><a href="#members" className="brief-link">查看活动原页 ↗</a></aside>
     </section>
 
     <section className="members-section" id="members"><div className="members-heading"><div><p className="roundtable-kicker"><span />MEMBER MAP</p><h2>先找业务，<br /><em>再找人。</em></h2></div><p>可按昵称、星球编号、业务关键词检索。点击成员卡片，右侧会显示完整信息和推荐对接对象。</p></div>
