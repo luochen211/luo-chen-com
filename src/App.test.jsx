@@ -50,7 +50,6 @@ describe('localized route rendering', () => {
     ['/writing', '/output'],
     ['/projects', '/output'],
     ['/course', '/output'],
-    ['/roundtable', '/'],
     ['/lab/roundtable', '/'],
   ])('redirects legacy route %s to %s', async (legacyRoute, primaryRoute, hash = '') => {
     window.history.replaceState({}, '', legacyRoute)
@@ -58,6 +57,16 @@ describe('localized route rendering', () => {
 
     await waitFor(() => expect(window.location.pathname).toBe(primaryRoute))
     expect(window.location.hash).toBe(hash)
+  })
+
+  it('renders the project salon workspace at /roundtable', () => {
+    window.history.replaceState({}, '', '/roundtable')
+    render(<App />)
+
+    expect(document.title).toBe('杭州项目沙龙 · 成员与项目连接地图')
+    expect(screen.getByRole('heading', { name: /如何用 AI 自动化/ })).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('搜索：医疗、私域、软件、星球编号…')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '辰风' })).toBeInTheDocument()
   })
 
   it('renders collection and series chrome in English after switching locale', async () => {

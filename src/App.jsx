@@ -23,6 +23,7 @@ import NowPage from './pages/NowPage'
 import OutputPage from './pages/OutputPage'
 import FuturesTraderDemoPage from './pages/FuturesTraderDemoPage'
 import AiDeliveryTalkPage from './pages/AiDeliveryTalkPage'
+import RoundtablePage from './pages/RoundtablePage'
 import { getInitialLocale, siteContent, socialProfiles } from './data/siteContent'
 import { findArticle } from './lib/articles'
 
@@ -35,6 +36,7 @@ function getRouteTitle(pathname, t, locale) {
   if (['/output', '/work', '/projects', '/writing', '/course'].includes(pathname)) return t.output.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
   if (pathname === '/talks/ai-delivery') return locale === 'zh' ? '客户为什么愿意把结果交给你？ · LUOCHEN' : 'Why Would a Client Trust You With the Result? · LUOCHEN'
+  if (pathname === '/roundtable') return locale === 'zh' ? '杭州项目沙龙 · 成员与项目连接地图' : 'Hangzhou Project Salon · Member Map'
   if (pathname.startsWith('/columns/')) {
     const slug = pathname.slice('/columns/'.length)
     return t.collections[slug]?.title || t.seoTitle.text
@@ -54,6 +56,7 @@ function SiteApp() {
   const previousPathRef = useRef(location.pathname)
   const t = siteContent[locale]
   const isFuturesDemo = location.pathname === '/demos/futures-trader'
+  const isRoundtable = location.pathname === '/roundtable'
 
   useEffect(() => {
     window.localStorage.setItem('site-locale', locale)
@@ -177,7 +180,7 @@ function SiteApp() {
   if (isFuturesDemo) return <FuturesTraderDemoPage />
 
   return (
-    <div className={`page${location.pathname === '/' ? ' home-route' : ''}`}>
+    <div className={`page${location.pathname === '/' ? ' home-route' : ''}${isRoundtable ? ' roundtable-route' : ''}`}>
       <div className="bg-orb orb-a" aria-hidden="true" />
       <div className="bg-orb orb-b" aria-hidden="true" />
       <div className="bg-grid" aria-hidden="true" />
@@ -197,7 +200,7 @@ function SiteApp() {
           <Route path="/demos/futures-trader" element={<FuturesTraderDemoPage />} />
           <Route path="/talks/ai-delivery" element={<AiDeliveryTalkPage locale={locale} />} />
           <Route path="/lab/roundtable" element={<Navigate replace to="/" />} />
-          <Route path="/roundtable" element={<Navigate replace to="/" />} />
+          <Route path="/roundtable" element={<RoundtablePage />} />
           <Route path="/columns/:columnSlug" element={<CollectionView locale={locale} />} />
           <Route path="/topics/where-do-we-go" element={<CollectionView locale={locale} slug="where-do-we-go" topicCopy={t.topic} />} />
           <Route path="/articles/:slug" element={<IndexedArticleRoute locale={locale} />} />
