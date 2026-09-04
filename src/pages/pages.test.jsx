@@ -94,7 +94,8 @@ describe('redesigned page purposes', () => {
       .find((project) => project.textContent.includes('Agent Harness 讲师演示台'))
     expect(harnessDemo?.querySelector('a[href="/demos/agent-harness/"]')).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.output.writingTitle })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: siteContent.zh.course.archive.title })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '从毕业设计到持续接单' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /打开这场分享/ })).toHaveAttribute('href', '/talks/ai-delivery')
     expect(screen.getByRole('link', { name: /了解 AI接单实验室/ })).toHaveAttribute(
       'href',
       'https://my.feishu.cn/docx/XKuRdcy3MoxS9ixBaa1cPzTYnVp',
@@ -103,9 +104,8 @@ describe('redesigned page purposes', () => {
 
   it('renders the AI delivery talk as four modules around one core judgment', () => {
     const { container } = render(<MemoryRouter><AiDeliveryTalkPage locale="zh" /></MemoryRouter>)
-    expect(screen.getByRole('heading', { name: /客户为什么愿意把结果交给你/ })).toBeInTheDocument()
-    expect(container.querySelectorAll('.ai-talk-module')).toHaveLength(4)
-    expect(screen.getByText(/客户真正购买的，不是你的身份/)).toBeInTheDocument()
+    expect(container.querySelector('.ai-talk-embed')).toHaveAttribute('src', '/slides/decks/ai-delivery/')
+    expect(container.querySelector('.ai-talk-embed')).toHaveAttribute('title', '从毕业设计到持续接单 · AI 编程真实交付')
   })
 
   it('keeps the Output closing statement in two deliberate lines with highlighted keywords', () => {

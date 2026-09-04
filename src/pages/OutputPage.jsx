@@ -128,9 +128,10 @@ export default function OutputPage({ t, locale = 'zh' }) {
           </div>
           <div>
             <p className="output-deck-kicker">{t.output.talksLabel}</p>
-            <h2>{t.course.archive.title}</h2>
-            <p>{t.course.archive.description}</p>
+            <h2>{locale === 'zh' ? '从毕业设计到持续接单' : 'From Graduation Project to Continuous Delivery'}</h2>
+            <p>{locale === 'zh' ? '一套关于 AI 编程真实交付的 22 页分享：客户、需求、质量和下一次机会。' : 'A 22-page talk on real AI coding delivery: clients, scope, quality, and the next opportunity.'}</p>
             <div className="output-deck-actions">
+              <a className="output-deck-link" href="/talks/ai-delivery">{locale === 'zh' ? '打开这场分享' : 'Open this talk'} ↗</a>
               <a className="output-deck-link" href={t.course.archive.href} target="_blank" rel="noreferrer">{t.course.archive.action} ↗</a>
               <a className="output-deck-link output-deck-link-community" href={t.course.archive.communityHref} target="_blank" rel="noreferrer">{t.course.archive.communityAction} ↗</a>
             </div>

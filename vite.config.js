@@ -21,6 +21,7 @@ export default defineConfig({
             '/slides/decks/agent-harness/lessons/lesson-04/',
             '/slides/decks/agent-harness/lessons/lesson-05/',
             '/slides/decks/personal-site-coolness/',
+            '/slides/decks/ai-delivery/',
             '/demos/agent-harness/',
           ])
           const [pathname, query] = req.url.split('?')

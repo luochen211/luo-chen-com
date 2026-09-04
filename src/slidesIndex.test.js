@@ -12,14 +12,15 @@ describe('PPT archive redesign', () => {
     expect(redesignCss).toContain('--paper: #c75b2d')
   })
 
-  it('keeps all six deck destinations in a dense archive', () => {
-    expect(html.match(/class="deck-card"/g)).toHaveLength(6)
+  it('keeps all seven deck destinations in a dense archive', () => {
+    expect(html.match(/class="deck-card"/g)).toHaveLength(7)
     expect(html).toContain('/slides/decks/personal-site-coolness/')
     expect(html).toContain('/slides/decks/agent-harness/lessons/')
     expect(html).toContain('/slides/decks/three-hour-mini-program/')
     expect(html).toContain('/slides/decks/dag-efficient-development/')
     expect(html).toContain('/slides/decks/mini-program-ui/')
     expect(html).toContain('/slides/decks/ai-product-talk/')
+    expect(html).toContain('/slides/decks/ai-delivery/')
   })
 
   it('states the useful-first editorial rule on the archive landing page', () => {
