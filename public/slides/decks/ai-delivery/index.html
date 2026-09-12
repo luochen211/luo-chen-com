@@ -658,8 +658,8 @@
 #case-lightbox{position:fixed;inset:0;margin:auto;width:94vw;height:94vh;max-width:none;max-height:none;border:0;border-radius:1vw;background:#092f2c;padding:3vh 2vw;color:white;z-index:10000}#case-lightbox::backdrop{background:rgba(0,0,0,.8)}#case-lightbox img{display:block;width:100%;height:calc(100% - 5vh);object-fit:contain}#case-lightbox button{position:absolute;right:1.2vw;top:1vh;background:#fff;color:#005e53;border:0;border-radius:1vw;padding:.8vh 1vw;cursor:pointer;font-size:16px}#case-lightbox p{font-size:14px;text-align:center;margin-top:1vh}
 
 
-/* Reserved Computer Use demonstration video; no fabricated recording. */
-.computer-demo{position:relative;flex:1;min-height:0;background:linear-gradient(135deg,#062b28,#0b4842);border:1px solid rgba(233,248,243,.35);border-radius:1.2vw;overflow:hidden;display:flex;align-items:center;justify-content:center}.demo-placeholder{text-align:center;padding:2vh}.demo-play{width:6vw;height:6vw;border:1px solid rgba(233,248,243,.5);border-radius:50%;display:grid;place-items:center;margin:0 auto 2vh;font-size:2.3vw;padding-left:.35vw;background:rgba(233,248,243,.06)}.demo-placeholder h2{font-size:2.7vw;line-height:1.3}.demo-placeholder p{font-size:1.25vw;line-height:1.6;margin:1.5vh 0 2.5vh;opacity:.8}.demo-select{display:inline-block;border:1px solid currentColor;border-radius:.6vw;padding:1vh 1.2vw;font-size:1vw;cursor:pointer;position:relative;overflow:hidden}.demo-select input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}.demo-select:focus-within{outline:3px solid #62edc9;outline-offset:4px}#computer-use-video{width:100%;height:100%;object-fit:contain;background:#000}#computer-use-video[hidden],.demo-reset[hidden],.demo-placeholder[hidden]{display:none}.demo-reset{position:absolute;top:1.2vh;right:1vw;border:1px solid #fff;background:rgba(0,0,0,.7);color:white;border-radius:.4vw;padding:.6vh .7vw;cursor:pointer;font-size:.85vw}.demo-caption{display:flex;justify-content:space-between;align-items:center;gap:2vw;padding-top:2vh}.demo-caption strong{font-size:1.6vw;line-height:1.4}.demo-caption span{font-size:1.15vw;opacity:.75}
+/* Computer Use demonstration video. */
+.computer-demo{position:relative;flex:1;min-height:0;background:#000;border:1px solid rgba(233,248,243,.35);border-radius:1.2vw;overflow:hidden;display:flex;align-items:center;justify-content:center}.computer-demo video{display:block;width:100%;height:100%;object-fit:contain;background:#000}.demo-caption{display:flex;justify-content:space-between;align-items:center;gap:2vw;padding-top:2vh}.demo-caption strong{font-size:1.6vw;line-height:1.4}.demo-caption span{font-size:1.15vw;opacity:.75}
 
 
 /* Editable editorial layouts: one message and one visual relationship per page. */
@@ -718,7 +718,7 @@
 .ed-execution .ed-card{padding:3vh 2vw}.ed-loop-note{display:flex;justify-content:space-between;gap:2vw;font-size:1.4vw;padding:2.5vh 0;border-top:1px solid #98cbb9;margin-top:2vh}
 .ed-package .ed-card{background:#fffefa;padding:3vh 2vw}.ed-material-list{margin:3vh 0 0;padding-top:2vh;border-top:1px solid #b5d3c3;list-style:none;display:grid;gap:1.3vh;font-size:1.25vw}.ed-material-list li::before{content:'✓';margin-right:.8vw;color:#5a9f85}
 .case-slide .case-heading h1{font-size:min(3.5vw,6.2vh)}
-.computer-demo{border-color:#5a8b7d}.demo-placeholder h2{font-size:2.5vw}.demo-select{font-size:1.2vw;padding:1.2vh 1.4vw}.demo-caption strong{font-size:1.6vw}.demo-caption span{font-size:1.1vw}
+.computer-demo{border-color:#5a8b7d}.demo-caption strong{font-size:1.6vw}.demo-caption span{font-size:1.1vw}
 .ed-stage [hidden]{display:none}
 @media(max-aspect-ratio:1/1){.slide.editorial{padding:4vh 5vw 8vh}.ed-heading{margin:3vh 0}.ed-stage{justify-content:center}.ed-card{padding:2vh 1.5vw}.ed-split{flex:0}.ed-figure .case-image-button{max-height:32vh}.ed-definition{gap:1vw}.ed-paper{padding:2vh 1.5vw}.ed-card-top{margin-bottom:1.5vh}}
 
@@ -949,11 +949,9 @@
  <div class="chrome"><div class="brand-lockup"><span class="brand-mark">生</span><span>生财有术</span><span class="brand-pill">深海圈</span></div><div>DELIVERY · 18</div></div>
  <div class="case-heading" data-qa-id="case-18-heading" data-qa-role="content"><div class="eyebrow">VIDEO DEMO · 操作测试演示</div><h1>手机端、多角色，Computer Use 来测</h1></div>
  <div class="case-body" data-qa-id="case-18-body" data-qa-role="content"><div class="computer-demo" id="computer-use-demo">
- <div class="demo-placeholder"><div class="demo-play" aria-hidden="true">▶</div><h2>Computer Use 操作演示</h2><p>手机端操作　·　多角色切换　·　连续测试</p><label class="demo-select">选择演示视频<input id="computer-use-video-input" type="file" accept="video/*" aria-label="选择本地演示视频"></label></div>
- <video id="computer-use-video" controls playsinline preload="metadata" hidden aria-label="Computer Use 项目测试演示"></video>
- <button class="demo-reset" type="button" hidden>更换视频</button>
+ <video id="computer-use-video" controls playsinline preload="metadata" poster="./assets/video/computer-use-demo-poster.jpg" aria-label="Computer Use 项目测试演示"><source src="./assets/video/computer-use-demo.mp4" type="video/mp4"></video>
  </div><div class="demo-caption"><strong>“我还没跟上，AI 已经测完了。”</strong><span>把执行速度交给 AI。</span></div></div>
- <div class="foot" data-qa-id="case-18-foot" data-qa-role="content"><div>独立演示页 · 现场选择本地视频</div><div>18 / 24</div></div>
+ <div class="foot" data-qa-id="case-18-foot" data-qa-role="content"><div>项目录屏 · 点击播放</div><div>18 / 24</div></div>
 </section>
 
 <section class="slide light editorial" data-layout="CHANGE-DECISION" data-qa-policy="strict">
@@ -1373,12 +1371,9 @@ if(motion){
 (()=>{const d=document.querySelector('#case-lightbox');document.querySelectorAll('.case-image-button').forEach(b=>b.addEventListener('click',()=>{const img=b.querySelector('img');d.querySelector('img').src=img.src;d.querySelector('img').alt=img.alt;d.querySelector('p').textContent=img.alt;d.showModal()}));d.querySelector('button').addEventListener('click',()=>d.close());d.addEventListener('keydown',e=>e.stopPropagation());d.addEventListener('wheel',e=>e.stopPropagation());d.addEventListener('touchstart',e=>e.stopPropagation());d.addEventListener('touchend',e=>e.stopPropagation())})();
 </script>
 <script>
-(()=>{const box=document.querySelector('#computer-use-demo'),input=document.querySelector('#computer-use-video-input'),video=document.querySelector('#computer-use-video'),placeholder=box.querySelector('.demo-placeholder'),reset=box.querySelector('.demo-reset');let objectUrl;
-input.addEventListener('change',()=>{const file=input.files?.[0];if(!file)return;if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(file);video.src=objectUrl;video.hidden=false;placeholder.hidden=true;reset.hidden=false;video.load();video.focus()});
-reset.addEventListener('click',()=>input.click());
+(()=>{const box=document.querySelector('#computer-use-demo'),video=document.querySelector('#computer-use-video');
 box.addEventListener('keydown',e=>e.stopPropagation());box.addEventListener('wheel',e=>e.stopPropagation());box.addEventListener('touchstart',e=>e.stopPropagation());box.addEventListener('touchend',e=>e.stopPropagation());
-const observer=new MutationObserver(()=>{if(window.__currentSlideIndex!==15)video.pause()});observer.observe(document.querySelector('#deck'),{attributes:true,attributeFilter:['style']});
-window.addEventListener('beforeunload',()=>{if(objectUrl)URL.revokeObjectURL(objectUrl)});
+const observer=new MutationObserver(()=>{if(window.__currentSlideIndex!==17)video.pause()});observer.observe(document.querySelector('#deck'),{attributes:true,attributeFilter:['style']});
 })();
 </script>
 </body>
