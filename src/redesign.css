@@ -1782,8 +1782,7 @@ body {
   left: 58%;
   display: grid;
   width: min(42vw, 40rem);
-  height: min(58svh, 36rem);
-  grid-template-rows: minmax(10rem, 1fr) auto;
+  grid-template-rows: auto auto;
   overflow: hidden;
   border: 1px solid rgba(244, 241, 233, 0.22);
   background: rgba(16, 18, 20, 0.98);
@@ -1794,6 +1793,11 @@ body {
 
 .project-orbit-card .project-visual {
   min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.project-orbit-card .project-visual img {
+  object-position: top center;
 }
 
 .project-orbit-card .project-card-copy {
@@ -1804,7 +1808,7 @@ body {
 
 .project-orbit-card .project-card-copy h3 {
   margin-top: 0.6rem;
-  font-size: clamp(2rem, 3.1vw, 3.4rem);
+  font-size: clamp(1.6rem, 2.2vw, 2.4rem);
 }
 
 .project-orbit-card .project-card-copy > p:not(:first-child),
@@ -2004,7 +2008,7 @@ body {
   .proof-scene-shell { grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.72fr); gap: 3rem; }
   .project-orbit-stage > .chapter-heading { width: 31vw; }
   .project-orbit-viewport { left: 28vw; perspective-origin: 56% 50%; }
-  .project-orbit .project-orbit-card { left: 56%; width: min(48vw, 38rem); height: min(64svh, 36rem); }
+  .project-orbit .project-orbit-card { left: 56%; width: min(48vw, 38rem); }
   .orbit-axis { left: 56%; }
   .project-orbit-card .project-card-copy > p:not(:first-child),
   .project-orbit-card .project-card-copy strong { display: none; }
@@ -2058,7 +2062,7 @@ body {
   .project-orbit-stage > .chapter-heading { position: relative; top: auto; left: auto; width: 100%; margin-bottom: 4rem; }
   .project-orbit-viewport { position: relative; inset: auto; perspective: none; }
   .project-orbit { position: relative; display: grid; gap: 1.5rem; transform: none !important; }
-  .project-orbit .project-orbit-card { position: relative; top: auto; left: auto; width: 100%; height: auto; min-height: 0; grid-template-rows: minmax(15rem, 38vh) auto; opacity: 1 !important; transform: none !important; }
+  .project-orbit .project-orbit-card { position: relative; top: auto; left: auto; width: 100%; height: auto; min-height: 0; grid-template-rows: auto auto; opacity: 1 !important; transform: none !important; }
   .project-orbit-card .project-card-copy { grid-template-columns: 1fr; }
   .project-orbit-card .project-card-copy > p:not(:first-child),
   .project-orbit-card .project-card-copy strong { display: block; }

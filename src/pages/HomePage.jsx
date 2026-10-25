@@ -5,9 +5,9 @@ import { articleIndex } from '../data/siteData'
 import { getProjectShowcase } from '../data/projectShowcase'
 
 const selectedProjectMedia = {
-  imaging: '/media/imaging-architecture.png',
+  imaging: '/media/imaging-dashboard.jpg',
   logistics: '/media/logistics-working-sheet.png',
-  career: '/media/career-ops-architecture.png',
+  career: '/media/career-ops-contributor.jpg',
 }
 
 function Hero({ t, locale }) {
