@@ -479,7 +479,7 @@ const localizedContent = {
       list: [
         {
           name: 'career-ops AI 求职自动化 Agent Pipeline',
-          role: 'Top 3 Contributor / Active Maintainer',
+          role: 'Top 10 Contributor / Active Maintainer',
           period: '2026.06',
           tech: ['AI Coding CLI', 'Playwright', 'Go TUI', 'Markdown/YAML', 'Batch Worker'],
           points: [
