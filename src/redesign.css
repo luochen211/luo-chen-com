@@ -1465,6 +1465,14 @@ body {
   50% { box-shadow: 0 0 0 0.55rem rgba(223, 113, 56, 0); }
 }
 
+.home-showreel .showreel-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  background: #050708;
+}
+
 .home-proof-chapter {
   position: relative;
   width: 100vw;

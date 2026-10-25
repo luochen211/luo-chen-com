@@ -112,6 +112,26 @@ function ProofGrid({ t, items }) {
   )
 }
 
+function Showreel({ t }) {
+  return (
+    <section className="chapter home-showreel">
+      <div className="chapter-heading">
+        <p>{t.homeUi.showreel}</p>
+        <h2>{t.home.showreelTitle}</h2>
+      </div>
+      <video
+        className="showreel-video"
+        src="/media/showreel.mp4"
+        poster="/media/showreel-poster.jpg"
+        controls
+        playsInline
+        preload="none"
+        aria-label={t.home.showreelTitle}
+      />
+    </section>
+  )
+}
+
 function SelectedWork({ t, locale }) {
   const work = getProjectShowcase(locale).filter((project) => ['imaging', 'logistics', 'career'].includes(project.id))
   return (
@@ -204,6 +224,7 @@ export default function HomePage({ t, locale = 'zh' }) {
   return (
     <div className="focused-page home-redesign">
       <Hero t={t} locale={locale} />
+      <Showreel t={t} />
       <ProofGrid t={t} items={proof} />
       <SelectedWork t={t} locale={locale} />
       <SelectedWriting t={t} locale={locale} />

@@ -67,6 +67,7 @@ describe('redesigned page purposes', () => {
     const { container } = render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
     expect([...container.querySelector('.home-redesign').children].map((node) => node.className)).toEqual([
       'focused-hero home-focused-hero',
+      'chapter home-showreel',
       'chapter home-proof-chapter',
       'chapter selected-work',
       'chapter selected-writing',
