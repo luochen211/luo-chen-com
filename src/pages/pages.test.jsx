@@ -121,11 +121,11 @@ describe('redesigned page purposes', () => {
 
   it('keeps Now current and omits general career positioning', () => {
     render(<NowPage t={siteContent.zh} />)
-    expect(screen.getByText(/2026\.08\.13/)).toHaveAttribute('datetime', '2026-08-13')
+    expect(screen.getByText(/2026\.10\.25/)).toHaveAttribute('datetime', '2026-10-25')
     expect(screen.queryByText(siteContent.zh.now.careerTitle)).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.now.projects })).toBeInTheDocument()
-    expect(screen.getByText(/可以直接说出口的口播稿/)).toBeInTheDocument()
-    expect(screen.getByText(/录制、剪辑和发布短视频/)).toBeInTheDocument()
+    expect(screen.getByText(/在线学习工作台/)).toBeInTheDocument()
+    expect(screen.getByText(/家长向短视频的内容生产线/)).toBeInTheDocument()
   })
 
   it('combines a personal timeline and prefilled collaboration email on About', () => {
@@ -160,14 +160,14 @@ describe('redesigned page purposes', () => {
       'href',
       'https://www.xiaohongshu.com/user/profile/69ce663f000000003402ed88',
     )
-    const douyin = screen.getByRole('link', { name: /抖音1000 粉丝/ })
+    const douyin = screen.getByRole('link', { name: /抖音1462 粉丝/ })
     expect(douyin).toHaveAttribute(
       'href',
       expect.stringContaining('www.douyin.com/user/'),
     )
     expect(xiaohongshu.querySelector('.social-icon-xiaohongshu')).toBeInTheDocument()
     expect(douyin.querySelector('.social-icon-douyin')).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: '全网 1000+ 粉丝' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '全网 1700+ 粉丝' })).toBeInTheDocument()
     const x = screen.getByRole('link', { name: /X@luochenkafei/ })
     expect(x).toHaveAttribute('href', 'https://x.com/luochenkafei')
     expect(x.querySelector('.social-icon-x')).toBeInTheDocument()

@@ -39,12 +39,12 @@ const localizedContent = {
     },
     now: {
       label: 'Now',
-      title: 'I am currently focused on AI content.',
+      title: 'I\'m building education products as an intrapreneur inside a company.',
       learningTitle: 'Learning',
       learning: [
-        'My current focus is AI content: connecting what I learn, what I build, and what I can explain clearly in public.',
-        'Going deeper into Agent Harness, AI Coding CLI internals, tool-call safety, and evaluation gates so the content is grounded in real engineering practice.',
-        'Practicing topic selection, hooks, spoken-script structure, on-camera delivery, and review—not just collecting more information.',
+        'My current focus is education products: working startup-style inside a company to bring AI into real family learning and parents\' education decisions.',
+        'Going deeper into Agent Harness, AI coding CLI internals, tool-call safety, and evaluation gates, so the products rest on reliable engineering.',
+        'Practicing how to understand real needs in education: find where parents and students actually get stuck before deciding what to build and how to ship it.',
         'Continuing to improve English listening, speaking, and technical writing for access to first-hand material and remote collaboration.',
       ],
       careerTitle: 'Career Goal',
@@ -56,10 +56,10 @@ const localizedContent = {
       ],
       buildingTitle: 'Current Projects',
       building: [
-        'Selecting topics around AI coding, Agent Harness, Codex, and the real problems people encounter when using AI tools.',
-        'Turning learning notes and project experience into directly speakable scripts instead of information summaries.',
-        'Recording, editing, and publishing short videos, then reviewing the hook, pacing, completion, and audience response.',
-        'Reusing one substantial piece of practice across videos, writing, courses, and this website, so the work keeps compounding.',
+        'An online learning workspace for family self-study and adult AI practice, moving product structure, content, and delivery forward together.',
+        'A book for parents about making education decisions for their children in the AI era.',
+        'A content pipeline for parent-facing short videos: topics, scripts, voiceover, and final cuts, produced in batches with agents and templates.',
+        'Turning real problems from the products into articles, courses, and public work on this site.',
       ],
       routineTitle: 'Weekly Routine',
       routine: [
@@ -67,8 +67,7 @@ const localizedContent = {
         'Practicing Ashtanga Yoga for discipline, mobility, breath, and long-term focus.',
       ],
       mindsetTitle: 'Current Mindset',
-      mindset:
-        'Learn AI, build real things, then turn what I genuinely understand into spoken scripts, videos, and public work.',
+      mindset: 'Building education products at the company while going deeper into AI engineering, and leaving what actually works in public.',
     },
     summary: {
       label: 'Professional Summary',
@@ -249,7 +248,7 @@ const localizedContent = {
         },
         {
           label: 'Douyin',
-          value: '1,000 followers',
+          value: '1,462 followers',
           href: socialProfiles.douyin,
           icon: 'douyin',
         },
@@ -302,12 +301,12 @@ const localizedContent = {
     },
     now: {
       label: 'Now',
-      title: '我现在主要在做 AI 自媒体',
+      title: '我现在在一家公司半创业，做教育产品',
       learningTitle: '学习中',
       learning: [
-        '当前主线是 AI 自媒体：把我正在学习的、正在做的，以及真正能讲清楚的东西连接起来。',
-        '继续深入 Agent Harness、AI Coding CLI 内部机制、工具调用安全和评估门禁，让内容建立在真实工程实践上。',
-        '练习选题判断、开头钩子、口播结构、镜头表达和发布复盘，而不只是继续收集信息。',
+        '当前主线是教育产品：在一家公司半创业，把 AI 放进家庭学习和家长教育决策这些真实场景里。',
+        '继续深入 Agent Harness、AI Coding CLI 内部机制、工具调用安全和评估门禁，让产品建立在可靠的工程上。',
+        '练习理解教育场景的真实需求：先弄清家长和学生到底卡在哪里，再决定做什么、怎么交付。',
         '持续练习英语听力、口语和技术写作，用来接触一手资料，也为海外远程协作做准备。',
       ],
       careerTitle: '职业目标',
@@ -319,10 +318,10 @@ const localizedContent = {
       ],
       buildingTitle: '正在推进的项目',
       building: [
-        '围绕 AI 编程、Agent Harness、Codex，以及普通人使用 AI 工具时遇到的真实问题持续选题。',
-        '把学习笔记和项目经验写成可以直接说出口的口播稿，而不是只做信息整理。',
-        '持续录制、剪辑和发布短视频，再复盘开头、节奏、完播和观众反馈。',
-        '把一次有实质内容的实践复用到视频、文章、课程和个人网站，让内容持续积累。',
+        '面向家庭自学和成人 AI 实践的在线学习工作台，从产品结构、内容到上线交付一起推进。',
+        '一本写给家长的书，讨论 AI 时代孩子的教育决策该怎么做。',
+        '家长向短视频的内容生产线：选题、文稿、配音到成片，用 Agent 和模板批量出片。',
+        '把产品里遇到的真实问题，继续写成文章、课程和这个网站上的公开作品。',
       ],
       routineTitle: '长期习惯',
       routine: [
@@ -330,7 +329,7 @@ const localizedContent = {
         '持续练习阿斯汤加瑜伽，用来训练纪律、柔韧性、呼吸和长期专注。',
       ],
       mindsetTitle: '当前状态',
-      mindset: '一边学习 AI，一边做真实项目，再把真正理解的东西写成口播、录成视频、公开发布。',
+      mindset: '一边在公司里做教育产品，一边继续深入 AI 工程，把真正做成的东西公开留下来。',
     },
     summary: {
       label: '职业综述',
@@ -612,7 +611,7 @@ const localizedContent = {
         },
         {
           label: '抖音',
-          value: '1000 粉丝',
+          value: '1462 粉丝',
           href: socialProfiles.douyin,
           icon: 'douyin',
         },
@@ -646,7 +645,7 @@ const requiredSections = {
     work: { eyebrow: '作品与交付', title: '从 Agent Harness 到生产系统', intro: '开源贡献、商业系统和端到端工程交付。', details: '技术细节' },
     writing: { eyebrow: '写作与产出', title: '把实践沉淀成可以继续使用的资产', collections: '文章栏目', latest: '最新文章', products: '产品与学习材料', talks: '公开分享与 PPT' },
     output: { eyebrow: '产出 / OUTPUT', title: '我把想法变成可以被验证的产出', intro: '产品、代码、写作与公开分享。每一项都来自真实实践，也继续参与下一次建造。', filterLabel: '筛选产出类型', projectsLabel: '项目', projectsTitle: '做出来，也交付出去', writingLabel: '写作', writingTitle: '把经验留成可以复用的文字', talksLabel: '公开分享', viewLive: '在线体验', endLabel: '继续建造', endTitle: '下一项产出，正在发生。', contactAction: '一起做点值得留下的东西' },
-    now: { eyebrow: '现在', title: '我现在主要在做 AI 自媒体', updated: '最后更新', updatedAt: '2026-08-13', updatedDate: '2026.08.13', direction: '当前主线', projects: '内容生产', learning: '学习与练习', open: '开放合作', routine: '长期习惯' },
+    now: { eyebrow: '现在', title: '我现在在一家公司半创业，做教育产品', updated: '最后更新', updatedAt: '2026-10-25', updatedDate: '2026.10.25', direction: '当前主线', projects: '正在做的产品', learning: '学习与练习', open: '开放合作', routine: '长期习惯' },
     about: {
       eyebrow: '关于我 / ABOUT', range: '2006 — NOW', title: '我在把复杂问题，变成可靠交付。',
       intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
@@ -678,7 +677,7 @@ const requiredSections = {
       ],
       contactPrompt: '请带上项目背景、期望结果、时间计划和预算范围。',
       contactTypes: ['Agent 工具链与评估 Harness', '远程产品工程协作', '端到端全栈交付'],
-      audienceLabel: '社交平台关注', audienceEyebrow: '公开关注', audienceTitle: '全网 1000+ 粉丝', audiencePlatforms: '小红书 · 抖音 · X',
+      audienceLabel: '社交平台关注', audienceEyebrow: '公开关注', audienceTitle: '全网 1700+ 粉丝', audiencePlatforms: '小红书 · 抖音 · X',
     },
     contact: { eyebrow: '联系', title: '一起解决值得解决的问题', intro: '开放远程工程、Agent 工具链和全栈产品交付合作。', response: '通常会在 48 小时内回复。', email: '发送合作邮件' },
   },
@@ -692,7 +691,7 @@ const requiredSections = {
     work: { eyebrow: 'Work and Delivery', title: 'From Agent Harness to production systems.', intro: 'Open-source contributions, commercial systems, and end-to-end engineering delivery.', details: 'Technical details' },
     writing: { eyebrow: 'Writing and Output', title: 'Turn practice into assets people can keep using.', collections: 'Writing Collections', latest: 'Latest Articles', products: 'Products and Learning', talks: 'Public Talks and Decks' },
     output: { eyebrow: 'OUTPUT / PUBLIC PROOF', title: 'I turn ideas into output people can verify.', intro: 'Products, code, writing, and public talks—drawn from real practice and carried into the next build.', filterLabel: 'Filter output by type', projectsLabel: 'Projects', projectsTitle: 'Built, shipped, and put to work.', writingLabel: 'Writing', writingTitle: 'Experience, made reusable.', talksLabel: 'Public Talks', viewLive: 'Live product', endLabel: 'Keep building', endTitle: 'The next output is already in motion.', contactAction: 'Let’s make something worth keeping' },
-    now: { eyebrow: 'Now', title: 'I am currently focused on AI content', updated: 'Last updated', updatedAt: '2026-08-13', updatedDate: '2026.08.13', direction: 'Current Focus', projects: 'Content Production', learning: 'Learning and Practice', open: 'Open to Work', routine: 'Long-term Routine' },
+    now: { eyebrow: 'Now', title: "I'm building education products as an intrapreneur inside a company.", updated: 'Last updated', updatedAt: '2026-10-25', updatedDate: '2026.10.25', direction: 'Current Focus', projects: 'Products in Progress', learning: 'Learning and Practice', open: 'Open to Work', routine: 'Long-term Routine' },
     about: {
       eyebrow: 'ABOUT', range: '2006 — NOW', title: 'I turn complex problems into reliable delivery.',
       intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',
@@ -724,7 +723,7 @@ const requiredSections = {
       ],
       contactPrompt: 'Bring the project context, desired outcome, timeline, and budget range.',
       contactTypes: ['Agent tooling and evaluation harnesses', 'Remote product engineering', 'End-to-end full-stack delivery'],
-      audienceLabel: 'Social audience', audienceEyebrow: 'Public audience', audienceTitle: '1,000+ followers across platforms', audiencePlatforms: 'REDnote · Douyin · X',
+      audienceLabel: 'Social audience', audienceEyebrow: 'Public audience', audienceTitle: '1,700+ followers across platforms', audiencePlatforms: 'REDnote · Douyin · X',
     },
     contact: { eyebrow: 'Contact', title: 'Let’s solve something worth solving.', intro: 'Open to remote engineering, Agent tooling, and full-stack product delivery.', response: 'I usually reply within 48 hours.', email: 'Send a collaboration email' },
   },
