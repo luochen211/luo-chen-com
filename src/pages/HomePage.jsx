@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { localizeArticles } from '../data/siteContent'
 import { articleIndex } from '../data/siteData'
 import { getProjectShowcase } from '../data/projectShowcase'
+import { formatStars, getOpenSourceContributions, getOpenSourceTotals, openSourceAsOf } from '../data/openSource'
 
 const selectedProjectIds = ['scholar', 'imaging', 'logistics', 'career']
 
@@ -230,6 +231,38 @@ function MoreWork({ t, locale, projects }) {
   )
 }
 
+function OpenSourceWork({ locale }) {
+  const isEnglish = locale === 'en'
+  const contributions = getOpenSourceContributions(locale)
+  const totals = getOpenSourceTotals()
+  return (
+    <section className="chapter open-source-work">
+      <div className="chapter-heading">
+        <p>{isEnglish ? 'Open source' : '开源贡献'}</p>
+        <h2>{isEnglish ? `Merged into ${totals.repos} open-source projects` : `代码合并进 ${totals.repos} 个开源项目`}</h2>
+        <a href="https://github.com/luochen211" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+      <p className="open-source-summary">
+        {isEnglish
+          ? `${totals.merged} merged pull requests · stars and counts as of ${openSourceAsOf}`
+          : `${totals.merged} 个已合并 PR · 星数与数量截至 ${openSourceAsOf}`}
+      </p>
+      <ul className="open-source-list">
+        {contributions.map((item) => (
+          <li key={item.repo}>
+            <a href={item.href} target="_blank" rel="noreferrer">
+              <span className="open-source-repo">{item.repo}</span>
+              <span className="open-source-label">{item.label}</span>
+              <span className="open-source-stars">★ {formatStars(item.stars, locale)}</span>
+              <span className="open-source-merged">{isEnglish ? `${item.merged} merged` : `合并 ${item.merged}`} ↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 function SelectedWriting({ t, locale, latest }) {
   return (
     <section className="chapter selected-writing">
@@ -286,6 +319,7 @@ export default function HomePage({ t, locale = 'zh' }) {
       <ProofGrid t={t} items={proof} locale={locale} articles={latest} projects={projects} />
       <SelectedWork t={t} locale={locale} projects={projects} />
       <MoreWork t={t} locale={locale} projects={projects} />
+      <OpenSourceWork locale={locale} />
       <SelectedWriting t={t} locale={locale} latest={latest} />
       <CollaborationCta t={t} />
     </div>

@@ -1802,6 +1802,45 @@ body {
   word-break: keep-all;
 }
 
+.open-source-work {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.open-source-summary {
+  margin: -3rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.open-source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.open-source-list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: 'repo stars merged' 'label label label';
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+}
+
+.open-source-repo { grid-area: repo; overflow: hidden; color: var(--ink); font-size: 1.02rem; font-weight: 650; white-space: nowrap; text-overflow: ellipsis; }
+.open-source-label { grid-area: label; color: var(--muted); font-size: 0.84rem; }
+.open-source-stars { grid-area: stars; color: var(--ink-soft); font-size: 0.84rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.open-source-merged { grid-area: merged; color: var(--brand-warm); font-size: 0.84rem; white-space: nowrap; }
+.open-source-list a:hover .open-source-repo { color: var(--brand-warm); }
+
 .more-work-list {
   margin: 0;
   padding: 0;
@@ -2066,6 +2105,9 @@ body {
   .orbit-counter { display: none; }
 
   .more-work { padding: 2rem 0 3rem; }
+  .open-source-work { padding: 2rem 0 3rem; }
+  .open-source-summary { margin: -2rem 0 1.5rem; }
+  .open-source-list { grid-template-columns: 1fr; }
   .more-work-list li { grid-template-columns: 1fr; gap: 0.3rem; }
   .more-work-tech { display: none; }
   .more-work-list .project-links { justify-content: flex-start; margin-top: 0.3rem; }

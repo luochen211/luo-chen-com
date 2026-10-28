@@ -71,6 +71,7 @@ describe('redesigned page purposes', () => {
       'chapter home-proof-chapter',
       'chapter selected-work',
       'chapter more-work',
+      'chapter open-source-work',
       'chapter selected-writing',
       'collaboration-cta',
     ])
@@ -92,6 +93,14 @@ describe('redesigned page purposes', () => {
     expect(card?.querySelector('a[href*="github.com"]')).not.toBeInTheDocument()
     const moreWork = container.querySelectorAll('.more-work-list li')
     expect(moreWork).toHaveLength(getProjectShowcase('zh').length - 4)
+  })
+
+  it('lists upstream open-source contributions with merged PR links', () => {
+    const { container } = render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    const rows = container.querySelectorAll('.open-source-list a')
+    expect(rows.length).toBeGreaterThan(10)
+    const careerOps = [...rows].find((row) => row.textContent.includes('career-ops-hq/career-ops'))
+    expect(careerOps).toHaveAttribute('href', expect.stringContaining('author%3Aluochen211+is%3Amerged'))
   })
 
   it('owns the complete project archive on Work', () => {
