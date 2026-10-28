@@ -8,7 +8,7 @@ export const socialProfiles = {
 
 const localizedContent = {
   en: {
-    seoTitle: 'Agent Harness Engineer & Full-Stack Builder',
+    seoTitle: 'Luochen · Agent Harness Engineer & Full-Stack Builder',
     nav: {
       home: 'Home',
       now: 'Now',
@@ -270,7 +270,7 @@ const localizedContent = {
     footer: 'Agent Harness Engineer & Full-Stack Builder',
   },
   zh: {
-    seoTitle: 'Agent Harness 工程师与全栈实践者',
+    seoTitle: '落尘 · Agent Harness 工程师与全栈实践者',
     nav: {
       home: '首页',
       now: 'Now',

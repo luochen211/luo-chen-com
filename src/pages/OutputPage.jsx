@@ -10,6 +10,7 @@ const outputTypes = {
 }
 
 const projectMedia = {
+  scholar: '/media/super-scholar.jpg',
   imaging: '/media/imaging-architecture.png',
   logistics: '/media/logistics-working-sheet.png',
   career: '/media/career-ops-architecture.png',
@@ -19,7 +20,7 @@ const projectMedia = {
 export default function OutputPage({ t, locale = 'zh' }) {
   const [activeType, setActiveType] = useState('all')
   const projects = useMemo(() => getProjectShowcase(locale), [locale])
-  const selectedIds = ['imaging', 'logistics', 'career', 'harness-demo']
+  const selectedIds = ['scholar', 'imaging', 'logistics', 'career', 'harness-demo']
   const selectedProjects = selectedIds.map((id) => projects.find((project) => project.id === id)).filter(Boolean)
   const archivedProjects = projects.filter((project) => !selectedIds.includes(project.id))
   const columns = localizeColumns(getPublicColumns(), locale)
@@ -71,7 +72,7 @@ export default function OutputPage({ t, locale = 'zh' }) {
                   <p>{project.outcome}</p>
                   <div>
                     {project.liveHref && <a href={project.liveHref} target="_blank" rel="noreferrer">{t.output.viewLive} ↗</a>}
-                    <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>
+                    {project.href && <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>}
                   </div>
                 </div>
               </article>
@@ -88,7 +89,7 @@ export default function OutputPage({ t, locale = 'zh' }) {
                   <p>{project.outcome}</p>
                   <div>
                     {project.liveHref && <a href={project.liveHref} target="_blank" rel="noreferrer">{t.output.viewLive} ↗</a>}
-                    <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>
+                    {project.href && <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>}
                   </div>
                 </div>
               </article>

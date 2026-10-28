@@ -4,7 +4,10 @@ import { localizeArticles } from '../data/siteContent'
 import { articleIndex } from '../data/siteData'
 import { getProjectShowcase } from '../data/projectShowcase'
 
+const selectedProjectIds = ['scholar', 'imaging', 'logistics', 'career']
+
 const selectedProjectMedia = {
+  scholar: '/media/super-scholar.jpg',
   imaging: '/media/imaging-dashboard.jpg',
   logistics: '/media/logistics-working-sheet.png',
   career: '/media/career-ops-contributor.jpg',
@@ -132,10 +135,19 @@ function Showreel({ t }) {
   )
 }
 
-function SelectedWork({ t, locale }) {
-  const work = getProjectShowcase(locale).filter((project) => ['imaging', 'logistics', 'career'].includes(project.id))
+function ProjectLinks({ project, locale }) {
   return (
-    <section className="chapter selected-work">
+    <span className="project-links">
+      {project.liveHref && <a href={project.liveHref} target="_blank" rel="noreferrer">{locale === 'zh' ? '在线体验' : 'Live product'} ↗</a>}
+      {project.href && <a href={project.href} target="_blank" rel="noreferrer">{locale === 'zh' ? '查看项目' : 'Inspect project'} ↗</a>}
+    </span>
+  )
+}
+
+function SelectedWork({ t, locale, projects }) {
+  const work = selectedProjectIds.map((id) => projects.find((project) => project.id === id)).filter(Boolean)
+  return (
+    <section className="chapter selected-work" style={{ '--project-count': work.length }}>
       <div className="project-orbit-stage">
         <div className="chapter-heading sticky-chapter-title">
           <p>{locale === 'zh' ? '真实交付' : 'Selected evidence'}</p>
@@ -149,7 +161,7 @@ function SelectedWork({ t, locale }) {
                 className="selected-work-card project-orbit-card"
                 key={project.name}
                 role="listitem"
-                style={{ '--project-index': index }}
+                style={{ '--project-index': index, '--project-angle': `${360 / work.length}deg` }}
               >
                 <div className="project-visual">
                   <img src={selectedProjectMedia[project.id]} alt="" loading="lazy" />
@@ -160,15 +172,38 @@ function SelectedWork({ t, locale }) {
                   <span>{project.role}</span>
                   <p>{project.summary}</p>
                   <strong>{project.outcome}</strong>
-                  <a href={project.href} target="_blank" rel="noreferrer">{locale === 'zh' ? '查看项目' : 'Inspect project'} ↗</a>
+                  <ProjectLinks project={project} locale={locale} />
                 </div>
               </article>
             ))}
           </div>
           <div className="orbit-axis" aria-hidden="true"><span /></div>
-          <p className="orbit-counter" aria-hidden="true"><span>01</span> / 03</p>
+          <p className="orbit-counter" aria-hidden="true"><span>01</span> / {String(work.length).padStart(2, '0')}</p>
         </div>
       </div>
+    </section>
+  )
+}
+
+function MoreWork({ t, locale, projects }) {
+  const more = projects.filter((project) => !selectedProjectIds.includes(project.id))
+  return (
+    <section className="chapter more-work">
+      <div className="chapter-heading">
+        <p>{locale === 'zh' ? '更多作品' : 'More work'}</p>
+        <h2>{locale === 'zh' ? '产品、系统与实验' : 'Products, systems, experiments'}</h2>
+        <Link to="/output">{t.nav.output} →</Link>
+      </div>
+      <ul className="more-work-list">
+        {more.map((project) => (
+          <li key={project.id}>
+            <span className="more-work-name">{project.name}</span>
+            <span className="more-work-meta">{project.role} · {project.status}</span>
+            <span className="more-work-tech">{project.tech.slice(0, 3).join(' · ')}</span>
+            <ProjectLinks project={project} locale={locale} />
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
@@ -221,12 +256,14 @@ function CollaborationCta({ t }) {
 
 export default function HomePage({ t, locale = 'zh' }) {
   const proof = (t.home.proof || t.homeUi.proofAssets).slice(0, 4)
+  const projects = getProjectShowcase(locale)
   return (
     <div className="focused-page home-redesign">
       <Hero t={t} locale={locale} />
       <Showreel t={t} />
       <ProofGrid t={t} items={proof} />
-      <SelectedWork t={t} locale={locale} />
+      <SelectedWork t={t} locale={locale} projects={projects} />
+      <MoreWork t={t} locale={locale} projects={projects} />
       <SelectedWriting t={t} locale={locale} />
       <CollaborationCta t={t} />
     </div>

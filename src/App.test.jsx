@@ -94,7 +94,7 @@ describe('localized route rendering', () => {
 
     await waitFor(() => expect(document.title).toBe('Test Article · luo-chen.com'))
     await userEvent.click(screen.getByRole('link', { name: 'LUOCHEN' }))
-    await waitFor(() => expect(document.title).toBe('Agent Harness Engineer & Full-Stack Builder'))
+    await waitFor(() => expect(document.title).toBe('Luochen · Agent Harness Engineer & Full-Stack Builder'))
   })
 
   it('renders ArticlePage collection and series navigation chrome in English', async () => {

@@ -38,7 +38,7 @@ describe('redesigned page purposes', () => {
     expect(container.querySelector('.hero-portrait-background img')).toHaveAttribute('src', '/头像111.jpg')
     expect(container.querySelector('.portrait-focus-instruction')).toBeInTheDocument()
     expect(container.querySelectorAll('.proof-scene')).toHaveLength(4)
-    expect(container.querySelectorAll('.project-orbit-card')).toHaveLength(3)
+    expect(container.querySelectorAll('.project-orbit-card')).toHaveLength(4)
     expect(container.querySelectorAll('.writing-stack > a')).toHaveLength(4)
     expect(container.querySelector('.cta-expansion-surface')).toBeInTheDocument()
   })
@@ -70,6 +70,7 @@ describe('redesigned page purposes', () => {
       'chapter home-showreel',
       'chapter home-proof-chapter',
       'chapter selected-work',
+      'chapter more-work',
       'chapter selected-writing',
       'collaboration-cta',
     ])
@@ -77,10 +78,20 @@ describe('redesigned page purposes', () => {
 
   it('routes every homepage archive action through Output', () => {
     render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
-    expect(screen.getAllByRole('link', { name: /查看内容|产出/ })).toHaveLength(3)
+    expect(screen.getAllByRole('link', { name: /查看内容|产出/ })).toHaveLength(4)
     screen.getAllByRole('link', { name: /查看内容|产出/ }).forEach((link) => {
       expect(link).toHaveAttribute('href', '/output')
     })
+  })
+
+  it('features the live Super Scholar product without a private repository link', () => {
+    const { container } = render(<MemoryRouter><HomePage t={siteContent.zh} locale="zh" /></MemoryRouter>)
+    const card = [...container.querySelectorAll('.project-orbit-card')]
+      .find((project) => project.textContent.includes('超级学霸'))
+    expect(card?.querySelector('a[href="https://xysjwlwhcm.top/chat/"]')).toHaveTextContent('在线体验')
+    expect(card?.querySelector('a[href*="github.com"]')).not.toBeInTheDocument()
+    const moreWork = container.querySelectorAll('.more-work-list li')
+    expect(moreWork).toHaveLength(getProjectShowcase('zh').length - 4)
   })
 
   it('owns the complete project archive on Work', () => {

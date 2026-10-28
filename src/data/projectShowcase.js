@@ -1,4 +1,9 @@
 const shared = {
+  scholar: {
+    id: 'scholar', category: 'product', year: '2026', featured: true,
+    liveHref: 'https://xysjwlwhcm.top/chat/',
+    tech: ['Node.js', 'TypeScript', 'React', 'SQLite', 'RAG', 'Alibaba Cloud SMS'],
+  },
   imaging: {
     id: 'imaging', category: 'product', year: '2026', featured: true,
     href: 'https://github.com/luochen211/Imaging-OnlineRetouchingOrder-Mini-App-main',
@@ -55,6 +60,7 @@ const shared = {
 
 const copy = {
   zh: {
+    scholar: { name: '超级学霸 · AI 学习工作台', role: '产品设计 · 全栈开发', status: '已上线', summary: '面向家庭自学与成人 AI 实践的在线学习工作台：提问、借助资料学习、核对出处，再把练习和错题留在自己的账号里。', outcome: '内置数学学习板块覆盖小学到初中 109 个知识点、597 道题，诊断、练习与错题订正按账号保存。', details: ['手机号验证码登录，首次验证自动注册；回答附带资料来源，可展开核对原文。', '学币钱包按模型实际 Token 用量结算，单次预算可由用户自己设置。'] },
     imaging: { name: '得到影像在线修图订单系统', role: '商业交付 · 全栈工程师', status: '生产交付', summary: '把散落在微信群、表格和人工排期里的 ToB 修图业务，收口为可运行的多角色履约系统。', outcome: '客户下单、销售跟进、修图排期、交付结算、支付与运营管理形成完整闭环。', details: ['覆盖客户、销售、修图师、组长与运营等角色边界。', '包含小程序、FastAPI 服务、React 运营后台、迁移与部署文档。'] },
     logistics: { name: 'BEST GROUP 物流业务系统', role: '企业系统 · 全栈工程师', status: '一期交付', summary: '围绕一票货代业务，把托书、操作节点、费用申请、财务账单和利润汇总组织进同一数据链路。', outcome: '41 个业务页面支撑客户、操作、财务、分部和总部五类角色协作。', details: ['用数据隔离落实公司、分部与总部权限边界。', '前后端、部署模板和交付文档一并纳入仓库。'] },
     gita: { name: '行动之前 · 互动叙事游戏', role: '独立产品 · 设计与开发', status: '已上线', summary: '一款以《薄伽梵歌》为思想底层的选择驱动叙事游戏，选择先产生现实后果，再回到动机与史实复盘。', outcome: '三个独立篇章、云端存档与全部选择路径校验，形成可公开体验的完整产品。', details: ['内容引擎用纯函数处理选择效果、结局与重玩。', '测试枚举每篇 81 条四次选择组合并验证全部结局可达。'] },
@@ -67,6 +73,7 @@ const copy = {
     paopao: { name: 'Coco / PaopaoChat 实时通信', role: '项目改造 · 全栈开发', status: '项目归档', summary: '同一 IM 项目的版本与改造分支，覆盖多消息聊天、语音、ASR、音视频通话和离线消息。', outcome: '形成 Flutter 客户端、WebSocket/Netty 推送、Agora RTC 与本地消息存储的相邻经验。', details: ['包含语音录制、波形、播放进度与转文字入口。', '这是项目改造经验，不包装为两个独立产品。'] },
   },
   en: {
+    scholar: { name: 'Super Scholar · AI Learning Workspace', role: 'Product design · Full-stack engineering', status: 'Live', summary: 'An online learning workspace for family self-study and adult AI practice: ask questions, learn from source material, check citations, and keep practice and mistakes in your own account.', outcome: 'The built-in maths module covers 109 primary-to-middle-school skills and 597 questions, with diagnostics, practice, and mistake review saved per account.', details: ['Phone verification sign-in registers new users on first use; answers cite their sources and expand to the original text.', 'A study-coin wallet bills by the model’s actual token usage, with a per-request budget the learner sets.'] },
     imaging: { name: 'Dedao Imaging Order System', role: 'Commercial delivery · Full-stack engineer', status: 'Production delivery', summary: 'Consolidated a fragmented B2B retouching operation into one multi-role order and fulfilment system.', outcome: 'Orders, sales follow-up, scheduling, delivery, settlement, payment, and operations now share one workflow.', details: ['Role boundaries cover customers, sales, retouchers, team leads, and operators.', 'The repository includes the Mini Program, FastAPI service, React console, migrations, and handoff docs.'] },
     logistics: { name: 'BEST GROUP Logistics System', role: 'Enterprise system · Full-stack engineer', status: 'Phase one delivered', summary: 'Modelled a freight-forwarding job from booking request through operations, expense approval, billing, reconciliation, and profit.', outcome: '41 business pages support customers, operators, finance, branches, and headquarters.', details: ['Data isolation enforces company, branch, and headquarters boundaries.', 'Frontend, backend, deployment templates, and handoff documentation ship together.'] },
     gita: { name: 'Before the Act · Narrative Game', role: 'Independent product · Design and engineering', status: 'Live', summary: 'A choice-driven narrative game grounded in the Bhagavad Gita: consequences arrive before reflection on motive and history.', outcome: 'Three chapters, cloud saves, and exhaustive path validation make it a complete public product.', details: ['A pure-function content engine handles effects, endings, and replay.', 'Tests enumerate all 81 four-choice paths per chapter and verify ending reachability.'] },

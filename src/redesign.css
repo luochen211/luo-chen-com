@@ -1720,7 +1720,7 @@ body {
   position: relative;
   display: block;
   width: 100vw;
-  height: 360svh;
+  height: calc(var(--project-count, 3) * 110svh + 30svh);
   margin-left: calc(50% - 50vw);
   padding: 0;
   overflow: clip;
@@ -1788,7 +1788,7 @@ body {
   background: rgba(16, 18, 20, 0.98);
   box-shadow: 0 3rem 7rem rgba(0, 0, 0, 0.52);
   backface-visibility: hidden;
-  transform: translate(-50%, -50%) rotateY(calc(var(--project-index) * 120deg)) translateZ(clamp(22rem, 30vw, 28rem));
+  transform: translate(-50%, -50%) rotateY(calc(var(--project-index) * var(--project-angle, 120deg))) translateZ(clamp(22rem, 30vw, 28rem));
 }
 
 .project-orbit-card .project-visual {
@@ -1831,6 +1831,12 @@ body {
   font-size: 0.82rem;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+}
+
 .orbit-axis {
   position: absolute;
   z-index: 4;
@@ -1844,10 +1850,62 @@ body {
 
 .orbit-axis span {
   display: block;
-  width: 33.333%;
+  width: calc(100% / var(--project-count, 3));
   height: 2px;
   background: var(--brand-warm);
   transform-origin: left;
+}
+
+.more-work {
+  padding-bottom: 4rem;
+}
+
+.more-work .chapter-heading h2 {
+  word-break: keep-all;
+}
+
+.more-work-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.more-work-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 0.9fr) 13rem;
+  align-items: baseline;
+  gap: 0.4rem 2rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s ease;
+}
+
+.more-work-list li:hover {
+  background: rgba(244, 241, 233, 0.03);
+}
+
+.more-work-name {
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.more-work-meta,
+.more-work-tech {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.more-work-list .project-links {
+  justify-content: flex-end;
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+
+.more-work-list .project-links a {
+  color: var(--brand-warm);
 }
 
 .orbit-counter {
@@ -2068,6 +2126,11 @@ body {
   .project-orbit-card .project-card-copy strong { display: block; }
   .orbit-axis,
   .orbit-counter { display: none; }
+
+  .more-work { padding: 2rem 0 3rem; }
+  .more-work-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .more-work-tech { display: none; }
+  .more-work-list .project-links { justify-content: flex-start; margin-top: 0.3rem; }
 
   .selected-writing { padding-bottom: 5rem; }
   .writing-stack > a,

@@ -133,8 +133,9 @@ function SiteApp() {
       })
 
       const orbitCounter = document.querySelector('.orbit-counter span')
+      const orbitCount = document.querySelectorAll('.project-orbit-card').length || 1
       gsap.to('.project-orbit', {
-        rotateY: -240,
+        rotateY: -(orbitCount - 1) * (360 / orbitCount),
         ease: 'none',
         scrollTrigger: {
           trigger: '.selected-work',
@@ -142,12 +143,12 @@ function SiteApp() {
           end: 'bottom bottom',
           scrub: 1,
           onUpdate: (self) => {
-            if (orbitCounter) orbitCounter.textContent = String(Math.min(3, Math.round(self.progress * 2) + 1)).padStart(2, '0')
+            if (orbitCounter) orbitCounter.textContent = String(Math.min(orbitCount, Math.round(self.progress * (orbitCount - 1)) + 1)).padStart(2, '0')
           },
         },
       })
       gsap.fromTo('.orbit-axis span', { scaleX: 1 }, {
-        scaleX: 3,
+        scaleX: orbitCount,
         ease: 'none',
         scrollTrigger: { trigger: '.selected-work', start: 'top top', end: 'bottom bottom', scrub: 1 },
       })

@@ -39,7 +39,7 @@ export default function WorkPage({ t, locale = 'zh' }) {
               </details>
               <div>
                 {project.liveHref && <a href={project.liveHref} target="_blank" rel="noreferrer">{locale === 'zh' ? '在线体验' : 'Live product'} ↗</a>}
-                <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>
+                {project.href && <a href={project.href} target="_blank" rel="noreferrer">GitHub ↗</a>}
               </div>
             </footer>
             <span className="project-status">{project.status}</span>
