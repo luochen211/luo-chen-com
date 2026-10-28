@@ -9,6 +9,14 @@
       content="落尘（Cui Dong），Agent Harness 工程师与全栈实践者：AI Coding CLI 工具链、Agent 工作流、超级学霸 AI 学习工作台，以及订单、物流等生产级业务系统交付。"
     />
     <meta name="theme-color" content="#07111f" />
+    <script>
+      try {
+        if (localStorage.getItem('site-theme') === 'light') {
+          document.documentElement.dataset.theme = 'light'
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea')
+        }
+      } catch {}
+    </script>
     <link rel="canonical" href="https://luo-chen.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="luo-chen.com" />

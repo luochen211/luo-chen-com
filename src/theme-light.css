@@ -1,0 +1,277 @@
+/* Light theme: token overrides first, then the sections that hard-code dark surfaces. */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f1ea;
+  --bg-deep: #ebe6dc;
+  --surface: #fbf9f4;
+  --surface-strong: #ffffff;
+  --card-bg: #fbf9f4;
+  --ink: #16140f;
+  --ink-soft: #3b3833;
+  --muted: #6c675f;
+  --brand-warm: #c0521c;
+  --brand-cool: #5d6670;
+  --brand-link: #b04a17;
+  --line: rgba(22, 20, 15, 0.14);
+  --paper: #c75b2d;
+  --paper-ink: #12100f;
+}
+
+:root[data-theme='light'] body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+:root[data-theme='light'] .page {
+  background:
+    radial-gradient(circle at 14% 5%, rgba(199, 91, 45, 0.12), transparent 28rem),
+    linear-gradient(180deg, #f8f6f0 0%, #f4f1ea 60%, #efebe2 100%);
+}
+
+/* Logo: dark ink by default, inverted on hover. */
+:root[data-theme='light'] .brand-mark-image-dark { opacity: 0; }
+:root[data-theme='light'] .brand-mark-image-light { opacity: 1; }
+:root[data-theme='light'] .brand-mark:hover,
+:root[data-theme='light'] .brand-mark:focus-visible { background: #16140f; }
+:root[data-theme='light'] .brand-mark:hover .brand-mark-image-dark,
+:root[data-theme='light'] .brand-mark:focus-visible .brand-mark-image-dark { opacity: 1; }
+:root[data-theme='light'] .brand-mark:hover .brand-mark-image-light,
+:root[data-theme='light'] .brand-mark:focus-visible .brand-mark-image-light { opacity: 0; }
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+}
+
+.theme-toggle svg { width: 1rem; height: 1rem; }
+
+/* Navigation and chrome */
+:root[data-theme='light'] .nav,
+:root[data-theme='light'] .desktop-nav,
+:root[data-theme='light'] .mobile-nav-shell {
+  border-color: var(--line);
+  background: rgba(250, 248, 243, 0.88);
+  box-shadow: 0 18px 50px rgba(22, 20, 15, 0.08);
+}
+:root[data-theme='light'] .home-route .desktop-nav,
+:root[data-theme='light'] .home-route .mobile-nav-shell {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+:root[data-theme='light'] .nav-links a,
+:root[data-theme='light'] .desktop-nav a:not(.brand),
+:root[data-theme='light'] .lang-toggle,
+:root[data-theme='light'] .mobile-menu-links a { color: var(--ink-soft); }
+:root[data-theme='light'] .nav-links a:hover,
+:root[data-theme='light'] .nav-links a.active,
+:root[data-theme='light'] .desktop-nav a:not(.brand):hover,
+:root[data-theme='light'] .desktop-nav a:not(.brand).active,
+:root[data-theme='light'] .lang-toggle:hover,
+:root[data-theme='light'] .mobile-menu-links a.active {
+  color: var(--ink);
+  background: rgba(22, 20, 15, 0.07);
+}
+:root[data-theme='light'] .lang-toggle { border-color: var(--line); background: rgba(22, 20, 15, 0.03); }
+:root[data-theme='light'] .menu-toggle span { background: var(--ink); }
+:root[data-theme='light'] .mobile-menu-panel { background: #faf8f3; box-shadow: -24px 0 64px rgba(22, 20, 15, 0.14); }
+:root[data-theme='light'] .mobile-menu-backdrop { background: rgba(22, 20, 15, 0.3); }
+:root[data-theme='light'] .mobile-menu-links a { border-bottom-color: var(--line); }
+:root[data-theme='light'] .footer { color: var(--muted); }
+:root[data-theme='light'] .page::before { opacity: 0.35; }
+
+/* Shared type and buttons */
+:root[data-theme='light'] h1,
+:root[data-theme='light'] .section-head h2,
+:root[data-theme='light'] .topic-hero h1,
+:root[data-theme='light'] .article-page h1,
+:root[data-theme='light'] .article-page h2,
+:root[data-theme='light'] .article-page strong,
+:root[data-theme='light'] .capability-tile h3,
+:root[data-theme='light'] .course-archive h3,
+:root[data-theme='light'] .stack-column h3,
+:root[data-theme='light'] .card h3,
+:root[data-theme='light'] .article-card h3,
+:root[data-theme='light'] .topic-card h3,
+:root[data-theme='light'] .column-card h3,
+:root[data-theme='light'] .topic-frame h2,
+:root[data-theme='light'] .course-stats strong,
+:root[data-theme='light'] .now-entry-head h3,
+:root[data-theme='light'] .project-head h3 { color: var(--ink); }
+:root[data-theme='light'] .intro,
+:root[data-theme='light'] .about-panel p,
+:root[data-theme='light'] .course-intro,
+:root[data-theme='light'] .topic-hero p:last-child,
+:root[data-theme='light'] .article-page p,
+:root[data-theme='light'] .article-page li,
+:root[data-theme='light'] .now-mindset p,
+:root[data-theme='light'] .hero-panel blockquote,
+:root[data-theme='light'] .manifesto-card blockquote { color: var(--ink-soft); }
+:root[data-theme='light'] .meta-line,
+:root[data-theme='light'] .hero-kicker,
+:root[data-theme='light'] .capability-tile ul,
+:root[data-theme='light'] .capability-tile ol,
+:root[data-theme='light'] .list-tight,
+:root[data-theme='light'] .stack-list,
+:root[data-theme='light'] .workflow-list,
+:root[data-theme='light'] .course-stats span,
+:root[data-theme='light'] .article-list-head p,
+:root[data-theme='light'] .article-list-head small,
+:root[data-theme='light'] .article-card span,
+:root[data-theme='light'] .article-card p,
+:root[data-theme='light'] .topic-card span,
+:root[data-theme='light'] .topic-card p,
+:root[data-theme='light'] .column-card span,
+:root[data-theme='light'] .column-card p,
+:root[data-theme='light'] .topic-frame p,
+:root[data-theme='light'] .collection-meta dd,
+:root[data-theme='light'] .collection-start p,
+:root[data-theme='light'] .article-pager span,
+:root[data-theme='light'] .network-list span,
+:root[data-theme='light'] .column-empty,
+:root[data-theme='light'] .course-link p,
+:root[data-theme='light'] .now-entry li,
+:root[data-theme='light'] .now-entry-head span,
+:root[data-theme='light'] .project-head span,
+:root[data-theme='light'] .contact-card p,
+:root[data-theme='light'] .contact-note,
+:root[data-theme='light'] .capability-tile span,
+:root[data-theme='light'] .project-index { color: var(--muted); }
+:root[data-theme='light'] .meta-line a { color: var(--ink); border-bottom-color: var(--line); }
+:root[data-theme='light'] .article-page blockquote { color: var(--ink); background: rgba(22, 20, 15, 0.05); }
+:root[data-theme='light'] .article-tags span,
+:root[data-theme='light'] .chip { border-color: var(--line); color: var(--ink-soft); background: rgba(22, 20, 15, 0.03); }
+:root[data-theme='light'] .project-title-link:hover,
+:root[data-theme='light'] .article-hero p a:hover { color: var(--brand-link); }
+:root[data-theme='light'] .collection-start span { color: var(--brand-warm); }
+:root[data-theme='light'] .btn.primary { color: #fff; background: var(--brand-warm); }
+:root[data-theme='light'] .btn.ghost { color: var(--ink); border-color: rgba(22, 20, 15, 0.24); background: rgba(22, 20, 15, 0.03); }
+
+/* Card grids: the 1px gaps draw the dividers, so they take the line color. */
+:root[data-theme='light'] .capability-matrix,
+:root[data-theme='light'] .course-archive,
+:root[data-theme='light'] .article-list,
+:root[data-theme='light'] .topic-list,
+:root[data-theme='light'] .writing-map,
+:root[data-theme='light'] .column-grid,
+:root[data-theme='light'] .topic-frame,
+:root[data-theme='light'] .article-pager,
+:root[data-theme='light'] .network-list,
+:root[data-theme='light'] .stack-grid,
+:root[data-theme='light'] .contact-grid { border-color: var(--line); background: var(--line); }
+:root[data-theme='light'] .capability-tile,
+:root[data-theme='light'] .course-archive > *,
+:root[data-theme='light'] .article-list-head,
+:root[data-theme='light'] .article-card,
+:root[data-theme='light'] .topic-card,
+:root[data-theme='light'] .column-card,
+:root[data-theme='light'] .topic-frame article,
+:root[data-theme='light'] .article-pager a,
+:root[data-theme='light'] .article-pager > span,
+:root[data-theme='light'] .network-list a,
+:root[data-theme='light'] .course-fit,
+:root[data-theme='light'] .stack-column,
+:root[data-theme='light'] .card,
+:root[data-theme='light'] .contact-card,
+:root[data-theme='light'] .archive-project,
+:root[data-theme='light'] .hero-panel { background: var(--surface); border-color: var(--line); }
+:root[data-theme='light'] .article-card:hover,
+:root[data-theme='light'] .topic-card:hover,
+:root[data-theme='light'] .column-card:hover,
+:root[data-theme='light'] .article-pager a:hover,
+:root[data-theme='light'] .network-list a:hover,
+:root[data-theme='light'] .contact-card:hover,
+:root[data-theme='light'] .course-link:hover { background: #ffffff; }
+:root[data-theme='light'] .network-list a.active { background: linear-gradient(135deg, rgba(199, 91, 45, 0.1), transparent), #ffffff; }
+:root[data-theme='light'] .about-panel,
+:root[data-theme='light'] .course-stats li,
+:root[data-theme='light'] .collection-start,
+:root[data-theme='light'] .article-hero,
+:root[data-theme='light'] .article-network,
+:root[data-theme='light'] .now-mindset,
+:root[data-theme='light'] .now-entry,
+:root[data-theme='light'] .now-entry.routine,
+:root[data-theme='light'] .timeline-item,
+:root[data-theme='light'] .timeline-item:last-child,
+:root[data-theme='light'] .contact-action-panel { border-color: var(--line); }
+:root[data-theme='light'] .contact-action-panel { background: rgba(22, 20, 15, 0.03); }
+
+/* Filters */
+:root[data-theme='light'] .work-filter,
+:root[data-theme='light'] .output-filter { background: rgba(250, 248, 243, 0.92); }
+:root[data-theme='light'] .work-filter button.active,
+:root[data-theme='light'] .output-filter button.active { color: #faf8f3; background: var(--ink); }
+
+/* Output */
+:root[data-theme='light'] .output-project-compact:hover,
+:root[data-theme='light'] .output-project:hover { background: rgba(22, 20, 15, 0.03); }
+:root[data-theme='light'] .output-project-featured { color: #f4f1e9; }
+
+/* Home hero */
+:root[data-theme='light'] .home-focused-hero,
+:root[data-theme='light'] .hero-portrait-background { background: var(--bg); }
+:root[data-theme='light'] .hero-portrait-scrim {
+  background:
+    linear-gradient(90deg, #f4f1ea 0%, rgba(244, 241, 234, 0.8) 15%, rgba(244, 241, 234, 0.06) 48%, rgba(244, 241, 234, 0.1) 100%),
+    linear-gradient(180deg, rgba(244, 241, 234, 0.3) 0%, transparent 52%, rgba(244, 241, 234, 0.7) 100%);
+}
+:root[data-theme='light'] .hero-portrait-haze { background: rgba(244, 241, 234, 0.35); }
+:root[data-theme='light'] .hero-portrait-background img { filter: blur(13px) saturate(0.8) brightness(1.02); }
+:root[data-theme='light'] .hero-portrait-background:hover img,
+:root[data-theme='light'] .hero-portrait-background:focus-visible img,
+:root[data-theme='light'] .hero-portrait-background.is-revealed img { filter: blur(0) saturate(1.02) brightness(1); }
+:root[data-theme='light'] .home-focused-hero .hero-copy h1 { text-shadow: none; }
+:root[data-theme='light'] .home-focused-hero .hero-intro { color: var(--ink-soft); }
+:root[data-theme='light'] .portrait-focus-instruction { color: var(--muted); }
+:root[data-theme='light'] .hero-marquee { background: rgba(244, 241, 234, 0.7); }
+:root[data-theme='light'] .home-showreel .showreel-video { background: #16140f; }
+
+/* Home proof */
+:root[data-theme='light'] .home-proof-chapter { background: var(--bg-deep); }
+:root[data-theme='light'] .proof-visual-layer {
+  border-color: rgba(22, 20, 15, 0.14);
+  background: #ffffff;
+  box-shadow: 0 2rem 5rem rgba(22, 20, 15, 0.12);
+}
+:root[data-theme='light'] .evidence-window-bar { border-bottom-color: var(--line); background: #f3f0e9; }
+:root[data-theme='light'] .evidence-window-bar i { background: rgba(22, 20, 15, 0.18); }
+:root[data-theme='light'] .evidence-list li { border-bottom-color: var(--line); }
+:root[data-theme='light'] .evidence-delivery i { color: #23824b; }
+:root[data-theme='light'] .proof-scene > b { color: rgba(22, 20, 15, 0.2); }
+
+/* Home project orbit */
+:root[data-theme='light'] .selected-work { background: var(--bg-deep); }
+:root[data-theme='light'] .project-orbit-stage::after {
+  background: linear-gradient(90deg, #ebe6dc 10%, rgba(235, 230, 220, 0.94) 54%, rgba(235, 230, 220, 0));
+}
+:root[data-theme='light'] .project-orbit .project-orbit-card {
+  border-color: rgba(22, 20, 15, 0.14);
+  background: #ffffff;
+  box-shadow: 0 2.5rem 6rem rgba(22, 20, 15, 0.14);
+}
+:root[data-theme='light'] .orbit-axis { background: rgba(22, 20, 15, 0.18); }
+:root[data-theme='light'] .more-work-list li:hover { background: rgba(22, 20, 15, 0.03); }
+
+/* Home writing stack */
+:root[data-theme='light'] .writing-stack > a,
+:root[data-theme='light'] .writing-stack > a:hover {
+  border-color: rgba(22, 20, 15, 0.14);
+  background: #ffffff;
+  box-shadow: 0 -1rem 3rem rgba(22, 20, 15, 0.08);
+}
+:root[data-theme='light'] .writing-stack > a:nth-child(2) { background: #faf7f1; }
+:root[data-theme='light'] .writing-stack > a:nth-child(3) { background: #f8f1e8; }
+:root[data-theme='light'] .writing-stack > a:nth-child(4) { background: #f6f3ec; }
+:root[data-theme='light'] .writing-stack-index { color: rgba(22, 20, 15, 0.05); }
+
+@media (max-width: 800px) {
+  :root[data-theme='light'] .hero-portrait-scrim {
+    background:
+      linear-gradient(90deg, #f4f1ea 0%, rgba(244, 241, 234, 0.78) 28%, rgba(244, 241, 234, 0.36) 100%),
+      linear-gradient(180deg, rgba(244, 241, 234, 0.3) 0%, rgba(244, 241, 234, 0.08) 42%, rgba(244, 241, 234, 0.82) 100%);
+  }
+  :root[data-theme='light'] .hero-portrait-background img { filter: blur(10px) saturate(0.8) brightness(1.02); }
+}

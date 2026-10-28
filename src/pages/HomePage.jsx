@@ -57,26 +57,46 @@ function Hero({ t, locale }) {
   )
 }
 
-function ProofGrid({ t, items }) {
-  const evidenceArt = [
-    <div className="proof-evidence-art proof-evidence-terminal" key="terminal">
-      <div className="evidence-window-bar"><i /><i /><i /><span>agent-cli / test-run</span></div>
-      <div className="evidence-code-lines"><b>$</b><span /><span /><span /><span /><span /><strong>PASS · 14 checks</strong></div>
-    </div>,
-    <div className="proof-evidence-art proof-evidence-writing" key="writing">
-      <div className="evidence-page-index">PUBLIC / 026</div>
-      <div className="evidence-writing-lines"><i /><i /><i /><i /><i /><b /></div>
-      <time>2026.08.13</time>
-    </div>,
-    <div className="proof-evidence-art proof-evidence-pipeline" key="pipeline">
-      <div><b>ORDER</b><span>01</span></div><i>→</i><div><b>PAYMENT</b><span>02</span></div><i>→</i><div><b>DELIVERY</b><span>03</span></div>
-    </div>,
-    <div className="proof-evidence-art proof-evidence-checklist" key="checklist">
-      <div><b>01</b><span>需求边界</span><i>✓</i></div>
-      <div><b>02</b><span>验收条件</span><i>✓</i></div>
-      <div><b>03</b><span>上线验证</span><i>✓</i></div>
-      <strong>READY TO SHIP</strong>
-    </div>,
+function ProofGrid({ t, items, locale, articles, projects }) {
+  const isEnglish = locale === 'en'
+  const delivered = selectedProjectIds.map((id) => projects.find((project) => project.id === id)).filter(Boolean)
+  const evidence = [
+    {
+      caption: 'github.com/santifer/career-ops',
+      body: <img src="/media/career-ops-contributor.jpg" alt="" loading="lazy" />,
+    },
+    {
+      caption: 'luo-chen.com/output',
+      body: (
+        <ol className="evidence-list">
+          {articles.map((article) => (
+            <li key={article.slug}>
+              <time>{article.date}</time>
+              <strong>{article.title}</strong>
+              <span>{article.column.title}</span>
+            </li>
+          ))}
+        </ol>
+      ),
+    },
+    {
+      caption: isEnglish ? 'Dedao Imaging · operations console' : '得到影像 · 运营后台',
+      body: <img src="/media/imaging-dashboard.jpg" alt="" loading="lazy" />,
+    },
+    {
+      caption: isEnglish ? 'Delivery log' : '交付记录',
+      body: (
+        <ol className="evidence-list evidence-delivery">
+          {delivered.map((project) => (
+            <li key={project.id}>
+              <time>{project.year}</time>
+              <strong>{project.name}</strong>
+              <span>{project.status} <i aria-hidden="true">✓</i></span>
+            </li>
+          ))}
+        </ol>
+      ),
+    },
   ]
   return (
     <section className="chapter home-proof-chapter">
@@ -89,10 +109,12 @@ function ProofGrid({ t, items }) {
           <div className="proof-scene-visual" aria-hidden="true">
             {items.map((item, index) => (
               <div className={`proof-visual-layer proof-visual-layer-${index + 1}`} data-scene={index} key={item.title}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <p>{item.label}</p>
-                <i />
-                {evidenceArt[index]}
+                <div className="evidence-window-bar">
+                  <i /><i /><i />
+                  <span>{evidence[index]?.caption}</span>
+                  <b>{String(index + 1).padStart(2, '0')} · {item.label}</b>
+                </div>
+                <div className="evidence-body">{evidence[index]?.body}</div>
               </div>
             ))}
           </div>
@@ -208,11 +230,7 @@ function MoreWork({ t, locale, projects }) {
   )
 }
 
-function SelectedWriting({ t, locale }) {
-  const latest = localizeArticles(
-    [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4),
-    locale,
-  )
+function SelectedWriting({ t, locale, latest }) {
   return (
     <section className="chapter selected-writing">
       <div className="chapter-heading">
@@ -257,14 +275,18 @@ function CollaborationCta({ t }) {
 export default function HomePage({ t, locale = 'zh' }) {
   const proof = (t.home.proof || t.homeUi.proofAssets).slice(0, 4)
   const projects = getProjectShowcase(locale)
+  const latest = localizeArticles(
+    [...articleIndex].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4),
+    locale,
+  )
   return (
     <div className="focused-page home-redesign">
       <Hero t={t} locale={locale} />
       <Showreel t={t} />
-      <ProofGrid t={t} items={proof} />
+      <ProofGrid t={t} items={proof} locale={locale} articles={latest} projects={projects} />
       <SelectedWork t={t} locale={locale} projects={projects} />
       <MoreWork t={t} locale={locale} projects={projects} />
-      <SelectedWriting t={t} locale={locale} />
+      <SelectedWriting t={t} locale={locale} latest={latest} />
       <CollaborationCta t={t} />
     </div>
   )

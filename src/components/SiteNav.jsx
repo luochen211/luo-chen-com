@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+import { FiMoon, FiSun } from 'react-icons/fi'
 import BrandMark from './BrandMark'
 
 const primaryLinks = [
@@ -8,6 +9,19 @@ const primaryLinks = [
   { key: 'now', to: '/now' },
   { key: 'output', to: '/output' },
 ]
+
+function ThemeToggle({ locale, theme, onToggleTheme }) {
+  if (!onToggleTheme) return null
+  const next = theme === 'light' ? 'dark' : 'light'
+  const label = locale === 'en'
+    ? `Switch to ${next} theme`
+    : `切换到${next === 'light' ? '浅色' : '深色'}模式`
+  return (
+    <button aria-label={label} className="lang-toggle theme-toggle" title={label} type="button" onClick={onToggleTheme}>
+      {theme === 'light' ? <FiMoon aria-hidden="true" /> : <FiSun aria-hidden="true" />}
+    </button>
+  )
+}
 
 function PrimaryLinks({ t, firstLinkRef, onNavigate }) {
   return primaryLinks.map(({ key, to, end }, index) => (
@@ -24,7 +38,7 @@ function PrimaryLinks({ t, firstLinkRef, onNavigate }) {
   ))
 }
 
-export default function SiteNav({ locale, t, onToggleLocale }) {
+export default function SiteNav({ locale, t, onToggleLocale, theme = 'dark', onToggleTheme }) {
   const [open, setOpen] = useState(false)
   const location = useLocation()
   const triggerRef = useRef(null)
@@ -99,6 +113,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
           <PrimaryLinks t={t} />
         </div>
         <div className="desktop-nav-secondary">
+          <ThemeToggle locale={locale} theme={theme} onToggleTheme={onToggleTheme} />
           <button className="lang-toggle" type="button" onClick={onToggleLocale}>
             {localeLabel}
           </button>
@@ -137,6 +152,7 @@ export default function SiteNav({ locale, t, onToggleLocale }) {
               />
             </div>
             <div className="mobile-menu-secondary">
+              <ThemeToggle locale={locale} theme={theme} onToggleTheme={onToggleTheme} />
               <button className="lang-toggle" type="button" onClick={onToggleLocale}>
                 {localeLabel}
               </button>

@@ -12,6 +12,7 @@ import {
 import './App.css'
 import './redesign.css'
 import './output-end.css'
+import './theme-light.css'
 import CollectionView from './components/CollectionView'
 import BrandMark from './components/BrandMark'
 import SiteNav from './components/SiteNav'
@@ -44,6 +45,15 @@ function getRouteTitle(pathname, t, locale) {
   return t.seoTitle.text
 }
 
+function getInitialTheme() {
+  if (document.documentElement.dataset.theme === 'light') return 'light'
+  try {
+    return window.localStorage.getItem('site-theme') === 'light' ? 'light' : 'dark'
+  } catch {
+    return 'dark'
+  }
+}
+
 function IndexedArticleRoute({ locale }) {
   const { slug } = useParams()
   return findArticle(slug) ? <ArticlePage locale={locale} /> : <Navigate replace to="/output" />
@@ -51,6 +61,7 @@ function IndexedArticleRoute({ locale }) {
 
 function SiteApp() {
   const [locale, setLocale] = useState(() => getInitialLocale(window.localStorage))
+  const [theme, setTheme] = useState(() => getInitialTheme())
   const location = useLocation()
   const mainRef = useRef(null)
   const previousPathRef = useRef(location.pathname)
@@ -64,6 +75,16 @@ function SiteApp() {
     const routeTitle = getRouteTitle(location.pathname, t, locale)
     if (routeTitle) document.title = routeTitle
   }, [locale, location.pathname, t])
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#f4f1ea' : '#07111f')
+    try {
+      window.localStorage.setItem('site-theme', theme)
+    } catch {
+      // Storage can be unavailable in private mode; the theme still applies for this visit.
+    }
+  }, [theme])
 
   useEffect(() => {
     if (previousPathRef.current === location.pathname) return
@@ -186,7 +207,13 @@ function SiteApp() {
       <div className="bg-orb orb-b" aria-hidden="true" />
       <div className="bg-grid" aria-hidden="true" />
       <header className="topbar container">
-        <SiteNav locale={locale} t={t} onToggleLocale={() => setLocale((current) => current === 'en' ? 'zh' : 'en')} />
+        <SiteNav
+          locale={locale}
+          t={t}
+          theme={theme}
+          onToggleLocale={() => setLocale((current) => current === 'en' ? 'zh' : 'en')}
+          onToggleTheme={() => setTheme((current) => current === 'light' ? 'dark' : 'light')}
+        />
       </header>
       <main className="container route-main" ref={mainRef} tabIndex="-1">
         <Routes>

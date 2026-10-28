@@ -34,6 +34,30 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
+describe('theme switching', () => {
+  beforeEach(() => {
+    delete document.documentElement.dataset.theme
+  })
+
+  it('defaults to dark and remembers the light theme after toggling', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    expect(document.documentElement.dataset.theme).toBe('dark')
+
+    await user.click(screen.getAllByRole('button', { name: '切换到浅色模式' })[0])
+
+    expect(document.documentElement.dataset.theme).toBe('light')
+    expect(window.localStorage.getItem('site-theme')).toBe('light')
+    expect(screen.getAllByRole('button', { name: '切换到深色模式' }).length).toBeGreaterThan(0)
+  })
+
+  it('starts in the saved light theme', () => {
+    window.localStorage.setItem('site-theme', 'light')
+    render(<App />)
+    expect(document.documentElement.dataset.theme).toBe('light')
+  })
+})
+
 describe('localized route rendering', () => {
   it('uses the shared monochrome logo in the footer', () => {
     render(<App />)
