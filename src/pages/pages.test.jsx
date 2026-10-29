@@ -151,11 +151,11 @@ describe('redesigned page purposes', () => {
   it('combines a personal timeline and prefilled collaboration email on About', () => {
     render(<AboutPage t={siteContent.en} locale="en" />)
     expect(document.querySelector('.about-introduction')).not.toBeInTheDocument()
-    expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '7')
+    expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '13')
     expect(screen.getByRole('heading', { name: 'Earned money on my own for the first time' })).toBeInTheDocument()
     expect(screen.getByText('MIDDLE SCHOOL', { selector: 'time' })).not.toHaveAttribute('datetime')
     expect(screen.getByRole('button', { name: 'HIGH SCHOOL · Ran Chinese metaphysics training and became a Taoist priest' })).toBeInTheDocument()
-    expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(7)
+    expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(13)
     const action = screen.getByRole('link', { name: /Send a collaboration email/ })
     expect(action).toHaveAttribute('href', expect.stringContaining('subject=Collaboration%20inquiry'))
     expect(action).toHaveAttribute('href', expect.stringContaining('Project%20context'))
@@ -163,14 +163,14 @@ describe('redesigned page purposes', () => {
 
   it('reveals the event attached to a selected timeline coordinate', async () => {
     render(<AboutPage t={siteContent.zh} locale="zh" />)
-    const commercialCoordinate = screen.getByRole('button', { name: '2025 · 开始为企业项目交付结果' })
+    const commercialCoordinate = screen.getByRole('button', { name: '2026.10 · 成为 career-ops 前 10 贡献者' })
     expect(commercialCoordinate).toHaveAttribute('aria-pressed', 'false')
 
     await userEvent.click(commercialCoordinate)
 
     expect(commercialCoordinate).toHaveAttribute('aria-pressed', 'true')
-    expect(screen.getByRole('heading', { name: '开始为企业项目交付结果' })).toBeInTheDocument()
-    expect(screen.getByText(/开发不再只是把功能写出来/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '成为 career-ops 前 10 贡献者' })).toBeInTheDocument()
+    expect(screen.getByText(/累计 112 个，进入贡献者前 10/)).toBeInTheDocument()
   })
 
   it('publishes Xiaohongshu and Douyin profiles with follower counts', () => {
