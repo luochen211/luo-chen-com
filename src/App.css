@@ -958,6 +958,20 @@ h1 {
   font-size: 0.78rem;
 }
 
+.article-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1.2rem;
+  color: rgba(255, 151, 113, 0.84);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.article-source:hover {
+  color: #fff0dc;
+}
+
 .article-page blockquote {
   margin: 1.6rem 0;
   padding: 1.2rem 1.4rem;

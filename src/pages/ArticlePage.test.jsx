@@ -11,9 +11,9 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-function renderArticle(locale = 'zh') {
+function renderArticle(locale = 'zh', slug = '2026-07-05-where-do-we-go-preface') {
   return render(
-    <MemoryRouter initialEntries={['/articles/2026-07-05-where-do-we-go-preface']}>
+    <MemoryRouter initialEntries={[`/articles/${slug}`]}>
       <Routes>
         <Route path="/articles/:slug" element={<ArticlePage locale={locale} />} />
       </Routes>
@@ -41,5 +41,22 @@ describe('ArticlePage', () => {
 
     expect(await screen.findByText(`3 ${siteContent.zh.article.readingTime}`)).toBeInTheDocument()
     expect(container.querySelector('.article-page')).not.toHaveClass('reveal')
+  })
+
+  it('links to the original post when the article has a source', async () => {
+    vi.spyOn(window, 'fetch').mockResolvedValue({ ok: true, text: async () => '# 越能干，越容易被踢走。\n正文' })
+    renderArticle('zh', '2026-10-29-capable-people-get-pushed-out')
+
+    const source = await screen.findByRole('link', { name: /查看 X 原文/ })
+    expect(source).toHaveAttribute('href', 'https://x.com/luochenkafei/status/2115705228792037753')
+    expect(source).toHaveAttribute('target', '_blank')
+  })
+
+  it('omits the source link for articles without one', async () => {
+    vi.spyOn(window, 'fetch').mockResolvedValue({ ok: true, text: async () => '# 测试文章\n正文' })
+    const { container } = renderArticle()
+
+    await screen.findByRole('heading', { name: '测试文章' })
+    expect(container.querySelector('.article-source')).toBeNull()
   })
 })

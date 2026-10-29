@@ -146,6 +146,8 @@
 :root[data-theme='light'] .chip { border-color: var(--line); color: var(--ink-soft); background: rgba(22, 20, 15, 0.03); }
 :root[data-theme='light'] .project-title-link:hover,
 :root[data-theme='light'] .article-hero p a:hover { color: var(--brand-link); }
+:root[data-theme='light'] .article-source { color: var(--brand-warm); }
+:root[data-theme='light'] .article-source:hover { color: var(--brand-link); }
 :root[data-theme='light'] .collection-start span { color: var(--brand-warm); }
 :root[data-theme='light'] .btn.primary { color: #fff; background: var(--brand-warm); }
 :root[data-theme='light'] .btn.ghost { color: var(--ink); border-color: rgba(22, 20, 15, 0.24); background: rgba(22, 20, 15, 0.03); }

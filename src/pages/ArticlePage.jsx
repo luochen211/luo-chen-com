@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { FiArrowUpRight } from 'react-icons/fi'
 import { Link, useParams } from 'react-router-dom'
 import { localizeArticles, readerCopy } from '../data/siteContent'
 import { estimateReadingMinutes, findArticle, getLinkedArticles, getSeriesArticles, parseArticleMarkdown, parseArticleMeta } from '../lib/articles'
@@ -67,6 +68,7 @@ export default function ArticlePage({ locale }) {
       if (block.type === 'h1') return <header className="article-hero" key={blockIndex}>
         <p>{localizedArticle ? <><Link to={localizedArticle.column.href}>{localizedArticle.column.title}</Link><span> · </span><a href={localizedArticle.series.href}>{localizedArticle.series.title}</a><span> · </span></> : `${copy.unknownLabel} · `}{meta.date || localizedArticle?.date || ''}<span> · </span><span>{minutes} {copy.readingTime}</span></p>
         <h1>{block.text}</h1>{localizedArticle?.tags?.length ? <div className="article-tags">{localizedArticle.tags.map((tag) => <span key={tag}>{tag}</span>)}</div> : null}
+        {article?.source ? <a className="article-source" href={article.source.href} target="_blank" rel="noopener noreferrer">{article.source.label[locale === 'en' ? 'en' : 'zh']}<FiArrowUpRight aria-hidden="true" /></a> : null}
       </header>
       if (block.type === 'h2') return <h2 key={blockIndex}>{block.text}</h2>
       if (block.type === 'quote') return <blockquote key={blockIndex}><Inline>{block.text}</Inline></blockquote>

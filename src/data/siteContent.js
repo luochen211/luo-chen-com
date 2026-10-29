@@ -859,6 +859,10 @@ const articleDisplayLocale = {
       title: 'The Programmer’s Product Illusion: Mistaking “I Can Build It” for “People Need It”',
       summary: 'Being able to code makes products easier to build—and makes it easier to skip the hard work of understanding real demand.',
     },
+    '2026-10-29-capable-people-get-pushed-out': {
+      title: 'The More Capable You Are, the Easier You Are to Push Out',
+      summary: 'The more thoroughly you solve a problem, the easier you are to replace in that seat. Real security is not being indispensable, but being able to leave.',
+    },
   },
 }
 

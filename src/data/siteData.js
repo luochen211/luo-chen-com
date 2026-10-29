@@ -178,6 +178,23 @@ export const writingColumns = [
               '2026-07-05-open-source-is-career-asset',
             ],
           },
+          {
+            slug: '2026-10-29-capable-people-get-pushed-out',
+            title: '越能干，越容易被踢走。',
+            date: '2026-10-29',
+            summary:
+              '能干的人把问题解决得越彻底，在原来的位置上越容易被替代。真正的安全感，不是公司离不开你，而是你随时走得了。',
+            tags: ['职场', '组织权力', '带得走的能力', '职业发展'],
+            source: {
+              href: 'https://x.com/luochenkafei/status/2115705228792037753',
+              label: { zh: '查看 X 原文', en: 'View on X' },
+            },
+            related: [
+              '2026-07-10-where-is-the-missing-fifty',
+              '2026-07-05-open-source-is-career-asset',
+              '2026-07-05-resume-needs-breakthrough-projects',
+            ],
+          },
         ],
       },
       {
