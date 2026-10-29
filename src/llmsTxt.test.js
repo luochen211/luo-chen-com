@@ -11,6 +11,11 @@ describe('llms.txt', () => {
     expect(llms).toMatch(/\n> .+/)
   })
 
+  it('lists the public social profiles', () => {
+    expect(llms).toContain('https://x.com/luochenkafei')
+    expect(llms).toContain('https://www.douyin.com/user/')
+  })
+
   it('links every published article exactly once', () => {
     expect([...linkedArticles].sort()).toEqual([...articleFiles].sort())
   })
