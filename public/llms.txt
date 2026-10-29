@@ -1,0 +1,54 @@
+# 落尘 Luochen
+
+> 落尘，2006 年出生，在杭州。现在在一家公司半创业，做教育产品，把 AI 放进家庭学习和家长的教育决策里；同时继续做 Agent Harness 工程和开源贡献，把做成的东西公开留下来。网站 luo-chen.com 是他的公开简历：经历、产出、文章和演讲都在这里。
+
+网站是单页应用，正文由 JavaScript 渲染。下面列出的文章链接指向 Markdown 原文，可以直接读取。
+
+## 现在
+
+- 正在做的产品：面向家庭自学和成人 AI 实践的在线学习工作台（超级学霸），从产品结构、内容到上线交付一起推进。
+- 一本写给家长的书，讨论 AI 时代孩子的教育决策该怎么做。
+- 家长向短视频的内容生产线：选题、文稿、配音到成片，用 Agent 和模板批量出片。
+- 持续深入 Agent Harness、AI Coding CLI、工具调用安全和评估门禁。
+
+## 经历
+
+- 2025.06：负责一个海外虚拟商品交易平台的全栈开发，从零上线，累计 GMV 超过 20 万元。
+- 2025.12：作为工程负责人，和斯坦福全球前 2% 科学家团队合作，在香港 Hotel Icon 完成多模态 AI 预测平台的工程化。
+- 2026.02：第一次有 PR 被开源项目合并（ralph-desktop）。
+- 2026.06—10：175 个 PR 被上游开源项目合并。career-ops（7.8 万 star）累计合并 112 个，进入贡献者前 10；obra/superpowers（30 万 star）和 Dify（16 万 star）也合并过他的 PR。
+- 2026.07：开了专栏「我们将何去何从」。
+- 2026.08：写完 Agent Harness 基础课，5 节、45 页。
+
+## 页面
+
+- [关于](https://luo-chen.com/about)：现在在做的事、人生原点、能力形成时间线、做事原则和联系方式。
+- [产出](https://luo-chen.com/output)：项目、写作和公开分享。
+- [专栏：我们将何去何从](https://luo-chen.com/columns/where-do-we-go)
+- [演讲：客户为什么愿意把结果交给你？](https://luo-chen.com/talks/ai-delivery)
+- [Agent Harness 讲师演示台](https://luo-chen.com/demos/agent-harness/)
+- [PPT 归档](https://luo-chen.com/slides/)
+
+## 文章
+
+- [我们将何去何从：旧坐标失效之后](https://luo-chen.com/articles/2026-07-05-where-do-we-go-preface.md)：旧坐标失效后，每个人都要重新回答：我靠什么被定价，靠什么被信任，靠什么走远。
+- [别让低价值现金流，吞掉你的未来位置](https://luo-chen.com/articles/2026-07-05-stop-low-value-outsourcing.md)
+- [别用现在的自己，拒绝高势能机会](https://luo-chen.com/articles/2026-07-05-internship-is-strategic-attempt.md)
+- [英语不是加分项，是进入更大市场的通行证](https://luo-chen.com/articles/2026-07-05-english-is-remote-work-ticket.md)
+- [公开作品比私下交付更像职业资产](https://luo-chen.com/articles/2026-07-05-open-source-is-career-asset.md)
+- [你的履历不需要很满，只需要有强信号](https://luo-chen.com/articles/2026-07-05-resume-needs-breakthrough-projects.md)
+- [只会做事的人，很容易输给会被信任的人](https://luo-chen.com/articles/2026-07-05-programmers-need-social-surface.md)
+- [成年人最该守住的，是热闹里的判断权](https://luo-chen.com/articles/2026-07-05-less-contact-zhongdeng.md)
+- [不要只卖时间，要把经验做成系统](https://luo-chen.com/articles/2026-07-05-knowledge-product-is-leverage.md)
+- [长期紧绷的人，最容易失去未来](https://luo-chen.com/articles/2026-07-05-relaxed-state-is-long-term-edge.md)
+- [有人承诺给我3%股份，我先找那消失的50元](https://luo-chen.com/articles/2026-07-10-where-is-the-missing-fifty.md)
+- [程序员最大的产品幻觉：把“我能做”当成“别人需要”](https://luo-chen.com/articles/2026-07-10-programmers-product-illusion.md)
+- [我以为我在分享，其实我在自说自话](https://luo-chen.com/articles/2026-07-04-offline-ppt-reflection.md)：一场线下分享的复盘。
+- [看完《龙年档案》之后：我尊重罗成，但我不会成为罗成](https://luo-chen.com/articles/2026-07-09-after-watching-dragon-year-archive.md)
+
+## 联系
+
+- 邮箱：cuidong111@gmail.com（开放远程工程、Agent 工具链和全栈产品交付合作）
+- [GitHub](https://github.com/luochen211)
+- [X](https://x.com/luochenkafei)
+- [小红书](https://www.xiaohongshu.com/user/profile/69ce663f000000003402ed88)
