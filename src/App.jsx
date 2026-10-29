@@ -31,7 +31,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 function getRouteTitle(pathname, t, locale) {
   if (pathname.startsWith('/articles/')) return null
-  if (pathname === '/about') return t.about.title
+  if (pathname === '/about') return t.now.title
   if (['/output', '/work', '/projects', '/writing', '/course'].includes(pathname)) return t.output.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
   if (pathname === '/talks/ai-delivery') return locale === 'zh' ? '客户为什么愿意把结果交给你？ · LUOCHEN' : 'Why Would a Client Trust You With the Result? · LUOCHEN'

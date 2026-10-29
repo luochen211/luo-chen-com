@@ -748,25 +748,6 @@ body {
 
 .route-hero time { color: var(--muted); font-size: 0.82rem; }
 
-.now-redesign blockquote {
-  position: relative;
-  max-width: none;
-  margin: 0;
-  padding: clamp(7rem, 14vw, 13rem) clamp(2rem, 8vw, 8rem);
-  border-block: 1px solid var(--line);
-  background: var(--surface);
-  font-size: clamp(2.2rem, 5vw, 5.2rem);
-}
-
-.now-redesign blockquote::before {
-  content: '';
-  position: absolute;
-  inset: 15% auto auto 0;
-  width: 0.22rem;
-  height: 70%;
-  background: var(--brand-warm);
-}
-
 .now-focus-list {
   margin: clamp(6rem, 12vw, 11rem) 0;
 }
@@ -782,11 +763,9 @@ body {
   letter-spacing: 0.1em;
 }
 
-.about-now-chapter { padding: clamp(6rem, 12vw, 11rem) 0 0; border-top: 1px solid var(--line); }
-.about-now-chapter .chapter-heading { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr); align-items: start; margin-bottom: clamp(4rem, 8vw, 7rem); }
-.about-now-chapter .chapter-heading h2 { max-width: 62rem; }
-.about-now-chapter .chapter-heading time { display: block; margin-top: 0.8rem; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; }
-.about-now-chapter .now-photo-gallery { margin-top: clamp(4rem, 8vw, 7rem); }
+.about-now-chapter { padding-bottom: clamp(6rem, 12vw, 11rem); }
+.about-now-chapter .now-focus-list { margin-top: 0; }
+.about-now-chapter .now-focus-list section:first-child { border-top: 0; }
 
 /* About is an editorial biography: trajectory, principles, then contact. */
 .about-hero > * {
@@ -1235,7 +1214,6 @@ body {
   .output-project-compact:hover { padding-inline: 0.75rem; }
 
   .route-hero { min-height: 72svh; }
-  .about-now-chapter .chapter-heading { grid-template-columns: 1fr; }
   .now-photo-gallery { grid-template-columns: 1fr; margin-top: 3rem; }
   .now-photo-gallery figcaption { align-items: flex-start; flex-direction: column; gap: 0.4rem; }
   .now-photo-gallery figcaption span { text-align: left; }
@@ -1253,7 +1231,6 @@ body {
   .about-timeline-event { grid-template-columns: 1fr; min-height: 19rem; gap: 3rem; }
   .about-timeline-event-meta { flex-direction: row; }
   .about-principles > header { position: static; }
-  .now-redesign blockquote { padding-inline: 2rem; }
   .now-focus-list section { grid-template-columns: 2rem 1fr; }
   .now-focus-list ul { grid-column: 2; }
   .collaboration-types { grid-template-columns: 1fr; }

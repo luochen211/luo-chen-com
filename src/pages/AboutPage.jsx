@@ -18,14 +18,16 @@ export default function AboutPage({ t, locale = 'zh' }) {
 
   return (
     <section className="focused-page about-redesign">
-      <header className="route-hero about-hero">
+      <header className="route-hero about-hero" id="now">
         <div>
           <p className="route-overline">{t.about.eyebrow}</p>
-          <span>{t.about.range}</span>
+          <time dateTime={t.now.updatedAt}>{t.now.updated} · {t.now.updatedDate}</time>
         </div>
-        <h1>{t.about.title}</h1>
-        <p>{t.about.intro}</p>
+        <h1>{t.now.title}</h1>
+        <p>{t.now.mindset}</p>
       </header>
+
+      <NowSection t={t} locale={locale} />
 
       <section className="about-origin-chapter" aria-labelledby="origin-title">
         <header className="chapter-heading about-origin-heading editorial-heading">
@@ -89,8 +91,6 @@ export default function AboutPage({ t, locale = 'zh' }) {
           </article>
         </div>
       </section>
-
-      <NowSection t={t} locale={locale} />
 
       <section className="about-principles" aria-labelledby="principles-title">
         <header>

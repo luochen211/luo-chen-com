@@ -647,8 +647,7 @@ const requiredSections = {
     output: { eyebrow: '产出 / OUTPUT', title: '我把想法变成可以被验证的产出', intro: '产品、代码、写作与公开分享。每一项都来自真实实践，也继续参与下一次建造。', filterLabel: '筛选产出类型', projectsLabel: '项目', projectsTitle: '做出来，也交付出去', writingLabel: '写作', writingTitle: '把经验留成可以复用的文字', talksLabel: '公开分享', viewLive: '在线体验', endLabel: '继续建造', endTitle: '下一项产出，正在发生。', contactAction: '一起做点值得留下的东西' },
     now: { eyebrow: '现在', title: '我现在在一家公司半创业，做教育产品', updated: '最后更新', updatedAt: '2026-10-25', updatedDate: '2026.10.25', direction: '当前主线', projects: '正在做的产品', learning: '学习与练习', open: '开放合作', routine: '长期习惯' },
     about: {
-      eyebrow: '关于我 / ABOUT', range: '2006 — NOW', title: '我在把复杂问题，变成可靠交付。',
-      intro: '我是落尘，2006 年出生。现在是一名 Agent Harness 工程师与全栈构建者，也持续写作、做产品，把学习过的东西留成可以被检查的公开作品。',
+      eyebrow: '关于我 / ABOUT',
       originEyebrow: '人生原点', originSignature: '落尘咖啡', originTitle: '即使人生大写着失败，我也愿意一往无前。', originQuote: '我宁可承担自己选择后的失败，也不愿把人生交给别人安排。', originParagraphs: [
         '对我来说，咖啡豆的味道和尼古丁是类似的。我的第一个网名，是“落尘咖啡”。',
         '我其实对尼古丁的味道很敏感。无论是跟随父亲的脚步，还是夜晚疲惫想睡觉，甚至在酒桌上谈天说地，我都闻到过这种味道。但我很讨厌烟的味道。',
@@ -698,8 +697,7 @@ const requiredSections = {
     output: { eyebrow: 'OUTPUT / PUBLIC PROOF', title: 'I turn ideas into output people can verify.', intro: 'Products, code, writing, and public talks—drawn from real practice and carried into the next build.', filterLabel: 'Filter output by type', projectsLabel: 'Projects', projectsTitle: 'Built, shipped, and put to work.', writingLabel: 'Writing', writingTitle: 'Experience, made reusable.', talksLabel: 'Public Talks', viewLive: 'Live product', endLabel: 'Keep building', endTitle: 'The next output is already in motion.', contactAction: 'Let’s make something worth keeping' },
     now: { eyebrow: 'Now', title: "I'm building education products as an intrapreneur inside a company.", updated: 'Last updated', updatedAt: '2026-10-25', updatedDate: '2026.10.25', direction: 'Current Focus', projects: 'Products in Progress', learning: 'Learning and Practice', open: 'Open to Work', routine: 'Long-term Routine' },
     about: {
-      eyebrow: 'ABOUT', range: '2006 — NOW', title: 'I turn complex problems into reliable delivery.',
-      intro: 'I am Luochen, born in 2006. I work toward Agent Harness engineering and full-stack delivery while writing, building products, and leaving what I learn as public work people can inspect.',
+      eyebrow: 'ABOUT',
       originEyebrow: 'ORIGIN STORY', originSignature: 'LUOCHEN COFFEE', originTitle: 'Even with failure written large across my life, I keep moving forward.', originQuote: 'I would rather carry the consequences of my own choices than hand my life over to someone else.', originParagraphs: [
         'To me, the taste of coffee beans and nicotine feel related. My first online name was “Luochen Coffee.”',
         'I have always been sensitive to the smell of nicotine. I encountered it following in my father’s footsteps, fighting sleep late at night, and talking freely around a dinner table. But I have always hated the smell of cigarettes.',

@@ -140,6 +140,7 @@ describe('redesigned page purposes', () => {
   it('folds Now into About and omits general career positioning', () => {
     render(<AboutPage t={siteContent.zh} locale="zh" />)
     expect(document.querySelector('#now')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(siteContent.zh.now.title)
     expect(screen.getByText(/2026\.10\.25/)).toHaveAttribute('datetime', '2026-10-25')
     expect(screen.queryByText(siteContent.zh.now.careerTitle)).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.now.projects })).toBeInTheDocument()
