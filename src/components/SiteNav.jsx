@@ -6,7 +6,6 @@ import BrandMark from './BrandMark'
 const primaryLinks = [
   { key: 'home', to: '/', end: true },
   { key: 'about', to: '/about' },
-  { key: 'now', to: '/now' },
   { key: 'output', to: '/output' },
 ]
 

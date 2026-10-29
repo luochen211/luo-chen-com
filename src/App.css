@@ -93,7 +93,7 @@
 .writing-paths span { color: rgba(7,17,31,.7); line-height: 1.65; }
 .now-redesign blockquote { max-width: 68rem; margin: clamp(5rem, 12vw, 12rem) 0; font-size: clamp(2rem, 5vw, 5rem); line-height: 1.1; letter-spacing: -.05em; }
 .now-focus-list section { display: grid; grid-template-columns: minmax(12rem, .5fr) minmax(0, 1.5fr); gap: 3rem; padding: clamp(3rem, 7vw, 6rem) 0; border-top: 1px solid var(--line); }
-.now-focus-list h2 { margin: 0; font-size: clamp(1.4rem, 2.8vw, 2.8rem); }
+.now-focus-list h3 { margin: 0; font-size: clamp(1.4rem, 2.8vw, 2.8rem); }
 .now-focus-list ul { margin: 0; padding-left: 1.2rem; font-size: clamp(1.05rem, 1.7vw, 1.4rem); line-height: 1.75; }
 .contact-hero { align-items: flex-start; }
 .contact-primary { margin: 2rem 0 1rem; }

@@ -20,7 +20,6 @@ import SocialIcon from './components/SocialIcon'
 import AboutPage from './pages/AboutPage'
 import ArticlePage from './pages/ArticlePage'
 import HomePage from './pages/HomePage'
-import NowPage from './pages/NowPage'
 import OutputPage from './pages/OutputPage'
 import FuturesTraderDemoPage from './pages/FuturesTraderDemoPage'
 import AiDeliveryTalkPage from './pages/AiDeliveryTalkPage'
@@ -33,7 +32,6 @@ gsap.registerPlugin(ScrollTrigger)
 function getRouteTitle(pathname, t, locale) {
   if (pathname.startsWith('/articles/')) return null
   if (pathname === '/about') return t.about.title
-  if (pathname === '/now') return t.now.title
   if (['/output', '/work', '/projects', '/writing', '/course'].includes(pathname)) return t.output.title
   if (pathname === '/topics/where-do-we-go') return t.topic.title
   if (pathname === '/talks/ai-delivery') return locale === 'zh' ? '客户为什么愿意把结果交给你？ · LUOCHEN' : 'Why Would a Client Trust You With the Result? · LUOCHEN'
@@ -219,7 +217,7 @@ function SiteApp() {
         <Routes>
           <Route path="/" element={<HomePage t={t} locale={locale} />} />
           <Route path="/about" element={<AboutPage t={t} locale={locale} />} />
-          <Route path="/now" element={<NowPage t={t} locale={locale} />} />
+          <Route path="/now" element={<Navigate replace to="/about#now" />} />
           <Route path="/output" element={<OutputPage t={t} locale={locale} />} />
           <Route path="/work" element={<Navigate replace to="/output" />} />
           <Route path="/writing" element={<Navigate replace to="/output" />} />

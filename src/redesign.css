@@ -782,6 +782,12 @@ body {
   letter-spacing: 0.1em;
 }
 
+.about-now-chapter { padding: clamp(6rem, 12vw, 11rem) 0 0; border-top: 1px solid var(--line); }
+.about-now-chapter .chapter-heading { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr); align-items: start; margin-bottom: clamp(4rem, 8vw, 7rem); }
+.about-now-chapter .chapter-heading h2 { max-width: 62rem; }
+.about-now-chapter .chapter-heading time { display: block; margin-top: 0.8rem; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; }
+.about-now-chapter .now-photo-gallery { margin-top: clamp(4rem, 8vw, 7rem); }
+
 /* About is an editorial biography: trajectory, principles, then contact. */
 .about-hero > * {
   animation: about-rise 0.8s cubic-bezier(0.2, 0.75, 0.2, 1) both;
@@ -833,12 +839,6 @@ body {
   line-height: 1.85;
 }
 .about-origin-body p + p { margin-top: 1.35rem; }
-.now-photo-chapter {
-  padding: clamp(6rem, 12vw, 11rem) 0;
-  border-bottom: 1px solid var(--line);
-}
-.now-photo-chapter .chapter-heading { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1.55fr); align-items: start; }
-.now-photo-chapter .chapter-heading h2 { max-width: 62rem; }
 .now-photo-gallery {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.9fr);
@@ -1235,7 +1235,7 @@ body {
   .output-project-compact:hover { padding-inline: 0.75rem; }
 
   .route-hero { min-height: 72svh; }
-  .now-photo-chapter .chapter-heading { grid-template-columns: 1fr; }
+  .about-now-chapter .chapter-heading { grid-template-columns: 1fr; }
   .now-photo-gallery { grid-template-columns: 1fr; margin-top: 3rem; }
   .now-photo-gallery figcaption { align-items: flex-start; flex-direction: column; gap: 0.4rem; }
   .now-photo-gallery figcaption span { text-align: left; }

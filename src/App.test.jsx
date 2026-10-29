@@ -70,6 +70,7 @@ describe('localized route rendering', () => {
 
   it.each([
     ['/contact', '/about', '#contact'],
+    ['/now', '/about', '#now'],
     ['/work', '/output'],
     ['/writing', '/output'],
     ['/projects', '/output'],

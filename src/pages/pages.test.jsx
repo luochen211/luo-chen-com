@@ -6,7 +6,6 @@ import { MemoryRouter } from 'react-router-dom'
 import { afterEach, describe, expect, it } from 'vitest'
 import AboutPage from './AboutPage'
 import HomePage from './HomePage'
-import NowPage from './NowPage'
 import WorkPage from './WorkPage'
 import WritingPage from './WritingPage'
 import OutputPage from './OutputPage'
@@ -19,7 +18,6 @@ const pages = [
   ['Work', WorkPage],
   ['Writing', WritingPage, { locale: 'zh' }],
   ['Output', OutputPage, { locale: 'zh' }],
-  ['Now', NowPage],
   ['About', AboutPage, { locale: 'zh' }],
   ['AI delivery talk', AiDeliveryTalkPage, { locale: 'zh' }],
 ]
@@ -139,8 +137,9 @@ describe('redesigned page purposes', () => {
     expect([...container.querySelectorAll('.output-end em')].map((node) => node.textContent)).toEqual(['产出', '发生'])
   })
 
-  it('keeps Now current and omits general career positioning', () => {
-    render(<NowPage t={siteContent.zh} />)
+  it('folds Now into About and omits general career positioning', () => {
+    render(<AboutPage t={siteContent.zh} locale="zh" />)
+    expect(document.querySelector('#now')).toBeInTheDocument()
     expect(screen.getByText(/2026\.10\.25/)).toHaveAttribute('datetime', '2026-10-25')
     expect(screen.queryByText(siteContent.zh.now.careerTitle)).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { name: siteContent.zh.now.projects })).toBeInTheDocument()
@@ -151,11 +150,11 @@ describe('redesigned page purposes', () => {
   it('combines a personal timeline and prefilled collaboration email on About', () => {
     render(<AboutPage t={siteContent.en} locale="en" />)
     expect(document.querySelector('.about-introduction')).not.toBeInTheDocument()
-    expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '13')
+    expect(document.querySelector('.about-timeline-track')).toHaveAttribute('data-point-count', '12')
     expect(screen.getByRole('heading', { name: 'Earned money on my own for the first time' })).toBeInTheDocument()
     expect(screen.getByText('MIDDLE SCHOOL', { selector: 'time' })).not.toHaveAttribute('datetime')
     expect(screen.getByRole('button', { name: 'HIGH SCHOOL · Ran Chinese metaphysics training and became a Taoist priest' })).toBeInTheDocument()
-    expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(13)
+    expect(screen.getAllByRole('button', { name: / · / })).toHaveLength(12)
     const action = screen.getByRole('link', { name: /Send a collaboration email/ })
     expect(action).toHaveAttribute('href', expect.stringContaining('subject=Collaboration%20inquiry'))
     expect(action).toHaveAttribute('href', expect.stringContaining('Project%20context'))

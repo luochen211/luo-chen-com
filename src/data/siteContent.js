@@ -673,7 +673,6 @@ const requiredSections = {
         { year: '2026.08', dateTime: '2026-08', label: '开始教', title: '写完 Agent Harness 五节课', text: '8 月写完 Agent 与 Harness 基础课：5 节、45 页，配一个不需要 API Key 也能现场演示的讲师演示台。' },
         { year: '2026.09', dateTime: '2026-09', label: '更大的仓库', title: '30 万 star 的 Superpowers 合并我的 PR', text: '9 月，obra/superpowers（30 万 star）合并了我的 PR，当月共有 37 个 PR 被上游合并。月底我加入一家公司，以内部创业的方式做教育产品。' },
         { year: '2026.10', dateTime: '2026-10', label: 'Top 10', title: '成为 career-ops 前 10 贡献者', text: '10 月在 career-ops（7.8 万 star）合并 37 个 PR，累计 112 个，进入贡献者前 10。' },
-        { year: '现在', label: '公开积累', title: '让项目、写作和代码互相证明', text: '我持续公开记录项目、写作和 AI 编程实践，把一次次交付沉淀成别人可以检查的公开作品。' },
       ],
       principlesEyebrow: '做事原则', principlesTitle: '我想长期保留的三种工作方式。',
       principles: [
@@ -725,7 +724,6 @@ const requiredSections = {
         { year: 'AUG 2026', dateTime: '2026-08', label: 'Teaching', title: 'Finished a five-lesson Agent Harness course', text: 'In August I finished an introductory Agent and Harness course: five lessons, 45 slides, and a presenter console that runs live without an API key.' },
         { year: 'SEP 2026', dateTime: '2026-09', label: 'Bigger repositories', title: 'Superpowers (300k stars) merged my PR', text: 'In September obra/superpowers (300k stars) merged my PR, one of 37 merged upstream that month. At the end of the month I joined a company to build education products as an intrapreneur.' },
         { year: 'OCT 2026', dateTime: '2026-10', label: 'Top 10', title: 'Became a top-10 career-ops contributor', text: 'In October career-ops (78k stars) merged 37 of my PRs, bringing the total to 112 and placing me among its top ten contributors.' },
-        { year: 'NOW', label: 'Building in public', title: 'Let projects, writing, and code prove one another', text: 'I keep documenting projects, writing, and AI coding practice in public, turning each delivery into work other people can inspect.' },
       ],
       principlesEyebrow: 'Working principles', principlesTitle: 'Three ways of working I want to keep.',
       principles: [

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SocialIcon from '../components/SocialIcon'
+import NowSection from './NowSection'
 
 export default function AboutPage({ t, locale = 'zh' }) {
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0)
@@ -88,6 +89,8 @@ export default function AboutPage({ t, locale = 'zh' }) {
           </article>
         </div>
       </section>
+
+      <NowSection t={t} locale={locale} />
 
       <section className="about-principles" aria-labelledby="principles-title">
         <header>

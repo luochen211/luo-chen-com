@@ -8,7 +8,6 @@ const routes = [
   ['home', '/'],
   ['work', '/work'],
   ['writing', '/writing'],
-  ['now', '/now'],
   ['roundtable', '/lab/roundtable'],
   ['column', '/columns/where-do-we-go'],
   ['article', '/articles/2026-07-05-where-do-we-go-preface'],
