@@ -2136,3 +2136,56 @@ body {
   .cta-expansion-surface { clip-path: none !important; }
   .cta-expansion-copy { opacity: 1 !important; transform: none !important; }
 }
+
+/* Handwritten signature: one decorative mark, used only where the author signs off. */
+@font-face {
+  font-family: 'Ms Madi';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('@fontsource/ms-madi/files/ms-madi-latin-400-normal.woff2') format('woff2');
+}
+
+.signature {
+  display: inline-block;
+  color: var(--brand-warm);
+  font-family: 'Ms Madi', cursive;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transform: rotate(-6deg);
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-title {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.hero-signature {
+  position: absolute;
+  bottom: -0.08em;
+  left: calc(100% - 0.35em);
+  font-size: clamp(3.6rem, 6.4vw, 6rem);
+}
+
+.contact-action-panel > .contact-signature {
+  display: block;
+  width: fit-content;
+  margin: 1.6rem 0 0 auto;
+  color: var(--brand-warm);
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
+}
+
+@media (max-width: 760px) {
+  .hero-signature {
+    position: static;
+    display: block;
+    width: fit-content;
+    margin: 0.9rem 0 0 auto;
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Signature from '../components/Signature'
 import { localizeArticles } from '../data/siteContent'
 import { articleIndex } from '../data/siteData'
 import { getProjectShowcase } from '../data/projectShowcase'
@@ -33,10 +34,13 @@ function Hero({ t, locale }) {
         </button>
         <div className="hero-copy">
           <p className="hero-overline">{t.homeUi.name} / {t.homeUi.role}</p>
-          <h1>
-            <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>{isEnglish ? ' ' : null}
-            <span>{isEnglish ? 'reliably delivered.' : '变成可靠交付。'}</span>
-          </h1>
+          <div className="hero-title">
+            <h1>
+              <span>{isEnglish ? 'Complex problems,' : '把复杂问题'}</span>{isEnglish ? ' ' : null}
+              <span>{isEnglish ? 'reliably delivered.' : '变成可靠交付。'}</span>
+            </h1>
+            <Signature className="hero-signature" />
+          </div>
           <p className="hero-intro">{t.hero.intro}</p>
           <div className="hero-actions">
             <Link className="btn primary" to="/output">{t.homeUi.view}</Link>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Signature from '../components/Signature'
 import SocialIcon from '../components/SocialIcon'
 import NowSection from './NowSection'
 
@@ -124,6 +125,7 @@ export default function AboutPage({ t, locale = 'zh' }) {
             <p>{t.about.contactPrompt}</p>
             <a className="btn primary contact-primary" href={mailto}>{t.contact.email} ↗</a>
             <span>{t.contact.response}</span>
+            <Signature className="contact-signature" />
           </div>
           <ol>
             {t.about.contactTypes.map((type, index) => (
